@@ -2,6 +2,7 @@ import 'package:client/state/Board/board_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import './screens/home.dart';
+import './navigation/router.dart' as router;
 
 class App extends StatelessWidget {
   @override
@@ -16,6 +17,8 @@ class App extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: Home(),
+        onGenerateRoute: router.generateRoute,
+        initialRoute: router.HomeScreen,
       ),
     );
   }
