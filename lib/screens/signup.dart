@@ -1,4 +1,9 @@
 import 'package:client/widgets/Home/Logo.dart';
+import 'package:client/widgets/SignUp/customTextField.dart';
+import 'package:client/widgets/SignUp/innerContainer.dart';
+import 'package:client/widgets/SignUp/innerSpacer.dart';
+import 'package:client/widgets/SignUp/signUpButton.dart';
+import 'package:client/widgets/SignUp/signUpIcon.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -42,66 +47,59 @@ class SignUpPage extends StatelessWidget {
                 SizedBox(
                   height: mainContainerHeight * 0.01,
                 ),
-                Container(
-                    width: internalContianerWidth,
-                    height: internalContainerHeight,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
+                InnerContainer(
+                    internalContainerHeight: internalContainerHeight,
+                    internalContainerWidth: internalContianerWidth,
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(
-                            height: internalContainerHeight * 0.03,
+                            height: internalContainerHeight * 0.08,
                           ),
-                          getTextField(
-                              internalContainerHeight, internalContianerWidth),
-                          // SizedBox(
-                          // height: internalContainerHeight * 0.001,
-                          // ),
-                          getTextField(
-                              internalContainerHeight, internalContianerWidth),
-                          SizedBox(
-                            height: internalContainerHeight * 0.0001,
+                          CustomeTextField(
+                            internalContainerHeight: internalContainerHeight,
+                            internalContainerWidth: internalContianerWidth,
+                            name: "Full Name",
                           ),
-                          getTextField(
-                              internalContainerHeight, internalContianerWidth),
-                          SizedBox(
-                            height: internalContainerHeight * 0.0001,
+                          InnerSpacer(
+                            internalContainerHeight: internalContainerHeight,
                           ),
-                          getTextField(
-                              internalContainerHeight, internalContianerWidth),
-                          SizedBox(
-                            height: internalContainerHeight * 0.0001,
+                          CustomeTextField(
+                            internalContainerHeight: internalContainerHeight,
+                            internalContainerWidth: internalContianerWidth,
+                            name: "Organization",
                           ),
-                          getTextField(
-                              internalContainerHeight, internalContianerWidth),
-                          SizedBox(
-                            height: internalContainerHeight * 0.0001,
+                          InnerSpacer(
+                            internalContainerHeight: internalContainerHeight,
                           ),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  height: 100,
-                                  width: 100,
-                                  decoration: BoxDecoration(),
-                                  child: CircleAvatar(
-                                    child: Image.asset(
-                                        'lib/assets/images/start/google.png'),
-                                  ),
-                                ),
-                                Container(),
-                              ]),
+                          CustomeTextField(
+                            internalContainerHeight: internalContainerHeight,
+                            internalContainerWidth: internalContianerWidth,
+                            name: "Email",
+                          ),
+                          InnerSpacer(
+                            internalContainerHeight: internalContainerHeight,
+                          ),
+                          CustomeTextField(
+                            internalContainerHeight: internalContainerHeight,
+                            internalContainerWidth: internalContianerWidth,
+                            name: "Password",
+                          ),
+                          InnerSpacer(
+                            internalContainerHeight: internalContainerHeight,
+                          ),
+                          CustomeTextField(
+                            internalContainerHeight: internalContainerHeight,
+                            internalContainerWidth: internalContianerWidth,
+                            name: "Confirm Password",
+                          ),
+                          InnerSpacer(
+                            internalContainerHeight: internalContainerHeight,
+                          ),
+                          SignUpIcon(
+                            mainContainerHeight: mainContainerHeight,
+                          ),
                           SizedBox(
                             height: internalContainerHeight * 0.02,
                           ),
@@ -123,34 +121,11 @@ class SignUpPage extends StatelessWidget {
                 SizedBox(
                   height: mainContainerHeight * 0.03,
                 ),
-                Container(
-                  width: mainContainerWidth,
-                  height: mainContainerHeight * 0.06,
-                  color: Color(0xff003366),
-                  child: Center(
-                      child: Text("SIGN UP",
-                          style: TextStyle(color: Colors.white))),
-                )
+                SignUpButton(
+                    mainContainerHeight: mainContainerHeight,
+                    mainContainerWidth: mainContainerWidth)
               ]),
         ),
-      ),
-    );
-  }
-
-  Widget getTextField(
-      double internalContainerHeight, double internalContianerWidth) {
-    return Container(
-      height: internalContainerHeight * 0.11,
-      margin: EdgeInsets.symmetric(horizontal: internalContianerWidth * 0.05),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: Color(0xff003366))),
-      child: TextField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          labelText: "First Name",
-        ),
-        controller: null,
       ),
     );
   }
