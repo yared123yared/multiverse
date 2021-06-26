@@ -1,4 +1,5 @@
 import 'package:client/screens/home.dart';
+import 'package:client/screens/signup.dart';
 import 'package:flutter/material.dart';
 
 const String HomeScreen = '/';
@@ -10,7 +11,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case HomeScreen:
       return MaterialPageRoute(builder: (context) => Home());
     case SignupScreen:
-      return MaterialPageRoute(builder: (context) => Home());
+      return MaterialPageRoute(builder: (context) => SignUpPage());
     case LoginScreen:
       return MaterialPageRoute(builder: (context) => Home());
     default:

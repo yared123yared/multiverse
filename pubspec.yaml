@@ -36,6 +36,7 @@ dependencies:
   flutter_bloc: ^7.0.1
   bloc: ^7.0.0
   hovering: ^1.0.4
+  flutter_native_splash: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +57,8 @@ flutter:
     - lib/assets/
     - lib/assets/icons/
     - lib/assets/images/home/
+    - lib/assets/images/start/
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,1 +1,0 @@
- build/web/index.html build/web/manifest.json:  /Users/jonathandaniels/Documents/Multivurse/Multivurse-Client/web/index.html /Users/jonathandaniels/Documents/Multivurse/Multivurse-Client/web/manifest.json
