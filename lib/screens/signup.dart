@@ -1,7 +1,11 @@
 import 'package:client/widgets/Home/Logo.dart';
 import 'package:client/widgets/SignUp/customTextField.dart';
+import 'package:client/widgets/SignUp/customeLogo.dart';
 import 'package:client/widgets/SignUp/innerContainer.dart';
 import 'package:client/widgets/SignUp/innerSpacer.dart';
+import 'package:client/widgets/SignUp/loginOption.dart';
+import 'package:client/widgets/SignUp/mainContainer.dart';
+import 'package:client/widgets/SignUp/outerSpacer.dart';
 import 'package:client/widgets/SignUp/signUpButton.dart';
 import 'package:client/widgets/SignUp/signUpIcon.dart';
 import 'package:flutter/material.dart';
@@ -19,26 +23,16 @@ class SignUpPage extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: Container(
-          width: mainContainerWidth,
-          height: mainContainerHeight,
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
+        child: MainContainer(
+          mainContaienrHeight: mainContainerHeight,
+          mainContaienrWidth: mainContainerWidth,
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  width: mainContainerWidth,
-                  height: mainContainerHeight * 0.15,
-                  // color: Colors.blue,
-                  child: Image.asset(
-                    'lib/assets/images/start/splash.png',
-
-                    // color: Colors.white,
-                    height: mainContainerHeight * 0.15,
-                  ),
+                CustomeLogo(
+                  mainContainerHeight: mainContainerHeight,
+                  mainContainerWidth: mainContainerWidth,
                 ),
                 SizedBox(
                   height: mainContainerHeight * 0.01,
@@ -54,8 +48,8 @@ class SignUpPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            height: internalContainerHeight * 0.08,
+                          OuterSpacer(
+                            internalContainerheight: internalContainerHeight,
                           ),
                           CustomeTextField(
                             internalContainerHeight: internalContainerHeight,
@@ -100,20 +94,10 @@ class SignUpPage extends StatelessWidget {
                           SignUpIcon(
                             mainContainerHeight: mainContainerHeight,
                           ),
-                          SizedBox(
-                            height: internalContainerHeight * 0.02,
+                          OuterSpacer(
+                            internalContainerheight: internalContainerHeight,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Already have an account?  "),
-                              GestureDetector(
-                                  onTap: () {
-                                    print("Go to sing In option");
-                                  },
-                                  child: Text("SignIn"))
-                            ],
-                          ),
+                          LoginOption(),
                           SizedBox(
                             height: internalContainerHeight * 0.02,
                           ),
