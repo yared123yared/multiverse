@@ -91,11 +91,11 @@ class SignUpPage extends StatelessWidget {
                           InnerSpacer(
                             internalContainerHeight: internalContainerHeight,
                           ),
-                          SignUpIcon(
-                            mainContainerHeight: mainContainerHeight,
-                          ),
-                          OuterSpacer(
-                            internalContainerheight: internalContainerHeight,
+                          // SignUpIcon(
+                          // mainContainerHeight: mainContainerHeight,
+                          // ),
+                          InnerSpacer(
+                            internalContainerHeight: internalContainerHeight,
                           ),
                           LoginOption(),
                           SizedBox(
