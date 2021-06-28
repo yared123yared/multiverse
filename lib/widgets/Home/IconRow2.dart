@@ -73,7 +73,7 @@ class IconRowTwo extends StatelessWidget {
             return BlocProvider.of<BoardCubit>(context).activateDigital();
           },
           child: Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.all(22.0),
             child: SvgPicture.asset(iconfive,
                 color: HexColor('#003366'), semanticsLabel: 'digital design'),
           ),
