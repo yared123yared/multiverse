@@ -13,7 +13,7 @@ class MainContainer extends StatelessWidget {
       width: this.mainContaienrWidth,
       height: this.mainContaienrHeight,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.transparent,
       ),
       child: this.child,
     );
