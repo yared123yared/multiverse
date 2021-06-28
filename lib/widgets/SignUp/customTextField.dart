@@ -14,13 +14,19 @@ class CustomeTextField extends StatelessWidget {
       margin:
           EdgeInsets.symmetric(horizontal: this.internalContainerWidth * 0.05),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: Color(0xff003366))),
+          // borderRadius: BorderRadius.circular(5),
+          // border: Border.all(color: Color(0xff003366))
+
+          ),
       child: TextField(
         decoration: InputDecoration(
-          border: InputBorder.none,
-          labelText: "$name",
-        ),
+            // border: InputBorder.none,
+            labelText: "$name",
+            fillColor: Colors.white,
+            border: new OutlineInputBorder(
+              borderRadius: new BorderRadius.circular(5.0),
+              borderSide: new BorderSide(),
+            )),
         controller: null,
       ),
     );
