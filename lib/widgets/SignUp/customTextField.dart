@@ -23,7 +23,11 @@ class CustomeTextField extends StatelessWidget {
             // border: InputBorder.none,
             labelText: "$name",
             fillColor: Colors.white,
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Color(0xff003366), width: 1),
+            ),
             border: new OutlineInputBorder(
+              gapPadding: 0.005,
               borderRadius: new BorderRadius.circular(5.0),
               borderSide: new BorderSide(),
             )),
