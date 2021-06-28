@@ -8,14 +8,13 @@ class CustomeLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: this.mainContainerWidth,
+      width: double.infinity,
       height: this.mainContainerHeight * 0.15,
       // color: Colors.blue,
-      child: Image.asset(
-        'lib/assets/images/start/splash.png',
-        // color: Colors.white,
-        height: mainContainerHeight * 0.15,
-      ),
+      child: Image.asset('lib/assets/images/start/splash.png',
+          // color: Colors.white,
+          // height: mainContainerHeight * 0.15,
+          fit: BoxFit.cover),
     );
   }
 }

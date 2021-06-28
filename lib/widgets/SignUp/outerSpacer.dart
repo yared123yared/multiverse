@@ -7,7 +7,7 @@ class OuterSpacer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: this.internalContainerheight * 0.08,
+      height: this.internalContainerheight * 0.05,
     );
   }
 }

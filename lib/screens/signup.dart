@@ -8,12 +8,16 @@ import 'package:client/widgets/SignUp/mainContainer.dart';
 import 'package:client/widgets/SignUp/outerSpacer.dart';
 import 'package:client/widgets/SignUp/signUpButton.dart';
 import 'package:client/widgets/SignUp/signUpIcon.dart';
+import 'package:client/widgets/SignUp/signUpTitle.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String splash = 'lib/assets/images/start/splash.png';
+    final String googleIcon = 'lib/assets/images/signUp/google.png';
+    final String facebookIcon = 'lib/assets/images/signUp/facebook.png';
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     double mainContainerWidth = width * 0.23;
@@ -37,7 +41,7 @@ class SignUpPage extends StatelessWidget {
                 SizedBox(
                   height: mainContainerHeight * 0.01,
                 ),
-                Text("SIGN UP TO MULTIVERSE", style: TextStyle(fontSize: 20)),
+                SignUpTitle(),
                 SizedBox(
                   height: mainContainerHeight * 0.01,
                 ),
@@ -45,7 +49,7 @@ class SignUpPage extends StatelessWidget {
                     internalContainerHeight: internalContainerHeight,
                     internalContainerWidth: internalContianerWidth,
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           OuterSpacer(
@@ -88,19 +92,30 @@ class SignUpPage extends StatelessWidget {
                             internalContainerWidth: internalContianerWidth,
                             name: "Confirm Password",
                           ),
-                          InnerSpacer(
-                            internalContainerHeight: internalContainerHeight,
-                          ),
-                          // SignUpIcon(
-                          // mainContainerHeight: mainContainerHeight,
-                          // ),
-                          InnerSpacer(
-                            internalContainerHeight: internalContainerHeight,
-                          ),
+
+                          SizedBox(height: internalContainerHeight * 0.06),
+
                           LoginOption(),
-                          SizedBox(
-                            height: internalContainerHeight * 0.02,
+                          Expanded(
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SignUpIcon(
+                                    iconName: googleIcon,
+                                    mainContainerHeight: mainContainerHeight,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  SignUpIcon(
+                                    iconName: facebookIcon,
+                                    mainContainerHeight: mainContainerHeight,
+                                  ),
+                                ]),
                           ),
+                          // SizedBox(
+                          // height: internalContainerHeight * 0.02,
+                          // ),
                         ])),
                 SizedBox(
                   height: mainContainerHeight * 0.03,

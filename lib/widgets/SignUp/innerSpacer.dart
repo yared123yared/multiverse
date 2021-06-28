@@ -6,7 +6,7 @@ class InnerSpacer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: internalContainerHeight * 0.0006,
+      height: internalContainerHeight * 0.03,
     );
   }
 }
