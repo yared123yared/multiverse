@@ -1,3 +1,4 @@
+import 'package:client/widgets/SignUp_LogIn/customeTextbutton.dart';
 import 'package:flutter/material.dart';
 
 class LoginOption extends StatelessWidget {
@@ -6,13 +7,11 @@ class LoginOption extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Already have an account?  ",
+        Text("Already have an account?",
             style: TextStyle(color: Color(0xff003366))),
-        GestureDetector(
-            onTap: () {
-              print("Go to sing In option");
-            },
-            child: Text("SignIn" ,  style: TextStyle(color: Color(0xff003366))))
+        CustomeTextButton(
+          customeText: "Sign In",
+        )
       ],
     );
   }

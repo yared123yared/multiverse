@@ -2,6 +2,7 @@ import 'package:client/Constants/signUplogInConstant.dart';
 import 'package:client/widgets/Home/Logo.dart';
 import 'package:client/widgets/SignUp_LogIn/customTextField.dart';
 import 'package:client/widgets/SignUp_LogIn/customeLogo.dart';
+import 'package:client/widgets/SignUp_LogIn/customeTextbutton.dart';
 import 'package:client/widgets/SignUp_LogIn/innerContainer.dart';
 import 'package:client/widgets/SignUp_LogIn/innerSpacer.dart';
 import 'package:client/widgets/SignUp_LogIn/loginOption.dart';
@@ -75,6 +76,12 @@ class SignInPage extends StatelessWidget {
                           SizedBox(
                               height:
                                   constants.getInternalContainerHeight * 0.06),
+                          CustomeTextButton(
+                            customeText: "Forgot Your Password ?",
+                          ),
+                          SizedBox(
+                              height:
+                                  constants.getInternalContainerHeight * 0.06),
 
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -93,6 +100,9 @@ class SignInPage extends StatelessWidget {
                                       constants.getMainContainerHeight,
                                 ),
                               ]),
+                          SizedBox(
+                              height:
+                                  constants.getInternalContainerHeight * 0.06),
                           LoginOption(),
                           // SizedBox(
                           // height: internalContainerHeight * 0.02,
