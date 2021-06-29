@@ -12,7 +12,7 @@ import 'package:client/widgets/SignUp_LogIn/signUpIcon.dart';
 import 'package:client/widgets/SignUp_LogIn/title.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SignUpLogInConstant constants = new SignUpLogInConstant();
@@ -24,7 +24,7 @@ class SignUpPage extends StatelessWidget {
           mainContaienrHeight: constants.getMainContainerHeight,
           mainContaienrWidth: constants.getMainContainerWidth,
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomeLogo(
@@ -36,7 +36,7 @@ class SignUpPage extends StatelessWidget {
                   height: constants.getMainContainerHeight * 0.01,
                 ),
                 MainTitle(
-                  titleName: 'SIGN UP TO MULTIVERSE',
+                  titleName: 'SIGN IN TO MULTIVERSE',
                 ),
                 SizedBox(
                   height: constants.getMainContainerHeight * 0.01,
@@ -58,28 +58,6 @@ class SignUpPage extends StatelessWidget {
                                 constants.getInternalContainerHeight,
                             internalContainerWidth:
                                 constants.getInternalContianerWidth,
-                            name: "Full Name",
-                          ),
-                          InnerSpacer(
-                            internalContainerHeight:
-                                constants.getInternalContainerHeight,
-                          ),
-                          CustomeTextField(
-                            internalContainerHeight:
-                                constants.getInternalContainerHeight,
-                            internalContainerWidth:
-                                constants.getInternalContianerWidth,
-                            name: "Organization",
-                          ),
-                          InnerSpacer(
-                            internalContainerHeight:
-                                constants.getInternalContainerHeight,
-                          ),
-                          CustomeTextField(
-                            internalContainerHeight:
-                                constants.getInternalContainerHeight,
-                            internalContainerWidth:
-                                constants.getInternalContianerWidth,
                             name: "Email",
                           ),
                           InnerSpacer(
@@ -92,17 +70,6 @@ class SignUpPage extends StatelessWidget {
                             internalContainerWidth:
                                 constants.getInternalContianerWidth,
                             name: "Password",
-                          ),
-                          InnerSpacer(
-                            internalContainerHeight:
-                                constants.getInternalContainerHeight,
-                          ),
-                          CustomeTextField(
-                            internalContainerHeight:
-                                constants.getInternalContainerHeight,
-                            internalContainerWidth:
-                                constants.getInternalContianerWidth,
-                            name: "Confirm Password",
                           ),
 
                           SizedBox(

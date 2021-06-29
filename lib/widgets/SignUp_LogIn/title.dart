@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SignUpTitle extends StatelessWidget {
+class MainTitle extends StatelessWidget {
+  final String titleName;
+
+  MainTitle({this.titleName});
   @override
   Widget build(BuildContext context) {
     const DEF_TEXT_STYLE = const TextStyle(
@@ -9,6 +12,6 @@ class SignUpTitle extends StatelessWidget {
         fontSize: 20,
         letterSpacing: 0.1);
 
-    return Text("SIGN UP TO MULTIVERSE", style: DEF_TEXT_STYLE);
+    return Text("${this.titleName}", style: DEF_TEXT_STYLE);
   }
 }
