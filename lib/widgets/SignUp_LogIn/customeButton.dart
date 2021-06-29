@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
-class SignUpButton extends StatelessWidget {
+class CustomeButton extends StatelessWidget {
   final double mainContainerWidth;
   final double mainContainerHeight;
+  final Function onPressed;
+  final String buttonName;
+  CustomeButton(
+      {this.mainContainerHeight,
+      this.mainContainerWidth,
+      this.onPressed,
+      this.buttonName});
 
-  SignUpButton({this.mainContainerHeight, this.mainContainerWidth});
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -18,11 +24,10 @@ class SignUpButton extends StatelessWidget {
           height: this.mainContainerHeight * 0.06,
           // color: Color(0xff003366),
           child: Center(
-            child: Text("SIGN UP", style: TextStyle(color: Colors.white)),
+            child: Text("${this.buttonName}",
+                style: TextStyle(color: Colors.white)),
           ),
         ),
-        onPressed: () {
-          print("The sign up button have been clicked");
-        });
+        onPressed: this.onPressed);
   }
 }

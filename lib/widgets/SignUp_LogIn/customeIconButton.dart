@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SignUpIcon extends StatelessWidget {
+class CustomeIconButton extends StatelessWidget {
   final double mainContainerHeight;
   final String iconName;
-  SignUpIcon({this.mainContainerHeight, this.iconName});
+  CustomeIconButton({this.mainContainerHeight, this.iconName});
   @override
   Widget build(BuildContext context) {
     return Container(

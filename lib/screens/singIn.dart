@@ -7,8 +7,8 @@ import 'package:client/widgets/SignUp_LogIn/innerSpacer.dart';
 import 'package:client/widgets/SignUp_LogIn/loginOption.dart';
 import 'package:client/widgets/SignUp_LogIn/mainContainer.dart';
 import 'package:client/widgets/SignUp_LogIn/outerSpacer.dart';
-import 'package:client/widgets/SignUp_LogIn/signUpButton.dart';
-import 'package:client/widgets/SignUp_LogIn/signUpIcon.dart';
+import 'package:client/widgets/SignUp_LogIn/customeButton.dart';
+import 'package:client/widgets/SignUp_LogIn/customeIconButton.dart';
 import 'package:client/widgets/SignUp_LogIn/title.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +24,7 @@ class SignInPage extends StatelessWidget {
           mainContaienrHeight: constants.getMainContainerHeight,
           mainContaienrWidth: constants.getMainContainerWidth,
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomeLogo(
@@ -46,7 +46,7 @@ class SignInPage extends StatelessWidget {
                         constants.getInternalContainerHeight,
                     internalContainerWidth: constants.getInternalContianerWidth,
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           OuterSpacer(
@@ -79,7 +79,7 @@ class SignInPage extends StatelessWidget {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SignUpIcon(
+                                CustomeIconButton(
                                   iconName: constants.getGoogleIcon,
                                   mainContainerHeight:
                                       constants.getMainContainerHeight,
@@ -87,13 +87,13 @@ class SignInPage extends StatelessWidget {
                                 SizedBox(
                                   width: 15,
                                 ),
-                                SignUpIcon(
+                                CustomeIconButton(
                                   iconName: constants.getFacebookIcon,
                                   mainContainerHeight:
                                       constants.getMainContainerHeight,
                                 ),
                               ]),
-                          Expanded(child: LoginOption()),
+                          LoginOption(),
                           // SizedBox(
                           // height: internalContainerHeight * 0.02,
                           // ),
@@ -101,12 +101,19 @@ class SignInPage extends StatelessWidget {
                 SizedBox(
                   height: constants.getMainContainerHeight * 0.03,
                 ),
-                SignUpButton(
-                    mainContainerHeight: constants.getMainContainerHeight,
-                    mainContainerWidth: constants.getMainContainerWidth)
+                CustomeButton(
+                  buttonName: "SING IN",
+                  mainContainerHeight: constants.getMainContainerHeight,
+                  mainContainerWidth: constants.getMainContainerWidth,
+                  onPressed: signInPressed,
+                )
               ]),
         ),
       ),
     );
+  }
+
+  signInPressed() {
+    print("SingIn button clicked");
   }
 }
