@@ -1,0 +1,439 @@
+define(['dart_sdk', 'packages/bloc/src/bloc_observer.dart'], (function load__packages__client__state__Board__board_cubit_dart(dart_sdk, packages__bloc__src__bloc_observer$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const bloc = packages__bloc__src__bloc_observer$46dart.src__bloc;
+  var board_cubit = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:client/state/Board/board_cubit.dart"];
+  var create$ = dart.privateName(board_cubit, "BoardState.create");
+  var monitor$ = dart.privateName(board_cubit, "BoardState.monitor");
+  var review$ = dart.privateName(board_cubit, "BoardState.review");
+  var start$ = dart.privateName(board_cubit, "BoardState.start");
+  var console$ = dart.privateName(board_cubit, "BoardState.console");
+  var design$ = dart.privateName(board_cubit, "BoardState.design");
+  var build$ = dart.privateName(board_cubit, "BoardState.build");
+  var maintain$ = dart.privateName(board_cubit, "BoardState.maintain");
+  var facebook$ = dart.privateName(board_cubit, "BoardState.facebook");
+  var twitter$ = dart.privateName(board_cubit, "BoardState.twitter");
+  var linkedin$ = dart.privateName(board_cubit, "BoardState.linkedin");
+  var instagram$ = dart.privateName(board_cubit, "BoardState.instagram");
+  var youtube$ = dart.privateName(board_cubit, "BoardState.youtube");
+  var legal$ = dart.privateName(board_cubit, "BoardState.legal");
+  var terms$ = dart.privateName(board_cubit, "BoardState.terms");
+  var privacy$ = dart.privateName(board_cubit, "BoardState.privacy");
+  var support$ = dart.privateName(board_cubit, "BoardState.support");
+  var contact$ = dart.privateName(board_cubit, "BoardState.contact");
+  var ai$ = dart.privateName(board_cubit, "BoardState.ai");
+  var data$ = dart.privateName(board_cubit, "BoardState.data");
+  var cyber$ = dart.privateName(board_cubit, "BoardState.cyber");
+  var robotics$ = dart.privateName(board_cubit, "BoardState.robotics");
+  var iot$ = dart.privateName(board_cubit, "BoardState.iot");
+  var cloud$ = dart.privateName(board_cubit, "BoardState.cloud");
+  var webmobile$ = dart.privateName(board_cubit, "BoardState.webmobile");
+  var blockchain$ = dart.privateName(board_cubit, "BoardState.blockchain");
+  var digital$ = dart.privateName(board_cubit, "BoardState.digital");
+  var reality$ = dart.privateName(board_cubit, "BoardState.reality");
+  board_cubit.BoardState = class BoardState extends core.Object {
+    get create() {
+      return this[create$];
+    }
+    set create(value) {
+      this[create$] = value;
+    }
+    get monitor() {
+      return this[monitor$];
+    }
+    set monitor(value) {
+      this[monitor$] = value;
+    }
+    get review() {
+      return this[review$];
+    }
+    set review(value) {
+      this[review$] = value;
+    }
+    get start() {
+      return this[start$];
+    }
+    set start(value) {
+      this[start$] = value;
+    }
+    get console() {
+      return this[console$];
+    }
+    set console(value) {
+      this[console$] = value;
+    }
+    get design() {
+      return this[design$];
+    }
+    set design(value) {
+      this[design$] = value;
+    }
+    get build() {
+      return this[build$];
+    }
+    set build(value) {
+      this[build$] = value;
+    }
+    get maintain() {
+      return this[maintain$];
+    }
+    set maintain(value) {
+      this[maintain$] = value;
+    }
+    get facebook() {
+      return this[facebook$];
+    }
+    set facebook(value) {
+      this[facebook$] = value;
+    }
+    get twitter() {
+      return this[twitter$];
+    }
+    set twitter(value) {
+      this[twitter$] = value;
+    }
+    get linkedin() {
+      return this[linkedin$];
+    }
+    set linkedin(value) {
+      this[linkedin$] = value;
+    }
+    get instagram() {
+      return this[instagram$];
+    }
+    set instagram(value) {
+      this[instagram$] = value;
+    }
+    get youtube() {
+      return this[youtube$];
+    }
+    set youtube(value) {
+      this[youtube$] = value;
+    }
+    get legal() {
+      return this[legal$];
+    }
+    set legal(value) {
+      this[legal$] = value;
+    }
+    get terms() {
+      return this[terms$];
+    }
+    set terms(value) {
+      this[terms$] = value;
+    }
+    get privacy() {
+      return this[privacy$];
+    }
+    set privacy(value) {
+      this[privacy$] = value;
+    }
+    get support() {
+      return this[support$];
+    }
+    set support(value) {
+      this[support$] = value;
+    }
+    get contact() {
+      return this[contact$];
+    }
+    set contact(value) {
+      this[contact$] = value;
+    }
+    get ai() {
+      return this[ai$];
+    }
+    set ai(value) {
+      this[ai$] = value;
+    }
+    get data() {
+      return this[data$];
+    }
+    set data(value) {
+      this[data$] = value;
+    }
+    get cyber() {
+      return this[cyber$];
+    }
+    set cyber(value) {
+      this[cyber$] = value;
+    }
+    get robotics() {
+      return this[robotics$];
+    }
+    set robotics(value) {
+      this[robotics$] = value;
+    }
+    get iot() {
+      return this[iot$];
+    }
+    set iot(value) {
+      this[iot$] = value;
+    }
+    get cloud() {
+      return this[cloud$];
+    }
+    set cloud(value) {
+      this[cloud$] = value;
+    }
+    get webmobile() {
+      return this[webmobile$];
+    }
+    set webmobile(value) {
+      this[webmobile$] = value;
+    }
+    get blockchain() {
+      return this[blockchain$];
+    }
+    set blockchain(value) {
+      this[blockchain$] = value;
+    }
+    get digital() {
+      return this[digital$];
+    }
+    set digital(value) {
+      this[digital$] = value;
+    }
+    get reality() {
+      return this[reality$];
+    }
+    set reality(value) {
+      this[reality$] = value;
+    }
+  };
+  (board_cubit.BoardState.new = function(opts) {
+    let create = opts && 'create' in opts ? opts.create : null;
+    let monitor = opts && 'monitor' in opts ? opts.monitor : null;
+    let review = opts && 'review' in opts ? opts.review : null;
+    let start = opts && 'start' in opts ? opts.start : null;
+    let console = opts && 'console' in opts ? opts.console : null;
+    let design = opts && 'design' in opts ? opts.design : null;
+    let build = opts && 'build' in opts ? opts.build : null;
+    let maintain = opts && 'maintain' in opts ? opts.maintain : null;
+    let facebook = opts && 'facebook' in opts ? opts.facebook : null;
+    let twitter = opts && 'twitter' in opts ? opts.twitter : null;
+    let linkedin = opts && 'linkedin' in opts ? opts.linkedin : null;
+    let instagram = opts && 'instagram' in opts ? opts.instagram : null;
+    let youtube = opts && 'youtube' in opts ? opts.youtube : null;
+    let legal = opts && 'legal' in opts ? opts.legal : null;
+    let terms = opts && 'terms' in opts ? opts.terms : null;
+    let privacy = opts && 'privacy' in opts ? opts.privacy : null;
+    let support = opts && 'support' in opts ? opts.support : null;
+    let contact = opts && 'contact' in opts ? opts.contact : null;
+    let ai = opts && 'ai' in opts ? opts.ai : null;
+    let data = opts && 'data' in opts ? opts.data : null;
+    let blockchain = opts && 'blockchain' in opts ? opts.blockchain : null;
+    let cloud = opts && 'cloud' in opts ? opts.cloud : null;
+    let cyber = opts && 'cyber' in opts ? opts.cyber : null;
+    let digital = opts && 'digital' in opts ? opts.digital : null;
+    let iot = opts && 'iot' in opts ? opts.iot : null;
+    let reality = opts && 'reality' in opts ? opts.reality : null;
+    let robotics = opts && 'robotics' in opts ? opts.robotics : null;
+    let webmobile = opts && 'webmobile' in opts ? opts.webmobile : null;
+    this[create$] = create;
+    this[monitor$] = monitor;
+    this[review$] = review;
+    this[start$] = start;
+    this[console$] = console;
+    this[design$] = design;
+    this[build$] = build;
+    this[maintain$] = maintain;
+    this[facebook$] = facebook;
+    this[twitter$] = twitter;
+    this[linkedin$] = linkedin;
+    this[instagram$] = instagram;
+    this[youtube$] = youtube;
+    this[legal$] = legal;
+    this[terms$] = terms;
+    this[privacy$] = privacy;
+    this[support$] = support;
+    this[contact$] = contact;
+    this[ai$] = ai;
+    this[data$] = data;
+    this[blockchain$] = blockchain;
+    this[cloud$] = cloud;
+    this[cyber$] = cyber;
+    this[digital$] = digital;
+    this[iot$] = iot;
+    this[reality$] = reality;
+    this[robotics$] = robotics;
+    this[webmobile$] = webmobile;
+    ;
+  }).prototype = board_cubit.BoardState.prototype;
+  dart.addTypeTests(board_cubit.BoardState);
+  dart.addTypeCaches(board_cubit.BoardState);
+  dart.setLibraryUri(board_cubit.BoardState, I[0]);
+  dart.setFieldSignature(board_cubit.BoardState, () => ({
+    __proto__: dart.getFields(board_cubit.BoardState.__proto__),
+    create: dart.fieldType(dart.legacy(core.bool)),
+    monitor: dart.fieldType(dart.legacy(core.bool)),
+    review: dart.fieldType(dart.legacy(core.bool)),
+    start: dart.fieldType(dart.legacy(core.bool)),
+    console: dart.fieldType(dart.legacy(core.bool)),
+    design: dart.fieldType(dart.legacy(core.bool)),
+    build: dart.fieldType(dart.legacy(core.bool)),
+    maintain: dart.fieldType(dart.legacy(core.bool)),
+    facebook: dart.fieldType(dart.legacy(core.bool)),
+    twitter: dart.fieldType(dart.legacy(core.bool)),
+    linkedin: dart.fieldType(dart.legacy(core.bool)),
+    instagram: dart.fieldType(dart.legacy(core.bool)),
+    youtube: dart.fieldType(dart.legacy(core.bool)),
+    legal: dart.fieldType(dart.legacy(core.bool)),
+    terms: dart.fieldType(dart.legacy(core.bool)),
+    privacy: dart.fieldType(dart.legacy(core.bool)),
+    support: dart.fieldType(dart.legacy(core.bool)),
+    contact: dart.fieldType(dart.legacy(core.bool)),
+    ai: dart.fieldType(dart.legacy(core.bool)),
+    data: dart.fieldType(dart.legacy(core.bool)),
+    cyber: dart.fieldType(dart.legacy(core.bool)),
+    robotics: dart.fieldType(dart.legacy(core.bool)),
+    iot: dart.fieldType(dart.legacy(core.bool)),
+    cloud: dart.fieldType(dart.legacy(core.bool)),
+    webmobile: dart.fieldType(dart.legacy(core.bool)),
+    blockchain: dart.fieldType(dart.legacy(core.bool)),
+    digital: dart.fieldType(dart.legacy(core.bool)),
+    reality: dart.fieldType(dart.legacy(core.bool))
+  }));
+  board_cubit.BoardCubit = class BoardCubit extends bloc.Cubit$(dart.legacy(board_cubit.BoardState)) {
+    activateCreate() {
+      return this.emit(new board_cubit.BoardState.new({create: true}));
+    }
+    activateMonitor() {
+      return this.emit(new board_cubit.BoardState.new({monitor: true}));
+    }
+    activateReview() {
+      return this.emit(new board_cubit.BoardState.new({review: true}));
+    }
+    activateStart() {
+      return this.emit(new board_cubit.BoardState.new({start: true}));
+    }
+    activateConsole() {
+      return this.emit(new board_cubit.BoardState.new({console: true}));
+    }
+    activateDesign() {
+      return this.emit(new board_cubit.BoardState.new({design: true}));
+    }
+    activateBuild() {
+      return this.emit(new board_cubit.BoardState.new({build: true}));
+    }
+    activateMaintain() {
+      return this.emit(new board_cubit.BoardState.new({maintain: true}));
+    }
+    activateFacebook() {
+      return this.emit(new board_cubit.BoardState.new({facebook: true}));
+    }
+    activateTwitter() {
+      return this.emit(new board_cubit.BoardState.new({twitter: true}));
+    }
+    activateLinkedin() {
+      return this.emit(new board_cubit.BoardState.new({linkedin: true}));
+    }
+    activateInstagram() {
+      return this.emit(new board_cubit.BoardState.new({instagram: true}));
+    }
+    activateYoutube() {
+      return this.emit(new board_cubit.BoardState.new({youtube: true}));
+    }
+    activateLegal() {
+      return this.emit(new board_cubit.BoardState.new({legal: true}));
+    }
+    activateTerms() {
+      return this.emit(new board_cubit.BoardState.new({terms: true}));
+    }
+    activatePrivacy() {
+      return this.emit(new board_cubit.BoardState.new({privacy: true}));
+    }
+    activateSupport() {
+      return this.emit(new board_cubit.BoardState.new({support: true}));
+    }
+    activateContact() {
+      return this.emit(new board_cubit.BoardState.new({contact: true}));
+    }
+    activateAi() {
+      return this.emit(new board_cubit.BoardState.new({ai: true}));
+    }
+    activateData() {
+      return this.emit(new board_cubit.BoardState.new({data: true}));
+    }
+    activateCyber() {
+      return this.emit(new board_cubit.BoardState.new({cyber: true}));
+    }
+    activateRobotics() {
+      return this.emit(new board_cubit.BoardState.new({robotics: true}));
+    }
+    activateBlockchain() {
+      return this.emit(new board_cubit.BoardState.new({blockchain: true}));
+    }
+    activateWebMobile() {
+      return this.emit(new board_cubit.BoardState.new({webmobile: true}));
+    }
+    activateIOT() {
+      return this.emit(new board_cubit.BoardState.new({iot: true}));
+    }
+    activateReality() {
+      return this.emit(new board_cubit.BoardState.new({reality: true}));
+    }
+    activateDigital() {
+      return this.emit(new board_cubit.BoardState.new({digital: true}));
+    }
+    activateCloud() {
+      return this.emit(new board_cubit.BoardState.new({cloud: true}));
+    }
+  };
+  (board_cubit.BoardCubit.new = function() {
+    board_cubit.BoardCubit.__proto__.new.call(this, new board_cubit.BoardState.new({create: false, monitor: false, review: false, start: false, console: false, design: false, build: false, maintain: false, facebook: false, twitter: false, linkedin: false, instagram: false, youtube: false, legal: false, terms: false, privacy: false, support: false, contact: false, ai: false, data: false, cyber: false, robotics: false, blockchain: false, webmobile: false, iot: false, reality: false, digital: false, cloud: false}));
+    ;
+  }).prototype = board_cubit.BoardCubit.prototype;
+  dart.addTypeTests(board_cubit.BoardCubit);
+  dart.addTypeCaches(board_cubit.BoardCubit);
+  dart.setMethodSignature(board_cubit.BoardCubit, () => ({
+    __proto__: dart.getMethods(board_cubit.BoardCubit.__proto__),
+    activateCreate: dart.fnType(dart.void, []),
+    activateMonitor: dart.fnType(dart.void, []),
+    activateReview: dart.fnType(dart.void, []),
+    activateStart: dart.fnType(dart.void, []),
+    activateConsole: dart.fnType(dart.void, []),
+    activateDesign: dart.fnType(dart.void, []),
+    activateBuild: dart.fnType(dart.void, []),
+    activateMaintain: dart.fnType(dart.void, []),
+    activateFacebook: dart.fnType(dart.void, []),
+    activateTwitter: dart.fnType(dart.void, []),
+    activateLinkedin: dart.fnType(dart.void, []),
+    activateInstagram: dart.fnType(dart.void, []),
+    activateYoutube: dart.fnType(dart.void, []),
+    activateLegal: dart.fnType(dart.void, []),
+    activateTerms: dart.fnType(dart.void, []),
+    activatePrivacy: dart.fnType(dart.void, []),
+    activateSupport: dart.fnType(dart.void, []),
+    activateContact: dart.fnType(dart.void, []),
+    activateAi: dart.fnType(dart.void, []),
+    activateData: dart.fnType(dart.void, []),
+    activateCyber: dart.fnType(dart.void, []),
+    activateRobotics: dart.fnType(dart.void, []),
+    activateBlockchain: dart.fnType(dart.void, []),
+    activateWebMobile: dart.fnType(dart.void, []),
+    activateIOT: dart.fnType(dart.void, []),
+    activateReality: dart.fnType(dart.void, []),
+    activateDigital: dart.fnType(dart.void, []),
+    activateCloud: dart.fnType(dart.void, [])
+  }));
+  dart.setLibraryUri(board_cubit.BoardCubit, I[0]);
+  dart.trackLibraries("packages/client/state/Board/board_cubit.dart", {
+    "package:client/state/Board/board_cubit.dart": board_cubit
+  }, {
+    "package:client/state/Board/board_cubit.dart": ["board_state.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["board_state.dart","board_cubit.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAGO;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;;;QAGK;QACD;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;IA3BC;IACD;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;EAAW;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ACxBK,uBAAK,wCAAmB;IAAM;;AAC7B,uBAAK,yCAAoB;IAAM;;AAChC,uBAAK,wCAAmB;IAAM;;AAC/B,uBAAK,uCAAkB;IAAM;;AAC3B,uBAAK,yCAAoB;IAAM;;AAChC,uBAAK,wCAAmB;IAAM;;AAC/B,uBAAK,uCAAkB;IAAM;;AAC1B,uBAAK,0CAAqB;IAAM;;AAChC,uBAAK,0CAAqB;IAAM;;AACjC,uBAAK,yCAAoB;IAAM;;AAC9B,uBAAK,0CAAqB;IAAM;;AAC/B,uBAAK,2CAAsB;IAAM;;AACnC,uBAAK,yCAAoB;IAAM;;AACjC,uBAAK,uCAAkB;IAAM;;AAC7B,uBAAK,uCAAkB;IAAM;;AAC3B,uBAAK,yCAAoB;IAAM;;AAC/B,uBAAK,yCAAoB;IAAM;;AAC/B,uBAAK,yCAAoB;IAAM;;AACpC,uBAAK,oCAAe;IAAM;;AACxB,uBAAK,sCAAiB;IAAM;;AAC3B,uBAAK,uCAAkB;IAAM;;AAC1B,uBAAK,0CAAqB;IAAM;;AAC9B,uBAAK,4CAAuB;IAAM;;AACnC,uBAAK,2CAAsB;IAAM;;AACvC,uBAAK,qCAAgB;IAAM;;AACvB,uBAAK,yCAAoB;IAAM;;AAC/B,uBAAK,yCAAoB;IAAM;;AACjC,uBAAK,uCAAkB;IAAM;;;AA1D/C,oDAAM,wCACI,gBACC,eACD,cACD,gBACE,eACD,cACD,iBACG,iBACA,gBACD,iBACC,kBACC,gBACF,cACF,cACA,gBACE,gBACA,gBACA,WACL,aACE,cACC,iBACG,mBACE,kBACD,YACN,gBACI,gBACA,cACF;;EACP","file":"../../../../../../../../../packages/client/state/Board/board_cubit.dart.lib.js"}');
+  // Exports:
+  return {
+    state__Board__board_cubit: board_cubit
+  };
+}));
+
+//# sourceMappingURL=board_cubit.dart.lib.js.map

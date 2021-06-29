@@ -22,6 +22,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    // height and width from the context
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -52,15 +56,15 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Board(),
-                    SizedBox(height: 40),
+                    SizedBox(height: height * 0.01),
                     Column(
                       children: [
                         IconRowOne(),
-                        SizedBox(height: 25),
+                        SizedBox(height: height * 0.005),
                         IconRowTwo()
                       ],
                     ),
-                    SizedBox(height: 40),
+                    SizedBox(height: height * 0.02),
                   ],
                 ),
               ),
