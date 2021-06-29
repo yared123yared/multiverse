@@ -56,11 +56,11 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Board(),
-                    SizedBox(height: height * 0.01),
+                    SizedBox(height: height * 0.025),
                     Column(
                       children: [
                         IconRowOne(),
-                        SizedBox(height: height * 0.005),
+                        SizedBox(height: height * 0.025),
                         IconRowTwo()
                       ],
                     ),

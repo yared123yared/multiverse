@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Logo extends StatelessWidget {
-  final String splash = 'lib/assets/images/start/logo.png';
+  final String logo = 'lib/assets/images/home/Logo.png';
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Image.asset(
-        splash,
-        color: Colors.white,
-        height: 500,
+        logo,
+        height: 200,
       ),
     );
   }

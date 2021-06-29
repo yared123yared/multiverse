@@ -13,7 +13,6 @@ class _BoardState extends State<Board> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return BlocBuilder<BoardCubit, BoardState>(
       builder: (context, state) {
         return Column(
@@ -23,7 +22,7 @@ class _BoardState extends State<Board> {
               elevation: 0.75,
               borderRadius: BorderRadius.circular(10),
               child: Container(
-                  height: height * 0.4,
+                  height: height * 0.35,
                   width: 575,
                   decoration: BoxDecoration(
                       color: HexColor('#003366'),
