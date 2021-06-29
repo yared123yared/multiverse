@@ -1,47 +1,935 @@
-define(['dart_sdk'], (function load__packages__xml__src__xml__entities__named_entities_dart(dart_sdk) {
+define(['dart_sdk', 'packages/flutter_svg/src/svg/xml_parsers.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter_svg/src/utilities/xml.dart', 'packages/flutter_svg/src/utilities/numbers.dart', 'packages/xml/src/xml_events/events/text.dart', 'packages/flutter_svg/src/svg/colors.dart', 'packages/flutter_svg/src/utilities/errors.dart', 'packages/path_drawing/src/parse_path.dart'], (function load__packages__flutter_svg__src__svg__parser_state_dart(dart_sdk, packages__flutter_svg__src__svg__xml_parsers$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter_svg__src__utilities__xml$46dart, packages__flutter_svg__src__utilities__numbers$46dart, packages__xml__src__xml_events__events__text$46dart, packages__flutter_svg__src__svg__colors$46dart, packages__flutter_svg__src__utilities__errors$46dart, packages__path_drawing__src__parse_path$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _js_helper = dart_sdk._js_helper;
+  const _interceptors = dart_sdk._interceptors;
+  const _internal = dart_sdk._internal;
+  const async = dart_sdk.async;
+  const collection = dart_sdk.collection;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  var named_entities = Object.create(dart.library);
+  const vector_drawable = packages__flutter_svg__src__svg__xml_parsers$46dart.src__vector_drawable;
+  const xml_parsers = packages__flutter_svg__src__svg__xml_parsers$46dart.src__svg__xml_parsers;
+  const parsers = packages__flutter_svg__src__svg__xml_parsers$46dart.src__svg__parsers;
+  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const xml = packages__flutter_svg__src__utilities__xml$46dart.src__utilities__xml;
+  const numbers = packages__flutter_svg__src__utilities__numbers$46dart.src__utilities__numbers;
+  const end_element = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__end_element;
+  const start_element = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__start_element;
+  const cdata = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__cdata;
+  const text = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__text;
+  const event_attribute = packages__xml__src__xml_events__events__text$46dart.src__xml_events__utils__event_attribute;
+  const event = packages__xml__src__xml_events__events__text$46dart.src__xml_events__event;
+  const colors$ = packages__flutter_svg__src__svg__colors$46dart.src__svg__colors;
+  const errors = packages__flutter_svg__src__utilities__errors$46dart.src__utilities__errors;
+  const parse_path = packages__path_drawing__src__parse_path$46dart.src__parse_path;
+  var parser_state = Object.create(dart.library);
+  var $runtimeType = dartx.runtimeType;
+  var $add = dartx.add;
+  var $isEmpty = dartx.isEmpty;
+  var $addAll = dartx.addAll;
+  var $_get = dartx._get;
+  var $forEach = dartx.forEach;
+  var $last = dartx.last;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $trim = dartx.trim;
+  var $iterator = dartx.iterator;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))()
+    DiagnosticsPropertyOfString: () => (T.DiagnosticsPropertyOfString = dart.constFn(diagnostics.DiagnosticsProperty$(core.String)))(),
+    SyncIterableOfDiagnosticsNode: () => (T.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
+    IterableOfDiagnosticsNode: () => (T.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
+    VoidToIterableOfDiagnosticsNode: () => (T.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T.IterableOfDiagnosticsNode(), [])))(),
+    JSArrayOfDrawable: () => (T.JSArrayOfDrawable = dart.constFn(_interceptors.JSArray$(vector_drawable.Drawable)))(),
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))(),
+    JSArrayOfColor: () => (T.JSArrayOfColor = dart.constFn(_interceptors.JSArray$(ui.Color)))(),
+    VoidTodouble: () => (T.VoidTodouble = dart.constFn(dart.fnType(core.double, [])))(),
+    doubleTodynamic: () => (T.doubleTodynamic = dart.constFn(dart.fnType(dart.dynamic, [core.double])))(),
+    JSArrayOfPath: () => (T.JSArrayOfPath = dart.constFn(_interceptors.JSArray$(ui.Path)))(),
+    DrawableN: () => (T.DrawableN = dart.constFn(dart.nullable(vector_drawable.Drawable)))(),
+    DrawableNTovoid: () => (T.DrawableNTovoid = dart.constFn(dart.fnType(dart.void, [T.DrawableN()])))(),
+    ListQueueOf_TextInfo: () => (T.ListQueueOf_TextInfo = dart.constFn(collection.ListQueue$(parser_state._TextInfo)))(),
+    StringTovoid: () => (T.StringTovoid = dart.constFn(dart.fnType(dart.void, [core.String])))(),
+    XmlStartElementEventTovoid: () => (T.XmlStartElementEventTovoid = dart.constFn(dart.fnType(dart.void, [start_element.XmlStartElementEvent])))(),
+    ListQueueOf_SvgGroupTuple: () => (T.ListQueueOf_SvgGroupTuple = dart.constFn(collection.ListQueue$(parser_state._SvgGroupTuple)))(),
+    JSArrayOfXmlEventAttribute: () => (T.JSArrayOfXmlEventAttribute = dart.constFn(_interceptors.JSArray$(event_attribute.XmlEventAttribute)))(),
+    SyncIterableOfXmlEvent: () => (T.SyncIterableOfXmlEvent = dart.constFn(_js_helper.SyncIterable$(event.XmlEvent)))(),
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    LinkedHashSetOfString: () => (T.LinkedHashSetOfString = dart.constFn(collection.LinkedHashSet$(core.String)))(),
+    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    FutureNOfvoid: () => (T.FutureNOfvoid = dart.constFn(dart.nullable(T.FutureOfvoid())))(),
+    SvgParserStateAndboolToFutureNOfvoid: () => (T.SvgParserStateAndboolToFutureNOfvoid = dart.constFn(dart.fnType(T.FutureNOfvoid(), [parser_state.SvgParserState, core.bool])))(),
+    SvgParserStateAndboolToFutureOfvoid: () => (T.SvgParserStateAndboolToFutureOfvoid = dart.constFn(dart.fnType(T.FutureOfvoid(), [parser_state.SvgParserState, core.bool])))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    SvgParserStateL: () => (T.SvgParserStateL = dart.constFn(dart.legacy(parser_state.SvgParserState)))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    SvgParserStateLAndboolLToFutureNOfvoid: () => (T.SvgParserStateLAndboolLToFutureNOfvoid = dart.constFn(dart.fnType(T.FutureNOfvoid(), [T.SvgParserStateL(), T.boolL()])))(),
+    SvgParserStateLAndboolLToLFutureNOfvoid: () => (T.SvgParserStateLAndboolLToLFutureNOfvoid = dart.constFn(dart.legacy(T.SvgParserStateLAndboolLToFutureNOfvoid())))(),
+    ListOfXmlEventAttribute: () => (T.ListOfXmlEventAttribute = dart.constFn(core.List$(event_attribute.XmlEventAttribute)))(),
+    ListNOfXmlEventAttribute: () => (T.ListNOfXmlEventAttribute = dart.constFn(dart.nullable(T.ListOfXmlEventAttribute())))(),
+    ListNOfXmlEventAttributeToPath: () => (T.ListNOfXmlEventAttributeToPath = dart.constFn(dart.fnType(ui.Path, [T.ListNOfXmlEventAttribute()])))(),
+    PathN: () => (T.PathN = dart.constFn(dart.nullable(ui.Path)))(),
+    ListNOfXmlEventAttributeToPathN: () => (T.ListNOfXmlEventAttributeToPathN = dart.constFn(dart.fnType(T.PathN(), [T.ListNOfXmlEventAttribute()])))(),
+    XmlEventAttributeL: () => (T.XmlEventAttributeL = dart.constFn(dart.legacy(event_attribute.XmlEventAttribute)))(),
+    ListOfXmlEventAttributeL: () => (T.ListOfXmlEventAttributeL = dart.constFn(core.List$(T.XmlEventAttributeL())))(),
+    ListNOfXmlEventAttributeL: () => (T.ListNOfXmlEventAttributeL = dart.constFn(dart.nullable(T.ListOfXmlEventAttributeL())))(),
+    ListNOfXmlEventAttributeLToPathN: () => (T.ListNOfXmlEventAttributeLToPathN = dart.constFn(dart.fnType(T.PathN(), [T.ListNOfXmlEventAttributeL()])))(),
+    ListNOfXmlEventAttributeLToLPathN: () => (T.ListNOfXmlEventAttributeLToLPathN = dart.constFn(dart.legacy(T.ListNOfXmlEventAttributeLToPathN())))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.constMap(T.StringL(), T.StringL(), ["amp", "&", "apos", "'", "gt", ">", "lt", "<", "quot", "\""]);
-    },
     get C1() {
-      return C[1] = dart.constMap(T.StringL(), T.StringL(), ["Aacute", "Á", "aacute", "á", "Acirc", "Â", "acirc", "â", "acute", "´", "AElig", "Æ", "aelig", "æ", "Agrave", "À", "agrave", "à", "alefsym", "ℵ", "Alpha", "Α", "alpha", "α", "amp", "&", "and", "∧", "ang", "∠", "apos", "'", "Aring", "Å", "aring", "å", "asymp", "≈", "Atilde", "Ã", "atilde", "ã", "Auml", "Ä", "auml", "ä", "bdquo", "„", "Beta", "Β", "beta", "β", "brvbar", "¦", "bull", "•", "cap", "∩", "Ccedil", "Ç", "ccedil", "ç", "cedil", "¸", "cent", "¢", "Chi", "Χ", "chi", "χ", "circ", "ˆ", "clubs", "♣", "cong", "≅", "copy", "©", "crarr", "↵", "cup", "∪", "curren", "¤", "dagger", "†", "Dagger", "‡", "darr", "↓", "dArr", "⇓", "deg", "°", "Delta", "Δ", "delta", "δ", "diams", "♦", "divide", "÷", "Eacute", "É", "eacute", "é", "Ecirc", "Ê", "ecirc", "ê", "Egrave", "È", "egrave", "è", "empty", "∅", "emsp", " ", "ensp", " ", "Epsilon", "Ε", "epsilon", "ε", "equiv", "≡", "Eta", "Η", "eta", "η", "ETH", "Ð", "eth", "ð", "Euml", "Ë", "euml", "ë", "euro", "€", "exist", "∃", "fnof", "ƒ", "forall", "∀", "frac12", "½", "frac14", "¼", "frac34", "¾", "frasl", "⁄", "Gamma", "Γ", "gamma", "γ", "ge", "≥", "gt", ">", "harr", "↔", "hArr", "⇔", "hearts", "♥", "hellip", "…", "Iacute", "Í", "iacute", "í", "Icirc", "Î", "icirc", "î", "iexcl", "¡", "Igrave", "Ì", "igrave", "ì", "image", "ℑ", "infin", "∞", "int", "∫", "Iota", "Ι", "iota", "ι", "iquest", "¿", "isin", "∈", "Iuml", "Ï", "iuml", "ï", "Kappa", "Κ", "kappa", "κ", "Lambda", "Λ", "lambda", "λ", "lang", "〈", "laquo", "«", "larr", "←", "lArr", "⇐", "lceil", "⌈", "ldquo", "“", "le", "≤", "lfloor", "⌊", "lowast", "∗", "loz", "◊", "lrm", "‎", "lsaquo", "‹", "lsquo", "‘", "lt", "<", "macr", "¯", "mdash", "—", "micro", "µ", "middot", "·", "minus", "−", "Mu", "Μ", "mu", "μ", "nabla", "∇", "nbsp", " ", "ndash", "–", "ne", "≠", "ni", "∋", "not", "¬", "notin", "∉", "nsub", "⊄", "Ntilde", "Ñ", "ntilde", "ñ", "Nu", "Ν", "nu", "ν", "Oacute", "Ó", "oacute", "ó", "Ocirc", "Ô", "ocirc", "ô", "OElig", "Œ", "oelig", "œ", "Ograve", "Ò", "ograve", "ò", "oline", "‾", "Omega", "Ω", "omega", "ω", "Omicron", "Ο", "omicron", "ο", "oplus", "⊕", "or", "∨", "ordf", "ª", "ordm", "º", "Oslash", "Ø", "oslash", "ø", "Otilde", "Õ", "otilde", "õ", "otimes", "⊗", "Ouml", "Ö", "ouml", "ö", "para", "¶", "part", "∂", "permil", "‰", "perp", "⊥", "Phi", "Φ", "phi", "φ", "Pi", "Π", "pi", "π", "piv", "ϖ", "plusmn", "±", "pound", "£", "prime", "′", "Prime", "″", "prod", "∏", "prop", "∝", "Psi", "Ψ", "psi", "ψ", "quot", "\"", "radic", "√", "rang", "〉", "raquo", "»", "rarr", "→", "rArr", "⇒", "rceil", "⌉", "rdquo", "”", "real", "ℜ", "reg", "®", "rfloor", "⌋", "Rho", "Ρ", "rho", "ρ", "rlm", "‏", "rsaquo", "›", "rsquo", "’", "sbquo", "‚", "Scaron", "Š", "scaron", "š", "sdot", "⋅", "sect", "§", "shy", "­", "Sigma", "Σ", "sigma", "σ", "sigmaf", "ς", "sim", "∼", "spades", "♠", "sub", "⊂", "sube", "⊆", "sum", "∑", "sup", "⊃", "sup1", "¹", "sup2", "²", "sup3", "³", "supe", "⊇", "szlig", "ß", "Tau", "Τ", "tau", "τ", "there4", "∴", "Theta", "Θ", "theta", "θ", "thetasym", "ϑ", "thinsp", " ", "THORN", "Þ", "thorn", "þ", "tilde", "˜", "times", "×", "trade", "™", "Uacute", "Ú", "uacute", "ú", "uarr", "↑", "uArr", "⇑", "Ucirc", "Û", "ucirc", "û", "Ugrave", "Ù", "ugrave", "ù", "uml", "¨", "upsih", "ϒ", "Upsilon", "Υ", "upsilon", "υ", "Uuml", "Ü", "uuml", "ü", "weierp", "℘", "Xi", "Ξ", "xi", "ξ", "Yacute", "Ý", "yacute", "ý", "yen", "¥", "yuml", "ÿ", "Yuml", "Ÿ", "Zeta", "Ζ", "zeta", "ζ", "zwj", "‍", "zwnj", "‌"]);
+      return C[1] = dart.fn(parser_state._Elements.svg, T.SvgParserStateAndboolToFutureNOfvoid());
     },
     get C2() {
-      return C[2] = dart.constMap(T.StringL(), T.StringL(), ["Aacute", "Á", "aacute", "á", "Abreve", "Ă", "abreve", "ă", "ac", "∾", "acd", "∿", "acE", "∾̳", "Acirc", "Â", "acirc", "â", "acute", "´", "Acy", "А", "acy", "а", "AElig", "Æ", "aelig", "æ", "af", "⁡", "Afr", "𝔄", "afr", "𝔞", "Agrave", "À", "agrave", "à", "alefsym", "ℵ", "aleph", "ℵ", "Alpha", "Α", "alpha", "α", "Amacr", "Ā", "amacr", "ā", "amalg", "⨿", "AMP", "&", "amp", "&", "and", "∧", "And", "⩓", "andand", "⩕", "andd", "⩜", "andslope", "⩘", "andv", "⩚", "ang", "∠", "ange", "⦤", "angle", "∠", "angmsd", "∡", "angmsdaa", "⦨", "angmsdab", "⦩", "angmsdac", "⦪", "angmsdad", "⦫", "angmsdae", "⦬", "angmsdaf", "⦭", "angmsdag", "⦮", "angmsdah", "⦯", "angrt", "∟", "angrtvb", "⊾", "angrtvbd", "⦝", "angsph", "∢", "angst", "Å", "angzarr", "⍼", "Aogon", "Ą", "aogon", "ą", "Aopf", "𝔸", "aopf", "𝕒", "ap", "≈", "apacir", "⩯", "ape", "≊", "apE", "⩰", "apid", "≋", "apos", "'", "ApplyFunction", "⁡", "approx", "≈", "approxeq", "≊", "Aring", "Å", "aring", "å", "Ascr", "𝒜", "ascr", "𝒶", "Assign", "≔", "ast", "*", "asymp", "≈", "asympeq", "≍", "Atilde", "Ã", "atilde", "ã", "Auml", "Ä", "auml", "ä", "awconint", "∳", "awint", "⨑", "backcong", "≌", "backepsilon", "϶", "backprime", "‵", "backsim", "∽", "backsimeq", "⋍", "Backslash", "∖", "Barv", "⫧", "barvee", "⊽", "barwed", "⌅", "Barwed", "⌆", "barwedge", "⌅", "bbrk", "⎵", "bbrktbrk", "⎶", "bcong", "≌", "Bcy", "Б", "bcy", "б", "bdquo", "„", "becaus", "∵", "Because", "∵", "because", "∵", "bemptyv", "⦰", "bepsi", "϶", "bernou", "ℬ", "Bernoullis", "ℬ", "Beta", "Β", "beta", "β", "beth", "ℶ", "between", "≬", "Bfr", "𝔅", "bfr", "𝔟", "bigcap", "⋂", "bigcirc", "◯", "bigcup", "⋃", "bigodot", "⨀", "bigoplus", "⨁", "bigotimes", "⨂", "bigsqcup", "⨆", "bigstar", "★", "bigtriangledown", "▽", "bigtriangleup", "△", "biguplus", "⨄", "bigvee", "⋁", "bigwedge", "⋀", "bkarow", "⤍", "blacklozenge", "⧫", "blacksquare", "▪", "blacktriangle", "▴", "blacktriangledown", "▾", "blacktriangleleft", "◂", "blacktriangleright", "▸", "blank", "␣", "blk12", "▒", "blk14", "░", "blk34", "▓", "block", "█", "bne", "=⃥", "bnequiv", "≡⃥", "bnot", "⌐", "bNot", "⫭", "Bopf", "𝔹", "bopf", "𝕓", "bot", "⊥", "bottom", "⊥", "bowtie", "⋈", "boxbox", "⧉", "boxdl", "┐", "boxdL", "╕", "boxDl", "╖", "boxDL", "╗", "boxdr", "┌", "boxdR", "╒", "boxDr", "╓", "boxDR", "╔", "boxh", "─", "boxH", "═", "boxhd", "┬", "boxHd", "╤", "boxhD", "╥", "boxHD", "╦", "boxhu", "┴", "boxHu", "╧", "boxhU", "╨", "boxHU", "╩", "boxminus", "⊟", "boxplus", "⊞", "boxtimes", "⊠", "boxul", "┘", "boxuL", "╛", "boxUl", "╜", "boxUL", "╝", "boxur", "└", "boxuR", "╘", "boxUr", "╙", "boxUR", "╚", "boxv", "│", "boxV", "║", "boxvh", "┼", "boxvH", "╪", "boxVh", "╫", "boxVH", "╬", "boxvl", "┤", "boxvL", "╡", "boxVl", "╢", "boxVL", "╣", "boxvr", "├", "boxvR", "╞", "boxVr", "╟", "boxVR", "╠", "bprime", "‵", "Breve", "˘", "breve", "˘", "brvbar", "¦", "Bscr", "ℬ", "bscr", "𝒷", "bsemi", "⁏", "bsim", "∽", "bsime", "⋍", "bsol", "\\", "bsolb", "⧅", "bsolhsub", "⟈", "bull", "•", "bullet", "•", "bump", "≎", "bumpe", "≏", "bumpE", "⪮", "Bumpeq", "≎", "bumpeq", "≏", "Cacute", "Ć", "cacute", "ć", "cap", "∩", "Cap", "⋒", "capand", "⩄", "capbrcup", "⩉", "capcap", "⩋", "capcup", "⩇", "capdot", "⩀", "CapitalDifferentialD", "ⅅ", "caps", "∩︀", "caret", "⁁", "caron", "ˇ", "Cayleys", "ℭ", "ccaps", "⩍", "Ccaron", "Č", "ccaron", "č", "Ccedil", "Ç", "ccedil", "ç", "Ccirc", "Ĉ", "ccirc", "ĉ", "Cconint", "∰", "ccups", "⩌", "ccupssm", "⩐", "Cdot", "Ċ", "cdot", "ċ", "cedil", "¸", "Cedilla", "¸", "cemptyv", "⦲", "cent", "¢", "CenterDot", "·", "centerdot", "·", "Cfr", "ℭ", "cfr", "𝔠", "CHcy", "Ч", "chcy", "ч", "check", "✓", "checkmark", "✓", "Chi", "Χ", "chi", "χ", "cir", "○", "circ", "ˆ", "circeq", "≗", "circlearrowleft", "↺", "circlearrowright", "↻", "circledast", "⊛", "circledcirc", "⊚", "circleddash", "⊝", "CircleDot", "⊙", "circledR", "®", "circledS", "Ⓢ", "CircleMinus", "⊖", "CirclePlus", "⊕", "CircleTimes", "⊗", "cire", "≗", "cirE", "⧃", "cirfnint", "⨐", "cirmid", "⫯", "cirscir", "⧂", "ClockwiseContourIntegral", "∲", "CloseCurlyDoubleQuote", "”", "CloseCurlyQuote", "’", "clubs", "♣", "clubsuit", "♣", "colon", ":", "Colon", "∷", "colone", "≔", "Colone", "⩴", "coloneq", "≔", "comma", ",", "commat", "@", "comp", "∁", "compfn", "∘", "complement", "∁", "complexes", "ℂ", "cong", "≅", "congdot", "⩭", "Congruent", "≡", "conint", "∮", "Conint", "∯", "ContourIntegral", "∮", "Copf", "ℂ", "copf", "𝕔", "coprod", "∐", "Coproduct", "∐", "COPY", "©", "copy", "©", "copysr", "℗", "CounterClockwiseContourIntegral", "∳", "crarr", "↵", "cross", "✗", "Cross", "⨯", "Cscr", "𝒞", "cscr", "𝒸", "csub", "⫏", "csube", "⫑", "csup", "⫐", "csupe", "⫒", "ctdot", "⋯", "cudarrl", "⤸", "cudarrr", "⤵", "cuepr", "⋞", "cuesc", "⋟", "cularr", "↶", "cularrp", "⤽", "cup", "∪", "Cup", "⋓", "cupbrcap", "⩈", "CupCap", "≍", "cupcap", "⩆", "cupcup", "⩊", "cupdot", "⊍", "cupor", "⩅", "cups", "∪︀", "curarr", "↷", "curarrm", "⤼", "curlyeqprec", "⋞", "curlyeqsucc", "⋟", "curlyvee", "⋎", "curlywedge", "⋏", "curren", "¤", "curvearrowleft", "↶", "curvearrowright", "↷", "cuvee", "⋎", "cuwed", "⋏", "cwconint", "∲", "cwint", "∱", "cylcty", "⌭", "dagger", "†", "Dagger", "‡", "daleth", "ℸ", "darr", "↓", "Darr", "↡", "dArr", "⇓", "dash", "‐", "dashv", "⊣", "Dashv", "⫤", "dbkarow", "⤏", "dblac", "˝", "Dcaron", "Ď", "dcaron", "ď", "Dcy", "Д", "dcy", "д", "DD", "ⅅ", "dd", "ⅆ", "ddagger", "‡", "ddarr", "⇊", "DDotrahd", "⤑", "ddotseq", "⩷", "deg", "°", "Del", "∇", "Delta", "Δ", "delta", "δ", "demptyv", "⦱", "dfisht", "⥿", "Dfr", "𝔇", "dfr", "𝔡", "dHar", "⥥", "dharl", "⇃", "dharr", "⇂", "DiacriticalAcute", "´", "DiacriticalDot", "˙", "DiacriticalDoubleAcute", "˝", "DiacriticalGrave", "`", "DiacriticalTilde", "˜", "diam", "⋄", "Diamond", "⋄", "diamond", "⋄", "diamondsuit", "♦", "diams", "♦", "die", "¨", "DifferentialD", "ⅆ", "digamma", "ϝ", "disin", "⋲", "div", "÷", "divide", "÷", "divideontimes", "⋇", "divonx", "⋇", "DJcy", "Ђ", "djcy", "ђ", "dlcorn", "⌞", "dlcrop", "⌍", "dollar", "$", "Dopf", "𝔻", "dopf", "𝕕", "Dot", "¨", "dot", "˙", "DotDot", "⃜", "doteq", "≐", "doteqdot", "≑", "DotEqual", "≐", "dotminus", "∸", "dotplus", "∔", "dotsquare", "⊡", "doublebarwedge", "⌆", "DoubleContourIntegral", "∯", "DoubleDot", "¨", "DoubleDownArrow", "⇓", "DoubleLeftArrow", "⇐", "DoubleLeftRightArrow", "⇔", "DoubleLeftTee", "⫤", "DoubleLongLeftArrow", "⟸", "DoubleLongLeftRightArrow", "⟺", "DoubleLongRightArrow", "⟹", "DoubleRightArrow", "⇒", "DoubleRightTee", "⊨", "DoubleUpArrow", "⇑", "DoubleUpDownArrow", "⇕", "DoubleVerticalBar", "∥", "DownArrow", "↓", "downarrow", "↓", "Downarrow", "⇓", "DownArrowBar", "⤓", "DownArrowUpArrow", "⇵", "DownBreve", "̑", "downdownarrows", "⇊", "downharpoonleft", "⇃", "downharpoonright", "⇂", "DownLeftRightVector", "⥐", "DownLeftTeeVector", "⥞", "DownLeftVector", "↽", "DownLeftVectorBar", "⥖", "DownRightTeeVector", "⥟", "DownRightVector", "⇁", "DownRightVectorBar", "⥗", "DownTee", "⊤", "DownTeeArrow", "↧", "drbkarow", "⤐", "drcorn", "⌟", "drcrop", "⌌", "Dscr", "𝒟", "dscr", "𝒹", "DScy", "Ѕ", "dscy", "ѕ", "dsol", "⧶", "Dstrok", "Đ", "dstrok", "đ", "dtdot", "⋱", "dtri", "▿", "dtrif", "▾", "duarr", "⇵", "duhar", "⥯", "dwangle", "⦦", "DZcy", "Џ", "dzcy", "џ", "dzigrarr", "⟿", "Eacute", "É", "eacute", "é", "easter", "⩮", "Ecaron", "Ě", "ecaron", "ě", "ecir", "≖", "Ecirc", "Ê", "ecirc", "ê", "ecolon", "≕", "Ecy", "Э", "ecy", "э", "eDDot", "⩷", "Edot", "Ė", "edot", "ė", "eDot", "≑", "ee", "ⅇ", "efDot", "≒", "Efr", "𝔈", "efr", "𝔢", "eg", "⪚", "Egrave", "È", "egrave", "è", "egs", "⪖", "egsdot", "⪘", "el", "⪙", "Element", "∈", "elinters", "⏧", "ell", "ℓ", "els", "⪕", "elsdot", "⪗", "Emacr", "Ē", "emacr", "ē", "empty", "∅", "emptyset", "∅", "EmptySmallSquare", "◻", "emptyv", "∅", "EmptyVerySmallSquare", "▫", "emsp", " ", "emsp13", " ", "emsp14", " ", "ENG", "Ŋ", "eng", "ŋ", "ensp", " ", "Eogon", "Ę", "eogon", "ę", "Eopf", "𝔼", "eopf", "𝕖", "epar", "⋕", "eparsl", "⧣", "eplus", "⩱", "epsi", "ε", "Epsilon", "Ε", "epsilon", "ε", "epsiv", "ϵ", "eqcirc", "≖", "eqcolon", "≕", "eqsim", "≂", "eqslantgtr", "⪖", "eqslantless", "⪕", "Equal", "⩵", "equals", "=", "EqualTilde", "≂", "equest", "≟", "Equilibrium", "⇌", "equiv", "≡", "equivDD", "⩸", "eqvparsl", "⧥", "erarr", "⥱", "erDot", "≓", "escr", "ℯ", "Escr", "ℰ", "esdot", "≐", "esim", "≂", "Esim", "⩳", "Eta", "Η", "eta", "η", "ETH", "Ð", "eth", "ð", "Euml", "Ë", "euml", "ë", "euro", "€", "excl", "!", "exist", "∃", "Exists", "∃", "expectation", "ℰ", "ExponentialE", "ⅇ", "exponentiale", "ⅇ", "fallingdotseq", "≒", "Fcy", "Ф", "fcy", "ф", "female", "♀", "ffilig", "ﬃ", "fflig", "ﬀ", "ffllig", "ﬄ", "Ffr", "𝔉", "ffr", "𝔣", "filig", "ﬁ", "FilledSmallSquare", "◼", "FilledVerySmallSquare", "▪", "fjlig", "fj", "flat", "♭", "fllig", "ﬂ", "fltns", "▱", "fnof", "ƒ", "Fopf", "𝔽", "fopf", "𝕗", "ForAll", "∀", "forall", "∀", "fork", "⋔", "forkv", "⫙", "Fouriertrf", "ℱ", "fpartint", "⨍", "frac12", "½", "frac13", "⅓", "frac14", "¼", "frac15", "⅕", "frac16", "⅙", "frac18", "⅛", "frac23", "⅔", "frac25", "⅖", "frac34", "¾", "frac35", "⅗", "frac38", "⅜", "frac45", "⅘", "frac56", "⅚", "frac58", "⅝", "frac78", "⅞", "frasl", "⁄", "frown", "⌢", "Fscr", "ℱ", "fscr", "𝒻", "gacute", "ǵ", "Gamma", "Γ", "gamma", "γ", "Gammad", "Ϝ", "gammad", "ϝ", "gap", "⪆", "Gbreve", "Ğ", "gbreve", "ğ", "Gcedil", "Ģ", "Gcirc", "Ĝ", "gcirc", "ĝ", "Gcy", "Г", "gcy", "г", "Gdot", "Ġ", "gdot", "ġ", "ge", "≥", "gE", "≧", "gel", "⋛", "gEl", "⪌", "geq", "≥", "geqq", "≧", "geqslant", "⩾", "ges", "⩾", "gescc", "⪩", "gesdot", "⪀", "gesdoto", "⪂", "gesdotol", "⪄", "gesl", "⋛︀", "gesles", "⪔", "Gfr", "𝔊", "gfr", "𝔤", "gg", "≫", "Gg", "⋙", "ggg", "⋙", "gimel", "ℷ", "GJcy", "Ѓ", "gjcy", "ѓ", "gl", "≷", "gla", "⪥", "glE", "⪒", "glj", "⪤", "gnap", "⪊", "gnapprox", "⪊", "gnE", "≩", "gne", "⪈", "gneq", "⪈", "gneqq", "≩", "gnsim", "⋧", "Gopf", "𝔾", "gopf", "𝕘", "grave", "`", "GreaterEqual", "≥", "GreaterEqualLess", "⋛", "GreaterFullEqual", "≧", "GreaterGreater", "⪢", "GreaterLess", "≷", "GreaterSlantEqual", "⩾", "GreaterTilde", "≳", "gscr", "ℊ", "Gscr", "𝒢", "gsim", "≳", "gsime", "⪎", "gsiml", "⪐", "GT", ">", "gt", ">", "Gt", "≫", "gtcc", "⪧", "gtcir", "⩺", "gtdot", "⋗", "gtlPar", "⦕", "gtquest", "⩼", "gtrapprox", "⪆", "gtrarr", "⥸", "gtrdot", "⋗", "gtreqless", "⋛", "gtreqqless", "⪌", "gtrless", "≷", "gtrsim", "≳", "gvertneqq", "≩︀", "gvnE", "≩︀", "Hacek", "ˇ", "hairsp", " ", "half", "½", "hamilt", "ℋ", "HARDcy", "Ъ", "hardcy", "ъ", "harr", "↔", "hArr", "⇔", "harrcir", "⥈", "harrw", "↭", "Hat", "^", "hbar", "ℏ", "Hcirc", "Ĥ", "hcirc", "ĥ", "hearts", "♥", "heartsuit", "♥", "hellip", "…", "hercon", "⊹", "Hfr", "ℌ", "hfr", "𝔥", "HilbertSpace", "ℋ", "hksearow", "⤥", "hkswarow", "⤦", "hoarr", "⇿", "homtht", "∻", "hookleftarrow", "↩", "hookrightarrow", "↪", "Hopf", "ℍ", "hopf", "𝕙", "horbar", "―", "HorizontalLine", "─", "Hscr", "ℋ", "hscr", "𝒽", "hslash", "ℏ", "Hstrok", "Ħ", "hstrok", "ħ", "HumpDownHump", "≎", "HumpEqual", "≏", "hybull", "⁃", "hyphen", "‐", "Iacute", "Í", "iacute", "í", "ic", "⁣", "Icirc", "Î", "icirc", "î", "Icy", "И", "icy", "и", "Idot", "İ", "IEcy", "Е", "iecy", "е", "iexcl", "¡", "iff", "⇔", "Ifr", "ℑ", "ifr", "𝔦", "Igrave", "Ì", "igrave", "ì", "ii", "ⅈ", "iiiint", "⨌", "iiint", "∭", "iinfin", "⧜", "iiota", "℩", "IJlig", "Ĳ", "ijlig", "ĳ", "Im", "ℑ", "Imacr", "Ī", "imacr", "ī", "image", "ℑ", "ImaginaryI", "ⅈ", "imagline", "ℐ", "imagpart", "ℑ", "imath", "ı", "imof", "⊷", "imped", "Ƶ", "Implies", "⇒", "in", "∈", "incare", "℅", "infin", "∞", "infintie", "⧝", "inodot", "ı", "int", "∫", "Int", "∬", "intcal", "⊺", "integers", "ℤ", "Integral", "∫", "intercal", "⊺", "Intersection", "⋂", "intlarhk", "⨗", "intprod", "⨼", "InvisibleComma", "⁣", "InvisibleTimes", "⁢", "IOcy", "Ё", "iocy", "ё", "Iogon", "Į", "iogon", "į", "Iopf", "𝕀", "iopf", "𝕚", "Iota", "Ι", "iota", "ι", "iprod", "⨼", "iquest", "¿", "Iscr", "ℐ", "iscr", "𝒾", "isin", "∈", "isindot", "⋵", "isinE", "⋹", "isins", "⋴", "isinsv", "⋳", "isinv", "∈", "it", "⁢", "Itilde", "Ĩ", "itilde", "ĩ", "Iukcy", "І", "iukcy", "і", "Iuml", "Ï", "iuml", "ï", "Jcirc", "Ĵ", "jcirc", "ĵ", "Jcy", "Й", "jcy", "й", "Jfr", "𝔍", "jfr", "𝔧", "jmath", "ȷ", "Jopf", "𝕁", "jopf", "𝕛", "Jscr", "𝒥", "jscr", "𝒿", "Jsercy", "Ј", "jsercy", "ј", "Jukcy", "Є", "jukcy", "є", "Kappa", "Κ", "kappa", "κ", "kappav", "ϰ", "Kcedil", "Ķ", "kcedil", "ķ", "Kcy", "К", "kcy", "к", "Kfr", "𝔎", "kfr", "𝔨", "kgreen", "ĸ", "KHcy", "Х", "khcy", "х", "KJcy", "Ќ", "kjcy", "ќ", "Kopf", "𝕂", "kopf", "𝕜", "Kscr", "𝒦", "kscr", "𝓀", "lAarr", "⇚", "Lacute", "Ĺ", "lacute", "ĺ", "laemptyv", "⦴", "lagran", "ℒ", "Lambda", "Λ", "lambda", "λ", "lang", "⟨", "Lang", "⟪", "langd", "⦑", "langle", "⟨", "lap", "⪅", "Laplacetrf", "ℒ", "laquo", "«", "larr", "←", "Larr", "↞", "lArr", "⇐", "larrb", "⇤", "larrbfs", "⤟", "larrfs", "⤝", "larrhk", "↩", "larrlp", "↫", "larrpl", "⤹", "larrsim", "⥳", "larrtl", "↢", "lat", "⪫", "latail", "⤙", "lAtail", "⤛", "late", "⪭", "lates", "⪭︀", "lbarr", "⤌", "lBarr", "⤎", "lbbrk", "❲", "lbrace", "{", "lbrack", "[", "lbrke", "⦋", "lbrksld", "⦏", "lbrkslu", "⦍", "Lcaron", "Ľ", "lcaron", "ľ", "Lcedil", "Ļ", "lcedil", "ļ", "lceil", "⌈", "lcub", "{", "Lcy", "Л", "lcy", "л", "ldca", "⤶", "ldquo", "“", "ldquor", "„", "ldrdhar", "⥧", "ldrushar", "⥋", "ldsh", "↲", "le", "≤", "lE", "≦", "LeftAngleBracket", "⟨", "LeftArrow", "←", "leftarrow", "←", "Leftarrow", "⇐", "LeftArrowBar", "⇤", "LeftArrowRightArrow", "⇆", "leftarrowtail", "↢", "LeftCeiling", "⌈", "LeftDoubleBracket", "⟦", "LeftDownTeeVector", "⥡", "LeftDownVector", "⇃", "LeftDownVectorBar", "⥙", "LeftFloor", "⌊", "leftharpoondown", "↽", "leftharpoonup", "↼", "leftleftarrows", "⇇", "LeftRightArrow", "↔", "leftrightarrow", "↔", "Leftrightarrow", "⇔", "leftrightarrows", "⇆", "leftrightharpoons", "⇋", "leftrightsquigarrow", "↭", "LeftRightVector", "⥎", "LeftTee", "⊣", "LeftTeeArrow", "↤", "LeftTeeVector", "⥚", "leftthreetimes", "⋋", "LeftTriangle", "⊲", "LeftTriangleBar", "⧏", "LeftTriangleEqual", "⊴", "LeftUpDownVector", "⥑", "LeftUpTeeVector", "⥠", "LeftUpVector", "↿", "LeftUpVectorBar", "⥘", "LeftVector", "↼", "LeftVectorBar", "⥒", "leg", "⋚", "lEg", "⪋", "leq", "≤", "leqq", "≦", "leqslant", "⩽", "les", "⩽", "lescc", "⪨", "lesdot", "⩿", "lesdoto", "⪁", "lesdotor", "⪃", "lesg", "⋚︀", "lesges", "⪓", "lessapprox", "⪅", "lessdot", "⋖", "lesseqgtr", "⋚", "lesseqqgtr", "⪋", "LessEqualGreater", "⋚", "LessFullEqual", "≦", "LessGreater", "≶", "lessgtr", "≶", "LessLess", "⪡", "lesssim", "≲", "LessSlantEqual", "⩽", "LessTilde", "≲", "lfisht", "⥼", "lfloor", "⌊", "Lfr", "𝔏", "lfr", "𝔩", "lg", "≶", "lgE", "⪑", "lHar", "⥢", "lhard", "↽", "lharu", "↼", "lharul", "⥪", "lhblk", "▄", "LJcy", "Љ", "ljcy", "љ", "ll", "≪", "Ll", "⋘", "llarr", "⇇", "llcorner", "⌞", "Lleftarrow", "⇚", "llhard", "⥫", "lltri", "◺", "Lmidot", "Ŀ", "lmidot", "ŀ", "lmoust", "⎰", "lmoustache", "⎰", "lnap", "⪉", "lnapprox", "⪉", "lnE", "≨", "lne", "⪇", "lneq", "⪇", "lneqq", "≨", "lnsim", "⋦", "loang", "⟬", "loarr", "⇽", "lobrk", "⟦", "LongLeftArrow", "⟵", "longleftarrow", "⟵", "Longleftarrow", "⟸", "LongLeftRightArrow", "⟷", "longleftrightarrow", "⟷", "Longleftrightarrow", "⟺", "longmapsto", "⟼", "LongRightArrow", "⟶", "longrightarrow", "⟶", "Longrightarrow", "⟹", "looparrowleft", "↫", "looparrowright", "↬", "lopar", "⦅", "Lopf", "𝕃", "lopf", "𝕝", "loplus", "⨭", "lotimes", "⨴", "lowast", "∗", "lowbar", "_", "LowerLeftArrow", "↙", "LowerRightArrow", "↘", "loz", "◊", "lozenge", "◊", "lozf", "⧫", "lpar", "(", "lparlt", "⦓", "lrarr", "⇆", "lrcorner", "⌟", "lrhar", "⇋", "lrhard", "⥭", "lrm", "‎", "lrtri", "⊿", "lsaquo", "‹", "Lscr", "ℒ", "lscr", "𝓁", "Lsh", "↰", "lsh", "↰", "lsim", "≲", "lsime", "⪍", "lsimg", "⪏", "lsqb", "[", "lsquo", "‘", "lsquor", "‚", "Lstrok", "Ł", "lstrok", "ł", "LT", "<", "lt", "<", "Lt", "≪", "ltcc", "⪦", "ltcir", "⩹", "ltdot", "⋖", "lthree", "⋋", "ltimes", "⋉", "ltlarr", "⥶", "ltquest", "⩻", "ltri", "◃", "ltrie", "⊴", "ltrif", "◂", "ltrPar", "⦖", "lurdshar", "⥊", "luruhar", "⥦", "lvertneqq", "≨︀", "lvnE", "≨︀", "macr", "¯", "male", "♂", "malt", "✠", "maltese", "✠", "map", "↦", "Map", "⤅", "mapsto", "↦", "mapstodown", "↧", "mapstoleft", "↤", "mapstoup", "↥", "marker", "▮", "mcomma", "⨩", "Mcy", "М", "mcy", "м", "mdash", "—", "mDDot", "∺", "measuredangle", "∡", "MediumSpace", " ", "Mellintrf", "ℳ", "Mfr", "𝔐", "mfr", "𝔪", "mho", "℧", "micro", "µ", "mid", "∣", "midast", "*", "midcir", "⫰", "middot", "·", "minus", "−", "minusb", "⊟", "minusd", "∸", "minusdu", "⨪", "MinusPlus", "∓", "mlcp", "⫛", "mldr", "…", "mnplus", "∓", "models", "⊧", "Mopf", "𝕄", "mopf", "𝕞", "mp", "∓", "Mscr", "ℳ", "mscr", "𝓂", "mstpos", "∾", "Mu", "Μ", "mu", "μ", "multimap", "⊸", "mumap", "⊸", "nabla", "∇", "Nacute", "Ń", "nacute", "ń", "nang", "∠⃒", "nap", "≉", "napE", "⩰̸", "napid", "≋̸", "napos", "ŉ", "napprox", "≉", "natur", "♮", "natural", "♮", "naturals", "ℕ", "nbsp", " ", "nbump", "≎̸", "nbumpe", "≏̸", "ncap", "⩃", "Ncaron", "Ň", "ncaron", "ň", "Ncedil", "Ņ", "ncedil", "ņ", "ncong", "≇", "ncongdot", "⩭̸", "ncup", "⩂", "Ncy", "Н", "ncy", "н", "ndash", "–", "ne", "≠", "nearhk", "⤤", "nearr", "↗", "neArr", "⇗", "nearrow", "↗", "nedot", "≐̸", "NegativeMediumSpace", "​", "NegativeThickSpace", "​", "NegativeThinSpace", "​", "NegativeVeryThinSpace", "​", "nequiv", "≢", "nesear", "⤨", "nesim", "≂̸", "NestedGreaterGreater", "≫", "NestedLessLess", "≪", "NewLine", "\n", "nexist", "∄", "nexists", "∄", "Nfr", "𝔑", "nfr", "𝔫", "ngE", "≧̸", "nge", "≱", "ngeq", "≱", "ngeqq", "≧̸", "ngeqslant", "⩾̸", "nges", "⩾̸", "nGg", "⋙̸", "ngsim", "≵", "nGt", "≫⃒", "ngt", "≯", "ngtr", "≯", "nGtv", "≫̸", "nharr", "↮", "nhArr", "⇎", "nhpar", "⫲", "ni", "∋", "nis", "⋼", "nisd", "⋺", "niv", "∋", "NJcy", "Њ", "njcy", "њ", "nlarr", "↚", "nlArr", "⇍", "nldr", "‥", "nlE", "≦̸", "nle", "≰", "nleftarrow", "↚", "nLeftarrow", "⇍", "nleftrightarrow", "↮", "nLeftrightarrow", "⇎", "nleq", "≰", "nleqq", "≦̸", "nleqslant", "⩽̸", "nles", "⩽̸", "nless", "≮", "nLl", "⋘̸", "nlsim", "≴", "nLt", "≪⃒", "nlt", "≮", "nltri", "⋪", "nltrie", "⋬", "nLtv", "≪̸", "nmid", "∤", "NoBreak", "⁠", "NonBreakingSpace", " ", "Nopf", "ℕ", "nopf", "𝕟", "not", "¬", "Not", "⫬", "NotCongruent", "≢", "NotCupCap", "≭", "NotDoubleVerticalBar", "∦", "NotElement", "∉", "NotEqual", "≠", "NotEqualTilde", "≂̸", "NotExists", "∄", "NotGreater", "≯", "NotGreaterEqual", "≱", "NotGreaterFullEqual", "≧̸", "NotGreaterGreater", "≫̸", "NotGreaterLess", "≹", "NotGreaterSlantEqual", "⩾̸", "NotGreaterTilde", "≵", "NotHumpDownHump", "≎̸", "NotHumpEqual", "≏̸", "notin", "∉", "notindot", "⋵̸", "notinE", "⋹̸", "notinva", "∉", "notinvb", "⋷", "notinvc", "⋶", "NotLeftTriangle", "⋪", "NotLeftTriangleBar", "⧏̸", "NotLeftTriangleEqual", "⋬", "NotLess", "≮", "NotLessEqual", "≰", "NotLessGreater", "≸", "NotLessLess", "≪̸", "NotLessSlantEqual", "⩽̸", "NotLessTilde", "≴", "NotNestedGreaterGreater", "⪢̸", "NotNestedLessLess", "⪡̸", "notni", "∌", "notniva", "∌", "notnivb", "⋾", "notnivc", "⋽", "NotPrecedes", "⊀", "NotPrecedesEqual", "⪯̸", "NotPrecedesSlantEqual", "⋠", "NotReverseElement", "∌", "NotRightTriangle", "⋫", "NotRightTriangleBar", "⧐̸", "NotRightTriangleEqual", "⋭", "NotSquareSubset", "⊏̸", "NotSquareSubsetEqual", "⋢", "NotSquareSuperset", "⊐̸", "NotSquareSupersetEqual", "⋣", "NotSubset", "⊂⃒", "NotSubsetEqual", "⊈", "NotSucceeds", "⊁", "NotSucceedsEqual", "⪰̸", "NotSucceedsSlantEqual", "⋡", "NotSucceedsTilde", "≿̸", "NotSuperset", "⊃⃒", "NotSupersetEqual", "⊉", "NotTilde", "≁", "NotTildeEqual", "≄", "NotTildeFullEqual", "≇", "NotTildeTilde", "≉", "NotVerticalBar", "∤", "npar", "∦", "nparallel", "∦", "nparsl", "⫽⃥", "npart", "∂̸", "npolint", "⨔", "npr", "⊀", "nprcue", "⋠", "npre", "⪯̸", "nprec", "⊀", "npreceq", "⪯̸", "nrarr", "↛", "nrArr", "⇏", "nrarrc", "⤳̸", "nrarrw", "↝̸", "nrightarrow", "↛", "nRightarrow", "⇏", "nrtri", "⋫", "nrtrie", "⋭", "nsc", "⊁", "nsccue", "⋡", "nsce", "⪰̸", "Nscr", "𝒩", "nscr", "𝓃", "nshortmid", "∤", "nshortparallel", "∦", "nsim", "≁", "nsime", "≄", "nsimeq", "≄", "nsmid", "∤", "nspar", "∦", "nsqsube", "⋢", "nsqsupe", "⋣", "nsub", "⊄", "nsube", "⊈", "nsubE", "⫅̸", "nsubset", "⊂⃒", "nsubseteq", "⊈", "nsubseteqq", "⫅̸", "nsucc", "⊁", "nsucceq", "⪰̸", "nsup", "⊅", "nsupe", "⊉", "nsupE", "⫆̸", "nsupset", "⊃⃒", "nsupseteq", "⊉", "nsupseteqq", "⫆̸", "ntgl", "≹", "Ntilde", "Ñ", "ntilde", "ñ", "ntlg", "≸", "ntriangleleft", "⋪", "ntrianglelefteq", "⋬", "ntriangleright", "⋫", "ntrianglerighteq", "⋭", "Nu", "Ν", "nu", "ν", "num", "#", "numero", "№", "numsp", " ", "nvap", "≍⃒", "nvdash", "⊬", "nvDash", "⊭", "nVdash", "⊮", "nVDash", "⊯", "nvge", "≥⃒", "nvgt", ">⃒", "nvHarr", "⤄", "nvinfin", "⧞", "nvlArr", "⤂", "nvle", "≤⃒", "nvlt", "<⃒", "nvltrie", "⊴⃒", "nvrArr", "⤃", "nvrtrie", "⊵⃒", "nvsim", "∼⃒", "nwarhk", "⤣", "nwarr", "↖", "nwArr", "⇖", "nwarrow", "↖", "nwnear", "⤧", "Oacute", "Ó", "oacute", "ó", "oast", "⊛", "ocir", "⊚", "Ocirc", "Ô", "ocirc", "ô", "Ocy", "О", "ocy", "о", "odash", "⊝", "Odblac", "Ő", "odblac", "ő", "odiv", "⨸", "odot", "⊙", "odsold", "⦼", "OElig", "Œ", "oelig", "œ", "ofcir", "⦿", "Ofr", "𝔒", "ofr", "𝔬", "ogon", "˛", "Ograve", "Ò", "ograve", "ò", "ogt", "⧁", "ohbar", "⦵", "ohm", "Ω", "oint", "∮", "olarr", "↺", "olcir", "⦾", "olcross", "⦻", "oline", "‾", "olt", "⧀", "Omacr", "Ō", "omacr", "ō", "Omega", "Ω", "omega", "ω", "Omicron", "Ο", "omicron", "ο", "omid", "⦶", "ominus", "⊖", "Oopf", "𝕆", "oopf", "𝕠", "opar", "⦷", "OpenCurlyDoubleQuote", "“", "OpenCurlyQuote", "‘", "operp", "⦹", "oplus", "⊕", "or", "∨", "Or", "⩔", "orarr", "↻", "ord", "⩝", "order", "ℴ", "orderof", "ℴ", "ordf", "ª", "ordm", "º", "origof", "⊶", "oror", "⩖", "orslope", "⩗", "orv", "⩛", "oS", "Ⓢ", "oscr", "ℴ", "Oscr", "𝒪", "Oslash", "Ø", "oslash", "ø", "osol", "⊘", "Otilde", "Õ", "otilde", "õ", "otimes", "⊗", "Otimes", "⨷", "otimesas", "⨶", "Ouml", "Ö", "ouml", "ö", "ovbar", "⌽", "OverBar", "‾", "OverBrace", "⏞", "OverBracket", "⎴", "OverParenthesis", "⏜", "par", "∥", "para", "¶", "parallel", "∥", "parsim", "⫳", "parsl", "⫽", "part", "∂", "PartialD", "∂", "Pcy", "П", "pcy", "п", "percnt", "%", "period", ".", "permil", "‰", "perp", "⊥", "pertenk", "‱", "Pfr", "𝔓", "pfr", "𝔭", "Phi", "Φ", "phi", "φ", "phiv", "ϕ", "phmmat", "ℳ", "phone", "☎", "Pi", "Π", "pi", "π", "pitchfork", "⋔", "piv", "ϖ", "planck", "ℏ", "planckh", "ℎ", "plankv", "ℏ", "plus", "+", "plusacir", "⨣", "plusb", "⊞", "pluscir", "⨢", "plusdo", "∔", "plusdu", "⨥", "pluse", "⩲", "PlusMinus", "±", "plusmn", "±", "plussim", "⨦", "plustwo", "⨧", "pm", "±", "Poincareplane", "ℌ", "pointint", "⨕", "Popf", "ℙ", "popf", "𝕡", "pound", "£", "pr", "≺", "Pr", "⪻", "prap", "⪷", "prcue", "≼", "pre", "⪯", "prE", "⪳", "prec", "≺", "precapprox", "⪷", "preccurlyeq", "≼", "Precedes", "≺", "PrecedesEqual", "⪯", "PrecedesSlantEqual", "≼", "PrecedesTilde", "≾", "preceq", "⪯", "precnapprox", "⪹", "precneqq", "⪵", "precnsim", "⋨", "precsim", "≾", "prime", "′", "Prime", "″", "primes", "ℙ", "prnap", "⪹", "prnE", "⪵", "prnsim", "⋨", "prod", "∏", "Product", "∏", "profalar", "⌮", "profline", "⌒", "profsurf", "⌓", "prop", "∝", "Proportion", "∷", "Proportional", "∝", "propto", "∝", "prsim", "≾", "prurel", "⊰", "Pscr", "𝒫", "pscr", "𝓅", "Psi", "Ψ", "psi", "ψ", "puncsp", " ", "Qfr", "𝔔", "qfr", "𝔮", "qint", "⨌", "Qopf", "ℚ", "qopf", "𝕢", "qprime", "⁗", "Qscr", "𝒬", "qscr", "𝓆", "quaternions", "ℍ", "quatint", "⨖", "quest", "?", "questeq", "≟", "QUOT", "\"", "quot", "\"", "rAarr", "⇛", "race", "∽̱", "Racute", "Ŕ", "racute", "ŕ", "radic", "√", "raemptyv", "⦳", "rang", "⟩", "Rang", "⟫", "rangd", "⦒", "range", "⦥", "rangle", "⟩", "raquo", "»", "rarr", "→", "Rarr", "↠", "rArr", "⇒", "rarrap", "⥵", "rarrb", "⇥", "rarrbfs", "⤠", "rarrc", "⤳", "rarrfs", "⤞", "rarrhk", "↪", "rarrlp", "↬", "rarrpl", "⥅", "rarrsim", "⥴", "rarrtl", "↣", "Rarrtl", "⤖", "rarrw", "↝", "ratail", "⤚", "rAtail", "⤜", "ratio", "∶", "rationals", "ℚ", "rbarr", "⤍", "rBarr", "⤏", "RBarr", "⤐", "rbbrk", "❳", "rbrace", "}", "rbrack", "]", "rbrke", "⦌", "rbrksld", "⦎", "rbrkslu", "⦐", "Rcaron", "Ř", "rcaron", "ř", "Rcedil", "Ŗ", "rcedil", "ŗ", "rceil", "⌉", "rcub", "}", "Rcy", "Р", "rcy", "р", "rdca", "⤷", "rdldhar", "⥩", "rdquo", "”", "rdquor", "”", "rdsh", "↳", "Re", "ℜ", "real", "ℜ", "realine", "ℛ", "realpart", "ℜ", "reals", "ℝ", "rect", "▭", "REG", "®", "reg", "®", "ReverseElement", "∋", "ReverseEquilibrium", "⇋", "ReverseUpEquilibrium", "⥯", "rfisht", "⥽", "rfloor", "⌋", "Rfr", "ℜ", "rfr", "𝔯", "rHar", "⥤", "rhard", "⇁", "rharu", "⇀", "rharul", "⥬", "Rho", "Ρ", "rho", "ρ", "rhov", "ϱ", "RightAngleBracket", "⟩", "RightArrow", "→", "rightarrow", "→", "Rightarrow", "⇒", "RightArrowBar", "⇥", "RightArrowLeftArrow", "⇄", "rightarrowtail", "↣", "RightCeiling", "⌉", "RightDoubleBracket", "⟧", "RightDownTeeVector", "⥝", "RightDownVector", "⇂", "RightDownVectorBar", "⥕", "RightFloor", "⌋", "rightharpoondown", "⇁", "rightharpoonup", "⇀", "rightleftarrows", "⇄", "rightleftharpoons", "⇌", "rightrightarrows", "⇉", "rightsquigarrow", "↝", "RightTee", "⊢", "RightTeeArrow", "↦", "RightTeeVector", "⥛", "rightthreetimes", "⋌", "RightTriangle", "⊳", "RightTriangleBar", "⧐", "RightTriangleEqual", "⊵", "RightUpDownVector", "⥏", "RightUpTeeVector", "⥜", "RightUpVector", "↾", "RightUpVectorBar", "⥔", "RightVector", "⇀", "RightVectorBar", "⥓", "ring", "˚", "risingdotseq", "≓", "rlarr", "⇄", "rlhar", "⇌", "rlm", "‏", "rmoust", "⎱", "rmoustache", "⎱", "rnmid", "⫮", "roang", "⟭", "roarr", "⇾", "robrk", "⟧", "ropar", "⦆", "Ropf", "ℝ", "ropf", "𝕣", "roplus", "⨮", "rotimes", "⨵", "RoundImplies", "⥰", "rpar", ")", "rpargt", "⦔", "rppolint", "⨒", "rrarr", "⇉", "Rrightarrow", "⇛", "rsaquo", "›", "Rscr", "ℛ", "rscr", "𝓇", "Rsh", "↱", "rsh", "↱", "rsqb", "]", "rsquo", "’", "rsquor", "’", "rthree", "⋌", "rtimes", "⋊", "rtri", "▹", "rtrie", "⊵", "rtrif", "▸", "rtriltri", "⧎", "RuleDelayed", "⧴", "ruluhar", "⥨", "rx", "℞", "Sacute", "Ś", "sacute", "ś", "sbquo", "‚", "sc", "≻", "Sc", "⪼", "scap", "⪸", "Scaron", "Š", "scaron", "š", "sccue", "≽", "sce", "⪰", "scE", "⪴", "Scedil", "Ş", "scedil", "ş", "Scirc", "Ŝ", "scirc", "ŝ", "scnap", "⪺", "scnE", "⪶", "scnsim", "⋩", "scpolint", "⨓", "scsim", "≿", "Scy", "С", "scy", "с", "sdot", "⋅", "sdotb", "⊡", "sdote", "⩦", "searhk", "⤥", "searr", "↘", "seArr", "⇘", "searrow", "↘", "sect", "§", "semi", ";", "seswar", "⤩", "setminus", "∖", "setmn", "∖", "sext", "✶", "Sfr", "𝔖", "sfr", "𝔰", "sfrown", "⌢", "sharp", "♯", "SHCHcy", "Щ", "shchcy", "щ", "SHcy", "Ш", "shcy", "ш", "ShortDownArrow", "↓", "ShortLeftArrow", "←", "shortmid", "∣", "shortparallel", "∥", "ShortRightArrow", "→", "ShortUpArrow", "↑", "shy", "­", "Sigma", "Σ", "sigma", "σ", "sigmaf", "ς", "sigmav", "ς", "sim", "∼", "simdot", "⩪", "sime", "≃", "simeq", "≃", "simg", "⪞", "simgE", "⪠", "siml", "⪝", "simlE", "⪟", "simne", "≆", "simplus", "⨤", "simrarr", "⥲", "slarr", "←", "SmallCircle", "∘", "smallsetminus", "∖", "smashp", "⨳", "smeparsl", "⧤", "smid", "∣", "smile", "⌣", "smt", "⪪", "smte", "⪬", "smtes", "⪬︀", "SOFTcy", "Ь", "softcy", "ь", "sol", "/", "solb", "⧄", "solbar", "⌿", "Sopf", "𝕊", "sopf", "𝕤", "spades", "♠", "spadesuit", "♠", "spar", "∥", "sqcap", "⊓", "sqcaps", "⊓︀", "sqcup", "⊔", "sqcups", "⊔︀", "Sqrt", "√", "sqsub", "⊏", "sqsube", "⊑", "sqsubset", "⊏", "sqsubseteq", "⊑", "sqsup", "⊐", "sqsupe", "⊒", "sqsupset", "⊐", "sqsupseteq", "⊒", "squ", "□", "Square", "□", "square", "□", "SquareIntersection", "⊓", "SquareSubset", "⊏", "SquareSubsetEqual", "⊑", "SquareSuperset", "⊐", "SquareSupersetEqual", "⊒", "SquareUnion", "⊔", "squarf", "▪", "squf", "▪", "srarr", "→", "Sscr", "𝒮", "sscr", "𝓈", "ssetmn", "∖", "ssmile", "⌣", "sstarf", "⋆", "Star", "⋆", "star", "☆", "starf", "★", "straightepsilon", "ϵ", "straightphi", "ϕ", "strns", "¯", "sub", "⊂", "Sub", "⋐", "subdot", "⪽", "sube", "⊆", "subE", "⫅", "subedot", "⫃", "submult", "⫁", "subne", "⊊", "subnE", "⫋", "subplus", "⪿", "subrarr", "⥹", "subset", "⊂", "Subset", "⋐", "subseteq", "⊆", "subseteqq", "⫅", "SubsetEqual", "⊆", "subsetneq", "⊊", "subsetneqq", "⫋", "subsim", "⫇", "subsub", "⫕", "subsup", "⫓", "succ", "≻", "succapprox", "⪸", "succcurlyeq", "≽", "Succeeds", "≻", "SucceedsEqual", "⪰", "SucceedsSlantEqual", "≽", "SucceedsTilde", "≿", "succeq", "⪰", "succnapprox", "⪺", "succneqq", "⪶", "succnsim", "⋩", "succsim", "≿", "SuchThat", "∋", "Sum", "∑", "sum", "∑", "sung", "♪", "sup", "⊃", "Sup", "⋑", "sup1", "¹", "sup2", "²", "sup3", "³", "supdot", "⪾", "supdsub", "⫘", "supe", "⊇", "supE", "⫆", "supedot", "⫄", "Superset", "⊃", "SupersetEqual", "⊇", "suphsol", "⟉", "suphsub", "⫗", "suplarr", "⥻", "supmult", "⫂", "supne", "⊋", "supnE", "⫌", "supplus", "⫀", "supset", "⊃", "Supset", "⋑", "supseteq", "⊇", "supseteqq", "⫆", "supsetneq", "⊋", "supsetneqq", "⫌", "supsim", "⫈", "supsub", "⫔", "supsup", "⫖", "swarhk", "⤦", "swarr", "↙", "swArr", "⇙", "swarrow", "↙", "swnwar", "⤪", "szlig", "ß", "Tab", "\t", "target", "⌖", "Tau", "Τ", "tau", "τ", "tbrk", "⎴", "Tcaron", "Ť", "tcaron", "ť", "Tcedil", "Ţ", "tcedil", "ţ", "Tcy", "Т", "tcy", "т", "tdot", "⃛", "telrec", "⌕", "Tfr", "𝔗", "tfr", "𝔱", "there4", "∴", "Therefore", "∴", "therefore", "∴", "Theta", "Θ", "theta", "θ", "thetasym", "ϑ", "thetav", "ϑ", "thickapprox", "≈", "thicksim", "∼", "ThickSpace", "  ", "thinsp", " ", "ThinSpace", " ", "thkap", "≈", "thksim", "∼", "THORN", "Þ", "thorn", "þ", "tilde", "˜", "Tilde", "∼", "TildeEqual", "≃", "TildeFullEqual", "≅", "TildeTilde", "≈", "times", "×", "timesb", "⊠", "timesbar", "⨱", "timesd", "⨰", "tint", "∭", "toea", "⤨", "top", "⊤", "topbot", "⌶", "topcir", "⫱", "Topf", "𝕋", "topf", "𝕥", "topfork", "⫚", "tosa", "⤩", "tprime", "‴", "TRADE", "™", "trade", "™", "triangle", "▵", "triangledown", "▿", "triangleleft", "◃", "trianglelefteq", "⊴", "triangleq", "≜", "triangleright", "▹", "trianglerighteq", "⊵", "tridot", "◬", "trie", "≜", "triminus", "⨺", "TripleDot", "⃛", "triplus", "⨹", "trisb", "⧍", "tritime", "⨻", "trpezium", "⏢", "Tscr", "𝒯", "tscr", "𝓉", "TScy", "Ц", "tscy", "ц", "TSHcy", "Ћ", "tshcy", "ћ", "Tstrok", "Ŧ", "tstrok", "ŧ", "twixt", "≬", "twoheadleftarrow", "↞", "twoheadrightarrow", "↠", "Uacute", "Ú", "uacute", "ú", "uarr", "↑", "Uarr", "↟", "uArr", "⇑", "Uarrocir", "⥉", "Ubrcy", "Ў", "ubrcy", "ў", "Ubreve", "Ŭ", "ubreve", "ŭ", "Ucirc", "Û", "ucirc", "û", "Ucy", "У", "ucy", "у", "udarr", "⇅", "Udblac", "Ű", "udblac", "ű", "udhar", "⥮", "ufisht", "⥾", "Ufr", "𝔘", "ufr", "𝔲", "Ugrave", "Ù", "ugrave", "ù", "uHar", "⥣", "uharl", "↿", "uharr", "↾", "uhblk", "▀", "ulcorn", "⌜", "ulcorner", "⌜", "ulcrop", "⌏", "ultri", "◸", "Umacr", "Ū", "umacr", "ū", "uml", "¨", "UnderBar", "_", "UnderBrace", "⏟", "UnderBracket", "⎵", "UnderParenthesis", "⏝", "Union", "⋃", "UnionPlus", "⊎", "Uogon", "Ų", "uogon", "ų", "Uopf", "𝕌", "uopf", "𝕦", "UpArrow", "↑", "uparrow", "↑", "Uparrow", "⇑", "UpArrowBar", "⤒", "UpArrowDownArrow", "⇅", "UpDownArrow", "↕", "updownarrow", "↕", "Updownarrow", "⇕", "UpEquilibrium", "⥮", "upharpoonleft", "↿", "upharpoonright", "↾", "uplus", "⊎", "UpperLeftArrow", "↖", "UpperRightArrow", "↗", "upsi", "υ", "Upsi", "ϒ", "upsih", "ϒ", "Upsilon", "Υ", "upsilon", "υ", "UpTee", "⊥", "UpTeeArrow", "↥", "upuparrows", "⇈", "urcorn", "⌝", "urcorner", "⌝", "urcrop", "⌎", "Uring", "Ů", "uring", "ů", "urtri", "◹", "Uscr", "𝒰", "uscr", "𝓊", "utdot", "⋰", "Utilde", "Ũ", "utilde", "ũ", "utri", "▵", "utrif", "▴", "uuarr", "⇈", "Uuml", "Ü", "uuml", "ü", "uwangle", "⦧", "vangrt", "⦜", "varepsilon", "ϵ", "varkappa", "ϰ", "varnothing", "∅", "varphi", "ϕ", "varpi", "ϖ", "varpropto", "∝", "varr", "↕", "vArr", "⇕", "varrho", "ϱ", "varsigma", "ς", "varsubsetneq", "⊊︀", "varsubsetneqq", "⫋︀", "varsupsetneq", "⊋︀", "varsupsetneqq", "⫌︀", "vartheta", "ϑ", "vartriangleleft", "⊲", "vartriangleright", "⊳", "vBar", "⫨", "Vbar", "⫫", "vBarv", "⫩", "Vcy", "В", "vcy", "в", "vdash", "⊢", "vDash", "⊨", "Vdash", "⊩", "VDash", "⊫", "Vdashl", "⫦", "vee", "∨", "Vee", "⋁", "veebar", "⊻", "veeeq", "≚", "vellip", "⋮", "verbar", "|", "Verbar", "‖", "vert", "|", "Vert", "‖", "VerticalBar", "∣", "VerticalLine", "|", "VerticalSeparator", "❘", "VerticalTilde", "≀", "VeryThinSpace", " ", "Vfr", "𝔙", "vfr", "𝔳", "vltri", "⊲", "vnsub", "⊂⃒", "vnsup", "⊃⃒", "Vopf", "𝕍", "vopf", "𝕧", "vprop", "∝", "vrtri", "⊳", "Vscr", "𝒱", "vscr", "𝓋", "vsubne", "⊊︀", "vsubnE", "⫋︀", "vsupne", "⊋︀", "vsupnE", "⫌︀", "Vvdash", "⊪", "vzigzag", "⦚", "Wcirc", "Ŵ", "wcirc", "ŵ", "wedbar", "⩟", "wedge", "∧", "Wedge", "⋀", "wedgeq", "≙", "weierp", "℘", "Wfr", "𝔚", "wfr", "𝔴", "Wopf", "𝕎", "wopf", "𝕨", "wp", "℘", "wr", "≀", "wreath", "≀", "Wscr", "𝒲", "wscr", "𝓌", "xcap", "⋂", "xcirc", "◯", "xcup", "⋃", "xdtri", "▽", "Xfr", "𝔛", "xfr", "𝔵", "xharr", "⟷", "xhArr", "⟺", "Xi", "Ξ", "xi", "ξ", "xlarr", "⟵", "xlArr", "⟸", "xmap", "⟼", "xnis", "⋻", "xodot", "⨀", "Xopf", "𝕏", "xopf", "𝕩", "xoplus", "⨁", "xotime", "⨂", "xrarr", "⟶", "xrArr", "⟹", "Xscr", "𝒳", "xscr", "𝓍", "xsqcup", "⨆", "xuplus", "⨄", "xutri", "△", "xvee", "⋁", "xwedge", "⋀", "Yacute", "Ý", "yacute", "ý", "YAcy", "Я", "yacy", "я", "Ycirc", "Ŷ", "ycirc", "ŷ", "Ycy", "Ы", "ycy", "ы", "yen", "¥", "Yfr", "𝔜", "yfr", "𝔶", "YIcy", "Ї", "yicy", "ї", "Yopf", "𝕐", "yopf", "𝕪", "Yscr", "𝒴", "yscr", "𝓎", "YUcy", "Ю", "yucy", "ю", "yuml", "ÿ", "Yuml", "Ÿ", "Zacute", "Ź", "zacute", "ź", "Zcaron", "Ž", "zcaron", "ž", "Zcy", "З", "zcy", "з", "Zdot", "Ż", "zdot", "ż", "zeetrf", "ℨ", "ZeroWidthSpace", "​", "Zeta", "Ζ", "zeta", "ζ", "Zfr", "ℨ", "zfr", "𝔷", "ZHcy", "Ж", "zhcy", "ж", "zigrarr", "⇝", "Zopf", "ℤ", "zopf", "𝕫", "Zscr", "𝒵", "zscr", "𝓏", "zwj", "‍", "zwnj", "‌"]);
+      return C[2] = dart.fn(parser_state._Elements.g, T.SvgParserStateAndboolToFutureNOfvoid());
+    },
+    get C3() {
+      return C[3] = dart.fn(parser_state._Elements.use, T.SvgParserStateAndboolToFutureNOfvoid());
+    },
+    get C4() {
+      return C[4] = dart.fn(parser_state._Elements.symbol, T.SvgParserStateAndboolToFutureNOfvoid());
+    },
+    get C5() {
+      return C[5] = dart.fn(parser_state._Elements.radialGradient, T.SvgParserStateAndboolToFutureNOfvoid());
+    },
+    get C6() {
+      return C[6] = dart.fn(parser_state._Elements.linearGradient, T.SvgParserStateAndboolToFutureNOfvoid());
+    },
+    get C7() {
+      return C[7] = dart.fn(parser_state._Elements.clipPath, T.SvgParserStateAndboolToFutureNOfvoid());
+    },
+    get C8() {
+      return C[8] = dart.fn(parser_state._Elements.image, T.SvgParserStateAndboolToFutureOfvoid());
+    },
+    get C9() {
+      return C[9] = dart.fn(parser_state._Elements.text, T.SvgParserStateAndboolToFutureOfvoid());
+    },
+    get C0() {
+      return C[0] = dart.constMap(T.StringL(), T.SvgParserStateLAndboolLToLFutureNOfvoid(), ["svg", C[1] || CT.C1, "g", C[2] || CT.C2, "a", C[2] || CT.C2, "use", C[3] || CT.C3, "symbol", C[4] || CT.C4, "mask", C[4] || CT.C4, "radialGradient", C[5] || CT.C5, "linearGradient", C[6] || CT.C6, "clipPath", C[7] || CT.C7, "image", C[8] || CT.C8, "text", C[9] || CT.C9]);
+    },
+    get C11() {
+      return C[11] = dart.fn(parser_state._Paths.circle, T.ListNOfXmlEventAttributeToPath());
+    },
+    get C12() {
+      return C[12] = dart.fn(parser_state._Paths.path, T.ListNOfXmlEventAttributeToPath());
+    },
+    get C13() {
+      return C[13] = dart.fn(parser_state._Paths.rect, T.ListNOfXmlEventAttributeToPath());
+    },
+    get C14() {
+      return C[14] = dart.fn(parser_state._Paths.polygon, T.ListNOfXmlEventAttributeToPathN());
+    },
+    get C15() {
+      return C[15] = dart.fn(parser_state._Paths.polyline, T.ListNOfXmlEventAttributeToPathN());
+    },
+    get C16() {
+      return C[16] = dart.fn(parser_state._Paths.ellipse, T.ListNOfXmlEventAttributeToPath());
+    },
+    get C17() {
+      return C[17] = dart.fn(parser_state._Paths.line, T.ListNOfXmlEventAttributeToPath());
+    },
+    get C10() {
+      return C[10] = dart.constMap(T.StringL(), T.ListNOfXmlEventAttributeLToLPathN(), ["circle", C[11] || CT.C11, "path", C[12] || CT.C12, "rect", C[13] || CT.C13, "polygon", C[14] || CT.C14, "polyline", C[15] || CT.C15, "ellipse", C[16] || CT.C16, "line", C[17] || CT.C17]);
     }
   }, false);
-  var C = Array(3).fill(void 0);
-  dart.defineLazy(named_entities, {
-    /*named_entities.xmlEntities*/get xmlEntities() {
+  var C = Array(18).fill(void 0);
+  var I = [
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/src/svg/parser_state.dart",
+    "package:flutter_svg/src/svg/parser_state.dart"
+  ];
+  var style$ = dart.privateName(parser_state, "_TextInfo.style");
+  var offset$ = dart.privateName(parser_state, "_TextInfo.offset");
+  var transform$ = dart.privateName(parser_state, "_TextInfo.transform");
+  parser_state._TextInfo = class _TextInfo extends core.Object {
+    get style() {
+      return this[style$];
+    }
+    set style(value) {
+      super.style = value;
+    }
+    get offset() {
+      return this[offset$];
+    }
+    set offset(value) {
+      super.offset = value;
+    }
+    get transform() {
+      return this[transform$];
+    }
+    set transform(value) {
+      super.transform = value;
+    }
+    toString() {
+      return dart.str(this[$runtimeType]) + "{" + dart.str(this.offset) + ", " + dart.str(this.style) + ", " + dart.str(this.transform) + "}";
+    }
+  };
+  (parser_state._TextInfo.new = function(style, offset, transform) {
+    if (style == null) dart.nullFailed(I[0], 65, 10, "style");
+    if (offset == null) dart.nullFailed(I[0], 66, 10, "offset");
+    this[style$] = style;
+    this[offset$] = offset;
+    this[transform$] = transform;
+    ;
+  }).prototype = parser_state._TextInfo.prototype;
+  dart.addTypeTests(parser_state._TextInfo);
+  dart.addTypeCaches(parser_state._TextInfo);
+  dart.setLibraryUri(parser_state._TextInfo, I[1]);
+  dart.setFieldSignature(parser_state._TextInfo, () => ({
+    __proto__: dart.getFields(parser_state._TextInfo.__proto__),
+    style: dart.finalFieldType(vector_drawable.DrawableStyle),
+    offset: dart.finalFieldType(ui.Offset),
+    transform: dart.finalFieldType(dart.nullable(vector_math_64.Matrix4))
+  }));
+  dart.defineExtensionMethods(parser_state._TextInfo, ['toString']);
+  var _root = dart.privateName(parser_state, "_root");
+  var _key$ = dart.privateName(parser_state, "_key");
+  var _parentDrawables = dart.privateName(parser_state, "_parentDrawables");
+  var _definitions = dart.privateName(parser_state, "_definitions");
+  var _currentStartElement = dart.privateName(parser_state, "_currentStartElement");
+  var _inDefs = dart.privateName(parser_state, "_inDefs");
+  var _readSubtree = dart.privateName(parser_state, "_readSubtree");
+  parser_state._Elements = class _Elements extends core.Object {
+    static svg(parserState, warningsAsErrors) {
+      if (parserState == null) dart.nullFailed(I[0], 79, 43, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 79, 61, "warningsAsErrors");
+      let viewBox = xml_parsers.parseViewBox(parserState.attributes);
+      let id = parserState.attribute("id", {def: ""});
+      if (parserState[_root] != null) {
+        let errorMessage = "Unsupported nested <svg> element.";
+        if (dart.test(warningsAsErrors)) {
+          dart.throw(new core.UnsupportedError.new(errorMessage));
+        }
+        assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnsupportedError.new(errorMessage), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
+            yield new assertions.ErrorDescription.new("The root <svg> element contained an unsupported nested SVG element.");
+            if (parserState[_key$] != null) {
+              yield new assertions.ErrorDescription.new("");
+              yield new (T.DiagnosticsPropertyOfString()).new("Picture key", parserState[_key$]);
+            }
+          }), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in _Element.svg")}));
+        parserState[_parentDrawables].addLast(new parser_state._SvgGroupTuple.new("svg", new vector_drawable.DrawableGroup.new(id, T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], dart.nullCheck(viewBox).viewBoxRect, null))));
+        return null;
+      }
+      parserState[_root] = new vector_drawable.DrawableRoot.new(id, dart.nullCheck(viewBox), T.JSArrayOfDrawable().of([]), parserState[_definitions], xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], viewBox.viewBoxRect, null));
+      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), parserState[_root]);
+      return null;
+    }
+    static g(parserState, warningsAsErrors) {
+      let t0;
+      if (parserState == null) dart.nullFailed(I[0], 137, 41, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 137, 59, "warningsAsErrors");
+      let parent = dart.nullCheck(parserState.currentGroup);
+      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, parent.style), {transform: (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? null : t0.storage)});
+      if (!dart.test(parserState[_inDefs])) {
+        dart.nullCheck(parent.children)[$add](group);
+      }
+      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), group);
+      return null;
+    }
+    static symbol(parserState, warningsAsErrors) {
+      let t0;
+      if (parserState == null) dart.nullFailed(I[0], 159, 22, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 159, 40, "warningsAsErrors");
+      let parent = dart.nullCheck(parserState.currentGroup);
+      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], null, parent.style), {transform: (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? null : t0.storage)});
+      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), group);
+      return null;
+    }
+    static use(parserState, warningsAsErrors) {
+      let t0;
+      if (parserState == null) dart.nullFailed(I[0], 177, 43, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 177, 61, "warningsAsErrors");
+      let parent = parserState.currentGroup;
+      let xlinkHref = dart.nullCheck(xml.getHrefAttribute(parserState.attributes));
+      if (xlinkHref[$isEmpty]) {
+        return null;
+      }
+      let style = xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, dart.nullCheck(parent).style);
+      let transform = (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? vector_math_64.Matrix4.identity() : t0);
+      transform.translate(numbers.parseDouble(parserState.attribute("x", {def: "0"})), dart.nullCheck(numbers.parseDouble(parserState.attribute("y", {def: "0"}))));
+      let ref = dart.nullCheck(parserState[_definitions].getDrawable("url(" + xlinkHref + ")"));
+      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([ref.mergeStyle(style)]), style, {transform: transform.storage});
+      let isIri = parserState.checkForIri(group);
+      if (!dart.test(parserState[_inDefs]) || !dart.test(isIri)) {
+        dart.nullCheck(parent.children)[$add](group);
+      }
+      return null;
+    }
+    static parseStops(parserState, colors, offsets) {
+      let t0;
+      if (parserState == null) dart.nullFailed(I[0], 217, 20, "parserState");
+      if (colors == null) dart.nullFailed(I[0], 218, 17, "colors");
+      if (offsets == null) dart.nullFailed(I[0], 219, 18, "offsets");
+      for (let event of parserState[_readSubtree]()) {
+        if (end_element.XmlEndElementEvent.is(event)) {
+          continue;
+        }
+        if (start_element.XmlStartElementEvent.is(event)) {
+          let rawOpacity = xml.getAttribute(parserState.attributes, "stop-opacity", {def: "1"});
+          let stopColor = (t0 = colors$.parseColor(xml.getAttribute(parserState.attributes, "stop-color")), t0 == null ? colors$.colorBlack : t0);
+          colors[$add](stopColor.withOpacity(dart.nullCheck(numbers.parseDouble(rawOpacity))));
+          let rawOffset = dart.nullCheck(xml.getAttribute(parserState.attributes, "offset", {def: "0%"}));
+          offsets[$add](parsers.parseDecimalOrPercentage(rawOffset));
+        }
+      }
+      return null;
+    }
+    static radialGradient(parserState, warningsAsErrors) {
+      let t25;
+      if (parserState == null) dart.nullFailed(I[0], 248, 20, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 249, 10, "warningsAsErrors");
+      let gradientUnits = xml.getAttribute(parserState.attributes, "gradientUnits", {def: null});
+      let isObjectBoundingBox = gradientUnits !== "userSpaceOnUse";
+      let rawCx = parserState.attribute("cx", {def: "50%"});
+      let rawCy = parserState.attribute("cy", {def: "50%"});
+      let rawR = parserState.attribute("r", {def: "50%"});
+      let rawFx = parserState.attribute("fx", {def: rawCx});
+      let rawFy = parserState.attribute("fy", {def: rawCy});
+      let spreadMethod = xml_parsers.parseTileMode(parserState.attributes);
+      let id = xml_parsers.buildUrlIri(parserState.attributes);
+      let originalTransform = parsers.parseTransform(parserState.attribute("gradientTransform", {def: null}));
+      let offsets = T.JSArrayOfdouble().of([]);
+      let colors = T.JSArrayOfColor().of([]);
+      if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
+        let href = xml.getHrefAttribute(parserState.attributes);
+        let ref = parserState[_definitions].getGradient(vector_drawable.DrawableGradient, "url(" + dart.str(href) + ")");
+        if (ref == null) {
+          errors.reportMissingDef(parserState[_key$], href, "radialGradient");
+        } else {
+          if (gradientUnits == null) {
+            isObjectBoundingBox = ref.unitMode == vector_drawable.GradientUnitMode.objectBoundingBox;
+          }
+          colors[$addAll](dart.nullCheck(ref.colors));
+          offsets[$addAll](dart.nullCheck(ref.offsets));
+        }
+      } else {
+        parser_state._Elements.parseStops(parserState, colors, offsets);
+      }
+      let cx = null;
+      let cx$35isSet = false;
+      function cx$35get() {
+        return cx$35isSet ? cx : dart.throw(new _internal.LateError.localNI("cx"));
+      }
+      dart.fn(cx$35get, T.VoidTodouble());
+      function cx$35set(t3) {
+        if (t3 == null) dart.nullFailed(I[0], 290, 17, "null");
+        cx$35isSet = true;
+        return cx = t3;
+      }
+      dart.fn(cx$35set, T.doubleTodynamic());
+      let cy = null;
+      let cy$35isSet = false;
+      function cy$35get() {
+        return cy$35isSet ? cy : dart.throw(new _internal.LateError.localNI("cy"));
+      }
+      dart.fn(cy$35get, T.VoidTodouble());
+      function cy$35set(t8) {
+        if (t8 == null) dart.nullFailed(I[0], 290, 21, "null");
+        cy$35isSet = true;
+        return cy = t8;
+      }
+      dart.fn(cy$35set, T.doubleTodynamic());
+      let r = null;
+      let r$35isSet = false;
+      function r$35get() {
+        return r$35isSet ? r : dart.throw(new _internal.LateError.localNI("r"));
+      }
+      dart.fn(r$35get, T.VoidTodouble());
+      function r$35set(t13) {
+        if (t13 == null) dart.nullFailed(I[0], 290, 25, "null");
+        r$35isSet = true;
+        return r = t13;
+      }
+      dart.fn(r$35set, T.doubleTodynamic());
+      let fx = null;
+      let fx$35isSet = false;
+      function fx$35get() {
+        return fx$35isSet ? fx : dart.throw(new _internal.LateError.localNI("fx"));
+      }
+      dart.fn(fx$35get, T.VoidTodouble());
+      function fx$35set(t18) {
+        if (t18 == null) dart.nullFailed(I[0], 290, 28, "null");
+        fx$35isSet = true;
+        return fx = t18;
+      }
+      dart.fn(fx$35set, T.doubleTodynamic());
+      let fy = null;
+      let fy$35isSet = false;
+      function fy$35get() {
+        return fy$35isSet ? fy : dart.throw(new _internal.LateError.localNI("fy"));
+      }
+      dart.fn(fy$35get, T.VoidTodouble());
+      function fy$35set(t23) {
+        if (t23 == null) dart.nullFailed(I[0], 290, 32, "null");
+        fy$35isSet = true;
+        return fy = t23;
+      }
+      dart.fn(fy$35set, T.doubleTodynamic());
+      if (isObjectBoundingBox) {
+        cx$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawCx)));
+        cy$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawCy)));
+        r$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawR)));
+        fx$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawFx)));
+        fy$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawFy)));
+      } else {
+        cx$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawCx))) ? dart.notNull(parsers.parsePercentage(rawCx)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(rawCx)));
+        cy$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawCy))) ? dart.notNull(parsers.parsePercentage(rawCy)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(rawCy)));
+        r$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawR))) ? dart.notNull(parsers.parsePercentage(rawR)) * ((dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.width)) / 2) : dart.nullCheck(numbers.parseDouble(rawR)));
+        fx$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawFx))) ? dart.notNull(parsers.parsePercentage(rawFx)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(rawFx)));
+        fy$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawFy))) ? dart.notNull(parsers.parsePercentage(rawFy)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(rawFy)));
+      }
+      parserState[_definitions].addGradient(id, new vector_drawable.DrawableRadialGradient.new({center: new ui.Offset.new(cx$35get(), cy$35get()), radius: r$35get(), focal: fx$35get() != cx$35get() || fy$35get() != cy$35get() ? new ui.Offset.new(fx$35get(), fy$35get()) : new ui.Offset.new(cx$35get(), cy$35get()), focalRadius: 0.0, colors: colors, offsets: offsets, unitMode: isObjectBoundingBox ? vector_drawable.GradientUnitMode.objectBoundingBox : vector_drawable.GradientUnitMode.userSpaceOnUse, spreadMethod: spreadMethod, transform: (t25 = originalTransform, t25 == null ? null : t25.storage)}));
+      return null;
+    }
+    static linearGradient(parserState, warningsAsErrors) {
+      let t25;
+      if (parserState == null) dart.nullFailed(I[0], 341, 22, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 341, 40, "warningsAsErrors");
+      let gradientUnits = xml.getAttribute(parserState.attributes, "gradientUnits", {def: null});
+      let isObjectBoundingBox = gradientUnits !== "userSpaceOnUse";
+      let x1 = parserState.attribute("x1", {def: "0%"});
+      let x2 = parserState.attribute("x2", {def: "100%"});
+      let y1 = parserState.attribute("y1", {def: "0%"});
+      let y2 = parserState.attribute("y2", {def: "0%"});
+      let id = xml_parsers.buildUrlIri(parserState.attributes);
+      let originalTransform = parsers.parseTransform(parserState.attribute("gradientTransform", {def: null}));
+      let spreadMethod = xml_parsers.parseTileMode(parserState.attributes);
+      let colors = T.JSArrayOfColor().of([]);
+      let offsets = T.JSArrayOfdouble().of([]);
+      if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
+        let href = xml.getHrefAttribute(parserState.attributes);
+        let ref = parserState[_definitions].getGradient(vector_drawable.DrawableGradient, "url(" + dart.str(href) + ")");
+        if (ref == null) {
+          errors.reportMissingDef(parserState[_key$], href, "linearGradient");
+        } else {
+          if (gradientUnits == null) {
+            isObjectBoundingBox = ref.unitMode == vector_drawable.GradientUnitMode.objectBoundingBox;
+          }
+          colors[$addAll](dart.nullCheck(ref.colors));
+          offsets[$addAll](dart.nullCheck(ref.offsets));
+        }
+      } else {
+        parser_state._Elements.parseStops(parserState, colors, offsets);
+      }
+      let fromOffset = null;
+      let toOffset = null;
+      if (isObjectBoundingBox) {
+        fromOffset = new ui.Offset.new(parsers.parseDecimalOrPercentage(dart.nullCheck(x1)), parsers.parseDecimalOrPercentage(dart.nullCheck(y1)));
+        toOffset = new ui.Offset.new(parsers.parseDecimalOrPercentage(dart.nullCheck(x2)), parsers.parseDecimalOrPercentage(dart.nullCheck(y2)));
+      } else {
+        fromOffset = new ui.Offset.new(dart.test(parsers.isPercentage(dart.nullCheck(x1))) ? dart.notNull(parsers.parsePercentage(x1)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(x1)), dart.test(parsers.isPercentage(dart.nullCheck(y1))) ? dart.notNull(parsers.parsePercentage(y1)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(y1)));
+        toOffset = new ui.Offset.new(dart.test(parsers.isPercentage(dart.nullCheck(x2))) ? dart.notNull(parsers.parsePercentage(x2)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(x2)), dart.test(parsers.isPercentage(dart.nullCheck(y2))) ? dart.notNull(parsers.parsePercentage(y2)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(y2)));
+      }
+      parserState[_definitions].addGradient(id, new vector_drawable.DrawableLinearGradient.new({from: fromOffset, to: toOffset, colors: colors, offsets: offsets, spreadMethod: spreadMethod, unitMode: isObjectBoundingBox ? vector_drawable.GradientUnitMode.objectBoundingBox : vector_drawable.GradientUnitMode.userSpaceOnUse, transform: (t25 = originalTransform, t25 == null ? null : t25.storage)}));
+      return null;
+    }
+    static clipPath(parserState, warningsAsErrors) {
+      if (parserState == null) dart.nullFailed(I[0], 432, 22, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 432, 40, "warningsAsErrors");
+      let id = xml_parsers.buildUrlIri(parserState.attributes);
+      let paths = T.JSArrayOfPath().of([]);
+      let currentPath = null;
+      for (let event of parserState[_readSubtree]()) {
+        if (end_element.XmlEndElementEvent.is(event)) {
+          continue;
+        }
+        if (start_element.XmlStartElementEvent.is(event)) {
+          let pathFn = parser_state._svgPathFuncs[$_get](event.name);
+          if (pathFn != null) {
+            let nextPath = dart.nullCheck(xml_parsers.applyTransformIfNeeded(pathFn(parserState.attributes), parserState.attributes));
+            nextPath.fillType = dart.nullCheck(xml_parsers.parseFillRule(parserState.attributes, "clip-rule"));
+            if (currentPath != null && nextPath.fillType != currentPath.fillType) {
+              currentPath = nextPath;
+              paths[$add](currentPath);
+            } else if (currentPath == null) {
+              currentPath = nextPath;
+              paths[$add](currentPath);
+            } else {
+              currentPath.addPath(nextPath, ui.Offset.zero);
+            }
+          } else if (event.name === "use") {
+            let xlinkHref = xml.getHrefAttribute(parserState.attributes);
+            let definitionDrawable = parserState[_definitions].getDrawable("url(" + dart.str(xlinkHref) + ")");
+            function extractPathsFromDrawable(target) {
+              if (vector_drawable.DrawableShape.is(target)) {
+                paths[$add](target.path);
+              } else if (vector_drawable.DrawableGroup.is(target)) {
+                dart.nullCheck(target.children)[$forEach](extractPathsFromDrawable);
+              }
+            }
+            dart.fn(extractPathsFromDrawable, T.DrawableNTovoid());
+            extractPathsFromDrawable(definitionDrawable);
+          } else {
+            let errorMessage = "Unsupported clipPath child " + dart.str(event.name);
+            if (dart.test(warningsAsErrors)) {
+              dart.throw(new core.UnsupportedError.new(errorMessage));
+            }
+            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnsupportedError.new(errorMessage), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
+                yield new assertions.ErrorDescription.new("The <clipPath> element contained an unsupported child " + dart.str(event.name));
+                if (parserState[_key$] != null) {
+                  yield new assertions.ErrorDescription.new("");
+                  yield new (T.DiagnosticsPropertyOfString()).new("Picture key", parserState[_key$]);
+                }
+              }), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in _Element.clipPath")}));
+          }
+        }
+      }
+      parserState[_definitions].addClipPath(id, paths);
+      return null;
+    }
+    static image(parserState, warningsAsErrors) {
+      if (parserState == null) dart.nullFailed(I[0], 503, 22, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 503, 40, "warningsAsErrors");
+      return async.async(dart.void, function* image() {
+        let t25;
+        let href = xml.getHrefAttribute(parserState.attributes);
+        if (href == null) {
+          return;
+        }
+        let offset = new ui.Offset.new(dart.nullCheck(numbers.parseDouble(parserState.attribute("x", {def: "0"}))), dart.nullCheck(numbers.parseDouble(parserState.attribute("y", {def: "0"}))));
+        let size = new ui.Size.new(dart.nullCheck(numbers.parseDouble(parserState.attribute("width", {def: "0"}))), dart.nullCheck(numbers.parseDouble(parserState.attribute("height", {def: "0"}))));
+        let image = (yield parsers.resolveImage(href));
+        let parent = dart.nullCheck(parserState[_parentDrawables][$last].drawable);
+        let parentStyle = parent.style;
+        let drawable = new vector_drawable.DrawableRasterImage.new(parserState.attribute("id", {def: ""}), image, offset, xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, parentStyle), {size: size, transform: (t25 = parsers.parseTransform(parserState.attribute("transform")), t25 == null ? null : t25.storage)});
+        let isIri = parserState.checkForIri(drawable);
+        if (!dart.test(parserState[_inDefs]) || !dart.test(isIri)) {
+          dart.nullCheck(dart.nullCheck(parserState.currentGroup).children)[$add](drawable);
+        }
+      });
+    }
+    static text(parserState, warningsAsErrors) {
+      if (parserState == null) dart.nullFailed(I[0], 540, 22, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 540, 40, "warningsAsErrors");
+      return async.async(dart.void, function* text$() {
+        if (!(parserState != null)) dart.assertFailed(null, I[0], 541, 12, "parserState != null");
+        if (!(parserState.currentGroup != null)) dart.assertFailed(null, I[0], 542, 12, "parserState.currentGroup != null");
+        if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
+          return;
+        }
+        let textInfos = new (T.ListQueueOf_TextInfo()).new();
+        let lastTextWidth = 0.0;
+        function _processText(value) {
+          let t25, t25$;
+          if (value == null) dart.nullFailed(I[0], 554, 30, "value");
+          if (value[$isEmpty]) {
+            return;
+          }
+          if (!dart.test(textInfos[$isNotEmpty])) dart.assertFailed(null, I[0], 558, 14, "textInfos.isNotEmpty");
+          let lastTextInfo = textInfos[$last];
+          let fill = parsers.createParagraph(value, lastTextInfo.style, lastTextInfo.style.fill);
+          let stroke = parsers.createParagraph(value, lastTextInfo.style, dart.test(vector_drawable.DrawablePaint.isEmpty(lastTextInfo.style.stroke)) ? parsers.transparentStroke : lastTextInfo.style.stroke);
+          dart.nullCheck(dart.nullCheck(parserState.currentGroup).children)[$add](new vector_drawable.DrawableText.new(parserState.attribute("id", {def: ""}), fill, stroke, lastTextInfo.offset, (t25 = dart.nullCheck(lastTextInfo.style.textStyle).anchor, t25 == null ? vector_drawable.DrawableTextAnchorPosition.start : t25), {transform: (t25$ = lastTextInfo.transform, t25$ == null ? null : t25$.storage)}));
+          lastTextWidth = fill.maxIntrinsicWidth;
+        }
+        dart.fn(_processText, T.StringTovoid());
+        function _processStartElement(event) {
+          let t25, t25$, t25$0, t25$1;
+          if (event == null) dart.nullFailed(I[0], 586, 52, "event");
+          let lastTextInfo = null;
+          if (dart.test(textInfos[$isNotEmpty])) {
+            lastTextInfo = textInfos[$last];
+          }
+          let currentOffset = parser_state._parseCurrentOffset(parserState, (t25 = lastTextInfo, t25 == null ? null : t25.offset.translate(lastTextWidth, 0.0)));
+          let transform = parsers.parseTransform(parserState.attribute("transform"));
+          if ((t25$ = lastTextInfo, t25$ == null ? null : t25$.transform) != null) {
+            if (transform == null) {
+              transform = dart.nullCheck(lastTextInfo).transform;
+            } else {
+              transform = dart.nullCheck(dart.nullCheck(lastTextInfo).transform).multiplied(transform);
+            }
+          }
+          textInfos.add(new parser_state._TextInfo.new(xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, (t25$1 = (t25$0 = lastTextInfo, t25$0 == null ? null : t25$0.style), t25$1 == null ? dart.nullCheck(parserState.currentGroup).style : t25$1)), currentOffset, transform));
+          if (dart.test(event.isSelfClosing)) {
+            textInfos.removeLast();
+          }
+        }
+        dart.fn(_processStartElement, T.XmlStartElementEventTovoid());
+        _processStartElement(dart.nullCheck(parserState[_currentStartElement]));
+        for (let event of parserState[_readSubtree]()) {
+          if (cdata.XmlCDATAEvent.is(event)) {
+            _processText(event.text[$trim]());
+          } else if (text.XmlTextEvent.is(event)) {
+            _processText(event.text[$trim]());
+          }
+          if (start_element.XmlStartElementEvent.is(event)) {
+            _processStartElement(event);
+          } else if (end_element.XmlEndElementEvent.is(event)) {
+            textInfos.removeLast();
+          }
+        }
+      });
+    }
+  };
+  (parser_state._Elements.new = function() {
+    ;
+  }).prototype = parser_state._Elements.prototype;
+  dart.addTypeTests(parser_state._Elements);
+  dart.addTypeCaches(parser_state._Elements);
+  dart.setLibraryUri(parser_state._Elements, I[1]);
+  parser_state._Paths = class _Paths extends core.Object {
+    static circle(attributes) {
+      let t25;
+      let cx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cx", {def: "0"})));
+      let cy = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cy", {def: "0"})));
+      let r = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "r", {def: "0"})));
+      let oval = new ui.Rect.fromCircle({center: new ui.Offset.new(cx, cy), radius: r});
+      t25 = ui.Path.new();
+      return (() => {
+        t25.addOval(oval);
+        return t25;
+      })();
+    }
+    static path(attributes) {
+      let d = dart.nullCheck(xml.getAttribute(attributes, "d"));
+      return parse_path.parseSvgPathData(d);
+    }
+    static rect(attributes) {
+      let t25, t25$;
+      let x = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x", {def: "0"})));
+      let y = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y", {def: "0"})));
+      let w = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "width", {def: "0"})));
+      let h = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "height", {def: "0"})));
+      let rect = new ui.Rect.fromLTWH(x, y, w, h);
+      let rxRaw = xml.getAttribute(attributes, "rx", {def: null});
+      let ryRaw = xml.getAttribute(attributes, "ry", {def: null});
+      rxRaw == null ? rxRaw = ryRaw : null;
+      ryRaw == null ? ryRaw = rxRaw : null;
+      if (rxRaw != null && rxRaw !== "") {
+        let rx = dart.nullCheck(numbers.parseDouble(rxRaw));
+        let ry = dart.nullCheck(numbers.parseDouble(ryRaw));
+        t25 = ui.Path.new();
+        return (() => {
+          t25.addRRect(new ui.RRect.fromRectXY(rect, rx, ry));
+          return t25;
+        })();
+      }
+      t25$ = ui.Path.new();
+      return (() => {
+        t25$.addRect(rect);
+        return t25$;
+      })();
+    }
+    static polygon(attributes) {
+      return parser_state._Paths.parsePathFromPoints(attributes, true);
+    }
+    static polyline(attributes) {
+      return parser_state._Paths.parsePathFromPoints(attributes, false);
+    }
+    static parsePathFromPoints(attributes, close) {
+      if (close == null) dart.nullFailed(I[0], 681, 49, "close");
+      let points = xml.getAttribute(attributes, "points");
+      if (points === "") {
+        return null;
+      }
+      let path = "M" + dart.str(points) + (dart.test(close) ? "z" : "");
+      return parse_path.parseSvgPathData(path);
+    }
+    static ellipse(attributes) {
+      let t25;
+      let cx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cx", {def: "0"})));
+      let cy = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cy", {def: "0"})));
+      let rx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "rx", {def: "0"})));
+      let ry = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "ry", {def: "0"})));
+      let r = new ui.Rect.fromLTWH(cx - rx, cy - ry, rx * 2, ry * 2);
+      t25 = ui.Path.new();
+      return (() => {
+        t25.addOval(r);
+        return t25;
+      })();
+    }
+    static line(attributes) {
+      let t25;
+      let x1 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x1", {def: "0"})));
+      let x2 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x2", {def: "0"})));
+      let y1 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y1", {def: "0"})));
+      let y2 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y2", {def: "0"})));
+      t25 = ui.Path.new();
+      return (() => {
+        t25.moveTo(x1, y1);
+        t25.lineTo(x2, y2);
+        return t25;
+      })();
+    }
+  };
+  (parser_state._Paths.new = function() {
+    ;
+  }).prototype = parser_state._Paths.prototype;
+  dart.addTypeTests(parser_state._Paths);
+  dart.addTypeCaches(parser_state._Paths);
+  dart.setLibraryUri(parser_state._Paths, I[1]);
+  parser_state._SvgGroupTuple = class _SvgGroupTuple extends core.Object {};
+  (parser_state._SvgGroupTuple.new = function(name, drawable) {
+    if (name == null) dart.nullFailed(I[0], 714, 23, "name");
+    this.name = name;
+    this.drawable = drawable;
+    ;
+  }).prototype = parser_state._SvgGroupTuple.prototype;
+  dart.addTypeTests(parser_state._SvgGroupTuple);
+  dart.addTypeCaches(parser_state._SvgGroupTuple);
+  dart.setLibraryUri(parser_state._SvgGroupTuple, I[1]);
+  dart.setFieldSignature(parser_state._SvgGroupTuple, () => ({
+    __proto__: dart.getFields(parser_state._SvgGroupTuple.__proto__),
+    name: dart.finalFieldType(core.String),
+    drawable: dart.finalFieldType(dart.nullable(vector_drawable.DrawableParent))
+  }));
+  var depth = dart.privateName(parser_state, "SvgParserState.depth");
+  var _currentAttributes = dart.privateName(parser_state, "_currentAttributes");
+  var _warningsAsErrors$ = dart.privateName(parser_state, "_warningsAsErrors");
+  var _eventIterator = dart.privateName(parser_state, "_eventIterator");
+  var _discardSubtree = dart.privateName(parser_state, "_discardSubtree");
+  parser_state.SvgParserState = class SvgParserState extends core.Object {
+    get depth() {
+      return this[depth];
+    }
+    set depth(value) {
+      this[depth] = value;
+    }
+    [_discardSubtree]() {
+      let subtreeStartDepth = this.depth;
+      while (dart.test(this[_eventIterator].moveNext())) {
+        let event = this[_eventIterator].current;
+        if (start_element.XmlStartElementEvent.is(event) && !dart.test(event.isSelfClosing)) {
+          this.depth = dart.notNull(this.depth) + 1;
+        } else if (end_element.XmlEndElementEvent.is(event)) {
+          this.depth = dart.notNull(this.depth) - 1;
+          if (!(dart.notNull(this.depth) >= 0)) dart.assertFailed(null, I[0], 751, 16, "depth >= 0");
+        }
+        this[_currentAttributes] = T.JSArrayOfXmlEventAttribute().of([]);
+        this[_currentStartElement] = null;
+        if (dart.notNull(this.depth) < dart.notNull(subtreeStartDepth)) {
+          return;
+        }
+      }
+    }
+    [_readSubtree]() {
+      return new (T.SyncIterableOfXmlEvent()).new((function* _readSubtree() {
+        let subtreeStartDepth = this.depth;
+        while (dart.test(this[_eventIterator].moveNext())) {
+          let event = this[_eventIterator].current;
+          let isSelfClosing = false;
+          if (start_element.XmlStartElementEvent.is(event)) {
+            if (xml.getAttribute(event.attributes, "display") === "none" || xml.getAttribute(event.attributes, "visibility") === "hidden") {
+              core.print("SVG Warning: Discarding:\n\n  " + dart.str(event) + "\n\n" + "and any children it has since it is not visible.\n" + "If that element is meant to be visible, the `display` or " + "`visibility` attributes should be removed.\n" + "If that element is not meant to be visible, it would be better " + "to remove it from the SVG file.");
+              if (!dart.test(event.isSelfClosing)) {
+                this.depth = dart.notNull(this.depth) + 1;
+                this[_discardSubtree]();
+              }
+              continue;
+            }
+            this[_currentAttributes] = event.attributes;
+            this[_currentStartElement] = event;
+            this.depth = dart.notNull(this.depth) + 1;
+            isSelfClosing = event.isSelfClosing;
+          }
+          yield event;
+          if (dart.test(isSelfClosing) || end_element.XmlEndElementEvent.is(event)) {
+            this.depth = dart.notNull(this.depth) - 1;
+            if (!(dart.notNull(this.depth) >= 0)) dart.assertFailed(null, I[0], 790, 16, "depth >= 0");
+            this[_currentAttributes] = T.JSArrayOfXmlEventAttribute().of([]);
+            this[_currentStartElement] = null;
+          }
+          if (dart.notNull(this.depth) < dart.notNull(subtreeStartDepth)) {
+            return;
+          }
+        }
+      }).bind(this));
+    }
+    parse() {
+      return async.async(vector_drawable.DrawableRoot, (function* parse() {
+        let t25;
+        for (let event of this[_readSubtree]()) {
+          if (start_element.XmlStartElementEvent.is(event)) {
+            if (dart.test(this.startElement(event))) {
+              continue;
+            }
+            let parseFunc = parser_state._svgElementParsers[$_get](event.name);
+            yield (t25 = parseFunc, t25 == null ? null : t25(this, this[_warningsAsErrors$]));
+            if (parseFunc == null) {
+              if (!dart.test(event.isSelfClosing)) {
+                this[_discardSubtree]();
+              }
+              if (!dart.test(dart.fn(() => {
+                this.unhandledElement(event);
+                return true;
+              }, T.VoidTobool())())) dart.assertFailed(null, I[0], 813, 18, "() {\n            unhandledElement(event);\n            return true;\n          }()");
+            }
+          } else if (end_element.XmlEndElementEvent.is(event)) {
+            this.endElement(event);
+          }
+        }
+        if (this[_root] == null) {
+          dart.throw(new core.StateError.new("Invalid SVG data"));
+        }
+        return dart.nullCheck(this[_root]);
+      }).bind(this));
+    }
+    get attributes() {
+      return this[_currentAttributes];
+    }
+    attribute(name, opts) {
+      if (name == null) dart.nullFailed(I[0], 832, 28, "name");
+      let def = opts && 'def' in opts ? opts.def : null;
+      let namespace = opts && 'namespace' in opts ? opts.namespace : null;
+      return xml.getAttribute(this.attributes, name, {def: def, namespace: namespace});
+    }
+    get currentGroup() {
+      if (!(this[_parentDrawables] != null)) dart.assertFailed(null, I[0], 837, 12, "_parentDrawables != null");
+      if (!dart.test(this[_parentDrawables][$isNotEmpty])) dart.assertFailed(null, I[0], 838, 12, "_parentDrawables.isNotEmpty");
+      return this[_parentDrawables][$last].drawable;
+    }
+    get rootBounds() {
+      if (!(this[_root] != null)) dart.assertFailed("Cannot get rootBounds with null root", I[0], 844, 12, "_root != null");
+      if (!(dart.nullCheck(this[_root]).viewport != null)) dart.assertFailed(null, I[0], 845, 12, "_root!.viewport != null");
+      return dart.nullCheck(this[_root]).viewport.viewBoxRect;
+    }
+    checkForIri(drawable) {
+      let iri = xml_parsers.buildUrlIri(this.attributes);
+      if (iri !== "url(#)") {
+        this[_definitions].addDrawable(iri, dart.nullCheck(drawable));
+        return true;
+      }
+      return false;
+    }
+    addGroup(event, drawable) {
+      if (event == null) dart.nullFailed(I[0], 860, 38, "event");
+      this[_parentDrawables].addLast(new parser_state._SvgGroupTuple.new(event.name, drawable));
+      this.checkForIri(drawable);
+    }
+    addShape(event) {
+      let t25;
+      if (event == null) dart.nullFailed(I[0], 866, 38, "event");
+      let pathFunc = parser_state._svgPathFuncs[$_get](event.name);
+      if (pathFunc == null) {
+        return false;
+      }
+      let parent = dart.nullCheck(this[_parentDrawables][$last].drawable);
+      let parentStyle = parent.style;
+      let path = dart.nullCheck(pathFunc(this.attributes));
+      let drawable = new vector_drawable.DrawableShape.new(xml.getAttribute(this.attributes, "id", {def: ""}), path, xml_parsers.parseStyle(this[_key$], this.attributes, this[_definitions], path.getBounds(), parentStyle, {defaultFillColor: colors$.colorBlack}), {transform: (t25 = parsers.parseTransform(xml.getAttribute(this.attributes, "transform")), t25 == null ? null : t25.storage)});
+      let isIri = this.checkForIri(drawable);
+      if (!dart.test(this[_inDefs]) || !dart.test(isIri)) {
+        dart.nullCheck(parent.children)[$add](drawable);
+      }
+      return true;
+    }
+    startElement(event) {
+      if (event == null) dart.nullFailed(I[0], 896, 42, "event");
+      if (event.name === "defs") {
+        this[_inDefs] = !dart.test(event.isSelfClosing);
+        return true;
+      }
+      return this.addShape(event);
+    }
+    endElement(event) {
+      if (event == null) dart.nullFailed(I[0], 906, 38, "event");
+      if (event.name == this[_parentDrawables][$last].name) {
+        this[_parentDrawables].removeLast();
+      }
+      if (event.name === "defs") {
+        this[_inDefs] = false;
+      }
+    }
+    unhandledElement(event) {
+      if (event == null) dart.nullFailed(I[0], 919, 46, "event");
+      let errorMessage = "unhandled element " + dart.str(event.name) + "; Picture key: " + dart.str(this[_key$]);
+      if (dart.test(this[_warningsAsErrors$])) {
+        dart.throw(new core.UnimplementedError.new(errorMessage));
+      }
+      if (event.name === "style") {
+        assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnimplementedError.new("The <style> element is not implemented in this library."), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new((function*() {
+            yield new assertions.ErrorDescription.new("Style elements are not supported by this library and the requested SVG may not " + "render as intended.");
+            yield new assertions.ErrorHint.new("If possible, ensure the SVG uses inline styles and/or attributes (which are " + "supported), or use a preprocessing utility such as svgcleaner to inline the " + "styles for you.");
+            yield new assertions.ErrorDescription.new("");
+            yield new (T.DiagnosticsPropertyOfString()).new("Picture key", this[_key$]);
+          }).bind(this)), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in parseSvgElement")}));
+      } else if (dart.test(parser_state._unhandledElements.add(event.name))) {
+        core.print(errorMessage);
+      }
+    }
+  };
+  (parser_state.SvgParserState.new = function(events, _key, _warningsAsErrors) {
+    if (events == null) dart.nullFailed(I[0], 725, 37, "events");
+    if (_warningsAsErrors == null) dart.nullFailed(I[0], 725, 61, "_warningsAsErrors");
+    this[_definitions] = new vector_drawable.DrawableDefinitionServer.new();
+    this[_parentDrawables] = new (T.ListQueueOf_SvgGroupTuple()).new(10);
+    this[_root] = null;
+    this[_inDefs] = false;
+    this[_currentAttributes] = null;
+    this[_currentStartElement] = null;
+    this[depth] = 0;
+    this[_key$] = _key;
+    this[_warningsAsErrors$] = _warningsAsErrors;
+    if (!(events != null)) dart.assertFailed(null, I[0], 727, 16, "events != null");
+    this[_eventIterator] = events[$iterator];
+    ;
+  }).prototype = parser_state.SvgParserState.prototype;
+  dart.addTypeTests(parser_state.SvgParserState);
+  dart.addTypeCaches(parser_state.SvgParserState);
+  dart.setMethodSignature(parser_state.SvgParserState, () => ({
+    __proto__: dart.getMethods(parser_state.SvgParserState.__proto__),
+    [_discardSubtree]: dart.fnType(dart.void, []),
+    [_readSubtree]: dart.fnType(core.Iterable$(event.XmlEvent), []),
+    parse: dart.fnType(async.Future$(vector_drawable.DrawableRoot), []),
+    attribute: dart.fnType(dart.nullable(core.String), [core.String], {def: dart.nullable(core.String), namespace: dart.nullable(core.String)}, {}),
+    checkForIri: dart.fnType(core.bool, [dart.nullable(vector_drawable.DrawableStyleable)]),
+    addGroup: dart.fnType(dart.void, [start_element.XmlStartElementEvent, dart.nullable(vector_drawable.DrawableParent)]),
+    addShape: dart.fnType(core.bool, [start_element.XmlStartElementEvent]),
+    startElement: dart.fnType(core.bool, [start_element.XmlStartElementEvent]),
+    endElement: dart.fnType(dart.void, [end_element.XmlEndElementEvent]),
+    unhandledElement: dart.fnType(dart.void, [start_element.XmlStartElementEvent])
+  }));
+  dart.setGetterSignature(parser_state.SvgParserState, () => ({
+    __proto__: dart.getGetters(parser_state.SvgParserState.__proto__),
+    attributes: dart.nullable(core.List$(event_attribute.XmlEventAttribute)),
+    currentGroup: dart.nullable(vector_drawable.DrawableParent),
+    rootBounds: ui.Rect
+  }));
+  dart.setLibraryUri(parser_state.SvgParserState, I[1]);
+  dart.setFieldSignature(parser_state.SvgParserState, () => ({
+    __proto__: dart.getFields(parser_state.SvgParserState.__proto__),
+    [_eventIterator]: dart.finalFieldType(core.Iterator$(event.XmlEvent)),
+    [_key$]: dart.finalFieldType(dart.nullable(core.String)),
+    [_warningsAsErrors$]: dart.finalFieldType(core.bool),
+    [_definitions]: dart.finalFieldType(vector_drawable.DrawableDefinitionServer),
+    [_parentDrawables]: dart.finalFieldType(collection.Queue$(parser_state._SvgGroupTuple)),
+    [_root]: dart.fieldType(dart.nullable(vector_drawable.DrawableRoot)),
+    [_inDefs]: dart.fieldType(core.bool),
+    [_currentAttributes]: dart.fieldType(dart.nullable(core.List$(event_attribute.XmlEventAttribute))),
+    [_currentStartElement]: dart.fieldType(dart.nullable(start_element.XmlStartElementEvent)),
+    depth: dart.fieldType(core.int)
+  }));
+  parser_state._parseCurrentOffset = function _parseCurrentOffset(parserState, lastOffset) {
+    let t25, t25$, t25$0, t25$1;
+    if (parserState == null) dart.nullFailed(I[0], 47, 43, "parserState");
+    let x = parserState.attribute("x", {def: null});
+    let y = parserState.attribute("y", {def: null});
+    return new ui.Offset.new(x != null ? dart.nullCheck(numbers.parseDouble(x)) : dart.nullCheck(numbers.parseDouble(parserState.attribute("dx", {def: "0"}))) + dart.notNull((t25$ = (t25 = lastOffset, t25 == null ? null : t25.dx), t25$ == null ? 0 : t25$)), y != null ? dart.nullCheck(numbers.parseDouble(y)) : dart.nullCheck(numbers.parseDouble(parserState.attribute("dy", {def: "0"}))) + dart.notNull((t25$1 = (t25$0 = lastOffset, t25$0 == null ? null : t25$0.dy), t25$1 == null ? 0 : t25$1)));
+  };
+  dart.defineLazy(parser_state, {
+    /*parser_state._unhandledElements*/get _unhandledElements() {
+      return T.LinkedHashSetOfString().from(["title", "desc"]);
+    },
+    /*parser_state._svgElementParsers*/get _svgElementParsers() {
       return C[0] || CT.C0;
     },
-    /*named_entities.htmlEntities*/get htmlEntities() {
-      return C[1] || CT.C1;
-    },
-    /*named_entities.html5Entities*/get html5Entities() {
-      return C[2] || CT.C2;
+    /*parser_state._svgPathFuncs*/get _svgPathFuncs() {
+      return C[10] || CT.C10;
     }
   }, false);
-  dart.trackLibraries("packages/xml/src/xml/entities/named_entities.dart", {
-    "package:xml/src/xml/entities/named_entities.dart": named_entities
+  dart.trackLibraries("packages/flutter_svg/src/svg/parser_state.dart", {
+    "package:flutter_svg/src/svg/parser_state.dart": parser_state
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["named_entities.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;MAC0B,0BAAW;;;MASX,2BAAY;;;MAkQZ,4BAAa","file":"../../../../../../../../../../../packages/xml/src/xml/entities/named_entities.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["parser_state.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/flutter_svg/src/svg/parser_state.dart.lib.js"}');
   // Exports:
   return {
-    src__xml__entities__named_entities: named_entities
+    src__svg__parser_state: parser_state
   };
 }));
 
-//# sourceMappingURL=named_entities.dart.lib.js.map
+//# sourceMappingURL=parser_state.dart.lib.js.map

@@ -1,297 +1,430 @@
-define(['dart_sdk', 'packages/typed_data/src/typed_buffer.dart'], (function load__packages__flutter__src__foundation__serialization_dart(dart_sdk, packages__typed_data__src__typed_buffer$46dart) {
+define(['dart_sdk', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/painting/rounded_rectangle_border.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/hovering/src/hover_cross_fade.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/hexcolor/hexcolor.dart'], (function load__packages__client__widgets__Home__ServiceIcon_dart(dart_sdk, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__painting__rounded_rectangle_border$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__box_border$46dart, packages__hovering__src__hover_cross_fade$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__painting__strut_style$46dart, packages__hexcolor__hexcolor$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _native_typed_data = dart_sdk._native_typed_data;
-  const _internal = dart_sdk._internal;
-  const typed_data = dart_sdk.typed_data;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const typed_buffer = packages__typed_data__src__typed_buffer$46dart.src__typed_buffer;
-  var serialization = Object.create(dart.library);
-  var $buffer = dartx.buffer;
-  var $asUint8List = dartx.asUint8List;
-  var $setUint16 = dartx.setUint16;
-  var $setUint32 = dartx.setUint32;
-  var $setInt32 = dartx.setInt32;
-  var $setInt64 = dartx.setInt64;
-  var $setFloat64 = dartx.setFloat64;
-  var $offsetInBytes = dartx.offsetInBytes;
-  var $length = dartx.length;
-  var $modulo = dartx['%'];
-  var $asByteData = dartx.asByteData;
-  var $lengthInBytes = dartx.lengthInBytes;
-  var $getUint8 = dartx.getUint8;
-  var $getUint16 = dartx.getUint16;
-  var $getUint32 = dartx.getUint32;
-  var $getInt32 = dartx.getInt32;
-  var $getInt64 = dartx.getInt64;
-  var $getFloat64 = dartx.getFloat64;
-  var $asInt32List = dartx.asInt32List;
-  var $asInt64List = dartx.asInt64List;
-  var $asFloat64List = dartx.asFloat64List;
+  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
+  const ink_well = packages__flutter__src__material__icon_button$46dart.src__material__ink_well;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const rounded_rectangle_border = packages__flutter__src__painting__rounded_rectangle_border$46dart.src__painting__rounded_rectangle_border;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
+  const hover_cross_fade = packages__hovering__src__hover_cross_fade$46dart.src__hover_cross_fade;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const hexcolor = packages__hexcolor__hexcolor$46dart.hexcolor;
+  var ServiceIcon = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(false);
+  var T = {
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    VoidToNvoid: () => (T.VoidToNvoid = dart.constFn(dart.nullable(T.VoidTovoid())))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
+  };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/foundation/serialization.dart",
-    "package:flutter/src/foundation/serialization.dart"
-  ];
-  var __WriteBuffer__eightBytesAsList = dart.privateName(serialization, "_#WriteBuffer#_eightBytesAsList");
-  var __WriteBuffer__eightBytesAsList_isSet = dart.privateName(serialization, "_#WriteBuffer#_eightBytesAsList#isSet");
-  var _buffer = dart.privateName(serialization, "_buffer");
-  var _eightBytes = dart.privateName(serialization, "_eightBytes");
-  var _eightBytesAsList = dart.privateName(serialization, "_eightBytesAsList");
-  var _alignTo = dart.privateName(serialization, "_alignTo");
-  serialization.WriteBuffer = class WriteBuffer extends core.Object {
-    get [_eightBytesAsList]() {
-      let t0;
-      return dart.test(this[__WriteBuffer__eightBytesAsList_isSet]) ? (t0 = this[__WriteBuffer__eightBytesAsList], t0) : dart.throw(new _internal.LateError.fieldNI("_eightBytesAsList"));
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 21,
+        [_Location_line]: 40,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textAlign",
+        [_Location_column]: 21,
+        [_Location_line]: 41,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 21,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 39,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/Multivurse-Client/lib/widgets/Home/ServiceIcon.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 19,
+        [_Location_line]: 38,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 39,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 28,
+        [_Location_line]: 37,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/Multivurse-Client/lib/widgets/Home/ServiceIcon.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "firstCurve",
+        [_Location_column]: 15,
+        [_Location_line]: 32,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "secondCurve",
+        [_Location_column]: 15,
+        [_Location_line]: 33,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignmentry",
+        [_Location_column]: 15,
+        [_Location_line]: 34,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 15,
+        [_Location_line]: 35,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "firstChild",
+        [_Location_column]: 15,
+        [_Location_line]: 36,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "secondChild",
+        [_Location_column]: 15,
+        [_Location_line]: 37,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14, C[15] || CT.C15, C[16] || CT.C16], T._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 31,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/Multivurse-Client/lib/widgets/Home/ServiceIcon.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 13,
+        [_Location_line]: 26,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 13,
+        [_Location_line]: 27,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 13,
+        [_Location_line]: 28,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 31,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.constList([C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22], T._LocationL());
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[18] || CT.C18,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 25,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/Multivurse-Client/lib/widgets/Home/ServiceIcon.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "customBorder",
+        [_Location_column]: 9,
+        [_Location_line]: 18,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 9,
+        [_Location_line]: 21,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "hoverColor",
+        [_Location_column]: 9,
+        [_Location_line]: 22,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "highlightColor",
+        [_Location_column]: 9,
+        [_Location_line]: 23,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "splashColor",
+        [_Location_column]: 9,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 25,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.constList([C[25] || CT.C25, C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29, C[30] || CT.C30], T._LocationL());
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[24] || CT.C24,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 17,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/Multivurse-Client/lib/widgets/Home/ServiceIcon.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 7,
+        [_Location_line]: 14,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 7,
+        [_Location_line]: 15,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "borderRadius",
+        [_Location_column]: 7,
+        [_Location_line]: 16,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 17,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.constList([C[33] || CT.C33, C[34] || CT.C34, C[35] || CT.C35, C[36] || CT.C36], T._LocationL());
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[32] || CT.C32,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 13,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/Multivurse-Client/lib/widgets/Home/ServiceIcon.dart"
+      });
     }
-    set [_eightBytesAsList](t0) {
-      if (t0 == null) dart.nullFailed(I[0], 25, 18, "null");
-      this[__WriteBuffer__eightBytesAsList_isSet] = true;
-      this[__WriteBuffer__eightBytesAsList] = t0;
+  }, false);
+  var C = Array(37).fill(void 0);
+  var I = ["package:client/widgets/Home/ServiceIcon.dart"];
+  var child$ = dart.privateName(ServiceIcon, "ServiceIcon.child");
+  var text$ = dart.privateName(ServiceIcon, "ServiceIcon.text");
+  var onPressed$ = dart.privateName(ServiceIcon, "ServiceIcon.onPressed");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  ServiceIcon.ServiceIcon = class ServiceIcon extends framework.StatelessWidget {
+    get child() {
+      return this[child$];
     }
-    putUint8(byte) {
-      if (byte == null) dart.nullFailed(I[0], 28, 21, "byte");
-      dart.nullCheck(this[_buffer]).add(byte);
+    set child(value) {
+      super.child = value;
     }
-    putUint16(value, opts) {
-      let t1;
-      if (value == null) dart.nullFailed(I[0], 33, 22, "value");
-      let endian = opts && 'endian' in opts ? opts.endian : null;
-      this[_eightBytes][$setUint16](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
-      dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 2);
+    get text() {
+      return this[text$];
     }
-    putUint32(value, opts) {
-      let t1;
-      if (value == null) dart.nullFailed(I[0], 39, 22, "value");
-      let endian = opts && 'endian' in opts ? opts.endian : null;
-      this[_eightBytes][$setUint32](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
-      dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 4);
+    set text(value) {
+      super.text = value;
     }
-    putInt32(value, opts) {
-      let t1;
-      if (value == null) dart.nullFailed(I[0], 45, 21, "value");
-      let endian = opts && 'endian' in opts ? opts.endian : null;
-      this[_eightBytes][$setInt32](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
-      dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 4);
+    get onPressed() {
+      return this[onPressed$];
     }
-    putInt64(value, opts) {
-      let t1;
-      if (value == null) dart.nullFailed(I[0], 51, 21, "value");
-      let endian = opts && 'endian' in opts ? opts.endian : null;
-      this[_eightBytes][$setInt64](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
-      dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 8);
+    set onPressed(value) {
+      super.onPressed = value;
     }
-    putFloat64(value, opts) {
-      let t1;
-      if (value == null) dart.nullFailed(I[0], 57, 26, "value");
-      let endian = opts && 'endian' in opts ? opts.endian : null;
-      this[_alignTo](8);
-      this[_eightBytes][$setFloat64](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
-      dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList]);
-    }
-    putUint8List(list) {
-      if (list == null) dart.nullFailed(I[0], 64, 31, "list");
-      dart.nullCheck(this[_buffer]).addAll(list);
-    }
-    putInt32List(list) {
-      if (list == null) dart.nullFailed(I[0], 69, 31, "list");
-      this[_alignTo](4);
-      dart.nullCheck(this[_buffer]).addAll(list[$buffer][$asUint8List](list[$offsetInBytes], 4 * dart.notNull(list[$length])));
-    }
-    putInt64List(list) {
-      if (list == null) dart.nullFailed(I[0], 75, 31, "list");
-      this[_alignTo](8);
-      dart.nullCheck(this[_buffer]).addAll(list[$buffer][$asUint8List](list[$offsetInBytes], 8 * dart.notNull(list[$length])));
-    }
-    putFloat64List(list) {
-      if (list == null) dart.nullFailed(I[0], 81, 35, "list");
-      this[_alignTo](8);
-      dart.nullCheck(this[_buffer]).addAll(list[$buffer][$asUint8List](list[$offsetInBytes], 8 * dart.notNull(list[$length])));
-    }
-    [_alignTo](alignment) {
-      if (alignment == null) dart.nullFailed(I[0], 86, 21, "alignment");
-      let mod = dart.nullCheck(this[_buffer]).length[$modulo](alignment);
-      if (mod !== 0) {
-        for (let i = 0; i < dart.notNull(alignment) - mod; i = i + 1)
-          dart.nullCheck(this[_buffer]).add(0);
-      }
-    }
-    done() {
-      let result = dart.nullCheck(this[_buffer]).buffer[$asByteData](0, dart.nullCheck(this[_buffer]).lengthInBytes);
-      this[_buffer] = null;
-      return result;
+    build(context) {
+      return new material.Material.new({elevation: 0.75, color: colors.Colors.white, borderRadius: new border_radius.BorderRadius.circular(10.0), child: new ink_well.InkWell.new({customBorder: new rounded_rectangle_border.RoundedRectangleBorder.new({borderRadius: new border_radius.BorderRadius.circular(10.0)}), onTap: T.VoidToNvoid().as(this.onPressed), hoverColor: colors.Colors.blue._get(50).withOpacity(0.5), highlightColor: colors.Colors.transparent, splashColor: colors.Colors.white, child: new container.Container.new({height: 100.0, width: 100.0, decoration: new box_decoration.BoxDecoration.new({shape: box_border.BoxShape.circle}), child: new hover_cross_fade.HoverCrossFadeWidget.new({firstCurve: curves.Curves.bounceIn, secondCurve: curves.Curves.bounceOut, alignmentry: alignment.Alignment.center, duration: new core.Duration.new({milliseconds: 0}), firstChild: this.child, secondChild: new container.Container.new({alignment: alignment.Alignment.center, child: new text.Text.new(this.text, {textAlign: ui.TextAlign.center, style: new text_style.TextStyle.new({fontSize: 13.0, color: new hexcolor.HexColor.new("#003366")}), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17}), $creationLocationd_0dea112b090073317d4: C[23] || CT.C23}), $creationLocationd_0dea112b090073317d4: C[31] || CT.C31});
     }
   };
-  (serialization.WriteBuffer.new = function() {
-    this[__WriteBuffer__eightBytesAsList] = null;
-    this[__WriteBuffer__eightBytesAsList_isSet] = false;
-    this[_buffer] = new typed_buffer.Uint8Buffer.new();
-    this[_eightBytes] = _native_typed_data.NativeByteData.new(8);
-    this[_eightBytesAsList] = this[_eightBytes][$buffer][$asUint8List]();
-  }).prototype = serialization.WriteBuffer.prototype;
-  dart.addTypeTests(serialization.WriteBuffer);
-  dart.addTypeCaches(serialization.WriteBuffer);
-  dart.setMethodSignature(serialization.WriteBuffer, () => ({
-    __proto__: dart.getMethods(serialization.WriteBuffer.__proto__),
-    putUint8: dart.fnType(dart.void, [core.int]),
-    putUint16: dart.fnType(dart.void, [core.int], {endian: dart.nullable(typed_data.Endian)}, {}),
-    putUint32: dart.fnType(dart.void, [core.int], {endian: dart.nullable(typed_data.Endian)}, {}),
-    putInt32: dart.fnType(dart.void, [core.int], {endian: dart.nullable(typed_data.Endian)}, {}),
-    putInt64: dart.fnType(dart.void, [core.int], {endian: dart.nullable(typed_data.Endian)}, {}),
-    putFloat64: dart.fnType(dart.void, [core.double], {endian: dart.nullable(typed_data.Endian)}, {}),
-    putUint8List: dart.fnType(dart.void, [typed_data.Uint8List]),
-    putInt32List: dart.fnType(dart.void, [typed_data.Int32List]),
-    putInt64List: dart.fnType(dart.void, [typed_data.Int64List]),
-    putFloat64List: dart.fnType(dart.void, [typed_data.Float64List]),
-    [_alignTo]: dart.fnType(dart.void, [core.int]),
-    done: dart.fnType(typed_data.ByteData, [])
-  }));
-  dart.setGetterSignature(serialization.WriteBuffer, () => ({
-    __proto__: dart.getGetters(serialization.WriteBuffer.__proto__),
-    [_eightBytesAsList]: typed_data.Uint8List
-  }));
-  dart.setSetterSignature(serialization.WriteBuffer, () => ({
-    __proto__: dart.getSetters(serialization.WriteBuffer.__proto__),
-    [_eightBytesAsList]: typed_data.Uint8List
-  }));
-  dart.setLibraryUri(serialization.WriteBuffer, I[1]);
-  dart.setFieldSignature(serialization.WriteBuffer, () => ({
-    __proto__: dart.getFields(serialization.WriteBuffer.__proto__),
-    [_buffer]: dart.fieldType(dart.nullable(typed_buffer.Uint8Buffer)),
-    [_eightBytes]: dart.finalFieldType(typed_data.ByteData),
-    [__WriteBuffer__eightBytesAsList]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
-    [__WriteBuffer__eightBytesAsList_isSet]: dart.fieldType(core.bool)
-  }));
-  var data$ = dart.privateName(serialization, "ReadBuffer.data");
-  var _position = dart.privateName(serialization, "_position");
-  serialization.ReadBuffer = class ReadBuffer extends core.Object {
-    get data() {
-      return this[data$];
-    }
-    set data(value) {
-      super.data = value;
-    }
-    get hasRemaining() {
-      return dart.notNull(this[_position]) < dart.notNull(this.data[$lengthInBytes]);
-    }
-    getUint8() {
-      let t1;
-      return this.data[$getUint8]((t1 = this[_position], this[_position] = dart.notNull(t1) + 1, t1));
-    }
-    getUint16(opts) {
-      let t1;
-      let endian = opts && 'endian' in opts ? opts.endian : null;
-      let value = this.data[$getUint16](this[_position], (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
-      this[_position] = dart.notNull(this[_position]) + 2;
-      return value;
-    }
-    getUint32(opts) {
-      let t1;
-      let endian = opts && 'endian' in opts ? opts.endian : null;
-      let value = this.data[$getUint32](this[_position], (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
-      this[_position] = dart.notNull(this[_position]) + 4;
-      return value;
-    }
-    getInt32(opts) {
-      let t1;
-      let endian = opts && 'endian' in opts ? opts.endian : null;
-      let value = this.data[$getInt32](this[_position], (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
-      this[_position] = dart.notNull(this[_position]) + 4;
-      return value;
-    }
-    getInt64(opts) {
-      let t1;
-      let endian = opts && 'endian' in opts ? opts.endian : null;
-      let value = this.data[$getInt64](this[_position], (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
-      this[_position] = dart.notNull(this[_position]) + 8;
-      return value;
-    }
-    getFloat64(opts) {
-      let t1;
-      let endian = opts && 'endian' in opts ? opts.endian : null;
-      this[_alignTo](8);
-      let value = this.data[$getFloat64](this[_position], (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
-      this[_position] = dart.notNull(this[_position]) + 8;
-      return value;
-    }
-    getUint8List(length) {
-      if (length == null) dart.nullFailed(I[0], 161, 30, "length");
-      let list = this.data[$buffer][$asUint8List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
-      this[_position] = dart.notNull(this[_position]) + dart.notNull(length);
-      return list;
-    }
-    getInt32List(length) {
-      if (length == null) dart.nullFailed(I[0], 168, 30, "length");
-      this[_alignTo](4);
-      let list = this.data[$buffer][$asInt32List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
-      this[_position] = dart.notNull(this[_position]) + 4 * dart.notNull(length);
-      return list;
-    }
-    getInt64List(length) {
-      if (length == null) dart.nullFailed(I[0], 176, 30, "length");
-      this[_alignTo](8);
-      let list = this.data[$buffer][$asInt64List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
-      this[_position] = dart.notNull(this[_position]) + 8 * dart.notNull(length);
-      return list;
-    }
-    getFloat64List(length) {
-      if (length == null) dart.nullFailed(I[0], 184, 34, "length");
-      this[_alignTo](8);
-      let list = this.data[$buffer][$asFloat64List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
-      this[_position] = dart.notNull(this[_position]) + 8 * dart.notNull(length);
-      return list;
-    }
-    [_alignTo](alignment) {
-      if (alignment == null) dart.nullFailed(I[0], 191, 21, "alignment");
-      let mod = this[_position][$modulo](alignment);
-      if (mod !== 0) this[_position] = dart.notNull(this[_position]) + (dart.notNull(alignment) - mod);
-    }
-  };
-  (serialization.ReadBuffer.new = function(data) {
-    if (data == null) dart.nullFailed(I[0], 107, 19, "data");
-    this[_position] = 0;
-    this[data$] = data;
-    if (!(data != null)) dart.assertFailed(null, I[0], 108, 14, "data != null");
+  (ServiceIcon.ServiceIcon.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let text = opts && 'text' in opts ? opts.text : null;
+    let onPressed = opts && 'onPressed' in opts ? opts.onPressed : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[text$] = text;
+    this[onPressed$] = onPressed;
+    ServiceIcon.ServiceIcon.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = serialization.ReadBuffer.prototype;
-  dart.addTypeTests(serialization.ReadBuffer);
-  dart.addTypeCaches(serialization.ReadBuffer);
-  dart.setMethodSignature(serialization.ReadBuffer, () => ({
-    __proto__: dart.getMethods(serialization.ReadBuffer.__proto__),
-    getUint8: dart.fnType(core.int, []),
-    getUint16: dart.fnType(core.int, [], {endian: dart.nullable(typed_data.Endian)}, {}),
-    getUint32: dart.fnType(core.int, [], {endian: dart.nullable(typed_data.Endian)}, {}),
-    getInt32: dart.fnType(core.int, [], {endian: dart.nullable(typed_data.Endian)}, {}),
-    getInt64: dart.fnType(core.int, [], {endian: dart.nullable(typed_data.Endian)}, {}),
-    getFloat64: dart.fnType(core.double, [], {endian: dart.nullable(typed_data.Endian)}, {}),
-    getUint8List: dart.fnType(typed_data.Uint8List, [core.int]),
-    getInt32List: dart.fnType(typed_data.Int32List, [core.int]),
-    getInt64List: dart.fnType(typed_data.Int64List, [core.int]),
-    getFloat64List: dart.fnType(typed_data.Float64List, [core.int]),
-    [_alignTo]: dart.fnType(dart.void, [core.int])
+  }).prototype = ServiceIcon.ServiceIcon.prototype;
+  dart.addTypeTests(ServiceIcon.ServiceIcon);
+  dart.addTypeCaches(ServiceIcon.ServiceIcon);
+  dart.setMethodSignature(ServiceIcon.ServiceIcon, () => ({
+    __proto__: dart.getMethods(ServiceIcon.ServiceIcon.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
   }));
-  dart.setGetterSignature(serialization.ReadBuffer, () => ({
-    __proto__: dart.getGetters(serialization.ReadBuffer.__proto__),
-    hasRemaining: core.bool
+  dart.setLibraryUri(ServiceIcon.ServiceIcon, I[0]);
+  dart.setFieldSignature(ServiceIcon.ServiceIcon, () => ({
+    __proto__: dart.getFields(ServiceIcon.ServiceIcon.__proto__),
+    child: dart.finalFieldType(dart.legacy(framework.Widget)),
+    text: dart.finalFieldType(dart.legacy(core.String)),
+    onPressed: dart.finalFieldType(dart.legacy(core.Function))
   }));
-  dart.setLibraryUri(serialization.ReadBuffer, I[1]);
-  dart.setFieldSignature(serialization.ReadBuffer, () => ({
-    __proto__: dart.getFields(serialization.ReadBuffer.__proto__),
-    data: dart.finalFieldType(typed_data.ByteData),
-    [_position]: dart.fieldType(core.int)
-  }));
-  dart.trackLibraries("packages/flutter/src/foundation/serialization.dart", {
-    "package:flutter/src/foundation/serialization.dart": serialization
+  dart.trackLibraries("packages/client/widgets/Home/ServiceIcon.dart", {
+    "package:client/widgets/Home/ServiceIcon.dart": ServiceIcon
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["serialization.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAwBiB;IAAiB;;;AAAjB;;IAAiB;;UAGd;AACE,MAAX,AAAE,eAAT,mBAAa,IAAI;IACnB;cAGmB;;;UAAgB;AACqB,MAAtD,AAAY,8BAAU,GAAG,KAAK,GAAS,KAAP,MAAM,EAAN,aAAiB;AACT,MAAjC,AAAE,eAAT,sBAAgB,yBAAmB,GAAG;IACxC;cAGmB;;;UAAgB;AACqB,MAAtD,AAAY,8BAAU,GAAG,KAAK,GAAS,KAAP,MAAM,EAAN,aAAiB;AACT,MAAjC,AAAE,eAAT,sBAAgB,yBAAmB,GAAG;IACxC;aAGkB;;;UAAgB;AACqB,MAArD,AAAY,6BAAS,GAAG,KAAK,GAAS,KAAP,MAAM,EAAN,aAAiB;AACR,MAAjC,AAAE,eAAT,sBAAgB,yBAAmB,GAAG;IACxC;aAGkB;;;UAAgB;AACqB,MAArD,AAAY,6BAAS,GAAG,KAAK,GAAS,KAAP,MAAM,EAAN,aAAiB;AACR,MAAjC,AAAE,eAAT,sBAAgB,yBAAmB,GAAG;IACxC;eAGuB;;;UAAgB;AAC1B,MAAX,eAAS;AAC8C,MAAvD,AAAY,+BAAW,GAAG,KAAK,GAAS,KAAP,MAAM,EAAN,aAAiB;AAChB,MAA3B,AAAE,eAAT,sBAAgB;IAClB;;UAG4B;AACL,MAAd,AAAE,eAAT,sBAAgB,IAAI;IACtB;;UAG4B;AACf,MAAX,eAAS;AACoE,MAAtE,AAAE,eAAT,sBAAgB,AAAK,AAAO,IAAR,wBAAoB,AAAK,IAAD,kBAAgB,AAAE,iBAAE,AAAK,IAAD;IACtE;;UAG4B;AACf,MAAX,eAAS;AACoE,MAAtE,AAAE,eAAT,sBAAgB,AAAK,AAAO,IAAR,wBAAoB,AAAK,IAAD,kBAAgB,AAAE,iBAAE,AAAK,IAAD;IACtE;;UAGgC;AACnB,MAAX,eAAS;AACoE,MAAtE,AAAE,eAAT,sBAAgB,AAAK,AAAO,IAAR,wBAAoB,AAAK,IAAD,kBAAgB,AAAE,iBAAE,AAAK,IAAD;IACtE;;UAEkB;AACN,gBAAa,AAAE,AAAO,eAAhB,+BAAkB,SAAS;AAC3C,UAAI,GAAG,KAAI;AACT,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAa,aAAV,SAAS,IAAG,GAAG,EAAE,IAAA,AAAC,CAAA;AACrB,UAAR,AAAE,eAAT,mBAAa;;IAEnB;;AAIiB,mBAAgB,AAAE,AAAO,eAAhB,mCAA2B,GAAU,AAAE,eAAT;AACxC,MAAd,gBAAU;AACV,YAAO,OAAM;IACf;;;4CA1Ee;;IAPH,gBAAE;IACE,oBAAE,sCAAS;AAC2B,IAApD,0BAAoB,AAAY,AAAO;EACzC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA0Fe;;;;;;;AAMU,YAAU,cAAV,gCAAY,AAAK;IAAa;;;AAIrD,YAAO,AAAK,uBAAkB,sBAAT,qCAAS;IAChC;;;UAGuB;AACX,kBAAQ,AAAK,sBAAU,kBAAkB,KAAP,MAAM,EAAN,aAAiB;AAC/C,MAAd,kBAAU,aAAV,mBAAa;AACb,YAAO,MAAK;IACd;;;UAGuB;AACX,kBAAQ,AAAK,sBAAU,kBAAkB,KAAP,MAAM,EAAN,aAAiB;AAC/C,MAAd,kBAAU,aAAV,mBAAa;AACb,YAAO,MAAK;IACd;;;UAGsB;AACV,kBAAQ,AAAK,qBAAS,kBAAkB,KAAP,MAAM,EAAN,aAAiB;AAC9C,MAAd,kBAAU,aAAV,mBAAa;AACb,YAAO,MAAK;IACd;;;UAGsB;AACV,kBAAQ,AAAK,qBAAS,kBAAkB,KAAP,MAAM,EAAN,aAAiB;AAC9C,MAAd,kBAAU,aAAV,mBAAa;AACb,YAAO,MAAK;IACd;;;UAG2B;AACd,MAAX,eAAS;AACI,kBAAQ,AAAK,uBAAW,kBAAkB,KAAP,MAAM,EAAN,aAAiB;AACnD,MAAd,kBAAU,aAAV,mBAAa;AACb,YAAO,MAAK;IACd;;UAG2B;AACT,iBAAO,AAAK,AAAO,iCAA+B,aAAnB,AAAK,0CAAgB,kBAAW,MAAM;AAClE,MAAnB,kBAAU,aAAV,gCAAa,MAAM;AACnB,YAAO,KAAI;IACb;;UAG2B;AACd,MAAX,eAAS;AACO,iBAAO,AAAK,AAAO,iCAA+B,aAAnB,AAAK,0CAAgB,kBAAW,MAAM;AAC9D,MAAvB,kBAAU,aAAV,mBAAa,AAAE,iBAAE,MAAM;AACvB,YAAO,KAAI;IACb;;UAG2B;AACd,MAAX,eAAS;AACO,iBAAO,AAAK,AAAO,iCAA+B,aAAnB,AAAK,0CAAgB,kBAAW,MAAM;AAC9D,MAAvB,kBAAU,aAAV,mBAAa,AAAE,iBAAE,MAAM;AACvB,YAAO,KAAI;IACb;;UAG+B;AAClB,MAAX,eAAS;AACS,iBAAO,AAAK,AAAO,mCAAiC,aAAnB,AAAK,0CAAgB,kBAAW,MAAM;AAClE,MAAvB,kBAAU,aAAV,mBAAa,AAAE,iBAAE,MAAM;AACvB,YAAO,KAAI;IACb;;UAEkB;AACN,gBAAM,AAAU,yBAAE,SAAS;AACrC,UAAI,GAAG,KAAI,GACT,AAA4B,kBAAlB,aAAV,oBAAuB,aAAV,SAAS,IAAG,GAAG;IAChC;;;QAxFgB;IAOZ,kBAAY;IAPA;UACL,AAAK,IAAD;;EAAS","file":"../../../../../../../../packages/flutter/src/foundation/serialization.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["ServiceIcon.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAKe;;;;;;IACA;;;;;;IACE;;;;;;UAIW;AACxB,YAAO,uCACM,aACG,mCACa,wCAAS,cAC7B,wCACS,uEACe,wCAAS,mCAE/B,6BACY,AAAI,AAAK,wBAAJ,gBAAgB,sBACjB,wCACH,4BACb,qCACK,cACD,mBACS,6CACE,qCAEX,2DACc,qCACC,sCACG,sCACb,qCAAuB,iBACrB,yBACC,wCACY,mCACd,kBACL,uBACqB,4BACd,wCACK,aACH,0BAAS;IAMpC;;;QAxCkB;QAAY;QAAW;;IAAvB;IAAY;IAAW;AAAzC;;EAAoD","file":"../../../../../../../../../packages/client/widgets/Home/ServiceIcon.dart.lib.js"}');
   // Exports:
   return {
-    src__foundation__serialization: serialization
+    widgets__Home__ServiceIcon: ServiceIcon
   };
 }));
 
-//# sourceMappingURL=serialization.dart.lib.js.map
+//# sourceMappingURL=ServiceIcon.dart.lib.js.map

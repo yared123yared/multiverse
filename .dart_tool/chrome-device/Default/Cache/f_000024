@@ -1,49 +1,75 @@
-define(['dart_sdk', 'packages/flutter/src/gestures/debug.dart', 'packages/flutter/src/foundation/print.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/gestures/arena.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/gestures/binding.dart', 'packages/flutter/src/gestures/team.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/foundation/object.dart'], (function load__packages__flutter__src__gestures__recognizer_dart(dart_sdk, packages__flutter__src__gestures__debug$46dart, packages__flutter__src__foundation__print$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__gestures__arena$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__gestures__binding$46dart, packages__flutter__src__gestures__team$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__foundation__object$46dart) {
+define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart', 'packages/collection/src/priority_queue.dart', 'packages/flutter/src/foundation/print.dart', 'packages/flutter/src/scheduler/debug.dart', 'packages/flutter/src/foundation/binding.dart', 'packages/flutter/src/scheduler/priority.dart'], (function load__packages__flutter__src__scheduler__binding_dart(dart_sdk, packages__flutter__src__foundation__debug$46dart, packages__collection__src__priority_queue$46dart, packages__flutter__src__foundation__print$46dart, packages__flutter__src__scheduler__debug$46dart, packages__flutter__src__foundation__binding$46dart, packages__flutter__src__scheduler__priority$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _js_helper = dart_sdk._js_helper;
-  const ui = dart_sdk.ui;
-  const collection = dart_sdk.collection;
   const async = dart_sdk.async;
+  const _internal = dart_sdk._internal;
+  const developer = dart_sdk.developer;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const _js_helper = dart_sdk._js_helper;
+  const collection = dart_sdk.collection;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const debug = packages__flutter__src__gestures__debug$46dart.src__gestures__debug;
-  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
   const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const arena = packages__flutter__src__gestures__arena$46dart.src__gestures__arena;
-  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
-  const binding = packages__flutter__src__gestures__binding$46dart.src__gestures__binding;
-  const team = packages__flutter__src__gestures__team$46dart.src__gestures__team;
-  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
-  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  var recognizer = Object.create(dart.library);
-  var $_set = dartx._set;
-  var $containsKey = dartx.containsKey;
-  var $_get = dartx._get;
-  var $times = dartx['*'];
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $values = dartx.values;
-  var $clear = dartx.clear;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const debug = packages__flutter__src__foundation__debug$46dart.src__foundation__debug;
+  const priority_queue = packages__collection__src__priority_queue$46dart.src__priority_queue;
+  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
+  const debug$ = packages__flutter__src__scheduler__debug$46dart.src__scheduler__debug;
+  const binding = packages__flutter__src__foundation__binding$46dart.src__foundation__binding;
+  const priority$ = packages__flutter__src__scheduler__priority$46dart.src__scheduler__priority;
+  var binding$ = Object.create(dart.library);
+  var $add = dartx.add;
+  var $length = dartx.length;
+  var $contains = dartx.contains;
   var $remove = dartx.remove;
   var $isEmpty = dartx.isEmpty;
-  var $containsValue = dartx.containsValue;
+  var $compareTo = dartx.compareTo;
+  var $_set = dartx._set;
+  var $keys = dartx.keys;
+  var $_get = dartx._get;
+  var $trimRight = dartx.trimRight;
+  var $split = dartx.split;
+  var $join = dartx.join;
+  var $round = dartx.round;
+  var $toString = dartx.toString;
+  var $padRight = dartx.padRight;
+  var $padLeft = dartx.padLeft;
+  var $forEach = dartx.forEach;
+  var $clear = dartx.clear;
+  var $times = dartx['*'];
   dart._checkModuleNullSafetyMode(false);
   var T$ = {
-    DragStartBehaviorL: () => (T$.DragStartBehaviorL = dart.constFn(dart.legacy(recognizer.DragStartBehavior)))(),
-    IdentityMapOfint$PointerDeviceKind: () => (T$.IdentityMapOfint$PointerDeviceKind = dart.constFn(_js_helper.IdentityMap$(core.int, ui.PointerDeviceKind)))(),
     VoidTobool: () => (T$.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    DiagnosticsPropertyOfGestureRecognizer: () => (T$.DiagnosticsPropertyOfGestureRecognizer = dart.constFn(diagnostics.DiagnosticsProperty$(recognizer.GestureRecognizer)))(),
+    VoidToNull: () => (T$.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    JSArrayOfDiagnosticsNode: () => (T$.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
+    SchedulerPhaseL: () => (T$.SchedulerPhaseL = dart.constFn(dart.legacy(binding$.SchedulerPhase)))(),
+    ListOfFrameTiming: () => (T$.ListOfFrameTiming = dart.constFn(core.List$(ui.FrameTiming)))(),
+    ListOfFrameTimingTovoid: () => (T$.ListOfFrameTimingTovoid = dart.constFn(dart.fnType(dart.void, [T$.ListOfFrameTiming()])))(),
+    JSArrayOfListOfFrameTimingTovoid: () => (T$.JSArrayOfListOfFrameTimingTovoid = dart.constFn(_interceptors.JSArray$(T$.ListOfFrameTimingTovoid())))(),
+    __Tobool: () => (T$.__Tobool = dart.constFn(dart.fnType(core.bool, [], {}, {priority: core.int, scheduler: binding$.SchedulerBinding})))(),
+    HeapPriorityQueueOf_TaskEntry: () => (T$.HeapPriorityQueueOf_TaskEntry = dart.constFn(priority_queue.HeapPriorityQueue$(binding$._TaskEntry)))(),
+    _TaskEntryAnd_TaskEntryToint: () => (T$._TaskEntryAnd_TaskEntryToint = dart.constFn(dart.fnType(core.int, [binding$._TaskEntry, binding$._TaskEntry])))(),
+    IdentityMapOfint$_FrameCallbackEntry: () => (T$.IdentityMapOfint$_FrameCallbackEntry = dart.constFn(_js_helper.IdentityMap$(core.int, binding$._FrameCallbackEntry)))(),
+    _IdentityHashSetOfint: () => (T$._IdentityHashSetOfint = dart.constFn(collection._IdentityHashSet$(core.int)))(),
+    DurationTovoid: () => (T$.DurationTovoid = dart.constFn(dart.fnType(dart.void, [core.Duration])))(),
+    JSArrayOfDurationTovoid: () => (T$.JSArrayOfDurationTovoid = dart.constFn(_interceptors.JSArray$(T$.DurationTovoid())))(),
+    ListOfListOfFrameTimingTovoid: () => (T$.ListOfListOfFrameTimingTovoid = dart.constFn(core.List$(T$.ListOfFrameTimingTovoid())))(),
+    DiagnosticsPropertyOfListOfFrameTimingTovoid: () => (T$.DiagnosticsPropertyOfListOfFrameTimingTovoid = dart.constFn(diagnostics.DiagnosticsProperty$(T$.ListOfFrameTimingTovoid())))(),
     SyncIterableOfDiagnosticsNode: () => (T$.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
     IterableOfDiagnosticsNode: () => (T$.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
     VoidToIterableOfDiagnosticsNode: () => (T$.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T$.IterableOfDiagnosticsNode(), [])))(),
-    DiagnosticsPropertyOfObject: () => (T$.DiagnosticsPropertyOfObject = dart.constFn(diagnostics.DiagnosticsProperty$(core.Object)))(),
-    IdentityMapOfint$GestureArenaEntry: () => (T$.IdentityMapOfint$GestureArenaEntry = dart.constFn(_js_helper.IdentityMap$(core.int, arena.GestureArenaEntry)))(),
-    _IdentityHashSetOfint: () => (T$._IdentityHashSetOfint = dart.constFn(collection._IdentityHashSet$(core.int)))(),
-    ListOfGestureArenaEntry: () => (T$.ListOfGestureArenaEntry = dart.constFn(core.List$(arena.GestureArenaEntry)))(),
-    GestureRecognizerStateL: () => (T$.GestureRecognizerStateL = dart.constFn(dart.legacy(recognizer.GestureRecognizerState)))(),
+    FutureOfdouble: () => (T$.FutureOfdouble = dart.constFn(async.Future$(core.double)))(),
+    VoidToFutureOfdouble: () => (T$.VoidToFutureOfdouble = dart.constFn(dart.fnType(T$.FutureOfdouble(), [])))(),
+    FutureOfvoid: () => (T$.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    doubleToFutureOfvoid: () => (T$.doubleToFutureOfvoid = dart.constFn(dart.fnType(T$.FutureOfvoid(), [core.double])))(),
+    LinkedHashMapOfint$_FrameCallbackEntry: () => (T$.LinkedHashMapOfint$_FrameCallbackEntry = dart.constFn(collection.LinkedHashMap$(core.int, binding$._FrameCallbackEntry)))(),
+    CompleterOfvoid: () => (T$.CompleterOfvoid = dart.constFn(async.Completer$(dart.void)))(),
     VoidTovoid: () => (T$.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    EnumPropertyOfGestureRecognizerState: () => (T$.EnumPropertyOfGestureRecognizerState = dart.constFn(diagnostics.EnumProperty$(recognizer.GestureRecognizerState)))()
+    VoidToFutureOfvoid: () => (T$.VoidToFutureOfvoid = dart.constFn(dart.fnType(T$.FutureOfvoid(), [])))(),
+    intAnd_FrameCallbackEntryTovoid: () => (T$.intAnd_FrameCallbackEntryTovoid = dart.constFn(dart.fnType(dart.void, [core.int, binding$._FrameCallbackEntry])))(),
+    ListOfDurationTovoid: () => (T$.ListOfDurationTovoid = dart.constFn(core.List$(T$.DurationTovoid())))(),
+    IdentityMapOfString$dynamic: () => (T$.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -51,569 +77,846 @@ define(['dart_sdk', 'packages/flutter/src/gestures/debug.dart', 'packages/flutte
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: recognizer.DragStartBehavior.prototype,
-        [_name$]: "DragStartBehavior.down",
+        __proto__: binding$.SchedulerPhase.prototype,
+        [_name$]: "SchedulerPhase.idle",
         index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: recognizer.DragStartBehavior.prototype,
-        [_name$]: "DragStartBehavior.start",
+        __proto__: binding$.SchedulerPhase.prototype,
+        [_name$]: "SchedulerPhase.transientCallbacks",
         index: 1
       });
     },
     get C2() {
-      return C[2] = dart.constList([C[0] || CT.C0, C[1] || CT.C1], T$.DragStartBehaviorL());
+      return C[2] = dart.const({
+        __proto__: binding$.SchedulerPhase.prototype,
+        [_name$]: "SchedulerPhase.midFrameMicrotasks",
+        index: 2
+      });
     },
     get C3() {
       return C[3] = dart.const({
-        __proto__: recognizer.GestureRecognizerState.prototype,
-        [_name$]: "GestureRecognizerState.ready",
-        index: 0
+        __proto__: binding$.SchedulerPhase.prototype,
+        [_name$]: "SchedulerPhase.persistentCallbacks",
+        index: 3
       });
     },
     get C4() {
       return C[4] = dart.const({
-        __proto__: recognizer.GestureRecognizerState.prototype,
-        [_name$]: "GestureRecognizerState.possible",
-        index: 1
+        __proto__: binding$.SchedulerPhase.prototype,
+        [_name$]: "SchedulerPhase.postFrameCallbacks",
+        index: 4
       });
     },
     get C5() {
-      return C[5] = dart.const({
-        __proto__: recognizer.GestureRecognizerState.prototype,
-        [_name$]: "GestureRecognizerState.defunct",
-        index: 2
-      });
+      return C[5] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], T$.SchedulerPhaseL());
     },
     get C6() {
-      return C[6] = dart.constList([C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5], T$.GestureRecognizerStateL());
+      return C[6] = dart.fn(binding$.defaultSchedulingStrategy, T$.__Tobool());
+    },
+    get C7() {
+      return C[7] = dart.fn(binding$.SchedulerBinding._taskSorter, T$._TaskEntryAnd_TaskEntryToint());
     },
     get C8() {
       return C[8] = dart.const({
-        __proto__: ui.Offset.prototype,
-        [OffsetBase__dy]: 0,
-        [OffsetBase__dx]: 0
+        __proto__: ui.AppLifecycleState.prototype,
+        [_name]: "AppLifecycleState.resumed",
+        index: 0
       });
     },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: recognizer.OffsetPair.prototype,
-        [global$]: C[8] || CT.C8,
-        [local$]: C[8] || CT.C8
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.AppLifecycleState.prototype,
+        [_name]: "AppLifecycleState.inactive",
+        index: 1
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: ui.AppLifecycleState.prototype,
+        [_name]: "AppLifecycleState.paused",
+        index: 2
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: ui.AppLifecycleState.prototype,
+        [_name]: "AppLifecycleState.detached",
+        index: 3
       });
     }
   }, false);
-  var C = Array(9).fill(void 0);
+  var C = Array(12).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/gestures/recognizer.dart",
-    "package:flutter/src/gestures/recognizer.dart"
+    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/scheduler/binding.dart",
+    "package:flutter/src/scheduler/binding.dart"
   ];
-  var _name$ = dart.privateName(recognizer, "_name");
-  recognizer.DragStartBehavior = class DragStartBehavior extends core.Object {
+  var ___TaskEntry_debugStack = dart.privateName(binding$, "_#_TaskEntry#debugStack");
+  var ___TaskEntry_debugStack_isSet = dart.privateName(binding$, "_#_TaskEntry#debugStack#isSet");
+  const _is__TaskEntry_default = Symbol('_is__TaskEntry_default');
+  binding$._TaskEntry$ = dart.generic(T => {
+    var CompleterOfT = () => (CompleterOfT = dart.constFn(async.Completer$(T)))();
+    class _TaskEntry extends core.Object {
+      get debugStack() {
+        let t0;
+        return dart.test(this[___TaskEntry_debugStack_isSet]) ? (t0 = this[___TaskEntry_debugStack], t0) : dart.throw(new _internal.LateError.fieldNI("debugStack"));
+      }
+      set debugStack(t0) {
+        if (t0 == null) dart.nullFailed(I[0], 72, 19, "null");
+        this[___TaskEntry_debugStack_isSet] = true;
+        this[___TaskEntry_debugStack] = t0;
+      }
+      run() {
+        let t1;
+        if (!false) {
+          developer.Timeline.timeSync(core.Null, (t1 = this.debugLabel, t1 == null ? "Scheduled Task" : t1), dart.fn(() => {
+            this.completer.complete(this.task());
+          }, T$.VoidToNull()), {flow: this.flow != null ? developer.Flow.step(dart.nullCheck(this.flow).id) : null});
+        } else {
+          this.completer.complete(this.task());
+        }
+      }
+    }
+    (_TaskEntry.new = function(task, priority, debugLabel, flow) {
+      if (task == null) dart.nullFailed(I[0], 61, 19, "task");
+      if (priority == null) dart.nullFailed(I[0], 61, 30, "priority");
+      this[___TaskEntry_debugStack] = null;
+      this[___TaskEntry_debugStack_isSet] = false;
+      this.completer = CompleterOfT().new();
+      this.task = task;
+      this.priority = priority;
+      this.debugLabel = debugLabel;
+      this.flow = flow;
+      if (!dart.test(dart.fn(() => {
+        this.debugStack = core.StackTrace.current;
+        return true;
+      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 62, 12, "() {\r\n      debugStack = StackTrace.current;\r\n      return true;\r\n    }()");
+    }).prototype = _TaskEntry.prototype;
+    dart.addTypeTests(_TaskEntry);
+    _TaskEntry.prototype[_is__TaskEntry_default] = true;
+    dart.addTypeCaches(_TaskEntry);
+    dart.setMethodSignature(_TaskEntry, () => ({
+      __proto__: dart.getMethods(_TaskEntry.__proto__),
+      run: dart.fnType(dart.void, [])
+    }));
+    dart.setGetterSignature(_TaskEntry, () => ({
+      __proto__: dart.getGetters(_TaskEntry.__proto__),
+      debugStack: core.StackTrace
+    }));
+    dart.setSetterSignature(_TaskEntry, () => ({
+      __proto__: dart.getSetters(_TaskEntry.__proto__),
+      debugStack: core.StackTrace
+    }));
+    dart.setLibraryUri(_TaskEntry, I[1]);
+    dart.setFieldSignature(_TaskEntry, () => ({
+      __proto__: dart.getFields(_TaskEntry.__proto__),
+      task: dart.finalFieldType(dart.fnType(T, [])),
+      priority: dart.finalFieldType(core.int),
+      debugLabel: dart.finalFieldType(dart.nullable(core.String)),
+      flow: dart.finalFieldType(dart.nullable(developer.Flow)),
+      [___TaskEntry_debugStack]: dart.fieldType(dart.nullable(core.StackTrace)),
+      [___TaskEntry_debugStack_isSet]: dart.fieldType(core.bool),
+      completer: dart.finalFieldType(async.Completer$(T))
+    }));
+    return _TaskEntry;
+  });
+  binding$._TaskEntry = binding$._TaskEntry$();
+  dart.addTypeTests(binding$._TaskEntry, _is__TaskEntry_default);
+  binding$._FrameCallbackEntry = class _FrameCallbackEntry extends core.Object {};
+  (binding$._FrameCallbackEntry.new = function(callback, opts) {
+    if (callback == null) dart.nullFailed(I[0], 91, 28, "callback");
+    let rescheduling = opts && 'rescheduling' in opts ? opts.rescheduling : false;
+    if (rescheduling == null) dart.nullFailed(I[0], 91, 45, "rescheduling");
+    this.debugStack = null;
+    this.callback = callback;
+    if (!dart.test(dart.fn(() => {
+      if (dart.test(rescheduling)) {
+        if (!dart.test(dart.fn(() => {
+          if (binding$._FrameCallbackEntry.debugCurrentCallbackStack == null) {
+            dart.throw(new assertions.FlutterError.fromParts(T$.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("scheduleFrameCallback called with rescheduling true, but no callback is in scope."), new assertions.ErrorDescription.new("The \"rescheduling\" argument should only be set to true if the " + "callback is being reregistered from within the callback itself, " + "and only then if the callback itself is entirely synchronous."), new assertions.ErrorHint.new("If this is the initial registration of the callback, or if the " + "callback is asynchronous, then do not use the \"rescheduling\" " + "argument.")])));
+          }
+          return true;
+        }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 94, 16, "() {\r\n          if (debugCurrentCallbackStack == null) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('scheduleFrameCallback called with rescheduling true, but no callback is in scope.'),\r\n              ErrorDescription(\r\n                'The \"rescheduling\" argument should only be set to true if the '\r\n                'callback is being reregistered from within the callback itself, '\r\n                'and only then if the callback itself is entirely synchronous.',\r\n              ),\r\n              ErrorHint(\r\n                'If this is the initial registration of the callback, or if the '\r\n                'callback is asynchronous, then do not use the \"rescheduling\" '\r\n                'argument.',\r\n              ),\r\n            ]);\r\n          }\r\n          return true;\r\n        }()");
+        this.debugStack = binding$._FrameCallbackEntry.debugCurrentCallbackStack;
+      } else {
+        this.debugStack = core.StackTrace.current;
+      }
+      return true;
+    }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 92, 12, "() {\r\n      if (rescheduling) {\r\n        assert(() {\r\n          if (debugCurrentCallbackStack == null) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('scheduleFrameCallback called with rescheduling true, but no callback is in scope.'),\r\n              ErrorDescription(\r\n                'The \"rescheduling\" argument should only be set to true if the '\r\n                'callback is being reregistered from within the callback itself, '\r\n                'and only then if the callback itself is entirely synchronous.',\r\n              ),\r\n              ErrorHint(\r\n                'If this is the initial registration of the callback, or if the '\r\n                'callback is asynchronous, then do not use the \"rescheduling\" '\r\n                'argument.',\r\n              ),\r\n            ]);\r\n          }\r\n          return true;\r\n        }());\r\n        debugStack = debugCurrentCallbackStack;\r\n      } else {\r\n        // TODO(ianh): trim the frames from this library, so that the call to scheduleFrameCallback is the top one\r\n        debugStack = StackTrace.current;\r\n      }\r\n      return true;\r\n    }()");
+  }).prototype = binding$._FrameCallbackEntry.prototype;
+  dart.addTypeTests(binding$._FrameCallbackEntry);
+  dart.addTypeCaches(binding$._FrameCallbackEntry);
+  dart.setLibraryUri(binding$._FrameCallbackEntry, I[1]);
+  dart.setFieldSignature(binding$._FrameCallbackEntry, () => ({
+    __proto__: dart.getFields(binding$._FrameCallbackEntry.__proto__),
+    callback: dart.finalFieldType(dart.fnType(dart.void, [core.Duration])),
+    debugStack: dart.fieldType(dart.nullable(core.StackTrace))
+  }));
+  dart.defineLazy(binding$._FrameCallbackEntry, {
+    /*binding$._FrameCallbackEntry.debugCurrentCallbackStack*/get debugCurrentCallbackStack() {
+      return null;
+    },
+    set debugCurrentCallbackStack(_) {}
+  }, false);
+  var _name$ = dart.privateName(binding$, "_name");
+  binding$.SchedulerPhase = class SchedulerPhase extends core.Object {
     toString() {
       return this[_name$];
     }
   };
-  (recognizer.DragStartBehavior.new = function(index, _name) {
-    if (index == null) dart.nullFailed(I[0], 36, 6, "index");
-    if (_name == null) dart.nullFailed(I[0], 36, 6, "_name");
+  (binding$.SchedulerPhase.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 139, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 139, 6, "_name");
     this.index = index;
     this[_name$] = _name;
     ;
-  }).prototype = recognizer.DragStartBehavior.prototype;
-  dart.addTypeTests(recognizer.DragStartBehavior);
-  dart.addTypeCaches(recognizer.DragStartBehavior);
-  dart.setLibraryUri(recognizer.DragStartBehavior, I[1]);
-  dart.setFieldSignature(recognizer.DragStartBehavior, () => ({
-    __proto__: dart.getFields(recognizer.DragStartBehavior.__proto__),
+  }).prototype = binding$.SchedulerPhase.prototype;
+  dart.addTypeTests(binding$.SchedulerPhase);
+  dart.addTypeCaches(binding$.SchedulerPhase);
+  dart.setLibraryUri(binding$.SchedulerPhase, I[1]);
+  dart.setFieldSignature(binding$.SchedulerPhase, () => ({
+    __proto__: dart.getFields(binding$.SchedulerPhase.__proto__),
     index: dart.finalFieldType(core.int),
     [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.defineExtensionMethods(recognizer.DragStartBehavior, ['toString']);
-  recognizer.DragStartBehavior.down = C[0] || CT.C0;
-  recognizer.DragStartBehavior.start = C[1] || CT.C1;
-  recognizer.DragStartBehavior.values = C[2] || CT.C2;
-  var debugOwner$ = dart.privateName(recognizer, "GestureRecognizer.debugOwner");
-  var _pointerToKind = dart.privateName(recognizer, "_pointerToKind");
-  var _kindFilter = dart.privateName(recognizer, "_kindFilter");
-  const GestureArenaMember_DiagnosticableTreeMixin$36 = class GestureArenaMember_DiagnosticableTreeMixin extends arena.GestureArenaMember {};
-  (GestureArenaMember_DiagnosticableTreeMixin$36.new = function() {
-  }).prototype = GestureArenaMember_DiagnosticableTreeMixin$36.prototype;
-  dart.applyMixin(GestureArenaMember_DiagnosticableTreeMixin$36, diagnostics.DiagnosticableTreeMixin);
-  recognizer.GestureRecognizer = class GestureRecognizer extends GestureArenaMember_DiagnosticableTreeMixin$36 {
-    get debugOwner() {
-      return this[debugOwner$];
+  dart.defineExtensionMethods(binding$.SchedulerPhase, ['toString']);
+  binding$.SchedulerPhase.idle = C[0] || CT.C0;
+  binding$.SchedulerPhase.transientCallbacks = C[1] || CT.C1;
+  binding$.SchedulerPhase.midFrameMicrotasks = C[2] || CT.C2;
+  binding$.SchedulerPhase.persistentCallbacks = C[3] || CT.C3;
+  binding$.SchedulerPhase.postFrameCallbacks = C[4] || CT.C4;
+  binding$.SchedulerPhase.values = C[5] || CT.C5;
+  var schedulingStrategy = dart.privateName(binding$, "SchedulerBinding.schedulingStrategy");
+  var _timingsCallbacks = dart.privateName(binding$, "_timingsCallbacks");
+  var _lifecycleState = dart.privateName(binding$, "_lifecycleState");
+  var _taskQueue = dart.privateName(binding$, "_taskQueue");
+  var _hasRequestedAnEventLoopCallback = dart.privateName(binding$, "_hasRequestedAnEventLoopCallback");
+  var _nextFrameCallbackId = dart.privateName(binding$, "_nextFrameCallbackId");
+  var _transientCallbacks = dart.privateName(binding$, "_transientCallbacks");
+  var _removedIds = dart.privateName(binding$, "_removedIds");
+  var _persistentCallbacks = dart.privateName(binding$, "_persistentCallbacks");
+  var _postFrameCallbacks = dart.privateName(binding$, "_postFrameCallbacks");
+  var _nextFrameCompleter = dart.privateName(binding$, "_nextFrameCompleter");
+  var _hasScheduledFrame = dart.privateName(binding$, "_hasScheduledFrame");
+  var _schedulerPhase = dart.privateName(binding$, "_schedulerPhase");
+  var _framesEnabled = dart.privateName(binding$, "_framesEnabled");
+  var _warmUpFrame = dart.privateName(binding$, "_warmUpFrame");
+  var _firstRawTimeStampInEpoch = dart.privateName(binding$, "_firstRawTimeStampInEpoch");
+  var _epochStart = dart.privateName(binding$, "_epochStart");
+  var _lastRawTimeStamp = dart.privateName(binding$, "_lastRawTimeStamp");
+  var _currentFrameTimeStamp = dart.privateName(binding$, "_currentFrameTimeStamp");
+  var _debugFrameNumber = dart.privateName(binding$, "_debugFrameNumber");
+  var _debugBanner = dart.privateName(binding$, "_debugBanner");
+  var _rescheduleAfterWarmUpFrame = dart.privateName(binding$, "_rescheduleAfterWarmUpFrame");
+  var _profileFramePostEvent = dart.privateName(binding$, "_profileFramePostEvent");
+  var _executeTimingsCallbacks = dart.privateName(binding$, "_executeTimingsCallbacks");
+  var _setFramesEnabledState = dart.privateName(binding$, "_setFramesEnabledState");
+  var _name = dart.privateName(ui, "_name");
+  var _ensureEventLoopCallback = dart.privateName(binding$, "_ensureEventLoopCallback");
+  var _runTasks = dart.privateName(binding$, "_runTasks");
+  var _handleBeginFrame = dart.privateName(binding$, "_handleBeginFrame");
+  var _handleDrawFrame = dart.privateName(binding$, "_handleDrawFrame");
+  var _adjustForEpoch = dart.privateName(binding$, "_adjustForEpoch");
+  var _invokeFrameCallback = dart.privateName(binding$, "_invokeFrameCallback");
+  binding$.SchedulerBinding = class SchedulerBinding extends binding.BindingBase {
+    static get instance() {
+      return binding$.SchedulerBinding._instance;
     }
-    set debugOwner(value) {
-      super.debugOwner = value;
+    static _taskSorter(e1, e2) {
+      if (e1 == null) dart.nullFailed(I[0], 371, 47, "e1");
+      if (e2 == null) dart.nullFailed(I[0], 371, 71, "e2");
+      return -e1.priority[$compareTo](e2.priority);
     }
-    addPointer(event) {
-      if (event == null) dart.nullFailed(I[0], 99, 36, "event");
-      this[_pointerToKind][$_set](event.pointer, event.kind);
-      if (dart.test(this.isPointerAllowed(event))) {
-        this.addAllowedPointer(event);
-      } else {
-        this.handleNonAllowedPointer(event);
+    static debugPrintTransientCallbackRegistrationStack() {
+      if (!dart.test(dart.fn(() => {
+        if (binding$._FrameCallbackEntry.debugCurrentCallbackStack != null) {
+          print.debugPrint("When the current transient callback was registered, this was the stack:");
+          print.debugPrint(assertions.FlutterError.defaultStackFilter(dart.toString(assertions.FlutterError.demangleStackTrace(dart.nullCheck(binding$._FrameCallbackEntry.debugCurrentCallbackStack)))[$trimRight]()[$split]("\n"))[$join]("\n"));
+        } else {
+          print.debugPrint("No transient callback is currently executing.");
+        }
+        return true;
+      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 616, 12, "() {\r\n      if (_FrameCallbackEntry.debugCurrentCallbackStack != null) {\r\n        debugPrint('When the current transient callback was registered, this was the stack:');\r\n        debugPrint(\r\n          FlutterError.defaultStackFilter(\r\n            FlutterError.demangleStackTrace(\r\n              _FrameCallbackEntry.debugCurrentCallbackStack!,\r\n            ).toString().trimRight().split('\\n'),\r\n          ).join('\\n'),\r\n        );\r\n      } else {\r\n        debugPrint('No transient callback is currently executing.');\r\n      }\r\n      return true;\r\n    }()");
+    }
+    static _debugDescribeTimeStamp(timeStamp, buffer) {
+      if (timeStamp == null) dart.nullFailed(I[0], 1115, 48, "timeStamp");
+      if (buffer == null) dart.nullFailed(I[0], 1115, 72, "buffer");
+      if (dart.notNull(timeStamp.inDays) > 0) buffer.write(dart.str(timeStamp.inDays) + "d ");
+      if (dart.notNull(timeStamp.inHours) > 0) buffer.write(dart.str(dart.notNull(timeStamp.inHours) - dart.notNull(timeStamp.inDays) * 24) + "h ");
+      if (dart.notNull(timeStamp.inMinutes) > 0) buffer.write(dart.str(dart.notNull(timeStamp.inMinutes) - dart.notNull(timeStamp.inHours) * 60) + "m ");
+      if (dart.notNull(timeStamp.inSeconds) > 0) buffer.write(dart.str(dart.notNull(timeStamp.inSeconds) - dart.notNull(timeStamp.inMinutes) * 60) + "s ");
+      buffer.write(dart.str(dart.notNull(timeStamp.inMilliseconds) - dart.notNull(timeStamp.inSeconds) * 1000));
+      let microseconds = dart.notNull(timeStamp.inMicroseconds) - dart.notNull(timeStamp.inMilliseconds) * 1000;
+      if (microseconds > 0) buffer.write("." + microseconds[$toString]()[$padLeft](3, "0"));
+      buffer.write("ms");
+    }
+  };
+  binding$.SchedulerBinding[dart.mixinOn] = BindingBase => class SchedulerBinding extends BindingBase {
+    get schedulingStrategy() {
+      return this[schedulingStrategy];
+    }
+    set schedulingStrategy(value) {
+      this[schedulingStrategy] = value;
+    }
+    initInstances() {
+      super.initInstances();
+      binding$.SchedulerBinding._instance = this;
+      if (!false) {
+        let frameNumber = 0;
+        this.addTimingsCallback(dart.fn(timings => {
+          if (timings == null) dart.nullFailed(I[0], 206, 45, "timings");
+          for (let frameTiming of timings) {
+            frameNumber = frameNumber + 1;
+            this[_profileFramePostEvent](frameNumber, frameTiming);
+          }
+        }, T$.ListOfFrameTimingTovoid()));
       }
     }
-    addAllowedPointer(event) {
-      if (event == null) dart.nullFailed(I[0], 116, 43, "event");
+    addTimingsCallback(callback) {
+      if (callback == null) dart.nullFailed(I[0], 265, 43, "callback");
+      this[_timingsCallbacks][$add](callback);
+      if (this[_timingsCallbacks][$length] === 1) {
+        if (!(this.window.onReportTimings == null)) dart.assertFailed(null, I[0], 268, 14, "window.onReportTimings == null");
+        this.window.onReportTimings = dart.bind(this, _executeTimingsCallbacks);
+      }
+      if (!dart.equals(this.window.onReportTimings, dart.bind(this, _executeTimingsCallbacks))) dart.assertFailed(null, I[0], 271, 12, "window.onReportTimings == _executeTimingsCallbacks");
     }
-    handleNonAllowedPointer(event) {
-      if (event == null) dart.nullFailed(I[0], 125, 49, "event");
+    removeTimingsCallback(callback) {
+      if (callback == null) dart.nullFailed(I[0], 275, 46, "callback");
+      if (!dart.test(this[_timingsCallbacks][$contains](callback))) dart.assertFailed(null, I[0], 276, 12, "_timingsCallbacks.contains(callback)");
+      this[_timingsCallbacks][$remove](callback);
+      if (dart.test(this[_timingsCallbacks][$isEmpty])) {
+        this.window.onReportTimings = null;
+      }
     }
-    isPointerAllowed(event) {
-      if (event == null) dart.nullFailed(I[0], 129, 42, "event");
-      return this[_kindFilter] == null || this[_kindFilter] == event.kind;
-    }
-    getKindForPointer(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 140, 43, "pointer");
-      if (!dart.test(this[_pointerToKind][$containsKey](pointer))) dart.assertFailed(null, I[0], 141, 12, "_pointerToKind.containsKey(pointer)");
-      return dart.nullCheck(this[_pointerToKind][$_get](pointer));
-    }
-    dispose() {
-    }
-    invokeCallback(T, name, callback, opts) {
-      if (name == null) dart.nullFailed(I[0], 168, 31, "name");
-      if (callback == null) dart.nullFailed(I[0], 168, 59, "callback");
-      let debugReport = opts && 'debugReport' in opts ? opts.debugReport : null;
-      if (!(callback != null)) dart.assertFailed(null, I[0], 169, 12, "callback != null");
-      let result = null;
-      try {
-        if (!dart.test(dart.fn(() => {
-          let t0;
-          if (dart.test(debug.debugPrintRecognizerCallbacksTrace)) {
-            let report = debugReport != null ? debugReport() : null;
-            let prefix = dart.test(debug.debugPrintGestureArenaDiagnostics) ? " "[$times](19) + "❙ " : "";
-            print.debugPrint(prefix + dart.str(this) + " calling " + dart.str(name) + " callback." + ((t0 = report, t0 == null ? null : t0[$isNotEmpty]) === true ? " " + dart.str(report) : ""));
+    [_executeTimingsCallbacks](timings) {
+      if (timings == null) dart.nullFailed(I[0], 283, 51, "timings");
+      let clonedCallbacks = T$.ListOfListOfFrameTimingTovoid().from(this[_timingsCallbacks]);
+      for (let callback of clonedCallbacks) {
+        try {
+          if (dart.test(this[_timingsCallbacks][$contains](callback))) {
+            callback(timings);
           }
+        } catch (e) {
+          let exception = dart.getThrown(e);
+          let stack = dart.stackTrace(e);
+          if (core.Object.is(exception)) {
+            let collector = null;
+            if (!dart.test(dart.fn(() => {
+              collector = dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
+                yield new (T$.DiagnosticsPropertyOfListOfFrameTimingTovoid()).new("The TimingsCallback that gets executed was", callback, {style: diagnostics.DiagnosticsTreeStyle.errorProperty});
+              }), T$.VoidToIterableOfDiagnosticsNode());
+              return true;
+            }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 293, 16, "() {\r\n          collector = () sync* {\r\n            yield DiagnosticsProperty<TimingsCallback>(\r\n              'The TimingsCallback that gets executed was',\r\n              callback,\r\n              style: DiagnosticsTreeStyle.errorProperty,\r\n            );\r\n          };\r\n          return true;\r\n        }()");
+            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: stack, context: new assertions.ErrorDescription.new("while executing callbacks for FrameTiming"), informationCollector: collector}));
+          } else
+            throw e;
+        }
+      }
+    }
+    initServiceExtensions() {
+      super.initServiceExtensions();
+      if (!false) {
+        this.registerNumericServiceExtension({name: "timeDilation", getter: dart.fn(() => async.async(core.double, function*() {
+            return binding$.timeDilation;
+          }), T$.VoidToFutureOfdouble()), setter: dart.fn(value => {
+            if (value == null) dart.nullFailed(I[0], 325, 25, "value");
+            return async.async(dart.void, function*() {
+              binding$.timeDilation = value;
+            });
+          }, T$.doubleToFutureOfvoid())});
+      }
+    }
+    get lifecycleState() {
+      return this[_lifecycleState];
+    }
+    handleAppLifecycleStateChanged(state) {
+      if (state == null) dart.nullFailed(I[0], 351, 57, "state");
+      if (!(state != null)) dart.assertFailed(null, I[0], 352, 12, "state != null");
+      this[_lifecycleState] = state;
+      switch (state) {
+        case C[8] || CT.C8:
+        case C[9] || CT.C9:
+        {
+          this[_setFramesEnabledState](true);
+          break;
+        }
+        case C[10] || CT.C10:
+        case C[11] || CT.C11:
+        {
+          this[_setFramesEnabledState](false);
+          break;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+    }
+    scheduleTask(T, task, priority, opts) {
+      if (task == null) dart.nullFailed(I[0], 396, 21, "task");
+      if (priority == null) dart.nullFailed(I[0], 397, 14, "priority");
+      let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
+      let flow = opts && 'flow' in opts ? opts.flow : null;
+      let isFirstTask = this[_taskQueue].isEmpty;
+      let entry = new (binding$._TaskEntry$(T)).new(task, priority.value, debugLabel, flow);
+      this[_taskQueue].add(entry);
+      if (dart.test(isFirstTask) && !dart.test(this.locked)) this[_ensureEventLoopCallback]();
+      return entry.completer.future;
+    }
+    unlocked() {
+      super.unlocked();
+      if (dart.test(this[_taskQueue].isNotEmpty)) this[_ensureEventLoopCallback]();
+    }
+    [_ensureEventLoopCallback]() {
+      if (!!dart.test(this.locked)) dart.assertFailed(null, I[0], 427, 12, "!locked");
+      if (!dart.test(this[_taskQueue].isNotEmpty)) dart.assertFailed(null, I[0], 428, 12, "_taskQueue.isNotEmpty");
+      if (dart.test(this[_hasRequestedAnEventLoopCallback])) return;
+      this[_hasRequestedAnEventLoopCallback] = true;
+      async.Timer.run(dart.bind(this, _runTasks));
+    }
+    [_runTasks]() {
+      this[_hasRequestedAnEventLoopCallback] = false;
+      if (dart.test(this.handleEventLoopCallback())) this[_ensureEventLoopCallback]();
+    }
+    handleEventLoopCallback() {
+      let t2;
+      if (dart.test(this[_taskQueue].isEmpty) || dart.test(this.locked)) return false;
+      let entry = this[_taskQueue].first;
+      if (dart.test((t2 = entry.priority, this.schedulingStrategy({priority: t2, scheduler: this})))) {
+        try {
+          this[_taskQueue].removeFirst();
+          entry.run();
+        } catch (e) {
+          let exception = dart.getThrown(e);
+          let exceptionStack = dart.stackTrace(e);
+          if (core.Object.is(exception)) {
+            let callbackStack = null;
+            if (!dart.test(dart.fn(() => {
+              callbackStack = entry.debugStack;
+              return true;
+            }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 463, 16, "() {\r\n          callbackStack = entry.debugStack;\r\n          return true;\r\n        }()");
+            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: exceptionStack, library: "scheduler library", context: new assertions.ErrorDescription.new("during a task callback"), informationCollector: callbackStack == null ? null : dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
+                yield new assertions.DiagnosticsStackTrace.new("\nThis exception was thrown in the context of a scheduler callback. " + "When the scheduler callback was _registered_ (as opposed to when the " + "exception was thrown), this was the stack", callbackStack);
+              }), T$.VoidToIterableOfDiagnosticsNode())}));
+          } else
+            throw e;
+        }
+        return this[_taskQueue].isNotEmpty;
+      }
+      return false;
+    }
+    get transientCallbackCount() {
+      return this[_transientCallbacks][$length];
+    }
+    scheduleFrameCallback(callback, opts) {
+      if (callback == null) dart.nullFailed(I[0], 520, 43, "callback");
+      let rescheduling = opts && 'rescheduling' in opts ? opts.rescheduling : false;
+      if (rescheduling == null) dart.nullFailed(I[0], 520, 60, "rescheduling");
+      this.scheduleFrame();
+      this[_nextFrameCallbackId] = dart.notNull(this[_nextFrameCallbackId]) + 1;
+      this[_transientCallbacks][$_set](this[_nextFrameCallbackId], new binding$._FrameCallbackEntry.new(callback, {rescheduling: rescheduling}));
+      return this[_nextFrameCallbackId];
+    }
+    cancelFrameCallbackWithId(id) {
+      if (id == null) dart.nullFailed(I[0], 534, 38, "id");
+      if (!(dart.notNull(id) > 0)) dart.assertFailed(null, I[0], 535, 12, "id > 0");
+      this[_transientCallbacks][$remove](id);
+      this[_removedIds].add(id);
+    }
+    debugAssertNoTransientCallbacks(reason) {
+      if (reason == null) dart.nullFailed(I[0], 560, 47, "reason");
+      if (!dart.test(dart.fn(() => {
+        if (dart.notNull(this.transientCallbackCount) > 0) {
+          let count = this.transientCallbackCount;
+          let callbacks = T$.LinkedHashMapOfint$_FrameCallbackEntry().from(this[_transientCallbacks]);
+          assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: reason, library: "scheduler library", informationCollector: dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
+              if (count === 1) {
+                yield new assertions.ErrorDescription.new("There was one transient callback left. " + "The stack trace for when it was registered is as follows:");
+              } else {
+                yield new assertions.ErrorDescription.new("There were " + dart.str(count) + " transient callbacks left. " + "The stack traces for when they were registered are as follows:");
+              }
+              for (let id of callbacks[$keys]) {
+                let entry = dart.nullCheck(callbacks[$_get](id));
+                yield new assertions.DiagnosticsStackTrace.new("── callback " + dart.str(id) + " ──", entry.debugStack, {showSeparator: false});
+              }
+            }), T$.VoidToIterableOfDiagnosticsNode())}));
+        }
+        return true;
+      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 561, 12, "() {\r\n      if (transientCallbackCount > 0) {\r\n        // We cache the values so that we can produce them later\r\n        // even if the information collector is called after\r\n        // the problem has been resolved.\r\n        final int count = transientCallbackCount;\r\n        final Map<int, _FrameCallbackEntry> callbacks = Map<int, _FrameCallbackEntry>.from(_transientCallbacks);\r\n        FlutterError.reportError(FlutterErrorDetails(\r\n          exception: reason,\r\n          library: 'scheduler library',\r\n          informationCollector: () sync* {\r\n            if (count == 1) {\r\n              // TODO(jacobr): I have added an extra line break in this case.\r\n              yield ErrorDescription(\r\n                'There was one transient callback left. '\r\n                'The stack trace for when it was registered is as follows:',\r\n              );\r\n            } else {\r\n              yield ErrorDescription(\r\n                'There were $count transient callbacks left. '\r\n                'The stack traces for when they were registered are as follows:',\r\n              );\r\n            }\r\n            for (final int id in callbacks.keys) {\r\n              final _FrameCallbackEntry entry = callbacks[id]!;\r\n              yield DiagnosticsStackTrace('── callback $id ──', entry.debugStack, showSeparator: false);\r\n            }\r\n          },\r\n        ));\r\n      }\r\n      return true;\r\n    }()");
+      return true;
+    }
+    addPersistentFrameCallback(callback) {
+      if (callback == null) dart.nullFailed(I[0], 647, 49, "callback");
+      this[_persistentCallbacks][$add](callback);
+    }
+    addPostFrameCallback(callback) {
+      if (callback == null) dart.nullFailed(I[0], 673, 43, "callback");
+      this[_postFrameCallbacks][$add](callback);
+    }
+    get endOfFrame() {
+      if (this[_nextFrameCompleter] == null) {
+        if (this.schedulerPhase == binding$.SchedulerPhase.idle) this.scheduleFrame();
+        this[_nextFrameCompleter] = T$.CompleterOfvoid().new();
+        this.addPostFrameCallback(dart.fn(timeStamp => {
+          if (timeStamp == null) dart.nullFailed(I[0], 693, 38, "timeStamp");
+          dart.nullCheck(this[_nextFrameCompleter]).complete();
+          this[_nextFrameCompleter] = null;
+        }, T$.DurationTovoid()));
+      }
+      return dart.nullCheck(this[_nextFrameCompleter]).future;
+    }
+    get hasScheduledFrame() {
+      return this[_hasScheduledFrame];
+    }
+    get schedulerPhase() {
+      return this[_schedulerPhase];
+    }
+    get framesEnabled() {
+      return this[_framesEnabled];
+    }
+    [_setFramesEnabledState](enabled) {
+      if (enabled == null) dart.nullFailed(I[0], 715, 36, "enabled");
+      if (this[_framesEnabled] == enabled) return;
+      this[_framesEnabled] = enabled;
+      if (dart.test(enabled)) this.scheduleFrame();
+    }
+    ensureFrameCallbacksRegistered() {
+      let t3, t3$;
+      t3 = this.window;
+      t3.onBeginFrame == null ? t3.onBeginFrame = dart.bind(this, _handleBeginFrame) : null;
+      t3$ = this.window;
+      t3$.onDrawFrame == null ? t3$.onDrawFrame = dart.bind(this, _handleDrawFrame) : null;
+    }
+    ensureVisualUpdate() {
+      switch (this.schedulerPhase) {
+        case C[0] || CT.C0:
+        case C[4] || CT.C4:
+        {
+          this.scheduleFrame();
+          return;
+        }
+        case C[1] || CT.C1:
+        case C[2] || CT.C2:
+        case C[3] || CT.C3:
+        {
+          return;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+    }
+    scheduleFrame() {
+      if (dart.test(this[_hasScheduledFrame]) || !dart.test(this.framesEnabled)) return;
+      if (!dart.test(dart.fn(() => {
+        if (dart.test(debug$.debugPrintScheduleFrameStacks)) assertions.debugPrintStack({label: "scheduleFrame() called. Current phase is " + dart.str(this.schedulerPhase) + "."});
+        return true;
+      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 787, 12, "() {\r\n      if (debugPrintScheduleFrameStacks)\r\n        debugPrintStack(label: 'scheduleFrame() called. Current phase is $schedulerPhase.');\r\n      return true;\r\n    }()");
+      this.ensureFrameCallbacksRegistered();
+      this.window.scheduleFrame();
+      this[_hasScheduledFrame] = true;
+    }
+    scheduleForcedFrame() {
+      if (!dart.test(this.framesEnabled)) return;
+      if (dart.test(this[_hasScheduledFrame])) return;
+      if (!dart.test(dart.fn(() => {
+        if (dart.test(debug$.debugPrintScheduleFrameStacks)) assertions.debugPrintStack({label: "scheduleForcedFrame() called. Current phase is " + dart.str(this.schedulerPhase) + "."});
+        return true;
+      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 825, 12, "() {\r\n      if (debugPrintScheduleFrameStacks)\r\n        debugPrintStack(label: 'scheduleForcedFrame() called. Current phase is $schedulerPhase.');\r\n      return true;\r\n    }()");
+      this.window.scheduleFrame();
+      this[_hasScheduledFrame] = true;
+    }
+    scheduleWarmUpFrame() {
+      if (dart.test(this[_warmUpFrame]) || this.schedulerPhase != binding$.SchedulerPhase.idle) return;
+      this[_warmUpFrame] = true;
+      developer.Timeline.startSync("Warm-up frame");
+      let hadScheduledFrame = this[_hasScheduledFrame];
+      async.Timer.run(dart.fn(() => {
+        if (!dart.test(this[_warmUpFrame])) dart.assertFailed(null, I[0], 860, 14, "_warmUpFrame");
+        this.handleBeginFrame(null);
+      }, T$.VoidTovoid()));
+      async.Timer.run(dart.fn(() => {
+        if (!dart.test(this[_warmUpFrame])) dart.assertFailed(null, I[0], 864, 14, "_warmUpFrame");
+        this.handleDrawFrame();
+        this.resetEpoch();
+        this[_warmUpFrame] = false;
+        if (dart.test(hadScheduledFrame)) this.scheduleFrame();
+      }, T$.VoidTovoid()));
+      this.lockEvents(dart.fn(() => async.async(dart.void, (function*() {
+        yield this.endOfFrame;
+        developer.Timeline.finishSync();
+      }).bind(this)), T$.VoidToFutureOfvoid()));
+    }
+    resetEpoch() {
+      this[_epochStart] = this[_adjustForEpoch](this[_lastRawTimeStamp]);
+      this[_firstRawTimeStampInEpoch] = null;
+    }
+    [_adjustForEpoch](rawTimeStamp) {
+      if (rawTimeStamp == null) dart.nullFailed(I[0], 922, 37, "rawTimeStamp");
+      let rawDurationSinceEpoch = this[_firstRawTimeStampInEpoch] == null ? core.Duration.zero : rawTimeStamp['-'](dart.nullCheck(this[_firstRawTimeStampInEpoch]));
+      return new core.Duration.new({microseconds: (dart.notNull(rawDurationSinceEpoch.inMicroseconds) / dart.notNull(binding$.timeDilation))[$round]() + dart.notNull(this[_epochStart].inMicroseconds)});
+    }
+    get currentFrameTimeStamp() {
+      if (!(this[_currentFrameTimeStamp] != null)) dart.assertFailed(null, I[0], 933, 12, "_currentFrameTimeStamp != null");
+      return dart.nullCheck(this[_currentFrameTimeStamp]);
+    }
+    get currentSystemFrameTimeStamp() {
+      if (!(this[_lastRawTimeStamp] != null)) dart.assertFailed(null, I[0], 951, 12, "_lastRawTimeStamp != null");
+      return this[_lastRawTimeStamp];
+    }
+    [_handleBeginFrame](rawTimeStamp) {
+      if (rawTimeStamp == null) dart.nullFailed(I[0], 968, 35, "rawTimeStamp");
+      if (dart.test(this[_warmUpFrame])) {
+        if (!!dart.test(this[_rescheduleAfterWarmUpFrame])) dart.assertFailed(null, I[0], 973, 14, "!_rescheduleAfterWarmUpFrame");
+        this[_rescheduleAfterWarmUpFrame] = true;
+        return;
+      }
+      this.handleBeginFrame(rawTimeStamp);
+    }
+    [_handleDrawFrame]() {
+      if (dart.test(this[_rescheduleAfterWarmUpFrame])) {
+        this[_rescheduleAfterWarmUpFrame] = false;
+        this.addPostFrameCallback(dart.fn(timeStamp => {
+          if (timeStamp == null) dart.nullFailed(I[0], 985, 38, "timeStamp");
+          this[_hasScheduledFrame] = false;
+          this.scheduleFrame();
+        }, T$.DurationTovoid()));
+        return;
+      }
+      this.handleDrawFrame();
+    }
+    handleBeginFrame(rawTimeStamp) {
+      let t3;
+      developer.Timeline.startSync("Frame", {arguments: debug.timelineArgumentsIndicatingLandmarkEvent});
+      this[_firstRawTimeStampInEpoch] == null ? this[_firstRawTimeStampInEpoch] = rawTimeStamp : null;
+      this[_currentFrameTimeStamp] = this[_adjustForEpoch]((t3 = rawTimeStamp, t3 == null ? this[_lastRawTimeStamp] : t3));
+      if (rawTimeStamp != null) this[_lastRawTimeStamp] = rawTimeStamp;
+      if (!dart.test(dart.fn(() => {
+        this[_debugFrameNumber] = dart.notNull(this[_debugFrameNumber]) + 1;
+        if (dart.test(debug$.debugPrintBeginFrameBanner) || dart.test(debug$.debugPrintEndFrameBanner)) {
+          let frameTimeStampDescription = new core.StringBuffer.new();
+          if (rawTimeStamp != null) {
+            binding$.SchedulerBinding._debugDescribeTimeStamp(dart.nullCheck(this[_currentFrameTimeStamp]), frameTimeStampDescription);
+          } else {
+            frameTimeStampDescription.write("(warm-up frame)");
+          }
+          this[_debugBanner] = "▄▄▄▄▄▄▄▄ Frame " + dart.toString(this[_debugFrameNumber])[$padRight](7) + "   " + frameTimeStampDescription.toString()[$padLeft](18) + " ▄▄▄▄▄▄▄▄";
+          if (dart.test(debug$.debugPrintBeginFrameBanner)) print.debugPrint(this[_debugBanner]);
+        }
+        return true;
+      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 1031, 12, "() {\r\n      _debugFrameNumber += 1;\r\n\r\n      if (debugPrintBeginFrameBanner || debugPrintEndFrameBanner) {\r\n        final StringBuffer frameTimeStampDescription = StringBuffer();\r\n        if (rawTimeStamp != null) {\r\n          _debugDescribeTimeStamp(_currentFrameTimeStamp!, frameTimeStampDescription);\r\n        } else {\r\n          frameTimeStampDescription.write('(warm-up frame)');\r\n        }\r\n        _debugBanner = '▄▄▄▄▄▄▄▄ Frame ${_debugFrameNumber.toString().padRight(7)}   ${frameTimeStampDescription.toString().padLeft(18)} ▄▄▄▄▄▄▄▄';\r\n        if (debugPrintBeginFrameBanner)\r\n          debugPrint(_debugBanner);\r\n      }\r\n      return true;\r\n    }()");
+      if (!(this.schedulerPhase == binding$.SchedulerPhase.idle)) dart.assertFailed(null, I[0], 1048, 12, "schedulerPhase == SchedulerPhase.idle");
+      this[_hasScheduledFrame] = false;
+      try {
+        developer.Timeline.startSync("Animate", {arguments: debug.timelineArgumentsIndicatingLandmarkEvent});
+        this[_schedulerPhase] = binding$.SchedulerPhase.transientCallbacks;
+        let callbacks = this[_transientCallbacks];
+        this[_transientCallbacks] = new (T$.IdentityMapOfint$_FrameCallbackEntry()).new();
+        callbacks[$forEach](dart.fn((id, callbackEntry) => {
+          if (id == null) dart.nullFailed(I[0], 1056, 30, "id");
+          if (callbackEntry == null) dart.nullFailed(I[0], 1056, 54, "callbackEntry");
+          if (!dart.test(this[_removedIds].contains(id))) this[_invokeFrameCallback](callbackEntry.callback, dart.nullCheck(this[_currentFrameTimeStamp]), callbackEntry.debugStack);
+        }, T$.intAnd_FrameCallbackEntryTovoid()));
+        this[_removedIds].clear();
+      } finally {
+        this[_schedulerPhase] = binding$.SchedulerPhase.midFrameMicrotasks;
+      }
+    }
+    handleDrawFrame() {
+      if (!(this[_schedulerPhase] == binding$.SchedulerPhase.midFrameMicrotasks)) dart.assertFailed(null, I[0], 1076, 12, "_schedulerPhase == SchedulerPhase.midFrameMicrotasks");
+      developer.Timeline.finishSync();
+      try {
+        this[_schedulerPhase] = binding$.SchedulerPhase.persistentCallbacks;
+        for (let callback of this[_persistentCallbacks])
+          this[_invokeFrameCallback](callback, dart.nullCheck(this[_currentFrameTimeStamp]));
+        this[_schedulerPhase] = binding$.SchedulerPhase.postFrameCallbacks;
+        let localPostFrameCallbacks = T$.ListOfDurationTovoid().from(this[_postFrameCallbacks]);
+        this[_postFrameCallbacks][$clear]();
+        for (let callback of localPostFrameCallbacks)
+          this[_invokeFrameCallback](callback, dart.nullCheck(this[_currentFrameTimeStamp]));
+      } finally {
+        this[_schedulerPhase] = binding$.SchedulerPhase.idle;
+        developer.Timeline.finishSync();
+        if (!dart.test(dart.fn(() => {
+          if (dart.test(debug$.debugPrintEndFrameBanner)) print.debugPrint("▀"[$times](dart.nullCheck(this[_debugBanner]).length));
+          this[_debugBanner] = null;
           return true;
-        }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 172, 14, "() {\r\n        if (debugPrintRecognizerCallbacksTrace) {\r\n          final String? report = debugReport != null ? debugReport() : null;\r\n          // The 19 in the line below is the width of the prefix used by\r\n          // _debugLogDiagnostic in arena.dart.\r\n          final String prefix = debugPrintGestureArenaDiagnostics ? ' ' * 19 + '❙ ' : '';\r\n          debugPrint('$prefix$this calling $name callback.${ report?.isNotEmpty == true ? \" $report\" : \"\" }');\r\n        }\r\n        return true;\r\n      }()");
-        result = callback();
+        }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 1094, 14, "() {\r\n        if (debugPrintEndFrameBanner)\r\n          debugPrint('▀' * _debugBanner!.length);\r\n        _debugBanner = null;\r\n        return true;\r\n      }()");
+        this[_currentFrameTimeStamp] = null;
+      }
+    }
+    [_profileFramePostEvent](frameNumber, frameTiming) {
+      if (frameNumber == null) dart.nullFailed(I[0], 1104, 35, "frameNumber");
+      if (frameTiming == null) dart.nullFailed(I[0], 1104, 60, "frameTiming");
+      this.postEvent("Flutter.Frame", new (T$.IdentityMapOfString$dynamic()).from(["number", frameNumber, "startTime", frameTiming.timestampInMicroseconds(ui.FramePhase.buildStart), "elapsed", frameTiming.totalSpan.inMicroseconds, "build", frameTiming.buildDuration.inMicroseconds, "raster", frameTiming.rasterDuration.inMicroseconds, "vsyncOverhead", frameTiming.vsyncOverhead.inMicroseconds]));
+    }
+    [_invokeFrameCallback](callback, timeStamp, callbackStack = null) {
+      if (callback == null) dart.nullFailed(I[0], 1136, 43, "callback");
+      if (timeStamp == null) dart.nullFailed(I[0], 1136, 62, "timeStamp");
+      if (!(callback != null)) dart.assertFailed(null, I[0], 1137, 12, "callback != null");
+      if (!(binding$._FrameCallbackEntry.debugCurrentCallbackStack == null)) dart.assertFailed(null, I[0], 1138, 12, "_FrameCallbackEntry.debugCurrentCallbackStack == null");
+      if (!dart.test(dart.fn(() => {
+        binding$._FrameCallbackEntry.debugCurrentCallbackStack = callbackStack;
+        return true;
+      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 1139, 12, "() {\r\n      _FrameCallbackEntry.debugCurrentCallbackStack = callbackStack;\r\n      return true;\r\n    }()");
+      try {
+        callback(timeStamp);
       } catch (e) {
         let exception = dart.getThrown(e);
-        let stack = dart.stackTrace(e);
+        let exceptionStack = dart.stackTrace(e);
         if (core.Object.is(exception)) {
-          let collector = null;
-          if (!dart.test(dart.fn(() => {
-            collector = dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new((function*() {
-              yield new diagnostics.StringProperty.new("Handler", name);
-              yield new (T$.DiagnosticsPropertyOfGestureRecognizer()).new("Recognizer", this, {style: diagnostics.DiagnosticsTreeStyle.errorProperty});
-            }).bind(this)), T$.VoidToIterableOfDiagnosticsNode());
-            return true;
-          }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 185, 14, "() {\r\n        collector = () sync* {\r\n          yield StringProperty('Handler', name);\r\n          yield DiagnosticsProperty<GestureRecognizer>('Recognizer', this, style: DiagnosticsTreeStyle.errorProperty);\r\n        };\r\n        return true;\r\n      }()");
-          assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: stack, library: "gesture", context: new assertions.ErrorDescription.new("while handling a gesture"), informationCollector: collector}));
+          assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: exceptionStack, library: "scheduler library", context: new assertions.ErrorDescription.new("during a scheduler callback"), informationCollector: callbackStack == null ? null : dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
+              yield new assertions.DiagnosticsStackTrace.new("\nThis exception was thrown in the context of a scheduler callback. " + "When the scheduler callback was _registered_ (as opposed to when the " + "exception was thrown), this was the stack", callbackStack);
+            }), T$.VoidToIterableOfDiagnosticsNode())}));
         } else
           throw e;
       }
-      return result;
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 204, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new (T$.DiagnosticsPropertyOfObject()).new("debugOwner", this.debugOwner, {defaultValue: null}));
+      if (!dart.test(dart.fn(() => {
+        binding$._FrameCallbackEntry.debugCurrentCallbackStack = null;
+        return true;
+      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 1161, 12, "() {\r\n      _FrameCallbackEntry.debugCurrentCallbackStack = null;\r\n      return true;\r\n    }()");
     }
   };
-  (recognizer.GestureRecognizer.new = function(opts) {
-    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    this[_pointerToKind] = new (T$.IdentityMapOfint$PointerDeviceKind()).new();
-    this[debugOwner$] = debugOwner;
-    this[_kindFilter] = kind;
-    ;
-  }).prototype = recognizer.GestureRecognizer.prototype;
-  dart.addTypeTests(recognizer.GestureRecognizer);
-  dart.addTypeCaches(recognizer.GestureRecognizer);
-  dart.setMethodSignature(recognizer.GestureRecognizer, () => ({
-    __proto__: dart.getMethods(recognizer.GestureRecognizer.__proto__),
-    addPointer: dart.fnType(dart.void, [events.PointerDownEvent]),
-    addAllowedPointer: dart.fnType(dart.void, [events.PointerDownEvent]),
-    handleNonAllowedPointer: dart.fnType(dart.void, [events.PointerDownEvent]),
-    isPointerAllowed: dart.fnType(core.bool, [events.PointerDownEvent]),
-    getKindForPointer: dart.fnType(ui.PointerDeviceKind, [core.int]),
-    dispose: dart.fnType(dart.void, []),
-    invokeCallback: dart.gFnType(T => [dart.nullable(T), [core.String, dart.fnType(T, [])], {debugReport: dart.nullable(dart.fnType(core.String, []))}, {}], T => [dart.nullable(core.Object)])
+  (binding$.SchedulerBinding[dart.mixinNew] = function() {
+    this[_timingsCallbacks] = T$.JSArrayOfListOfFrameTimingTovoid().of([]);
+    this[_lifecycleState] = null;
+    this[schedulingStrategy] = C[6] || CT.C6;
+    this[_taskQueue] = new (T$.HeapPriorityQueueOf_TaskEntry()).new(C[7] || CT.C7);
+    this[_hasRequestedAnEventLoopCallback] = false;
+    this[_nextFrameCallbackId] = 0;
+    this[_transientCallbacks] = new (T$.IdentityMapOfint$_FrameCallbackEntry()).new();
+    this[_removedIds] = new (T$._IdentityHashSetOfint()).new();
+    this[_persistentCallbacks] = T$.JSArrayOfDurationTovoid().of([]);
+    this[_postFrameCallbacks] = T$.JSArrayOfDurationTovoid().of([]);
+    this[_nextFrameCompleter] = null;
+    this[_hasScheduledFrame] = false;
+    this[_schedulerPhase] = binding$.SchedulerPhase.idle;
+    this[_framesEnabled] = true;
+    this[_warmUpFrame] = false;
+    this[_firstRawTimeStampInEpoch] = null;
+    this[_epochStart] = core.Duration.zero;
+    this[_lastRawTimeStamp] = core.Duration.zero;
+    this[_currentFrameTimeStamp] = null;
+    this[_debugFrameNumber] = 0;
+    this[_debugBanner] = null;
+    this[_rescheduleAfterWarmUpFrame] = false;
+  }).prototype = binding$.SchedulerBinding.prototype;
+  dart.addTypeTests(binding$.SchedulerBinding);
+  dart.addTypeCaches(binding$.SchedulerBinding);
+  binding$.SchedulerBinding[dart.implements] = () => [binding.BindingBase];
+  dart.setMethodSignature(binding$.SchedulerBinding, () => ({
+    __proto__: dart.getMethods(binding$.SchedulerBinding.__proto__),
+    addTimingsCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.List$(ui.FrameTiming)])]),
+    removeTimingsCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.List$(ui.FrameTiming)])]),
+    [_executeTimingsCallbacks]: dart.fnType(dart.void, [core.List$(ui.FrameTiming)]),
+    handleAppLifecycleStateChanged: dart.fnType(dart.void, [ui.AppLifecycleState]),
+    scheduleTask: dart.gFnType(T => [async.Future$(T), [dart.fnType(T, []), priority$.Priority], {debugLabel: dart.nullable(core.String), flow: dart.nullable(developer.Flow)}, {}], T => [dart.nullable(core.Object)]),
+    [_ensureEventLoopCallback]: dart.fnType(dart.void, []),
+    [_runTasks]: dart.fnType(dart.void, []),
+    handleEventLoopCallback: dart.fnType(core.bool, []),
+    scheduleFrameCallback: dart.fnType(core.int, [dart.fnType(dart.void, [core.Duration])], {rescheduling: core.bool}, {}),
+    cancelFrameCallbackWithId: dart.fnType(dart.void, [core.int]),
+    debugAssertNoTransientCallbacks: dart.fnType(core.bool, [core.String]),
+    addPersistentFrameCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration])]),
+    addPostFrameCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration])]),
+    [_setFramesEnabledState]: dart.fnType(dart.void, [core.bool]),
+    ensureFrameCallbacksRegistered: dart.fnType(dart.void, []),
+    ensureVisualUpdate: dart.fnType(dart.void, []),
+    scheduleFrame: dart.fnType(dart.void, []),
+    scheduleForcedFrame: dart.fnType(dart.void, []),
+    scheduleWarmUpFrame: dart.fnType(dart.void, []),
+    resetEpoch: dart.fnType(dart.void, []),
+    [_adjustForEpoch]: dart.fnType(core.Duration, [core.Duration]),
+    [_handleBeginFrame]: dart.fnType(dart.void, [core.Duration]),
+    [_handleDrawFrame]: dart.fnType(dart.void, []),
+    handleBeginFrame: dart.fnType(dart.void, [dart.nullable(core.Duration)]),
+    handleDrawFrame: dart.fnType(dart.void, []),
+    [_profileFramePostEvent]: dart.fnType(dart.void, [core.int, ui.FrameTiming]),
+    [_invokeFrameCallback]: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration]), core.Duration], [dart.nullable(core.StackTrace)])
   }));
-  dart.setLibraryUri(recognizer.GestureRecognizer, I[1]);
-  dart.setFieldSignature(recognizer.GestureRecognizer, () => ({
-    __proto__: dart.getFields(recognizer.GestureRecognizer.__proto__),
-    debugOwner: dart.finalFieldType(dart.nullable(core.Object)),
-    [_kindFilter]: dart.finalFieldType(dart.nullable(ui.PointerDeviceKind)),
-    [_pointerToKind]: dart.finalFieldType(core.Map$(core.int, ui.PointerDeviceKind))
+  dart.setGetterSignature(binding$.SchedulerBinding, () => ({
+    __proto__: dart.getGetters(binding$.SchedulerBinding.__proto__),
+    lifecycleState: dart.nullable(ui.AppLifecycleState),
+    transientCallbackCount: core.int,
+    endOfFrame: async.Future$(dart.void),
+    hasScheduledFrame: core.bool,
+    schedulerPhase: binding$.SchedulerPhase,
+    framesEnabled: core.bool,
+    currentFrameTimeStamp: core.Duration,
+    currentSystemFrameTimeStamp: core.Duration
   }));
-  var _entries = dart.privateName(recognizer, "_entries");
-  var _trackedPointers = dart.privateName(recognizer, "_trackedPointers");
-  var _team = dart.privateName(recognizer, "_team");
-  var _addPointerToArena = dart.privateName(recognizer, "_addPointerToArena");
-  recognizer.OneSequenceGestureRecognizer = class OneSequenceGestureRecognizer extends recognizer.GestureRecognizer {
-    handleNonAllowedPointer(event) {
-      if (event == null) dart.nullFailed(I[0], 231, 49, "event");
-      this.resolve(arena.GestureDisposition.rejected);
-    }
-    acceptGesture(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 240, 26, "pointer");
-    }
-    rejectGesture(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 243, 26, "pointer");
-    }
-    resolve(disposition) {
-      if (disposition == null) dart.nullFailed(I[0], 256, 35, "disposition");
-      let localEntries = T$.ListOfGestureArenaEntry().from(this[_entries][$values]);
-      this[_entries][$clear]();
-      for (let entry of localEntries)
-        entry.resolve(disposition);
-    }
-    resolvePointer(pointer, disposition) {
-      if (pointer == null) dart.nullFailed(I[0], 267, 27, "pointer");
-      if (disposition == null) dart.nullFailed(I[0], 267, 55, "disposition");
-      let entry = this[_entries][$_get](pointer);
-      if (entry != null) {
-        this[_entries][$remove](pointer);
-        entry.resolve(disposition);
-      }
-    }
-    dispose() {
-      this.resolve(arena.GestureDisposition.rejected);
-      for (let pointer of this[_trackedPointers])
-        dart.nullCheck(binding.GestureBinding.instance).pointerRouter.removeRoute(pointer, dart.bind(this, 'handleEvent'));
-      this[_trackedPointers].clear();
-      if (!dart.test(this[_entries][$isEmpty])) dart.assertFailed(null, I[0], 281, 12, "_entries.isEmpty");
-      super.dispose();
-    }
-    get team() {
-      return this[_team];
-    }
-    set team(value) {
-      if (!(value != null)) dart.assertFailed(null, I[0], 299, 12, "value != null");
-      if (!dart.test(this[_entries][$isEmpty])) dart.assertFailed(null, I[0], 300, 12, "_entries.isEmpty");
-      if (!dart.test(this[_trackedPointers][$isEmpty])) dart.assertFailed(null, I[0], 301, 12, "_trackedPointers.isEmpty");
-      if (!(this[_team] == null)) dart.assertFailed(null, I[0], 302, 12, "_team == null");
-      this[_team] = value;
-    }
-    [_addPointerToArena](pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 306, 44, "pointer");
-      if (this[_team] != null) return dart.nullCheck(this[_team]).add(pointer, this);
-      return dart.nullCheck(binding.GestureBinding.instance).gestureArena.add(pointer, this);
-    }
-    startTrackingPointer(pointer, transform = null) {
-      if (pointer == null) dart.nullFailed(I[0], 322, 33, "pointer");
-      dart.nullCheck(binding.GestureBinding.instance).pointerRouter.addRoute(pointer, dart.bind(this, 'handleEvent'), transform);
-      this[_trackedPointers].add(pointer);
-      if (!!dart.test(this[_entries][$containsValue](pointer))) dart.assertFailed(null, I[0], 325, 12, "!_entries.containsValue(pointer)");
-      this[_entries][$_set](pointer, this[_addPointerToArena](pointer));
-    }
-    stopTrackingPointer(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 336, 32, "pointer");
-      if (dart.test(this[_trackedPointers].contains(pointer))) {
-        dart.nullCheck(binding.GestureBinding.instance).pointerRouter.removeRoute(pointer, dart.bind(this, 'handleEvent'));
-        this[_trackedPointers].remove(pointer);
-        if (dart.test(this[_trackedPointers][$isEmpty])) this.didStopTrackingLastPointer(pointer);
-      }
-    }
-    stopTrackingIfPointerNoLongerDown(event) {
-      if (event == null) dart.nullFailed(I[0], 348, 55, "event");
-      if (events.PointerUpEvent.is(event) || events.PointerCancelEvent.is(event)) this.stopTrackingPointer(event.pointer);
-    }
-  };
-  (recognizer.OneSequenceGestureRecognizer.new = function(opts) {
-    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    this[_entries] = new (T$.IdentityMapOfint$GestureArenaEntry()).new();
-    this[_trackedPointers] = new (T$._IdentityHashSetOfint()).new();
-    this[_team] = null;
-    recognizer.OneSequenceGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner, kind: kind});
-    ;
-  }).prototype = recognizer.OneSequenceGestureRecognizer.prototype;
-  dart.addTypeTests(recognizer.OneSequenceGestureRecognizer);
-  dart.addTypeCaches(recognizer.OneSequenceGestureRecognizer);
-  dart.setMethodSignature(recognizer.OneSequenceGestureRecognizer, () => ({
-    __proto__: dart.getMethods(recognizer.OneSequenceGestureRecognizer.__proto__),
-    acceptGesture: dart.fnType(dart.void, [core.int]),
-    rejectGesture: dart.fnType(dart.void, [core.int]),
-    resolve: dart.fnType(dart.void, [arena.GestureDisposition]),
-    resolvePointer: dart.fnType(dart.void, [core.int, arena.GestureDisposition]),
-    [_addPointerToArena]: dart.fnType(arena.GestureArenaEntry, [core.int]),
-    startTrackingPointer: dart.fnType(dart.void, [core.int], [dart.nullable(vector_math_64.Matrix4)]),
-    stopTrackingPointer: dart.fnType(dart.void, [core.int]),
-    stopTrackingIfPointerNoLongerDown: dart.fnType(dart.void, [events.PointerEvent])
+  dart.setLibraryUri(binding$.SchedulerBinding, I[1]);
+  dart.setFieldSignature(binding$.SchedulerBinding, () => ({
+    __proto__: dart.getFields(binding$.SchedulerBinding.__proto__),
+    [_timingsCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.List$(ui.FrameTiming)]))),
+    [_lifecycleState]: dart.fieldType(dart.nullable(ui.AppLifecycleState)),
+    schedulingStrategy: dart.fieldType(dart.fnType(core.bool, [], {}, {priority: core.int, scheduler: binding$.SchedulerBinding})),
+    [_taskQueue]: dart.finalFieldType(priority_queue.PriorityQueue$(binding$._TaskEntry)),
+    [_hasRequestedAnEventLoopCallback]: dart.fieldType(core.bool),
+    [_nextFrameCallbackId]: dart.fieldType(core.int),
+    [_transientCallbacks]: dart.fieldType(core.Map$(core.int, binding$._FrameCallbackEntry)),
+    [_removedIds]: dart.finalFieldType(core.Set$(core.int)),
+    [_persistentCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.Duration]))),
+    [_postFrameCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.Duration]))),
+    [_nextFrameCompleter]: dart.fieldType(dart.nullable(async.Completer$(dart.void))),
+    [_hasScheduledFrame]: dart.fieldType(core.bool),
+    [_schedulerPhase]: dart.fieldType(binding$.SchedulerPhase),
+    [_framesEnabled]: dart.fieldType(core.bool),
+    [_warmUpFrame]: dart.fieldType(core.bool),
+    [_firstRawTimeStampInEpoch]: dart.fieldType(dart.nullable(core.Duration)),
+    [_epochStart]: dart.fieldType(core.Duration),
+    [_lastRawTimeStamp]: dart.fieldType(core.Duration),
+    [_currentFrameTimeStamp]: dart.fieldType(dart.nullable(core.Duration)),
+    [_debugFrameNumber]: dart.fieldType(core.int),
+    [_debugBanner]: dart.fieldType(dart.nullable(core.String)),
+    [_rescheduleAfterWarmUpFrame]: dart.fieldType(core.bool)
   }));
-  dart.setGetterSignature(recognizer.OneSequenceGestureRecognizer, () => ({
-    __proto__: dart.getGetters(recognizer.OneSequenceGestureRecognizer.__proto__),
-    team: dart.nullable(team.GestureArenaTeam)
-  }));
-  dart.setSetterSignature(recognizer.OneSequenceGestureRecognizer, () => ({
-    __proto__: dart.getSetters(recognizer.OneSequenceGestureRecognizer.__proto__),
-    team: dart.nullable(team.GestureArenaTeam)
-  }));
-  dart.setLibraryUri(recognizer.OneSequenceGestureRecognizer, I[1]);
-  dart.setFieldSignature(recognizer.OneSequenceGestureRecognizer, () => ({
-    __proto__: dart.getFields(recognizer.OneSequenceGestureRecognizer.__proto__),
-    [_entries]: dart.finalFieldType(core.Map$(core.int, arena.GestureArenaEntry)),
-    [_trackedPointers]: dart.finalFieldType(core.Set$(core.int)),
-    [_team]: dart.fieldType(dart.nullable(team.GestureArenaTeam))
-  }));
-  recognizer.GestureRecognizerState = class GestureRecognizerState extends core.Object {
-    toString() {
-      return this[_name$];
-    }
-  };
-  (recognizer.GestureRecognizerState.new = function(index, _name) {
-    if (index == null) dart.nullFailed(I[0], 361, 6, "index");
-    if (_name == null) dart.nullFailed(I[0], 361, 6, "_name");
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = recognizer.GestureRecognizerState.prototype;
-  dart.addTypeTests(recognizer.GestureRecognizerState);
-  dart.addTypeCaches(recognizer.GestureRecognizerState);
-  dart.setLibraryUri(recognizer.GestureRecognizerState, I[1]);
-  dart.setFieldSignature(recognizer.GestureRecognizerState, () => ({
-    __proto__: dart.getFields(recognizer.GestureRecognizerState.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
-  }));
-  dart.defineExtensionMethods(recognizer.GestureRecognizerState, ['toString']);
-  recognizer.GestureRecognizerState.ready = C[3] || CT.C3;
-  recognizer.GestureRecognizerState.possible = C[4] || CT.C4;
-  recognizer.GestureRecognizerState.defunct = C[5] || CT.C5;
-  recognizer.GestureRecognizerState.values = C[6] || CT.C6;
-  var deadline$ = dart.privateName(recognizer, "PrimaryPointerGestureRecognizer.deadline");
-  var preAcceptSlopTolerance$ = dart.privateName(recognizer, "PrimaryPointerGestureRecognizer.preAcceptSlopTolerance");
-  var postAcceptSlopTolerance$ = dart.privateName(recognizer, "PrimaryPointerGestureRecognizer.postAcceptSlopTolerance");
-  var state = dart.privateName(recognizer, "PrimaryPointerGestureRecognizer.state");
-  var primaryPointer = dart.privateName(recognizer, "PrimaryPointerGestureRecognizer.primaryPointer");
-  var initialPosition = dart.privateName(recognizer, "PrimaryPointerGestureRecognizer.initialPosition");
-  var _gestureAccepted = dart.privateName(recognizer, "_gestureAccepted");
-  var _timer = dart.privateName(recognizer, "_timer");
-  var _getGlobalDistance = dart.privateName(recognizer, "_getGlobalDistance");
-  var _stopTimer = dart.privateName(recognizer, "_stopTimer");
-  recognizer.PrimaryPointerGestureRecognizer = class PrimaryPointerGestureRecognizer extends recognizer.OneSequenceGestureRecognizer {
-    get deadline() {
-      return this[deadline$];
-    }
-    set deadline(value) {
-      super.deadline = value;
-    }
-    get preAcceptSlopTolerance() {
-      return this[preAcceptSlopTolerance$];
-    }
-    set preAcceptSlopTolerance(value) {
-      super.preAcceptSlopTolerance = value;
-    }
-    get postAcceptSlopTolerance() {
-      return this[postAcceptSlopTolerance$];
-    }
-    set postAcceptSlopTolerance(value) {
-      super.postAcceptSlopTolerance = value;
-    }
-    get state() {
-      return this[state];
-    }
-    set state(value) {
-      this[state] = value;
-    }
-    get primaryPointer() {
-      return this[primaryPointer];
-    }
-    set primaryPointer(value) {
-      this[primaryPointer] = value;
-    }
-    get initialPosition() {
-      return this[initialPosition];
-    }
-    set initialPosition(value) {
-      this[initialPosition] = value;
-    }
-    addAllowedPointer(event) {
-      if (event == null) dart.nullFailed(I[0], 447, 43, "event");
-      this.startTrackingPointer(event.pointer, event.transform);
-      if (this.state == recognizer.GestureRecognizerState.ready) {
-        this.state = recognizer.GestureRecognizerState.possible;
-        this.primaryPointer = event.pointer;
-        this.initialPosition = new recognizer.OffsetPair.new({local: event.localPosition, global: event.position});
-        if (this.deadline != null) this[_timer] = async.Timer.new(dart.nullCheck(this.deadline), dart.fn(() => this.didExceedDeadlineWithEvent(event), T$.VoidTovoid()));
-      }
-    }
-    handleEvent(event) {
-      if (event == null) dart.nullFailed(I[0], 459, 33, "event");
-      if (!(this.state != recognizer.GestureRecognizerState.ready)) dart.assertFailed(null, I[0], 460, 12, "state != GestureRecognizerState.ready");
-      if (this.state == recognizer.GestureRecognizerState.possible && event.pointer == this.primaryPointer) {
-        let isPreAcceptSlopPastTolerance = !dart.test(this[_gestureAccepted]) && this.preAcceptSlopTolerance != null && dart.notNull(this[_getGlobalDistance](event)) > dart.nullCheck(this.preAcceptSlopTolerance);
-        let isPostAcceptSlopPastTolerance = dart.test(this[_gestureAccepted]) && this.postAcceptSlopTolerance != null && dart.notNull(this[_getGlobalDistance](event)) > dart.nullCheck(this.postAcceptSlopTolerance);
-        if (events.PointerMoveEvent.is(event) && (isPreAcceptSlopPastTolerance || isPostAcceptSlopPastTolerance)) {
-          this.resolve(arena.GestureDisposition.rejected);
-          this.stopTrackingPointer(dart.nullCheck(this.primaryPointer));
-        } else {
-          this.handlePrimaryPointer(event);
-        }
-      }
-      this.stopTrackingIfPointerNoLongerDown(event);
-    }
-    didExceedDeadline() {
-      if (!(this.deadline == null)) dart.assertFailed(null, I[0], 491, 12, "deadline == null");
-    }
-    didExceedDeadlineWithEvent(event) {
-      if (event == null) dart.nullFailed(I[0], 500, 52, "event");
-      this.didExceedDeadline();
-    }
-    acceptGesture(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 505, 26, "pointer");
-      if (pointer == this.primaryPointer) {
-        this[_stopTimer]();
-        this[_gestureAccepted] = true;
-      }
-    }
-    rejectGesture(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 513, 26, "pointer");
-      if (pointer == this.primaryPointer && this.state == recognizer.GestureRecognizerState.possible) {
-        this[_stopTimer]();
-        this.state = recognizer.GestureRecognizerState.defunct;
-      }
-    }
-    didStopTrackingLastPointer(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 521, 39, "pointer");
-      if (!(this.state != recognizer.GestureRecognizerState.ready)) dart.assertFailed(null, I[0], 522, 12, "state != GestureRecognizerState.ready");
-      this[_stopTimer]();
-      this.state = recognizer.GestureRecognizerState.ready;
-    }
-    dispose() {
-      this[_stopTimer]();
-      super.dispose();
-    }
-    [_stopTimer]() {
-      if (this[_timer] != null) {
-        dart.nullCheck(this[_timer]).cancel();
-        this[_timer] = null;
-      }
-    }
-    [_getGlobalDistance](event) {
-      if (event == null) dart.nullFailed(I[0], 540, 42, "event");
-      let offset = event.position['-'](dart.nullCheck(this.initialPosition).global);
-      return offset.distance;
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 546, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new (T$.EnumPropertyOfGestureRecognizerState()).new("state", this.state));
-    }
-  };
-  (recognizer.PrimaryPointerGestureRecognizer.new = function(opts) {
-    let deadline = opts && 'deadline' in opts ? opts.deadline : null;
-    let preAcceptSlopTolerance = opts && 'preAcceptSlopTolerance' in opts ? opts.preAcceptSlopTolerance : 18;
-    let postAcceptSlopTolerance = opts && 'postAcceptSlopTolerance' in opts ? opts.postAcceptSlopTolerance : 18;
-    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    this[state] = recognizer.GestureRecognizerState.ready;
-    this[primaryPointer] = null;
-    this[initialPosition] = null;
-    this[_gestureAccepted] = false;
-    this[_timer] = null;
-    this[deadline$] = deadline;
-    this[preAcceptSlopTolerance$] = preAcceptSlopTolerance;
-    this[postAcceptSlopTolerance$] = postAcceptSlopTolerance;
-    if (!(preAcceptSlopTolerance == null || dart.notNull(preAcceptSlopTolerance) >= 0)) dart.assertFailed("The preAcceptSlopTolerance must be positive or null", I[0], 395, 10, "preAcceptSlopTolerance == null || preAcceptSlopTolerance >= 0");
-    if (!(postAcceptSlopTolerance == null || dart.notNull(postAcceptSlopTolerance) >= 0)) dart.assertFailed("The postAcceptSlopTolerance must be positive or null", I[0], 399, 10, "postAcceptSlopTolerance == null || postAcceptSlopTolerance >= 0");
-    recognizer.PrimaryPointerGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner, kind: kind});
-    ;
-  }).prototype = recognizer.PrimaryPointerGestureRecognizer.prototype;
-  dart.addTypeTests(recognizer.PrimaryPointerGestureRecognizer);
-  dart.addTypeCaches(recognizer.PrimaryPointerGestureRecognizer);
-  dart.setMethodSignature(recognizer.PrimaryPointerGestureRecognizer, () => ({
-    __proto__: dart.getMethods(recognizer.PrimaryPointerGestureRecognizer.__proto__),
-    handleEvent: dart.fnType(dart.void, [events.PointerEvent]),
-    didExceedDeadline: dart.fnType(dart.void, []),
-    didExceedDeadlineWithEvent: dart.fnType(dart.void, [events.PointerDownEvent]),
-    didStopTrackingLastPointer: dart.fnType(dart.void, [core.int]),
-    [_stopTimer]: dart.fnType(dart.void, []),
-    [_getGlobalDistance]: dart.fnType(core.double, [events.PointerEvent])
-  }));
-  dart.setLibraryUri(recognizer.PrimaryPointerGestureRecognizer, I[1]);
-  dart.setFieldSignature(recognizer.PrimaryPointerGestureRecognizer, () => ({
-    __proto__: dart.getFields(recognizer.PrimaryPointerGestureRecognizer.__proto__),
-    deadline: dart.finalFieldType(dart.nullable(core.Duration)),
-    preAcceptSlopTolerance: dart.finalFieldType(dart.nullable(core.double)),
-    postAcceptSlopTolerance: dart.finalFieldType(dart.nullable(core.double)),
-    state: dart.fieldType(recognizer.GestureRecognizerState),
-    primaryPointer: dart.fieldType(dart.nullable(core.int)),
-    initialPosition: dart.fieldType(dart.nullable(recognizer.OffsetPair)),
-    [_gestureAccepted]: dart.fieldType(core.bool),
-    [_timer]: dart.fieldType(dart.nullable(async.Timer))
-  }));
-  var local$ = dart.privateName(recognizer, "OffsetPair.local");
-  var global$ = dart.privateName(recognizer, "OffsetPair.global");
-  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
-  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
-  recognizer.OffsetPair = class OffsetPair extends core.Object {
-    get local() {
-      return this[local$];
-    }
-    set local(value) {
-      super.local = value;
-    }
-    get global() {
-      return this[global$];
-    }
-    set global(value) {
-      super.global = value;
-    }
-    static fromEventPosition(event) {
-      if (event == null) dart.nullFailed(I[0], 566, 53, "event");
-      return new recognizer.OffsetPair.new({local: event.localPosition, global: event.position});
-    }
-    static fromEventDelta(event) {
-      if (event == null) dart.nullFailed(I[0], 572, 50, "event");
-      return new recognizer.OffsetPair.new({local: event.localDelta, global: event.delta});
-    }
-    ['+'](other) {
-      if (other == null) dart.nullFailed(I[0], 587, 35, "other");
-      return new recognizer.OffsetPair.new({local: this.local['+'](other.local), global: this.global['+'](other.global)});
-    }
-    ['-'](other) {
-      if (other == null) dart.nullFailed(I[0], 595, 35, "other");
-      return new recognizer.OffsetPair.new({local: this.local['-'](other.local), global: this.global['-'](other.global)});
-    }
-    toString() {
-      return dart.str(object.objectRuntimeType(this, "OffsetPair")) + "(local: " + dart.str(this.local) + ", global: " + dart.str(this.global) + ")";
-    }
-  };
-  (recognizer.OffsetPair.new = function(opts) {
-    let local = opts && 'local' in opts ? opts.local : null;
-    if (local == null) dart.nullFailed(I[0], 560, 19, "local");
-    let global = opts && 'global' in opts ? opts.global : null;
-    if (global == null) dart.nullFailed(I[0], 561, 19, "global");
-    this[local$] = local;
-    this[global$] = global;
-    ;
-  }).prototype = recognizer.OffsetPair.prototype;
-  dart.addTypeTests(recognizer.OffsetPair);
-  dart.addTypeCaches(recognizer.OffsetPair);
-  dart.setMethodSignature(recognizer.OffsetPair, () => ({
-    __proto__: dart.getMethods(recognizer.OffsetPair.__proto__),
-    '+': dart.fnType(recognizer.OffsetPair, [recognizer.OffsetPair]),
-    '-': dart.fnType(recognizer.OffsetPair, [recognizer.OffsetPair])
-  }));
-  dart.setLibraryUri(recognizer.OffsetPair, I[1]);
-  dart.setFieldSignature(recognizer.OffsetPair, () => ({
-    __proto__: dart.getFields(recognizer.OffsetPair.__proto__),
-    local: dart.finalFieldType(ui.Offset),
-    global: dart.finalFieldType(ui.Offset)
-  }));
-  dart.defineExtensionMethods(recognizer.OffsetPair, ['toString']);
-  dart.defineLazy(recognizer.OffsetPair, {
-    /*recognizer.OffsetPair.zero*/get zero() {
-      return C[7] || CT.C7;
-    }
+  dart.defineLazy(binding$.SchedulerBinding, {
+    /*binding$.SchedulerBinding._instance*/get _instance() {
+      return null;
+    },
+    set _instance(_) {}
   }, false);
-  dart.trackLibraries("packages/flutter/src/gestures/recognizer.dart", {
-    "package:flutter/src/gestures/recognizer.dart": recognizer
+  binding$.defaultSchedulingStrategy = function defaultSchedulingStrategy(opts) {
+    let priority = opts && 'priority' in opts ? opts.priority : null;
+    if (priority == null) dart.nullFailed(I[0], 1173, 47, "priority");
+    let scheduler = opts && 'scheduler' in opts ? opts.scheduler : null;
+    if (scheduler == null) dart.nullFailed(I[0], 1173, 83, "scheduler");
+    if (dart.notNull(scheduler.transientCallbackCount) > 0) return dart.notNull(priority) >= dart.notNull(priority$.Priority.animation.value);
+    return true;
+  };
+  dart.copyProperties(binding$, {
+    get timeDilation() {
+      return binding$._timeDilation;
+    },
+    set timeDilation(value) {
+      let t4;
+      if (value == null) dart.nullFailed(I[0], 24, 25, "value");
+      if (!(dart.notNull(value) > 0.0)) dart.assertFailed(null, I[0], 25, 10, "value > 0.0");
+      if (binding$._timeDilation == value) return;
+      t4 = binding$.SchedulerBinding.instance;
+      t4 == null ? null : t4.resetEpoch();
+      binding$._timeDilation = value;
+    }
+  });
+  dart.defineLazy(binding$, {
+    /*binding$._timeDilation*/get _timeDilation() {
+      return 1.0;
+    },
+    set _timeDilation(_) {}
+  }, false);
+  dart.trackLibraries("packages/flutter/src/scheduler/binding.dart", {
+    "package:flutter/src/scheduler/binding.dart": binding$
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["recognizer.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/gestures/recognizer.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["binding.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/scheduler/binding.dart.lib.js"}');
   // Exports:
   return {
-    src__gestures__recognizer: recognizer
+    src__scheduler__binding: binding$
   };
 }));
 
-//# sourceMappingURL=recognizer.dart.lib.js.map
+//# sourceMappingURL=binding.dart.lib.js.map

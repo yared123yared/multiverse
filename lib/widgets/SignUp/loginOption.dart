@@ -6,12 +6,13 @@ class LoginOption extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Already have an account?  "),
+        Text("Already have an account?  ",
+            style: TextStyle(color: Color(0xff003366))),
         GestureDetector(
             onTap: () {
               print("Go to sing In option");
             },
-            child: Text("SignIn"))
+            child: Text("SignIn" ,  style: TextStyle(color: Color(0xff003366))))
       ],
     );
   }

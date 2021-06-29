@@ -11,23 +11,25 @@ class InnerContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 5,
+      elevation: 0.5,
       child: Container(
           width: this.internalContainerWidth,
           height: this.internalContainerHeight,
           margin: EdgeInsets.only(top: internalContainerHeight * 0.002),
           decoration: BoxDecoration(
             //
-            border: Border.all(color: Colors.white),
+            // border: Border.all(color: Colors.white),
 
             //
-            borderRadius: BorderRadius.all(Radius.circular(2)),
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
             color: Colors.white,
             boxShadow: [
               BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 3,
-                  blurRadius: 3,
+                  spreadRadius: 1,
+                  blurRadius: 1,
                   offset: Offset(0.0, 3.0) // changes position of shadow
                   ),
             ],

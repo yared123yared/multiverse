@@ -95,24 +95,22 @@ class SignUpPage extends StatelessWidget {
 
                           SizedBox(height: internalContainerHeight * 0.06),
 
-                          LoginOption(),
-                          Expanded(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SignUpIcon(
-                                    iconName: googleIcon,
-                                    mainContainerHeight: mainContainerHeight,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  SignUpIcon(
-                                    iconName: facebookIcon,
-                                    mainContainerHeight: mainContainerHeight,
-                                  ),
-                                ]),
-                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SignUpIcon(
+                                  iconName: googleIcon,
+                                  mainContainerHeight: mainContainerHeight,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                SignUpIcon(
+                                  iconName: facebookIcon,
+                                  mainContainerHeight: mainContainerHeight,
+                                ),
+                              ]),
+                          Expanded(child: LoginOption()),
                           // SizedBox(
                           // height: internalContainerHeight * 0.02,
                           // ),
