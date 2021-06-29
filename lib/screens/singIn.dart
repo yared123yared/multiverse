@@ -5,7 +5,8 @@ import 'package:client/widgets/SignUp_LogIn/customeLogo.dart';
 import 'package:client/widgets/SignUp_LogIn/customeTextbutton.dart';
 import 'package:client/widgets/SignUp_LogIn/innerContainer.dart';
 import 'package:client/widgets/SignUp_LogIn/innerSpacer.dart';
-import 'package:client/widgets/SignUp_LogIn/loginOption.dart';
+import 'package:client/widgets/SignUp_LogIn/signUpOption.dart';
+import 'package:client/widgets/SignUp_LogIn/singInOption.dart';
 import 'package:client/widgets/SignUp_LogIn/mainContainer.dart';
 import 'package:client/widgets/SignUp_LogIn/outerSpacer.dart';
 import 'package:client/widgets/SignUp_LogIn/customeButton.dart';
@@ -103,7 +104,7 @@ class SignInPage extends StatelessWidget {
                           SizedBox(
                               height:
                                   constants.getInternalContainerHeight * 0.06),
-                          LoginOption(),
+                          SignUpOption(),
                           // SizedBox(
                           // height: internalContainerHeight * 0.02,
                           // ),

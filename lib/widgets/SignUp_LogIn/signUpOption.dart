@@ -1,16 +1,18 @@
+import 'package:client/widgets/SignUp_LogIn/customeText.dart';
 import 'package:client/widgets/SignUp_LogIn/customeTextbutton.dart';
 import 'package:flutter/material.dart';
 
-class LoginOption extends StatelessWidget {
+class SignUpOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Already have an account?",
-            style: TextStyle(color: Color(0xff003366))),
+        CustomeText(
+          text: "Don't Have An Account?",
+        ),
         CustomeTextButton(
-          customeText: "Sign In",
+          customeText: "Sign Up",
         )
       ],
     );
