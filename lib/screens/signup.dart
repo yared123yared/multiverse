@@ -1,135 +1,144 @@
+import 'package:client/Constants/signUplogInConstant.dart';
 import 'package:client/widgets/Home/Logo.dart';
+import 'package:client/widgets/SignUp_LogIn/customTextField.dart';
+import 'package:client/widgets/SignUp_LogIn/customeLogo.dart';
+import 'package:client/widgets/SignUp_LogIn/innerContainer.dart';
+import 'package:client/widgets/SignUp_LogIn/innerSpacer.dart';
+import 'package:client/widgets/SignUp_LogIn/singInOption.dart';
+import 'package:client/widgets/SignUp_LogIn/mainContainer.dart';
+import 'package:client/widgets/SignUp_LogIn/outerSpacer.dart';
+import 'package:client/widgets/SignUp_LogIn/customeButton.dart';
+import 'package:client/widgets/SignUp_LogIn/customeIconButton.dart';
+import 'package:client/widgets/SignUp_LogIn/title.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final String splash = 'lib/assets/images/start/splash.png';
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    double mainContainerWidth = width * 0.23;
-    double mainContainerHeight = height * 0.95;
-    double internalContianerWidth = mainContainerWidth;
-    double internalContainerHeight = mainContainerHeight * 0.70;
+    SignUpLogInConstant constants = new SignUpLogInConstant();
+    constants.build(context);
 
     return Scaffold(
       body: Center(
-        child: Container(
-          width: mainContainerWidth,
-          height: mainContainerHeight,
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
+        child: MainContainer(
+          mainContaienrHeight: constants.getMainContainerHeight,
+          mainContaienrWidth: constants.getMainContainerWidth,
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  width: mainContainerWidth,
-                  height: mainContainerHeight * 0.15,
-                  // color: Colors.blue,
-                  child: Image.asset(
-                    'lib/assets/images/start/splash.png',
-
-                    // color: Colors.white,
-                    height: mainContainerHeight * 0.15,
-                  ),
+                CustomeLogo(
+                  logoImage: constants.getSplash,
+                  mainContainerHeight: constants.getMainContainerHeight,
+                  mainContainerWidth: constants.getMainContainerWidth,
                 ),
                 SizedBox(
-                  height: mainContainerHeight * 0.01,
+                  height: constants.getMainContainerHeight * 0.01,
                 ),
-                Text("SIGN UP TO MULTIVERSE", style: TextStyle(fontSize: 20)),
+                MainTitle(
+                  titleName: 'SIGN UP TO MULTIVERSE',
+                ),
                 SizedBox(
-                  height: mainContainerHeight * 0.01,
+                  height: constants.getMainContainerHeight * 0.01,
                 ),
-                Container(
-                    width: internalContianerWidth,
-                    height: internalContainerHeight,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
+                InnerContainer(
+                    internalContainerHeight:
+                        constants.getInternalContainerHeight,
+                    internalContainerWidth: constants.getInternalContianerWidth,
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            height: internalContainerHeight * 0.03,
+                          OuterSpacer(
+                            internalContainerheight:
+                                constants.getInternalContainerHeight,
                           ),
-                          getTextField(
-                              internalContainerHeight, internalContianerWidth),
-                          // SizedBox(
-                          // height: internalContainerHeight * 0.001,
-                          // ),
-                          getTextField(
-                              internalContainerHeight, internalContianerWidth),
-                          SizedBox(
-                            height: internalContainerHeight * 0.0001,
+                          CustomeTextField(
+                            internalContainerHeight:
+                                constants.getInternalContainerHeight,
+                            internalContainerWidth:
+                                constants.getInternalContianerWidth,
+                            name: "Full Name",
                           ),
-                          getTextField(
-                              internalContainerHeight, internalContianerWidth),
-                          SizedBox(
-                            height: internalContainerHeight * 0.0001,
+                          InnerSpacer(
+                            internalContainerHeight:
+                                constants.getInternalContainerHeight,
                           ),
-                          getTextField(
-                              internalContainerHeight, internalContianerWidth),
-                          SizedBox(
-                            height: internalContainerHeight * 0.0001,
+                          CustomeTextField(
+                            internalContainerHeight:
+                                constants.getInternalContainerHeight,
+                            internalContainerWidth:
+                                constants.getInternalContianerWidth,
+                            name: "Organization",
                           ),
-                          getTextField(
-                              internalContainerHeight, internalContianerWidth),
-                          SizedBox(
-                            height: internalContainerHeight * 0.0001,
+                          InnerSpacer(
+                            internalContainerHeight:
+                                constants.getInternalContainerHeight,
                           ),
+                          CustomeTextField(
+                            internalContainerHeight:
+                                constants.getInternalContainerHeight,
+                            internalContainerWidth:
+                                constants.getInternalContianerWidth,
+                            name: "Email",
+                          ),
+                          InnerSpacer(
+                            internalContainerHeight:
+                                constants.getInternalContainerHeight,
+                          ),
+                          CustomeTextField(
+                            internalContainerHeight:
+                                constants.getInternalContainerHeight,
+                            internalContainerWidth:
+                                constants.getInternalContianerWidth,
+                            name: "Password",
+                          ),
+                          InnerSpacer(
+                            internalContainerHeight:
+                                constants.getInternalContainerHeight,
+                          ),
+                          CustomeTextField(
+                            internalContainerHeight:
+                                constants.getInternalContainerHeight,
+                            internalContainerWidth:
+                                constants.getInternalContianerWidth,
+                            name: "Confirm Password",
+                          ),
+
+                          SizedBox(
+                              height:
+                                  constants.getInternalContainerHeight * 0.06),
+
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
-                                  height: 100,
-                                  width: 100,
-                                  decoration: BoxDecoration(),
-                                  child: CircleAvatar(
-                                    child: Image.asset(
-                                        'lib/assets/images/start/google.png'),
-                                  ),
+                                CustomeIconButton(
+                                  iconName: constants.getGoogleIcon,
+                                  mainContainerHeight:
+                                      constants.getMainContainerHeight,
                                 ),
-                                Container(),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                CustomeIconButton(
+                                  iconName: constants.getFacebookIcon,
+                                  mainContainerHeight:
+                                      constants.getMainContainerHeight,
+                                ),
                               ]),
-                          SizedBox(
-                            height: internalContainerHeight * 0.02,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Already have an account?  "),
-                              GestureDetector(
-                                  onTap: () {
-                                    print("Go to sing In option");
-                                  },
-                                  child: Text("SignIn"))
-                            ],
-                          ),
-                          SizedBox(
-                            height: internalContainerHeight * 0.02,
-                          ),
+                          Expanded(child: SignInOption()),
+                          // SizedBox(
+                          // height: internalContainerHeight * 0.02,
+                          // ),
                         ])),
                 SizedBox(
-                  height: mainContainerHeight * 0.03,
+                  height: constants.getMainContainerHeight * 0.03,
                 ),
-                Container(
-                  width: mainContainerWidth,
-                  height: mainContainerHeight * 0.06,
-                  color: Color(0xff003366),
-                  child: Center(
-                      child: Text("SIGN UP",
-                          style: TextStyle(color: Colors.white))),
+                CustomeButton(
+                  buttonName: "SING IN",
+                  mainContainerHeight: constants.getMainContainerHeight,
+                  mainContainerWidth: constants.getMainContainerWidth,
+                  onPressed: signUpPressed,
                 )
               ]),
         ),
@@ -137,21 +146,7 @@ class SignUpPage extends StatelessWidget {
     );
   }
 
-  Widget getTextField(
-      double internalContainerHeight, double internalContianerWidth) {
-    return Container(
-      height: internalContainerHeight * 0.11,
-      margin: EdgeInsets.symmetric(horizontal: internalContianerWidth * 0.05),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: Color(0xff003366))),
-      child: TextField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          labelText: "First Name",
-        ),
-        controller: null,
-      ),
-    );
+  signUpPressed() {
+    print("Sing up clicked");
   }
 }
