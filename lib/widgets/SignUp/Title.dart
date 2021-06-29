@@ -5,7 +5,7 @@ class SignupTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
         color: Colors.transparent,
-        child: Text("SIGN IN TO MULTIVERSE",
+        child: Text("SIGN UP TO MULTIVERSE",
             style: TextStyle(
                 color: Color(0xff003366),
                 fontWeight: FontWeight.w300,
