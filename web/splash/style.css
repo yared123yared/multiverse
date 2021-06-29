@@ -9,7 +9,9 @@ body, html {
 .center {
   margin: 0;
   position: absolute;
-  top: 50%;
+  height: 125px;
+  width: 250px;
+  top: 40%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
