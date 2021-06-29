@@ -64,4 +64,8 @@ class SignUpPage extends StatelessWidget {
           ]),
     );
   }
+
+  signUpPressed() {
+    print("Sing up clicked");
+  }
 }
