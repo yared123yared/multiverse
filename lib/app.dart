@@ -12,13 +12,14 @@ class App extends StatelessWidget {
         BlocProvider<BoardCubit>(create: (context) => BoardCubit()),
       ],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: Home(),
-          onGenerateRoute: router.generateRoute,
-          initialRoute: router.HomeScreen),
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Home(),
+        onGenerateRoute: router.generateRoute,
+        initialRoute: router.SigninScreen,
+      ),
     );
   }
 }
