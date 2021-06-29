@@ -1,6 +1,4 @@
 import 'package:client/widgets/SignUp/CustomLogo.dart';
-import 'package:client/widgets/SignUp/MainContainer.dart';
-import 'package:client/widgets/SignUp/SignUpButton.dart';
 import 'package:client/widgets/SignUp/SignUpTitle.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +10,7 @@ class SignUpPage extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: MainContainer(
+        child: Container(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
