@@ -1,12 +1,11 @@
-import 'package:client/widgets/Console/billing.dart';
-import 'package:client/widgets/Console/dashboard.dart';
-import 'package:client/widgets/Console/members.dart';
-import 'package:client/widgets/Console/messages.dart';
-import 'package:client/widgets/Console/myProjects.dart';
-import 'package:client/widgets/Console/reports.dart';
-import 'package:client/widgets/Home/LeftNav.dart';
-import 'package:client/widgets/Home/MidNav.dart';
-import 'package:client/widgets/Home/RightNav.dart';
+import 'package:client/widgets/Console/dashboard/dashboard.dart';
+import 'package:client/widgets/Console/home/leftContainer/myProjects.dart';
+import 'package:client/widgets/Console/home/middleContainer/messages.dart';
+
+import 'package:client/widgets/Console/home/middleContainer/reports.dart';
+import 'package:client/widgets/Console/home/rightContainer/billing.dart';
+import 'package:client/widgets/Console/home/rightContainer/members.dart';
+
 import 'package:flutter/material.dart';
 
 class ConsoleHomePage extends StatelessWidget {
