@@ -18,7 +18,7 @@ class SignupInput extends StatelessWidget {
         showCursor: true,
         cursorColor: HexColor('#003366'),
         cursorWidth: 1,
-        cursorHeight: 15,
+        cursorHeight: 12,
         decoration: InputDecoration(
             hintText: text,
             hintStyle: TextStyle(
