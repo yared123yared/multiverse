@@ -39,7 +39,8 @@ class ConsoleHomePage extends StatelessWidget {
                 appBar: AppBar(
                   elevation: 0,
                   backgroundColor: Color(0xff003366),
-                  toolbarHeight: 45,
+                  // toolbarHeight: 45,
+                  toolbarHeight: height * 0.065,
                   flexibleSpace: Center(
                     child: Container(
                       decoration: BoxDecoration(
@@ -57,11 +58,11 @@ class ConsoleHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: EdgeInsets.all(30),
+                      padding: EdgeInsets.all(height * 0.04),
                       alignment: Alignment.topLeft,
                       child: Text(
                         "Home",
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: height * 0.03),
                         textAlign: TextAlign.left,
                       ),
                     ),
