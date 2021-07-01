@@ -1,3 +1,9 @@
+import 'package:client/widgets/Console/billing.dart';
+import 'package:client/widgets/Console/dashboard.dart';
+import 'package:client/widgets/Console/members.dart';
+import 'package:client/widgets/Console/messages.dart';
+import 'package:client/widgets/Console/myProjects.dart';
+import 'package:client/widgets/Console/reports.dart';
 import 'package:client/widgets/Home/LeftNav.dart';
 import 'package:client/widgets/Home/MidNav.dart';
 import 'package:client/widgets/Home/RightNav.dart';
@@ -9,24 +15,16 @@ class ConsoleHomePage extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     double mainContainerWidth = width * 0.82;
+    double mainContainerHeight = height;
 
     return Container(
         margin: EdgeInsets.all(16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Material(
-              color: Colors.white,
-              elevation: 1,
-              borderRadius: BorderRadius.circular(30),
-              child: Container(
-                padding: EdgeInsets.all(30),
-                decoration: BoxDecoration(
-                    color: Color(0xff003366),
-                    borderRadius: BorderRadius.circular(10)),
-                height: height,
-                width: 0.13 * width,
-              ),
+            DashBoard(
+              height: height,
+              width: width,
             ),
             Container(
               // padding: EdgeInsets.all(30),
@@ -73,83 +71,32 @@ class ConsoleHomePage extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                          Material(
-                            color: Colors.white,
-                            elevation: 1,
-                            borderRadius: BorderRadius.circular(10),
-                            child: Container(
-                              padding: EdgeInsets.all(30),
-                              decoration: BoxDecoration(
-                                  color: Colors.blueAccent,
-                                  borderRadius: BorderRadius.circular(10)),
-                              width: mainContainerWidth * 0.35,
-                              height: height,
-                              child: Container(),
-                            ),
-                          ),
+                          MyProjects(
+                              mainContainerHeight: mainContainerHeight,
+                              mainContainerWidth: mainContainerWidth),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Material(
-                                color: Colors.white,
-                                elevation: 1,
-                                borderRadius: BorderRadius.circular(10),
-                                child: Container(
-                                  padding: EdgeInsets.all(30),
-                                  decoration: BoxDecoration(
-                                      color: Colors.blueAccent,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  width: mainContainerWidth * 0.3,
-                                  height: height * 0.35,
-                                  child: Container(),
-                                ),
+                              Messages(
+                                mainContainerHeight: mainContainerHeight,
+                                mainContainerWidth: mainContainerWidth,
                               ),
-                              Material(
-                                color: Colors.white,
-                                elevation: 1,
-                                borderRadius: BorderRadius.circular(10),
-                                child: Container(
-                                  // padding: EdgeInsets.all(30),
-                                  decoration: BoxDecoration(
-                                      color: Colors.blueAccent,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  width: mainContainerWidth * 0.3,
-                                  height: height * 0.35,
-                                  child: Container(),
-                                ),
+                              Reports(
+                                mainContainerHeight: mainContainerHeight,
+                                mainContainerWidth: mainContainerWidth,
                               ),
                             ],
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Material(
-                                color: Colors.white,
-                                elevation: 1,
-                                borderRadius: BorderRadius.circular(10),
-                                child: Container(
-                                  padding: EdgeInsets.all(30),
-                                  decoration: BoxDecoration(
-                                      color: Colors.blueAccent,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  width: mainContainerWidth * 0.3,
-                                  height: height * 0.35,
-                                  child: Container(),
-                                ),
+                              Members(
+                                mainContainerHeight: mainContainerHeight,
+                                mainContainerWidth: mainContainerWidth,
                               ),
-                              Material(
-                                color: Colors.white,
-                                elevation: 1,
-                                borderRadius: BorderRadius.circular(10),
-                                child: Container(
-                                  // padding: EdgeInsets.all(30),
-                                  decoration: BoxDecoration(
-                                      color: Colors.blueAccent,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  width: mainContainerWidth * 0.3,
-                                  height: height * 0.35,
-                                  child: Container(),
-                                ),
+                              Billing(
+                                mainContainerHeight: mainContainerHeight,
+                                mainContainerWidth: mainContainerWidth,
                               ),
                             ],
                           ),
