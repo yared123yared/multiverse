@@ -18,7 +18,7 @@ class App extends StatelessWidget {
         ),
         home: Home(),
         onGenerateRoute: router.generateRoute,
-        initialRoute: router.SignupScreen,
+        initialRoute: router.ConsoleHomeScreen,
       ),
     );
   }
