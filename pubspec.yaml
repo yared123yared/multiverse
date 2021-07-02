@@ -59,6 +59,7 @@ flutter:
     - lib/assets/images/home/
     - lib/assets/images/start/
     - lib/assets/images/signUp/
+    - lib/assets/images/console/
 
     
 

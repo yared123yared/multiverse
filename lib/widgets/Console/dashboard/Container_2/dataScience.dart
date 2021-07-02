@@ -8,7 +8,7 @@ class DataScienceButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
+            imageUrl: 'lib/assets/images/console/dataScience.png',
             value: 'Data Science',
             size: 22,
             onPressed: () {}));

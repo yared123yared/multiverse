@@ -8,9 +8,9 @@ class ReportButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
+            imageUrl: 'lib/assets/images/console/reports.png',
             value: 'Reports',
-            size: 22,
+            size: 19,
             onPressed: () {}));
   }
 }

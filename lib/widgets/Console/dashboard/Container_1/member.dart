@@ -8,9 +8,9 @@ class MemberButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
+            imageUrl: 'lib/assets/images/console/members.png',
             value: 'Members',
-            size: 22,
+            size: 19,
             onPressed: () {}));
   }
 }

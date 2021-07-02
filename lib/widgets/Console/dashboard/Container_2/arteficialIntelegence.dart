@@ -8,9 +8,9 @@ class ArteficialIntelegenceButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
+            imageUrl: 'lib/assets/images/console/arteficialIntelegence.png',
             value: 'Arteficial Intelegence',
-            size: 22,
+            size: 19,
             onPressed: () {}));
   }
 }

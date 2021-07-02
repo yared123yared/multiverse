@@ -8,9 +8,9 @@ class WebMobileDesktopButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
+            imageUrl: 'lib/assets/images/console/web_mobile_desktop.png',
             value: 'Web , Mobile & Desktop',
-            size: 22,
+            size: 19,
             onPressed: () {}));
   }
 }

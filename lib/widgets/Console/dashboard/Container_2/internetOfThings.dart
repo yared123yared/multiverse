@@ -8,7 +8,7 @@ class InternetOfThingsButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
+            imageUrl: 'lib/assets/images/console/internetOfThings.png',
             value: 'Internet Of Things',
             size: 22,
             onPressed: () {}));

@@ -8,7 +8,7 @@ class ExtendedRealityButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
+            imageUrl: 'lib/assets/images/console/extendedReality.png',
             value: 'Extended Reality',
             size: 22,
             onPressed: () {}));

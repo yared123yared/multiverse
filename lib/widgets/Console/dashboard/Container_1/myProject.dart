@@ -8,9 +8,9 @@ class MyProjectButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
+            imageUrl: 'lib/assets/images/console/project.png',
             value: 'My Projects',
-            size: 22,
+            size: 19,
             onPressed: () {}));
   }
 }

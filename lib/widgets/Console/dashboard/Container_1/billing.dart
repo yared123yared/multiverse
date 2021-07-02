@@ -8,9 +8,9 @@ class BillingButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
+            imageUrl: 'lib/assets/images/console/billing.png',
             value: 'Billing',
-            size: 22,
+            size: 19,
             onPressed: () {}));
   }
 }

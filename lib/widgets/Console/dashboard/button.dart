@@ -4,7 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 class Button extends StatelessWidget {
   final String value;
-  final IconData icon;
+  final String imageUrl;
   final BorderRadius radius;
   final RoundedRectangleBorder border;
   final double width;
@@ -16,10 +16,10 @@ class Button extends StatelessWidget {
   Button(
       {this.value,
       this.radius,
+      this.imageUrl,
       this.border,
       this.width,
       this.elevation,
-      this.icon,
       this.onPressed,
       this.child,
       this.size});
@@ -44,18 +44,20 @@ class Button extends StatelessWidget {
               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(width: 8),
-                FaIcon(
-                  icon,
-                  color: Colors.white.withOpacity(0.5),
-                  size: size,
-                ),
+                // FaIcon(
+                // icon,
+                // color: Colors.white.withOpacity(0.5),
+                // size: size,
+                // ),
+                Image.asset(imageUrl, height: 19, width: 19),
+
                 SizedBox(width: 15),
                 Text(
                   value,
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w300,
-                    color: Colors.white.withOpacity(0.5),
+                    color: Colors.white.withOpacity(0.7),
                   ),
                 ),
               ],

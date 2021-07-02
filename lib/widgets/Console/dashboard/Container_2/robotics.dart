@@ -8,7 +8,7 @@ class RoboticsButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
+            imageUrl: 'lib/assets/images/console/robotics.png',
             value: 'Robotics',
             size: 22,
             onPressed: () {}));

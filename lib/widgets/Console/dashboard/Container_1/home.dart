@@ -8,9 +8,9 @@ class HomeButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.home,
+            imageUrl: 'lib/assets/images/console/dataScience.png',
             value: 'Home',
-            size: 22,
+            size: 19,
             onPressed: () {}));
   }
 }

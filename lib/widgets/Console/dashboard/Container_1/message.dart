@@ -8,9 +8,9 @@ class MessageButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
+            imageUrl: 'lib/assets/images/console/messages.png',
             value: 'Messages',
-            size: 22,
+            size: 19,
             onPressed: () {}));
   }
 }
