@@ -42,7 +42,7 @@ class Button extends StatelessWidget {
             child: Row(
               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(width: 8),
+                SizedBox(width: 15),
                 // FaIcon(
                 // icon,
                 // color: Colors.white.withOpacity(0.5),
