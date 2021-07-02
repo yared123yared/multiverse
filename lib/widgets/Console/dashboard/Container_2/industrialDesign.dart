@@ -10,7 +10,7 @@ class IndestrialDesignButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/industrialDesign.png',
             value: 'Indestrial Design',
-            size: 22,
+            size: 17,
             onPressed: () {}));
   }
 }

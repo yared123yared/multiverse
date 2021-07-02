@@ -10,7 +10,7 @@ class ArteficialIntelegenceButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/arteficialIntelegence.png',
             value: 'Arteficial Intelegence',
-            size: 19,
+            size: 17,
             onPressed: () {}));
   }
 }

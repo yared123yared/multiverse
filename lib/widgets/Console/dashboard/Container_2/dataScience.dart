@@ -10,7 +10,7 @@ class DataScienceButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/dataScience.png',
             value: 'Data Science',
-            size: 22,
+            size: 17,
             onPressed: () {}));
   }
 }

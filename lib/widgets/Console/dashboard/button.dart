@@ -48,7 +48,7 @@ class Button extends StatelessWidget {
                 // color: Colors.white.withOpacity(0.5),
                 // size: size,
                 // ),
-                Image.asset(imageUrl, height: 17, width: 17),
+                Image.asset(imageUrl, height: this.size, width: this.size),
 
                 SizedBox(width: 15),
                 Text(

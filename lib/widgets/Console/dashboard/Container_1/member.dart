@@ -10,7 +10,7 @@ class MemberButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/members.png',
             value: 'Members',
-            size: 19,
+            size: 17,
             onPressed: () {}));
   }
 }

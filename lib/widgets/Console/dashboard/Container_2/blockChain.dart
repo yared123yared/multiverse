@@ -10,7 +10,7 @@ class BlockChainButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/blockchain.png',
             value: 'BlockChain',
-            size: 19,
+            size: 17,
             onPressed: () {}));
   }
 }

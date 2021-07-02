@@ -10,7 +10,7 @@ class RoboticsButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/robotics.png',
             value: 'Robotics',
-            size: 22,
+            size: 17,
             onPressed: () {}));
   }
 }

@@ -10,7 +10,7 @@ class ExtendedRealityButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/extendedReality.png',
             value: 'Extended Reality',
-            size: 22,
+            size: 17,
             onPressed: () {}));
   }
 }

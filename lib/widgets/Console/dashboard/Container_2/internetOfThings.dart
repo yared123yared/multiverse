@@ -10,7 +10,7 @@ class InternetOfThingsButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/internetOfThings.png',
             value: 'Internet Of Things',
-            size: 22,
+            size: 17,
             onPressed: () {}));
   }
 }

@@ -10,7 +10,7 @@ class MyProjectButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/project.png',
             value: 'My Projects',
-            size: 19,
+            size: 17,
             onPressed: () {}));
   }
 }

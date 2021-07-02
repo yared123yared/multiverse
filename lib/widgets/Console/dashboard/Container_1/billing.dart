@@ -10,7 +10,7 @@ class BillingButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/billing.png',
             value: 'Billing',
-            size: 19,
+            size: 17,
             onPressed: () {}));
   }
 }

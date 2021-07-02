@@ -10,7 +10,7 @@ class CloudComputingButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/cloud_server_system.png',
             value: 'Cloud Computing',
-            size: 19,
+            size: 17,
             onPressed: () {}));
   }
 }

@@ -10,7 +10,7 @@ class WebMobileDesktopButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/web_mobile_desktop.png',
             value: 'Web , Mobile & Desktop',
-            size: 19,
+            size: 17,
             onPressed: () {}));
   }
 }

@@ -10,7 +10,7 @@ class MessageButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/messages.png',
             value: 'Messages',
-            size: 19,
+            size: 17,
             onPressed: () {}));
   }
 }

@@ -10,7 +10,7 @@ class CyberSecurityButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/cyberSecurity.png',
             value: 'Cyber Security',
-            size: 19,
+            size: 17,
             onPressed: () {}));
   }
 }

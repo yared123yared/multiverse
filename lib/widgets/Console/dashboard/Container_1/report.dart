@@ -10,7 +10,7 @@ class ReportButton extends StatelessWidget {
             elevation: 0,
             imageUrl: 'lib/assets/images/console/reports.png',
             value: 'Reports',
-            size: 19,
+            size: 17,
             onPressed: () {}));
   }
 }
