@@ -28,16 +28,16 @@ class MyProjects extends StatelessWidget {
           Row(
             children: [
               CardContainer(
-                mainContainerHeight: this.mainContainerHeight,
-              ),
+                  mainContainerHeight: this.mainContainerHeight,
+                  color: Color(0xff4B19DA)),
               SizedBox(width: 15),
               CardContainer(
-                mainContainerHeight: this.mainContainerHeight,
-              ),
+                  mainContainerHeight: this.mainContainerHeight,
+                  color: Color(0xff003366)),
               SizedBox(width: 15),
               CardContainer(
-                mainContainerHeight: this.mainContainerHeight,
-              ),
+                  mainContainerHeight: this.mainContainerHeight,
+                  color: Color(0xff003366)),
             ],
           )
         ],
