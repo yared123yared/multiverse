@@ -8,8 +8,8 @@ class OverviewText extends StatelessWidget {
     return Text("Overview",
         textAlign: TextAlign.left,
         style: TextStyle(
-            fontSize: this.mainContainerHeight * 0.015,
+            fontSize: this.mainContainerHeight * 0.02,
             color: Color(0xff003366),
-            fontWeight: FontWeight.normal));
+            fontWeight: FontWeight.w100));
   }
 }

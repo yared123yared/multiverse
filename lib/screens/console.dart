@@ -17,6 +17,7 @@ class ConsoleHomePage extends StatelessWidget {
     double mainContainerHeight = height;
 
     return Container(
+        color: Colors.white,
         margin: EdgeInsets.all(16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

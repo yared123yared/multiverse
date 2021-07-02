@@ -7,8 +7,8 @@ class CustomeText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text("My Projects",
         style: TextStyle(
-            fontSize: this.mainContainerHeight * 0.015,
+            fontSize: this.mainContainerHeight * 0.02,
             color: Color(0xff003366),
-            fontWeight: FontWeight.normal));
+            fontWeight: FontWeight.w100));
   }
 }

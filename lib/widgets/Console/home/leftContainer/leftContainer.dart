@@ -1,5 +1,6 @@
 import 'package:client/widgets/Console/home/leftContainer/myProjects/myProjects.dart';
 import 'package:client/widgets/Console/home/leftContainer/overview/overview.dart';
+import 'package:client/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart';
 import 'package:flutter/material.dart';
 
 import 'myProjects/cardContainer.dart';
@@ -31,10 +32,7 @@ class LeftContainer extends StatelessWidget {
               SizedBox(
                 height: 7,
               ),
-              Container(
-                color: Colors.amber,
-                height: mainContainerHeight * 0.32,
-              ),
+              RecentActivity(mainContainerHeight: this.mainContainerHeight)
             ]),
       ),
     );
