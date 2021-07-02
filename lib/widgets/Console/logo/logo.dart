@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Logo extends StatelessWidget {
-  final String logo = 'lib/assets/images/home/Logo.png';
+  final String logo = 'lib/assets/icons/dashLogo.svg';
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Image.asset(
-        logo,
-        height: 800,
-      ),
+      child: SvgPicture.asset(logo, semanticsLabel: 'logo'),
     );
   }
 }

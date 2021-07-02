@@ -17,7 +17,6 @@ import 'Container_1/message.dart';
 import 'Container_1/myProject.dart';
 import 'Container_1/report.dart';
 import 'Container_2/robotics.dart';
-import 'button.dart';
 
 class DashBoard extends StatelessWidget {
   final double height;
@@ -41,16 +40,14 @@ class DashBoard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
+                padding: EdgeInsets.only(top: 8),
                 decoration: BoxDecoration(
                     // color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                alignment: Alignment.topCenter,
-                height: height * 0.05,
+                alignment: Alignment.center,
+                height: height * 0.075,
                 width: double.infinity,
                 child: Logo(),
-              ),
-              SizedBox(
-                height: height * 0.0001,
               ),
               Divider(
                 color: Colors.white.withOpacity(0.5),

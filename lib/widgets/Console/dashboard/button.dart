@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class Button extends StatelessWidget {
   final String value;
@@ -49,7 +48,7 @@ class Button extends StatelessWidget {
                 // color: Colors.white.withOpacity(0.5),
                 // size: size,
                 // ),
-                Image.asset(imageUrl, height: 19, width: 19),
+                Image.asset(imageUrl, height: 17, width: 17),
 
                 SizedBox(width: 15),
                 Text(

@@ -3,8 +3,6 @@ import 'package:client/widgets/Console/home/leftContainer/overview/overview.dart
 import 'package:client/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart';
 import 'package:flutter/material.dart';
 
-import 'myProjects/cardContainer.dart';
-
 class LeftContainer extends StatelessWidget {
   final double mainContainerHeight;
   final double mainContainerWidth;
