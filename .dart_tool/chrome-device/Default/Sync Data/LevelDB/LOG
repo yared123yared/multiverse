@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-2021/06/29-08:52:18.908 6b03 Reusing MANIFEST /private/var/folders/yv/62k6j4s91t3_xxttqtgcfsz40000gn/T/flutter_tools.H22XnD/flutter_tools_chrome_device.xsPOrk/Default/Sync Data/LevelDB/MANIFEST-000001
-2021/06/29-08:52:18.908 6b03 Recovering log #3
-2021/06/29-08:52:18.908 6b03 Reusing old log /private/var/folders/yv/62k6j4s91t3_xxttqtgcfsz40000gn/T/flutter_tools.H22XnD/flutter_tools_chrome_device.xsPOrk/Default/Sync Data/LevelDB/000003.log 
-=======
-2021/06/27-18:28:29.530 958 Reusing MANIFEST C:\Users\yared\AppData\Local\Temp\flutter_tools.234c53d5\flutter_tools_chrome_device.3ff9560c\Default\Sync Data\LevelDB/MANIFEST-000001
-2021/06/27-18:28:29.532 958 Recovering log #3
-2021/06/27-18:28:29.543 958 Reusing old log C:\Users\yared\AppData\Local\Temp\flutter_tools.234c53d5\flutter_tools_chrome_device.3ff9560c\Default\Sync Data\LevelDB/000003.log 
->>>>>>> 316c7b9c44cf7418eed2912f94fa2e0f090defb3
+2021/07/02-05:22:07.380 c103 Reusing MANIFEST /private/var/folders/yv/62k6j4s91t3_xxttqtgcfsz40000gn/T/flutter_tools.nNiV9O/flutter_tools_chrome_device.SDwQ6o/Default/Sync Data/LevelDB/MANIFEST-000001
+2021/07/02-05:22:07.380 c103 Recovering log #3
+2021/07/02-05:22:07.380 c103 Reusing old log /private/var/folders/yv/62k6j4s91t3_xxttqtgcfsz40000gn/T/flutter_tools.nNiV9O/flutter_tools_chrome_device.SDwQ6o/Default/Sync Data/LevelDB/000003.log 

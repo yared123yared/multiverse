@@ -1,7 +1,3 @@
-import 'dart:html';
-
-import 'package:client/widgets/Home/HomeButton.dart';
-import 'package:client/widgets/Home/HomeMini.dart';
 import 'package:flutter/material.dart';
 
 class Create extends StatefulWidget {

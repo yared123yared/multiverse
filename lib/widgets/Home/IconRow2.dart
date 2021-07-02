@@ -77,7 +77,7 @@ class IconRowTwo extends StatelessWidget {
             child: SvgPicture.asset(iconfive,
                 color: HexColor('#003366'), semanticsLabel: 'digital design'),
           ),
-          text: 'Digital Design',
+          text: 'Industrial \nDesign',
         ),
       ],
     );
