@@ -14,9 +14,9 @@ class Reports extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(30),
         decoration: BoxDecoration(
-            color: Colors.blueAccent, borderRadius: BorderRadius.circular(10)),
+            color: Colors.white, borderRadius: BorderRadius.circular(10)),
         width: this.mainContainerWidth * 0.3,
-        height: this.mainContainerHeight * 0.35,
+        height: this.mainContainerHeight * 0.4,
         child: Container(),
       ),
     );
