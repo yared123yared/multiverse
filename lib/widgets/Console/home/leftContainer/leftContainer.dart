@@ -1,4 +1,5 @@
 import 'package:client/widgets/Console/home/leftContainer/myProjects/myProjects.dart';
+import 'package:client/widgets/Console/home/leftContainer/overview/overview.dart';
 import 'package:flutter/material.dart';
 
 import 'myProjects/cardContainer.dart';
@@ -26,7 +27,7 @@ class LeftContainer extends StatelessWidget {
               MyProjects(
                 mainContainerHeight: this.mainContainerHeight,
               ),
-              Expanded(child: Container(color: Colors.redAccent)),
+              Overview(mainContainerHeight: this.mainContainerHeight),
               SizedBox(
                 height: 7,
               ),
