@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"net":{"http_server_properties":{"servers":[{"alternative_service":[{"advertised_alpns":["h3-29"],"expiration":"13272235813692073","port":443,"protocol_str":"quic"},{"advertised_alpns":["h3-Q050"],"expiration":"13272235813692076","port":443,"protocol_str":"quic"}],"isolation":[],"server":"https://dns.google","supports_spdy":true}],"version":5},"network_qualities":{"CAISABiAgICA+P////8B":"4G"}}}
+=======
+{"net":{"network_qualities":{"CAASABiAgICA+P////8B":"3G"}}}
+>>>>>>> 92579211fd98f01d37b53c6ebd840f064d2f31d1

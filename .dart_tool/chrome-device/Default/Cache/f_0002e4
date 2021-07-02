@@ -1,0 +1,486 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter_bloc/src/multi_bloc_listener.dart', 'packages/client/state/Board/board_cubit.dart', 'packages/client/widgets/Home/Create.dart', 'packages/client/widgets/Home/Monitor.dart', 'packages/client/widgets/Home/Review.dart', 'packages/client/widgets/Home/Start.dart', 'packages/client/widgets/Home/Console.dart', 'packages/client/widgets/Home/Design.dart', 'packages/client/widgets/Home/Build.dart', 'packages/client/widgets/Home/Maintain.dart', 'packages/client/widgets/Home/Facebook.dart', 'packages/client/widgets/Home/Twitter.dart', 'packages/client/widgets/Home/Linkedin.dart', 'packages/client/widgets/Home/Instagram.dart', 'packages/client/widgets/Home/Youtube.dart', 'packages/client/widgets/Home/Legal.dart', 'packages/client/widgets/Home/Terms.dart', 'packages/client/widgets/Home/Privacy.dart', 'packages/client/widgets/Home/Support.dart', 'packages/client/widgets/Home/Contact.dart', 'packages/client/widgets/Home/Ai.dart', 'packages/client/widgets/Home/Data.dart', 'packages/client/widgets/Home/Cyber.dart', 'packages/client/widgets/Home/Robotics.dart', 'packages/client/widgets/Home/Reality.dart', 'packages/client/widgets/Home/Blockchain.dart', 'packages/client/widgets/Home/Iot.dart', 'packages/client/widgets/Home/Cloud.dart', 'packages/client/widgets/Home/WebMobile.dart', 'packages/client/widgets/Home/Digital.dart', 'packages/client/widgets/Home/Landing.dart'], (function load__packages__client__logic__Home__BoardLogic_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter_bloc__src__multi_bloc_listener$46dart, packages__client__state__Board__board_cubit$46dart, packages__client__widgets__Home__Create$46dart, packages__client__widgets__Home__Monitor$46dart, packages__client__widgets__Home__Review$46dart, packages__client__widgets__Home__Start$46dart, packages__client__widgets__Home__Console$46dart, packages__client__widgets__Home__Design$46dart, packages__client__widgets__Home__Build$46dart, packages__client__widgets__Home__Maintain$46dart, packages__client__widgets__Home__Facebook$46dart, packages__client__widgets__Home__Twitter$46dart, packages__client__widgets__Home__Linkedin$46dart, packages__client__widgets__Home__Instagram$46dart, packages__client__widgets__Home__Youtube$46dart, packages__client__widgets__Home__Legal$46dart, packages__client__widgets__Home__Terms$46dart, packages__client__widgets__Home__Privacy$46dart, packages__client__widgets__Home__Support$46dart, packages__client__widgets__Home__Contact$46dart, packages__client__widgets__Home__Ai$46dart, packages__client__widgets__Home__Data$46dart, packages__client__widgets__Home__Cyber$46dart, packages__client__widgets__Home__Robotics$46dart, packages__client__widgets__Home__Reality$46dart, packages__client__widgets__Home__Blockchain$46dart, packages__client__widgets__Home__Iot$46dart, packages__client__widgets__Home__Cloud$46dart, packages__client__widgets__Home__WebMobile$46dart, packages__client__widgets__Home__Digital$46dart, packages__client__widgets__Home__Landing$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const bloc_builder = packages__flutter_bloc__src__multi_bloc_listener$46dart.src__bloc_builder;
+  const board_cubit = packages__client__state__Board__board_cubit$46dart.state__Board__board_cubit;
+  const Create = packages__client__widgets__Home__Create$46dart.widgets__Home__Create;
+  const Monitor = packages__client__widgets__Home__Monitor$46dart.widgets__Home__Monitor;
+  const Review = packages__client__widgets__Home__Review$46dart.widgets__Home__Review;
+  const Start = packages__client__widgets__Home__Start$46dart.widgets__Home__Start;
+  const Console = packages__client__widgets__Home__Console$46dart.widgets__Home__Console;
+  const Design = packages__client__widgets__Home__Design$46dart.widgets__Home__Design;
+  const Build = packages__client__widgets__Home__Build$46dart.widgets__Home__Build;
+  const Maintain = packages__client__widgets__Home__Maintain$46dart.widgets__Home__Maintain;
+  const Facebook = packages__client__widgets__Home__Facebook$46dart.widgets__Home__Facebook;
+  const Twitter = packages__client__widgets__Home__Twitter$46dart.widgets__Home__Twitter;
+  const Linkedin = packages__client__widgets__Home__Linkedin$46dart.widgets__Home__Linkedin;
+  const Instagram = packages__client__widgets__Home__Instagram$46dart.widgets__Home__Instagram;
+  const Youtube = packages__client__widgets__Home__Youtube$46dart.widgets__Home__Youtube;
+  const Legal = packages__client__widgets__Home__Legal$46dart.widgets__Home__Legal;
+  const Terms = packages__client__widgets__Home__Terms$46dart.widgets__Home__Terms;
+  const Privacy = packages__client__widgets__Home__Privacy$46dart.widgets__Home__Privacy;
+  const Support = packages__client__widgets__Home__Support$46dart.widgets__Home__Support;
+  const Contact = packages__client__widgets__Home__Contact$46dart.widgets__Home__Contact;
+  const Ai = packages__client__widgets__Home__Ai$46dart.widgets__Home__Ai;
+  const Data = packages__client__widgets__Home__Data$46dart.widgets__Home__Data;
+  const Cyber = packages__client__widgets__Home__Cyber$46dart.widgets__Home__Cyber;
+  const Robotics = packages__client__widgets__Home__Robotics$46dart.widgets__Home__Robotics;
+  const Reality = packages__client__widgets__Home__Reality$46dart.widgets__Home__Reality;
+  const Blockchain = packages__client__widgets__Home__Blockchain$46dart.widgets__Home__Blockchain;
+  const Iot = packages__client__widgets__Home__Iot$46dart.widgets__Home__Iot;
+  const Cloud = packages__client__widgets__Home__Cloud$46dart.widgets__Home__Cloud;
+  const WebMobile = packages__client__widgets__Home__WebMobile$46dart.widgets__Home__WebMobile;
+  const Digital = packages__client__widgets__Home__Digital$46dart.widgets__Home__Digital;
+  const Landing = packages__client__widgets__Home__Landing$46dart.widgets__Home__Landing;
+  var BoardLogic = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    BoardCubitL: () => (T.BoardCubitL = dart.constFn(dart.legacy(board_cubit.BoardCubit)))(),
+    BoardStateL: () => (T.BoardStateL = dart.constFn(dart.legacy(board_cubit.BoardState)))(),
+    BlocBuilderOfBoardCubitL$BoardStateL: () => (T.BlocBuilderOfBoardCubitL$BoardStateL = dart.constFn(bloc_builder.BlocBuilder$(T.BoardCubitL(), T.BoardStateL())))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    StatefulWidgetL: () => (T.StatefulWidgetL = dart.constFn(dart.legacy(framework.StatefulWidget)))(),
+    VoidToStatefulWidgetL: () => (T.VoidToStatefulWidgetL = dart.constFn(dart.fnType(T.StatefulWidgetL(), [])))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    BuildContextLAndBoardStateLToStatefulWidgetL: () => (T.BuildContextLAndBoardStateLToStatefulWidgetL = dart.constFn(dart.fnType(T.StatefulWidgetL(), [T.BuildContextL(), T.BoardStateL()])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.constList([], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 46,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 48,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 50,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 52,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 54,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 56,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 58,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 60,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 62,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 64,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 66,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 68,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 70,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 72,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 74,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 76,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 78,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 80,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 82,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 84,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 86,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 88,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 90,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 92,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 94,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 96,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 98,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 100,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 102,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 43,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.constList([C[32] || CT.C32], T._LocationL());
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[31] || CT.C31,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 42,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/logic/Home/BoardLogic.dart"
+      });
+    }
+  }, false);
+  var C = Array(33).fill(void 0);
+  var I = ["package:client/logic/Home/BoardLogic.dart"];
+  BoardLogic.BoardLogic = class BoardLogic$ extends framework.StatefulWidget {
+    createState() {
+      return new BoardLogic._BoardLogicState.new();
+    }
+  };
+  (BoardLogic.BoardLogic.new = function(opts) {
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    BoardLogic.BoardLogic.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = BoardLogic.BoardLogic.prototype;
+  dart.addTypeTests(BoardLogic.BoardLogic);
+  dart.addTypeCaches(BoardLogic.BoardLogic);
+  dart.setMethodSignature(BoardLogic.BoardLogic, () => ({
+    __proto__: dart.getMethods(BoardLogic.BoardLogic.__proto__),
+    createState: dart.fnType(dart.legacy(BoardLogic._BoardLogicState), [])
+  }));
+  dart.setLibraryUri(BoardLogic.BoardLogic, I[0]);
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  BoardLogic._BoardLogicState = class _BoardLogicState extends framework.State$(dart.legacy(BoardLogic.BoardLogic)) {
+    build(context) {
+      return new (T.BlocBuilderOfBoardCubitL$BoardStateL()).new({builder: dart.fn((context, state) => {
+          function value() {
+            if (state.create === true) {
+              return new Create.Create.new({$creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+            } else if (state.monitor === true) {
+              return new Monitor.Monitor.new({$creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+            } else if (state.review === true) {
+              return new Review.Review.new({$creationLocationd_0dea112b090073317d4: C[3] || CT.C3});
+            } else if (state.start === true) {
+              return new Start.Start.new({$creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+            } else if (state.console === true) {
+              return new Console.Console.new({$creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+            } else if (state.design === true) {
+              return new Design.Design.new({$creationLocationd_0dea112b090073317d4: C[6] || CT.C6});
+            } else if (state.build === true) {
+              return new Build.Build.new({$creationLocationd_0dea112b090073317d4: C[7] || CT.C7});
+            } else if (state.maintain === true) {
+              return new Maintain.Maintain.new({$creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
+            } else if (state.facebook === true) {
+              return new Facebook.Facebook.new({$creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+            } else if (state.twitter === true) {
+              return new Twitter.Twitter.new({$creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
+            } else if (state.linkedin === true) {
+              return new Linkedin.Linkedin.new({$creationLocationd_0dea112b090073317d4: C[11] || CT.C11});
+            } else if (state.instagram === true) {
+              return new Instagram.Instagram.new({$creationLocationd_0dea112b090073317d4: C[12] || CT.C12});
+            } else if (state.youtube === true) {
+              return new Youtube.Youtube.new({$creationLocationd_0dea112b090073317d4: C[13] || CT.C13});
+            } else if (state.legal === true) {
+              return new Legal.Legal.new({$creationLocationd_0dea112b090073317d4: C[14] || CT.C14});
+            } else if (state.terms === true) {
+              return new Terms.Terms.new({$creationLocationd_0dea112b090073317d4: C[15] || CT.C15});
+            } else if (state.privacy === true) {
+              return new Privacy.Privacy.new({$creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
+            } else if (state.support === true) {
+              return new Support.Support.new({$creationLocationd_0dea112b090073317d4: C[17] || CT.C17});
+            } else if (state.contact === true) {
+              return new Contact.Contact.new({$creationLocationd_0dea112b090073317d4: C[18] || CT.C18});
+            } else if (state.ai === true) {
+              return new Ai.Ai.new({$creationLocationd_0dea112b090073317d4: C[19] || CT.C19});
+            } else if (state.data === true) {
+              return new Data.Data.new({$creationLocationd_0dea112b090073317d4: C[20] || CT.C20});
+            } else if (state.cyber === true) {
+              return new Cyber.Cyber.new({$creationLocationd_0dea112b090073317d4: C[21] || CT.C21});
+            } else if (state.robotics === true) {
+              return new Robotics.Robotics.new({$creationLocationd_0dea112b090073317d4: C[22] || CT.C22});
+            } else if (state.reality === true) {
+              return new Reality.Reality.new({$creationLocationd_0dea112b090073317d4: C[23] || CT.C23});
+            } else if (state.blockchain === true) {
+              return new Blockchain.Blockchain.new({$creationLocationd_0dea112b090073317d4: C[24] || CT.C24});
+            } else if (state.iot === true) {
+              return new Iot.IOT.new({$creationLocationd_0dea112b090073317d4: C[25] || CT.C25});
+            } else if (state.cloud === true) {
+              return new Cloud.Cloud.new({$creationLocationd_0dea112b090073317d4: C[26] || CT.C26});
+            } else if (state.webmobile === true) {
+              return new WebMobile.WebMobile.new({$creationLocationd_0dea112b090073317d4: C[27] || CT.C27});
+            } else if (state.digital === true) {
+              return new Digital.Digital.new({$creationLocationd_0dea112b090073317d4: C[28] || CT.C28});
+            } else {
+              return new Landing.Landing.new({$creationLocationd_0dea112b090073317d4: C[29] || CT.C29});
+            }
+          }
+          dart.fn(value, T.VoidToStatefulWidgetL());
+          return value();
+        }, T.BuildContextLAndBoardStateLToStatefulWidgetL()), $creationLocationd_0dea112b090073317d4: C[30] || CT.C30});
+    }
+  };
+  (BoardLogic._BoardLogicState.new = function() {
+    BoardLogic._BoardLogicState.__proto__.new.call(this);
+    ;
+  }).prototype = BoardLogic._BoardLogicState.prototype;
+  dart.addTypeTests(BoardLogic._BoardLogicState);
+  dart.addTypeCaches(BoardLogic._BoardLogicState);
+  dart.setMethodSignature(BoardLogic._BoardLogicState, () => ({
+    __proto__: dart.getMethods(BoardLogic._BoardLogicState.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(BoardLogic._BoardLogicState, I[0]);
+  dart.trackLibraries("packages/client/logic/Home/BoardLogic.dart", {
+    "package:client/logic/Home/BoardLogic.dart": BoardLogic
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["BoardLogic.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAmCoC;IAAkB;;;;;;EACtD;;;;;;;;;;;;;;UAI4B;AACxB,YAAO,8DACI,SAAC,SAAS;AACjB;AACE,gBAAI,AAAM,AAAO,KAAR,YAAW;AAClB,oBAAO;kBACF,KAAI,AAAM,AAAQ,KAAT,aAAY;AAC1B,oBAAO;kBACF,KAAI,AAAM,AAAO,KAAR,YAAW;AACzB,oBAAO;kBACF,KAAI,AAAM,AAAM,KAAP,WAAU;AACxB,oBAAO;kBACF,KAAI,AAAM,AAAQ,KAAT,aAAY;AAC1B,oBAAO;kBACF,KAAI,AAAM,AAAO,KAAR,YAAW;AACzB,oBAAO;kBACF,KAAI,AAAM,AAAM,KAAP,WAAU;AACxB,oBAAO;kBACF,KAAI,AAAM,AAAS,KAAV,cAAa;AAC3B,oBAAO;kBACF,KAAI,AAAM,AAAS,KAAV,cAAa;AAC3B,oBAAO;kBACF,KAAI,AAAM,AAAQ,KAAT,aAAY;AAC1B,oBAAO;kBACF,KAAI,AAAM,AAAS,KAAV,cAAa;AAC3B,oBAAO;kBACF,KAAI,AAAM,AAAU,KAAX,eAAc;AAC5B,oBAAO;kBACF,KAAI,AAAM,AAAQ,KAAT,aAAY;AAC1B,oBAAO;kBACF,KAAI,AAAM,AAAM,KAAP,WAAU;AACxB,oBAAO;kBACF,KAAI,AAAM,AAAM,KAAP,WAAU;AACxB,oBAAO;kBACF,KAAI,AAAM,AAAQ,KAAT,aAAY;AAC1B,oBAAO;kBACF,KAAI,AAAM,AAAQ,KAAT,aAAY;AAC1B,oBAAO;kBACF,KAAI,AAAM,AAAQ,KAAT,aAAY;AAC1B,oBAAO;kBACF,KAAI,AAAM,AAAG,KAAJ,QAAO;AACrB,oBAAO;kBACF,KAAI,AAAM,AAAK,KAAN,UAAS;AACvB,oBAAO;kBACF,KAAI,AAAM,AAAM,KAAP,WAAU;AACxB,oBAAO;kBACF,KAAI,AAAM,AAAS,KAAV,cAAa;AAC3B,oBAAO;kBACF,KAAI,AAAM,AAAQ,KAAT,aAAY;AAC1B,oBAAO;kBACF,KAAI,AAAM,AAAW,KAAZ,gBAAe;AAC7B,oBAAO;kBACF,KAAI,AAAM,AAAI,KAAL,SAAQ;AACtB,oBAAO;kBACF,KAAI,AAAM,AAAM,KAAP,WAAU;AACxB,oBAAO;kBACF,KAAI,AAAM,AAAU,KAAX,eAAc;AAC5B,oBAAO;kBACF,KAAI,AAAM,AAAQ,KAAT,aAAY;AAC1B,oBAAO;;AAEP,oBAAO;;;;AAIX,gBAAO,MAAK;;IAGlB;;;;;EACF","file":"../../../../../../../../../../packages/client/logic/Home/BoardLogic.dart.lib.js"}');
+  // Exports:
+  return {
+    logic__Home__BoardLogic: BoardLogic
+  };
+}));
+
+//# sourceMappingURL=BoardLogic.dart.lib.js.map
