@@ -1,678 +1,647 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/gradient.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/hexcolor/hexcolor.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/client/widgets/Home/LeftNav.dart', 'packages/client/widgets/Home/MidNav.dart', 'packages/client/widgets/Home/RightNav.dart', 'packages/client/widgets/Home/Board.dart', 'packages/client/widgets/Home/IconRow1.dart', 'packages/client/widgets/Home/IconRow2.dart', 'packages/client/widgets/Home/Social.dart', 'packages/client/widgets/Home/Footer.dart', 'packages/client/widgets/Home/Info.dart'], (function load__packages__client__screens__home_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__gradient$46dart, packages__flutter__src__painting__alignment$46dart, packages__hexcolor__hexcolor$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__rendering__flex$46dart, packages__client__widgets__Home__LeftNav$46dart, packages__client__widgets__Home__MidNav$46dart, packages__client__widgets__Home__RightNav$46dart, packages__client__widgets__Home__Board$46dart, packages__client__widgets__Home__IconRow1$46dart, packages__client__widgets__Home__IconRow2$46dart, packages__client__widgets__Home__Social$46dart, packages__client__widgets__Home__Footer$46dart, packages__client__widgets__Home__Info$46dart) {
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart'], (function load__packages__nested__nested_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _interceptors = dart_sdk._interceptors;
-  const ui = dart_sdk.ui;
+  const collection = dart_sdk.collection;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
   const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
-  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
   const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
-  const gradient = packages__flutter__src__painting__gradient$46dart.src__painting__gradient;
-  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
-  const hexcolor = packages__hexcolor__hexcolor$46dart.hexcolor;
-  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
-  const scaffold = packages__flutter__src__material__icon_button$46dart.src__material__scaffold;
-  const app_bar = packages__flutter__src__material__icon_button$46dart.src__material__app_bar;
-  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
-  const LeftNav = packages__client__widgets__Home__LeftNav$46dart.widgets__Home__LeftNav;
-  const MidNav = packages__client__widgets__Home__MidNav$46dart.widgets__Home__MidNav;
-  const RightNav = packages__client__widgets__Home__RightNav$46dart.widgets__Home__RightNav;
-  const Board = packages__client__widgets__Home__Board$46dart.widgets__Home__Board;
-  const IconRow1 = packages__client__widgets__Home__IconRow1$46dart.widgets__Home__IconRow1;
-  const IconRow2 = packages__client__widgets__Home__IconRow2$46dart.widgets__Home__IconRow2;
-  const Social = packages__client__widgets__Home__Social$46dart.widgets__Home__Social;
-  const Footer = packages__client__widgets__Home__Footer$46dart.widgets__Home__Footer;
-  const Info = packages__client__widgets__Home__Info$46dart.widgets__Home__Info;
-  var home = Object.create(dart.library);
+  var nested = Object.create(dart.library);
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $reversed = dartx.reversed;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    ColorL: () => (T.ColorL = dart.constFn(dart.legacy(ui.Color)))(),
-    JSArrayOfColorL: () => (T.JSArrayOfColorL = dart.constFn(_interceptors.JSArray$(T.ColorL())))(),
+    LinkedHashSetOf_NestedHookElement: () => (T.LinkedHashSetOf_NestedHookElement = dart.constFn(collection.LinkedHashSet$(nested._NestedHookElement)))(),
     _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
-    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
-    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))()
+    _NestedHookElementN: () => (T._NestedHookElementN = dart.constFn(dart.nullable(nested._NestedHookElement)))(),
+    ElementTobool: () => (T.ElementTobool = dart.constFn(dart.fnType(core.bool, [framework.Element])))(),
+    ElementTovoid: () => (T.ElementTovoid = dart.constFn(dart.fnType(dart.void, [framework.Element])))(),
+    SingleChildStateOfSingleChildStatefulWidget: () => (T.SingleChildStateOfSingleChildStatefulWidget = dart.constFn(nested.SingleChildState$(nested.SingleChildStatefulWidget)))(),
+    SingleChildStateMixinOfStatefulWidget: () => (T.SingleChildStateMixinOfStatefulWidget = dart.constFn(nested.SingleChildStateMixin$(framework.StatefulWidget)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "owner",
+        [_Location_column]: 9,
+        [_Location_line]: 104,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "wrappedWidget",
+        [_Location_column]: 9,
+        [_Location_line]: 105,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "injectedChild",
+        [_Location_column]: 9,
+        [_Location_line]: 106,
+        [_Location_file]: null
+      });
+    },
     get C1() {
-      return C[1] = dart.constList([], T._LocationL());
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], T._LocationL());
     },
     get C0() {
       return C[0] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: C[1] || CT.C1,
         [_Location_name]: null,
-        [_Location_column]: 30,
-        [_Location_line]: 46,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[1] || CT.C1,
-        [_Location_name]: null,
-        [_Location_column]: 41,
-        [_Location_line]: 46,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[1] || CT.C1,
-        [_Location_name]: null,
-        [_Location_column]: 51,
-        [_Location_line]: 46,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "mainAxisAlignment",
-        [_Location_column]: 19,
-        [_Location_line]: 45,
-        [_Location_file]: null
-      });
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 19,
-        [_Location_line]: 46,
-        [_Location_file]: null
-      });
-    },
-    get C5() {
-      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
-    },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[5] || CT.C5,
-        [_Location_name]: null,
-        [_Location_column]: 24,
-        [_Location_line]: 44,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "color",
-        [_Location_column]: 17,
-        [_Location_line]: 43,
-        [_Location_file]: null
-      });
-    },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 17,
-        [_Location_line]: 44,
-        [_Location_file]: null
-      });
-    },
-    get C9() {
-      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11], T._LocationL());
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[9] || CT.C9,
-        [_Location_name]: null,
-        [_Location_column]: 22,
-        [_Location_line]: 42,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C14() {
-      return C[14] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 15,
-        [_Location_line]: 42,
-        [_Location_file]: null
-      });
-    },
-    get C13() {
-      return C[13] = dart.constList([C[14] || CT.C14], T._LocationL());
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[13] || CT.C13,
-        [_Location_name]: null,
-        [_Location_column]: 28,
-        [_Location_line]: 41,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "elevation",
-        [_Location_column]: 13,
-        [_Location_line]: 38,
-        [_Location_file]: null
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "backgroundColor",
-        [_Location_column]: 13,
-        [_Location_line]: 39,
-        [_Location_file]: null
-      });
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "toolbarHeight",
-        [_Location_column]: 13,
-        [_Location_line]: 40,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C[20] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "flexibleSpace",
-        [_Location_column]: 13,
-        [_Location_line]: 41,
-        [_Location_file]: null
-      });
-    },
-    get C16() {
-      return C[16] = dart.constList([C[17] || CT.C17, C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20], T._LocationL());
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[16] || CT.C16,
-        [_Location_name]: null,
-        [_Location_column]: 19,
-        [_Location_line]: 37,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[1] || CT.C1,
-        [_Location_name]: null,
-        [_Location_column]: 21,
-        [_Location_line]: 58,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "height",
-        [_Location_column]: 30,
-        [_Location_line]: 59,
-        [_Location_file]: null
-      });
-    },
-    get C23() {
-      return C[23] = dart.constList([C[24] || CT.C24], T._LocationL());
-    },
-    get C22() {
-      return C[22] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[23] || CT.C23,
-        [_Location_name]: null,
-        [_Location_column]: 21,
-        [_Location_line]: 59,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C25() {
-      return C[25] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[1] || CT.C1,
-        [_Location_name]: null,
-        [_Location_column]: 25,
-        [_Location_line]: 62,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C28() {
-      return C[28] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "height",
-        [_Location_column]: 34,
-        [_Location_line]: 63,
-        [_Location_file]: null
-      });
-    },
-    get C27() {
-      return C[27] = dart.constList([C[28] || CT.C28], T._LocationL());
-    },
-    get C26() {
-      return C[26] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[27] || CT.C27,
-        [_Location_name]: null,
-        [_Location_column]: 25,
-        [_Location_line]: 63,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C29() {
-      return C[29] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[1] || CT.C1,
-        [_Location_name]: null,
-        [_Location_column]: 25,
-        [_Location_line]: 64,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C32() {
-      return C[32] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 23,
-        [_Location_line]: 61,
-        [_Location_file]: null
-      });
-    },
-    get C31() {
-      return C[31] = dart.constList([C[32] || CT.C32], T._LocationL());
-    },
-    get C30() {
-      return C[30] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[31] || CT.C31,
-        [_Location_name]: null,
-        [_Location_column]: 21,
-        [_Location_line]: 60,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C35() {
-      return C[35] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "height",
-        [_Location_column]: 30,
-        [_Location_line]: 67,
-        [_Location_file]: null
-      });
-    },
-    get C34() {
-      return C[34] = dart.constList([C[35] || CT.C35], T._LocationL());
-    },
-    get C33() {
-      return C[33] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[34] || CT.C34,
-        [_Location_name]: null,
-        [_Location_column]: 21,
-        [_Location_line]: 67,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C38() {
-      return C[38] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "mainAxisAlignment",
-        [_Location_column]: 19,
-        [_Location_line]: 56,
-        [_Location_file]: null
-      });
-    },
-    get C39() {
-      return C[39] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 19,
-        [_Location_line]: 57,
-        [_Location_file]: null
-      });
-    },
-    get C37() {
-      return C[37] = dart.constList([C[38] || CT.C38, C[39] || CT.C39], T._LocationL());
-    },
-    get C36() {
-      return C[36] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[37] || CT.C37,
-        [_Location_name]: null,
-        [_Location_column]: 24,
-        [_Location_line]: 55,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C42() {
-      return C[42] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 17,
-        [_Location_line]: 55,
-        [_Location_file]: null
-      });
-    },
-    get C41() {
-      return C[41] = dart.constList([C[42] || CT.C42], T._LocationL());
-    },
-    get C40() {
-      return C[40] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[41] || CT.C41,
-        [_Location_name]: null,
-        [_Location_column]: 15,
-        [_Location_line]: 54,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C45() {
-      return C[45] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "mainAxisAlignment",
-        [_Location_column]: 13,
-        [_Location_line]: 52,
-        [_Location_file]: null
-      });
-    },
-    get C46() {
-      return C[46] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 13,
-        [_Location_line]: 53,
-        [_Location_file]: null
-      });
-    },
-    get C44() {
-      return C[44] = dart.constList([C[45] || CT.C45, C[46] || CT.C46], T._LocationL());
-    },
-    get C43() {
-      return C[43] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[44] || CT.C44,
-        [_Location_name]: null,
-        [_Location_column]: 17,
-        [_Location_line]: 51,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C47() {
-      return C[47] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[1] || CT.C1,
-        [_Location_name]: null,
-        [_Location_column]: 17,
-        [_Location_line]: 78,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C48() {
-      return C[48] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[1] || CT.C1,
-        [_Location_name]: null,
-        [_Location_column]: 17,
-        [_Location_line]: 79,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C49() {
-      return C[49] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[1] || CT.C1,
-        [_Location_name]: null,
-        [_Location_column]: 17,
-        [_Location_line]: 80,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C52() {
-      return C[52] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "mainAxisAlignment",
-        [_Location_column]: 15,
-        [_Location_line]: 75,
-        [_Location_file]: null
-      });
-    },
-    get C53() {
-      return C[53] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "crossAxisAlignment",
-        [_Location_column]: 15,
-        [_Location_line]: 76,
-        [_Location_file]: null
-      });
-    },
-    get C54() {
-      return C[54] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 15,
-        [_Location_line]: 77,
-        [_Location_file]: null
-      });
-    },
-    get C51() {
-      return C[51] = dart.constList([C[52] || CT.C52, C[53] || CT.C53, C[54] || CT.C54], T._LocationL());
-    },
-    get C50() {
-      return C[50] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[51] || CT.C51,
-        [_Location_name]: null,
-        [_Location_column]: 20,
-        [_Location_line]: 74,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C57() {
-      return C[57] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 13,
-        [_Location_line]: 74,
-        [_Location_file]: null
-      });
-    },
-    get C56() {
-      return C[56] = dart.constList([C[57] || CT.C57], T._LocationL());
-    },
-    get C55() {
-      return C[55] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[56] || CT.C56,
-        [_Location_name]: null,
-        [_Location_column]: 32,
-        [_Location_line]: 73,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C60() {
-      return C[60] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "backgroundColor",
-        [_Location_column]: 11,
-        [_Location_line]: 36,
-        [_Location_file]: null
-      });
-    },
-    get C61() {
-      return C[61] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "appBar",
-        [_Location_column]: 11,
-        [_Location_line]: 37,
-        [_Location_file]: null
-      });
-    },
-    get C62() {
-      return C[62] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "body",
-        [_Location_column]: 11,
-        [_Location_line]: 51,
-        [_Location_file]: null
-      });
-    },
-    get C63() {
-      return C[63] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "bottomNavigationBar",
-        [_Location_column]: 11,
-        [_Location_line]: 73,
-        [_Location_file]: null
-      });
-    },
-    get C59() {
-      return C[59] = dart.constList([C[60] || CT.C60, C[61] || CT.C61, C[62] || CT.C62, C[63] || CT.C63], T._LocationL());
-    },
-    get C58() {
-      return C[58] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[59] || CT.C59,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 35,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
-      });
-    },
-    get C66() {
-      return C[66] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "decoration",
-        [_Location_column]: 7,
-        [_Location_line]: 30,
-        [_Location_file]: null
-      });
-    },
-    get C67() {
-      return C[67] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 35,
-        [_Location_file]: null
-      });
-    },
-    get C65() {
-      return C[65] = dart.constList([C[66] || CT.C66, C[67] || CT.C67], T._LocationL());
-    },
-    get C64() {
-      return C[64] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[65] || CT.C65,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 29,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_column]: 31,
+        [_Location_line]: 103,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/nested-1.0.0/lib/nested.dart"
       });
     }
   }, false);
-  var C = Array(68).fill(void 0);
-  var I = ["package:client/screens/home.dart"];
-  var title$ = dart.privateName(home, "Home.title");
-  home.Home = class Home extends framework.StatefulWidget {
-    get title() {
-      return this[title$];
+  var C = Array(5).fill(void 0);
+  var I = [
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/nested-1.0.0/lib/nested.dart",
+    "package:nested/nested.dart"
+  ];
+  var _children = dart.privateName(nested, "_children");
+  var _child = dart.privateName(nested, "_child");
+  nested.Nested = class Nested extends framework.StatelessWidget {
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 80, 29, "context");
+      dart.throw(new core.StateError.new("implemented internally"));
     }
-    set title(value) {
-      super.title = value;
-    }
-    createState() {
-      return new home._HomeState.new();
+    createElement() {
+      return new nested._NestedElement.new(this);
     }
   };
-  (home.Home.new = function(opts) {
+  (nested.Nested.new = function(opts) {
     let key = opts && 'key' in opts ? opts.key : null;
-    let title = opts && 'title' in opts ? opts.title : null;
+    let children = opts && 'children' in opts ? opts.children : null;
+    if (children == null) dart.nullFailed(I[0], 69, 38, "children");
+    let child = opts && 'child' in opts ? opts.child : null;
     let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[title$] = title;
-    home.Home.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    if (!dart.test(children[$isNotEmpty])) dart.assertFailed(null, I[0], 71, 16, "children.isNotEmpty");
+    this[_children] = children;
+    this[_child] = child;
+    nested.Nested.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = home.Home.prototype;
-  dart.addTypeTests(home.Home);
-  dart.addTypeCaches(home.Home);
-  dart.setMethodSignature(home.Home, () => ({
-    __proto__: dart.getMethods(home.Home.__proto__),
-    createState: dart.fnType(dart.legacy(home._HomeState), [])
+  }).prototype = nested.Nested.prototype;
+  dart.addTypeTests(nested.Nested);
+  dart.addTypeCaches(nested.Nested);
+  nested.Nested[dart.implements] = () => [nested.SingleChildWidget];
+  dart.setMethodSignature(nested.Nested, () => ({
+    __proto__: dart.getMethods(nested.Nested.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    createElement: dart.fnType(nested._NestedElement, [])
   }));
-  dart.setLibraryUri(home.Home, I[0]);
-  dart.setFieldSignature(home.Home, () => ({
-    __proto__: dart.getFields(home.Home.__proto__),
-    title: dart.finalFieldType(dart.legacy(core.String))
+  dart.setLibraryUri(nested.Nested, I[1]);
+  dart.setFieldSignature(nested.Nested, () => ({
+    __proto__: dart.getFields(nested.Nested.__proto__),
+    [_children]: dart.finalFieldType(core.List$(nested.SingleChildWidget)),
+    [_child]: dart.finalFieldType(dart.nullable(framework.Widget))
   }));
+  var _parent = dart.privateName(nested, "_parent");
   var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
   var _Location_name = dart.privateName(widget_inspector, "_Location.name");
   var _Location_column = dart.privateName(widget_inspector, "_Location.column");
   var _Location_line = dart.privateName(widget_inspector, "_Location.line");
   var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  home._HomeState = class _HomeState extends framework.State$(dart.legacy(home.Home)) {
-    build(context) {
-      let height = media_query.MediaQuery.of(context).size.height;
-      let width = media_query.MediaQuery.of(context).size.width;
-      return new container.Container.new({decoration: new box_decoration.BoxDecoration.new({gradient: new gradient.LinearGradient.new({begin: alignment.Alignment.topCenter, end: alignment.Alignment.bottomCenter, colors: T.JSArrayOfColorL().of([new hexcolor.HexColor.new("#ffffff"), colors.Colors.white])})}), child: new scaffold.Scaffold.new({backgroundColor: colors.Colors.transparent, appBar: new app_bar.AppBar.new({elevation: 0.0, backgroundColor: colors.Colors.transparent, toolbarHeight: 80.0, flexibleSpace: new basic.Center.new({child: new container.Container.new({color: colors.Colors.transparent, child: new basic.Row.new({mainAxisAlignment: flex.MainAxisAlignment.spaceBetween, children: T.JSArrayOfWidgetL().of([new LeftNav.LeftNav.new({$creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), new MidNav.MidNav.new({$creationLocationd_0dea112b090073317d4: C[2] || CT.C2}), new RightNav.RightNav.new({$creationLocationd_0dea112b090073317d4: C[3] || CT.C3})]), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), $creationLocationd_0dea112b090073317d4: C[12] || CT.C12}), $creationLocationd_0dea112b090073317d4: C[15] || CT.C15}), body: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, children: T.JSArrayOfWidgetL().of([new basic.Center.new({child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, children: T.JSArrayOfWidgetL().of([new Board.Board.new({$creationLocationd_0dea112b090073317d4: C[21] || CT.C21}), new basic.SizedBox.new({height: dart.notNull(height) * 0.025, $creationLocationd_0dea112b090073317d4: C[22] || CT.C22}), new basic.Column.new({children: T.JSArrayOfWidgetL().of([new IconRow1.IconRowOne.new({$creationLocationd_0dea112b090073317d4: C[25] || CT.C25}), new basic.SizedBox.new({height: dart.notNull(height) * 0.025, $creationLocationd_0dea112b090073317d4: C[26] || CT.C26}), new IconRow2.IconRowTwo.new({$creationLocationd_0dea112b090073317d4: C[29] || CT.C29})]), $creationLocationd_0dea112b090073317d4: C[30] || CT.C30}), new basic.SizedBox.new({height: dart.notNull(height) * 0.02, $creationLocationd_0dea112b090073317d4: C[33] || CT.C33})]), $creationLocationd_0dea112b090073317d4: C[36] || CT.C36}), $creationLocationd_0dea112b090073317d4: C[40] || CT.C40})]), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43}), bottomNavigationBar: new container.Container.new({child: new basic.Row.new({mainAxisAlignment: flex.MainAxisAlignment.spaceBetween, crossAxisAlignment: flex.CrossAxisAlignment.center, children: T.JSArrayOfWidgetL().of([new Social.Social.new({$creationLocationd_0dea112b090073317d4: C[47] || CT.C47}), new Footer.Footer.new({$creationLocationd_0dea112b090073317d4: C[48] || CT.C48}), new Info.Info.new({$creationLocationd_0dea112b090073317d4: C[49] || CT.C49})]), $creationLocationd_0dea112b090073317d4: C[50] || CT.C50}), $creationLocationd_0dea112b090073317d4: C[55] || CT.C55}), $creationLocationd_0dea112b090073317d4: C[58] || CT.C58}), $creationLocationd_0dea112b090073317d4: C[64] || CT.C64});
+  var _parent$ = dart.privateName(nested, "SingleChildWidgetElementMixin._parent");
+  nested.SingleChildWidgetElementMixin = class SingleChildWidgetElementMixin extends framework.Element {};
+  nested.SingleChildWidgetElementMixin[dart.mixinOn] = Element => class SingleChildWidgetElementMixin extends Element {
+    get [_parent]() {
+      return this[_parent$];
+    }
+    set [_parent](value) {
+      this[_parent$] = value;
+    }
+    mount(parent, newSlot) {
+      if (T._NestedHookElementN().is(parent)) {
+        this[_parent] = parent;
+      }
+      super.mount(parent, newSlot);
+    }
+    activate() {
+      super.activate();
+      this.visitAncestorElements(dart.fn(parent => {
+        if (parent == null) dart.nullFailed(I[0], 228, 28, "parent");
+        if (nested._NestedHookElement.is(parent)) {
+          this[_parent] = parent;
+        }
+        return false;
+      }, T.ElementTobool()));
     }
   };
-  (home._HomeState.new = function() {
-    home._HomeState.__proto__.new.call(this);
-    ;
-  }).prototype = home._HomeState.prototype;
-  dart.addTypeTests(home._HomeState);
-  dart.addTypeCaches(home._HomeState);
-  dart.setMethodSignature(home._HomeState, () => ({
-    __proto__: dart.getMethods(home._HomeState.__proto__),
-    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  (nested.SingleChildWidgetElementMixin[dart.mixinNew] = function() {
+    this[_parent$] = null;
+  }).prototype = nested.SingleChildWidgetElementMixin.prototype;
+  dart.addTypeTests(nested.SingleChildWidgetElementMixin);
+  dart.addTypeCaches(nested.SingleChildWidgetElementMixin);
+  nested.SingleChildWidgetElementMixin[dart.implements] = () => [framework.Element];
+  dart.setMethodSignature(nested.SingleChildWidgetElementMixin, () => ({
+    __proto__: dart.getMethods(nested.SingleChildWidgetElementMixin.__proto__),
+    mount: dart.fnType(dart.void, [dart.nullable(framework.Element), dart.dynamic])
   }));
-  dart.setLibraryUri(home._HomeState, I[0]);
-  dart.trackLibraries("packages/client/screens/home.dart", {
-    "package:client/screens/home.dart": home
+  dart.setLibraryUri(nested.SingleChildWidgetElementMixin, I[1]);
+  dart.setFieldSignature(nested.SingleChildWidgetElementMixin, () => ({
+    __proto__: dart.getFields(nested.SingleChildWidgetElementMixin.__proto__),
+    [_parent]: dart.fieldType(dart.nullable(nested._NestedHookElement))
+  }));
+  const StatelessElement_SingleChildWidgetElementMixin$36 = class StatelessElement_SingleChildWidgetElementMixin extends framework.StatelessElement {};
+  (StatelessElement_SingleChildWidgetElementMixin$36.new = function(widget) {
+    nested.SingleChildWidgetElementMixin[dart.mixinNew].call(this);
+    StatelessElement_SingleChildWidgetElementMixin$36.__proto__.new.call(this, widget);
+  }).prototype = StatelessElement_SingleChildWidgetElementMixin$36.prototype;
+  dart.applyMixin(StatelessElement_SingleChildWidgetElementMixin$36, nested.SingleChildWidgetElementMixin);
+  nested._NestedElement = class _NestedElement extends StatelessElement_SingleChildWidgetElementMixin$36 {
+    get widget() {
+      return nested.Nested.as(super.widget);
+    }
+    build() {
+      let t0, t0$, t0$0;
+      let nestedHook = null;
+      let nextNode = (t0$ = (t0 = this[_parent], t0 == null ? null : t0.injectedChild), t0$ == null ? this.widget[_child] : t0$);
+      for (let child of this.widget[_children][$reversed]) {
+        nextNode = nestedHook = new nested._NestedHook.new({owner: this, wrappedWidget: child, injectedChild: nextNode, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+      }
+      if (nestedHook != null) {
+        for (let node of this.nodes) {
+          t0$0 = node;
+          (() => {
+            t0$0.wrappedChild = dart.nullCheck(nestedHook).wrappedWidget;
+            t0$0.injectedChild = nestedHook.injectedChild;
+            return t0$0;
+          })();
+          let next = nestedHook.injectedChild;
+          if (nested._NestedHook.is(next)) {
+            nestedHook = next;
+          } else {
+            break;
+          }
+        }
+      }
+      return dart.nullCheck(nextNode);
+    }
+  };
+  (nested._NestedElement.new = function(widget) {
+    if (widget == null) dart.nullFailed(I[0], 90, 25, "widget");
+    this.nodes = T.LinkedHashSetOf_NestedHookElement().new();
+    nested._NestedElement.__proto__.new.call(this, widget);
+    ;
+  }).prototype = nested._NestedElement.prototype;
+  dart.addTypeTests(nested._NestedElement);
+  dart.addTypeCaches(nested._NestedElement);
+  dart.setGetterSignature(nested._NestedElement, () => ({
+    __proto__: dart.getGetters(nested._NestedElement.__proto__),
+    widget: nested.Nested
+  }));
+  dart.setLibraryUri(nested._NestedElement, I[1]);
+  dart.setFieldSignature(nested._NestedElement, () => ({
+    __proto__: dart.getFields(nested._NestedElement.__proto__),
+    nodes: dart.finalFieldType(core.Set$(nested._NestedHookElement))
+  }));
+  nested._NestedHook = class _NestedHook extends framework.StatelessWidget {
+    createElement() {
+      return new nested._NestedHookElement.new(this);
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 147, 29, "context");
+      return dart.throw(new core.StateError.new("handled internally"));
+    }
+  };
+  (nested._NestedHook.new = function(opts) {
+    let injectedChild = opts && 'injectedChild' in opts ? opts.injectedChild : null;
+    let wrappedWidget = opts && 'wrappedWidget' in opts ? opts.wrappedWidget : null;
+    if (wrappedWidget == null) dart.nullFailed(I[0], 135, 19, "wrappedWidget");
+    let owner = opts && 'owner' in opts ? opts.owner : null;
+    if (owner == null) dart.nullFailed(I[0], 136, 19, "owner");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this.injectedChild = injectedChild;
+    this.wrappedWidget = wrappedWidget;
+    this.owner = owner;
+    nested._NestedHook.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = nested._NestedHook.prototype;
+  dart.addTypeTests(nested._NestedHook);
+  dart.addTypeCaches(nested._NestedHook);
+  dart.setMethodSignature(nested._NestedHook, () => ({
+    __proto__: dart.getMethods(nested._NestedHook.__proto__),
+    createElement: dart.fnType(nested._NestedHookElement, []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(nested._NestedHook, I[1]);
+  dart.setFieldSignature(nested._NestedHook, () => ({
+    __proto__: dart.getFields(nested._NestedHook.__proto__),
+    wrappedWidget: dart.finalFieldType(nested.SingleChildWidget),
+    injectedChild: dart.finalFieldType(dart.nullable(framework.Widget)),
+    owner: dart.finalFieldType(nested._NestedElement)
+  }));
+  var _injectedChild = dart.privateName(nested, "_injectedChild");
+  var _wrappedChild = dart.privateName(nested, "_wrappedChild");
+  nested._NestedHookElement = class _NestedHookElement extends framework.StatelessElement {
+    get widget() {
+      return nested._NestedHook.as(super.widget);
+    }
+    get injectedChild() {
+      return this[_injectedChild];
+    }
+    set injectedChild(value) {
+      let previous = this[_injectedChild];
+      if (nested._NestedHook.is(value) && nested._NestedHook.is(previous) && dart.test(framework.Widget.canUpdate(value.wrappedWidget, previous.wrappedWidget))) {
+        return;
+      }
+      if (!dart.equals(previous, value)) {
+        this[_injectedChild] = value;
+        this.visitChildren(dart.fn(e => {
+          if (e == null) dart.nullFailed(I[0], 169, 22, "e");
+          return e.markNeedsBuild();
+        }, T.ElementTovoid()));
+      }
+    }
+    get wrappedChild() {
+      return this[_wrappedChild];
+    }
+    set wrappedChild(value) {
+      if (!dart.equals(this[_wrappedChild], value)) {
+        this[_wrappedChild] = value;
+        this.markNeedsBuild();
+      }
+    }
+    mount(parent, newSlot) {
+      this.widget.owner.nodes.add(this);
+      this[_wrappedChild] = this.widget.wrappedWidget;
+      this[_injectedChild] = this.widget.injectedChild;
+      super.mount(parent, newSlot);
+    }
+    unmount() {
+      this.widget.owner.nodes.remove(this);
+      super.unmount();
+    }
+    build() {
+      return dart.nullCheck(this.wrappedChild);
+    }
+  };
+  (nested._NestedHookElement.new = function(widget) {
+    if (widget == null) dart.nullFailed(I[0], 151, 34, "widget");
+    this[_injectedChild] = null;
+    this[_wrappedChild] = null;
+    nested._NestedHookElement.__proto__.new.call(this, widget);
+    ;
+  }).prototype = nested._NestedHookElement.prototype;
+  dart.addTypeTests(nested._NestedHookElement);
+  dart.addTypeCaches(nested._NestedHookElement);
+  dart.setMethodSignature(nested._NestedHookElement, () => ({
+    __proto__: dart.getMethods(nested._NestedHookElement.__proto__),
+    mount: dart.fnType(dart.void, [dart.nullable(framework.Element), dart.dynamic])
+  }));
+  dart.setGetterSignature(nested._NestedHookElement, () => ({
+    __proto__: dart.getGetters(nested._NestedHookElement.__proto__),
+    widget: nested._NestedHook,
+    injectedChild: dart.nullable(framework.Widget),
+    wrappedChild: dart.nullable(nested.SingleChildWidget)
+  }));
+  dart.setSetterSignature(nested._NestedHookElement, () => ({
+    __proto__: dart.getSetters(nested._NestedHookElement.__proto__),
+    injectedChild: dart.nullable(framework.Widget),
+    wrappedChild: dart.nullable(nested.SingleChildWidget)
+  }));
+  dart.setLibraryUri(nested._NestedHookElement, I[1]);
+  dart.setFieldSignature(nested._NestedHookElement, () => ({
+    __proto__: dart.getFields(nested._NestedHookElement.__proto__),
+    [_injectedChild]: dart.fieldType(dart.nullable(framework.Widget)),
+    [_wrappedChild]: dart.fieldType(dart.nullable(nested.SingleChildWidget))
+  }));
+  nested.SingleChildWidget = class SingleChildWidget extends core.Object {};
+  (nested.SingleChildWidget.new = function() {
+    ;
+  }).prototype = nested.SingleChildWidget.prototype;
+  dart.addTypeTests(nested.SingleChildWidget);
+  dart.addTypeCaches(nested.SingleChildWidget);
+  nested.SingleChildWidget[dart.implements] = () => [framework.Widget];
+  dart.setLibraryUri(nested.SingleChildWidget, I[1]);
+  var _child$ = dart.privateName(nested, "SingleChildStatelessWidget._child");
+  nested.SingleChildStatelessWidget = class SingleChildStatelessWidget extends framework.StatelessWidget {
+    get [_child]() {
+      return this[_child$];
+    }
+    set [_child](value) {
+      super[_child] = value;
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 259, 29, "context");
+      return this.buildWithChild(context, this[_child]);
+    }
+    createElement() {
+      return new nested.SingleChildStatelessElement.new(this);
+    }
+  };
+  (nested.SingleChildStatelessWidget.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[_child$] = child;
+    nested.SingleChildStatelessWidget.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = nested.SingleChildStatelessWidget.prototype;
+  dart.addTypeTests(nested.SingleChildStatelessWidget);
+  dart.addTypeCaches(nested.SingleChildStatelessWidget);
+  nested.SingleChildStatelessWidget[dart.implements] = () => [nested.SingleChildWidget];
+  dart.setMethodSignature(nested.SingleChildStatelessWidget, () => ({
+    __proto__: dart.getMethods(nested.SingleChildStatelessWidget.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    createElement: dart.fnType(nested.SingleChildStatelessElement, [])
+  }));
+  dart.setLibraryUri(nested.SingleChildStatelessWidget, I[1]);
+  dart.setFieldSignature(nested.SingleChildStatelessWidget, () => ({
+    __proto__: dart.getFields(nested.SingleChildStatelessWidget.__proto__),
+    [_child]: dart.finalFieldType(dart.nullable(framework.Widget))
+  }));
+  const StatelessElement_SingleChildWidgetElementMixin$36$ = class StatelessElement_SingleChildWidgetElementMixin extends framework.StatelessElement {};
+  (StatelessElement_SingleChildWidgetElementMixin$36$.new = function(widget) {
+    nested.SingleChildWidgetElementMixin[dart.mixinNew].call(this);
+    StatelessElement_SingleChildWidgetElementMixin$36$.__proto__.new.call(this, widget);
+  }).prototype = StatelessElement_SingleChildWidgetElementMixin$36$.prototype;
+  dart.applyMixin(StatelessElement_SingleChildWidgetElementMixin$36$, nested.SingleChildWidgetElementMixin);
+  nested.SingleChildStatelessElement = class SingleChildStatelessElement extends StatelessElement_SingleChildWidgetElementMixin$36$ {
+    build() {
+      if (this[_parent] != null) {
+        return this.widget.buildWithChild(this, dart.nullCheck(this[_parent]).injectedChild);
+      }
+      return super.build();
+    }
+    get widget() {
+      return nested.SingleChildStatelessWidget.as(super.widget);
+    }
+  };
+  (nested.SingleChildStatelessElement.new = function(widget) {
+    if (widget == null) dart.nullFailed(I[0], 271, 58, "widget");
+    nested.SingleChildStatelessElement.__proto__.new.call(this, widget);
+    ;
+  }).prototype = nested.SingleChildStatelessElement.prototype;
+  dart.addTypeTests(nested.SingleChildStatelessElement);
+  dart.addTypeCaches(nested.SingleChildStatelessElement);
+  dart.setGetterSignature(nested.SingleChildStatelessElement, () => ({
+    __proto__: dart.getGetters(nested.SingleChildStatelessElement.__proto__),
+    widget: nested.SingleChildStatelessWidget
+  }));
+  dart.setLibraryUri(nested.SingleChildStatelessElement, I[1]);
+  var _child$0 = dart.privateName(nested, "SingleChildStatefulWidget._child");
+  nested.SingleChildStatefulWidget = class SingleChildStatefulWidget extends framework.StatefulWidget {
+    get [_child]() {
+      return this[_child$0];
+    }
+    set [_child](value) {
+      super[_child] = value;
+    }
+    createElement() {
+      return new nested.SingleChildStatefulElement.new(this);
+    }
+  };
+  (nested.SingleChildStatefulWidget.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[_child$0] = child;
+    nested.SingleChildStatefulWidget.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = nested.SingleChildStatefulWidget.prototype;
+  dart.addTypeTests(nested.SingleChildStatefulWidget);
+  dart.addTypeCaches(nested.SingleChildStatefulWidget);
+  nested.SingleChildStatefulWidget[dart.implements] = () => [nested.SingleChildWidget];
+  dart.setMethodSignature(nested.SingleChildStatefulWidget, () => ({
+    __proto__: dart.getMethods(nested.SingleChildStatefulWidget.__proto__),
+    createElement: dart.fnType(nested.SingleChildStatefulElement, [])
+  }));
+  dart.setLibraryUri(nested.SingleChildStatefulWidget, I[1]);
+  dart.setFieldSignature(nested.SingleChildStatefulWidget, () => ({
+    __proto__: dart.getFields(nested.SingleChildStatefulWidget.__proto__),
+    [_child]: dart.finalFieldType(dart.nullable(framework.Widget))
+  }));
+  const _is_SingleChildState_default = Symbol('_is_SingleChildState_default');
+  nested.SingleChildState$ = dart.generic(T => {
+    class SingleChildState extends framework.State$(T) {
+      build(context) {
+        if (context == null) dart.nullFailed(I[0], 317, 29, "context");
+        return this.buildWithChild(context, this.widget[_child]);
+      }
+    }
+    (SingleChildState.new = function() {
+      SingleChildState.__proto__.new.call(this);
+      ;
+    }).prototype = SingleChildState.prototype;
+    dart.addTypeTests(SingleChildState);
+    SingleChildState.prototype[_is_SingleChildState_default] = true;
+    dart.addTypeCaches(SingleChildState);
+    dart.setMethodSignature(SingleChildState, () => ({
+      __proto__: dart.getMethods(SingleChildState.__proto__),
+      build: dart.fnType(framework.Widget, [framework.BuildContext])
+    }));
+    dart.setLibraryUri(SingleChildState, I[1]);
+    return SingleChildState;
+  });
+  nested.SingleChildState = nested.SingleChildState$();
+  dart.addTypeTests(nested.SingleChildState, _is_SingleChildState_default);
+  const StatefulElement_SingleChildWidgetElementMixin$36 = class StatefulElement_SingleChildWidgetElementMixin extends framework.StatefulElement {};
+  (StatefulElement_SingleChildWidgetElementMixin$36.new = function(widget) {
+    nested.SingleChildWidgetElementMixin[dart.mixinNew].call(this);
+    StatefulElement_SingleChildWidgetElementMixin$36.__proto__.new.call(this, widget);
+  }).prototype = StatefulElement_SingleChildWidgetElementMixin$36.prototype;
+  dart.applyMixin(StatefulElement_SingleChildWidgetElementMixin$36, nested.SingleChildWidgetElementMixin);
+  nested.SingleChildStatefulElement = class SingleChildStatefulElement extends StatefulElement_SingleChildWidgetElementMixin$36 {
+    get widget() {
+      return nested.SingleChildStatefulWidget.as(super.widget);
+    }
+    get state() {
+      return T.SingleChildStateOfSingleChildStatefulWidget().as(super.state);
+    }
+    build() {
+      if (this[_parent] != null) {
+        return this.state.buildWithChild(this, dart.nullCheck(dart.nullCheck(this[_parent]).injectedChild));
+      }
+      return super.build();
+    }
+  };
+  (nested.SingleChildStatefulElement.new = function(widget) {
+    if (widget == null) dart.nullFailed(I[0], 324, 56, "widget");
+    nested.SingleChildStatefulElement.__proto__.new.call(this, widget);
+    ;
+  }).prototype = nested.SingleChildStatefulElement.prototype;
+  dart.addTypeTests(nested.SingleChildStatefulElement);
+  dart.addTypeCaches(nested.SingleChildStatefulElement);
+  dart.setGetterSignature(nested.SingleChildStatefulElement, () => ({
+    __proto__: dart.getGetters(nested.SingleChildStatefulElement.__proto__),
+    widget: nested.SingleChildStatefulWidget,
+    state: nested.SingleChildState$(nested.SingleChildStatefulWidget)
+  }));
+  dart.setLibraryUri(nested.SingleChildStatefulElement, I[1]);
+  var builder$ = dart.privateName(nested, "SingleChildBuilder.builder");
+  nested.SingleChildBuilder = class SingleChildBuilder extends nested.SingleChildStatelessWidget {
+    get builder() {
+      return this[builder$];
+    }
+    set builder(value) {
+      super.builder = value;
+    }
+    buildWithChild(context, child) {
+      let t1, t0;
+      if (context == null) dart.nullFailed(I[0], 360, 38, "context");
+      t0 = context;
+      t1 = child;
+      return this.builder(t0, t1);
+    }
+  };
+  (nested.SingleChildBuilder.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let builder = opts && 'builder' in opts ? opts.builder : null;
+    if (builder == null) dart.nullFailed(I[0], 350, 53, "builder");
+    let child = opts && 'child' in opts ? opts.child : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[builder$] = builder;
+    nested.SingleChildBuilder.__proto__.new.call(this, {key: key, child: child, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = nested.SingleChildBuilder.prototype;
+  dart.addTypeTests(nested.SingleChildBuilder);
+  dart.addTypeCaches(nested.SingleChildBuilder);
+  dart.setMethodSignature(nested.SingleChildBuilder, () => ({
+    __proto__: dart.getMethods(nested.SingleChildBuilder.__proto__),
+    buildWithChild: dart.fnType(framework.Widget, [framework.BuildContext, dart.nullable(framework.Widget)])
+  }));
+  dart.setLibraryUri(nested.SingleChildBuilder, I[1]);
+  dart.setFieldSignature(nested.SingleChildBuilder, () => ({
+    __proto__: dart.getFields(nested.SingleChildBuilder.__proto__),
+    builder: dart.finalFieldType(dart.fnType(framework.Widget, [framework.BuildContext, dart.nullable(framework.Widget)]))
+  }));
+  nested.SingleChildStatelessWidgetMixin = class SingleChildStatelessWidgetMixin extends core.Object {};
+  nested.SingleChildStatelessWidgetMixin[dart.mixinOn] = Object => class SingleChildStatelessWidgetMixin extends Object {
+    get [_child]() {
+      return this.child;
+    }
+    createElement() {
+      return new nested.SingleChildStatelessElement.new(this);
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 378, 29, "context");
+      return this.buildWithChild(context, this.child);
+    }
+  };
+  (nested.SingleChildStatelessWidgetMixin[dart.mixinNew] = function() {
+  }).prototype = nested.SingleChildStatelessWidgetMixin.prototype;
+  dart.addTypeTests(nested.SingleChildStatelessWidgetMixin);
+  dart.addTypeCaches(nested.SingleChildStatelessWidgetMixin);
+  nested.SingleChildStatelessWidgetMixin[dart.implements] = () => [framework.StatelessWidget, nested.SingleChildStatelessWidget, core.Object];
+  dart.setMethodSignature(nested.SingleChildStatelessWidgetMixin, () => ({
+    __proto__: dart.getMethods(nested.SingleChildStatelessWidgetMixin.__proto__),
+    createElement: dart.fnType(nested.SingleChildStatelessElement, []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setGetterSignature(nested.SingleChildStatelessWidgetMixin, () => ({
+    __proto__: dart.getGetters(nested.SingleChildStatelessWidgetMixin.__proto__),
+    [_child]: dart.nullable(framework.Widget)
+  }));
+  dart.setLibraryUri(nested.SingleChildStatelessWidgetMixin, I[1]);
+  nested.SingleChildStatefulWidgetMixin = class SingleChildStatefulWidgetMixin extends framework.StatefulWidget {};
+  nested.SingleChildStatefulWidgetMixin[dart.mixinOn] = StatefulWidget => class SingleChildStatefulWidgetMixin extends StatefulWidget {
+    createElement() {
+      return new nested._SingleChildStatefulMixinElement.new(this);
+    }
+  };
+  dart.addTypeTests(nested.SingleChildStatefulWidgetMixin);
+  dart.addTypeCaches(nested.SingleChildStatefulWidgetMixin);
+  nested.SingleChildStatefulWidgetMixin[dart.implements] = () => [nested.SingleChildWidget, framework.StatefulWidget];
+  dart.setMethodSignature(nested.SingleChildStatefulWidgetMixin, () => ({
+    __proto__: dart.getMethods(nested.SingleChildStatefulWidgetMixin.__proto__),
+    createElement: dart.fnType(nested._SingleChildStatefulMixinElement, [])
+  }));
+  dart.setLibraryUri(nested.SingleChildStatefulWidgetMixin, I[1]);
+  const _is_SingleChildStateMixin_default = Symbol('_is_SingleChildStateMixin_default');
+  nested.SingleChildStateMixin$ = dart.generic(T => {
+    class SingleChildStateMixin extends framework.State$(T) {}
+    SingleChildStateMixin[dart.mixinOn] = State => class SingleChildStateMixin extends State {
+      build(context) {
+        if (context == null) dart.nullFailed(I[0], 396, 29, "context");
+        return this.buildWithChild(context, dart.nullCheck(nested.SingleChildStatefulWidgetMixin.as(this.widget).child));
+      }
+    };
+    dart.addTypeTests(SingleChildStateMixin);
+    SingleChildStateMixin.prototype[_is_SingleChildStateMixin_default] = true;
+    dart.addTypeCaches(SingleChildStateMixin);
+    SingleChildStateMixin[dart.implements] = () => [framework.State$(T)];
+    dart.setMethodSignature(SingleChildStateMixin, () => ({
+      __proto__: dart.getMethods(SingleChildStateMixin.__proto__),
+      build: dart.fnType(framework.Widget, [framework.BuildContext])
+    }));
+    dart.setLibraryUri(SingleChildStateMixin, I[1]);
+    return SingleChildStateMixin;
+  });
+  nested.SingleChildStateMixin = nested.SingleChildStateMixin$();
+  dart.addTypeTests(nested.SingleChildStateMixin, _is_SingleChildStateMixin_default);
+  const StatefulElement_SingleChildWidgetElementMixin$36$ = class StatefulElement_SingleChildWidgetElementMixin extends framework.StatefulElement {};
+  (StatefulElement_SingleChildWidgetElementMixin$36$.new = function(widget) {
+    nested.SingleChildWidgetElementMixin[dart.mixinNew].call(this);
+    StatefulElement_SingleChildWidgetElementMixin$36$.__proto__.new.call(this, widget);
+  }).prototype = StatefulElement_SingleChildWidgetElementMixin$36$.prototype;
+  dart.applyMixin(StatefulElement_SingleChildWidgetElementMixin$36$, nested.SingleChildWidgetElementMixin);
+  nested._SingleChildStatefulMixinElement = class _SingleChildStatefulMixinElement extends StatefulElement_SingleChildWidgetElementMixin$36$ {
+    get widget() {
+      return nested.SingleChildStatefulWidgetMixin.as(super.widget);
+    }
+    get state() {
+      return T.SingleChildStateMixinOfStatefulWidget().as(super.state);
+    }
+    build() {
+      if (this[_parent] != null) {
+        return this.state.buildWithChild(this, dart.nullCheck(dart.nullCheck(this[_parent]).injectedChild));
+      }
+      return super.build();
+    }
+  };
+  (nested._SingleChildStatefulMixinElement.new = function(widget) {
+    if (widget == null) dart.nullFailed(I[0], 406, 67, "widget");
+    nested._SingleChildStatefulMixinElement.__proto__.new.call(this, widget);
+    ;
+  }).prototype = nested._SingleChildStatefulMixinElement.prototype;
+  dart.addTypeTests(nested._SingleChildStatefulMixinElement);
+  dart.addTypeCaches(nested._SingleChildStatefulMixinElement);
+  dart.setGetterSignature(nested._SingleChildStatefulMixinElement, () => ({
+    __proto__: dart.getGetters(nested._SingleChildStatefulMixinElement.__proto__),
+    widget: nested.SingleChildStatefulWidgetMixin,
+    state: nested.SingleChildStateMixin$(framework.StatefulWidget)
+  }));
+  dart.setLibraryUri(nested._SingleChildStatefulMixinElement, I[1]);
+  nested.SingleChildInheritedElementMixin = class SingleChildInheritedElementMixin extends core.Object {};
+  nested.SingleChildInheritedElementMixin[dart.mixinOn] = _SingleChildInheritedElementMixin$36InheritedElement$36SingleChildWidgetElementMixin => class SingleChildInheritedElementMixin extends _SingleChildInheritedElementMixin$36InheritedElement$36SingleChildWidgetElementMixin {
+    build() {
+      if (this[_parent] != null) {
+        return dart.nullCheck(dart.nullCheck(this[_parent]).injectedChild);
+      }
+      return super.build();
+    }
+  };
+  dart.addTypeTests(nested.SingleChildInheritedElementMixin);
+  dart.addTypeCaches(nested.SingleChildInheritedElementMixin);
+  nested.SingleChildInheritedElementMixin[dart.implements] = () => [nested.SingleChildWidgetElementMixin, framework.InheritedElement];
+  dart.setMethodSignature(nested.SingleChildInheritedElementMixin, () => ({
+    __proto__: dart.getMethods(nested.SingleChildInheritedElementMixin.__proto__),
+    build: dart.fnType(framework.Widget, [])
+  }));
+  dart.setLibraryUri(nested.SingleChildInheritedElementMixin, I[1]);
+  dart.trackLibraries("packages/nested/nested.dart", {
+    "package:nested/nested.dart": nested
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["home.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAee;;;;;;;AAGe;IAAY;;;QAL9B;QAAU;;;AAAU,6CAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;UAUnB;AAEjB,mBAAoB,AAAY,AAAK,0BAAd,OAAO;AAC9B,kBAAmB,AAAY,AAAK,0BAAd,OAAO;AAEpC,YAAO,0CACO,gDACE,wCACW,oCACF,0CACP,wBAAC,0BAAS,YAAmB,kCACtC,4CACqB,mCAChB,mCACK,sBACa,0CACT,qBACA,6BACN,oCACS,kCACP,sCACgC,+CAC3B,yBAAC,kFAAW,gFAAU,oUAKlC,yCACiC,yCAC3B,yBACR,6BACS,yCACgC,yCAC3B,yBACR,gFACA,gCAAwB,aAAP,MAAM,IAAG,kEAC1B,gCACY,yBACR,wFACA,gCAAwB,aAAP,MAAM,IAAG,kEAC1B,qJAGJ,gCAAwB,aAAP,MAAM,IAAG,2QAMf,oCACZ,sCACgC,yDACE,0CAC7B,yBACR,kFACA,kFACA;IAKd;;;;;EACF","file":"../../../../../../../../../packages/client/screens/home.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["nested.dart","../../../../../packages/flutter/lib/src/widgets/framework.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/nested/nested.dart.lib.js"}');
   // Exports:
   return {
-    screens__home: home
+    nested: nested
   };
 }));
 
-//# sourceMappingURL=home.dart.lib.js.map
+//# sourceMappingURL=nested.dart.lib.js.map

@@ -9,7 +9,7 @@ class MyProjectButton extends StatelessWidget {
         child: Button(
             elevation: 0,
             icon: Icons.bar_chart,
-            value: 'Monitor',
+            value: 'My Projects',
             size: 22,
             onPressed: () {}));
   }

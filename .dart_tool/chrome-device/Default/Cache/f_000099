@@ -1,935 +1,1009 @@
-define(['dart_sdk', 'packages/flutter_svg/src/svg/xml_parsers.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter_svg/src/utilities/xml.dart', 'packages/flutter_svg/src/utilities/numbers.dart', 'packages/xml/src/xml_events/events/text.dart', 'packages/flutter_svg/src/svg/colors.dart', 'packages/flutter_svg/src/utilities/errors.dart', 'packages/path_drawing/src/parse_path.dart'], (function load__packages__flutter_svg__src__svg__parser_state_dart(dart_sdk, packages__flutter_svg__src__svg__xml_parsers$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter_svg__src__utilities__xml$46dart, packages__flutter_svg__src__utilities__numbers$46dart, packages__xml__src__xml_events__events__text$46dart, packages__flutter_svg__src__svg__colors$46dart, packages__flutter_svg__src__utilities__errors$46dart, packages__path_drawing__src__parse_path$46dart) {
+define(['dart_sdk', 'packages/flutter_svg/src/utilities/numbers.dart'], (function load__packages__flutter_svg__src__svg__colors_dart(dart_sdk, packages__flutter_svg__src__utilities__numbers$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const ui = dart_sdk.ui;
-  const _js_helper = dart_sdk._js_helper;
   const _interceptors = dart_sdk._interceptors;
-  const _internal = dart_sdk._internal;
-  const async = dart_sdk.async;
-  const collection = dart_sdk.collection;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const vector_drawable = packages__flutter_svg__src__svg__xml_parsers$46dart.src__vector_drawable;
-  const xml_parsers = packages__flutter_svg__src__svg__xml_parsers$46dart.src__svg__xml_parsers;
-  const parsers = packages__flutter_svg__src__svg__xml_parsers$46dart.src__svg__parsers;
-  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const xml = packages__flutter_svg__src__utilities__xml$46dart.src__utilities__xml;
   const numbers = packages__flutter_svg__src__utilities__numbers$46dart.src__utilities__numbers;
-  const end_element = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__end_element;
-  const start_element = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__start_element;
-  const cdata = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__cdata;
-  const text = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__text;
-  const event_attribute = packages__xml__src__xml_events__events__text$46dart.src__xml_events__utils__event_attribute;
-  const event = packages__xml__src__xml_events__events__text$46dart.src__xml_events__event;
-  const colors$ = packages__flutter_svg__src__svg__colors$46dart.src__svg__colors;
-  const errors = packages__flutter_svg__src__utilities__errors$46dart.src__utilities__errors;
-  const parse_path = packages__path_drawing__src__parse_path$46dart.src__parse_path;
-  var parser_state = Object.create(dart.library);
-  var $runtimeType = dartx.runtimeType;
-  var $add = dartx.add;
+  var colors = Object.create(dart.library);
   var $isEmpty = dartx.isEmpty;
-  var $addAll = dartx.addAll;
   var $_get = dartx._get;
-  var $forEach = dartx.forEach;
-  var $last = dartx.last;
-  var $isNotEmpty = dartx.isNotEmpty;
+  var $substring = dartx.substring;
+  var $toLowerCase = dartx.toLowerCase;
+  var $startsWith = dartx.startsWith;
+  var $indexOf = dartx.indexOf;
+  var $split = dartx.split;
   var $trim = dartx.trim;
-  var $iterator = dartx.iterator;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $removeLast = dartx.removeLast;
+  var $endsWith = dartx.endsWith;
+  var $contains = dartx.contains;
+  var $round = dartx.round;
+  var $modulo = dartx['%'];
+  var $length = dartx.length;
+  var $_set = dartx._set;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    DiagnosticsPropertyOfString: () => (T.DiagnosticsPropertyOfString = dart.constFn(diagnostics.DiagnosticsProperty$(core.String)))(),
-    SyncIterableOfDiagnosticsNode: () => (T.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
-    IterableOfDiagnosticsNode: () => (T.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
-    VoidToIterableOfDiagnosticsNode: () => (T.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T.IterableOfDiagnosticsNode(), [])))(),
-    JSArrayOfDrawable: () => (T.JSArrayOfDrawable = dart.constFn(_interceptors.JSArray$(vector_drawable.Drawable)))(),
+    StringToString: () => (T.StringToString = dart.constFn(dart.fnType(core.String, [core.String])))(),
+    StringToint: () => (T.StringToint = dart.constFn(dart.fnType(core.int, [core.String])))(),
     JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))(),
-    JSArrayOfColor: () => (T.JSArrayOfColor = dart.constFn(_interceptors.JSArray$(ui.Color)))(),
-    VoidTodouble: () => (T.VoidTodouble = dart.constFn(dart.fnType(core.double, [])))(),
-    doubleTodynamic: () => (T.doubleTodynamic = dart.constFn(dart.fnType(dart.dynamic, [core.double])))(),
-    JSArrayOfPath: () => (T.JSArrayOfPath = dart.constFn(_interceptors.JSArray$(ui.Path)))(),
-    DrawableN: () => (T.DrawableN = dart.constFn(dart.nullable(vector_drawable.Drawable)))(),
-    DrawableNTovoid: () => (T.DrawableNTovoid = dart.constFn(dart.fnType(dart.void, [T.DrawableN()])))(),
-    ListQueueOf_TextInfo: () => (T.ListQueueOf_TextInfo = dart.constFn(collection.ListQueue$(parser_state._TextInfo)))(),
-    StringTovoid: () => (T.StringTovoid = dart.constFn(dart.fnType(dart.void, [core.String])))(),
-    XmlStartElementEventTovoid: () => (T.XmlStartElementEventTovoid = dart.constFn(dart.fnType(dart.void, [start_element.XmlStartElementEvent])))(),
-    ListQueueOf_SvgGroupTuple: () => (T.ListQueueOf_SvgGroupTuple = dart.constFn(collection.ListQueue$(parser_state._SvgGroupTuple)))(),
-    JSArrayOfXmlEventAttribute: () => (T.JSArrayOfXmlEventAttribute = dart.constFn(_interceptors.JSArray$(event_attribute.XmlEventAttribute)))(),
-    SyncIterableOfXmlEvent: () => (T.SyncIterableOfXmlEvent = dart.constFn(_js_helper.SyncIterable$(event.XmlEvent)))(),
-    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    LinkedHashSetOfString: () => (T.LinkedHashSetOfString = dart.constFn(collection.LinkedHashSet$(core.String)))(),
-    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
-    FutureNOfvoid: () => (T.FutureNOfvoid = dart.constFn(dart.nullable(T.FutureOfvoid())))(),
-    SvgParserStateAndboolToFutureNOfvoid: () => (T.SvgParserStateAndboolToFutureNOfvoid = dart.constFn(dart.fnType(T.FutureNOfvoid(), [parser_state.SvgParserState, core.bool])))(),
-    SvgParserStateAndboolToFutureOfvoid: () => (T.SvgParserStateAndboolToFutureOfvoid = dart.constFn(dart.fnType(T.FutureOfvoid(), [parser_state.SvgParserState, core.bool])))(),
+    doubleTodouble: () => (T.doubleTodouble = dart.constFn(dart.fnType(core.double, [core.double])))(),
     StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
-    SvgParserStateL: () => (T.SvgParserStateL = dart.constFn(dart.legacy(parser_state.SvgParserState)))(),
-    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
-    SvgParserStateLAndboolLToFutureNOfvoid: () => (T.SvgParserStateLAndboolLToFutureNOfvoid = dart.constFn(dart.fnType(T.FutureNOfvoid(), [T.SvgParserStateL(), T.boolL()])))(),
-    SvgParserStateLAndboolLToLFutureNOfvoid: () => (T.SvgParserStateLAndboolLToLFutureNOfvoid = dart.constFn(dart.legacy(T.SvgParserStateLAndboolLToFutureNOfvoid())))(),
-    ListOfXmlEventAttribute: () => (T.ListOfXmlEventAttribute = dart.constFn(core.List$(event_attribute.XmlEventAttribute)))(),
-    ListNOfXmlEventAttribute: () => (T.ListNOfXmlEventAttribute = dart.constFn(dart.nullable(T.ListOfXmlEventAttribute())))(),
-    ListNOfXmlEventAttributeToPath: () => (T.ListNOfXmlEventAttributeToPath = dart.constFn(dart.fnType(ui.Path, [T.ListNOfXmlEventAttribute()])))(),
-    PathN: () => (T.PathN = dart.constFn(dart.nullable(ui.Path)))(),
-    ListNOfXmlEventAttributeToPathN: () => (T.ListNOfXmlEventAttributeToPathN = dart.constFn(dart.fnType(T.PathN(), [T.ListNOfXmlEventAttribute()])))(),
-    XmlEventAttributeL: () => (T.XmlEventAttributeL = dart.constFn(dart.legacy(event_attribute.XmlEventAttribute)))(),
-    ListOfXmlEventAttributeL: () => (T.ListOfXmlEventAttributeL = dart.constFn(core.List$(T.XmlEventAttributeL())))(),
-    ListNOfXmlEventAttributeL: () => (T.ListNOfXmlEventAttributeL = dart.constFn(dart.nullable(T.ListOfXmlEventAttributeL())))(),
-    ListNOfXmlEventAttributeLToPathN: () => (T.ListNOfXmlEventAttributeLToPathN = dart.constFn(dart.fnType(T.PathN(), [T.ListNOfXmlEventAttributeL()])))(),
-    ListNOfXmlEventAttributeLToLPathN: () => (T.ListNOfXmlEventAttributeLToLPathN = dart.constFn(dart.legacy(T.ListNOfXmlEventAttributeLToPathN())))()
+    ColorL: () => (T.ColorL = dart.constFn(dart.legacy(ui.Color)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
-    get C1() {
-      return C[1] = dart.fn(parser_state._Elements.svg, T.SvgParserStateAndboolToFutureNOfvoid());
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
     },
     get C2() {
-      return C[2] = dart.fn(parser_state._Elements.g, T.SvgParserStateAndboolToFutureNOfvoid());
+      return C[2] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293982463.0
+      });
     },
     get C3() {
-      return C[3] = dart.fn(parser_state._Elements.use, T.SvgParserStateAndboolToFutureNOfvoid());
+      return C[3] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294634455.0
+      });
     },
     get C4() {
-      return C[4] = dart.fn(parser_state._Elements.symbol, T.SvgParserStateAndboolToFutureNOfvoid());
+      return C[4] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278255615.0
+      });
     },
     get C5() {
-      return C[5] = dart.fn(parser_state._Elements.radialGradient, T.SvgParserStateAndboolToFutureNOfvoid());
+      return C[5] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286578644.0
+      });
     },
     get C6() {
-      return C[6] = dart.fn(parser_state._Elements.linearGradient, T.SvgParserStateAndboolToFutureNOfvoid());
+      return C[6] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293984255.0
+      });
     },
     get C7() {
-      return C[7] = dart.fn(parser_state._Elements.clipPath, T.SvgParserStateAndboolToFutureNOfvoid());
+      return C[7] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294309340.0
+      });
     },
     get C8() {
-      return C[8] = dart.fn(parser_state._Elements.image, T.SvgParserStateAndboolToFutureOfvoid());
+      return C[8] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294960324.0
+      });
     },
     get C9() {
-      return C[9] = dart.fn(parser_state._Elements.text, T.SvgParserStateAndboolToFutureOfvoid());
-    },
-    get C0() {
-      return C[0] = dart.constMap(T.StringL(), T.SvgParserStateLAndboolLToLFutureNOfvoid(), ["svg", C[1] || CT.C1, "g", C[2] || CT.C2, "a", C[2] || CT.C2, "use", C[3] || CT.C3, "symbol", C[4] || CT.C4, "mask", C[4] || CT.C4, "radialGradient", C[5] || CT.C5, "linearGradient", C[6] || CT.C6, "clipPath", C[7] || CT.C7, "image", C[8] || CT.C8, "text", C[9] || CT.C9]);
-    },
-    get C11() {
-      return C[11] = dart.fn(parser_state._Paths.circle, T.ListNOfXmlEventAttributeToPath());
-    },
-    get C12() {
-      return C[12] = dart.fn(parser_state._Paths.path, T.ListNOfXmlEventAttributeToPath());
-    },
-    get C13() {
-      return C[13] = dart.fn(parser_state._Paths.rect, T.ListNOfXmlEventAttributeToPath());
-    },
-    get C14() {
-      return C[14] = dart.fn(parser_state._Paths.polygon, T.ListNOfXmlEventAttributeToPathN());
-    },
-    get C15() {
-      return C[15] = dart.fn(parser_state._Paths.polyline, T.ListNOfXmlEventAttributeToPathN());
-    },
-    get C16() {
-      return C[16] = dart.fn(parser_state._Paths.ellipse, T.ListNOfXmlEventAttributeToPath());
-    },
-    get C17() {
-      return C[17] = dart.fn(parser_state._Paths.line, T.ListNOfXmlEventAttributeToPath());
+      return C[9] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294962125.0
+      });
     },
     get C10() {
-      return C[10] = dart.constMap(T.StringL(), T.ListNOfXmlEventAttributeLToLPathN(), ["circle", C[11] || CT.C11, "path", C[12] || CT.C12, "rect", C[13] || CT.C13, "polygon", C[14] || CT.C14, "polyline", C[15] || CT.C15, "ellipse", C[16] || CT.C16, "line", C[17] || CT.C17]);
+      return C[10] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190335.0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287245282.0
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289014314.0
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292786311.0
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284456608.0
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286578432.0
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291979550.0
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294934352.0
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284782061.0
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294965468.0
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292613180.0
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190219.0
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278225803.0
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290283019.0
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289309097.0
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278215680.0
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290623339.0
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287299723.0
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283788079.0
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294937600.0
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288230092.0
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287299584.0
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293498490.0
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287609999.0
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282924427.0
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281290575.0
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278243025.0
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287889619.0
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294907027.0
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278239231.0
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285098345.0
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280193279.0
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289864226.0
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294966000.0
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280453922.0
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294902015.0
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292664540.0
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294506751.0
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294956800.0
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292519200.0
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286611584.0
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278222848.0
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289593135.0
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293984240.0
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294928820.0
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291648604.0
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283105410.0
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967280.0
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293977740.0
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293322490.0
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294963445.0
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286381056.0
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294965965.0
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289583334.0
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293951616.0
+      });
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292935679.0
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294638290.0
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292072403.0
+      });
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287688336.0
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294948545.0
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294942842.0
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280332970.0
+      });
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287090426.0
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286023833.0
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289774814.0
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967264.0
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278255360.0
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281519410.0
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294635750.0
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286578688.0
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284927402.0
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190285.0
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290401747.0
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287852763.0
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282168177.0
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286277870.0
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278254234.0
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282962380.0
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291237253.0
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279834992.0
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294311930.0
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294960353.0
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294960309.0
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294958765.0
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190208.0
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294833638.0
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286611456.0
+      });
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285238819.0
+      });
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294944000.0
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294919424.0
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292505814.0
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293847210.0
+      });
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288215960.0
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289720046.0
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292571283.0
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294963157.0
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294957753.0
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291659071.0
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294951115.0
+      });
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292714717.0
+      });
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289781990.0
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286578816.0
+      });
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294901760.0
+      });
+    },
+    get C113() {
+      return C[113] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290547599.0
+      });
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282477025.0
+      });
+    },
+    get C115() {
+      return C[115] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287317267.0
+      });
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294606962.0
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294222944.0
+      });
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281240407.0
+      });
+    },
+    get C119() {
+      return C[119] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294964718.0
+      });
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288696877.0
+      });
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290822336.0
+      });
+    },
+    get C122() {
+      return C[122] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287090411.0
+      });
+    },
+    get C123() {
+      return C[123] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285160141.0
+      });
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285563024.0
+      });
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294966010.0
+      });
+    },
+    get C126() {
+      return C[126] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278255487.0
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282811060.0
+      });
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291998860.0
+      });
+    },
+    get C129() {
+      return C[129] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278222976.0
+      });
+    },
+    get C130() {
+      return C[130] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292394968.0
+      });
+    },
+    get C131() {
+      return C[131] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294927175.0
+      });
+    },
+    get C132() {
+      return C[132] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 16777215
+      });
+    },
+    get C133() {
+      return C[133] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282441936.0
+      });
+    },
+    get C134() {
+      return C[134] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293821166.0
+      });
+    },
+    get C135() {
+      return C[135] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294303411.0
+      });
+    },
+    get C136() {
+      return C[136] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967295.0
+      });
+    },
+    get C137() {
+      return C[137] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294309365.0
+      });
+    },
+    get C138() {
+      return C[138] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967040.0
+      });
+    },
+    get C139() {
+      return C[139] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288335154.0
+      });
+    },
+    get C1() {
+      return C[1] = dart.constMap(T.StringL(), T.ColorL(), ["aliceblue", C[2] || CT.C2, "antiquewhite", C[3] || CT.C3, "aqua", C[4] || CT.C4, "aquamarine", C[5] || CT.C5, "azure", C[6] || CT.C6, "beige", C[7] || CT.C7, "bisque", C[8] || CT.C8, "black", C[0] || CT.C0, "blanchedalmond", C[9] || CT.C9, "blue", C[10] || CT.C10, "blueviolet", C[11] || CT.C11, "brown", C[12] || CT.C12, "burlywood", C[13] || CT.C13, "cadetblue", C[14] || CT.C14, "chartreuse", C[15] || CT.C15, "chocolate", C[16] || CT.C16, "coral", C[17] || CT.C17, "cornflowerblue", C[18] || CT.C18, "cornsilk", C[19] || CT.C19, "crimson", C[20] || CT.C20, "cyan", C[4] || CT.C4, "darkblue", C[21] || CT.C21, "darkcyan", C[22] || CT.C22, "darkgoldenrod", C[23] || CT.C23, "darkgray", C[24] || CT.C24, "darkgreen", C[25] || CT.C25, "darkgrey", C[24] || CT.C24, "darkkhaki", C[26] || CT.C26, "darkmagenta", C[27] || CT.C27, "darkolivegreen", C[28] || CT.C28, "darkorange", C[29] || CT.C29, "darkorchid", C[30] || CT.C30, "darkred", C[31] || CT.C31, "darksalmon", C[32] || CT.C32, "darkseagreen", C[33] || CT.C33, "darkslateblue", C[34] || CT.C34, "darkslategray", C[35] || CT.C35, "darkslategrey", C[35] || CT.C35, "darkturquoise", C[36] || CT.C36, "darkviolet", C[37] || CT.C37, "deeppink", C[38] || CT.C38, "deepskyblue", C[39] || CT.C39, "dimgray", C[40] || CT.C40, "dimgrey", C[40] || CT.C40, "dodgerblue", C[41] || CT.C41, "firebrick", C[42] || CT.C42, "floralwhite", C[43] || CT.C43, "forestgreen", C[44] || CT.C44, "fuchsia", C[45] || CT.C45, "gainsboro", C[46] || CT.C46, "ghostwhite", C[47] || CT.C47, "gold", C[48] || CT.C48, "goldenrod", C[49] || CT.C49, "gray", C[50] || CT.C50, "grey", C[50] || CT.C50, "green", C[51] || CT.C51, "greenyellow", C[52] || CT.C52, "honeydew", C[53] || CT.C53, "hotpink", C[54] || CT.C54, "indianred", C[55] || CT.C55, "indigo", C[56] || CT.C56, "ivory", C[57] || CT.C57, "khaki", C[58] || CT.C58, "lavender", C[59] || CT.C59, "lavenderblush", C[60] || CT.C60, "lawngreen", C[61] || CT.C61, "lemonchiffon", C[62] || CT.C62, "lightblue", C[63] || CT.C63, "lightcoral", C[64] || CT.C64, "lightcyan", C[65] || CT.C65, "lightgoldenrodyellow", C[66] || CT.C66, "lightgray", C[67] || CT.C67, "lightgreen", C[68] || CT.C68, "lightgrey", C[67] || CT.C67, "lightpink", C[69] || CT.C69, "lightsalmon", C[70] || CT.C70, "lightseagreen", C[71] || CT.C71, "lightskyblue", C[72] || CT.C72, "lightslategray", C[73] || CT.C73, "lightslategrey", C[73] || CT.C73, "lightsteelblue", C[74] || CT.C74, "lightyellow", C[75] || CT.C75, "lime", C[76] || CT.C76, "limegreen", C[77] || CT.C77, "linen", C[78] || CT.C78, "magenta", C[45] || CT.C45, "maroon", C[79] || CT.C79, "mediumaquamarine", C[80] || CT.C80, "mediumblue", C[81] || CT.C81, "mediumorchid", C[82] || CT.C82, "mediumpurple", C[83] || CT.C83, "mediumseagreen", C[84] || CT.C84, "mediumslateblue", C[85] || CT.C85, "mediumspringgreen", C[86] || CT.C86, "mediumturquoise", C[87] || CT.C87, "mediumvioletred", C[88] || CT.C88, "midnightblue", C[89] || CT.C89, "mintcream", C[90] || CT.C90, "mistyrose", C[91] || CT.C91, "moccasin", C[92] || CT.C92, "navajowhite", C[93] || CT.C93, "navy", C[94] || CT.C94, "oldlace", C[95] || CT.C95, "olive", C[96] || CT.C96, "olivedrab", C[97] || CT.C97, "orange", C[98] || CT.C98, "orangered", C[99] || CT.C99, "orchid", C[100] || CT.C100, "palegoldenrod", C[101] || CT.C101, "palegreen", C[102] || CT.C102, "paleturquoise", C[103] || CT.C103, "palevioletred", C[104] || CT.C104, "papayawhip", C[105] || CT.C105, "peachpuff", C[106] || CT.C106, "peru", C[107] || CT.C107, "pink", C[108] || CT.C108, "plum", C[109] || CT.C109, "powderblue", C[110] || CT.C110, "purple", C[111] || CT.C111, "red", C[112] || CT.C112, "rosybrown", C[113] || CT.C113, "royalblue", C[114] || CT.C114, "saddlebrown", C[115] || CT.C115, "salmon", C[116] || CT.C116, "sandybrown", C[117] || CT.C117, "seagreen", C[118] || CT.C118, "seashell", C[119] || CT.C119, "sienna", C[120] || CT.C120, "silver", C[121] || CT.C121, "skyblue", C[122] || CT.C122, "slateblue", C[123] || CT.C123, "slategray", C[124] || CT.C124, "slategrey", C[124] || CT.C124, "snow", C[125] || CT.C125, "springgreen", C[126] || CT.C126, "steelblue", C[127] || CT.C127, "tan", C[128] || CT.C128, "teal", C[129] || CT.C129, "thistle", C[130] || CT.C130, "tomato", C[131] || CT.C131, "transparent", C[132] || CT.C132, "turquoise", C[133] || CT.C133, "violet", C[134] || CT.C134, "wheat", C[135] || CT.C135, "white", C[136] || CT.C136, "whitesmoke", C[137] || CT.C137, "yellow", C[138] || CT.C138, "yellowgreen", C[139] || CT.C139]);
     }
   }, false);
-  var C = Array(18).fill(void 0);
-  var I = [
-    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/src/svg/parser_state.dart",
-    "package:flutter_svg/src/svg/parser_state.dart"
-  ];
-  var style$ = dart.privateName(parser_state, "_TextInfo.style");
-  var offset$ = dart.privateName(parser_state, "_TextInfo.offset");
-  var transform$ = dart.privateName(parser_state, "_TextInfo.transform");
-  parser_state._TextInfo = class _TextInfo extends core.Object {
-    get style() {
-      return this[style$];
+  var C = Array(140).fill(void 0);
+  var I = ["file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/src/svg/colors.dart"];
+  colors.parseColor = function parseColor(colorString) {
+    if (colorString == null || colorString[$isEmpty]) {
+      return null;
     }
-    set style(value) {
-      super.style = value;
+    if (colorString === "none") {
+      return null;
     }
-    get offset() {
-      return this[offset$];
+    if (colorString[$_get](0) === "#") {
+      if (colorString.length === 4) {
+        let r = colorString[$_get](1);
+        let g = colorString[$_get](2);
+        let b = colorString[$_get](3);
+        colorString = "#" + r + r + g + g + b + b;
+      }
+      let color = core.int.parse(colorString[$substring](1), {radix: 16});
+      if (colorString.length === 7) {
+        return new ui.Color.new(color = (dart.notNull(color) | 4278190080) >>> 0);
+      }
+      if (colorString.length === 9) {
+        return new ui.Color.new(color);
+      }
     }
-    set offset(value) {
-      super.offset = value;
+    if (colorString[$toLowerCase]()[$startsWith]("rgba")) {
+      let rawColorElements = colorString[$substring](colorString[$indexOf]("(") + 1, colorString[$indexOf](")"))[$split](",")[$map](core.String, dart.fn(rawColor => {
+        if (rawColor == null) dart.nullFailed(I[0], 42, 22, "rawColor");
+        return rawColor[$trim]();
+      }, T.StringToString()))[$toList]();
+      let opacity = dart.nullCheck(numbers.parseDouble(rawColorElements[$removeLast]()));
+      let rgb = rawColorElements[$map](core.int, dart.fn(rawColor => {
+        if (rawColor == null) dart.nullFailed(I[0], 48, 38, "rawColor");
+        return core.int.parse(rawColor);
+      }, T.StringToint()))[$toList]();
+      return new ui.Color.fromRGBO(rgb[$_get](0), rgb[$_get](1), rgb[$_get](2), opacity);
     }
-    get transform() {
-      return this[transform$];
-    }
-    set transform(value) {
-      super.transform = value;
-    }
-    toString() {
-      return dart.str(this[$runtimeType]) + "{" + dart.str(this.offset) + ", " + dart.str(this.style) + ", " + dart.str(this.transform) + "}";
-    }
-  };
-  (parser_state._TextInfo.new = function(style, offset, transform) {
-    if (style == null) dart.nullFailed(I[0], 65, 10, "style");
-    if (offset == null) dart.nullFailed(I[0], 66, 10, "offset");
-    this[style$] = style;
-    this[offset$] = offset;
-    this[transform$] = transform;
-    ;
-  }).prototype = parser_state._TextInfo.prototype;
-  dart.addTypeTests(parser_state._TextInfo);
-  dart.addTypeCaches(parser_state._TextInfo);
-  dart.setLibraryUri(parser_state._TextInfo, I[1]);
-  dart.setFieldSignature(parser_state._TextInfo, () => ({
-    __proto__: dart.getFields(parser_state._TextInfo.__proto__),
-    style: dart.finalFieldType(vector_drawable.DrawableStyle),
-    offset: dart.finalFieldType(ui.Offset),
-    transform: dart.finalFieldType(dart.nullable(vector_math_64.Matrix4))
-  }));
-  dart.defineExtensionMethods(parser_state._TextInfo, ['toString']);
-  var _root = dart.privateName(parser_state, "_root");
-  var _key$ = dart.privateName(parser_state, "_key");
-  var _parentDrawables = dart.privateName(parser_state, "_parentDrawables");
-  var _definitions = dart.privateName(parser_state, "_definitions");
-  var _currentStartElement = dart.privateName(parser_state, "_currentStartElement");
-  var _inDefs = dart.privateName(parser_state, "_inDefs");
-  var _readSubtree = dart.privateName(parser_state, "_readSubtree");
-  parser_state._Elements = class _Elements extends core.Object {
-    static svg(parserState, warningsAsErrors) {
-      if (parserState == null) dart.nullFailed(I[0], 79, 43, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 79, 61, "warningsAsErrors");
-      let viewBox = xml_parsers.parseViewBox(parserState.attributes);
-      let id = parserState.attribute("id", {def: ""});
-      if (parserState[_root] != null) {
-        let errorMessage = "Unsupported nested <svg> element.";
-        if (dart.test(warningsAsErrors)) {
-          dart.throw(new core.UnsupportedError.new(errorMessage));
+    if (colorString[$toLowerCase]()[$startsWith]("hsl")) {
+      let values = colorString[$substring](colorString[$indexOf]("(") + 1, colorString[$indexOf](")"))[$split](",")[$map](core.int, dart.fn(rawColor => {
+        if (rawColor == null) dart.nullFailed(I[0], 58, 22, "rawColor");
+        rawColor = rawColor[$trim]();
+        if (rawColor[$endsWith]("%")) {
+          rawColor = rawColor[$substring](0, rawColor.length - 1);
         }
-        assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnsupportedError.new(errorMessage), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
-            yield new assertions.ErrorDescription.new("The root <svg> element contained an unsupported nested SVG element.");
-            if (parserState[_key$] != null) {
-              yield new assertions.ErrorDescription.new("");
-              yield new (T.DiagnosticsPropertyOfString()).new("Picture key", parserState[_key$]);
-            }
-          }), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in _Element.svg")}));
-        parserState[_parentDrawables].addLast(new parser_state._SvgGroupTuple.new("svg", new vector_drawable.DrawableGroup.new(id, T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], dart.nullCheck(viewBox).viewBoxRect, null))));
-        return null;
-      }
-      parserState[_root] = new vector_drawable.DrawableRoot.new(id, dart.nullCheck(viewBox), T.JSArrayOfDrawable().of([]), parserState[_definitions], xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], viewBox.viewBoxRect, null));
-      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), parserState[_root]);
-      return null;
-    }
-    static g(parserState, warningsAsErrors) {
-      let t0;
-      if (parserState == null) dart.nullFailed(I[0], 137, 41, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 137, 59, "warningsAsErrors");
-      let parent = dart.nullCheck(parserState.currentGroup);
-      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, parent.style), {transform: (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? null : t0.storage)});
-      if (!dart.test(parserState[_inDefs])) {
-        dart.nullCheck(parent.children)[$add](group);
-      }
-      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), group);
-      return null;
-    }
-    static symbol(parserState, warningsAsErrors) {
-      let t0;
-      if (parserState == null) dart.nullFailed(I[0], 159, 22, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 159, 40, "warningsAsErrors");
-      let parent = dart.nullCheck(parserState.currentGroup);
-      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], null, parent.style), {transform: (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? null : t0.storage)});
-      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), group);
-      return null;
-    }
-    static use(parserState, warningsAsErrors) {
-      let t0;
-      if (parserState == null) dart.nullFailed(I[0], 177, 43, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 177, 61, "warningsAsErrors");
-      let parent = parserState.currentGroup;
-      let xlinkHref = dart.nullCheck(xml.getHrefAttribute(parserState.attributes));
-      if (xlinkHref[$isEmpty]) {
-        return null;
-      }
-      let style = xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, dart.nullCheck(parent).style);
-      let transform = (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? vector_math_64.Matrix4.identity() : t0);
-      transform.translate(numbers.parseDouble(parserState.attribute("x", {def: "0"})), dart.nullCheck(numbers.parseDouble(parserState.attribute("y", {def: "0"}))));
-      let ref = dart.nullCheck(parserState[_definitions].getDrawable("url(" + xlinkHref + ")"));
-      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([ref.mergeStyle(style)]), style, {transform: transform.storage});
-      let isIri = parserState.checkForIri(group);
-      if (!dart.test(parserState[_inDefs]) || !dart.test(isIri)) {
-        dart.nullCheck(parent.children)[$add](group);
-      }
-      return null;
-    }
-    static parseStops(parserState, colors, offsets) {
-      let t0;
-      if (parserState == null) dart.nullFailed(I[0], 217, 20, "parserState");
-      if (colors == null) dart.nullFailed(I[0], 218, 17, "colors");
-      if (offsets == null) dart.nullFailed(I[0], 219, 18, "offsets");
-      for (let event of parserState[_readSubtree]()) {
-        if (end_element.XmlEndElementEvent.is(event)) {
-          continue;
+        if (rawColor[$contains](".")) {
+          return (dart.nullCheck(numbers.parseDouble(rawColor)) * 2.55)[$round]();
         }
-        if (start_element.XmlStartElementEvent.is(event)) {
-          let rawOpacity = xml.getAttribute(parserState.attributes, "stop-opacity", {def: "1"});
-          let stopColor = (t0 = colors$.parseColor(xml.getAttribute(parserState.attributes, "stop-color")), t0 == null ? colors$.colorBlack : t0);
-          colors[$add](stopColor.withOpacity(dart.nullCheck(numbers.parseDouble(rawOpacity))));
-          let rawOffset = dart.nullCheck(xml.getAttribute(parserState.attributes, "offset", {def: "0%"}));
-          offsets[$add](parsers.parseDecimalOrPercentage(rawOffset));
-        }
-      }
-      return null;
-    }
-    static radialGradient(parserState, warningsAsErrors) {
-      let t25;
-      if (parserState == null) dart.nullFailed(I[0], 248, 20, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 249, 10, "warningsAsErrors");
-      let gradientUnits = xml.getAttribute(parserState.attributes, "gradientUnits", {def: null});
-      let isObjectBoundingBox = gradientUnits !== "userSpaceOnUse";
-      let rawCx = parserState.attribute("cx", {def: "50%"});
-      let rawCy = parserState.attribute("cy", {def: "50%"});
-      let rawR = parserState.attribute("r", {def: "50%"});
-      let rawFx = parserState.attribute("fx", {def: rawCx});
-      let rawFy = parserState.attribute("fy", {def: rawCy});
-      let spreadMethod = xml_parsers.parseTileMode(parserState.attributes);
-      let id = xml_parsers.buildUrlIri(parserState.attributes);
-      let originalTransform = parsers.parseTransform(parserState.attribute("gradientTransform", {def: null}));
-      let offsets = T.JSArrayOfdouble().of([]);
-      let colors = T.JSArrayOfColor().of([]);
-      if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
-        let href = xml.getHrefAttribute(parserState.attributes);
-        let ref = parserState[_definitions].getGradient(vector_drawable.DrawableGradient, "url(" + dart.str(href) + ")");
-        if (ref == null) {
-          errors.reportMissingDef(parserState[_key$], href, "radialGradient");
-        } else {
-          if (gradientUnits == null) {
-            isObjectBoundingBox = ref.unitMode == vector_drawable.GradientUnitMode.objectBoundingBox;
-          }
-          colors[$addAll](dart.nullCheck(ref.colors));
-          offsets[$addAll](dart.nullCheck(ref.offsets));
-        }
+        return core.int.parse(rawColor);
+      }, T.StringToint()))[$toList]();
+      let hue = (dart.notNull(values[$_get](0)) / 360)[$modulo](1);
+      let saturation = dart.notNull(values[$_get](1)) / 100;
+      let luminance = dart.notNull(values[$_get](2)) / 100;
+      let alpha = dart.notNull(values[$length]) > 3 ? values[$_get](3) : 255;
+      let rgb = T.JSArrayOfdouble().of([0.0, 0.0, 0.0]);
+      if (hue < 1 / 6) {
+        rgb[$_set](0, 1.0);
+        rgb[$_set](1, hue * 6);
+      } else if (hue < 2 / 6) {
+        rgb[$_set](0, 2 - hue * 6);
+        rgb[$_set](1, 1.0);
+      } else if (hue < 3 / 6) {
+        rgb[$_set](1, 1.0);
+        rgb[$_set](2, hue * 6 - 2);
+      } else if (hue < 4 / 6) {
+        rgb[$_set](1, 4 - hue * 6);
+        rgb[$_set](2, 1.0);
+      } else if (hue < 5 / 6) {
+        rgb[$_set](0, hue * 6 - 4);
+        rgb[$_set](2, 1.0);
       } else {
-        parser_state._Elements.parseStops(parserState, colors, offsets);
+        rgb[$_set](0, 1.0);
+        rgb[$_set](2, 6 - hue * 6);
       }
-      let cx = null;
-      let cx$35isSet = false;
-      function cx$35get() {
-        return cx$35isSet ? cx : dart.throw(new _internal.LateError.localNI("cx"));
-      }
-      dart.fn(cx$35get, T.VoidTodouble());
-      function cx$35set(t3) {
-        if (t3 == null) dart.nullFailed(I[0], 290, 17, "null");
-        cx$35isSet = true;
-        return cx = t3;
-      }
-      dart.fn(cx$35set, T.doubleTodynamic());
-      let cy = null;
-      let cy$35isSet = false;
-      function cy$35get() {
-        return cy$35isSet ? cy : dart.throw(new _internal.LateError.localNI("cy"));
-      }
-      dart.fn(cy$35get, T.VoidTodouble());
-      function cy$35set(t8) {
-        if (t8 == null) dart.nullFailed(I[0], 290, 21, "null");
-        cy$35isSet = true;
-        return cy = t8;
-      }
-      dart.fn(cy$35set, T.doubleTodynamic());
-      let r = null;
-      let r$35isSet = false;
-      function r$35get() {
-        return r$35isSet ? r : dart.throw(new _internal.LateError.localNI("r"));
-      }
-      dart.fn(r$35get, T.VoidTodouble());
-      function r$35set(t13) {
-        if (t13 == null) dart.nullFailed(I[0], 290, 25, "null");
-        r$35isSet = true;
-        return r = t13;
-      }
-      dart.fn(r$35set, T.doubleTodynamic());
-      let fx = null;
-      let fx$35isSet = false;
-      function fx$35get() {
-        return fx$35isSet ? fx : dart.throw(new _internal.LateError.localNI("fx"));
-      }
-      dart.fn(fx$35get, T.VoidTodouble());
-      function fx$35set(t18) {
-        if (t18 == null) dart.nullFailed(I[0], 290, 28, "null");
-        fx$35isSet = true;
-        return fx = t18;
-      }
-      dart.fn(fx$35set, T.doubleTodynamic());
-      let fy = null;
-      let fy$35isSet = false;
-      function fy$35get() {
-        return fy$35isSet ? fy : dart.throw(new _internal.LateError.localNI("fy"));
-      }
-      dart.fn(fy$35get, T.VoidTodouble());
-      function fy$35set(t23) {
-        if (t23 == null) dart.nullFailed(I[0], 290, 32, "null");
-        fy$35isSet = true;
-        return fy = t23;
-      }
-      dart.fn(fy$35set, T.doubleTodynamic());
-      if (isObjectBoundingBox) {
-        cx$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawCx)));
-        cy$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawCy)));
-        r$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawR)));
-        fx$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawFx)));
-        fy$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawFy)));
+      rgb = rgb[$map](core.double, dart.fn(val => {
+        if (val == null) dart.nullFailed(I[0], 98, 25, "val");
+        return dart.notNull(val) + (1 - saturation) * (0.5 - dart.notNull(val));
+      }, T.doubleTodouble()))[$toList]();
+      if (luminance < 0.5) {
+        rgb = rgb[$map](core.double, dart.fn(val => {
+          if (val == null) dart.nullFailed(I[0], 101, 29, "val");
+          return luminance * 2 * dart.notNull(val);
+        }, T.doubleTodouble()))[$toList]();
       } else {
-        cx$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawCx))) ? dart.notNull(parsers.parsePercentage(rawCx)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(rawCx)));
-        cy$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawCy))) ? dart.notNull(parsers.parsePercentage(rawCy)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(rawCy)));
-        r$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawR))) ? dart.notNull(parsers.parsePercentage(rawR)) * ((dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.width)) / 2) : dart.nullCheck(numbers.parseDouble(rawR)));
-        fx$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawFx))) ? dart.notNull(parsers.parsePercentage(rawFx)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(rawFx)));
-        fy$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawFy))) ? dart.notNull(parsers.parsePercentage(rawFy)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(rawFy)));
+        rgb = rgb[$map](core.double, dart.fn(val => {
+          if (val == null) dart.nullFailed(I[0], 104, 24, "val");
+          return luminance * 2 * (1 - dart.notNull(val)) + 2 * dart.notNull(val) - 1;
+        }, T.doubleTodouble()))[$toList]();
       }
-      parserState[_definitions].addGradient(id, new vector_drawable.DrawableRadialGradient.new({center: new ui.Offset.new(cx$35get(), cy$35get()), radius: r$35get(), focal: fx$35get() != cx$35get() || fy$35get() != cy$35get() ? new ui.Offset.new(fx$35get(), fy$35get()) : new ui.Offset.new(cx$35get(), cy$35get()), focalRadius: 0.0, colors: colors, offsets: offsets, unitMode: isObjectBoundingBox ? vector_drawable.GradientUnitMode.objectBoundingBox : vector_drawable.GradientUnitMode.userSpaceOnUse, spreadMethod: spreadMethod, transform: (t25 = originalTransform, t25 == null ? null : t25.storage)}));
-      return null;
+      rgb = rgb[$map](core.double, dart.fn(val => {
+        if (val == null) dart.nullFailed(I[0], 108, 27, "val");
+        return dart.notNull(val) * 255;
+      }, T.doubleTodouble()))[$toList]();
+      return new ui.Color.fromARGB(alpha, rgb[$_get](0)[$round](), rgb[$_get](1)[$round](), rgb[$_get](2)[$round]());
     }
-    static linearGradient(parserState, warningsAsErrors) {
-      let t25;
-      if (parserState == null) dart.nullFailed(I[0], 341, 22, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 341, 40, "warningsAsErrors");
-      let gradientUnits = xml.getAttribute(parserState.attributes, "gradientUnits", {def: null});
-      let isObjectBoundingBox = gradientUnits !== "userSpaceOnUse";
-      let x1 = parserState.attribute("x1", {def: "0%"});
-      let x2 = parserState.attribute("x2", {def: "100%"});
-      let y1 = parserState.attribute("y1", {def: "0%"});
-      let y2 = parserState.attribute("y2", {def: "0%"});
-      let id = xml_parsers.buildUrlIri(parserState.attributes);
-      let originalTransform = parsers.parseTransform(parserState.attribute("gradientTransform", {def: null}));
-      let spreadMethod = xml_parsers.parseTileMode(parserState.attributes);
-      let colors = T.JSArrayOfColor().of([]);
-      let offsets = T.JSArrayOfdouble().of([]);
-      if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
-        let href = xml.getHrefAttribute(parserState.attributes);
-        let ref = parserState[_definitions].getGradient(vector_drawable.DrawableGradient, "url(" + dart.str(href) + ")");
-        if (ref == null) {
-          errors.reportMissingDef(parserState[_key$], href, "linearGradient");
-        } else {
-          if (gradientUnits == null) {
-            isObjectBoundingBox = ref.unitMode == vector_drawable.GradientUnitMode.objectBoundingBox;
-          }
-          colors[$addAll](dart.nullCheck(ref.colors));
-          offsets[$addAll](dart.nullCheck(ref.offsets));
+    if (colorString[$toLowerCase]()[$startsWith]("rgb")) {
+      let rgb = colorString[$substring](colorString[$indexOf]("(") + 1, colorString[$indexOf](")"))[$split](",")[$map](core.int, dart.fn(rawColor => {
+        if (rawColor == null) dart.nullFailed(I[0], 119, 22, "rawColor");
+        rawColor = rawColor[$trim]();
+        if (rawColor[$endsWith]("%")) {
+          rawColor = rawColor[$substring](0, rawColor.length - 1);
+          return (dart.nullCheck(numbers.parseDouble(rawColor)) * 2.55)[$round]();
         }
-      } else {
-        parser_state._Elements.parseStops(parserState, colors, offsets);
-      }
-      let fromOffset = null;
-      let toOffset = null;
-      if (isObjectBoundingBox) {
-        fromOffset = new ui.Offset.new(parsers.parseDecimalOrPercentage(dart.nullCheck(x1)), parsers.parseDecimalOrPercentage(dart.nullCheck(y1)));
-        toOffset = new ui.Offset.new(parsers.parseDecimalOrPercentage(dart.nullCheck(x2)), parsers.parseDecimalOrPercentage(dart.nullCheck(y2)));
-      } else {
-        fromOffset = new ui.Offset.new(dart.test(parsers.isPercentage(dart.nullCheck(x1))) ? dart.notNull(parsers.parsePercentage(x1)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(x1)), dart.test(parsers.isPercentage(dart.nullCheck(y1))) ? dart.notNull(parsers.parsePercentage(y1)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(y1)));
-        toOffset = new ui.Offset.new(dart.test(parsers.isPercentage(dart.nullCheck(x2))) ? dart.notNull(parsers.parsePercentage(x2)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(x2)), dart.test(parsers.isPercentage(dart.nullCheck(y2))) ? dart.notNull(parsers.parsePercentage(y2)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(y2)));
-      }
-      parserState[_definitions].addGradient(id, new vector_drawable.DrawableLinearGradient.new({from: fromOffset, to: toOffset, colors: colors, offsets: offsets, spreadMethod: spreadMethod, unitMode: isObjectBoundingBox ? vector_drawable.GradientUnitMode.objectBoundingBox : vector_drawable.GradientUnitMode.userSpaceOnUse, transform: (t25 = originalTransform, t25 == null ? null : t25.storage)}));
-      return null;
+        return core.int.parse(rawColor);
+      }, T.StringToint()))[$toList]();
+      let a = dart.notNull(rgb[$length]) > 3 ? rgb[$_get](3) : 255;
+      return new ui.Color.fromARGB(a, rgb[$_get](0), rgb[$_get](1), rgb[$_get](2));
     }
-    static clipPath(parserState, warningsAsErrors) {
-      if (parserState == null) dart.nullFailed(I[0], 432, 22, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 432, 40, "warningsAsErrors");
-      let id = xml_parsers.buildUrlIri(parserState.attributes);
-      let paths = T.JSArrayOfPath().of([]);
-      let currentPath = null;
-      for (let event of parserState[_readSubtree]()) {
-        if (end_element.XmlEndElementEvent.is(event)) {
-          continue;
-        }
-        if (start_element.XmlStartElementEvent.is(event)) {
-          let pathFn = parser_state._svgPathFuncs[$_get](event.name);
-          if (pathFn != null) {
-            let nextPath = dart.nullCheck(xml_parsers.applyTransformIfNeeded(pathFn(parserState.attributes), parserState.attributes));
-            nextPath.fillType = dart.nullCheck(xml_parsers.parseFillRule(parserState.attributes, "clip-rule"));
-            if (currentPath != null && nextPath.fillType != currentPath.fillType) {
-              currentPath = nextPath;
-              paths[$add](currentPath);
-            } else if (currentPath == null) {
-              currentPath = nextPath;
-              paths[$add](currentPath);
-            } else {
-              currentPath.addPath(nextPath, ui.Offset.zero);
-            }
-          } else if (event.name === "use") {
-            let xlinkHref = xml.getHrefAttribute(parserState.attributes);
-            let definitionDrawable = parserState[_definitions].getDrawable("url(" + dart.str(xlinkHref) + ")");
-            function extractPathsFromDrawable(target) {
-              if (vector_drawable.DrawableShape.is(target)) {
-                paths[$add](target.path);
-              } else if (vector_drawable.DrawableGroup.is(target)) {
-                dart.nullCheck(target.children)[$forEach](extractPathsFromDrawable);
-              }
-            }
-            dart.fn(extractPathsFromDrawable, T.DrawableNTovoid());
-            extractPathsFromDrawable(definitionDrawable);
-          } else {
-            let errorMessage = "Unsupported clipPath child " + dart.str(event.name);
-            if (dart.test(warningsAsErrors)) {
-              dart.throw(new core.UnsupportedError.new(errorMessage));
-            }
-            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnsupportedError.new(errorMessage), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
-                yield new assertions.ErrorDescription.new("The <clipPath> element contained an unsupported child " + dart.str(event.name));
-                if (parserState[_key$] != null) {
-                  yield new assertions.ErrorDescription.new("");
-                  yield new (T.DiagnosticsPropertyOfString()).new("Picture key", parserState[_key$]);
-                }
-              }), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in _Element.clipPath")}));
-          }
-        }
-      }
-      parserState[_definitions].addClipPath(id, paths);
-      return null;
+    let namedColor = colors._namedColors[$_get](colorString);
+    if (namedColor != null) {
+      return namedColor;
     }
-    static image(parserState, warningsAsErrors) {
-      if (parserState == null) dart.nullFailed(I[0], 503, 22, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 503, 40, "warningsAsErrors");
-      return async.async(dart.void, function* image() {
-        let t25;
-        let href = xml.getHrefAttribute(parserState.attributes);
-        if (href == null) {
-          return;
-        }
-        let offset = new ui.Offset.new(dart.nullCheck(numbers.parseDouble(parserState.attribute("x", {def: "0"}))), dart.nullCheck(numbers.parseDouble(parserState.attribute("y", {def: "0"}))));
-        let size = new ui.Size.new(dart.nullCheck(numbers.parseDouble(parserState.attribute("width", {def: "0"}))), dart.nullCheck(numbers.parseDouble(parserState.attribute("height", {def: "0"}))));
-        let image = (yield parsers.resolveImage(href));
-        let parent = dart.nullCheck(parserState[_parentDrawables][$last].drawable);
-        let parentStyle = parent.style;
-        let drawable = new vector_drawable.DrawableRasterImage.new(parserState.attribute("id", {def: ""}), image, offset, xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, parentStyle), {size: size, transform: (t25 = parsers.parseTransform(parserState.attribute("transform")), t25 == null ? null : t25.storage)});
-        let isIri = parserState.checkForIri(drawable);
-        if (!dart.test(parserState[_inDefs]) || !dart.test(isIri)) {
-          dart.nullCheck(dart.nullCheck(parserState.currentGroup).children)[$add](drawable);
-        }
-      });
-    }
-    static text(parserState, warningsAsErrors) {
-      if (parserState == null) dart.nullFailed(I[0], 540, 22, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 540, 40, "warningsAsErrors");
-      return async.async(dart.void, function* text$() {
-        if (!(parserState != null)) dart.assertFailed(null, I[0], 541, 12, "parserState != null");
-        if (!(parserState.currentGroup != null)) dart.assertFailed(null, I[0], 542, 12, "parserState.currentGroup != null");
-        if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
-          return;
-        }
-        let textInfos = new (T.ListQueueOf_TextInfo()).new();
-        let lastTextWidth = 0.0;
-        function _processText(value) {
-          let t25, t25$;
-          if (value == null) dart.nullFailed(I[0], 554, 30, "value");
-          if (value[$isEmpty]) {
-            return;
-          }
-          if (!dart.test(textInfos[$isNotEmpty])) dart.assertFailed(null, I[0], 558, 14, "textInfos.isNotEmpty");
-          let lastTextInfo = textInfos[$last];
-          let fill = parsers.createParagraph(value, lastTextInfo.style, lastTextInfo.style.fill);
-          let stroke = parsers.createParagraph(value, lastTextInfo.style, dart.test(vector_drawable.DrawablePaint.isEmpty(lastTextInfo.style.stroke)) ? parsers.transparentStroke : lastTextInfo.style.stroke);
-          dart.nullCheck(dart.nullCheck(parserState.currentGroup).children)[$add](new vector_drawable.DrawableText.new(parserState.attribute("id", {def: ""}), fill, stroke, lastTextInfo.offset, (t25 = dart.nullCheck(lastTextInfo.style.textStyle).anchor, t25 == null ? vector_drawable.DrawableTextAnchorPosition.start : t25), {transform: (t25$ = lastTextInfo.transform, t25$ == null ? null : t25$.storage)}));
-          lastTextWidth = fill.maxIntrinsicWidth;
-        }
-        dart.fn(_processText, T.StringTovoid());
-        function _processStartElement(event) {
-          let t25, t25$, t25$0, t25$1;
-          if (event == null) dart.nullFailed(I[0], 586, 52, "event");
-          let lastTextInfo = null;
-          if (dart.test(textInfos[$isNotEmpty])) {
-            lastTextInfo = textInfos[$last];
-          }
-          let currentOffset = parser_state._parseCurrentOffset(parserState, (t25 = lastTextInfo, t25 == null ? null : t25.offset.translate(lastTextWidth, 0.0)));
-          let transform = parsers.parseTransform(parserState.attribute("transform"));
-          if ((t25$ = lastTextInfo, t25$ == null ? null : t25$.transform) != null) {
-            if (transform == null) {
-              transform = dart.nullCheck(lastTextInfo).transform;
-            } else {
-              transform = dart.nullCheck(dart.nullCheck(lastTextInfo).transform).multiplied(transform);
-            }
-          }
-          textInfos.add(new parser_state._TextInfo.new(xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, (t25$1 = (t25$0 = lastTextInfo, t25$0 == null ? null : t25$0.style), t25$1 == null ? dart.nullCheck(parserState.currentGroup).style : t25$1)), currentOffset, transform));
-          if (dart.test(event.isSelfClosing)) {
-            textInfos.removeLast();
-          }
-        }
-        dart.fn(_processStartElement, T.XmlStartElementEventTovoid());
-        _processStartElement(dart.nullCheck(parserState[_currentStartElement]));
-        for (let event of parserState[_readSubtree]()) {
-          if (cdata.XmlCDATAEvent.is(event)) {
-            _processText(event.text[$trim]());
-          } else if (text.XmlTextEvent.is(event)) {
-            _processText(event.text[$trim]());
-          }
-          if (start_element.XmlStartElementEvent.is(event)) {
-            _processStartElement(event);
-          } else if (end_element.XmlEndElementEvent.is(event)) {
-            textInfos.removeLast();
-          }
-        }
-      });
-    }
+    dart.throw(new core.StateError.new("Could not parse \"" + dart.str(colorString) + "\" as a color."));
   };
-  (parser_state._Elements.new = function() {
-    ;
-  }).prototype = parser_state._Elements.prototype;
-  dart.addTypeTests(parser_state._Elements);
-  dart.addTypeCaches(parser_state._Elements);
-  dart.setLibraryUri(parser_state._Elements, I[1]);
-  parser_state._Paths = class _Paths extends core.Object {
-    static circle(attributes) {
-      let t25;
-      let cx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cx", {def: "0"})));
-      let cy = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cy", {def: "0"})));
-      let r = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "r", {def: "0"})));
-      let oval = new ui.Rect.fromCircle({center: new ui.Offset.new(cx, cy), radius: r});
-      t25 = ui.Path.new();
-      return (() => {
-        t25.addOval(oval);
-        return t25;
-      })();
-    }
-    static path(attributes) {
-      let d = dart.nullCheck(xml.getAttribute(attributes, "d"));
-      return parse_path.parseSvgPathData(d);
-    }
-    static rect(attributes) {
-      let t25, t25$;
-      let x = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x", {def: "0"})));
-      let y = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y", {def: "0"})));
-      let w = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "width", {def: "0"})));
-      let h = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "height", {def: "0"})));
-      let rect = new ui.Rect.fromLTWH(x, y, w, h);
-      let rxRaw = xml.getAttribute(attributes, "rx", {def: null});
-      let ryRaw = xml.getAttribute(attributes, "ry", {def: null});
-      rxRaw == null ? rxRaw = ryRaw : null;
-      ryRaw == null ? ryRaw = rxRaw : null;
-      if (rxRaw != null && rxRaw !== "") {
-        let rx = dart.nullCheck(numbers.parseDouble(rxRaw));
-        let ry = dart.nullCheck(numbers.parseDouble(ryRaw));
-        t25 = ui.Path.new();
-        return (() => {
-          t25.addRRect(new ui.RRect.fromRectXY(rect, rx, ry));
-          return t25;
-        })();
-      }
-      t25$ = ui.Path.new();
-      return (() => {
-        t25$.addRect(rect);
-        return t25$;
-      })();
-    }
-    static polygon(attributes) {
-      return parser_state._Paths.parsePathFromPoints(attributes, true);
-    }
-    static polyline(attributes) {
-      return parser_state._Paths.parsePathFromPoints(attributes, false);
-    }
-    static parsePathFromPoints(attributes, close) {
-      if (close == null) dart.nullFailed(I[0], 681, 49, "close");
-      let points = xml.getAttribute(attributes, "points");
-      if (points === "") {
-        return null;
-      }
-      let path = "M" + dart.str(points) + (dart.test(close) ? "z" : "");
-      return parse_path.parseSvgPathData(path);
-    }
-    static ellipse(attributes) {
-      let t25;
-      let cx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cx", {def: "0"})));
-      let cy = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cy", {def: "0"})));
-      let rx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "rx", {def: "0"})));
-      let ry = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "ry", {def: "0"})));
-      let r = new ui.Rect.fromLTWH(cx - rx, cy - ry, rx * 2, ry * 2);
-      t25 = ui.Path.new();
-      return (() => {
-        t25.addOval(r);
-        return t25;
-      })();
-    }
-    static line(attributes) {
-      let t25;
-      let x1 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x1", {def: "0"})));
-      let x2 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x2", {def: "0"})));
-      let y1 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y1", {def: "0"})));
-      let y2 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y2", {def: "0"})));
-      t25 = ui.Path.new();
-      return (() => {
-        t25.moveTo(x1, y1);
-        t25.lineTo(x2, y2);
-        return t25;
-      })();
-    }
-  };
-  (parser_state._Paths.new = function() {
-    ;
-  }).prototype = parser_state._Paths.prototype;
-  dart.addTypeTests(parser_state._Paths);
-  dart.addTypeCaches(parser_state._Paths);
-  dart.setLibraryUri(parser_state._Paths, I[1]);
-  parser_state._SvgGroupTuple = class _SvgGroupTuple extends core.Object {};
-  (parser_state._SvgGroupTuple.new = function(name, drawable) {
-    if (name == null) dart.nullFailed(I[0], 714, 23, "name");
-    this.name = name;
-    this.drawable = drawable;
-    ;
-  }).prototype = parser_state._SvgGroupTuple.prototype;
-  dart.addTypeTests(parser_state._SvgGroupTuple);
-  dart.addTypeCaches(parser_state._SvgGroupTuple);
-  dart.setLibraryUri(parser_state._SvgGroupTuple, I[1]);
-  dart.setFieldSignature(parser_state._SvgGroupTuple, () => ({
-    __proto__: dart.getFields(parser_state._SvgGroupTuple.__proto__),
-    name: dart.finalFieldType(core.String),
-    drawable: dart.finalFieldType(dart.nullable(vector_drawable.DrawableParent))
-  }));
-  var depth = dart.privateName(parser_state, "SvgParserState.depth");
-  var _currentAttributes = dart.privateName(parser_state, "_currentAttributes");
-  var _warningsAsErrors$ = dart.privateName(parser_state, "_warningsAsErrors");
-  var _eventIterator = dart.privateName(parser_state, "_eventIterator");
-  var _discardSubtree = dart.privateName(parser_state, "_discardSubtree");
-  parser_state.SvgParserState = class SvgParserState extends core.Object {
-    get depth() {
-      return this[depth];
-    }
-    set depth(value) {
-      this[depth] = value;
-    }
-    [_discardSubtree]() {
-      let subtreeStartDepth = this.depth;
-      while (dart.test(this[_eventIterator].moveNext())) {
-        let event = this[_eventIterator].current;
-        if (start_element.XmlStartElementEvent.is(event) && !dart.test(event.isSelfClosing)) {
-          this.depth = dart.notNull(this.depth) + 1;
-        } else if (end_element.XmlEndElementEvent.is(event)) {
-          this.depth = dart.notNull(this.depth) - 1;
-          if (!(dart.notNull(this.depth) >= 0)) dart.assertFailed(null, I[0], 751, 16, "depth >= 0");
-        }
-        this[_currentAttributes] = T.JSArrayOfXmlEventAttribute().of([]);
-        this[_currentStartElement] = null;
-        if (dart.notNull(this.depth) < dart.notNull(subtreeStartDepth)) {
-          return;
-        }
-      }
-    }
-    [_readSubtree]() {
-      return new (T.SyncIterableOfXmlEvent()).new((function* _readSubtree() {
-        let subtreeStartDepth = this.depth;
-        while (dart.test(this[_eventIterator].moveNext())) {
-          let event = this[_eventIterator].current;
-          let isSelfClosing = false;
-          if (start_element.XmlStartElementEvent.is(event)) {
-            if (xml.getAttribute(event.attributes, "display") === "none" || xml.getAttribute(event.attributes, "visibility") === "hidden") {
-              core.print("SVG Warning: Discarding:\n\n  " + dart.str(event) + "\n\n" + "and any children it has since it is not visible.\n" + "If that element is meant to be visible, the `display` or " + "`visibility` attributes should be removed.\n" + "If that element is not meant to be visible, it would be better " + "to remove it from the SVG file.");
-              if (!dart.test(event.isSelfClosing)) {
-                this.depth = dart.notNull(this.depth) + 1;
-                this[_discardSubtree]();
-              }
-              continue;
-            }
-            this[_currentAttributes] = event.attributes;
-            this[_currentStartElement] = event;
-            this.depth = dart.notNull(this.depth) + 1;
-            isSelfClosing = event.isSelfClosing;
-          }
-          yield event;
-          if (dart.test(isSelfClosing) || end_element.XmlEndElementEvent.is(event)) {
-            this.depth = dart.notNull(this.depth) - 1;
-            if (!(dart.notNull(this.depth) >= 0)) dart.assertFailed(null, I[0], 790, 16, "depth >= 0");
-            this[_currentAttributes] = T.JSArrayOfXmlEventAttribute().of([]);
-            this[_currentStartElement] = null;
-          }
-          if (dart.notNull(this.depth) < dart.notNull(subtreeStartDepth)) {
-            return;
-          }
-        }
-      }).bind(this));
-    }
-    parse() {
-      return async.async(vector_drawable.DrawableRoot, (function* parse() {
-        let t25;
-        for (let event of this[_readSubtree]()) {
-          if (start_element.XmlStartElementEvent.is(event)) {
-            if (dart.test(this.startElement(event))) {
-              continue;
-            }
-            let parseFunc = parser_state._svgElementParsers[$_get](event.name);
-            yield (t25 = parseFunc, t25 == null ? null : t25(this, this[_warningsAsErrors$]));
-            if (parseFunc == null) {
-              if (!dart.test(event.isSelfClosing)) {
-                this[_discardSubtree]();
-              }
-              if (!dart.test(dart.fn(() => {
-                this.unhandledElement(event);
-                return true;
-              }, T.VoidTobool())())) dart.assertFailed(null, I[0], 813, 18, "() {\n            unhandledElement(event);\n            return true;\n          }()");
-            }
-          } else if (end_element.XmlEndElementEvent.is(event)) {
-            this.endElement(event);
-          }
-        }
-        if (this[_root] == null) {
-          dart.throw(new core.StateError.new("Invalid SVG data"));
-        }
-        return dart.nullCheck(this[_root]);
-      }).bind(this));
-    }
-    get attributes() {
-      return this[_currentAttributes];
-    }
-    attribute(name, opts) {
-      if (name == null) dart.nullFailed(I[0], 832, 28, "name");
-      let def = opts && 'def' in opts ? opts.def : null;
-      let namespace = opts && 'namespace' in opts ? opts.namespace : null;
-      return xml.getAttribute(this.attributes, name, {def: def, namespace: namespace});
-    }
-    get currentGroup() {
-      if (!(this[_parentDrawables] != null)) dart.assertFailed(null, I[0], 837, 12, "_parentDrawables != null");
-      if (!dart.test(this[_parentDrawables][$isNotEmpty])) dart.assertFailed(null, I[0], 838, 12, "_parentDrawables.isNotEmpty");
-      return this[_parentDrawables][$last].drawable;
-    }
-    get rootBounds() {
-      if (!(this[_root] != null)) dart.assertFailed("Cannot get rootBounds with null root", I[0], 844, 12, "_root != null");
-      if (!(dart.nullCheck(this[_root]).viewport != null)) dart.assertFailed(null, I[0], 845, 12, "_root!.viewport != null");
-      return dart.nullCheck(this[_root]).viewport.viewBoxRect;
-    }
-    checkForIri(drawable) {
-      let iri = xml_parsers.buildUrlIri(this.attributes);
-      if (iri !== "url(#)") {
-        this[_definitions].addDrawable(iri, dart.nullCheck(drawable));
-        return true;
-      }
-      return false;
-    }
-    addGroup(event, drawable) {
-      if (event == null) dart.nullFailed(I[0], 860, 38, "event");
-      this[_parentDrawables].addLast(new parser_state._SvgGroupTuple.new(event.name, drawable));
-      this.checkForIri(drawable);
-    }
-    addShape(event) {
-      let t25;
-      if (event == null) dart.nullFailed(I[0], 866, 38, "event");
-      let pathFunc = parser_state._svgPathFuncs[$_get](event.name);
-      if (pathFunc == null) {
-        return false;
-      }
-      let parent = dart.nullCheck(this[_parentDrawables][$last].drawable);
-      let parentStyle = parent.style;
-      let path = dart.nullCheck(pathFunc(this.attributes));
-      let drawable = new vector_drawable.DrawableShape.new(xml.getAttribute(this.attributes, "id", {def: ""}), path, xml_parsers.parseStyle(this[_key$], this.attributes, this[_definitions], path.getBounds(), parentStyle, {defaultFillColor: colors$.colorBlack}), {transform: (t25 = parsers.parseTransform(xml.getAttribute(this.attributes, "transform")), t25 == null ? null : t25.storage)});
-      let isIri = this.checkForIri(drawable);
-      if (!dart.test(this[_inDefs]) || !dart.test(isIri)) {
-        dart.nullCheck(parent.children)[$add](drawable);
-      }
-      return true;
-    }
-    startElement(event) {
-      if (event == null) dart.nullFailed(I[0], 896, 42, "event");
-      if (event.name === "defs") {
-        this[_inDefs] = !dart.test(event.isSelfClosing);
-        return true;
-      }
-      return this.addShape(event);
-    }
-    endElement(event) {
-      if (event == null) dart.nullFailed(I[0], 906, 38, "event");
-      if (event.name == this[_parentDrawables][$last].name) {
-        this[_parentDrawables].removeLast();
-      }
-      if (event.name === "defs") {
-        this[_inDefs] = false;
-      }
-    }
-    unhandledElement(event) {
-      if (event == null) dart.nullFailed(I[0], 919, 46, "event");
-      let errorMessage = "unhandled element " + dart.str(event.name) + "; Picture key: " + dart.str(this[_key$]);
-      if (dart.test(this[_warningsAsErrors$])) {
-        dart.throw(new core.UnimplementedError.new(errorMessage));
-      }
-      if (event.name === "style") {
-        assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnimplementedError.new("The <style> element is not implemented in this library."), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new((function*() {
-            yield new assertions.ErrorDescription.new("Style elements are not supported by this library and the requested SVG may not " + "render as intended.");
-            yield new assertions.ErrorHint.new("If possible, ensure the SVG uses inline styles and/or attributes (which are " + "supported), or use a preprocessing utility such as svgcleaner to inline the " + "styles for you.");
-            yield new assertions.ErrorDescription.new("");
-            yield new (T.DiagnosticsPropertyOfString()).new("Picture key", this[_key$]);
-          }).bind(this)), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in parseSvgElement")}));
-      } else if (dart.test(parser_state._unhandledElements.add(event.name))) {
-        core.print(errorMessage);
-      }
-    }
-  };
-  (parser_state.SvgParserState.new = function(events, _key, _warningsAsErrors) {
-    if (events == null) dart.nullFailed(I[0], 725, 37, "events");
-    if (_warningsAsErrors == null) dart.nullFailed(I[0], 725, 61, "_warningsAsErrors");
-    this[_definitions] = new vector_drawable.DrawableDefinitionServer.new();
-    this[_parentDrawables] = new (T.ListQueueOf_SvgGroupTuple()).new(10);
-    this[_root] = null;
-    this[_inDefs] = false;
-    this[_currentAttributes] = null;
-    this[_currentStartElement] = null;
-    this[depth] = 0;
-    this[_key$] = _key;
-    this[_warningsAsErrors$] = _warningsAsErrors;
-    if (!(events != null)) dart.assertFailed(null, I[0], 727, 16, "events != null");
-    this[_eventIterator] = events[$iterator];
-    ;
-  }).prototype = parser_state.SvgParserState.prototype;
-  dart.addTypeTests(parser_state.SvgParserState);
-  dart.addTypeCaches(parser_state.SvgParserState);
-  dart.setMethodSignature(parser_state.SvgParserState, () => ({
-    __proto__: dart.getMethods(parser_state.SvgParserState.__proto__),
-    [_discardSubtree]: dart.fnType(dart.void, []),
-    [_readSubtree]: dart.fnType(core.Iterable$(event.XmlEvent), []),
-    parse: dart.fnType(async.Future$(vector_drawable.DrawableRoot), []),
-    attribute: dart.fnType(dart.nullable(core.String), [core.String], {def: dart.nullable(core.String), namespace: dart.nullable(core.String)}, {}),
-    checkForIri: dart.fnType(core.bool, [dart.nullable(vector_drawable.DrawableStyleable)]),
-    addGroup: dart.fnType(dart.void, [start_element.XmlStartElementEvent, dart.nullable(vector_drawable.DrawableParent)]),
-    addShape: dart.fnType(core.bool, [start_element.XmlStartElementEvent]),
-    startElement: dart.fnType(core.bool, [start_element.XmlStartElementEvent]),
-    endElement: dart.fnType(dart.void, [end_element.XmlEndElementEvent]),
-    unhandledElement: dart.fnType(dart.void, [start_element.XmlStartElementEvent])
-  }));
-  dart.setGetterSignature(parser_state.SvgParserState, () => ({
-    __proto__: dart.getGetters(parser_state.SvgParserState.__proto__),
-    attributes: dart.nullable(core.List$(event_attribute.XmlEventAttribute)),
-    currentGroup: dart.nullable(vector_drawable.DrawableParent),
-    rootBounds: ui.Rect
-  }));
-  dart.setLibraryUri(parser_state.SvgParserState, I[1]);
-  dart.setFieldSignature(parser_state.SvgParserState, () => ({
-    __proto__: dart.getFields(parser_state.SvgParserState.__proto__),
-    [_eventIterator]: dart.finalFieldType(core.Iterator$(event.XmlEvent)),
-    [_key$]: dart.finalFieldType(dart.nullable(core.String)),
-    [_warningsAsErrors$]: dart.finalFieldType(core.bool),
-    [_definitions]: dart.finalFieldType(vector_drawable.DrawableDefinitionServer),
-    [_parentDrawables]: dart.finalFieldType(collection.Queue$(parser_state._SvgGroupTuple)),
-    [_root]: dart.fieldType(dart.nullable(vector_drawable.DrawableRoot)),
-    [_inDefs]: dart.fieldType(core.bool),
-    [_currentAttributes]: dart.fieldType(dart.nullable(core.List$(event_attribute.XmlEventAttribute))),
-    [_currentStartElement]: dart.fieldType(dart.nullable(start_element.XmlStartElementEvent)),
-    depth: dart.fieldType(core.int)
-  }));
-  parser_state._parseCurrentOffset = function _parseCurrentOffset(parserState, lastOffset) {
-    let t25, t25$, t25$0, t25$1;
-    if (parserState == null) dart.nullFailed(I[0], 47, 43, "parserState");
-    let x = parserState.attribute("x", {def: null});
-    let y = parserState.attribute("y", {def: null});
-    return new ui.Offset.new(x != null ? dart.nullCheck(numbers.parseDouble(x)) : dart.nullCheck(numbers.parseDouble(parserState.attribute("dx", {def: "0"}))) + dart.notNull((t25$ = (t25 = lastOffset, t25 == null ? null : t25.dx), t25$ == null ? 0 : t25$)), y != null ? dart.nullCheck(numbers.parseDouble(y)) : dart.nullCheck(numbers.parseDouble(parserState.attribute("dy", {def: "0"}))) + dart.notNull((t25$1 = (t25$0 = lastOffset, t25$0 == null ? null : t25$0.dy), t25$1 == null ? 0 : t25$1)));
-  };
-  dart.defineLazy(parser_state, {
-    /*parser_state._unhandledElements*/get _unhandledElements() {
-      return T.LinkedHashSetOfString().from(["title", "desc"]);
-    },
-    /*parser_state._svgElementParsers*/get _svgElementParsers() {
+  var Color_value = dart.privateName(ui, "Color.value");
+  dart.defineLazy(colors, {
+    /*colors.colorBlack*/get colorBlack() {
       return C[0] || CT.C0;
     },
-    /*parser_state._svgPathFuncs*/get _svgPathFuncs() {
-      return C[10] || CT.C10;
+    /*colors._namedColors*/get _namedColors() {
+      return C[1] || CT.C1;
     }
   }, false);
-  dart.trackLibraries("packages/flutter_svg/src/svg/parser_state.dart", {
-    "package:flutter_svg/src/svg/parser_state.dart": parser_state
+  dart.trackLibraries("packages/flutter_svg/src/svg/colors.dart", {
+    "package:flutter_svg/src/svg/colors.dart": colors
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["parser_state.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAqEsB;;;;;;IACP;;;;;;IACE;;;;;;;AAGM,YAA2C,UAAzC,sBAAW,eAAE,eAAM,gBAAG,cAAK,gBAAG,kBAAS;IAAE;;yCAVzD,OACA,QACA;QAFA;QACA;IADA;IACA;IACA;;EACN;;;;;;;;;;;;;;;;;;;eAWuC,aAAkB;UAAlB;UAAkB;AAChC,oBAAU,yBAAa,AAAY,WAAD;AAC5C,eAAK,AAAY,WAAD,WAAW,YAAW;AAGpD,UAAI,AAAY,WAAD;AACA;AACb,sBAAI,gBAAgB;AACkB,UAApC,WAAM,8BAAiB,YAAY;;AAcnC,QAZW,oCAAY,mDACZ,8BAAiB,YAAY,yBAClB;AACpB,kBAAM,oCACF;AACJ,gBAAI,AAAY,WAAD;AACb,oBAAM,oCAAiB;AACvB,oBAAM,0CAA4B,eAAe,AAAY,WAAD;;UAE/D,mDACQ,gBACA,oCAAiB;AAiB3B,QAfD,AAAY,AAAiB,WAAlB,2BACT,oCACE,OACA,sCACE,EAAE,EACQ,8BACV,uBACE,AAAY,WAAD,SACX,AAAY,WAAD,aACX,AAAY,WAAD,gBACJ,AAAE,eAAT,OAAO,eACP;AAKR,cAAO;;AAcR,MAZD,AAAY,WAAD,UAAS,qCAClB,EAAE,EACK,eAAP,OAAO,GACG,8BACV,AAAY,WAAD,gBACX,uBACE,AAAY,WAAD,SACX,AAAY,WAAD,aACX,AAAY,WAAD,gBACX,AAAQ,OAAD,cACP;AAGsE,MAA1E,AAAY,WAAD,UAA0C,eAAhC,AAAY,WAAD,yBAAwB,AAAY,WAAD;AACnE,YAAO;IACT;aAEsC,aAAkB;;UAAlB;UAAkB;AACjC,mBAAiC,eAAxB,AAAY,WAAD;AACrB,kBAAQ,sCAC1B,AAAY,WAAD,WAAW,YAAW,MACvB,8BACV,uBACE,AAAY,WAAD,SACX,AAAY,WAAD,aACX,AAAY,WAAD,gBACX,AAAY,WAAD,aACX,AAAO,MAAD,2BAEG,uBAAe,AAAY,WAAD,WAAW,4BAArC,OAAoD;AAEjE,qBAAK,AAAY,WAAD;AACa,QAAZ,AAAE,eAAjB,AAAO,MAAD,iBAAe,KAAK;;AAEkC,MAA9D,AAAY,WAAD,UAA0C,eAAhC,AAAY,WAAD,yBAAwB,KAAK;AAC7D,YAAO;IACT;kBAGmB,aAAkB;;UAAlB;UAAkB;AACd,mBAAiC,eAAxB,AAAY,WAAD;AACrB,kBAAQ,sCAC1B,AAAY,WAAD,WAAW,YAAW,MACvB,8BACV,uBACE,AAAY,WAAD,SACX,AAAY,WAAD,aACX,AAAY,WAAD,gBACX,MACA,AAAO,MAAD,2BAEG,uBAAe,AAAY,WAAD,WAAW,4BAArC,OAAoD;AAEH,MAA9D,AAAY,WAAD,UAA0C,eAAhC,AAAY,WAAD,yBAAwB,KAAK;AAC7D,YAAO;IACT;eAEwC,aAAkB;;UAAlB;UAAkB;AAClC,mBAAS,AAAY,WAAD;AAC7B,sBAAoD,eAAxC,qBAAiB,AAAY,WAAD;AACrD,UAAI,AAAU,SAAD;AACX,cAAO;;AAGW,kBAAQ,uBAC1B,AAAY,WAAD,SACX,AAAY,WAAD,aACX,AAAY,WAAD,gBACX,AAAY,WAAD,aACL,AAAE,eAAR,MAAM;AAGM,uBACyC,KAAnD,uBAAe,AAAY,WAAD,WAAW,eAArC,aACY;AAIf,MAHD,AAAU,SAAD,WACP,oBAAY,AAAY,WAAD,WAAW,WAAU,QACK,eAAjD,oBAAY,AAAY,WAAD,WAAW,WAAU;AAGtB,gBACmC,eAAvD,AAAY,AAAa,WAAd,2BAA0B,AAAiB,SAAX,SAAS;AACpC,kBAAQ,sCAC1B,AAAY,WAAD,WAAW,YAAW,MACvB,0BAAC,AAAI,GAAD,YAAY,KAAK,KAC/B,KAAK,cACM,AAAU,SAAD;AAGX,kBAAQ,AAAY,WAAD,aAAa,KAAK;AAChD,qBAAK,AAAY,WAAD,yBAAa,KAAK;AACL,QAAZ,AAAE,eAAjB,AAAO,MAAD,iBAAe,KAAK;;AAE5B,YAAO;IACT;sBAGiB,aACH,QACC;;UAFE;UACH;UACC;AAEb,eAAc,QAAS,AAAY,YAAD;AAChC,YAAU,kCAAN,KAAK;AACP;;AAEF,YAAU,sCAAN,KAAK;AACO,2BAAa,iBACzB,AAAY,WAAD,aACX,sBACK;AAEK,2BACuD,KAA/D,mBAAW,iBAAa,AAAY,WAAD,aAAa,gBAAhD,aACI;AACmD,UAA3D,AAAO,MAAD,OAAK,AAAU,SAAD,aAAoC,eAAvB,oBAAY,UAAU;AAE1C,0BAIZ,eAJwB,iBACvB,AAAY,WAAD,aACX,gBACK;AAEyC,UAAhD,AAAQ,OAAD,OAAK,iCAAyB,SAAS;;;AAGlD,YAAO;IACT;0BAGiB,aACV;;UADU;UACV;AAES,0BAAgB,iBAC5B,AAAY,WAAD,aACX,uBACK;AAEF,gCAAsB,AAAc,aAAD,KAAI;AAE9B,kBAAQ,AAAY,WAAD,WAAW,YAAW;AACzC,kBAAQ,AAAY,WAAD,WAAW,YAAW;AACzC,iBAAO,AAAY,WAAD,WAAW,WAAU;AACvC,kBAAQ,AAAY,WAAD,WAAW,YAAW,KAAK;AAC9C,kBAAQ,AAAY,WAAD,WAAW,YAAW,KAAK;AAC7C,yBAAe,0BAAc,AAAY,WAAD;AAC1C,eAAK,wBAAY,AAAY,WAAD;AAC1B,8BAAoB,uBACjC,AAAY,WAAD,WAAW,2BAA0B;AAG/B,oBAAkB;AACnB,mBAAgB;AAElC,oBAAoC,AAAE,eAAlC,AAAY,WAAD;AACC,mBAAO,qBAAiB,AAAY,WAAD;AACzB,kBACpB,AAAY,AAAa,WAAd,6DAA4C,AAAY,kBAAN,IAAI;AACrE,YAAI,AAAI,GAAD;AACqD,UAA1D,wBAAiB,AAAY,WAAD,SAAO,IAAI,EAAE;;AAEzC,cAAI,AAAc,aAAD;AAEuC,YADtD,sBACI,AAAI,AAAS,GAAV,aAA8B;;AAEb,UAA1B,AAAO,MAAD,UAAkB,eAAV,AAAI,GAAD;AACW,UAA5B,AAAQ,OAAD,UAAmB,eAAX,AAAI,GAAD;;;AAGoB,QAAxC,kCAAW,WAAW,EAAE,MAAM,EAAE,OAAO;;AAG7B;;;;;;;;;;;;AAAI;;;;;;;;;;;;AAAI;;;;;;;;;;;;AAAG;;;;;;;;;;;;AAAI;;;;;;;;;;;;AAC3B,UAAI,mBAAmB;AACgB,QAArC,SAAK,iCAA8B,eAAL,KAAK;AACE,QAArC,SAAK,iCAA8B,eAAL,KAAK;AACA,QAAnC,QAAI,iCAA6B,eAAJ,IAAI;AACI,QAArC,SAAK,iCAA8B,eAAL,KAAK;AACE,QAArC,SAAK,iCAA8B,eAAL,KAAK;;AAKV,QAHzB,mBAAK,qBAAkB,eAAL,KAAK,MACM,AAA+B,aAAtD,wBAAgB,KAAK,kBAAI,AAAY,AAAW,WAAZ,kCAClC,AAAY,AAAW,WAAZ,oBACK,eAAlB,oBAAY,KAAK;AAIE,QAHzB,mBAAK,qBAAkB,eAAL,KAAK,MACM,AAAgC,aAAvD,wBAAgB,KAAK,kBAAI,AAAY,AAAW,WAAZ,mCAClC,AAAY,AAAW,WAAZ,mBACK,eAAlB,oBAAY,KAAK;AAKC,QAJxB,kBAAI,qBAAiB,eAAJ,IAAI,MACO,aAAtB,wBAAgB,IAAI,MAC8C,CAAhC,aAA9B,AAAY,AAAW,WAAZ,mCAAqB,AAAY,AAAW,WAAZ,sBACzC,KACW,eAAjB,oBAAY,IAAI;AAIG,QAHzB,mBAAK,qBAAkB,eAAL,KAAK,MACM,AAA+B,aAAtD,wBAAgB,KAAK,kBAAI,AAAY,AAAW,WAAZ,kCAClC,AAAY,AAAW,WAAZ,oBACK,eAAlB,oBAAY,KAAK;AAIE,QAHzB,mBAAK,qBAAkB,eAAL,KAAK,MACM,AAAgC,aAAvD,wBAAgB,KAAK,kBAAI,AAAY,AAAW,WAAZ,mCAClC,AAAY,AAAW,WAAZ,mBACK,eAAlB,oBAAY,KAAK;;AAkBxB,MAfD,AAAY,AAAa,WAAd,2BACT,EAAE,EACF,wDACU,kBAAO,YAAI,qBACX,kBACA,AAAS,cAAH,cAAM,cAAM,aAAM,kBAAO,YAAI,cAAM,kBAAO,YAAI,0BAC/C,aACL,MAAM,WACL,OAAO,YACN,mBAAmB,GACN,qDACA,+DACT,YAAY,oBACf,iBAAiB,gBAAjB,OAAmB;AAGlC,YAAO;IACT;0BAGmB,aAAkB;;UAAlB;UAAkB;AACrB,0BAAgB,iBAC5B,AAAY,WAAD,aACX,uBACK;AAEF,gCAAsB,AAAc,aAAD,KAAI;AAE9B,eAAK,AAAY,WAAD,WAAW,YAAW;AACtC,eAAK,AAAY,WAAD,WAAW,YAAW;AACtC,eAAK,AAAY,WAAD,WAAW,YAAW;AACtC,eAAK,AAAY,WAAD,WAAW,YAAW;AACvC,eAAK,wBAAY,AAAY,WAAD;AAC1B,8BAAoB,uBACjC,AAAY,WAAD,WAAW,2BAA0B;AAEnC,yBAAe,0BAAc,AAAY,WAAD;AAErC,mBAAgB;AACf,oBAAkB;AACrC,oBAAoC,AAAE,eAAlC,AAAY,WAAD;AACC,mBAAO,qBAAiB,AAAY,WAAD;AACzB,kBACpB,AAAY,AAAa,WAAd,6DAA4C,AAAY,kBAAN,IAAI;AACrE,YAAI,AAAI,GAAD;AACqD,UAA1D,wBAAiB,AAAY,WAAD,SAAO,IAAI,EAAE;;AAEzC,cAAI,AAAc,aAAD;AAEuC,YADtD,sBACI,AAAI,AAAS,GAAV,aAA8B;;AAEb,UAA1B,AAAO,MAAD,UAAkB,eAAV,AAAI,GAAD;AACW,UAA5B,AAAQ,OAAD,UAAmB,eAAX,AAAI,GAAD;;;AAGoB,QAAxC,kCAAW,WAAW,EAAE,MAAM,EAAE,OAAO;;AAGlC;AAAY;AACnB,UAAI,mBAAmB;AAIpB,QAHD,aAAa,kBACX,iCAA2B,eAAF,EAAE,IAC3B,iCAA2B,eAAF,EAAE;AAK5B,QAHD,WAAW,kBACT,iCAA2B,eAAF,EAAE,IAC3B,iCAA2B,eAAF,EAAE;;AAY5B,QATD,aAAa,4BACX,qBAAe,eAAF,EAAE,MACW,AAA+B,aAAnD,wBAAgB,EAAE,kBAAI,AAAY,AAAW,WAAZ,kCAC/B,AAAY,AAAW,WAAZ,oBACE,eAAf,oBAAY,EAAE,cACpB,qBAAe,eAAF,EAAE,MACW,AAAgC,aAApD,wBAAgB,EAAE,kBAAI,AAAY,AAAW,WAAZ,mCAC/B,AAAY,AAAW,WAAZ,mBACE,eAAf,oBAAY,EAAE;AAYrB,QATD,WAAW,4BACT,qBAAe,eAAF,EAAE,MACW,AAA+B,aAAnD,wBAAgB,EAAE,kBAAI,AAAY,AAAW,WAAZ,kCAC/B,AAAY,AAAW,WAAZ,oBACE,eAAf,oBAAY,EAAE,cACpB,qBAAe,eAAF,EAAE,MACW,AAAgC,aAApD,wBAAgB,EAAE,kBAAI,AAAY,AAAW,WAAZ,mCAC/B,AAAY,AAAW,WAAZ,mBACE,eAAf,oBAAY,EAAE;;AAiBvB,MAbD,AAAY,AAAa,WAAd,2BACT,EAAE,EACF,sDACQ,UAAU,MACZ,QAAQ,UACJ,MAAM,WACL,OAAO,gBACF,YAAY,YAChB,mBAAmB,GACN,qDACA,mEACZ,iBAAiB,gBAAjB,OAAmB;AAIlC,YAAO;IACT;oBAGmB,aAAkB;UAAlB;UAAkB;AACtB,eAAK,wBAAY,AAAY,WAAD;AAExB,kBAAc;AACzB;AACN,eAAc,QAAS,AAAY,YAAD;AAChC,YAAU,kCAAN,KAAK;AACP;;AAEF,YAAU,sCAAN,KAAK;AACU,uBAAS,AAAa,kCAAC,AAAM,KAAD;AAE7C,cAAI,MAAM;AACG,2BAGV,eAHqB,mCACpB,AAAM,MAAA,CAAC,AAAY,WAAD,cAClB,AAAY,WAAD;AAG0C,YADvD,AAAS,QAAD,YAC8C,eAAlD,0BAAc,AAAY,WAAD,aAAa;AAC1C,gBAAI,WAAW,YACX,AAAS,QAAD,aAAa,AAAY,WAAD;AACZ,cAAtB,cAAc,QAAQ;AACA,cAAtB,AAAM,KAAD,OAAK,WAAW;kBAChB,KAAI,AAAY,WAAD;AACE,cAAtB,cAAc,QAAQ;AACA,cAAtB,AAAM,KAAD,OAAK,WAAW;;AAEqB,cAA1C,AAAY,WAAD,SAAS,QAAQ,EAAS;;gBAElC,KAAI,AAAM,AAAK,KAAN,UAAS;AACT,4BAAY,qBAAiB,AAAY,WAAD;AAC7B,qCACrB,AAAY,AAAa,WAAd,2BAA0B,AAAiB,kBAAX,SAAS;AAExD,qBAAK,yBAAmC;AACtC,kBAAW,iCAAP,MAAM;AACc,gBAAtB,AAAM,KAAD,OAAK,AAAO,MAAD;oBACX,KAAW,iCAAP,MAAM;AACmC,gBAAnC,AAAE,eAAjB,AAAO,MAAD,qBAAmB,wBAAwB;;;;AAIT,YAA5C,wBAAwB,CAAC,kBAAkB;;AAE9B,+BACT,AAA0C,yCAAZ,AAAM,KAAD;AACvC,0BAAI,gBAAgB;AACkB,cAApC,WAAM,8BAAiB,YAAY;;AAenC,YAbW,oCAAY,mDACZ,8BAAiB,YAAY,yBAClB;AACpB,sBAAM,oCACF,AAAqE,oEAAZ,AAAM,KAAD;AAClE,oBAAI,AAAY,WAAD;AACb,wBAAM,oCAAiB;AACvB,wBAAM,0CACF,eAAe,AAAY,WAAD;;cAEjC,mDACQ,gBACA,oCAAiB;;;;AAKa,MAA/C,AAAY,AAAa,WAAd,2BAA0B,EAAE,EAAE,KAAK;AAC9C,YAAO;IACT;iBAGmB,aAAkB;UAAlB;UAAkB;AADZ;;AAET,mBAAO,qBAAiB,AAAY,WAAD;AACjD,YAAI,AAAK,IAAD;AACN;;AAEW,qBAAS,kBAC6B,eAAjD,oBAAY,AAAY,WAAD,WAAW,WAAU,SACK,eAAjD,oBAAY,AAAY,WAAD,WAAW,WAAU;AAEnC,mBAAO,gBACqC,eAArD,oBAAY,AAAY,WAAD,WAAW,eAAc,SACM,eAAtD,oBAAY,AAAY,WAAD,WAAW,gBAAe;AAEvC,qBAAQ,MAAM,qBAAa,IAAI;AACtB,qBAAmD,eAA1C,AAAY,AAAiB,AAAK,WAAvB;AACpB,0BAAc,AAAO,MAAD;AACf,uBAAW,4CACnC,AAAY,WAAD,WAAW,YAAW,MACjC,KAAK,EACL,MAAM,EACN,uBACE,AAAY,WAAD,SACX,AAAY,WAAD,aACX,AAAY,WAAD,gBACX,AAAY,WAAD,aACX,WAAW,UAEP,IAAI,oBACC,uBAAe,AAAY,WAAD,WAAW,6BAArC,OAAoD;AAEtD,oBAAQ,AAAY,WAAD,aAAa,QAAQ;AACnD,uBAAK,AAAY,WAAD,yBAAa,KAAK;AACiB,UAAf,AAAE,eAAZ,AAAE,eAA1B,AAAY,WAAD,+BAA6B,QAAQ;;MAEpD;;gBAGmB,aAAkB;UAAlB;UAAkB;AADb;AAEtB,cAAO,AAAY,WAAD;AAClB,cAAO,AAAY,AAAa,WAAd;AAClB,sBAAoC,AAAE,eAAlC,AAAY,WAAD;AACb;;AAOqB,wBAAY;AAC5B,4BAAgB;AAEvB,iBAAK,aAAoB;;;AACvB,cAAI,AAAM,KAAD;AACP;;AAEF,yBAAO,AAAU,SAAD;AACA,6BAAe,AAAU,SAAD;AACxB,qBAAO,wBACrB,KAAK,EACL,AAAa,YAAD,QACZ,AAAa,AAAM,YAAP;AAEE,uBAAS,wBACvB,KAAK,EACL,AAAa,YAAD,kBACE,sCAAQ,AAAa,AAAM,YAAP,kBAC5B,4BACA,AAAa,AAAM,YAAP;AAYnB,UAViC,AAAE,eAAZ,AAAE,eAA1B,AAAY,WAAD,+BACT,qCACE,AAAY,WAAD,WAAW,YAAW,MACjC,IAAI,EACJ,MAAM,EACN,AAAa,YAAD,UACyB,MAAT,AAAE,eAA9B,AAAa,AAAM,YAAP,0BAAkB,cACC,6EACpB,AAAa,YAAD,2BAAC,OAAW;AAGD,UAAtC,gBAAgB,AAAK,IAAD;;;AAGtB,iBAAK,qBAA0C;;;AAClC;AACX,wBAAI,AAAU,SAAD;AACkB,YAA7B,eAAe,AAAU,SAAD;;AAEb,8BAAgB,iCAC3B,WAAW,SACX,YAAY,gBAAZ,OAAc,AAAO,qBAAU,aAAa,EAAE;AAEvC,0BAAY,uBAAe,AAAY,WAAD,WAAW;AAC1D,sBAAI,YAAY,iBAAZ,OAAc;AAChB,gBAAI,AAAU,SAAD;AACwB,cAAnC,YAAwB,AAAE,eAAd,YAAY;;AAEkC,cAA1D,YAAmC,AAAE,eAAb,AAAE,eAAd,YAAY,wBAAwB,SAAS;;;AAc3D,UAVF,AAAU,SAAD,KAAK,+BACZ,uBACE,AAAY,WAAD,SACX,AAAY,WAAD,aACX,AAAY,WAAD,gBACX,AAAY,WAAD,cACS,iBAApB,YAAY,kBAAZ,OAAc,cAAd,gBAA+C,AAAE,eAA1B,AAAY,WAAD,gCAEpC,aAAa,EACb,SAAS;AAEX,wBAAI,AAAM,KAAD;AACe,YAAtB,AAAU,SAAD;;;;AAI0C,QAAvD,oBAAoB,CAAiC,eAAhC,AAAY,WAAD;AAEhC,iBAAc,QAAS,AAAY,YAAD;AAChC,cAAU,uBAAN,KAAK;AACwB,YAA/B,YAAY,CAAC,AAAM,AAAK,KAAN;gBACb,KAAU,qBAAN,KAAK;AACiB,YAA/B,YAAY,CAAC,AAAM,AAAK,KAAN;;AAEpB,cAAU,sCAAN,KAAK;AACoB,YAA3B,oBAAoB,CAAC,KAAK;gBACrB,KAAU,kCAAN,KAAK;AACQ,YAAtB,AAAU,SAAD;;;MAGf;;;;;EACF;;;;;kBAG8C;;AAC7B,eAA0D,eAArD,oBAAY,iBAAa,UAAU,EAAE,YAAW;AACrD,eAA0D,eAArD,oBAAY,iBAAa,UAAU,EAAE,YAAW;AACrD,cAAwD,eAApD,oBAAY,iBAAa,UAAU,EAAE,WAAU;AACrD,iBAAY,gCAAmB,kBAAO,EAAE,EAAE,EAAE,WAAW,CAAC;AACnE,YAAO;;AAAQ,oBAAQ,IAAI;;;IAC7B;gBAE0C;AAC3B,cAAiC,eAA7B,iBAAa,UAAU,EAAE;AAC1C,YAAO,6BAAiB,CAAC;IAC3B;gBAE0C;;AAC3B,cAAwD,eAApD,oBAAY,iBAAa,UAAU,EAAE,WAAU;AACnD,cAAwD,eAApD,oBAAY,iBAAa,UAAU,EAAE,WAAU;AACnD,cAA4D,eAAxD,oBAAY,iBAAa,UAAU,EAAE,eAAc;AACvD,cAA6D,eAAzD,oBAAY,iBAAa,UAAU,EAAE,gBAAe;AAC1D,iBAAY,qBAAS,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC;AAClC,kBAAQ,iBAAa,UAAU,EAAE,YAAW;AAC5C,kBAAQ,iBAAa,UAAU,EAAE,YAAW;AACrC,MAAf,AAAM,KAAD,WAAL,QAAU,KAAK,GAAT;AACS,MAAf,AAAM,KAAD,WAAL,QAAU,KAAK,GAAT;AAEN,UAAI,KAAK,YAAY,KAAK,KAAI;AACf,iBAAuB,eAAlB,oBAAY,KAAK;AACtB,iBAAuB,eAAlB,oBAAY,KAAK;AAEnC,cAAO;;AAAQ,uBAAe,wBAAW,IAAI,EAAE,EAAE,EAAE,EAAE;;;;AAGvD,aAAO;;AAAQ,qBAAQ,IAAI;;;IAC7B;mBAE8C;AAC5C,YAAO,yCAAoB,UAAU,EAAE;IACzC;oBAE+C;AAC7C,YAAO,yCAAoB,UAAU,EAAE;IACzC;+BAG6B;UAAiB;AAC9B,mBAAS,iBAAa,UAAU,EAAE;AAChD,UAAI,AAAO,MAAD,KAAI;AACZ,cAAO;;AAEI,iBAAO,AAA6B,eAA1B,MAAM,eAAE,KAAK,IAAG,MAAM;AAE7C,YAAO,6BAAiB,IAAI;IAC9B;mBAE6C;;AAC9B,eAA0D,eAArD,oBAAY,iBAAa,UAAU,EAAE,YAAW;AACrD,eAA0D,eAArD,oBAAY,iBAAa,UAAU,EAAE,YAAW;AACrD,eAA0D,eAArD,oBAAY,iBAAa,UAAU,EAAE,YAAW;AACrD,eAA0D,eAArD,oBAAY,iBAAa,UAAU,EAAE,YAAW;AAEvD,cAAS,qBAAS,AAAG,EAAD,GAAG,EAAE,EAAE,AAAG,EAAD,GAAG,EAAE,EAAE,AAAG,EAAD,GAAG,GAAG,AAAG,EAAD,GAAG;AAC5D,YAAO;;AAAQ,oBAAQ,CAAC;;;IAC1B;gBAE0C;;AAC3B,eAA0D,eAArD,oBAAY,iBAAa,UAAU,EAAE,YAAW;AACrD,eAA0D,eAArD,oBAAY,iBAAa,UAAU,EAAE,YAAW;AACrD,eAA0D,eAArD,oBAAY,iBAAa,UAAU,EAAE,YAAW;AACrD,eAA0D,eAArD,oBAAY,iBAAa,UAAU,EAAE,YAAW;AAElE,YAAO;;AACH,mBAAO,EAAE,EAAE,EAAE;AACb,mBAAO,EAAE,EAAE,EAAE;;;IACnB;;;;EACF;;;;;8CAGsB,MAAW;QAAX;;IAAW;;EAAS;;;;;;;;;;;;;;;IA2BpC;;;;;;;AAGQ,8BAAoB;AAC9B,uBAAO,AAAe;AACL,oBAAQ,AAAe;AACtC,YAAU,sCAAN,KAAK,gBAA6B,AAAM,KAAD;AAC/B,UAAV,aAAM,aAAN,cAAS;cACJ,KAAU,kCAAN,KAAK;AACJ,UAAV,aAAM,aAAN,cAAS;AACT,gBAAa,aAAN,eAAS;;AAEwB,QAA1C,2BAAwC;AACb,QAA3B,6BAAuB;AACvB,YAAU,aAAN,2BAAQ,iBAAiB;AAC3B;;;IAGN;;AAE+B;AACnB,gCAAoB;AAC9B,yBAAO,AAAe;AACL,sBAAQ,AAAe;AACjC,8BAAgB;AACrB,cAAU,sCAAN,KAAK;AACP,gBAAI,AAA0C,iBAA7B,AAAM,KAAD,aAAa,eAAc,UAC7C,AAA6C,iBAAhC,AAAM,KAAD,aAAa,kBAAiB;AAMZ,cALtC,WAAK,AAAC,4CAAgC,KAAK,aACvC,uDACA,8DACA,iDACA,oEACA;AACJ,6BAAK,AAAM,KAAD;AACE,gBAAV,aAAM,aAAN,cAAS;AACQ,gBAAjB;;AAEF;;AAEmC,YAArC,2BAAqB,AAAM,KAAD;AACE,YAA5B,6BAAuB,KAAK;AAClB,YAAV,aAAM,aAAN,cAAS;AAC0B,YAAnC,gBAAgB,AAAM,KAAD;;AAEvB,gBAAM,KAAK;AAEX,wBAAI,aAAa,KAAU,kCAAN,KAAK;AACd,YAAV,aAAM,aAAN,cAAS;AACT,kBAAa,aAAN,eAAS;AAC0B,YAA1C,2BAAwC;AACb,YAA3B,6BAAuB;;AAEzB,cAAU,aAAN,2BAAQ,iBAAiB;AAC3B;;;MAGN;;;AAG0B;;AACxB,iBAAc,QAAS;AACrB,cAAU,sCAAN,KAAK;AACP,0BAAI,kBAAa,KAAK;AACpB;;AAEgB,4BAAY,AAAkB,uCAAC,AAAM,KAAD;AACR,YAA9C,aAAM,SAAS,gBAAT,OAAW,IAAK,MAAM;AAC5B,gBAAI,AAAU,SAAD;AACX,6BAAK,AAAM,KAAD;AACS,gBAAjB;;AAEF,6BAAO,AAGN;AAFwB,gBAAvB,sBAAiB,KAAK;AACtB,sBAAO;;;gBAGN,KAAU,kCAAN,KAAK;AACG,YAAjB,gBAAW,KAAK;;;AAGpB,YAAI,AAAM;AAC4B,UAApC,WAAM,wBAAW;;AAEnB,cAAY,gBAAL;MACT;;;AAG2C;IAAkB;;UAGpC;UAAe;UAAa;AACjD,8BAAa,iBAAY,IAAI,QAAO,GAAG,aAAa,SAAS;IAAC;;AAIhE,YAAO,AAAiB;AACxB,qBAAO,AAAiB;AACxB,YAAO,AAAiB,AAAK;IAC/B;;AAIE,YAAO,AAAM,wCAAS;AACtB,YAAY,AAAE,AAAS,eAAhB;AACP,YAAY,AAAE,AAAS,gBAAhB;IACT;gBAGoC;AACrB,gBAAM,wBAAY;AAC/B,UAAI,GAAG;AACmC,QAAxC,AAAa,+BAAY,GAAG,EAAU,eAAR,QAAQ;AACtC,cAAO;;AAET,YAAO;IACT;aAGmC,OAAuB;UAAvB;AAC6B,MAA9D,AAAiB,+BAAQ,oCAAe,AAAM,KAAD,OAAO,QAAQ;AACvC,MAArB,iBAAY,QAAQ;IACtB;aAGmC;;;AAChB,qBAAW,AAAa,kCAAC,AAAM,KAAD;AAC/C,UAAI,AAAS,QAAD;AACV,cAAO;;AAGY,mBAAuC,eAA9B,AAAiB,AAAK;AAC/B,wBAAc,AAAO,MAAD;AAC9B,iBAA2B,eAApB,AAAQ,QAAA,CAAC;AACH,qBAAW,sCACjC,iBAAa,iBAAY,YAAW,MACpC,IAAI,EACJ,uBACE,aACA,iBACA,oBACA,AAAK,IAAD,cACJ,WAAW,qBACO,yCAET,uBAAe,iBAAa,iBAAY,6BAAxC,OAAuD;AAEzD,kBAAQ,iBAAY,QAAQ;AACvC,qBAAK,6BAAY,KAAK;AACU,QAAf,AAAE,eAAjB,AAAO,MAAD,iBAAe,QAAQ;;AAE/B,YAAO;IACT;;UAGuC;AACrC,UAAI,AAAM,AAAK,KAAN,UAAS;AAEc,QAA9B,gBAAU,WAAC,AAAM,KAAD;AAChB,cAAO;;AAET,YAAO,eAAS,KAAK;IACvB;;UAGmC;AACjC,UAAI,AAAM,AAAK,KAAN,SAAS,AAAiB,AAAK;AACT,QAA7B,AAAiB;;AAEnB,UAAI,AAAM,AAAK,KAAN,UAAS;AACD,QAAf,gBAAU;;IAEd;;UAM2C;AAC5B,yBACT,AAAqD,gCAAhC,AAAM,KAAD,SAAM,6BAAgB;AACpD,oBAAI;AAEoC,QAAtC,WAAM,gCAAmB,YAAY;;AAEvC,UAAI,AAAM,AAAK,KAAN,UAAS;AAiBd,QAhBW,oCAAY,mDACZ,gCACP,kFACkB;AACpB,kBAAM,oCAAgB,AAClB,oFACA;AACJ,kBAAM,6BAAS,AACX,iFACA,iFACA;AACJ,kBAAM,oCAAiB;AACvB,kBAAM,0CAA4B,eAAe;UAClD,+DACQ,gBACA,oCAAiB;YAEvB,eAAI,AAAmB,oCAAI,AAAM,KAAD;AAClB,QAAnB,WAAM,YAAY;;IAEtB;;8CA9NkC,QAAa,MAAW;QAAxB;QAAwB;IAQ3B,qBAAe;IAClB,yBAAmB,wCAA0B;IAC3D;IACT,gBAAU;IACU;IACH;IAGlB,cAAQ;IAhBmC;IAAW;UAE7C,AAAO,MAAD;IACE,uBAAE,AAAO,MAAD;;EAAS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;kEAzqBE,aAAqB;;QAArB;AAC1B,YAAI,AAAY,WAAD,WAAW,WAAU;AACpC,YAAI,AAAY,WAAD,WAAW,WAAU;AAElD,UAAO,mBACL,AAAE,CAAD,WACmB,eAAd,oBAAY,CAAC,KACqC,AAAE,eAApD,oBAAY,AAAY,WAAD,WAAW,YAAW,wBAC3B,cAAf,UAAU,gBAAV,OAAY,SAAZ,eAAkB,YAC3B,AAAE,CAAD,WACmB,eAAd,oBAAY,CAAC,KACqC,AAAE,eAApD,oBAAY,AAAY,WAAD,WAAW,YAAW,wBAC3B,iBAAf,UAAU,kBAAV,OAAY,WAAZ,gBAAkB;EAE/B;;MA5CkB,+BAAkB;YAAW,iCAAC,SAAS;;MAM3B,+BAAkB;;;MAcnB,0BAAa","file":"../../../../../../../../../../packages/flutter_svg/src/svg/parser_state.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["colors.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/flutter_svg/src/svg/colors.dart.lib.js"}');
   // Exports:
   return {
-    src__svg__parser_state: parser_state
+    src__svg__colors: colors
   };
 }));
 
-//# sourceMappingURL=parser_state.dart.lib.js.map
+//# sourceMappingURL=colors.dart.lib.js.map

@@ -19,16 +19,16 @@ define("main_module.bootstrap", ["web_entrypoint.dart", "dart_sdk"], function(ap
          main();
       });
     }
-    window.$dartAppId = "3RWRZMpPivfWXw3ZieAI7g==";
+    window.$dartAppId = "XlTYHS5Gf43/U28y//HFFA==";
 window.$dartReloadConfiguration = "ReloadConfiguration.none";
 window.$dartModuleStrategy = "require-js";
 window.$loadModuleConfig = require;
 window.$dwdsVersion = "11.0.2";
-window.$dwdsDevHandlerPath = "http://localhost:55717/$dwdsSseHandler";
+window.$dwdsDevHandlerPath = "http://localhost:49880/$dwdsSseHandler";
 window.$dwdsEnableDevtoolsLaunch = true;
 window.$dartEntrypointPath = "main_module.bootstrap.js";
 window.$requireLoader.forceLoadModule("dwds/src/injected/client");
-window.$dartExtensionUri = "http://127.0.0.1:55719/$debug";
+window.$dartExtensionUri = "http://127.0.0.1:49883/$debug";
 
   } else {
     if(window.$dartMainExecuted){
@@ -632,7 +632,32 @@ let modulePaths = {
  "packages/client/widgets/Home/Cloud.dart": "packages/client/widgets/Home/Cloud.dart.lib",
  "packages/client/widgets/Home/Build.dart": "packages/client/widgets/Home/Build.dart.lib",
  "packages/client/widgets/Home/Blockchain.dart": "packages/client/widgets/Home/Blockchain.dart.lib",
- "packages/client/widgets/Home/Ai.dart": "packages/client/widgets/Home/Ai.dart.lib"
+ "packages/client/widgets/Home/Ai.dart": "packages/client/widgets/Home/Ai.dart.lib",
+ "packages/client/screens/console.dart": "packages/client/screens/console.dart.lib",
+ "packages/client/widgets/Console/home/rightContainer/members.dart": "packages/client/widgets/Console/home/rightContainer/members.dart.lib",
+ "packages/client/widgets/Console/home/rightContainer/billing.dart": "packages/client/widgets/Console/home/rightContainer/billing.dart.lib",
+ "packages/client/widgets/Console/home/middleContainer/reports.dart": "packages/client/widgets/Console/home/middleContainer/reports.dart.lib",
+ "packages/client/widgets/Console/home/middleContainer/messages.dart": "packages/client/widgets/Console/home/middleContainer/messages.dart.lib",
+ "packages/client/widgets/Console/home/leftContainer/leftContainer.dart": "packages/client/widgets/Console/home/leftContainer/leftContainer.dart.lib",
+ "packages/client/widgets/Console/dashboard/dashboard.dart": "packages/client/widgets/Console/dashboard/dashboard.dart.lib",
+ "packages/client/widgets/Console/dashboard/button.dart": "packages/client/widgets/Console/dashboard/button.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_2/robotics.dart": "packages/client/widgets/Console/dashboard/Container_2/robotics.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_1/report.dart": "packages/client/widgets/Console/dashboard/Container_1/report.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_1/myProject.dart": "packages/client/widgets/Console/dashboard/Container_1/myProject.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_1/message.dart": "packages/client/widgets/Console/dashboard/Container_1/message.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_1/member.dart": "packages/client/widgets/Console/dashboard/Container_1/member.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_1/home.dart": "packages/client/widgets/Console/dashboard/Container_1/home.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_1/billing.dart": "packages/client/widgets/Console/dashboard/Container_1/billing.dart.lib",
+ "packages/client/widgets/Console/logo/logo.dart": "packages/client/widgets/Console/logo/logo.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_2/webMobileDesktop.dart": "packages/client/widgets/Console/dashboard/Container_2/webMobileDesktop.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_2/internetOfThings.dart": "packages/client/widgets/Console/dashboard/Container_2/internetOfThings.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_2/industrialDesign.dart": "packages/client/widgets/Console/dashboard/Container_2/industrialDesign.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_2/extendedReality.dart": "packages/client/widgets/Console/dashboard/Container_2/extendedReality.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_2/dataScience.dart": "packages/client/widgets/Console/dashboard/Container_2/dataScience.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_2/cyberSecurity.dart": "packages/client/widgets/Console/dashboard/Container_2/cyberSecurity.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_2/cloudComputing.dart": "packages/client/widgets/Console/dashboard/Container_2/cloudComputing.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_2/blockChain.dart": "packages/client/widgets/Console/dashboard/Container_2/blockChain.dart.lib",
+ "packages/client/widgets/Console/dashboard/Container_2/arteficialIntelegence.dart": "packages/client/widgets/Console/dashboard/Container_2/arteficialIntelegence.dart.lib"
 };
 let moduleNames = {
  "web_entrypoint.dart.lib": "web_entrypoint.dart",
@@ -1186,7 +1211,32 @@ let moduleNames = {
  "packages/client/widgets/Home/Cloud.dart.lib": "packages/client/widgets/Home/Cloud.dart",
  "packages/client/widgets/Home/Build.dart.lib": "packages/client/widgets/Home/Build.dart",
  "packages/client/widgets/Home/Blockchain.dart.lib": "packages/client/widgets/Home/Blockchain.dart",
- "packages/client/widgets/Home/Ai.dart.lib": "packages/client/widgets/Home/Ai.dart"
+ "packages/client/widgets/Home/Ai.dart.lib": "packages/client/widgets/Home/Ai.dart",
+ "packages/client/screens/console.dart.lib": "packages/client/screens/console.dart",
+ "packages/client/widgets/Console/home/rightContainer/members.dart.lib": "packages/client/widgets/Console/home/rightContainer/members.dart",
+ "packages/client/widgets/Console/home/rightContainer/billing.dart.lib": "packages/client/widgets/Console/home/rightContainer/billing.dart",
+ "packages/client/widgets/Console/home/middleContainer/reports.dart.lib": "packages/client/widgets/Console/home/middleContainer/reports.dart",
+ "packages/client/widgets/Console/home/middleContainer/messages.dart.lib": "packages/client/widgets/Console/home/middleContainer/messages.dart",
+ "packages/client/widgets/Console/home/leftContainer/leftContainer.dart.lib": "packages/client/widgets/Console/home/leftContainer/leftContainer.dart",
+ "packages/client/widgets/Console/dashboard/dashboard.dart.lib": "packages/client/widgets/Console/dashboard/dashboard.dart",
+ "packages/client/widgets/Console/dashboard/button.dart.lib": "packages/client/widgets/Console/dashboard/button.dart",
+ "packages/client/widgets/Console/dashboard/Container_2/robotics.dart.lib": "packages/client/widgets/Console/dashboard/Container_2/robotics.dart",
+ "packages/client/widgets/Console/dashboard/Container_1/report.dart.lib": "packages/client/widgets/Console/dashboard/Container_1/report.dart",
+ "packages/client/widgets/Console/dashboard/Container_1/myProject.dart.lib": "packages/client/widgets/Console/dashboard/Container_1/myProject.dart",
+ "packages/client/widgets/Console/dashboard/Container_1/message.dart.lib": "packages/client/widgets/Console/dashboard/Container_1/message.dart",
+ "packages/client/widgets/Console/dashboard/Container_1/member.dart.lib": "packages/client/widgets/Console/dashboard/Container_1/member.dart",
+ "packages/client/widgets/Console/dashboard/Container_1/home.dart.lib": "packages/client/widgets/Console/dashboard/Container_1/home.dart",
+ "packages/client/widgets/Console/dashboard/Container_1/billing.dart.lib": "packages/client/widgets/Console/dashboard/Container_1/billing.dart",
+ "packages/client/widgets/Console/logo/logo.dart.lib": "packages/client/widgets/Console/logo/logo.dart",
+ "packages/client/widgets/Console/dashboard/Container_2/webMobileDesktop.dart.lib": "packages/client/widgets/Console/dashboard/Container_2/webMobileDesktop.dart",
+ "packages/client/widgets/Console/dashboard/Container_2/internetOfThings.dart.lib": "packages/client/widgets/Console/dashboard/Container_2/internetOfThings.dart",
+ "packages/client/widgets/Console/dashboard/Container_2/industrialDesign.dart.lib": "packages/client/widgets/Console/dashboard/Container_2/industrialDesign.dart",
+ "packages/client/widgets/Console/dashboard/Container_2/extendedReality.dart.lib": "packages/client/widgets/Console/dashboard/Container_2/extendedReality.dart",
+ "packages/client/widgets/Console/dashboard/Container_2/dataScience.dart.lib": "packages/client/widgets/Console/dashboard/Container_2/dataScience.dart",
+ "packages/client/widgets/Console/dashboard/Container_2/cyberSecurity.dart.lib": "packages/client/widgets/Console/dashboard/Container_2/cyberSecurity.dart",
+ "packages/client/widgets/Console/dashboard/Container_2/cloudComputing.dart.lib": "packages/client/widgets/Console/dashboard/Container_2/cloudComputing.dart",
+ "packages/client/widgets/Console/dashboard/Container_2/blockChain.dart.lib": "packages/client/widgets/Console/dashboard/Container_2/blockChain.dart",
+ "packages/client/widgets/Console/dashboard/Container_2/arteficialIntelegence.dart.lib": "packages/client/widgets/Console/dashboard/Container_2/arteficialIntelegence.dart"
 };
 if(!window.$requireLoader) {
    window.$requireLoader = {

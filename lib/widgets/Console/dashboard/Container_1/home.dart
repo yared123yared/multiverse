@@ -8,8 +8,8 @@ class HomeButton extends StatelessWidget {
     return Expanded(
         child: Button(
             elevation: 0,
-            icon: Icons.bar_chart,
-            value: 'Monitor',
+            icon: Icons.home,
+            value: 'Home',
             size: 22,
             onPressed: () {}));
   }

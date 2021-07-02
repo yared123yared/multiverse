@@ -38,20 +38,22 @@ class Button extends StatelessWidget {
           splashColor: Colors.white,
           child: Container(
             color: Colors.transparent,
-            alignment: Alignment.center,
+            alignment: Alignment.topLeft,
             width: width,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                SizedBox(width: 8),
                 FaIcon(
                   icon,
                   color: Colors.white.withOpacity(0.5),
                   size: size,
                 ),
+                SizedBox(width: 15),
                 Text(
                   value,
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: 11,
                     fontWeight: FontWeight.w300,
                     color: Colors.white.withOpacity(0.5),
                   ),

@@ -9,7 +9,7 @@ class CloudComputingButton extends StatelessWidget {
         child: Button(
             elevation: 0,
             icon: Icons.bar_chart,
-            value: 'Monitor',
+            value: 'Cloud Computing',
             size: 22,
             onPressed: () {}));
   }

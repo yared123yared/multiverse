@@ -1,5 +1,5 @@
 import 'package:client/widgets/Console/dashboard/dashboard.dart';
-import 'package:client/widgets/Console/home/leftContainer/myProjects.dart';
+import 'package:client/widgets/Console/home/leftContainer/leftContainer.dart';
 import 'package:client/widgets/Console/home/middleContainer/messages.dart';
 
 import 'package:client/widgets/Console/home/middleContainer/reports.dart';
@@ -65,13 +65,16 @@ class ConsoleHomePage extends StatelessWidget {
                         textAlign: TextAlign.left,
                       ),
                     ),
+                    // SizedBox(
+                    // height: height * 0.01,
+                    // ),
                     Expanded(
                         child: Container(
                             child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                          MyProjects(
+                          LeftContainer(
                               mainContainerHeight: mainContainerHeight,
                               mainContainerWidth: mainContainerWidth),
                           Column(
