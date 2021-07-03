@@ -1,11 +1,14 @@
+import 'package:client/widgets/Console/Navigation/leftBar.dart';
+import 'package:client/widgets/Console/Navigation/rightBar.dart';
+import 'package:client/widgets/Console/Navigation/searchBar.dart';
 import 'package:client/widgets/Console/dashboard/dashboard.dart';
 import 'package:client/widgets/Console/home/leftContainer/leftContainer.dart';
-
-import 'package:client/widgets/Console/home/middleContainer/middleContainer.dart';
-
+import 'package:client/widgets/Console/home/middleContainer/messages.dart';
+import 'package:client/widgets/Console/home/middleContainer/reports.dart';
 import 'package:client/widgets/Console/home/rightContainer/billing.dart';
 import 'package:client/widgets/Console/home/rightContainer/members.dart';
-
+import 'package:client/widgets/Home/LeftNav.dart';
+import 'package:client/widgets/Home/RightNav.dart';
 import 'package:flutter/material.dart';
 
 class ConsoleHomePage extends StatelessWidget {
@@ -36,33 +39,26 @@ class ConsoleHomePage extends StatelessWidget {
 
               child: Scaffold(
                 backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  elevation: 0,
-                  backgroundColor: Color(0xff003366),
-                  // toolbarHeight: 45,
-                  toolbarHeight: height * 0.065,
-                  flexibleSpace: Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          //  color: Color(0xff003366),
-                          borderRadius: BorderRadius.circular(10)),
-                      // color: Colors.transparent,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        // children: [LeftNav(), MidNav(), RightNav()],
-                      ),
-                    ),
-                  ),
-                ),
                 body: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: EdgeInsets.all(height * 0.04),
+                      child: Row(
+                        children: [
+                          LeftBar(),
+                          SizedBox(width: 25),
+                          SearchBar(),
+                          RightBar(),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(
+                          top: height * 0.025, bottom: height * 0.015),
                       alignment: Alignment.topLeft,
                       child: Text(
                         "Home",
-                        style: TextStyle(fontSize: height * 0.03),
+                        style: TextStyle(fontSize: height * 0.02),
                         textAlign: TextAlign.left,
                       ),
                     ),
@@ -78,9 +74,18 @@ class ConsoleHomePage extends StatelessWidget {
                           LeftContainer(
                               mainContainerHeight: mainContainerHeight,
                               mainContainerWidth: mainContainerWidth),
-                          MiddleContainer(
-                            mainContainerHeight: mainContainerHeight,
-                            mainContainerWidth: mainContainerWidth,
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Messages(
+                                mainContainerHeight: mainContainerHeight,
+                                mainContainerWidth: mainContainerWidth,
+                              ),
+                              Reports(
+                                mainContainerHeight: mainContainerHeight,
+                                mainContainerWidth: mainContainerWidth,
+                              ),
+                            ],
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
