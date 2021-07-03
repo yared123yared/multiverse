@@ -1,6 +1,6 @@
-import 'package:client/widgets/Console/home/rightContainer/Billing/container.dart';
 import 'package:flutter/material.dart';
 
+import 'container.dart';
 import 'iconButton.dart';
 import 'text.dart';
 
@@ -44,33 +44,17 @@ class Billing extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  BillingCircleContainer(
-                    color: Color(0xffED14B0),
+                  BillingContainer(
+                    color: Color(0xff2388EC),
                     mainContainerHeight: this.mainContainerHeight,
-                    mainContainerWidth: this.mainContainerWidth,
                   ),
-                  BillingCircleContainer(
-                    color: Color(0xffED14B0),
+                  SizedBox(width: this.mainContainerWidth * 0.015),
+                  BillingContainer(
+                    color: Color(0xff2388EC),
                     mainContainerHeight: this.mainContainerHeight,
-                    mainContainerWidth: this.mainContainerWidth,
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  BillingCircleContainer(
-                    color: Color(0xffED14B0),
-                    mainContainerHeight: this.mainContainerHeight,
-                    mainContainerWidth: this.mainContainerWidth,
-                  ),
-                  BillingCircleContainer(
-                    color: Color(0xffED14B0),
-                    mainContainerHeight: this.mainContainerHeight,
-                    mainContainerWidth: this.mainContainerWidth,
-                  ),
-                ],
-              )
 
               // SizedBox(
               // width: mainContainerWidth * 0.013,

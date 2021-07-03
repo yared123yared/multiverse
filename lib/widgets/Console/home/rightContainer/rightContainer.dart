@@ -1,7 +1,7 @@
 import 'package:client/widgets/Console/home/rightContainer/Members/members.dart';
 import 'package:flutter/material.dart';
 
-import 'Billing/billing.dart';
+import 'Billing/biling.dart';
 
 class RightContainer extends StatelessWidget {
   final double mainContainerHeight;
@@ -14,11 +14,11 @@ class RightContainer extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Billing(
+        Members(
           mainContainerHeight: mainContainerHeight,
           mainContainerWidth: mainContainerWidth,
         ),
-        Members(
+        Billing(
           mainContainerHeight: mainContainerHeight,
           mainContainerWidth: mainContainerWidth,
         ),

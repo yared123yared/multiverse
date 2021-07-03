@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 
-class BillingCircleContainer extends StatelessWidget {
+class BillingContainer extends StatelessWidget {
   final double mainContainerHeight;
-  final double mainContainerWidth;
   final Color color;
 
-  BillingCircleContainer(
-      {this.mainContainerHeight, this.color, this.mainContainerWidth});
+  BillingContainer({this.mainContainerHeight, this.color});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        // height: this.mainContainerHeight * 0.135,
-        // width: this.mainContainerWidth * 0.1,
-        child: CircleAvatar(
-          backgroundColor: Color(0xffE3F2FD).withOpacity(0.2),
-          radius: this.mainContainerHeight * 0.06,
-          child: InkWell(
-            onTap: () {},
-          ),
-          // backgroundImage: AssetImage('Assets/assets/fixit.png'),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(10),
+        hoverColor: Color(0xffE3F2FD).withOpacity(0.7),
+        highlightColor: Color(0xffE3F2FD).withOpacity(0.7),
+        splashColor: Color(0xffE3F2FD).withOpacity(0.7),
+        onTap: () {},
+        child: Container(
+          decoration: BoxDecoration(
+              border: Border.all(color: this.color.withOpacity(0.5)),
+              borderRadius: BorderRadius.circular(10),
+              color: Color(0xffE3F2FD).withOpacity(0.2)),
+          height: this.mainContainerHeight * 0.3,
         ),
       ),
     );
