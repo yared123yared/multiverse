@@ -22,9 +22,9 @@ class ReportButton extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: this.color.withOpacity(0.2)),
+            border: Border.all(color: this.color.withOpacity(0.5)),
             borderRadius: BorderRadius.circular(15),
-            color: Color(0xffE3F2FD).withOpacity(0.3)),
+            color: Color(0xffE3F2FD).withOpacity(0.2)),
         height: this.mainContainerHeight * 0.044,
         width: this.mainContainerWidth * 0.07,
         child: Center(

@@ -5,9 +5,8 @@ import 'package:client/widgets/Console/dashboard/dashboard.dart';
 import 'package:client/widgets/Console/home/leftContainer/leftContainer.dart';
 
 import 'package:client/widgets/Console/home/middleContainer/middleContainer.dart';
+import 'package:client/widgets/Console/home/rightContainer/rightContainer.dart';
 
-import 'package:client/widgets/Console/home/rightContainer/billing.dart';
-import 'package:client/widgets/Console/home/rightContainer/members.dart';
 import 'package:client/widgets/Home/LeftNav.dart';
 import 'package:client/widgets/Home/RightNav.dart';
 import 'package:flutter/material.dart';
@@ -78,19 +77,9 @@ class ConsoleHomePage extends StatelessWidget {
                           MiddleContainer(
                               mainContainerHeight: mainContainerHeight,
                               mainContainerWidth: mainContainerWidth),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Members(
-                                mainContainerHeight: mainContainerHeight,
-                                mainContainerWidth: mainContainerWidth,
-                              ),
-                              Billing(
-                                mainContainerHeight: mainContainerHeight,
-                                mainContainerWidth: mainContainerWidth,
-                              ),
-                            ],
-                          ),
+                          RightContainer(
+                              mainContainerHeight: mainContainerHeight,
+                              mainContainerWidth: mainContainerWidth),
                         ]))),
                   ],
                 ),

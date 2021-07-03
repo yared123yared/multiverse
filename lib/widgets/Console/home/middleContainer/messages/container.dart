@@ -13,7 +13,7 @@ class MessageContainer extends StatelessWidget {
       borderRadius: BorderRadius.circular(5),
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: Color(0xff1DD219).withOpacity(0.2)),
+            border: Border.all(color: Color(0xff1DD219).withOpacity(0.5)),
             borderRadius: BorderRadius.circular(7),
             color: Color(0xffE3F2FD).withOpacity(0.3)),
         height: this.mainContainerHeight * 0.095,

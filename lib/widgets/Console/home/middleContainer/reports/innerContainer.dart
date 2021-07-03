@@ -20,7 +20,7 @@ class InnerCircleContainer extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          border: Border.all(color: this.color.withOpacity(0.2)),
+          border: Border.all(color: this.color.withOpacity(0.5)),
           // borderRadius: BorderRadius.circular(100),
           color: Colors.white,
           shape: BoxShape.circle,

@@ -21,9 +21,9 @@ class ReportContainer extends StatelessWidget {
         child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            border: Border.all(color: this.color.withOpacity(0.2)),
+            border: Border.all(color: this.color.withOpacity(0.5)),
             // borderRadius: BorderRadius.circular(100),
-            color: Color(0xffE3F2FD).withOpacity(0.3),
+            color: Color(0xffE3F2FD).withOpacity(0.2),
             shape: BoxShape.circle,
           ),
           height: this.mainContainerHeight * 0.21,
