@@ -9,10 +9,12 @@ class CardContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Material(
-        // color: Color(0xff4B19DA),
-        // elevation: 1,
+      child: InkWell(
         borderRadius: BorderRadius.circular(10),
+        hoverColor: Color(0xffE3F2FD).withOpacity(0.7),
+        highlightColor: Color(0xffE3F2FD).withOpacity(0.7),
+        splashColor: Color(0xffE3F2FD).withOpacity(0.7),
+        onTap: () {},
         child: Container(
           decoration: BoxDecoration(
               border: Border.all(color: this.color.withOpacity(0.2)),
