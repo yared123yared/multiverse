@@ -14,9 +14,9 @@ class MessageContainer extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(color: Color(0xff1DD219).withOpacity(0.2)),
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(7),
             color: Color(0xffE3F2FD).withOpacity(0.3)),
-        height: this.mainContainerHeight * 0.088,
+        height: this.mainContainerHeight * 0.095,
         width: double.infinity,
         child: ListTile(
             leading: CircleAvatar(
@@ -25,23 +25,23 @@ class MessageContainer extends StatelessWidget {
               // backgroundImage: AssetImage('Assets/assets/fixit.png'),
             ),
             title: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 3),
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
               child: Text("User Name",
                   textAlign: TextAlign.start,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: this.mainContainerHeight * 0.017,
                     fontWeight: FontWeight.normal,
                     color: Color(0xff003366),
                   )),
             ),
             subtitle: Text("Save text message",
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: this.mainContainerHeight * 0.013,
                   color: Color(0xff003366),
                 )),
             trailing: Text("03:15 PM",
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: this.mainContainerHeight * 0.013,
                   color: Color(0xff003366),
                 )),
             onTap: () {}),

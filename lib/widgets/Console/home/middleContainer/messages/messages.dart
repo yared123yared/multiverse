@@ -22,7 +22,7 @@ class Messages extends StatelessWidget {
             // color: Colors.blueAccent,
             borderRadius: BorderRadius.circular(10)),
         width: this.mainContainerWidth * 0.3,
-        height: this.mainContainerHeight * 0.37,
+        height: this.mainContainerHeight * 0.40,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -38,11 +38,11 @@ class Messages extends StatelessWidget {
             MessageContainer(
               mainContainerHeight: this.mainContainerHeight,
             ),
-            SizedBox(height: 0.013 * this.mainContainerHeight),
+            SizedBox(height: 0.017 * this.mainContainerHeight),
             MessageContainer(
               mainContainerHeight: this.mainContainerHeight,
             ),
-            SizedBox(height: 0.013 * this.mainContainerHeight),
+            SizedBox(height: 0.017 * this.mainContainerHeight),
             MessageContainer(
               mainContainerHeight: this.mainContainerHeight,
             )
