@@ -1,8 +1,8 @@
 import 'package:client/widgets/Console/dashboard/dashboard.dart';
 import 'package:client/widgets/Console/home/leftContainer/leftContainer.dart';
-import 'package:client/widgets/Console/home/middleContainer/messages.dart';
 
-import 'package:client/widgets/Console/home/middleContainer/reports.dart';
+import 'package:client/widgets/Console/home/middleContainer/middleContainer.dart';
+
 import 'package:client/widgets/Console/home/rightContainer/billing.dart';
 import 'package:client/widgets/Console/home/rightContainer/members.dart';
 
@@ -78,18 +78,9 @@ class ConsoleHomePage extends StatelessWidget {
                           LeftContainer(
                               mainContainerHeight: mainContainerHeight,
                               mainContainerWidth: mainContainerWidth),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Messages(
-                                mainContainerHeight: mainContainerHeight,
-                                mainContainerWidth: mainContainerWidth,
-                              ),
-                              Reports(
-                                mainContainerHeight: mainContainerHeight,
-                                mainContainerWidth: mainContainerWidth,
-                              ),
-                            ],
+                          MiddleContainer(
+                            mainContainerHeight: mainContainerHeight,
+                            mainContainerWidth: mainContainerWidth,
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
