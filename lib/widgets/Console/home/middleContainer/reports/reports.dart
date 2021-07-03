@@ -44,14 +44,17 @@ class Reports extends StatelessWidget {
             ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               ReportButton(
+                  text: "Design",
                   color: Color(0xffFF6B00),
                   mainContainerHeight: this.mainContainerHeight,
                   mainContainerWidth: this.mainContainerWidth),
               ReportButton(
+                  text: "Build",
                   color: Color(0xff003366),
                   mainContainerHeight: this.mainContainerHeight,
                   mainContainerWidth: this.mainContainerWidth),
               ReportButton(
+                  text: "Test",
                   color: Color(0xff003366),
                   mainContainerHeight: this.mainContainerHeight,
                   mainContainerWidth: this.mainContainerWidth),
