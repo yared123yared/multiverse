@@ -1,454 +1,402 @@
-define(['dart_sdk', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/painting/decoration_image.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/colors.dart', 'packages/flutter/src/painting/box_fit.dart'], (function load__packages__flutter__src__rendering__image_dart(dart_sdk, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__painting__decoration_image$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting__colors$46dart, packages__flutter__src__painting__box_fit$46dart) {
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/client/widgets/Console/home/leftContainer/recentActivity/text.dart', 'packages/client/widgets/Console/home/leftContainer/recentActivity/container.dart'], (function load__packages__client__widgets__Console__home__leftContainer__recentActivity__recentActivity_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__rendering__flex$46dart, packages__client__widgets__Console__home__leftContainer__recentActivity__text$46dart, packages__client__widgets__Console__home__leftContainer__recentActivity__container$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _engine = dart_sdk._engine;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
-  const decoration_image = packages__flutter__src__painting__decoration_image$46dart.src__painting__decoration_image;
-  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const colors = packages__flutter__src__painting__colors$46dart.src__painting__colors;
-  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
-  var image$ = Object.create(dart.library);
-  var $toDouble = dartx.toDouble;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const text = packages__client__widgets__Console__home__leftContainer__recentActivity__text$46dart.widgets__Console__home__leftContainer__recentActivity__text;
+  const container$ = packages__client__widgets__Console__home__leftContainer__recentActivity__container$46dart.widgets__Console__home__leftContainer__recentActivity__container;
+  var recentActivity = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    DiagnosticsPropertyOfImage: () => (T.DiagnosticsPropertyOfImage = dart.constFn(diagnostics.DiagnosticsProperty$(ui.Image)))(),
-    EnumPropertyOfBlendMode: () => (T.EnumPropertyOfBlendMode = dart.constFn(diagnostics.EnumProperty$(ui.BlendMode)))(),
-    EnumPropertyOfBoxFit: () => (T.EnumPropertyOfBoxFit = dart.constFn(diagnostics.EnumProperty$(box_fit.BoxFit)))(),
-    DiagnosticsPropertyOfAlignmentGeometry: () => (T.DiagnosticsPropertyOfAlignmentGeometry = dart.constFn(diagnostics.DiagnosticsProperty$(alignment.AlignmentGeometry)))(),
-    EnumPropertyOfImageRepeat: () => (T.EnumPropertyOfImageRepeat = dart.constFn(diagnostics.EnumProperty$(decoration_image.ImageRepeat)))(),
-    DiagnosticsPropertyOfRect: () => (T.DiagnosticsPropertyOfRect = dart.constFn(diagnostics.DiagnosticsProperty$(ui.Rect)))(),
-    EnumPropertyOfTextDirection: () => (T.EnumPropertyOfTextDirection = dart.constFn(diagnostics.EnumProperty$(ui.TextDirection)))(),
-    DiagnosticsPropertyOfbool: () => (T.DiagnosticsPropertyOfbool = dart.constFn(diagnostics.DiagnosticsProperty$(core.bool)))(),
-    EnumPropertyOfFilterQuality: () => (T.EnumPropertyOfFilterQuality = dart.constFn(diagnostics.EnumProperty$(ui.FilterQuality)))()
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: alignment.Alignment.prototype,
-        [Alignment_y]: 0,
-        [Alignment_x]: 0
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerHeight",
+        [_Location_column]: 32,
+        [_Location_line]: 19,
+        [_Location_file]: null
       });
     },
     get C1() {
-      return C[1] = dart.const({
-        __proto__: decoration_image.ImageRepeat.prototype,
-        [_name]: "ImageRepeat.noRepeat",
-        index: 3
+      return C[1] = dart.constList([C[2] || CT.C2], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 19,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
       });
     },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: ui.FilterQuality.prototype,
-        [_name$]: "FilterQuality.low",
-        index: 1
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 15,
+        [_Location_line]: 21,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.constList([C[5] || CT.C5], T._LocationL());
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[4] || CT.C4,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 20,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerHeight",
+        [_Location_column]: 15,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList([C[8] || CT.C8], T._LocationL());
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[7] || CT.C7,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 23,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 15,
+        [_Location_line]: 27,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11], T._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 26,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerHeight",
+        [_Location_column]: 15,
+        [_Location_line]: 30,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.constList([C[14] || CT.C14], T._LocationL());
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[13] || CT.C13,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 29,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 15,
+        [_Location_line]: 33,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.constList([C[17] || CT.C17], T._LocationL());
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[16] || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 32,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerHeight",
+        [_Location_column]: 15,
+        [_Location_line]: 36,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([C[20] || CT.C20], T._LocationL());
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 35,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 15,
+        [_Location_line]: 39,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.constList([C[23] || CT.C23], T._LocationL());
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[22] || CT.C22,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 38,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerHeight",
+        [_Location_column]: 15,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.constList([C[26] || CT.C26], T._LocationL());
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[25] || CT.C25,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 41,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 15,
+        [_Location_line]: 45,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.constList([C[29] || CT.C29], T._LocationL());
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[28] || CT.C28,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 44,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerHeight",
+        [_Location_column]: 15,
+        [_Location_line]: 48,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.constList([C[32] || CT.C32], T._LocationL());
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[31] || CT.C31,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 47,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 11,
+        [_Location_line]: 16,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 11,
+        [_Location_line]: 17,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 11,
+        [_Location_line]: 18,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.constList([C[35] || CT.C35, C[36] || CT.C36, C[37] || CT.C37], T._LocationL());
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[34] || CT.C34,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 15,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 7,
+        [_Location_line]: 14,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 15,
+        [_Location_file]: null
+      });
+    },
+    get C39() {
+      return C[39] = dart.constList([C[40] || CT.C40, C[41] || CT.C41], T._LocationL());
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[39] || CT.C39,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 12,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"
       });
     }
   }, false);
-  var C = Array(3).fill(void 0);
-  var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/rendering/image.dart",
-    "package:flutter/src/rendering/image.dart"
-  ];
-  var debugImageLabel$ = dart.privateName(image$, "RenderImage.debugImageLabel");
-  var Alignment_y = dart.privateName(alignment, "Alignment.y");
-  var Alignment_x = dart.privateName(alignment, "Alignment.x");
-  var _name = dart.privateName(decoration_image, "_name");
-  var _name$ = dart.privateName(ui, "_name");
-  var _resolvedAlignment = dart.privateName(image$, "_resolvedAlignment");
-  var _flipHorizontally = dart.privateName(image$, "_flipHorizontally");
-  var _colorFilter = dart.privateName(image$, "_colorFilter");
-  var _image = dart.privateName(image$, "_image");
-  var _width = dart.privateName(image$, "_width");
-  var _height = dart.privateName(image$, "_height");
-  var _scale = dart.privateName(image$, "_scale");
-  var _color = dart.privateName(image$, "_color");
-  var _colorBlendMode = dart.privateName(image$, "_colorBlendMode");
-  var _fit = dart.privateName(image$, "_fit");
-  var _alignment = dart.privateName(image$, "_alignment");
-  var _repeat = dart.privateName(image$, "_repeat");
-  var _centerSlice = dart.privateName(image$, "_centerSlice");
-  var _matchTextDirection = dart.privateName(image$, "_matchTextDirection");
-  var _invertColors = dart.privateName(image$, "_invertColors");
-  var _textDirection = dart.privateName(image$, "_textDirection");
-  var _isAntiAlias = dart.privateName(image$, "_isAntiAlias");
-  var _filterQuality = dart.privateName(image$, "_filterQuality");
-  var _updateColorFilter = dart.privateName(image$, "_updateColorFilter");
-  var _resolve = dart.privateName(image$, "_resolve");
-  var _markNeedResolution = dart.privateName(image$, "_markNeedResolution");
-  var _sizeForConstraints = dart.privateName(image$, "_sizeForConstraints");
-  image$.RenderImage = class RenderImage extends box.RenderBox {
-    get debugImageLabel() {
-      return this[debugImageLabel$];
+  var C = Array(42).fill(void 0);
+  var I = ["package:client/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart"];
+  var mainContainerHeight$ = dart.privateName(recentActivity, "RecentActivity.mainContainerHeight");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  recentActivity.RecentActivity = class RecentActivity extends framework.StatelessWidget {
+    get mainContainerHeight() {
+      return this[mainContainerHeight$];
     }
-    set debugImageLabel(value) {
-      this[debugImageLabel$] = value;
+    set mainContainerHeight(value) {
+      super.mainContainerHeight = value;
     }
-    [_resolve]() {
-      if (this[_resolvedAlignment] != null) return;
-      this[_resolvedAlignment] = this.alignment.resolve(this.textDirection);
-      this[_flipHorizontally] = dart.test(this.matchTextDirection) && this.textDirection == ui.TextDirection.rtl;
-    }
-    [_markNeedResolution]() {
-      this[_resolvedAlignment] = null;
-      this[_flipHorizontally] = null;
-      this.markNeedsPaint();
-    }
-    get image() {
-      return this[_image];
-    }
-    set image(value) {
-      let t0;
-      if (dart.equals(value, this[_image])) {
-        return;
-      }
-      if (value != null && this[_image] != null && dart.test(value.isCloneOf(dart.nullCheck(this[_image])))) {
-        value.dispose();
-        return;
-      }
-      t0 = this[_image];
-      t0 == null ? null : t0.dispose();
-      this[_image] = value;
-      this.markNeedsPaint();
-      if (this[_width] == null || this[_height] == null) this.markNeedsLayout();
-    }
-    get width() {
-      return this[_width];
-    }
-    set width(value) {
-      if (value == this[_width]) return;
-      this[_width] = value;
-      this.markNeedsLayout();
-    }
-    get height() {
-      return this[_height];
-    }
-    set height(value) {
-      if (value == this[_height]) return;
-      this[_height] = value;
-      this.markNeedsLayout();
-    }
-    get scale() {
-      return this[_scale];
-    }
-    set scale(value) {
-      if (value == null) dart.nullFailed(I[0], 138, 20, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 139, 12, "value != null");
-      if (value == this[_scale]) return;
-      this[_scale] = value;
-      this.markNeedsLayout();
-    }
-    [_updateColorFilter]() {
-      let t0;
-      if (this[_color] == null)
-        this[_colorFilter] = null;
-      else
-        this[_colorFilter] = new _engine._CkBlendModeColorFilter.new(dart.nullCheck(this[_color]), (t0 = this[_colorBlendMode], t0 == null ? ui.BlendMode.srcIn : t0));
-    }
-    get color() {
-      return this[_color];
-    }
-    set color(value) {
-      if (dart.equals(value, this[_color])) return;
-      this[_color] = value;
-      this[_updateColorFilter]();
-      this.markNeedsPaint();
-    }
-    get filterQuality() {
-      return this[_filterQuality];
-    }
-    set filterQuality(value) {
-      if (value == null) dart.nullFailed(I[0], 172, 35, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 173, 12, "value != null");
-      if (value == this[_filterQuality]) return;
-      this[_filterQuality] = value;
-      this.markNeedsPaint();
-    }
-    get colorBlendMode() {
-      return this[_colorBlendMode];
-    }
-    set colorBlendMode(value) {
-      if (value == this[_colorBlendMode]) return;
-      this[_colorBlendMode] = value;
-      this[_updateColorFilter]();
-      this.markNeedsPaint();
-    }
-    get fit() {
-      return this[_fit];
-    }
-    set fit(value) {
-      if (value == this[_fit]) return;
-      this[_fit] = value;
-      this.markNeedsPaint();
-    }
-    get alignment() {
-      return this[_alignment];
-    }
-    set alignment(value) {
-      if (value == null) dart.nullFailed(I[0], 218, 35, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 219, 12, "value != null");
-      if (dart.equals(value, this[_alignment])) return;
-      this[_alignment] = value;
-      this[_markNeedResolution]();
-    }
-    get repeat() {
-      return this[_repeat];
-    }
-    set repeat(value) {
-      if (value == null) dart.nullFailed(I[0], 229, 26, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 230, 12, "value != null");
-      if (value == this[_repeat]) return;
-      this[_repeat] = value;
-      this.markNeedsPaint();
-    }
-    get centerSlice() {
-      return this[_centerSlice];
-    }
-    set centerSlice(value) {
-      if (dart.equals(value, this[_centerSlice])) return;
-      this[_centerSlice] = value;
-      this.markNeedsPaint();
-    }
-    get invertColors() {
-      return this[_invertColors];
-    }
-    set invertColors(value) {
-      if (value == null) dart.nullFailed(I[0], 260, 25, "value");
-      if (value == this[_invertColors]) return;
-      this[_invertColors] = value;
-      this.markNeedsPaint();
-    }
-    get matchTextDirection() {
-      return this[_matchTextDirection];
-    }
-    set matchTextDirection(value) {
-      if (value == null) dart.nullFailed(I[0], 283, 31, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 284, 12, "value != null");
-      if (value == this[_matchTextDirection]) return;
-      this[_matchTextDirection] = value;
-      this[_markNeedResolution]();
-    }
-    get textDirection() {
-      return this[_textDirection];
-    }
-    set textDirection(value) {
-      if (this[_textDirection] == value) return;
-      this[_textDirection] = value;
-      this[_markNeedResolution]();
-    }
-    get isAntiAlias() {
-      return this[_isAntiAlias];
-    }
-    set isAntiAlias(value) {
-      if (value == null) dart.nullFailed(I[0], 310, 24, "value");
-      if (this[_isAntiAlias] == value) {
-        return;
-      }
-      if (!(value != null)) dart.assertFailed(null, I[0], 314, 12, "value != null");
-      this[_isAntiAlias] = value;
-      this.markNeedsPaint();
-    }
-    [_sizeForConstraints](constraints) {
-      if (constraints == null) dart.nullFailed(I[0], 326, 43, "constraints");
-      constraints = new box.BoxConstraints.tightFor({width: this[_width], height: this[_height]}).enforce(constraints);
-      if (this[_image] == null) return constraints.smallest;
-      return constraints.constrainSizeAndAttemptToPreserveAspectRatio(new ui.Size.new(dart.nullCheck(this[_image]).width[$toDouble]() / dart.notNull(this[_scale]), dart.nullCheck(this[_image]).height[$toDouble]() / dart.notNull(this[_scale])));
-    }
-    computeMinIntrinsicWidth(height) {
-      if (height == null) dart.nullFailed(I[0], 344, 42, "height");
-      if (!(dart.notNull(height) >= 0.0)) dart.assertFailed(null, I[0], 345, 12, "height >= 0.0");
-      if (this[_width] == null && this[_height] == null) return 0.0;
-      return this[_sizeForConstraints](new box.BoxConstraints.tightForFinite({height: height})).width;
-    }
-    computeMaxIntrinsicWidth(height) {
-      if (height == null) dart.nullFailed(I[0], 352, 42, "height");
-      if (!(dart.notNull(height) >= 0.0)) dart.assertFailed(null, I[0], 353, 12, "height >= 0.0");
-      return this[_sizeForConstraints](new box.BoxConstraints.tightForFinite({height: height})).width;
-    }
-    computeMinIntrinsicHeight(width) {
-      if (width == null) dart.nullFailed(I[0], 358, 43, "width");
-      if (!(dart.notNull(width) >= 0.0)) dart.assertFailed(null, I[0], 359, 12, "width >= 0.0");
-      if (this[_width] == null && this[_height] == null) return 0.0;
-      return this[_sizeForConstraints](new box.BoxConstraints.tightForFinite({width: width})).height;
-    }
-    computeMaxIntrinsicHeight(width) {
-      if (width == null) dart.nullFailed(I[0], 366, 43, "width");
-      if (!(dart.notNull(width) >= 0.0)) dart.assertFailed(null, I[0], 367, 12, "width >= 0.0");
-      return this[_sizeForConstraints](new box.BoxConstraints.tightForFinite({width: width})).height;
-    }
-    hitTestSelf(position) {
-      if (position == null) dart.nullFailed(I[0], 372, 27, "position");
-      return true;
-    }
-    computeDryLayout(constraints) {
-      if (constraints == null) dart.nullFailed(I[0], 375, 40, "constraints");
-      return this[_sizeForConstraints](constraints);
-    }
-    performLayout() {
-      this.size = this[_sizeForConstraints](this.constraints);
-    }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(I[0], 385, 30, "context");
-      if (offset == null) dart.nullFailed(I[0], 385, 46, "offset");
-      if (this[_image] == null) return;
-      this[_resolve]();
-      if (!(this[_resolvedAlignment] != null)) dart.assertFailed(null, I[0], 389, 12, "_resolvedAlignment != null");
-      if (!(this[_flipHorizontally] != null)) dart.assertFailed(null, I[0], 390, 12, "_flipHorizontally != null");
-      decoration_image.paintImage({canvas: context.canvas, rect: offset['&'](this.size), image: dart.nullCheck(this[_image]), debugImageLabel: this.debugImageLabel, scale: this[_scale], colorFilter: this[_colorFilter], fit: this[_fit], alignment: dart.nullCheck(this[_resolvedAlignment]), centerSlice: this[_centerSlice], repeat: this[_repeat], flipHorizontally: dart.nullCheck(this[_flipHorizontally]), invertColors: this.invertColors, filterQuality: this[_filterQuality], isAntiAlias: this[_isAntiAlias]});
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 410, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new (T.DiagnosticsPropertyOfImage()).new("image", this.image));
-      properties.add(new diagnostics.DoubleProperty.new("width", this.width, {defaultValue: null}));
-      properties.add(new diagnostics.DoubleProperty.new("height", this.height, {defaultValue: null}));
-      properties.add(new diagnostics.DoubleProperty.new("scale", this.scale, {defaultValue: 1.0}));
-      properties.add(new colors.ColorProperty.new("color", this.color, {defaultValue: null}));
-      properties.add(new (T.EnumPropertyOfBlendMode()).new("colorBlendMode", this.colorBlendMode, {defaultValue: null}));
-      properties.add(new (T.EnumPropertyOfBoxFit()).new("fit", this.fit, {defaultValue: null}));
-      properties.add(new (T.DiagnosticsPropertyOfAlignmentGeometry()).new("alignment", this.alignment, {defaultValue: null}));
-      properties.add(new (T.EnumPropertyOfImageRepeat()).new("repeat", this.repeat, {defaultValue: decoration_image.ImageRepeat.noRepeat}));
-      properties.add(new (T.DiagnosticsPropertyOfRect()).new("centerSlice", this.centerSlice, {defaultValue: null}));
-      properties.add(new diagnostics.FlagProperty.new("matchTextDirection", {value: this.matchTextDirection, ifTrue: "match text direction"}));
-      properties.add(new (T.EnumPropertyOfTextDirection()).new("textDirection", this.textDirection, {defaultValue: null}));
-      properties.add(new (T.DiagnosticsPropertyOfbool()).new("invertColors", this.invertColors));
-      properties.add(new (T.EnumPropertyOfFilterQuality()).new("filterQuality", this.filterQuality));
+    build(context) {
+      return new container.Container.new({height: dart.notNull(this.mainContainerHeight) * 0.32, child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.start, crossAxisAlignment: flex.CrossAxisAlignment.start, children: T.JSArrayOfWidgetL().of([new text.RecentActivityText.new({mainContainerHeight: this.mainContainerHeight, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), new basic.SizedBox.new({height: 7.0, $creationLocationd_0dea112b090073317d4: C[3] || CT.C3}), new container$.RecentActivityContainer.new({mainContainerHeight: this.mainContainerHeight, $creationLocationd_0dea112b090073317d4: C[6] || CT.C6}), new basic.SizedBox.new({height: 10.0, $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}), new container$.RecentActivityContainer.new({mainContainerHeight: this.mainContainerHeight, $creationLocationd_0dea112b090073317d4: C[12] || CT.C12}), new basic.SizedBox.new({height: 10.0, $creationLocationd_0dea112b090073317d4: C[15] || CT.C15}), new container$.RecentActivityContainer.new({mainContainerHeight: this.mainContainerHeight, $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), new basic.SizedBox.new({height: 10.0, $creationLocationd_0dea112b090073317d4: C[21] || CT.C21}), new container$.RecentActivityContainer.new({mainContainerHeight: this.mainContainerHeight, $creationLocationd_0dea112b090073317d4: C[24] || CT.C24}), new basic.SizedBox.new({height: 10.0, $creationLocationd_0dea112b090073317d4: C[27] || CT.C27}), new container$.RecentActivityContainer.new({mainContainerHeight: this.mainContainerHeight, $creationLocationd_0dea112b090073317d4: C[30] || CT.C30})]), $creationLocationd_0dea112b090073317d4: C[33] || CT.C33}), $creationLocationd_0dea112b090073317d4: C[38] || CT.C38});
     }
   };
-  (image$.RenderImage.new = function(opts) {
-    let image = opts && 'image' in opts ? opts.image : null;
-    let debugImageLabel = opts && 'debugImageLabel' in opts ? opts.debugImageLabel : null;
-    let width = opts && 'width' in opts ? opts.width : null;
-    let height = opts && 'height' in opts ? opts.height : null;
-    let scale = opts && 'scale' in opts ? opts.scale : 1;
-    if (scale == null) dart.nullFailed(I[0], 32, 12, "scale");
-    let color = opts && 'color' in opts ? opts.color : null;
-    let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : null;
-    let fit = opts && 'fit' in opts ? opts.fit : null;
-    let alignment = opts && 'alignment' in opts ? opts.alignment : C[0] || CT.C0;
-    if (alignment == null) dart.nullFailed(I[0], 36, 23, "alignment");
-    let repeat = opts && 'repeat' in opts ? opts.repeat : C[1] || CT.C1;
-    if (repeat == null) dart.nullFailed(I[0], 37, 17, "repeat");
-    let centerSlice = opts && 'centerSlice' in opts ? opts.centerSlice : null;
-    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : false;
-    if (matchTextDirection == null) dart.nullFailed(I[0], 39, 10, "matchTextDirection");
-    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-    let invertColors = opts && 'invertColors' in opts ? opts.invertColors : false;
-    if (invertColors == null) dart.nullFailed(I[0], 41, 10, "invertColors");
-    let isAntiAlias = opts && 'isAntiAlias' in opts ? opts.isAntiAlias : false;
-    if (isAntiAlias == null) dart.nullFailed(I[0], 42, 10, "isAntiAlias");
-    let filterQuality = opts && 'filterQuality' in opts ? opts.filterQuality : C[2] || CT.C2;
-    if (filterQuality == null) dart.nullFailed(I[0], 43, 19, "filterQuality");
-    this[_resolvedAlignment] = null;
-    this[_flipHorizontally] = null;
-    this[_colorFilter] = null;
-    this[debugImageLabel$] = debugImageLabel;
-    if (!(scale != null)) dart.assertFailed(null, I[0], 44, 15, "scale != null");
-    if (!(repeat != null)) dart.assertFailed(null, I[0], 45, 15, "repeat != null");
-    if (!(alignment != null)) dart.assertFailed(null, I[0], 46, 15, "alignment != null");
-    if (!(filterQuality != null)) dart.assertFailed(null, I[0], 47, 15, "filterQuality != null");
-    if (!(matchTextDirection != null)) dart.assertFailed(null, I[0], 48, 15, "matchTextDirection != null");
-    if (!(isAntiAlias != null)) dart.assertFailed(null, I[0], 49, 15, "isAntiAlias != null");
-    this[_image] = image;
-    this[_width] = width;
-    this[_height] = height;
-    this[_scale] = scale;
-    this[_color] = color;
-    this[_colorBlendMode] = colorBlendMode;
-    this[_fit] = fit;
-    this[_alignment] = alignment;
-    this[_repeat] = repeat;
-    this[_centerSlice] = centerSlice;
-    this[_matchTextDirection] = matchTextDirection;
-    this[_invertColors] = invertColors;
-    this[_textDirection] = textDirection;
-    this[_isAntiAlias] = isAntiAlias;
-    this[_filterQuality] = filterQuality;
-    image$.RenderImage.__proto__.new.call(this);
-    this[_updateColorFilter]();
-  }).prototype = image$.RenderImage.prototype;
-  dart.addTypeTests(image$.RenderImage);
-  dart.addTypeCaches(image$.RenderImage);
-  dart.setMethodSignature(image$.RenderImage, () => ({
-    __proto__: dart.getMethods(image$.RenderImage.__proto__),
-    [_resolve]: dart.fnType(dart.void, []),
-    [_markNeedResolution]: dart.fnType(dart.void, []),
-    [_updateColorFilter]: dart.fnType(dart.void, []),
-    [_sizeForConstraints]: dart.fnType(ui.Size, [box.BoxConstraints])
+  (recentActivity.RecentActivity.new = function(opts) {
+    let mainContainerHeight = opts && 'mainContainerHeight' in opts ? opts.mainContainerHeight : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[mainContainerHeight$] = mainContainerHeight;
+    recentActivity.RecentActivity.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = recentActivity.RecentActivity.prototype;
+  dart.addTypeTests(recentActivity.RecentActivity);
+  dart.addTypeCaches(recentActivity.RecentActivity);
+  dart.setMethodSignature(recentActivity.RecentActivity, () => ({
+    __proto__: dart.getMethods(recentActivity.RecentActivity.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
   }));
-  dart.setGetterSignature(image$.RenderImage, () => ({
-    __proto__: dart.getGetters(image$.RenderImage.__proto__),
-    image: dart.nullable(ui.Image),
-    width: dart.nullable(core.double),
-    height: dart.nullable(core.double),
-    scale: core.double,
-    color: dart.nullable(ui.Color),
-    filterQuality: ui.FilterQuality,
-    colorBlendMode: dart.nullable(ui.BlendMode),
-    fit: dart.nullable(box_fit.BoxFit),
-    alignment: alignment.AlignmentGeometry,
-    repeat: decoration_image.ImageRepeat,
-    centerSlice: dart.nullable(ui.Rect),
-    invertColors: core.bool,
-    matchTextDirection: core.bool,
-    textDirection: dart.nullable(ui.TextDirection),
-    isAntiAlias: core.bool
+  dart.setLibraryUri(recentActivity.RecentActivity, I[0]);
+  dart.setFieldSignature(recentActivity.RecentActivity, () => ({
+    __proto__: dart.getFields(recentActivity.RecentActivity.__proto__),
+    mainContainerHeight: dart.finalFieldType(dart.legacy(core.double))
   }));
-  dart.setSetterSignature(image$.RenderImage, () => ({
-    __proto__: dart.getSetters(image$.RenderImage.__proto__),
-    image: dart.nullable(ui.Image),
-    width: dart.nullable(core.double),
-    height: dart.nullable(core.double),
-    scale: core.double,
-    color: dart.nullable(ui.Color),
-    filterQuality: ui.FilterQuality,
-    colorBlendMode: dart.nullable(ui.BlendMode),
-    fit: dart.nullable(box_fit.BoxFit),
-    alignment: alignment.AlignmentGeometry,
-    repeat: decoration_image.ImageRepeat,
-    centerSlice: dart.nullable(ui.Rect),
-    invertColors: core.bool,
-    matchTextDirection: core.bool,
-    textDirection: dart.nullable(ui.TextDirection),
-    isAntiAlias: core.bool
-  }));
-  dart.setLibraryUri(image$.RenderImage, I[1]);
-  dart.setFieldSignature(image$.RenderImage, () => ({
-    __proto__: dart.getFields(image$.RenderImage.__proto__),
-    [_resolvedAlignment]: dart.fieldType(dart.nullable(alignment.Alignment)),
-    [_flipHorizontally]: dart.fieldType(dart.nullable(core.bool)),
-    [_image]: dart.fieldType(dart.nullable(ui.Image)),
-    debugImageLabel: dart.fieldType(dart.nullable(core.String)),
-    [_width]: dart.fieldType(dart.nullable(core.double)),
-    [_height]: dart.fieldType(dart.nullable(core.double)),
-    [_scale]: dart.fieldType(core.double),
-    [_colorFilter]: dart.fieldType(dart.nullable(ui.ColorFilter)),
-    [_color]: dart.fieldType(dart.nullable(ui.Color)),
-    [_filterQuality]: dart.fieldType(ui.FilterQuality),
-    [_colorBlendMode]: dart.fieldType(dart.nullable(ui.BlendMode)),
-    [_fit]: dart.fieldType(dart.nullable(box_fit.BoxFit)),
-    [_alignment]: dart.fieldType(alignment.AlignmentGeometry),
-    [_repeat]: dart.fieldType(decoration_image.ImageRepeat),
-    [_centerSlice]: dart.fieldType(dart.nullable(ui.Rect)),
-    [_invertColors]: dart.fieldType(core.bool),
-    [_matchTextDirection]: dart.fieldType(core.bool),
-    [_textDirection]: dart.fieldType(dart.nullable(ui.TextDirection)),
-    [_isAntiAlias]: dart.fieldType(core.bool)
-  }));
-  dart.trackLibraries("packages/flutter/src/rendering/image.dart", {
-    "package:flutter/src/rendering/image.dart": image$
+  dart.trackLibraries("packages/client/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart", {
+    "package:client/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart": recentActivity
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["image.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/rendering/image.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["recentActivity.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAMe;;;;;;UAIa;AACxB,YAAO,sCAE4B,aAApB,4BAAsB,aAC5B,yCACkC,kDACE,yCAC7B,yBACR,sDAA6C,mFAC7C,gCACU,8DAEV,iEAC4B,mFAE5B,gCACU,+DAEV,iEAC4B,qFAE5B,gCACU,iEAEV,iEAC4B,qFAE5B,gCACU,iEAEV,iEAC4B,qFAE5B,gCACU,iEAEV,iEAC4B;IAItC;;;QA5CqB;;;AAArB;;EAA0C","file":"../../../../../../../../../../../../../packages/client/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart.lib.js"}');
   // Exports:
   return {
-    src__rendering__image: image$
+    widgets__Console__home__leftContainer__recentActivity__recentActivity: recentActivity
   };
 }));
 
-//# sourceMappingURL=image.dart.lib.js.map
+//# sourceMappingURL=recentActivity.dart.lib.js.map

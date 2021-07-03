@@ -1,715 +1,381 @@
-define(['dart_sdk'], (function load__packages__flutter__src__painting__border_radius_dart(dart_sdk) {
+define(['dart_sdk', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/gestures/arena.dart', 'packages/flutter/src/gestures/recognizer.dart'], (function load__packages__flutter__src__gestures__force_press_dart(dart_sdk, packages__flutter__src__gestures__events$46dart, packages__flutter__src__gestures__arena$46dart, packages__flutter__src__gestures__recognizer$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const ui = dart_sdk.ui;
   const _internal = dart_sdk._internal;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  var border_radius = Object.create(dart.library);
-  var $toStringAsFixed = dartx.toStringAsFixed;
-  var $runtimeType = dartx.runtimeType;
+  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
+  const arena = packages__flutter__src__gestures__arena$46dart.src__gestures__arena;
+  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
+  var force_press = Object.create(dart.library);
+  var $isNaN = dartx.isNaN;
+  var $clamp = dartx.clamp;
   dart._checkModuleNullSafetyMode(false);
+  var T = {
+    _ForceStateL: () => (T._ForceStateL = dart.constFn(dart.legacy(force_press._ForceState)))(),
+    doubleAnddoubleAnddoubleTodouble: () => (T.doubleAnddoubleAnddoubleTodouble = dart.constFn(dart.fnType(core.double, [core.double, core.double, core.double])))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))()
+  };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: ui.Radius.prototype,
-        [Radius_y]: 0,
-        [Radius_x]: 0
+        __proto__: force_press._ForceState.prototype,
+        [_name$]: "_ForceState.ready",
+        index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: border_radius.BorderRadius.prototype,
-        [bottomRight$]: C[0] || CT.C0,
-        [bottomLeft$]: C[0] || CT.C0,
-        [topRight$]: C[0] || CT.C0,
-        [topLeft$]: C[0] || CT.C0
+        __proto__: force_press._ForceState.prototype,
+        [_name$]: "_ForceState.possible",
+        index: 1
       });
     },
     get C2() {
       return C[2] = dart.const({
-        __proto__: ui.TextDirection.prototype,
-        [_name]: "TextDirection.rtl",
-        index: 0
+        __proto__: force_press._ForceState.prototype,
+        [_name$]: "_ForceState.accepted",
+        index: 2
       });
     },
     get C3() {
       return C[3] = dart.const({
-        __proto__: ui.TextDirection.prototype,
-        [_name]: "TextDirection.ltr",
-        index: 1
+        __proto__: force_press._ForceState.prototype,
+        [_name$]: "_ForceState.started",
+        index: 3
       });
     },
     get C4() {
       return C[4] = dart.const({
-        __proto__: border_radius.BorderRadiusDirectional.prototype,
-        [bottomEnd$]: C[0] || CT.C0,
-        [bottomStart$]: C[0] || CT.C0,
-        [topEnd$]: C[0] || CT.C0,
-        [topStart$]: C[0] || CT.C0
+        __proto__: force_press._ForceState.prototype,
+        [_name$]: "_ForceState.peaked",
+        index: 4
       });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], T._ForceStateL());
+    },
+    get C6() {
+      return C[6] = dart.fn(force_press.ForcePressGestureRecognizer._inverseLerp, T.doubleAnddoubleAnddoubleTodouble());
     }
   }, false);
-  var C = Array(5).fill(void 0);
+  var C = Array(7).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/painting/border_radius.dart",
-    "package:flutter/src/painting/border_radius.dart"
+    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/gestures/force_press.dart",
+    "package:flutter/src/gestures/force_press.dart"
   ];
-  var _topLeft = dart.privateName(border_radius, "_topLeft");
-  var _topRight = dart.privateName(border_radius, "_topRight");
-  var _bottomLeft = dart.privateName(border_radius, "_bottomLeft");
-  var _bottomRight = dart.privateName(border_radius, "_bottomRight");
-  var _topStart = dart.privateName(border_radius, "_topStart");
-  var _topEnd = dart.privateName(border_radius, "_topEnd");
-  var _bottomStart = dart.privateName(border_radius, "_bottomStart");
-  var _bottomEnd = dart.privateName(border_radius, "_bottomEnd");
-  border_radius.BorderRadiusGeometry = class BorderRadiusGeometry extends core.Object {
-    subtract(other) {
-      if (other == null) dart.nullFailed(I[0], 49, 54, "other");
-      return new border_radius._MixedBorderRadius.new(this[_topLeft]['-'](other[_topLeft]), this[_topRight]['-'](other[_topRight]), this[_bottomLeft]['-'](other[_bottomLeft]), this[_bottomRight]['-'](other[_bottomRight]), this[_topStart]['-'](other[_topStart]), this[_topEnd]['-'](other[_topEnd]), this[_bottomStart]['-'](other[_bottomStart]), this[_bottomEnd]['-'](other[_bottomEnd]));
-    }
-    add(other) {
-      if (other == null) dart.nullFailed(I[0], 73, 49, "other");
-      return new border_radius._MixedBorderRadius.new(this[_topLeft]['+'](other[_topLeft]), this[_topRight]['+'](other[_topRight]), this[_bottomLeft]['+'](other[_bottomLeft]), this[_bottomRight]['+'](other[_bottomRight]), this[_topStart]['+'](other[_topStart]), this[_topEnd]['+'](other[_topEnd]), this[_bottomStart]['+'](other[_bottomStart]), this[_bottomEnd]['+'](other[_bottomEnd]));
-    }
-    static lerp(a, b, t) {
-      if (t == null) dart.nullFailed(I[0], 132, 94, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 133, 12, "t != null");
-      if (a == null && b == null) return null;
-      a == null ? a = border_radius.BorderRadius.zero : null;
-      b == null ? b = border_radius.BorderRadius.zero : null;
-      return a.add(b.subtract(a)['*'](t));
-    }
+  var _name$ = dart.privateName(force_press, "_name");
+  force_press._ForceState = class _ForceState extends core.Object {
     toString() {
-      let visual = null;
-      let logical = null;
-      if (dart.equals(this[_topLeft], this[_topRight]) && dart.equals(this[_topRight], this[_bottomLeft]) && dart.equals(this[_bottomLeft], this[_bottomRight])) {
-        if (!dart.equals(this[_topLeft], ui.Radius.zero)) {
-          if (this[_topLeft].x == this[_topLeft].y) {
-            visual = "BorderRadius.circular(" + this[_topLeft].x[$toStringAsFixed](1) + ")";
-          } else {
-            visual = "BorderRadius.all(" + dart.str(this[_topLeft]) + ")";
+      return this[_name$];
+    }
+  };
+  (force_press._ForceState.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 9, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 9, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = force_press._ForceState.prototype;
+  dart.addTypeTests(force_press._ForceState);
+  dart.addTypeCaches(force_press._ForceState);
+  dart.setLibraryUri(force_press._ForceState, I[1]);
+  dart.setFieldSignature(force_press._ForceState, () => ({
+    __proto__: dart.getFields(force_press._ForceState.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(force_press._ForceState, ['toString']);
+  force_press._ForceState.ready = C[0] || CT.C0;
+  force_press._ForceState.possible = C[1] || CT.C1;
+  force_press._ForceState.accepted = C[2] || CT.C2;
+  force_press._ForceState.started = C[3] || CT.C3;
+  force_press._ForceState.peaked = C[4] || CT.C4;
+  force_press._ForceState.values = C[5] || CT.C5;
+  var globalPosition$ = dart.privateName(force_press, "ForcePressDetails.globalPosition");
+  var localPosition$ = dart.privateName(force_press, "ForcePressDetails.localPosition");
+  var pressure$ = dart.privateName(force_press, "ForcePressDetails.pressure");
+  force_press.ForcePressDetails = class ForcePressDetails extends core.Object {
+    get globalPosition() {
+      return this[globalPosition$];
+    }
+    set globalPosition(value) {
+      super.globalPosition = value;
+    }
+    get localPosition() {
+      return this[localPosition$];
+    }
+    set localPosition(value) {
+      super.localPosition = value;
+    }
+    get pressure() {
+      return this[pressure$];
+    }
+    set pressure(value) {
+      super.pressure = value;
+    }
+  };
+  (force_press.ForcePressDetails.new = function(opts) {
+    let t0;
+    let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : null;
+    if (globalPosition == null) dart.nullFailed(I[0], 47, 19, "globalPosition");
+    let localPosition = opts && 'localPosition' in opts ? opts.localPosition : null;
+    let pressure = opts && 'pressure' in opts ? opts.pressure : null;
+    if (pressure == null) dart.nullFailed(I[0], 49, 19, "pressure");
+    this[globalPosition$] = globalPosition;
+    this[pressure$] = pressure;
+    if (!(globalPosition != null)) dart.assertFailed(null, I[0], 50, 15, "globalPosition != null");
+    if (!(pressure != null)) dart.assertFailed(null, I[0], 51, 15, "pressure != null");
+    this[localPosition$] = (t0 = localPosition, t0 == null ? globalPosition : t0);
+    ;
+  }).prototype = force_press.ForcePressDetails.prototype;
+  dart.addTypeTests(force_press.ForcePressDetails);
+  dart.addTypeCaches(force_press.ForcePressDetails);
+  dart.setLibraryUri(force_press.ForcePressDetails, I[1]);
+  dart.setFieldSignature(force_press.ForcePressDetails, () => ({
+    __proto__: dart.getFields(force_press.ForcePressDetails.__proto__),
+    globalPosition: dart.finalFieldType(ui.Offset),
+    localPosition: dart.finalFieldType(ui.Offset),
+    pressure: dart.finalFieldType(core.double)
+  }));
+  var onStart = dart.privateName(force_press, "ForcePressGestureRecognizer.onStart");
+  var onUpdate = dart.privateName(force_press, "ForcePressGestureRecognizer.onUpdate");
+  var onPeak = dart.privateName(force_press, "ForcePressGestureRecognizer.onPeak");
+  var onEnd = dart.privateName(force_press, "ForcePressGestureRecognizer.onEnd");
+  var startPressure$ = dart.privateName(force_press, "ForcePressGestureRecognizer.startPressure");
+  var peakPressure$ = dart.privateName(force_press, "ForcePressGestureRecognizer.peakPressure");
+  var interpolation$ = dart.privateName(force_press, "ForcePressGestureRecognizer.interpolation");
+  var __ForcePressGestureRecognizer__lastPosition = dart.privateName(force_press, "_#ForcePressGestureRecognizer#_lastPosition");
+  var __ForcePressGestureRecognizer__lastPosition_isSet = dart.privateName(force_press, "_#ForcePressGestureRecognizer#_lastPosition#isSet");
+  var __ForcePressGestureRecognizer__lastPressure = dart.privateName(force_press, "_#ForcePressGestureRecognizer#_lastPressure");
+  var __ForcePressGestureRecognizer__lastPressure_isSet = dart.privateName(force_press, "_#ForcePressGestureRecognizer#_lastPressure#isSet");
+  var _state = dart.privateName(force_press, "_state");
+  var _lastPosition = dart.privateName(force_press, "_lastPosition");
+  var _lastPressure = dart.privateName(force_press, "_lastPressure");
+  force_press.ForcePressGestureRecognizer = class ForcePressGestureRecognizer extends recognizer.OneSequenceGestureRecognizer {
+    get onStart() {
+      return this[onStart];
+    }
+    set onStart(value) {
+      this[onStart] = value;
+    }
+    get onUpdate() {
+      return this[onUpdate];
+    }
+    set onUpdate(value) {
+      this[onUpdate] = value;
+    }
+    get onPeak() {
+      return this[onPeak];
+    }
+    set onPeak(value) {
+      this[onPeak] = value;
+    }
+    get onEnd() {
+      return this[onEnd];
+    }
+    set onEnd(value) {
+      this[onEnd] = value;
+    }
+    get startPressure() {
+      return this[startPressure$];
+    }
+    set startPressure(value) {
+      super.startPressure = value;
+    }
+    get peakPressure() {
+      return this[peakPressure$];
+    }
+    set peakPressure(value) {
+      super.peakPressure = value;
+    }
+    get interpolation() {
+      return this[interpolation$];
+    }
+    set interpolation(value) {
+      super.interpolation = value;
+    }
+    get [_lastPosition]() {
+      let t0;
+      return dart.test(this[__ForcePressGestureRecognizer__lastPosition_isSet]) ? (t0 = this[__ForcePressGestureRecognizer__lastPosition], t0) : dart.throw(new _internal.LateError.fieldNI("_lastPosition"));
+    }
+    set [_lastPosition](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 205, 19, "null");
+      this[__ForcePressGestureRecognizer__lastPosition_isSet] = true;
+      this[__ForcePressGestureRecognizer__lastPosition] = t0;
+    }
+    get [_lastPressure]() {
+      let t1;
+      return dart.test(this[__ForcePressGestureRecognizer__lastPressure_isSet]) ? (t1 = this[__ForcePressGestureRecognizer__lastPressure], t1) : dart.throw(new _internal.LateError.fieldNI("_lastPressure"));
+    }
+    set [_lastPressure](t1) {
+      if (t1 == null) dart.nullFailed(I[0], 206, 15, "null");
+      this[__ForcePressGestureRecognizer__lastPressure_isSet] = true;
+      this[__ForcePressGestureRecognizer__lastPressure] = t1;
+    }
+    addAllowedPointer(event) {
+      if (event == null) dart.nullFailed(I[0], 210, 39, "event");
+      if (!events.PointerUpEvent.is(event) && dart.notNull(event.pressureMax) <= 1.0) {
+        this.resolve(arena.GestureDisposition.rejected);
+      } else {
+        this.startTrackingPointer(event.pointer, event.transform);
+        if (this[_state] == force_press._ForceState.ready) {
+          this[_state] = force_press._ForceState.possible;
+          this[_lastPosition] = recognizer.OffsetPair.fromEventPosition(event);
+        }
+      }
+    }
+    handleEvent(event) {
+      let t4, t3, t2;
+      if (event == null) dart.nullFailed(I[0], 226, 33, "event");
+      if (!(this[_state] != force_press._ForceState.ready)) dart.assertFailed(null, I[0], 227, 12, "_state != _ForceState.ready");
+      if (events.PointerMoveEvent.is(event) || events.PointerDownEvent.is(event)) {
+        let pressure = (t2 = event.pressureMin, t3 = event.pressureMax, t4 = event.pressure, this.interpolation(t2, t3, t4));
+        if (!(dart.notNull(pressure) >= 0.0 && dart.notNull(pressure) <= 1.0 || pressure[$isNaN])) dart.assertFailed(null, I[0], 232, 9, "(pressure >= 0.0 && pressure <= 1.0) || // Interpolated pressure must be between 1.0 and 0.0...\r\n        pressure.isNaN");
+        this[_lastPosition] = recognizer.OffsetPair.fromEventPosition(event);
+        this[_lastPressure] = pressure;
+        if (this[_state] == force_press._ForceState.possible) {
+          if (dart.notNull(pressure) > dart.notNull(this.startPressure)) {
+            this[_state] = force_press._ForceState.started;
+            this.resolve(arena.GestureDisposition.accepted);
+          } else if (dart.notNull(event.delta.distanceSquared) > dart.notNull(events.computeHitSlop(event.kind))) {
+            this.resolve(arena.GestureDisposition.rejected);
           }
         }
-      } else {
-        let result = new core.StringBuffer.new();
-        result.write("BorderRadius.only(");
-        let comma = false;
-        if (!dart.equals(this[_topLeft], ui.Radius.zero)) {
-          result.write("topLeft: " + dart.str(this[_topLeft]));
-          comma = true;
-        }
-        if (!dart.equals(this[_topRight], ui.Radius.zero)) {
-          if (comma) result.write(", ");
-          result.write("topRight: " + dart.str(this[_topRight]));
-          comma = true;
-        }
-        if (!dart.equals(this[_bottomLeft], ui.Radius.zero)) {
-          if (comma) result.write(", ");
-          result.write("bottomLeft: " + dart.str(this[_bottomLeft]));
-          comma = true;
-        }
-        if (!dart.equals(this[_bottomRight], ui.Radius.zero)) {
-          if (comma) result.write(", ");
-          result.write("bottomRight: " + dart.str(this[_bottomRight]));
-        }
-        result.write(")");
-        visual = result.toString();
-      }
-      if (dart.equals(this[_topStart], this[_topEnd]) && dart.equals(this[_topEnd], this[_bottomEnd]) && dart.equals(this[_bottomEnd], this[_bottomStart])) {
-        if (!dart.equals(this[_topStart], ui.Radius.zero)) {
-          if (this[_topStart].x == this[_topStart].y) {
-            logical = "BorderRadiusDirectional.circular(" + this[_topStart].x[$toStringAsFixed](1) + ")";
-          } else {
-            logical = "BorderRadiusDirectional.all(" + dart.str(this[_topStart]) + ")";
+        if (dart.notNull(pressure) > dart.notNull(this.startPressure) && this[_state] == force_press._ForceState.accepted) {
+          this[_state] = force_press._ForceState.started;
+          if (this.onStart != null) {
+            this.invokeCallback(dart.void, "onStart", dart.fn(() => dart.nullCheck(this.onStart)(new force_press.ForcePressDetails.new({pressure: pressure, globalPosition: this[_lastPosition].global, localPosition: this[_lastPosition].local})), T.VoidTovoid()));
           }
         }
-      } else {
-        let result = new core.StringBuffer.new();
-        result.write("BorderRadiusDirectional.only(");
-        let comma = false;
-        if (!dart.equals(this[_topStart], ui.Radius.zero)) {
-          result.write("topStart: " + dart.str(this[_topStart]));
-          comma = true;
+        if (this.onPeak != null && dart.notNull(pressure) > dart.notNull(this.peakPressure) && this[_state] == force_press._ForceState.started) {
+          this[_state] = force_press._ForceState.peaked;
+          if (this.onPeak != null) {
+            this.invokeCallback(dart.void, "onPeak", dart.fn(() => dart.nullCheck(this.onPeak)(new force_press.ForcePressDetails.new({pressure: pressure, globalPosition: event.position, localPosition: event.localPosition})), T.VoidTovoid()));
+          }
         }
-        if (!dart.equals(this[_topEnd], ui.Radius.zero)) {
-          if (comma) result.write(", ");
-          result.write("topEnd: " + dart.str(this[_topEnd]));
-          comma = true;
-        }
-        if (!dart.equals(this[_bottomStart], ui.Radius.zero)) {
-          if (comma) result.write(", ");
-          result.write("bottomStart: " + dart.str(this[_bottomStart]));
-          comma = true;
-        }
-        if (!dart.equals(this[_bottomEnd], ui.Radius.zero)) {
-          if (comma) result.write(", ");
-          result.write("bottomEnd: " + dart.str(this[_bottomEnd]));
-        }
-        result.write(")");
-        logical = result.toString();
-      }
-      if (visual != null && logical != null) return dart.str(visual) + " + " + dart.str(logical);
-      if (visual != null) return visual;
-      if (logical != null) return logical;
-      return "BorderRadius.zero";
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (this === other) return true;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return border_radius.BorderRadiusGeometry.is(other) && dart.equals(other[_topLeft], this[_topLeft]) && dart.equals(other[_topRight], this[_topRight]) && dart.equals(other[_bottomLeft], this[_bottomLeft]) && dart.equals(other[_bottomRight], this[_bottomRight]) && dart.equals(other[_topStart], this[_topStart]) && dart.equals(other[_topEnd], this[_topEnd]) && dart.equals(other[_bottomStart], this[_bottomStart]) && dart.equals(other[_bottomEnd], this[_bottomEnd]);
-    }
-    get hashCode() {
-      return ui.hashValues(this[_topLeft], this[_topRight], this[_bottomLeft], this[_bottomRight], this[_topStart], this[_topEnd], this[_bottomStart], this[_bottomEnd]);
-    }
-  };
-  (border_radius.BorderRadiusGeometry.new = function() {
-    ;
-  }).prototype = border_radius.BorderRadiusGeometry.prototype;
-  dart.addTypeTests(border_radius.BorderRadiusGeometry);
-  dart.addTypeCaches(border_radius.BorderRadiusGeometry);
-  dart.setMethodSignature(border_radius.BorderRadiusGeometry, () => ({
-    __proto__: dart.getMethods(border_radius.BorderRadiusGeometry.__proto__),
-    subtract: dart.fnType(border_radius.BorderRadiusGeometry, [border_radius.BorderRadiusGeometry]),
-    add: dart.fnType(border_radius.BorderRadiusGeometry, [border_radius.BorderRadiusGeometry])
-  }));
-  dart.setLibraryUri(border_radius.BorderRadiusGeometry, I[1]);
-  dart.defineExtensionMethods(border_radius.BorderRadiusGeometry, ['toString', '_equals']);
-  dart.defineExtensionAccessors(border_radius.BorderRadiusGeometry, ['hashCode']);
-  var topLeft$ = dart.privateName(border_radius, "BorderRadius.topLeft");
-  var topRight$ = dart.privateName(border_radius, "BorderRadius.topRight");
-  var bottomLeft$ = dart.privateName(border_radius, "BorderRadius.bottomLeft");
-  var bottomRight$ = dart.privateName(border_radius, "BorderRadius.bottomRight");
-  var Radius_y = dart.privateName(ui, "Radius.y");
-  var Radius_x = dart.privateName(ui, "Radius.x");
-  border_radius.BorderRadius = class BorderRadius extends border_radius.BorderRadiusGeometry {
-    get topLeft() {
-      return this[topLeft$];
-    }
-    set topLeft(value) {
-      super.topLeft = value;
-    }
-    get topRight() {
-      return this[topRight$];
-    }
-    set topRight(value) {
-      super.topRight = value;
-    }
-    get bottomLeft() {
-      return this[bottomLeft$];
-    }
-    set bottomLeft(value) {
-      super.bottomLeft = value;
-    }
-    get bottomRight() {
-      return this[bottomRight$];
-    }
-    set bottomRight(value) {
-      super.bottomRight = value;
-    }
-    copyWith(opts) {
-      let t0, t0$, t0$0, t0$1;
-      let topLeft = opts && 'topLeft' in opts ? opts.topLeft : null;
-      let topRight = opts && 'topRight' in opts ? opts.topRight : null;
-      let bottomLeft = opts && 'bottomLeft' in opts ? opts.bottomLeft : null;
-      let bottomRight = opts && 'bottomRight' in opts ? opts.bottomRight : null;
-      return new border_radius.BorderRadius.only({topLeft: (t0 = topLeft, t0 == null ? this.topLeft : t0), topRight: (t0$ = topRight, t0$ == null ? this.topRight : t0$), bottomLeft: (t0$0 = bottomLeft, t0$0 == null ? this.bottomLeft : t0$0), bottomRight: (t0$1 = bottomRight, t0$1 == null ? this.bottomRight : t0$1)});
-    }
-    get [_topLeft]() {
-      return this.topLeft;
-    }
-    get [_topRight]() {
-      return this.topRight;
-    }
-    get [_bottomLeft]() {
-      return this.bottomLeft;
-    }
-    get [_bottomRight]() {
-      return this.bottomRight;
-    }
-    get [_topStart]() {
-      return ui.Radius.zero;
-    }
-    get [_topEnd]() {
-      return ui.Radius.zero;
-    }
-    get [_bottomStart]() {
-      return ui.Radius.zero;
-    }
-    get [_bottomEnd]() {
-      return ui.Radius.zero;
-    }
-    toRRect(rect) {
-      if (rect == null) dart.nullFailed(I[0], 386, 22, "rect");
-      return new ui.RRect.fromRectAndCorners(rect, {topLeft: this.topLeft, topRight: this.topRight, bottomLeft: this.bottomLeft, bottomRight: this.bottomRight});
-    }
-    subtract(other) {
-      if (other == null) dart.nullFailed(I[0], 397, 54, "other");
-      if (border_radius.BorderRadius.is(other)) return this['-'](other);
-      return super.subtract(other);
-    }
-    add(other) {
-      if (other == null) dart.nullFailed(I[0], 404, 49, "other");
-      if (border_radius.BorderRadius.is(other)) return this['+'](other);
-      return super.add(other);
-    }
-    ['-'](other) {
-      if (other == null) dart.nullFailed(I[0], 411, 40, "other");
-      return new border_radius.BorderRadius.only({topLeft: this.topLeft['-'](other.topLeft), topRight: this.topRight['-'](other.topRight), bottomLeft: this.bottomLeft['-'](other.bottomLeft), bottomRight: this.bottomRight['-'](other.bottomRight)});
-    }
-    ['+'](other) {
-      if (other == null) dart.nullFailed(I[0], 421, 40, "other");
-      return new border_radius.BorderRadius.only({topLeft: this.topLeft['+'](other.topLeft), topRight: this.topRight['+'](other.topRight), bottomLeft: this.bottomLeft['+'](other.bottomLeft), bottomRight: this.bottomRight['+'](other.bottomRight)});
-    }
-    _negate() {
-      return new border_radius.BorderRadius.only({topLeft: this.topLeft._negate(), topRight: this.topRight._negate(), bottomLeft: this.bottomLeft._negate(), bottomRight: this.bottomRight._negate()});
-    }
-    ['*'](other) {
-      if (other == null) dart.nullFailed(I[0], 445, 34, "other");
-      return new border_radius.BorderRadius.only({topLeft: this.topLeft['*'](other), topRight: this.topRight['*'](other), bottomLeft: this.bottomLeft['*'](other), bottomRight: this.bottomRight['*'](other)});
-    }
-    ['/'](other) {
-      if (other == null) dart.nullFailed(I[0], 456, 34, "other");
-      return new border_radius.BorderRadius.only({topLeft: this.topLeft['/'](other), topRight: this.topRight['/'](other), bottomLeft: this.bottomLeft['/'](other), bottomRight: this.bottomRight['/'](other)});
-    }
-    ['~/'](other) {
-      if (other == null) dart.nullFailed(I[0], 467, 35, "other");
-      return new border_radius.BorderRadius.only({topLeft: this.topLeft['~/'](other), topRight: this.topRight['~/'](other), bottomLeft: this.bottomLeft['~/'](other), bottomRight: this.bottomRight['~/'](other)});
-    }
-    ['%'](other) {
-      if (other == null) dart.nullFailed(I[0], 478, 34, "other");
-      return new border_radius.BorderRadius.only({topLeft: this.topLeft['%'](other), topRight: this.topRight['%'](other), bottomLeft: this.bottomLeft['%'](other), bottomRight: this.bottomRight['%'](other)});
-    }
-    static lerp(a, b, t) {
-      if (t == null) dart.nullFailed(I[0], 492, 70, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 493, 12, "t != null");
-      if (a == null && b == null) return null;
-      if (a == null) return dart.nullCheck(b)['*'](t);
-      if (b == null) return a['*'](1.0 - dart.notNull(t));
-      return new border_radius.BorderRadius.only({topLeft: dart.nullCheck(ui.Radius.lerp(a.topLeft, b.topLeft, t)), topRight: dart.nullCheck(ui.Radius.lerp(a.topRight, b.topRight, t)), bottomLeft: dart.nullCheck(ui.Radius.lerp(a.bottomLeft, b.bottomLeft, t)), bottomRight: dart.nullCheck(ui.Radius.lerp(a.bottomRight, b.bottomRight, t))});
-    }
-    resolve(direction) {
-      return this;
-    }
-  };
-  (border_radius.BorderRadius.all = function(radius) {
-    if (radius == null) dart.nullFailed(I[0], 285, 33, "radius");
-    border_radius.BorderRadius.only.call(this, {topLeft: radius, topRight: radius, bottomLeft: radius, bottomRight: radius});
-  }).prototype = border_radius.BorderRadius.prototype;
-  (border_radius.BorderRadius.circular = function(radius) {
-    if (radius == null) dart.nullFailed(I[0], 293, 32, "radius");
-    border_radius.BorderRadius.all.call(this, new ui.Radius.circular(radius));
-  }).prototype = border_radius.BorderRadius.prototype;
-  (border_radius.BorderRadius.vertical = function(opts) {
-    let top = opts && 'top' in opts ? opts.top : C[0] || CT.C0;
-    if (top == null) dart.nullFailed(I[0], 300, 12, "top");
-    let bottom = opts && 'bottom' in opts ? opts.bottom : C[0] || CT.C0;
-    if (bottom == null) dart.nullFailed(I[0], 301, 12, "bottom");
-    border_radius.BorderRadius.only.call(this, {topLeft: top, topRight: top, bottomLeft: bottom, bottomRight: bottom});
-  }).prototype = border_radius.BorderRadius.prototype;
-  (border_radius.BorderRadius.horizontal = function(opts) {
-    let left = opts && 'left' in opts ? opts.left : C[0] || CT.C0;
-    if (left == null) dart.nullFailed(I[0], 312, 12, "left");
-    let right = opts && 'right' in opts ? opts.right : C[0] || CT.C0;
-    if (right == null) dart.nullFailed(I[0], 313, 12, "right");
-    border_radius.BorderRadius.only.call(this, {topLeft: left, topRight: right, bottomLeft: left, bottomRight: right});
-  }).prototype = border_radius.BorderRadius.prototype;
-  (border_radius.BorderRadius.only = function(opts) {
-    let topLeft = opts && 'topLeft' in opts ? opts.topLeft : C[0] || CT.C0;
-    if (topLeft == null) dart.nullFailed(I[0], 324, 10, "topLeft");
-    let topRight = opts && 'topRight' in opts ? opts.topRight : C[0] || CT.C0;
-    if (topRight == null) dart.nullFailed(I[0], 325, 10, "topRight");
-    let bottomLeft = opts && 'bottomLeft' in opts ? opts.bottomLeft : C[0] || CT.C0;
-    if (bottomLeft == null) dart.nullFailed(I[0], 326, 10, "bottomLeft");
-    let bottomRight = opts && 'bottomRight' in opts ? opts.bottomRight : C[0] || CT.C0;
-    if (bottomRight == null) dart.nullFailed(I[0], 327, 10, "bottomRight");
-    this[topLeft$] = topLeft;
-    this[topRight$] = topRight;
-    this[bottomLeft$] = bottomLeft;
-    this[bottomRight$] = bottomRight;
-    border_radius.BorderRadius.__proto__.new.call(this);
-    ;
-  }).prototype = border_radius.BorderRadius.prototype;
-  dart.addTypeTests(border_radius.BorderRadius);
-  dart.addTypeCaches(border_radius.BorderRadius);
-  dart.setMethodSignature(border_radius.BorderRadius, () => ({
-    __proto__: dart.getMethods(border_radius.BorderRadius.__proto__),
-    copyWith: dart.fnType(border_radius.BorderRadius, [], {bottomLeft: dart.nullable(ui.Radius), bottomRight: dart.nullable(ui.Radius), topLeft: dart.nullable(ui.Radius), topRight: dart.nullable(ui.Radius)}, {}),
-    toRRect: dart.fnType(ui.RRect, [ui.Rect]),
-    '-': dart.fnType(border_radius.BorderRadius, [border_radius.BorderRadius]),
-    '+': dart.fnType(border_radius.BorderRadius, [border_radius.BorderRadius]),
-    _negate: dart.fnType(border_radius.BorderRadius, []),
-    '*': dart.fnType(border_radius.BorderRadius, [core.double]),
-    '/': dart.fnType(border_radius.BorderRadius, [core.double]),
-    '~/': dart.fnType(border_radius.BorderRadius, [core.double]),
-    '%': dart.fnType(border_radius.BorderRadius, [core.double]),
-    resolve: dart.fnType(border_radius.BorderRadius, [dart.nullable(ui.TextDirection)])
-  }));
-  dart.setGetterSignature(border_radius.BorderRadius, () => ({
-    __proto__: dart.getGetters(border_radius.BorderRadius.__proto__),
-    [_topLeft]: ui.Radius,
-    [_topRight]: ui.Radius,
-    [_bottomLeft]: ui.Radius,
-    [_bottomRight]: ui.Radius,
-    [_topStart]: ui.Radius,
-    [_topEnd]: ui.Radius,
-    [_bottomStart]: ui.Radius,
-    [_bottomEnd]: ui.Radius
-  }));
-  dart.setLibraryUri(border_radius.BorderRadius, I[1]);
-  dart.setFieldSignature(border_radius.BorderRadius, () => ({
-    __proto__: dart.getFields(border_radius.BorderRadius.__proto__),
-    topLeft: dart.finalFieldType(ui.Radius),
-    topRight: dart.finalFieldType(ui.Radius),
-    bottomLeft: dart.finalFieldType(ui.Radius),
-    bottomRight: dart.finalFieldType(ui.Radius)
-  }));
-  dart.defineLazy(border_radius.BorderRadius, {
-    /*border_radius.BorderRadius.zero*/get zero() {
-      return C[1] || CT.C1;
-    }
-  }, false);
-  var topStart$ = dart.privateName(border_radius, "BorderRadiusDirectional.topStart");
-  var topEnd$ = dart.privateName(border_radius, "BorderRadiusDirectional.topEnd");
-  var bottomStart$ = dart.privateName(border_radius, "BorderRadiusDirectional.bottomStart");
-  var bottomEnd$ = dart.privateName(border_radius, "BorderRadiusDirectional.bottomEnd");
-  var _name = dart.privateName(ui, "_name");
-  border_radius.BorderRadiusDirectional = class BorderRadiusDirectional extends border_radius.BorderRadiusGeometry {
-    get topStart() {
-      return this[topStart$];
-    }
-    set topStart(value) {
-      super.topStart = value;
-    }
-    get topEnd() {
-      return this[topEnd$];
-    }
-    set topEnd(value) {
-      super.topEnd = value;
-    }
-    get bottomStart() {
-      return this[bottomStart$];
-    }
-    set bottomStart(value) {
-      super.bottomStart = value;
-    }
-    get bottomEnd() {
-      return this[bottomEnd$];
-    }
-    set bottomEnd(value) {
-      super.bottomEnd = value;
-    }
-    get [_topStart]() {
-      return this.topStart;
-    }
-    get [_topEnd]() {
-      return this.topEnd;
-    }
-    get [_bottomStart]() {
-      return this.bottomStart;
-    }
-    get [_bottomEnd]() {
-      return this.bottomEnd;
-    }
-    get [_topLeft]() {
-      return ui.Radius.zero;
-    }
-    get [_topRight]() {
-      return ui.Radius.zero;
-    }
-    get [_bottomLeft]() {
-      return ui.Radius.zero;
-    }
-    get [_bottomRight]() {
-      return ui.Radius.zero;
-    }
-    subtract(other) {
-      if (other == null) dart.nullFailed(I[0], 614, 54, "other");
-      if (border_radius.BorderRadiusDirectional.is(other)) return this['-'](other);
-      return super.subtract(other);
-    }
-    add(other) {
-      if (other == null) dart.nullFailed(I[0], 621, 49, "other");
-      if (border_radius.BorderRadiusDirectional.is(other)) return this['+'](other);
-      return super.add(other);
-    }
-    ['-'](other) {
-      if (other == null) dart.nullFailed(I[0], 628, 62, "other");
-      return new border_radius.BorderRadiusDirectional.only({topStart: this.topStart['-'](other.topStart), topEnd: this.topEnd['-'](other.topEnd), bottomStart: this.bottomStart['-'](other.bottomStart), bottomEnd: this.bottomEnd['-'](other.bottomEnd)});
-    }
-    ['+'](other) {
-      if (other == null) dart.nullFailed(I[0], 638, 62, "other");
-      return new border_radius.BorderRadiusDirectional.only({topStart: this.topStart['+'](other.topStart), topEnd: this.topEnd['+'](other.topEnd), bottomStart: this.bottomStart['+'](other.bottomStart), bottomEnd: this.bottomEnd['+'](other.bottomEnd)});
-    }
-    _negate() {
-      return new border_radius.BorderRadiusDirectional.only({topStart: this.topStart._negate(), topEnd: this.topEnd._negate(), bottomStart: this.bottomStart._negate(), bottomEnd: this.bottomEnd._negate()});
-    }
-    ['*'](other) {
-      if (other == null) dart.nullFailed(I[0], 662, 45, "other");
-      return new border_radius.BorderRadiusDirectional.only({topStart: this.topStart['*'](other), topEnd: this.topEnd['*'](other), bottomStart: this.bottomStart['*'](other), bottomEnd: this.bottomEnd['*'](other)});
-    }
-    ['/'](other) {
-      if (other == null) dart.nullFailed(I[0], 673, 45, "other");
-      return new border_radius.BorderRadiusDirectional.only({topStart: this.topStart['/'](other), topEnd: this.topEnd['/'](other), bottomStart: this.bottomStart['/'](other), bottomEnd: this.bottomEnd['/'](other)});
-    }
-    ['~/'](other) {
-      if (other == null) dart.nullFailed(I[0], 684, 46, "other");
-      return new border_radius.BorderRadiusDirectional.only({topStart: this.topStart['~/'](other), topEnd: this.topEnd['~/'](other), bottomStart: this.bottomStart['~/'](other), bottomEnd: this.bottomEnd['~/'](other)});
-    }
-    ['%'](other) {
-      if (other == null) dart.nullFailed(I[0], 695, 45, "other");
-      return new border_radius.BorderRadiusDirectional.only({topStart: this.topStart['%'](other), topEnd: this.topEnd['%'](other), bottomStart: this.bottomStart['%'](other), bottomEnd: this.bottomEnd['%'](other)});
-    }
-    static lerp(a, b, t) {
-      if (t == null) dart.nullFailed(I[0], 709, 103, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 710, 12, "t != null");
-      if (a == null && b == null) return null;
-      if (a == null) return dart.nullCheck(b)['*'](t);
-      if (b == null) return a['*'](1.0 - dart.notNull(t));
-      return new border_radius.BorderRadiusDirectional.only({topStart: dart.nullCheck(ui.Radius.lerp(a.topStart, b.topStart, t)), topEnd: dart.nullCheck(ui.Radius.lerp(a.topEnd, b.topEnd, t)), bottomStart: dart.nullCheck(ui.Radius.lerp(a.bottomStart, b.bottomStart, t)), bottomEnd: dart.nullCheck(ui.Radius.lerp(a.bottomEnd, b.bottomEnd, t))});
-    }
-    resolve(direction) {
-      if (!(direction != null)) dart.assertFailed(null, I[0], 727, 12, "direction != null");
-      switch (dart.nullCheck(direction)) {
-        case C[2] || CT.C2:
-        {
-          return new border_radius.BorderRadius.only({topLeft: this.topEnd, topRight: this.topStart, bottomLeft: this.bottomEnd, bottomRight: this.bottomStart});
-        }
-        case C[3] || CT.C3:
-        {
-          return new border_radius.BorderRadius.only({topLeft: this.topStart, topRight: this.topEnd, bottomLeft: this.bottomStart, bottomRight: this.bottomEnd});
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        if (this.onUpdate != null && !pressure[$isNaN] && (this[_state] == force_press._ForceState.started || this[_state] == force_press._ForceState.peaked)) {
+          if (this.onUpdate != null) {
+            this.invokeCallback(dart.void, "onUpdate", dart.fn(() => dart.nullCheck(this.onUpdate)(new force_press.ForcePressDetails.new({pressure: pressure, globalPosition: event.position, localPosition: event.localPosition})), T.VoidTovoid()));
+          }
         }
       }
+      this.stopTrackingIfPointerNoLongerDown(event);
     }
-  };
-  (border_radius.BorderRadiusDirectional.all = function(radius) {
-    if (radius == null) dart.nullFailed(I[0], 526, 44, "radius");
-    border_radius.BorderRadiusDirectional.only.call(this, {topStart: radius, topEnd: radius, bottomStart: radius, bottomEnd: radius});
-  }).prototype = border_radius.BorderRadiusDirectional.prototype;
-  (border_radius.BorderRadiusDirectional.circular = function(radius) {
-    if (radius == null) dart.nullFailed(I[0], 534, 43, "radius");
-    border_radius.BorderRadiusDirectional.all.call(this, new ui.Radius.circular(radius));
-  }).prototype = border_radius.BorderRadiusDirectional.prototype;
-  (border_radius.BorderRadiusDirectional.vertical = function(opts) {
-    let top = opts && 'top' in opts ? opts.top : C[0] || CT.C0;
-    if (top == null) dart.nullFailed(I[0], 541, 12, "top");
-    let bottom = opts && 'bottom' in opts ? opts.bottom : C[0] || CT.C0;
-    if (bottom == null) dart.nullFailed(I[0], 542, 12, "bottom");
-    border_radius.BorderRadiusDirectional.only.call(this, {topStart: top, topEnd: top, bottomStart: bottom, bottomEnd: bottom});
-  }).prototype = border_radius.BorderRadiusDirectional.prototype;
-  (border_radius.BorderRadiusDirectional.horizontal = function(opts) {
-    let start = opts && 'start' in opts ? opts.start : C[0] || CT.C0;
-    if (start == null) dart.nullFailed(I[0], 553, 12, "start");
-    let end = opts && 'end' in opts ? opts.end : C[0] || CT.C0;
-    if (end == null) dart.nullFailed(I[0], 554, 12, "end");
-    border_radius.BorderRadiusDirectional.only.call(this, {topStart: start, topEnd: end, bottomStart: start, bottomEnd: end});
-  }).prototype = border_radius.BorderRadiusDirectional.prototype;
-  (border_radius.BorderRadiusDirectional.only = function(opts) {
-    let topStart = opts && 'topStart' in opts ? opts.topStart : C[0] || CT.C0;
-    if (topStart == null) dart.nullFailed(I[0], 565, 10, "topStart");
-    let topEnd = opts && 'topEnd' in opts ? opts.topEnd : C[0] || CT.C0;
-    if (topEnd == null) dart.nullFailed(I[0], 566, 10, "topEnd");
-    let bottomStart = opts && 'bottomStart' in opts ? opts.bottomStart : C[0] || CT.C0;
-    if (bottomStart == null) dart.nullFailed(I[0], 567, 10, "bottomStart");
-    let bottomEnd = opts && 'bottomEnd' in opts ? opts.bottomEnd : C[0] || CT.C0;
-    if (bottomEnd == null) dart.nullFailed(I[0], 568, 10, "bottomEnd");
-    this[topStart$] = topStart;
-    this[topEnd$] = topEnd;
-    this[bottomStart$] = bottomStart;
-    this[bottomEnd$] = bottomEnd;
-    border_radius.BorderRadiusDirectional.__proto__.new.call(this);
-    ;
-  }).prototype = border_radius.BorderRadiusDirectional.prototype;
-  dart.addTypeTests(border_radius.BorderRadiusDirectional);
-  dart.addTypeCaches(border_radius.BorderRadiusDirectional);
-  dart.setMethodSignature(border_radius.BorderRadiusDirectional, () => ({
-    __proto__: dart.getMethods(border_radius.BorderRadiusDirectional.__proto__),
-    '-': dart.fnType(border_radius.BorderRadiusDirectional, [border_radius.BorderRadiusDirectional]),
-    '+': dart.fnType(border_radius.BorderRadiusDirectional, [border_radius.BorderRadiusDirectional]),
-    _negate: dart.fnType(border_radius.BorderRadiusDirectional, []),
-    '*': dart.fnType(border_radius.BorderRadiusDirectional, [core.double]),
-    '/': dart.fnType(border_radius.BorderRadiusDirectional, [core.double]),
-    '~/': dart.fnType(border_radius.BorderRadiusDirectional, [core.double]),
-    '%': dart.fnType(border_radius.BorderRadiusDirectional, [core.double]),
-    resolve: dart.fnType(border_radius.BorderRadius, [dart.nullable(ui.TextDirection)])
-  }));
-  dart.setGetterSignature(border_radius.BorderRadiusDirectional, () => ({
-    __proto__: dart.getGetters(border_radius.BorderRadiusDirectional.__proto__),
-    [_topStart]: ui.Radius,
-    [_topEnd]: ui.Radius,
-    [_bottomStart]: ui.Radius,
-    [_bottomEnd]: ui.Radius,
-    [_topLeft]: ui.Radius,
-    [_topRight]: ui.Radius,
-    [_bottomLeft]: ui.Radius,
-    [_bottomRight]: ui.Radius
-  }));
-  dart.setLibraryUri(border_radius.BorderRadiusDirectional, I[1]);
-  dart.setFieldSignature(border_radius.BorderRadiusDirectional, () => ({
-    __proto__: dart.getFields(border_radius.BorderRadiusDirectional.__proto__),
-    topStart: dart.finalFieldType(ui.Radius),
-    topEnd: dart.finalFieldType(ui.Radius),
-    bottomStart: dart.finalFieldType(ui.Radius),
-    bottomEnd: dart.finalFieldType(ui.Radius)
-  }));
-  dart.defineLazy(border_radius.BorderRadiusDirectional, {
-    /*border_radius.BorderRadiusDirectional.zero*/get zero() {
-      return C[4] || CT.C4;
-    }
-  }, false);
-  var _topLeft$ = dart.privateName(border_radius, "_MixedBorderRadius._topLeft");
-  var _topRight$ = dart.privateName(border_radius, "_MixedBorderRadius._topRight");
-  var _bottomLeft$ = dart.privateName(border_radius, "_MixedBorderRadius._bottomLeft");
-  var _bottomRight$ = dart.privateName(border_radius, "_MixedBorderRadius._bottomRight");
-  var _topStart$ = dart.privateName(border_radius, "_MixedBorderRadius._topStart");
-  var _topEnd$ = dart.privateName(border_radius, "_MixedBorderRadius._topEnd");
-  var _bottomStart$ = dart.privateName(border_radius, "_MixedBorderRadius._bottomStart");
-  var _bottomEnd$ = dart.privateName(border_radius, "_MixedBorderRadius._bottomEnd");
-  border_radius._MixedBorderRadius = class _MixedBorderRadius extends border_radius.BorderRadiusGeometry {
-    get [_topLeft]() {
-      return this[_topLeft$];
-    }
-    set [_topLeft](value) {
-      super[_topLeft] = value;
-    }
-    get [_topRight]() {
-      return this[_topRight$];
-    }
-    set [_topRight](value) {
-      super[_topRight] = value;
-    }
-    get [_bottomLeft]() {
-      return this[_bottomLeft$];
-    }
-    set [_bottomLeft](value) {
-      super[_bottomLeft] = value;
-    }
-    get [_bottomRight]() {
-      return this[_bottomRight$];
-    }
-    set [_bottomRight](value) {
-      super[_bottomRight] = value;
-    }
-    get [_topStart]() {
-      return this[_topStart$];
-    }
-    set [_topStart](value) {
-      super[_topStart] = value;
-    }
-    get [_topEnd]() {
-      return this[_topEnd$];
-    }
-    set [_topEnd](value) {
-      super[_topEnd] = value;
-    }
-    get [_bottomStart]() {
-      return this[_bottomStart$];
-    }
-    set [_bottomStart](value) {
-      super[_bottomStart] = value;
-    }
-    get [_bottomEnd]() {
-      return this[_bottomEnd$];
-    }
-    set [_bottomEnd](value) {
-      super[_bottomEnd] = value;
-    }
-    _negate() {
-      return new border_radius._MixedBorderRadius.new(this[_topLeft]._negate(), this[_topRight]._negate(), this[_bottomLeft]._negate(), this[_bottomRight]._negate(), this[_topStart]._negate(), this[_topEnd]._negate(), this[_bottomStart]._negate(), this[_bottomEnd]._negate());
-    }
-    ['*'](other) {
-      if (other == null) dart.nullFailed(I[0], 799, 40, "other");
-      return new border_radius._MixedBorderRadius.new(this[_topLeft]['*'](other), this[_topRight]['*'](other), this[_bottomLeft]['*'](other), this[_bottomRight]['*'](other), this[_topStart]['*'](other), this[_topEnd]['*'](other), this[_bottomStart]['*'](other), this[_bottomEnd]['*'](other));
-    }
-    ['/'](other) {
-      if (other == null) dart.nullFailed(I[0], 813, 40, "other");
-      return new border_radius._MixedBorderRadius.new(this[_topLeft]['/'](other), this[_topRight]['/'](other), this[_bottomLeft]['/'](other), this[_bottomRight]['/'](other), this[_topStart]['/'](other), this[_topEnd]['/'](other), this[_bottomStart]['/'](other), this[_bottomEnd]['/'](other));
-    }
-    ['~/'](other) {
-      if (other == null) dart.nullFailed(I[0], 827, 41, "other");
-      return new border_radius._MixedBorderRadius.new(this[_topLeft]['~/'](other), this[_topRight]['~/'](other), this[_bottomLeft]['~/'](other), this[_bottomRight]['~/'](other), this[_topStart]['~/'](other), this[_topEnd]['~/'](other), this[_bottomStart]['~/'](other), this[_bottomEnd]['~/'](other));
-    }
-    ['%'](other) {
-      if (other == null) dart.nullFailed(I[0], 841, 40, "other");
-      return new border_radius._MixedBorderRadius.new(this[_topLeft]['%'](other), this[_topRight]['%'](other), this[_bottomLeft]['%'](other), this[_bottomRight]['%'](other), this[_topStart]['%'](other), this[_topEnd]['%'](other), this[_bottomStart]['%'](other), this[_bottomEnd]['%'](other));
-    }
-    resolve(direction) {
-      if (!(direction != null)) dart.assertFailed(null, I[0], 856, 12, "direction != null");
-      switch (dart.nullCheck(direction)) {
-        case C[2] || CT.C2:
-        {
-          return new border_radius.BorderRadius.only({topLeft: this[_topLeft]['+'](this[_topEnd]), topRight: this[_topRight]['+'](this[_topStart]), bottomLeft: this[_bottomLeft]['+'](this[_bottomEnd]), bottomRight: this[_bottomRight]['+'](this[_bottomStart])});
-        }
-        case C[3] || CT.C3:
-        {
-          return new border_radius.BorderRadius.only({topLeft: this[_topLeft]['+'](this[_topStart]), topRight: this[_topRight]['+'](this[_topEnd]), bottomLeft: this[_bottomLeft]['+'](this[_bottomStart]), bottomRight: this[_bottomRight]['+'](this[_bottomEnd])});
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
+    acceptGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 285, 26, "pointer");
+      if (this[_state] == force_press._ForceState.possible) this[_state] = force_press._ForceState.accepted;
+      if (this.onStart != null && this[_state] == force_press._ForceState.started) {
+        this.invokeCallback(dart.void, "onStart", dart.fn(() => dart.nullCheck(this.onStart)(new force_press.ForcePressDetails.new({pressure: this[_lastPressure], globalPosition: this[_lastPosition].global, localPosition: this[_lastPosition].local})), T.VoidTovoid()));
       }
     }
+    didStopTrackingLastPointer(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 299, 39, "pointer");
+      let wasAccepted = this[_state] == force_press._ForceState.started || this[_state] == force_press._ForceState.peaked;
+      if (this[_state] == force_press._ForceState.possible) {
+        this.resolve(arena.GestureDisposition.rejected);
+        return;
+      }
+      if (wasAccepted && this.onEnd != null) {
+        if (this.onEnd != null) {
+          this.invokeCallback(dart.void, "onEnd", dart.fn(() => dart.nullCheck(this.onEnd)(new force_press.ForcePressDetails.new({pressure: 0.0, globalPosition: this[_lastPosition].global, localPosition: this[_lastPosition].local})), T.VoidTovoid()));
+        }
+      }
+      this[_state] = force_press._ForceState.ready;
+    }
+    rejectGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 318, 26, "pointer");
+      this.stopTrackingPointer(pointer);
+      this.didStopTrackingLastPointer(pointer);
+    }
+    static _inverseLerp(min, max, t) {
+      if (min == null) dart.nullFailed(I[0], 323, 37, "min");
+      if (max == null) dart.nullFailed(I[0], 323, 49, "max");
+      if (t == null) dart.nullFailed(I[0], 323, 61, "t");
+      if (!(dart.notNull(min) <= dart.notNull(max))) dart.assertFailed(null, I[0], 324, 12, "min <= max");
+      let value = (dart.notNull(t) - dart.notNull(min)) / (dart.notNull(max) - dart.notNull(min));
+      if (!value[$isNaN]) value = value[$clamp](0.0, 1.0);
+      return value;
+    }
+    get debugDescription() {
+      return "force press";
+    }
   };
-  (border_radius._MixedBorderRadius.new = function(_topLeft, _topRight, _bottomLeft, _bottomRight, _topStart, _topEnd, _bottomStart, _bottomEnd) {
-    if (_topLeft == null) dart.nullFailed(I[0], 749, 10, "_topLeft");
-    if (_topRight == null) dart.nullFailed(I[0], 750, 10, "_topRight");
-    if (_bottomLeft == null) dart.nullFailed(I[0], 751, 10, "_bottomLeft");
-    if (_bottomRight == null) dart.nullFailed(I[0], 752, 10, "_bottomRight");
-    if (_topStart == null) dart.nullFailed(I[0], 753, 10, "_topStart");
-    if (_topEnd == null) dart.nullFailed(I[0], 754, 10, "_topEnd");
-    if (_bottomStart == null) dart.nullFailed(I[0], 755, 10, "_bottomStart");
-    if (_bottomEnd == null) dart.nullFailed(I[0], 756, 10, "_bottomEnd");
-    this[_topLeft$] = _topLeft;
-    this[_topRight$] = _topRight;
-    this[_bottomLeft$] = _bottomLeft;
-    this[_bottomRight$] = _bottomRight;
-    this[_topStart$] = _topStart;
-    this[_topEnd$] = _topEnd;
-    this[_bottomStart$] = _bottomStart;
-    this[_bottomEnd$] = _bottomEnd;
-    border_radius._MixedBorderRadius.__proto__.new.call(this);
+  (force_press.ForcePressGestureRecognizer.new = function(opts) {
+    let startPressure = opts && 'startPressure' in opts ? opts.startPressure : 0.4;
+    if (startPressure == null) dart.nullFailed(I[0], 121, 10, "startPressure");
+    let peakPressure = opts && 'peakPressure' in opts ? opts.peakPressure : 0.85;
+    if (peakPressure == null) dart.nullFailed(I[0], 122, 10, "peakPressure");
+    let interpolation = opts && 'interpolation' in opts ? opts.interpolation : C[6] || CT.C6;
+    if (interpolation == null) dart.nullFailed(I[0], 123, 10, "interpolation");
+    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
+    let kind = opts && 'kind' in opts ? opts.kind : null;
+    this[onStart] = null;
+    this[onUpdate] = null;
+    this[onPeak] = null;
+    this[onEnd] = null;
+    this[__ForcePressGestureRecognizer__lastPosition] = null;
+    this[__ForcePressGestureRecognizer__lastPosition_isSet] = false;
+    this[__ForcePressGestureRecognizer__lastPressure] = null;
+    this[__ForcePressGestureRecognizer__lastPressure_isSet] = false;
+    this[_state] = force_press._ForceState.ready;
+    this[startPressure$] = startPressure;
+    this[peakPressure$] = peakPressure;
+    this[interpolation$] = interpolation;
+    if (!(startPressure != null)) dart.assertFailed(null, I[0], 126, 15, "startPressure != null");
+    if (!(peakPressure != null)) dart.assertFailed(null, I[0], 127, 15, "peakPressure != null");
+    if (!(interpolation != null)) dart.assertFailed(null, I[0], 128, 15, "interpolation != null");
+    if (!(dart.notNull(peakPressure) > dart.notNull(startPressure))) dart.assertFailed(null, I[0], 129, 15, "peakPressure > startPressure");
+    force_press.ForcePressGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner, kind: kind});
     ;
-  }).prototype = border_radius._MixedBorderRadius.prototype;
-  dart.addTypeTests(border_radius._MixedBorderRadius);
-  dart.addTypeCaches(border_radius._MixedBorderRadius);
-  dart.setMethodSignature(border_radius._MixedBorderRadius, () => ({
-    __proto__: dart.getMethods(border_radius._MixedBorderRadius.__proto__),
-    _negate: dart.fnType(border_radius._MixedBorderRadius, []),
-    '*': dart.fnType(border_radius._MixedBorderRadius, [core.double]),
-    '/': dart.fnType(border_radius._MixedBorderRadius, [core.double]),
-    '~/': dart.fnType(border_radius._MixedBorderRadius, [core.double]),
-    '%': dart.fnType(border_radius._MixedBorderRadius, [core.double]),
-    resolve: dart.fnType(border_radius.BorderRadius, [dart.nullable(ui.TextDirection)])
+  }).prototype = force_press.ForcePressGestureRecognizer.prototype;
+  dart.addTypeTests(force_press.ForcePressGestureRecognizer);
+  dart.addTypeCaches(force_press.ForcePressGestureRecognizer);
+  dart.setMethodSignature(force_press.ForcePressGestureRecognizer, () => ({
+    __proto__: dart.getMethods(force_press.ForcePressGestureRecognizer.__proto__),
+    addAllowedPointer: dart.fnType(dart.void, [events.PointerEvent]),
+    handleEvent: dart.fnType(dart.void, [events.PointerEvent]),
+    didStopTrackingLastPointer: dart.fnType(dart.void, [core.int])
   }));
-  dart.setLibraryUri(border_radius._MixedBorderRadius, I[1]);
-  dart.setFieldSignature(border_radius._MixedBorderRadius, () => ({
-    __proto__: dart.getFields(border_radius._MixedBorderRadius.__proto__),
-    [_topLeft]: dart.finalFieldType(ui.Radius),
-    [_topRight]: dart.finalFieldType(ui.Radius),
-    [_bottomLeft]: dart.finalFieldType(ui.Radius),
-    [_bottomRight]: dart.finalFieldType(ui.Radius),
-    [_topStart]: dart.finalFieldType(ui.Radius),
-    [_topEnd]: dart.finalFieldType(ui.Radius),
-    [_bottomStart]: dart.finalFieldType(ui.Radius),
-    [_bottomEnd]: dart.finalFieldType(ui.Radius)
+  dart.setGetterSignature(force_press.ForcePressGestureRecognizer, () => ({
+    __proto__: dart.getGetters(force_press.ForcePressGestureRecognizer.__proto__),
+    [_lastPosition]: recognizer.OffsetPair,
+    [_lastPressure]: core.double,
+    debugDescription: core.String
   }));
-  dart.trackLibraries("packages/flutter/src/painting/border_radius.dart", {
-    "package:flutter/src/painting/border_radius.dart": border_radius
+  dart.setSetterSignature(force_press.ForcePressGestureRecognizer, () => ({
+    __proto__: dart.getSetters(force_press.ForcePressGestureRecognizer.__proto__),
+    [_lastPosition]: recognizer.OffsetPair,
+    [_lastPressure]: core.double
+  }));
+  dart.setLibraryUri(force_press.ForcePressGestureRecognizer, I[1]);
+  dart.setFieldSignature(force_press.ForcePressGestureRecognizer, () => ({
+    __proto__: dart.getFields(force_press.ForcePressGestureRecognizer.__proto__),
+    onStart: dart.fieldType(dart.nullable(dart.fnType(dart.void, [force_press.ForcePressDetails]))),
+    onUpdate: dart.fieldType(dart.nullable(dart.fnType(dart.void, [force_press.ForcePressDetails]))),
+    onPeak: dart.fieldType(dart.nullable(dart.fnType(dart.void, [force_press.ForcePressDetails]))),
+    onEnd: dart.fieldType(dart.nullable(dart.fnType(dart.void, [force_press.ForcePressDetails]))),
+    startPressure: dart.finalFieldType(core.double),
+    peakPressure: dart.finalFieldType(core.double),
+    interpolation: dart.finalFieldType(dart.fnType(core.double, [core.double, core.double, core.double])),
+    [__ForcePressGestureRecognizer__lastPosition]: dart.fieldType(dart.nullable(recognizer.OffsetPair)),
+    [__ForcePressGestureRecognizer__lastPosition_isSet]: dart.fieldType(core.bool),
+    [__ForcePressGestureRecognizer__lastPressure]: dart.fieldType(dart.nullable(core.double)),
+    [__ForcePressGestureRecognizer__lastPressure_isSet]: dart.fieldType(core.bool),
+    [_state]: dart.fieldType(force_press._ForceState)
+  }));
+  dart.trackLibraries("packages/flutter/src/gestures/force_press.dart", {
+    "package:flutter/src/gestures/force_press.dart": force_press
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["border_radius.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;UAgDqD;AACjD,YAAO,0CACL,AAAS,oBAAE,AAAM,KAAD,aAChB,AAAU,qBAAE,AAAM,KAAD,cACjB,AAAY,uBAAE,AAAM,KAAD,gBACnB,AAAa,wBAAE,AAAM,KAAD,iBACpB,AAAU,qBAAE,AAAM,KAAD,cACjB,AAAQ,mBAAE,AAAM,KAAD,YACf,AAAa,wBAAE,AAAM,KAAD,iBACpB,AAAW,sBAAE,AAAM,KAAD;IAEtB;;UAa8C;AAC5C,YAAO,0CACL,AAAS,oBAAE,AAAM,KAAD,aAChB,AAAU,qBAAE,AAAM,KAAD,cACjB,AAAY,uBAAE,AAAM,KAAD,gBACnB,AAAa,wBAAE,AAAM,KAAD,iBACpB,AAAU,qBAAE,AAAM,KAAD,cACjB,AAAQ,mBAAE,AAAM,KAAD,YACf,AAAa,wBAAE,AAAM,KAAD,iBACpB,AAAW,sBAAE,AAAM,KAAD;IAEtB;gBAgDwD,GAAyB;UAAU;AACzF,YAAO,AAAE,CAAD;AACR,UAAI,AAAE,CAAD,YAAY,AAAE,CAAD,UAChB,MAAO;AACc,MAAvB,AAAE,CAAD,WAAD,IAAmB,kCAAjB;AACqB,MAAvB,AAAE,CAAD,WAAD,IAAmB,kCAAjB;AACF,YAAO,AAAE,EAAD,KAAM,AAAE,AAAa,CAAd,UAAU,CAAC,OAAK,CAAC;IAClC;;AAeU;AAAQ;AAChB,UAAa,YAAT,gBAAY,oBACF,YAAV,iBAAa,sBACD,YAAZ,mBAAe;AACjB,yBAAI,gBAAmB;AACrB,cAAI,AAAS,AAAE,oBAAG,AAAS;AACyC,YAAlE,SAAS,AAAyD,2BAAhC,AAAS,AAAE,mCAAgB,KAAG;;AAE1B,YAAtC,SAAS,AAA6B,+BAAV,kBAAQ;;;;AAKrB,qBAAS;AACM,QAAlC,AAAO,MAAD,OAAO;AACR,oBAAQ;AACb,yBAAI,gBAAmB;AACa,UAAlC,AAAO,MAAD,OAAO,AAAoB,uBAAT;AACZ,UAAZ,QAAQ;;AAEV,yBAAI,iBAAoB;AACtB,cAAI,KAAK,EACP,AAAO,AAAW,MAAZ,OAAO;AACqB,UAApC,AAAO,MAAD,OAAO,AAAsB,wBAAV;AACb,UAAZ,QAAQ;;AAEV,yBAAI,mBAAsB;AACxB,cAAI,KAAK,EACP,AAAO,AAAW,MAAZ,OAAO;AACyB,UAAxC,AAAO,MAAD,OAAO,AAA0B,0BAAZ;AACf,UAAZ,QAAQ;;AAEV,yBAAI,oBAAuB;AACzB,cAAI,KAAK,EACP,AAAO,AAAW,MAAZ,OAAO;AAC2B,UAA1C,AAAO,MAAD,OAAO,AAA4B,2BAAb;;AAEb,QAAjB,AAAO,MAAD,OAAO;AACa,QAA1B,SAAS,AAAO,MAAD;;AAEjB,UAAc,YAAV,iBAAa,kBACL,YAAR,eAAW,qBACA,YAAX,kBAAc;AAChB,yBAAI,iBAAoB;AACtB,cAAI,AAAU,AAAE,qBAAG,AAAU;AACoD,YAA/E,UAAU,AAAqE,sCAAjC,AAAU,AAAE,oCAAgB,KAAG;;AAE1B,YAAnD,UAAU,AAAyC,0CAAX,mBAAS;;;;AAKlC,qBAAS;AACiB,QAA7C,AAAO,MAAD,OAAO;AACR,oBAAQ;AACb,yBAAI,iBAAoB;AACc,UAApC,AAAO,MAAD,OAAO,AAAsB,wBAAV;AACb,UAAZ,QAAQ;;AAEV,yBAAI,eAAkB;AACpB,cAAI,KAAK,EACP,AAAO,AAAW,MAAZ,OAAO;AACiB,UAAhC,AAAO,MAAD,OAAO,AAAkB,sBAAR;AACX,UAAZ,QAAQ;;AAEV,yBAAI,oBAAuB;AACzB,cAAI,KAAK,EACP,AAAO,AAAW,MAAZ,OAAO;AAC2B,UAA1C,AAAO,MAAD,OAAO,AAA4B,2BAAb;AAChB,UAAZ,QAAQ;;AAEV,yBAAI,kBAAqB;AACvB,cAAI,KAAK,EACP,AAAO,AAAW,MAAZ,OAAO;AACuB,UAAtC,AAAO,MAAD,OAAO,AAAwB,yBAAX;;AAEX,QAAjB,AAAO,MAAD,OAAO;AACc,QAA3B,UAAU,AAAO,MAAD;;AAElB,UAAI,MAAM,YAAY,OAAO,UAC3B,MAA2B,UAAlB,MAAM,qBAAI,OAAO;AAC5B,UAAI,MAAM,UACR,MAAO,OAAM;AACf,UAAI,OAAO,UACT,MAAO,QAAO;AAChB,YAAO;IACT;;UAGwB;AACtB,UAAI,AAAU,SAAM,KAAK,EACvB,MAAO;AACT,uBAAU,iBAAN,KAAK,GAAgB,qBACvB,MAAO;AACT,YAAa,AAQT,uCARG,KAAK,KACU,YAAf,AAAM,KAAD,YAAa,mBACF,YAAhB,AAAM,KAAD,aAAc,oBACD,YAAlB,AAAM,KAAD,eAAgB,sBACF,YAAnB,AAAM,KAAD,gBAAiB,uBACN,YAAhB,AAAM,KAAD,aAAc,oBACL,YAAd,AAAM,KAAD,WAAY,kBACE,YAAnB,AAAM,KAAD,gBAAiB,uBACL,YAAjB,AAAM,KAAD,cAAe;IAC7B;;AAIE,YAAO,eACL,gBACA,iBACA,mBACA,oBACA,iBACA,eACA,oBACA;IAEJ;;;;EAzP4B;;;;;;;;;;;;;;;;;;IAwUf;;;;;;IAMA;;;;;;IAMA;;;;;;IAMA;;;;;;;;UAnCH;UACA;UACA;UACA;AAER,YAAoB,gDACD,KAAR,OAAO,EAAP,aAAgB,+BACN,MAAT,QAAQ,EAAR,cAAiB,mCACJ,OAAX,UAAU,EAAV,eAAmB,uCACN,OAAZ,WAAW,EAAX,eAAoB;IAErC;;AASuB;IAAO;;AAMN;IAAQ;;AAMN;IAAU;;AAMT;IAAW;;AAGd,YAAO;IAAI;;AAGb,YAAO;IAAI;;AAGN,YAAO;IAAI;;AAGb,YAAO;IAAI;;UAGjB;AACjB,YAAa,iCACX,IAAI,YACK,wBACC,2BACE,8BACC;IAEjB;;UAGmD;AACjD,UAAU,8BAAN,KAAK,GACP,MAAO,AAAK,WAAE,KAAK;AACrB,YAAa,gBAAS,KAAK;IAC7B;;UAG8C;AAC5C,UAAU,8BAAN,KAAK,GACP,MAAO,AAAK,WAAE,KAAK;AACrB,YAAa,WAAI,KAAK;IACxB;;UAGqC;AACnC,YAAoB,+CACT,AAAQ,kBAAE,AAAM,KAAD,qBACd,AAAS,mBAAE,AAAM,KAAD,wBACd,AAAW,qBAAE,AAAM,KAAD,2BACjB,AAAY,sBAAE,AAAM,KAAD;IAEpC;;UAGqC;AACnC,YAAoB,+CACT,AAAQ,kBAAE,AAAM,KAAD,qBACd,AAAS,mBAAE,AAAM,KAAD,wBACd,AAAW,qBAAE,AAAM,KAAD,2BACjB,AAAY,sBAAE,AAAM,KAAD;IAEpC;;AAOE,YAAoB,+CACT,AAAC,kCACA,AAAC,qCACC,AAAC,wCACA,AAAC;IAElB;;UAI+B;AAC7B,YAAoB,+CACT,AAAQ,kBAAE,KAAK,aACd,AAAS,mBAAE,KAAK,eACd,AAAW,qBAAE,KAAK,gBACjB,AAAY,sBAAE,KAAK;IAEpC;;UAI+B;AAC7B,YAAoB,+CACT,AAAQ,kBAAE,KAAK,aACd,AAAS,mBAAE,KAAK,eACd,AAAW,qBAAE,KAAK,gBACjB,AAAY,sBAAE,KAAK;IAEpC;;UAIgC;AAC9B,YAAoB,+CACT,AAAQ,mBAAG,KAAK,aACf,AAAS,oBAAG,KAAK,eACf,AAAW,sBAAG,KAAK,gBAClB,AAAY,uBAAG,KAAK;IAErC;;UAI+B;AAC7B,YAAoB,+CACT,AAAQ,kBAAE,KAAK,aACd,AAAS,mBAAE,KAAK,eACd,AAAW,qBAAE,KAAK,gBACjB,AAAY,sBAAE,KAAK;IAEpC;gBAOwC,GAAiB;UAAU;AACjE,YAAO,AAAE,CAAD;AACR,UAAI,AAAE,CAAD,YAAY,AAAE,CAAD,UAChB,MAAO;AACT,UAAI,AAAE,CAAD,UACH,MAAQ,AAAE,gBAAH,CAAC,OAAI,CAAC;AACf,UAAI,AAAE,CAAD,UACH,MAAO,AAAE,EAAD,MAAI,AAAI,mBAAE,CAAC;AACrB,YAAoB,+CAC2B,eAA7B,eAAK,AAAE,CAAD,UAAU,AAAE,CAAD,UAAU,CAAC,cACI,eAA/B,eAAK,AAAE,CAAD,WAAW,AAAE,CAAD,WAAW,CAAC,gBACO,eAAnC,eAAK,AAAE,CAAD,aAAa,AAAE,CAAD,aAAa,CAAC,iBACI,eAArC,eAAK,AAAE,CAAD,cAAc,AAAE,CAAD,cAAc,CAAC;IAE5D;YAGoC;AAAc;IAAI;;;QAhOxB;yDACnB,MAAM,YACL,MAAM,cACJ,MAAM,eACL,MAAM;EACpB;;QAG4B;8CACpB,uBAAS,MAAM;EACvB;;QAKQ;;QACA;;yDAEE,GAAG,YACF,GAAG,cACD,MAAM,eACL,MAAM;EACpB;;QAKQ;;QACA;;yDAEE,IAAI,YACH,KAAK,cACH,IAAI,eACH,KAAK;EACnB;;QAKM;;QACA;;QACA;;QACA;;IAHA;IACA;IACA;IACA;AAJD;;EAKJ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAmBwB,+BAAI;;;;;;;;;;IAuOjB;;;;;;IAMA;;;;;;IAMA;;;;;;IAMA;;;;;;;AAfW;IAAQ;;AAMV;IAAM;;AAMD;IAAW;;AAMb;IAAS;;AAGX,YAAO;IAAI;;AAGV,YAAO;IAAI;;AAGT,YAAO;IAAI;;AAGV,YAAO;IAAI;;UAGa;AACjD,UAAU,yCAAN,KAAK,GACP,MAAO,AAAK,WAAE,KAAK;AACrB,YAAa,gBAAS,KAAK;IAC7B;;UAG8C;AAC5C,UAAU,yCAAN,KAAK,GACP,MAAO,AAAK,WAAE,KAAK;AACrB,YAAa,WAAI,KAAK;IACxB;;UAG2D;AACzD,YAA+B,2DACnB,AAAS,mBAAE,AAAM,KAAD,oBAClB,AAAO,iBAAE,AAAM,KAAD,uBACT,AAAY,sBAAE,AAAM,KAAD,0BACrB,AAAU,oBAAE,AAAM,KAAD;IAEhC;;UAG2D;AACzD,YAA+B,2DACnB,AAAS,mBAAE,AAAM,KAAD,oBAClB,AAAO,iBAAE,AAAM,KAAD,uBACT,AAAY,sBAAE,AAAM,KAAD,0BACrB,AAAU,oBAAE,AAAM,KAAD;IAEhC;;AAOE,YAA+B,2DACnB,AAAC,iCACH,AAAC,oCACI,AAAC,uCACH,AAAC;IAEhB;;UAI0C;AACxC,YAA+B,2DACnB,AAAS,mBAAE,KAAK,WAClB,AAAO,iBAAE,KAAK,gBACT,AAAY,sBAAE,KAAK,cACrB,AAAU,oBAAE,KAAK;IAEhC;;UAI0C;AACxC,YAA+B,2DACnB,AAAS,mBAAE,KAAK,WAClB,AAAO,iBAAE,KAAK,gBACT,AAAY,sBAAE,KAAK,cACrB,AAAU,oBAAE,KAAK;IAEhC;;UAI2C;AACzC,YAA+B,2DACnB,AAAS,oBAAG,KAAK,WACnB,AAAO,kBAAG,KAAK,gBACV,AAAY,uBAAG,KAAK,cACtB,AAAU,qBAAG,KAAK;IAEjC;;UAI0C;AACxC,YAA+B,2DACnB,AAAS,mBAAE,KAAK,WAClB,AAAO,iBAAE,KAAK,gBACT,AAAY,sBAAE,KAAK,cACrB,AAAU,oBAAE,KAAK;IAEhC;gBAO8D,GAA4B;UAAU;AAClG,YAAO,AAAE,CAAD;AACR,UAAI,AAAE,CAAD,YAAY,AAAE,CAAD,UAChB,MAAO;AACT,UAAI,AAAE,CAAD,UACH,MAAQ,AAAE,gBAAH,CAAC,OAAI,CAAC;AACf,UAAI,AAAE,CAAD,UACH,MAAO,AAAE,EAAD,MAAI,AAAI,mBAAE,CAAC;AACrB,YAA+B,2DACmB,eAA/B,eAAK,AAAE,CAAD,WAAW,AAAE,CAAD,WAAW,CAAC,YACL,eAA3B,eAAK,AAAE,CAAD,SAAS,AAAE,CAAD,SAAS,CAAC,iBACgB,eAArC,eAAK,AAAE,CAAD,cAAc,AAAE,CAAD,cAAc,CAAC,eACL,eAAjC,eAAK,AAAE,CAAD,YAAY,AAAE,CAAD,YAAY,CAAC;IAEtD;YAGoC;AAClC,YAAO,AAAU,SAAD;AAChB,cAAiB,eAAT,SAAS;;;AAEb,gBAAoB,+CACT,uBACC,2BACE,6BACC;;;;AAGf,gBAAoB,+CACT,yBACC,yBACE,+BACC;;;;AAbnB;;;IAgBF;;;QA1NyC;qEAC7B,MAAM,UACR,MAAM,eACD,MAAM,aACR,MAAM;EAClB;;QAGuC;yDAC/B,uBAAS,MAAM;EACvB;;QAKQ;;QACA;;qEAEG,GAAG,UACL,GAAG,eACE,MAAM,aACR,MAAM;EAClB;;QAKQ;;QACA;;qEAEG,KAAK,UACP,GAAG,eACE,KAAK,aACP,GAAG;EACf;;QAKM;;QACA;;QACA;;QACA;;IAHA;IACA;IACA;IACA;AAJD;;EAKJ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAMmC,0CAAI;;;;;;;;;;;;;IAyL5B;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;;AAIX,YAAO,0CACL,AAAC,0BACD,AAAC,2BACD,AAAC,6BACD,AAAC,8BACD,AAAC,2BACD,AAAC,yBACD,AAAC,8BACD,AAAC;IAEL;;UAIqC;AACnC,YAAO,0CACL,AAAS,oBAAE,KAAK,GAChB,AAAU,qBAAE,KAAK,GACjB,AAAY,uBAAE,KAAK,GACnB,AAAa,wBAAE,KAAK,GACpB,AAAU,qBAAE,KAAK,GACjB,AAAQ,mBAAE,KAAK,GACf,AAAa,wBAAE,KAAK,GACpB,AAAW,sBAAE,KAAK;IAEtB;;UAGqC;AACnC,YAAO,0CACL,AAAS,oBAAE,KAAK,GAChB,AAAU,qBAAE,KAAK,GACjB,AAAY,uBAAE,KAAK,GACnB,AAAa,wBAAE,KAAK,GACpB,AAAU,qBAAE,KAAK,GACjB,AAAQ,mBAAE,KAAK,GACf,AAAa,wBAAE,KAAK,GACpB,AAAW,sBAAE,KAAK;IAEtB;;UAGsC;AACpC,YAAO,0CACL,AAAS,qBAAG,KAAK,GACjB,AAAU,sBAAG,KAAK,GAClB,AAAY,wBAAG,KAAK,GACpB,AAAa,yBAAG,KAAK,GACrB,AAAU,sBAAG,KAAK,GAClB,AAAQ,oBAAG,KAAK,GAChB,AAAa,yBAAG,KAAK,GACrB,AAAW,uBAAG,KAAK;IAEvB;;UAGqC;AACnC,YAAO,0CACL,AAAS,oBAAE,KAAK,GAChB,AAAU,qBAAE,KAAK,GACjB,AAAY,uBAAE,KAAK,GACnB,AAAa,wBAAE,KAAK,GACpB,AAAU,qBAAE,KAAK,GACjB,AAAQ,mBAAE,KAAK,GACf,AAAa,wBAAE,KAAK,GACpB,AAAW,sBAAE,KAAK;IAEtB;YAGoC;AAClC,YAAO,AAAU,SAAD;AAChB,cAAiB,eAAT,SAAS;;;AAEb,gBAAoB,+CACT,AAAS,oBAAE,0BACV,AAAU,qBAAE,8BACV,AAAY,uBAAE,gCACb,AAAa,wBAAE;;;;AAG9B,gBAAoB,+CACT,AAAS,oBAAE,4BACV,AAAU,qBAAE,4BACV,AAAY,uBAAE,kCACb,AAAa,wBAAE;;;;AAblC;;;IAgBF;;mDA5HO,UACA,WACA,aACA,cACA,WACA,SACA,cACA;QAPA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;IAPA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;AARD;;EASL","file":"../../../../../../../../packages/flutter/src/painting/border_radius.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["force_press.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/gestures/force_press.dart.lib.js"}');
   // Exports:
   return {
-    src__painting__border_radius: border_radius
+    src__gestures__force_press: force_press
   };
 }));
 
-//# sourceMappingURL=border_radius.dart.lib.js.map
+//# sourceMappingURL=force_press.dart.lib.js.map

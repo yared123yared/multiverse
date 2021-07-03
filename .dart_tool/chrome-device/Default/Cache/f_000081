@@ -1,42 +1,45 @@
-define(['dart_sdk', 'packages/characters/src/grapheme_clusters/breaks.dart', 'packages/characters/src/grapheme_clusters/table.dart'], (function load__packages__characters__src__characters_impl_dart(dart_sdk, packages__characters__src__grapheme_clusters__breaks$46dart, packages__characters__src__grapheme_clusters__table$46dart) {
+define(['dart_sdk', 'packages/flutter_svg/src/picture_stream.dart', 'packages/flutter_svg/src/svg/xml_parsers.dart', 'packages/flutter_svg/parser.dart', 'packages/flutter/src/painting/box_fit.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter_svg/src/picture_provider.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter_svg/src/render_picture.dart', 'packages/flutter_svg/src/unbounded_color_filtered.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter_svg__svg_dart(dart_sdk, packages__flutter_svg__src__picture_stream$46dart, packages__flutter_svg__src__svg__xml_parsers$46dart, packages__flutter_svg__parser$46dart, packages__flutter__src__painting__box_fit$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter_svg__src__picture_provider$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter_svg__src__render_picture$46dart, packages__flutter_svg__src__unbounded_color_filtered$46dart, packages__flutter__src__foundation__debug$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const convert = dart_sdk.convert;
+  const typed_data = dart_sdk.typed_data;
+  const ui = dart_sdk.ui;
+  const _engine = dart_sdk._engine;
   const _internal = dart_sdk._internal;
-  const _js_helper = dart_sdk._js_helper;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const breaks$ = packages__characters__src__grapheme_clusters__breaks$46dart.src__grapheme_clusters__breaks;
-  const table = packages__characters__src__grapheme_clusters__table$46dart.src__grapheme_clusters__table;
-  var characters_impl = Object.create(dart.library);
-  var characters = Object.create(dart.library);
-  var $isEmpty = dartx.isEmpty;
-  var $substring = dartx.substring;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $map = dartx.map;
-  var $startsWith = dartx.startsWith;
-  var $where = dartx.where;
-  var $join = dartx.join;
-  var $toLowerCase = dartx.toLowerCase;
-  var $toUpperCase = dartx.toUpperCase;
-  var $hashCode = dartx.hashCode;
-  var $iterator = dartx.iterator;
-  var $whereType = dartx.whereType;
-  var $skip = dartx.skip;
-  var $take = dartx.take;
-  var $skipWhile = dartx.skipWhile;
-  var $takeWhile = dartx.takeWhile;
-  var $codeUnitAt = dartx.codeUnitAt;
-  var $codeUnits = dartx.codeUnits;
-  var $getRange = dartx.getRange;
-  var $replaceRange = dartx.replaceRange;
-  var $indexOf = dartx.indexOf;
-  var $lastIndexOf = dartx.lastIndexOf;
+  const picture_stream = packages__flutter_svg__src__picture_stream$46dart.src__picture_stream;
+  const vector_drawable = packages__flutter_svg__src__svg__xml_parsers$46dart.src__vector_drawable;
+  const parser$ = packages__flutter_svg__parser$46dart.parser;
+  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const picture_provider = packages__flutter_svg__src__picture_provider$46dart.src__picture_provider;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const render_picture = packages__flutter_svg__src__render_picture$46dart.src__render_picture;
+  const unbounded_color_filtered = packages__flutter_svg__src__unbounded_color_filtered$46dart.src__unbounded_color_filtered;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  var svg = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    VoidToString: () => (T.VoidToString = dart.constFn(dart.fnType(core.String, [])))(),
-    VoidToNString: () => (T.VoidToNString = dart.constFn(dart.nullable(T.VoidToString())))(),
-    SyncIterableOfCharacters: () => (T.SyncIterableOfCharacters = dart.constFn(_js_helper.SyncIterable$(characters.Characters)))(),
-    SyncIterableOfCharacterRange: () => (T.SyncIterableOfCharacterRange = dart.constFn(_js_helper.SyncIterable$(characters.CharacterRange)))()
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    BuildContextToLimitedBox: () => (T.BuildContextToLimitedBox = dart.constFn(dart.fnType(basic.LimitedBox, [framework.BuildContext])))(),
+    FutureOfPictureInfo: () => (T.FutureOfPictureInfo = dart.constFn(async.Future$(picture_stream.PictureInfo)))(),
+    ColorFilterN: () => (T.ColorFilterN = dart.constFn(dart.nullable(ui.ColorFilter)))(),
+    Uint8ListAndColorFilterNAndStringToFutureOfPictureInfo: () => (T.Uint8ListAndColorFilterNAndStringToFutureOfPictureInfo = dart.constFn(dart.fnType(T.FutureOfPictureInfo(), [typed_data.Uint8List, T.ColorFilterN(), core.String])))(),
+    StringAndColorFilterNAndStringToFutureOfPictureInfo: () => (T.StringAndColorFilterNAndStringToFutureOfPictureInfo = dart.constFn(dart.fnType(T.FutureOfPictureInfo(), [core.String, T.ColorFilterN(), core.String])))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    VoidToWidget: () => (T.VoidToWidget = dart.constFn(dart.fnType(framework.Widget, [])))(),
+    WidgetTodynamic: () => (T.WidgetTodynamic = dart.constFn(dart.fnType(dart.dynamic, [framework.Widget])))(),
+    DiagnosticsPropertyOfPictureStream: () => (T.DiagnosticsPropertyOfPictureStream = dart.constFn(diagnostics.DiagnosticsProperty$(picture_stream.PictureStream)))(),
+    CompleterOfvoid: () => (T.CompleterOfvoid = dart.constFn(async.Completer$(dart.void)))(),
+    PictureInfoN: () => (T.PictureInfoN = dart.constFn(dart.nullable(picture_stream.PictureInfo)))(),
+    PictureInfoNAndboolTovoid: () => (T.PictureInfoNAndboolTovoid = dart.constFn(dart.fnType(dart.void, [T.PictureInfoN(), core.bool])))(),
+    ObjectAndStackTraceTovoid: () => (T.ObjectAndStackTraceTovoid = dart.constFn(dart.fnType(dart.void, [core.Object, core.StackTrace])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -44,1253 +47,1041 @@ define(['dart_sdk', 'packages/characters/src/grapheme_clusters/breaks.dart', 'pa
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: characters_impl.StringCharacters.prototype,
-        [string$]: ""
+        __proto__: box_fit.BoxFit.prototype,
+        [_name]: "BoxFit.contain",
+        index: 1
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: alignment.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: ui.Clip.prototype,
+        [_name$]: "Clip.hardEdge",
+        index: 1
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: ui.BlendMode.prototype,
+        [_name$]: "BlendMode.srcIn",
+        index: 5
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([], T._LocationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 35,
+        [_Location_line]: 558,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/svg.dart"
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: basic.LimitedBox.prototype,
+        [Widget__location]: C[5] || CT.C5,
+        [Widget_key]: null,
+        [SingleChildRenderObjectWidget_child]: null,
+        [LimitedBox_maxHeight]: 1 / 0,
+        [LimitedBox_maxWidth]: 1 / 0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "picture",
+        [_Location_column]: 15,
+        [_Location_line]: 782,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "matchTextDirection",
+        [_Location_column]: 15,
+        [_Location_line]: 783,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "allowDrawingOutsideViewBox",
+        [_Location_column]: 15,
+        [_Location_line]: 784,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.constList([C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11], T._LocationL());
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[8] || CT.C8,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 781,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/svg.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 13,
+        [_Location_line]: 780,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 781,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.constList([C[14] || CT.C14, C[15] || CT.C15], T._LocationL());
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[13] || CT.C13,
+        [_Location_name]: null,
+        [_Location_column]: 27,
+        [_Location_line]: 779,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/svg.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fit",
+        [_Location_column]: 11,
+        [_Location_line]: 776,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 11,
+        [_Location_line]: 777,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "clipBehavior",
+        [_Location_column]: 11,
+        [_Location_line]: 778,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 779,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21], T._LocationL());
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[17] || CT.C17,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 775,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/svg.dart"
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 9,
+        [_Location_line]: 773,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 9,
+        [_Location_line]: 774,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 775,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.constList([C[24] || CT.C24, C[25] || CT.C25, C[26] || CT.C26], T._LocationL());
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[23] || CT.C23,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 772,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/svg.dart"
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "colorFilter",
+        [_Location_column]: 11,
+        [_Location_line]: 793,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 794,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.constList([C[29] || CT.C29, C[30] || CT.C30], T._LocationL());
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[28] || CT.C28,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 792,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/svg.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "container",
+        [_Location_column]: 9,
+        [_Location_line]: 804,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 9,
+        [_Location_line]: 805,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "label",
+        [_Location_column]: 9,
+        [_Location_line]: 806,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 807,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.constList([C[33] || CT.C33, C[34] || CT.C34, C[35] || CT.C35, C[36] || CT.C36], T._LocationL());
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[32] || CT.C32,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 803,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/svg.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 23,
+        [_Location_line]: 816,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 37,
+        [_Location_line]: 816,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.constList([C[39] || CT.C39, C[40] || CT.C40], T._LocationL());
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[38] || CT.C38,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 816,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/svg.dart"
       });
     }
   }, false);
-  var C = [void 0];
+  var C = Array(41).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.1.0/lib/src/characters_impl.dart",
-    "package:characters/src/characters_impl.dart",
-    "package:characters/src/characters.dart"
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/svg.dart",
+    "package:flutter_svg/svg.dart"
   ];
-  var string$ = dart.privateName(characters_impl, "StringCharacters.string");
-  var _rangeAll = dart.privateName(characters_impl, "_rangeAll");
-  var _skipIndices = dart.privateName(characters_impl, "_skipIndices");
-  var _skip = dart.privateName(characters_impl, "_skip");
-  var _take = dart.privateName(characters_impl, "_take");
-  characters_impl.StringCharacters = class StringCharacters extends core.Iterable$(core.String) {
-    get string() {
-      return this[string$];
+  var cacheColorFilterOverride = dart.privateName(svg, "Svg.cacheColorFilterOverride");
+  svg.Svg = class Svg extends core.Object {
+    get cacheColorFilterOverride() {
+      return this[cacheColorFilterOverride];
     }
-    set string(value) {
-      super.string = value;
+    set cacheColorFilterOverride(value) {
+      this[cacheColorFilterOverride] = value;
     }
-    get iterator() {
-      return new characters_impl.StringCharacterRange.__(this.string, 0, 0);
+    svgPictureDecoder(raw, allowDrawingOutsideOfViewBox, colorFilter, key) {
+      if (raw == null) dart.nullFailed(I[0], 48, 15, "raw");
+      if (allowDrawingOutsideOfViewBox == null) dart.nullFailed(I[0], 49, 10, "allowDrawingOutsideOfViewBox");
+      if (key == null) dart.nullFailed(I[0], 51, 12, "key");
+      return async.async(picture_stream.PictureInfo, (function* svgPictureDecoder() {
+        let svgRoot = (yield this.fromSvgBytes(raw, key));
+        let pic = svgRoot.toPicture({clipToViewBox: allowDrawingOutsideOfViewBox === true ? false : true, colorFilter: colorFilter});
+        return new picture_stream.PictureInfo.new({picture: pic, viewport: svgRoot.viewport.viewBoxRect, size: svgRoot.viewport.size});
+      }).bind(this));
     }
-    get iteratorAtEnd() {
-      return new characters_impl.StringCharacterRange.__(this.string, this.string.length, this.string.length);
+    svgPictureStringDecoder(raw, allowDrawingOutsideOfViewBox, colorFilter, key) {
+      if (raw == null) dart.nullFailed(I[0], 76, 14, "raw");
+      if (allowDrawingOutsideOfViewBox == null) dart.nullFailed(I[0], 77, 12, "allowDrawingOutsideOfViewBox");
+      if (key == null) dart.nullFailed(I[0], 79, 14, "key");
+      return async.async(picture_stream.PictureInfo, (function* svgPictureStringDecoder() {
+        let svg = (yield this.fromSvgString(raw, key));
+        return new picture_stream.PictureInfo.new({picture: svg.toPicture({clipToViewBox: allowDrawingOutsideOfViewBox === true ? false : true, colorFilter: colorFilter, size: svg.viewport.viewBox}), viewport: svg.viewport.viewBoxRect, size: svg.viewport.size});
+      }).bind(this));
     }
-    get [_rangeAll]() {
-      return new characters_impl.StringCharacterRange.__(this.string, 0, this.string.length);
+    fromSvgBytes(raw, key) {
+      if (raw == null) dart.nullFailed(I[0], 96, 47, "raw");
+      if (key == null) dart.nullFailed(I[0], 96, 59, "key");
+      return async.async(vector_drawable.DrawableRoot, (function* fromSvgBytes() {
+        return this.fromSvgString(convert.utf8.decode(raw), key);
+      }).bind(this));
     }
-    get first() {
-      return this.string[$isEmpty] ? dart.throw(new core.StateError.new("No element")) : this.string[$substring](0, new breaks$.Breaks.new(this.string, 0, this.string.length, 176).nextBreak());
-    }
-    get last() {
-      return this.string[$isEmpty] ? dart.throw(new core.StateError.new("No element")) : this.string[$substring](new breaks$.BackBreaks.new(this.string, this.string.length, 0, 176).nextBreak());
-    }
-    get single() {
-      if (this.string[$isEmpty]) dart.throw(new core.StateError.new("No element"));
-      let firstEnd = new breaks$.Breaks.new(this.string, 0, this.string.length, 176).nextBreak();
-      if (firstEnd === this.string.length) return this.string;
-      dart.throw(new core.StateError.new("Too many elements"));
-    }
-    get isEmpty() {
-      return this.string[$isEmpty];
-    }
-    get isNotEmpty() {
-      return this.string[$isNotEmpty];
-    }
-    get length() {
-      if (this.string[$isEmpty]) return 0;
-      let brk = new breaks$.Breaks.new(this.string, 0, this.string.length, 176);
-      let length = 0;
-      while (dart.notNull(brk.nextBreak()) >= 0) {
-        length = length + 1;
-      }
-      return length;
-    }
-    whereType(T) {
-      let self = this;
-      if (core.Iterable$(T).is(self)) {
-        return self[$map](T, dart.fn(x => x, dart.fnType(T, [T])));
-      }
-      return new (_internal.EmptyIterable$(T)).new();
-    }
-    join(separator = "") {
-      if (separator == null) dart.nullFailed(I[0], 81, 23, "separator");
-      if (separator === "") return this.string;
-      return characters_impl._explodeReplace(this.string, 0, this.string.length, separator, "");
-    }
-    lastWhere(test, opts) {
-      if (test == null) dart.nullFailed(I[0], 87, 50, "test");
-      let orElse = opts && 'orElse' in opts ? opts.orElse : null;
-      T.VoidToNString().as(orElse);
-      let cursor = this.string.length;
-      let brk = new breaks$.BackBreaks.new(this.string, cursor, 0, 176);
-      let next = 0;
-      while (dart.notNull(next = brk.nextBreak()) >= 0) {
-        let current = this.string[$substring](next, cursor);
-        if (dart.test(test(current))) return current;
-        cursor = next;
-      }
-      if (orElse != null) return orElse();
-      dart.throw(new core.StateError.new("No element"));
-    }
-    elementAt(index) {
-      if (index == null) dart.nullFailed(I[0], 102, 24, "index");
-      core.RangeError.checkNotNegative(index, "index");
-      let count = 0;
-      if (this.string[$isNotEmpty]) {
-        let breaks = new breaks$.Breaks.new(this.string, 0, this.string.length, 176);
-        let start = 0;
-        let end = 0;
-        while (dart.notNull(end = breaks.nextBreak()) >= 0) {
-          if (count === index) return this.string[$substring](start, end);
-          count = count + 1;
-          start = end;
-        }
-      }
-      dart.throw(new core.IndexError.new(index, this, "index", null, count));
-    }
-    contains(other) {
-      if (typeof other == 'string') {
-        if (other[$isEmpty]) return false;
-        let next = new breaks$.Breaks.new(other, 0, other.length, 176).nextBreak();
-        if (next !== other.length) return false;
-        return dart.notNull(characters_impl._indexOf(this.string, other, 0, this.string.length)) >= 0;
-      }
-      return false;
-    }
-    startsWith(characters) {
-      if (characters == null) dart.nullFailed(I[0], 131, 30, "characters");
-      let length = this.string.length;
-      let otherString = characters.string;
-      if (otherString[$isEmpty]) return true;
-      return this.string[$startsWith](otherString) && dart.test(breaks$.isGraphemeClusterBoundary(this.string, 0, length, otherString.length));
-    }
-    endsWith(characters) {
-      if (characters == null) dart.nullFailed(I[0], 140, 28, "characters");
-      let length = this.string.length;
-      let otherString = characters.string;
-      if (otherString[$isEmpty]) return true;
-      let otherLength = otherString.length;
-      let start = this.string.length - otherLength;
-      return start >= 0 && this.string[$startsWith](otherString, start) && dart.test(breaks$.isGraphemeClusterBoundary(this.string, 0, length, start));
-    }
-    replaceAll(pattern, replacement) {
-      let t0, t0$;
-      if (pattern == null) dart.nullFailed(I[0], 152, 36, "pattern");
-      if (replacement == null) dart.nullFailed(I[0], 152, 56, "replacement");
-      t0$ = (t0 = this[_rangeAll].replaceAll(pattern, replacement), t0 == null ? null : t0.source);
-      return t0$ == null ? this : t0$;
-    }
-    replaceFirst(pattern, replacement) {
-      let t0, t0$;
-      if (pattern == null) dart.nullFailed(I[0], 156, 38, "pattern");
-      if (replacement == null) dart.nullFailed(I[0], 156, 58, "replacement");
-      t0$ = (t0 = this[_rangeAll].replaceFirst(pattern, replacement), t0 == null ? null : t0.source);
-      return t0$ == null ? this : t0$;
-    }
-    split(pattern, maxParts = 0) {
-      if (pattern == null) dart.nullFailed(I[0], 160, 41, "pattern");
-      if (maxParts == null) dart.nullFailed(I[0], 160, 55, "maxParts");
-      return new (T.SyncIterableOfCharacters()).new(() => (function* split(maxParts) {
-        if (maxParts === 1 || this.string[$isEmpty]) {
-          yield this;
-          return;
-        }
-        let patternString = pattern.string;
-        let start = 0;
-        if (patternString[$isNotEmpty]) {
-          do {
-            let match = characters_impl._indexOf(this.string, patternString, start, this.string.length);
-            if (dart.notNull(match) < 0) break;
-            yield new characters_impl.StringCharacters.new(this.string[$substring](start, match));
-            start = dart.notNull(match) + patternString.length;
-            maxParts = dart.notNull(maxParts) - 1;
-          } while (maxParts !== 1);
-        } else {
-          let breaks = new breaks$.Breaks.new(this.string, 0, this.string.length, 176);
-          do {
-            let match = breaks.nextBreak();
-            if (dart.notNull(match) < 0) return;
-            yield new characters_impl.StringCharacters.new(this.string[$substring](start, match));
-            start = match;
-            maxParts = dart.notNull(maxParts) - 1;
-          } while (maxParts !== 1);
-          if (start === this.string.length) return;
-        }
-        yield new characters_impl.StringCharacters.new(this.string[$substring](start));
-      }).bind(this)(maxParts));
-    }
-    containsAll(characters) {
-      if (characters == null) dart.nullFailed(I[0], 191, 31, "characters");
-      return dart.notNull(characters_impl._indexOf(this.string, characters.string, 0, this.string.length)) >= 0;
-    }
-    [_skipIndices](count, cursor, breaks) {
-      if (count == null) dart.nullFailed(I[0], 202, 24, "count");
-      if (cursor == null) dart.nullFailed(I[0], 202, 35, "cursor");
-      if (count === 0 || cursor === this.string.length) return cursor;
-      breaks == null ? breaks = new breaks$.Breaks.new(this.string, cursor, this.string.length, 176) : null;
-      do {
-        let nextBreak = breaks.nextBreak();
-        if (dart.notNull(nextBreak) < 0) break;
-        cursor = nextBreak;
-      } while ((count = dart.notNull(count) - 1) > 0);
-      return cursor;
-    }
-    skip(count) {
-      if (count == null) dart.nullFailed(I[0], 214, 23, "count");
-      core.RangeError.checkNotNegative(count, "count");
-      return this[_skip](count);
-    }
-    [_skip](count) {
-      if (count == null) dart.nullFailed(I[0], 219, 24, "count");
-      let start = this[_skipIndices](count, 0, null);
-      if (start === this.string.length) return characters_impl.StringCharacters._empty;
-      return new characters_impl.StringCharacters.new(this.string[$substring](start));
-    }
-    take(count) {
-      if (count == null) dart.nullFailed(I[0], 226, 23, "count");
-      core.RangeError.checkNotNegative(count, "count");
-      return this[_take](count);
-    }
-    [_take](count) {
-      if (count == null) dart.nullFailed(I[0], 231, 24, "count");
-      let end = this[_skipIndices](count, 0, null);
-      if (end === this.string.length) return this;
-      return new characters_impl.StringCharacters.new(this.string[$substring](0, end));
-    }
-    getRange(start, end = null) {
-      if (start == null) dart.nullFailed(I[0], 238, 27, "start");
-      core.RangeError.checkNotNegative(start, "start");
-      if (end == null) return this[_skip](start);
-      if (dart.notNull(end) < dart.notNull(start)) dart.throw(new core.RangeError.range(end, start, null, "end"));
-      if (end == start) return characters_impl.StringCharacters._empty;
-      if (start === 0) return this[_take](end);
-      if (this.string[$isEmpty]) return this;
-      let breaks = new breaks$.Breaks.new(this.string, 0, this.string.length, 176);
-      let startIndex = this[_skipIndices](start, 0, breaks);
-      if (startIndex === this.string.length) return characters_impl.StringCharacters._empty;
-      let endIndex = this[_skipIndices](dart.notNull(end) - dart.notNull(start), start, breaks);
-      return new characters_impl.StringCharacters.new(this.string[$substring](startIndex, endIndex));
-    }
-    characterAt(position) {
-      if (position == null) dart.nullFailed(I[0], 253, 30, "position");
-      let breaks = new breaks$.Breaks.new(this.string, 0, this.string.length, 176);
-      let start = 0;
-      while (dart.notNull(position) > 0) {
-        position = dart.notNull(position) - 1;
-        start = breaks.nextBreak();
-        if (dart.notNull(start) < 0) dart.throw(new core.StateError.new("No element"));
-      }
-      let end = breaks.nextBreak();
-      if (dart.notNull(end) < 0) dart.throw(new core.StateError.new("No element"));
-      if (start === 0 && end === this.string.length) return this;
-      return new characters_impl.StringCharacters.new(this.string[$substring](start, end));
-    }
-    skipWhile(test) {
-      if (test == null) dart.nullFailed(I[0], 269, 46, "test");
-      if (this.string[$isNotEmpty]) {
-        let stringLength = this.string.length;
-        let breaks = new breaks$.Breaks.new(this.string, 0, stringLength, 176);
-        let index = 0;
-        let startIndex = 0;
-        while (dart.notNull(index = breaks.nextBreak()) >= 0) {
-          if (!dart.test(test(this.string[$substring](startIndex, index)))) {
-            if (startIndex === 0) return this;
-            if (startIndex === stringLength) return characters_impl.StringCharacters._empty;
-            return new characters_impl.StringCharacters.new(this.string[$substring](startIndex));
-          }
-          startIndex = index;
-        }
-      }
-      return characters_impl.StringCharacters._empty;
-    }
-    takeWhile(test) {
-      if (test == null) dart.nullFailed(I[0], 288, 46, "test");
-      if (this.string[$isNotEmpty]) {
-        let breaks = new breaks$.Breaks.new(this.string, 0, this.string.length, 176);
-        let index = 0;
-        let endIndex = 0;
-        while (dart.notNull(index = breaks.nextBreak()) >= 0) {
-          if (!dart.test(test(this.string[$substring](endIndex, index)))) {
-            if (endIndex === 0) return characters_impl.StringCharacters._empty;
-            return new characters_impl.StringCharacters.new(this.string[$substring](0, endIndex));
-          }
-          endIndex = index;
-        }
-      }
-      return this;
-    }
-    where(test) {
-      if (test == null) dart.nullFailed(I[0], 305, 42, "test");
-      let string = super[$where](test)[$join]();
-      if (string[$isEmpty]) return characters_impl.StringCharacters._empty;
-      return new characters_impl.StringCharacters.new(super[$where](test)[$join]());
-    }
-    ['+'](characters) {
-      if (characters == null) dart.nullFailed(I[0], 312, 36, "characters");
-      return new characters_impl.StringCharacters.new(dart.notNull(this.string) + dart.notNull(characters.string));
-    }
-    skipLast(count) {
-      if (count == null) dart.nullFailed(I[0], 316, 27, "count");
-      core.RangeError.checkNotNegative(count, "count");
-      if (count === 0) return this;
-      if (this.string[$isNotEmpty]) {
-        let breaks = new breaks$.BackBreaks.new(this.string, this.string.length, 0, 176);
-        let endIndex = this.string.length;
-        while (dart.notNull(count) > 0) {
-          let index = breaks.nextBreak();
-          if (dart.notNull(index) >= 0) {
-            endIndex = index;
-            count = dart.notNull(count) - 1;
-          } else {
-            return characters_impl.StringCharacters._empty;
-          }
-        }
-        if (dart.notNull(endIndex) > 0) return new characters_impl.StringCharacters.new(this.string[$substring](0, endIndex));
-      }
-      return characters_impl.StringCharacters._empty;
-    }
-    skipLastWhile(test) {
-      if (test == null) dart.nullFailed(I[0], 337, 50, "test");
-      if (this.string[$isNotEmpty]) {
-        let breaks = new breaks$.BackBreaks.new(this.string, this.string.length, 0, 176);
-        let index = 0;
-        let end = this.string.length;
-        while (dart.notNull(index = breaks.nextBreak()) >= 0) {
-          if (!dart.test(test(this.string[$substring](index, end)))) {
-            if (end === this.string.length) return this;
-            return end === 0 ? characters_impl.StringCharacters._empty : new characters_impl.StringCharacters.new(this.string[$substring](0, end));
-          }
-          end = index;
-        }
-      }
-      return characters_impl.StringCharacters._empty;
-    }
-    takeLast(count) {
-      if (count == null) dart.nullFailed(I[0], 354, 27, "count");
-      core.RangeError.checkNotNegative(count, "count");
-      if (count === 0) return characters_impl.StringCharacters._empty;
-      if (this.string[$isNotEmpty]) {
-        let breaks = new breaks$.BackBreaks.new(this.string, this.string.length, 0, 176);
-        let startIndex = this.string.length;
-        while (dart.notNull(count) > 0) {
-          let index = breaks.nextBreak();
-          if (dart.notNull(index) >= 0) {
-            startIndex = index;
-            count = dart.notNull(count) - 1;
-          } else {
-            return this;
-          }
-        }
-        if (dart.notNull(startIndex) > 0) {
-          return new characters_impl.StringCharacters.new(this.string[$substring](startIndex));
-        }
-      }
-      return this;
-    }
-    takeLastWhile(test) {
-      if (test == null) dart.nullFailed(I[0], 377, 50, "test");
-      if (this.string[$isNotEmpty]) {
-        let breaks = new breaks$.BackBreaks.new(this.string, this.string.length, 0, 176);
-        let index = 0;
-        let start = this.string.length;
-        while (dart.notNull(index = breaks.nextBreak()) >= 0) {
-          if (!dart.test(test(this.string[$substring](index, start)))) {
-            if (start === this.string.length) return characters_impl.StringCharacters._empty;
-            return new characters_impl.StringCharacters.new(this.string[$substring](start));
-          }
-          start = index;
-        }
-      }
-      return this;
-    }
-    toLowerCase() {
-      return new characters_impl.StringCharacters.new(this.string[$toLowerCase]());
-    }
-    toUpperCase() {
-      return new characters_impl.StringCharacters.new(this.string[$toUpperCase]());
-    }
-    _equals(other) {
-      if (other == null) return false;
-      return characters.Characters.is(other) && this.string == other.string;
-    }
-    get hashCode() {
-      return dart.hashCode(this.string);
-    }
-    toString() {
-      return this.string;
-    }
-    findFirst(characters) {
-      if (characters == null) dart.nullFailed(I[0], 410, 40, "characters");
-      let range = this[_rangeAll];
-      if (dart.test(range.collapseToFirst(characters))) return range;
-      return null;
-    }
-    findLast(characters) {
-      if (characters == null) dart.nullFailed(I[0], 417, 39, "characters");
-      let range = this[_rangeAll];
-      if (dart.test(range.collapseToLast(characters))) return range;
-      return null;
+    fromSvgString(rawSvg, key) {
+      if (rawSvg == null) dart.nullFailed(I[0], 117, 45, "rawSvg");
+      if (key == null) dart.nullFailed(I[0], 117, 60, "key");
+      return async.async(vector_drawable.DrawableRoot, function* fromSvgString() {
+        let parser = new parser$.SvgParser.new();
+        return yield parser.parse(rawSvg, {key: key});
+      });
     }
   };
-  (characters_impl.StringCharacters.new = function(string) {
-    if (string == null) dart.nullFailed(I[0], 21, 31, "string");
-    this[string$] = string;
-    characters_impl.StringCharacters.__proto__.new.call(this);
+  (svg.Svg.__ = function() {
+    this[cacheColorFilterOverride] = null;
     ;
-  }).prototype = characters_impl.StringCharacters.prototype;
-  dart.addTypeTests(characters_impl.StringCharacters);
-  dart.addTypeCaches(characters_impl.StringCharacters);
-  characters_impl.StringCharacters[dart.implements] = () => [characters.Characters];
-  dart.setMethodSignature(characters_impl.StringCharacters, () => ({
-    __proto__: dart.getMethods(characters_impl.StringCharacters.__proto__),
-    whereType: dart.gFnType(T => [core.Iterable$(T), []], T => [dart.nullable(core.Object)]),
-    [$whereType]: dart.gFnType(T => [core.Iterable$(T), []], T => [dart.nullable(core.Object)]),
-    startsWith: dart.fnType(core.bool, [characters.Characters]),
-    endsWith: dart.fnType(core.bool, [characters.Characters]),
-    replaceAll: dart.fnType(characters.Characters, [characters.Characters, characters.Characters]),
-    replaceFirst: dart.fnType(characters.Characters, [characters.Characters, characters.Characters]),
-    split: dart.fnType(core.Iterable$(characters.Characters), [characters.Characters], [core.int]),
-    containsAll: dart.fnType(core.bool, [characters.Characters]),
-    [_skipIndices]: dart.fnType(core.int, [core.int, core.int, dart.nullable(breaks$.Breaks)]),
-    skip: dart.fnType(characters.Characters, [core.int]),
-    [$skip]: dart.fnType(characters.Characters, [core.int]),
-    [_skip]: dart.fnType(characters.Characters, [core.int]),
-    take: dart.fnType(characters.Characters, [core.int]),
-    [$take]: dart.fnType(characters.Characters, [core.int]),
-    [_take]: dart.fnType(characters.Characters, [core.int]),
-    getRange: dart.fnType(characters.Characters, [core.int], [dart.nullable(core.int)]),
-    characterAt: dart.fnType(characters.Characters, [core.int]),
-    skipWhile: dart.fnType(characters.Characters, [dart.fnType(core.bool, [core.String])]),
-    [$skipWhile]: dart.fnType(characters.Characters, [dart.fnType(core.bool, [core.String])]),
-    takeWhile: dart.fnType(characters.Characters, [dart.fnType(core.bool, [core.String])]),
-    [$takeWhile]: dart.fnType(characters.Characters, [dart.fnType(core.bool, [core.String])]),
-    where: dart.fnType(characters.Characters, [dart.fnType(core.bool, [core.String])]),
-    [$where]: dart.fnType(characters.Characters, [dart.fnType(core.bool, [core.String])]),
-    '+': dart.fnType(characters.Characters, [characters.Characters]),
-    skipLast: dart.fnType(characters.Characters, [core.int]),
-    skipLastWhile: dart.fnType(characters.Characters, [dart.fnType(core.bool, [core.String])]),
-    takeLast: dart.fnType(characters.Characters, [core.int]),
-    takeLastWhile: dart.fnType(characters.Characters, [dart.fnType(core.bool, [core.String])]),
-    toLowerCase: dart.fnType(characters.Characters, []),
-    toUpperCase: dart.fnType(characters.Characters, []),
-    findFirst: dart.fnType(dart.nullable(characters.CharacterRange), [characters.Characters]),
-    findLast: dart.fnType(dart.nullable(characters.CharacterRange), [characters.Characters])
+  }).prototype = svg.Svg.prototype;
+  dart.addTypeTests(svg.Svg);
+  dart.addTypeCaches(svg.Svg);
+  dart.setMethodSignature(svg.Svg, () => ({
+    __proto__: dart.getMethods(svg.Svg.__proto__),
+    svgPictureDecoder: dart.fnType(async.Future$(picture_stream.PictureInfo), [typed_data.Uint8List, core.bool, dart.nullable(ui.ColorFilter), core.String]),
+    svgPictureStringDecoder: dart.fnType(async.Future$(picture_stream.PictureInfo), [core.String, core.bool, dart.nullable(ui.ColorFilter), core.String]),
+    fromSvgBytes: dart.fnType(async.Future$(vector_drawable.DrawableRoot), [typed_data.Uint8List, core.String]),
+    fromSvgString: dart.fnType(async.Future$(vector_drawable.DrawableRoot), [core.String, core.String])
   }));
-  dart.setGetterSignature(characters_impl.StringCharacters, () => ({
-    __proto__: dart.getGetters(characters_impl.StringCharacters.__proto__),
-    iterator: characters.CharacterRange,
-    [$iterator]: characters.CharacterRange,
-    iteratorAtEnd: characters.CharacterRange,
-    [_rangeAll]: characters_impl.StringCharacterRange
+  dart.setLibraryUri(svg.Svg, I[1]);
+  dart.setFieldSignature(svg.Svg, () => ({
+    __proto__: dart.getFields(svg.Svg.__proto__),
+    cacheColorFilterOverride: dart.fieldType(dart.nullable(core.bool))
   }));
-  dart.setLibraryUri(characters_impl.StringCharacters, I[1]);
-  dart.setFieldSignature(characters_impl.StringCharacters, () => ({
-    __proto__: dart.getFields(characters_impl.StringCharacters.__proto__),
-    string: dart.finalFieldType(core.String)
+  var width$ = dart.privateName(svg, "SvgPicture.width");
+  var height$ = dart.privateName(svg, "SvgPicture.height");
+  var fit$ = dart.privateName(svg, "SvgPicture.fit");
+  var alignment$ = dart.privateName(svg, "SvgPicture.alignment");
+  var pictureProvider$ = dart.privateName(svg, "SvgPicture.pictureProvider");
+  var placeholderBuilder$ = dart.privateName(svg, "SvgPicture.placeholderBuilder");
+  var matchTextDirection$ = dart.privateName(svg, "SvgPicture.matchTextDirection");
+  var allowDrawingOutsideViewBox$ = dart.privateName(svg, "SvgPicture.allowDrawingOutsideViewBox");
+  var semanticsLabel$ = dart.privateName(svg, "SvgPicture.semanticsLabel");
+  var excludeFromSemantics$ = dart.privateName(svg, "SvgPicture.excludeFromSemantics");
+  var clipBehavior$ = dart.privateName(svg, "SvgPicture.clipBehavior");
+  var colorFilter$ = dart.privateName(svg, "SvgPicture.colorFilter");
+  var cacheColorFilter$ = dart.privateName(svg, "SvgPicture.cacheColorFilter");
+  var _name = dart.privateName(box_fit, "_name");
+  var Alignment_y = dart.privateName(alignment, "Alignment.y");
+  var Alignment_x = dart.privateName(alignment, "Alignment.x");
+  var _name$ = dart.privateName(ui, "_name");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
+  var LimitedBox_maxHeight = dart.privateName(basic, "LimitedBox.maxHeight");
+  var LimitedBox_maxWidth = dart.privateName(basic, "LimitedBox.maxWidth");
+  svg.SvgPicture = class SvgPicture extends framework.StatefulWidget {
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get fit() {
+      return this[fit$];
+    }
+    set fit(value) {
+      super.fit = value;
+    }
+    get alignment() {
+      return this[alignment$];
+    }
+    set alignment(value) {
+      super.alignment = value;
+    }
+    get pictureProvider() {
+      return this[pictureProvider$];
+    }
+    set pictureProvider(value) {
+      super.pictureProvider = value;
+    }
+    get placeholderBuilder() {
+      return this[placeholderBuilder$];
+    }
+    set placeholderBuilder(value) {
+      super.placeholderBuilder = value;
+    }
+    get matchTextDirection() {
+      return this[matchTextDirection$];
+    }
+    set matchTextDirection(value) {
+      super.matchTextDirection = value;
+    }
+    get allowDrawingOutsideViewBox() {
+      return this[allowDrawingOutsideViewBox$];
+    }
+    set allowDrawingOutsideViewBox(value) {
+      super.allowDrawingOutsideViewBox = value;
+    }
+    get semanticsLabel() {
+      return this[semanticsLabel$];
+    }
+    set semanticsLabel(value) {
+      super.semanticsLabel = value;
+    }
+    get excludeFromSemantics() {
+      return this[excludeFromSemantics$];
+    }
+    set excludeFromSemantics(value) {
+      super.excludeFromSemantics = value;
+    }
+    get clipBehavior() {
+      return this[clipBehavior$];
+    }
+    set clipBehavior(value) {
+      super.clipBehavior = value;
+    }
+    get colorFilter() {
+      return this[colorFilter$];
+    }
+    set colorFilter(value) {
+      super.colorFilter = value;
+    }
+    get cacheColorFilter() {
+      return this[cacheColorFilter$];
+    }
+    set cacheColorFilter(value) {
+      super.cacheColorFilter = value;
+    }
+    static _getColorFilter(color, colorBlendMode) {
+      if (colorBlendMode == null) dart.nullFailed(I[0], 560, 63, "colorBlendMode");
+      return color == null ? null : new _engine._CkBlendModeColorFilter.new(color, colorBlendMode);
+    }
+    createState() {
+      return new svg._SvgPictureState.new();
+    }
+  };
+  (svg.SvgPicture.new = function(pictureProvider, opts) {
+    if (pictureProvider == null) dart.nullFailed(I[0], 212, 10, "pictureProvider");
+    let key = opts && 'key' in opts ? opts.key : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let fit = opts && 'fit' in opts ? opts.fit : C[0] || CT.C0;
+    if (fit == null) dart.nullFailed(I[0], 216, 10, "fit");
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[1] || CT.C1;
+    if (alignment == null) dart.nullFailed(I[0], 217, 10, "alignment");
+    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : false;
+    if (matchTextDirection == null) dart.nullFailed(I[0], 218, 10, "matchTextDirection");
+    let allowDrawingOutsideViewBox = opts && 'allowDrawingOutsideViewBox' in opts ? opts.allowDrawingOutsideViewBox : false;
+    if (allowDrawingOutsideViewBox == null) dart.nullFailed(I[0], 219, 10, "allowDrawingOutsideViewBox");
+    let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
+    let excludeFromSemantics = opts && 'excludeFromSemantics' in opts ? opts.excludeFromSemantics : false;
+    if (excludeFromSemantics == null) dart.nullFailed(I[0], 222, 10, "excludeFromSemantics");
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[2] || CT.C2;
+    if (clipBehavior == null) dart.nullFailed(I[0], 223, 10, "clipBehavior");
+    let colorFilter = opts && 'colorFilter' in opts ? opts.colorFilter : null;
+    let cacheColorFilter = opts && 'cacheColorFilter' in opts ? opts.cacheColorFilter : false;
+    if (cacheColorFilter == null) dart.nullFailed(I[0], 225, 10, "cacheColorFilter");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[pictureProvider$] = pictureProvider;
+    this[width$] = width;
+    this[height$] = height;
+    this[fit$] = fit;
+    this[alignment$] = alignment;
+    this[matchTextDirection$] = matchTextDirection;
+    this[allowDrawingOutsideViewBox$] = allowDrawingOutsideViewBox;
+    this[placeholderBuilder$] = placeholderBuilder;
+    this[semanticsLabel$] = semanticsLabel;
+    this[excludeFromSemantics$] = excludeFromSemantics;
+    this[clipBehavior$] = clipBehavior;
+    this[colorFilter$] = colorFilter;
+    this[cacheColorFilter$] = cacheColorFilter;
+    svg.SvgPicture.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = svg.SvgPicture.prototype;
+  (svg.SvgPicture.asset = function(assetName, opts) {
+    let t0;
+    if (assetName == null) dart.nullFailed(I[0], 306, 12, "assetName");
+    let key = opts && 'key' in opts ? opts.key : null;
+    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : false;
+    if (matchTextDirection == null) dart.nullFailed(I[0], 308, 10, "matchTextDirection");
+    let bundle = opts && 'bundle' in opts ? opts.bundle : null;
+    let $package = opts && 'package' in opts ? opts.package : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let fit = opts && 'fit' in opts ? opts.fit : C[0] || CT.C0;
+    if (fit == null) dart.nullFailed(I[0], 313, 10, "fit");
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[1] || CT.C1;
+    if (alignment == null) dart.nullFailed(I[0], 314, 10, "alignment");
+    let allowDrawingOutsideViewBox = opts && 'allowDrawingOutsideViewBox' in opts ? opts.allowDrawingOutsideViewBox : false;
+    if (allowDrawingOutsideViewBox == null) dart.nullFailed(I[0], 315, 10, "allowDrawingOutsideViewBox");
+    let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : C[3] || CT.C3;
+    if (colorBlendMode == null) dart.nullFailed(I[0], 318, 15, "colorBlendMode");
+    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
+    let excludeFromSemantics = opts && 'excludeFromSemantics' in opts ? opts.excludeFromSemantics : false;
+    if (excludeFromSemantics == null) dart.nullFailed(I[0], 320, 10, "excludeFromSemantics");
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[2] || CT.C2;
+    if (clipBehavior == null) dart.nullFailed(I[0], 321, 10, "clipBehavior");
+    let cacheColorFilter = opts && 'cacheColorFilter' in opts ? opts.cacheColorFilter : false;
+    if (cacheColorFilter == null) dart.nullFailed(I[0], 322, 10, "cacheColorFilter");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[matchTextDirection$] = matchTextDirection;
+    this[width$] = width;
+    this[height$] = height;
+    this[fit$] = fit;
+    this[alignment$] = alignment;
+    this[allowDrawingOutsideViewBox$] = allowDrawingOutsideViewBox;
+    this[placeholderBuilder$] = placeholderBuilder;
+    this[semanticsLabel$] = semanticsLabel;
+    this[excludeFromSemantics$] = excludeFromSemantics;
+    this[clipBehavior$] = clipBehavior;
+    this[cacheColorFilter$] = cacheColorFilter;
+    this[pictureProvider$] = new picture_provider.ExactAssetPicture.new(allowDrawingOutsideViewBox === true ? svg.SvgPicture.svgStringDecoderOutsideViewBox : svg.SvgPicture.svgStringDecoder, assetName, {bundle: bundle, package: $package, colorFilter: dart.test((t0 = svg.svg.cacheColorFilterOverride, t0 == null ? cacheColorFilter : t0)) ? svg.SvgPicture._getColorFilter(color, colorBlendMode) : null});
+    this[colorFilter$] = svg.SvgPicture._getColorFilter(color, colorBlendMode);
+    svg.SvgPicture.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = svg.SvgPicture.prototype;
+  (svg.SvgPicture.network = function(url, opts) {
+    let t0;
+    if (url == null) dart.nullFailed(I[0], 367, 12, "url");
+    let key = opts && 'key' in opts ? opts.key : null;
+    let headers = opts && 'headers' in opts ? opts.headers : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let fit = opts && 'fit' in opts ? opts.fit : C[0] || CT.C0;
+    if (fit == null) dart.nullFailed(I[0], 372, 10, "fit");
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[1] || CT.C1;
+    if (alignment == null) dart.nullFailed(I[0], 373, 10, "alignment");
+    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : false;
+    if (matchTextDirection == null) dart.nullFailed(I[0], 374, 10, "matchTextDirection");
+    let allowDrawingOutsideViewBox = opts && 'allowDrawingOutsideViewBox' in opts ? opts.allowDrawingOutsideViewBox : false;
+    if (allowDrawingOutsideViewBox == null) dart.nullFailed(I[0], 375, 10, "allowDrawingOutsideViewBox");
+    let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : C[3] || CT.C3;
+    if (colorBlendMode == null) dart.nullFailed(I[0], 378, 15, "colorBlendMode");
+    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
+    let excludeFromSemantics = opts && 'excludeFromSemantics' in opts ? opts.excludeFromSemantics : false;
+    if (excludeFromSemantics == null) dart.nullFailed(I[0], 380, 10, "excludeFromSemantics");
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[2] || CT.C2;
+    if (clipBehavior == null) dart.nullFailed(I[0], 381, 10, "clipBehavior");
+    let cacheColorFilter = opts && 'cacheColorFilter' in opts ? opts.cacheColorFilter : false;
+    if (cacheColorFilter == null) dart.nullFailed(I[0], 382, 10, "cacheColorFilter");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[width$] = width;
+    this[height$] = height;
+    this[fit$] = fit;
+    this[alignment$] = alignment;
+    this[matchTextDirection$] = matchTextDirection;
+    this[allowDrawingOutsideViewBox$] = allowDrawingOutsideViewBox;
+    this[placeholderBuilder$] = placeholderBuilder;
+    this[semanticsLabel$] = semanticsLabel;
+    this[excludeFromSemantics$] = excludeFromSemantics;
+    this[clipBehavior$] = clipBehavior;
+    this[cacheColorFilter$] = cacheColorFilter;
+    this[pictureProvider$] = new picture_provider.NetworkPicture.new(allowDrawingOutsideViewBox === true ? svg.SvgPicture.svgByteDecoderOutsideViewBox : svg.SvgPicture.svgByteDecoder, url, {headers: headers, colorFilter: dart.test((t0 = svg.svg.cacheColorFilterOverride, t0 == null ? cacheColorFilter : t0)) ? svg.SvgPicture._getColorFilter(color, colorBlendMode) : null});
+    this[colorFilter$] = svg.SvgPicture._getColorFilter(color, colorBlendMode);
+    svg.SvgPicture.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = svg.SvgPicture.prototype;
+  (svg.SvgPicture.file = function(file, opts) {
+    let t0;
+    if (file == null) dart.nullFailed(I[0], 424, 10, "file");
+    let key = opts && 'key' in opts ? opts.key : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let fit = opts && 'fit' in opts ? opts.fit : C[0] || CT.C0;
+    if (fit == null) dart.nullFailed(I[0], 428, 10, "fit");
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[1] || CT.C1;
+    if (alignment == null) dart.nullFailed(I[0], 429, 10, "alignment");
+    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : false;
+    if (matchTextDirection == null) dart.nullFailed(I[0], 430, 10, "matchTextDirection");
+    let allowDrawingOutsideViewBox = opts && 'allowDrawingOutsideViewBox' in opts ? opts.allowDrawingOutsideViewBox : false;
+    if (allowDrawingOutsideViewBox == null) dart.nullFailed(I[0], 431, 10, "allowDrawingOutsideViewBox");
+    let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : C[3] || CT.C3;
+    if (colorBlendMode == null) dart.nullFailed(I[0], 434, 15, "colorBlendMode");
+    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
+    let excludeFromSemantics = opts && 'excludeFromSemantics' in opts ? opts.excludeFromSemantics : false;
+    if (excludeFromSemantics == null) dart.nullFailed(I[0], 436, 10, "excludeFromSemantics");
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[2] || CT.C2;
+    if (clipBehavior == null) dart.nullFailed(I[0], 437, 10, "clipBehavior");
+    let cacheColorFilter = opts && 'cacheColorFilter' in opts ? opts.cacheColorFilter : false;
+    if (cacheColorFilter == null) dart.nullFailed(I[0], 438, 10, "cacheColorFilter");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[width$] = width;
+    this[height$] = height;
+    this[fit$] = fit;
+    this[alignment$] = alignment;
+    this[matchTextDirection$] = matchTextDirection;
+    this[allowDrawingOutsideViewBox$] = allowDrawingOutsideViewBox;
+    this[placeholderBuilder$] = placeholderBuilder;
+    this[semanticsLabel$] = semanticsLabel;
+    this[excludeFromSemantics$] = excludeFromSemantics;
+    this[clipBehavior$] = clipBehavior;
+    this[cacheColorFilter$] = cacheColorFilter;
+    this[pictureProvider$] = new picture_provider.FilePicture.new(allowDrawingOutsideViewBox === true ? svg.SvgPicture.svgByteDecoderOutsideViewBox : svg.SvgPicture.svgByteDecoder, file, {colorFilter: dart.test((t0 = svg.svg.cacheColorFilterOverride, t0 == null ? cacheColorFilter : t0)) ? svg.SvgPicture._getColorFilter(color, colorBlendMode) : null});
+    this[colorFilter$] = svg.SvgPicture._getColorFilter(color, colorBlendMode);
+    svg.SvgPicture.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = svg.SvgPicture.prototype;
+  (svg.SvgPicture.memory = function(bytes, opts) {
+    let t0;
+    if (bytes == null) dart.nullFailed(I[0], 476, 15, "bytes");
+    let key = opts && 'key' in opts ? opts.key : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let fit = opts && 'fit' in opts ? opts.fit : C[0] || CT.C0;
+    if (fit == null) dart.nullFailed(I[0], 480, 10, "fit");
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[1] || CT.C1;
+    if (alignment == null) dart.nullFailed(I[0], 481, 10, "alignment");
+    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : false;
+    if (matchTextDirection == null) dart.nullFailed(I[0], 482, 10, "matchTextDirection");
+    let allowDrawingOutsideViewBox = opts && 'allowDrawingOutsideViewBox' in opts ? opts.allowDrawingOutsideViewBox : false;
+    if (allowDrawingOutsideViewBox == null) dart.nullFailed(I[0], 483, 10, "allowDrawingOutsideViewBox");
+    let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : C[3] || CT.C3;
+    if (colorBlendMode == null) dart.nullFailed(I[0], 486, 15, "colorBlendMode");
+    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
+    let excludeFromSemantics = opts && 'excludeFromSemantics' in opts ? opts.excludeFromSemantics : false;
+    if (excludeFromSemantics == null) dart.nullFailed(I[0], 488, 10, "excludeFromSemantics");
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[2] || CT.C2;
+    if (clipBehavior == null) dart.nullFailed(I[0], 489, 10, "clipBehavior");
+    let cacheColorFilter = opts && 'cacheColorFilter' in opts ? opts.cacheColorFilter : false;
+    if (cacheColorFilter == null) dart.nullFailed(I[0], 490, 10, "cacheColorFilter");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[width$] = width;
+    this[height$] = height;
+    this[fit$] = fit;
+    this[alignment$] = alignment;
+    this[matchTextDirection$] = matchTextDirection;
+    this[allowDrawingOutsideViewBox$] = allowDrawingOutsideViewBox;
+    this[placeholderBuilder$] = placeholderBuilder;
+    this[semanticsLabel$] = semanticsLabel;
+    this[excludeFromSemantics$] = excludeFromSemantics;
+    this[clipBehavior$] = clipBehavior;
+    this[cacheColorFilter$] = cacheColorFilter;
+    this[pictureProvider$] = new picture_provider.MemoryPicture.new(allowDrawingOutsideViewBox === true ? svg.SvgPicture.svgByteDecoderOutsideViewBox : svg.SvgPicture.svgByteDecoder, bytes, {colorFilter: dart.test((t0 = svg.svg.cacheColorFilterOverride, t0 == null ? cacheColorFilter : t0)) ? svg.SvgPicture._getColorFilter(color, colorBlendMode) : null});
+    this[colorFilter$] = svg.SvgPicture._getColorFilter(color, colorBlendMode);
+    svg.SvgPicture.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = svg.SvgPicture.prototype;
+  (svg.SvgPicture.string = function(bytes, opts) {
+    let t0;
+    if (bytes == null) dart.nullFailed(I[0], 528, 12, "bytes");
+    let key = opts && 'key' in opts ? opts.key : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let fit = opts && 'fit' in opts ? opts.fit : C[0] || CT.C0;
+    if (fit == null) dart.nullFailed(I[0], 532, 10, "fit");
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[1] || CT.C1;
+    if (alignment == null) dart.nullFailed(I[0], 533, 10, "alignment");
+    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : false;
+    if (matchTextDirection == null) dart.nullFailed(I[0], 534, 10, "matchTextDirection");
+    let allowDrawingOutsideViewBox = opts && 'allowDrawingOutsideViewBox' in opts ? opts.allowDrawingOutsideViewBox : false;
+    if (allowDrawingOutsideViewBox == null) dart.nullFailed(I[0], 535, 10, "allowDrawingOutsideViewBox");
+    let placeholderBuilder = opts && 'placeholderBuilder' in opts ? opts.placeholderBuilder : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : C[3] || CT.C3;
+    if (colorBlendMode == null) dart.nullFailed(I[0], 538, 15, "colorBlendMode");
+    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
+    let excludeFromSemantics = opts && 'excludeFromSemantics' in opts ? opts.excludeFromSemantics : false;
+    if (excludeFromSemantics == null) dart.nullFailed(I[0], 540, 10, "excludeFromSemantics");
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[2] || CT.C2;
+    if (clipBehavior == null) dart.nullFailed(I[0], 541, 10, "clipBehavior");
+    let cacheColorFilter = opts && 'cacheColorFilter' in opts ? opts.cacheColorFilter : false;
+    if (cacheColorFilter == null) dart.nullFailed(I[0], 542, 10, "cacheColorFilter");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[width$] = width;
+    this[height$] = height;
+    this[fit$] = fit;
+    this[alignment$] = alignment;
+    this[matchTextDirection$] = matchTextDirection;
+    this[allowDrawingOutsideViewBox$] = allowDrawingOutsideViewBox;
+    this[placeholderBuilder$] = placeholderBuilder;
+    this[semanticsLabel$] = semanticsLabel;
+    this[excludeFromSemantics$] = excludeFromSemantics;
+    this[clipBehavior$] = clipBehavior;
+    this[cacheColorFilter$] = cacheColorFilter;
+    this[pictureProvider$] = new picture_provider.StringPicture.new(allowDrawingOutsideViewBox === true ? svg.SvgPicture.svgStringDecoderOutsideViewBox : svg.SvgPicture.svgStringDecoder, bytes, {colorFilter: dart.test((t0 = svg.svg.cacheColorFilterOverride, t0 == null ? cacheColorFilter : t0)) ? svg.SvgPicture._getColorFilter(color, colorBlendMode) : null});
+    this[colorFilter$] = svg.SvgPicture._getColorFilter(color, colorBlendMode);
+    svg.SvgPicture.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = svg.SvgPicture.prototype;
+  dart.addTypeTests(svg.SvgPicture);
+  dart.addTypeCaches(svg.SvgPicture);
+  dart.setMethodSignature(svg.SvgPicture, () => ({
+    __proto__: dart.getMethods(svg.SvgPicture.__proto__),
+    createState: dart.fnType(framework.State$(svg.SvgPicture), [])
   }));
-  dart.defineExtensionMethods(characters_impl.StringCharacters, [
-    'whereType',
-    'join',
-    'lastWhere',
-    'elementAt',
-    'contains',
-    'skip',
-    'take',
-    'skipWhile',
-    'takeWhile',
-    'where',
-    '_equals',
-    'toString'
-  ]);
-  dart.defineExtensionAccessors(characters_impl.StringCharacters, [
-    'iterator',
-    'first',
-    'last',
-    'single',
-    'isEmpty',
-    'isNotEmpty',
-    'length',
-    'hashCode'
-  ]);
-  dart.defineLazy(characters_impl.StringCharacters, {
-    /*characters_impl.StringCharacters._empty*/get _empty() {
-      return C[0] || CT.C0;
+  dart.setLibraryUri(svg.SvgPicture, I[1]);
+  dart.setFieldSignature(svg.SvgPicture, () => ({
+    __proto__: dart.getFields(svg.SvgPicture.__proto__),
+    width: dart.finalFieldType(dart.nullable(core.double)),
+    height: dart.finalFieldType(dart.nullable(core.double)),
+    fit: dart.finalFieldType(box_fit.BoxFit),
+    alignment: dart.finalFieldType(alignment.AlignmentGeometry),
+    pictureProvider: dart.finalFieldType(picture_provider.PictureProvider),
+    placeholderBuilder: dart.finalFieldType(dart.nullable(dart.fnType(framework.Widget, [framework.BuildContext]))),
+    matchTextDirection: dart.finalFieldType(core.bool),
+    allowDrawingOutsideViewBox: dart.finalFieldType(core.bool),
+    semanticsLabel: dart.finalFieldType(dart.nullable(core.String)),
+    excludeFromSemantics: dart.finalFieldType(core.bool),
+    clipBehavior: dart.finalFieldType(ui.Clip),
+    colorFilter: dart.finalFieldType(dart.nullable(ui.ColorFilter)),
+    cacheColorFilter: dart.finalFieldType(core.bool)
+  }));
+  dart.defineLazy(svg.SvgPicture, {
+    /*svg.SvgPicture.defaultPlaceholderBuilder*/get defaultPlaceholderBuilder() {
+      return dart.fn(ctx => {
+        if (ctx == null) dart.nullFailed(I[0], 558, 21, "ctx");
+        return C[4] || CT.C4;
+      }, T.BuildContextToLimitedBox());
+    },
+    set defaultPlaceholderBuilder(_) {},
+    /*svg.SvgPicture.svgByteDecoder*/get svgByteDecoder() {
+      return dart.fn((bytes, colorFilter, key) => {
+        if (bytes == null) dart.nullFailed(I[0], 565, 18, "bytes");
+        if (key == null) dart.nullFailed(I[0], 565, 58, "key");
+        return svg.svg.svgPictureDecoder(bytes, false, colorFilter, key);
+      }, T.Uint8ListAndColorFilterNAndStringToFutureOfPictureInfo());
+    },
+    /*svg.SvgPicture.svgStringDecoder*/get svgStringDecoder() {
+      return dart.fn((data, colorFilter, key) => {
+        if (data == null) dart.nullFailed(I[0], 570, 15, "data");
+        if (key == null) dart.nullFailed(I[0], 570, 54, "key");
+        return svg.svg.svgPictureStringDecoder(data, false, colorFilter, key);
+      }, T.StringAndColorFilterNAndStringToFutureOfPictureInfo());
+    },
+    /*svg.SvgPicture.svgByteDecoderOutsideViewBox*/get svgByteDecoderOutsideViewBox() {
+      return dart.fn((bytes, colorFilter, key) => {
+        if (bytes == null) dart.nullFailed(I[0], 575, 18, "bytes");
+        if (key == null) dart.nullFailed(I[0], 575, 58, "key");
+        return svg.svg.svgPictureDecoder(bytes, true, colorFilter, key);
+      }, T.Uint8ListAndColorFilterNAndStringToFutureOfPictureInfo());
+    },
+    /*svg.SvgPicture.svgStringDecoderOutsideViewBox*/get svgStringDecoderOutsideViewBox() {
+      return dart.fn((data, colorFilter, key) => {
+        if (data == null) dart.nullFailed(I[0], 580, 15, "data");
+        if (key == null) dart.nullFailed(I[0], 580, 54, "key");
+        return svg.svg.svgPictureStringDecoder(data, true, colorFilter, key);
+      }, T.StringAndColorFilterNAndStringToFutureOfPictureInfo());
     }
   }, false);
-  var _currentCache = dart.privateName(characters_impl, "_currentCache");
-  var _string$ = dart.privateName(characters_impl, "_string");
-  var _start$ = dart.privateName(characters_impl, "_start");
-  var _end$ = dart.privateName(characters_impl, "_end");
-  var _move = dart.privateName(characters_impl, "_move");
-  var _breaksFromEnd = dart.privateName(characters_impl, "_breaksFromEnd");
-  var _backBreaksFromStart = dart.privateName(characters_impl, "_backBreaksFromStart");
-  var _advanceEnd = dart.privateName(characters_impl, "_advanceEnd");
-  var _moveNextPattern = dart.privateName(characters_impl, "_moveNextPattern");
-  var _retractStart = dart.privateName(characters_impl, "_retractStart");
-  var _movePreviousPattern = dart.privateName(characters_impl, "_movePreviousPattern");
-  var _retractStartUntil = dart.privateName(characters_impl, "_retractStartUntil");
-  var _advanceEndUntil = dart.privateName(characters_impl, "_advanceEndUntil");
-  var _startsWith = dart.privateName(characters_impl, "_startsWith");
-  var _endsWith = dart.privateName(characters_impl, "_endsWith");
-  characters_impl.StringCharacterRange = class StringCharacterRange extends core.Object {
-    static at(string, startIndex, endIndex = null) {
-      let t0;
-      if (string == null) dart.nullFailed(I[0], 447, 42, "string");
-      if (startIndex == null) dart.nullFailed(I[0], 447, 54, "startIndex");
-      core.RangeError.checkValidRange(startIndex, endIndex, string.length, "startIndex", "endIndex");
-      return characters_impl.StringCharacterRange._expandRange(string, startIndex, (t0 = endIndex, t0 == null ? startIndex : t0));
-    }
-    [_move](start, end) {
-      if (start == null) dart.nullFailed(I[0], 459, 18, "start");
-      if (end == null) dart.nullFailed(I[0], 459, 29, "end");
-      this[_start$] = start;
-      this[_end$] = end;
-      this[_currentCache] = null;
-    }
-    [_breaksFromEnd]() {
-      return new breaks$.Breaks.new(this[_string$], this[_end$], this[_string$].length, 176);
-    }
-    [_backBreaksFromStart]() {
-      return new breaks$.BackBreaks.new(this[_string$], this[_start$], 0, 176);
-    }
-    get current() {
-      let t0;
-      t0 = this[_currentCache];
-      return t0 == null ? this[_currentCache] = this[_string$][$substring](this[_start$], this[_end$]) : t0;
-    }
-    moveNext(count = 1) {
-      if (count == null) dart.nullFailed(I[0], 485, 22, "count");
-      return this[_advanceEnd](count, this[_end$]);
-    }
-    [_advanceEnd](count, newStart) {
-      if (count == null) dart.nullFailed(I[0], 487, 24, "count");
-      if (newStart == null) dart.nullFailed(I[0], 487, 35, "newStart");
-      if (dart.notNull(count) > 0) {
-        let state = 176;
-        let index = this[_end$];
-        while (dart.notNull(index) < this[_string$].length) {
-          let char = this[_string$][$codeUnitAt](index);
-          let category = 2;
-          let nextIndex = dart.notNull(index) + 1;
-          if ((char & 64512) !== 55296) {
-            category = table.low(char);
-          } else if (nextIndex < this[_string$].length) {
-            let nextChar = this[_string$][$codeUnitAt](nextIndex);
-            if ((nextChar & 64512) === 56320) {
-              nextIndex = nextIndex + 1;
-              category = table.high(char, nextChar);
-            }
-          }
-          state = table.move(state, category);
-          if ((dart.notNull(state) & 1) === 0 && (count = dart.notNull(count) - 1) === 0) {
-            this[_move](newStart, index);
-            return true;
-          }
-          index = nextIndex;
-        }
-        this[_move](newStart, this[_string$].length);
-        return count === 1 && state !== 176;
-      } else if (count === 0) {
-        this[_move](newStart, this[_end$]);
-        return true;
+  var _picture = dart.privateName(svg, "_picture");
+  var _pictureStream = dart.privateName(svg, "_pictureStream");
+  var _isListeningToStream = dart.privateName(svg, "_isListeningToStream");
+  var _resolveImage = dart.privateName(svg, "_resolveImage");
+  var _listenToStream = dart.privateName(svg, "_listenToStream");
+  var _stopListeningToStream = dart.privateName(svg, "_stopListeningToStream");
+  var _updateSourceStream = dart.privateName(svg, "_updateSourceStream");
+  var _handleImageChanged = dart.privateName(svg, "_handleImageChanged");
+  var _getDefaultPlaceholder = dart.privateName(svg, "_getDefaultPlaceholder");
+  svg._SvgPictureState = class _SvgPictureState extends framework.State$(svg.SvgPicture) {
+    didChangeDependencies() {
+      this[_resolveImage]();
+      if (dart.test(ticker_provider.TickerMode.of(this.context))) {
+        this[_listenToStream]();
       } else {
-        dart.throw(new core.RangeError.range(count, 0, null, "count"));
+        this[_stopListeningToStream]();
+      }
+      super.didChangeDependencies();
+    }
+    didUpdateWidget(oldWidget) {
+      svg.SvgPicture.as(oldWidget);
+      if (oldWidget == null) dart.nullFailed(I[0], 689, 35, "oldWidget");
+      super.didUpdateWidget(oldWidget);
+      if (!dart.equals(this.widget.pictureProvider, oldWidget.pictureProvider)) {
+        this[_resolveImage]();
       }
     }
-    [_moveNextPattern](patternString, start, end) {
-      if (patternString == null) dart.nullFailed(I[0], 521, 32, "patternString");
-      if (start == null) dart.nullFailed(I[0], 521, 51, "start");
-      if (end == null) dart.nullFailed(I[0], 521, 62, "end");
-      let offset = characters_impl._indexOf(this[_string$], patternString, start, end);
-      if (dart.notNull(offset) >= 0) {
-        this[_move](offset, dart.notNull(offset) + patternString.length);
-        return true;
+    reassemble() {
+      this[_resolveImage]();
+      super.reassemble();
+    }
+    [_resolveImage]() {
+      let newStream = this.widget.pictureProvider.resolve(picture_provider.createLocalPictureConfiguration(this.context));
+      if (!(newStream != null)) dart.assertFailed(null, I[0], 705, 12, "newStream != null");
+      this[_updateSourceStream](newStream);
+    }
+    [_handleImageChanged](imageInfo, synchronousCall) {
+      if (synchronousCall == null) dart.nullFailed(I[0], 709, 57, "synchronousCall");
+      this.setState(dart.fn(() => {
+        this[_picture] = imageInfo;
+      }, T.VoidTovoid()));
+    }
+    [_updateSourceStream](newStream) {
+      let t0;
+      if (newStream == null) dart.nullFailed(I[0], 718, 42, "newStream");
+      if (dart.equals((t0 = this[_pictureStream], t0 == null ? null : t0.key), newStream.key)) {
+        return;
       }
-      return false;
+      if (dart.test(this[_isListeningToStream])) dart.nullCheck(this[_pictureStream]).removeListener(dart.bind(this, _handleImageChanged));
+      this[_pictureStream] = newStream;
+      if (dart.test(this[_isListeningToStream])) {
+        dart.nullCheck(this[_pictureStream]).addListener(dart.bind(this, _handleImageChanged));
+      }
     }
-    moveBack(count = 1) {
-      if (count == null) dart.nullFailed(I[0], 531, 22, "count");
-      return this[_retractStart](count, this[_start$]);
+    [_listenToStream]() {
+      if (dart.test(this[_isListeningToStream])) {
+        return;
+      }
+      dart.nullCheck(this[_pictureStream]).addListener(dart.bind(this, _handleImageChanged));
+      this[_isListeningToStream] = true;
     }
-    [_retractStart](count, newEnd) {
-      if (count == null) dart.nullFailed(I[0], 533, 26, "count");
-      if (newEnd == null) dart.nullFailed(I[0], 533, 37, "newEnd");
-      core.RangeError.checkNotNegative(count, "count");
-      let breaks = this[_backBreaksFromStart]();
-      let start = this[_start$];
-      while (dart.notNull(count) > 0) {
-        let nextBreak = breaks.nextBreak();
-        if (dart.notNull(nextBreak) >= 0) {
-          start = nextBreak;
-        } else {
-          break;
+    [_stopListeningToStream]() {
+      if (!dart.test(this[_isListeningToStream])) {
+        return;
+      }
+      dart.nullCheck(this[_pictureStream]).removeListener(dart.bind(this, _handleImageChanged));
+      this[_isListeningToStream] = false;
+    }
+    dispose() {
+      if (!(this[_pictureStream] != null)) dart.assertFailed(null, I[0], 750, 12, "_pictureStream != null");
+      this[_stopListeningToStream]();
+      super.dispose();
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 756, 29, "context");
+      let child = null;
+      let child$35isSet = false;
+      function child$35get() {
+        return child$35isSet ? child : dart.throw(new _internal.LateError.localNI("child"));
+      }
+      dart.fn(child$35get, T.VoidToWidget());
+      function child$35set(t3) {
+        if (t3 == null) dart.nullFailed(I[0], 757, 17, "null");
+        child$35isSet = true;
+        return child = t3;
+      }
+      dart.fn(child$35set, T.WidgetTodynamic());
+      if (this[_picture] != null) {
+        let viewport = ui.Offset.zero['&'](dart.nullCheck(this[_picture]).viewport.size);
+        let width = this.widget.width;
+        let height = this.widget.height;
+        if (width == null && height == null) {
+          width = viewport.width;
+          height = viewport.height;
+        } else if (height != null) {
+          width = dart.notNull(height) / dart.notNull(viewport.height) * dart.notNull(viewport.width);
+        } else if (width != null) {
+          height = dart.notNull(width) / dart.notNull(viewport.width) * dart.notNull(viewport.height);
         }
-        count = dart.notNull(count) - 1;
-      }
-      this[_move](start, newEnd);
-      return count === 0;
-    }
-    [_movePreviousPattern](patternString, start, end) {
-      if (patternString == null) dart.nullFailed(I[0], 550, 36, "patternString");
-      if (start == null) dart.nullFailed(I[0], 550, 55, "start");
-      if (end == null) dart.nullFailed(I[0], 550, 66, "end");
-      let offset = characters_impl._lastIndexOf(this[_string$], patternString, start, end);
-      if (dart.notNull(offset) >= 0) {
-        this[_move](offset, dart.notNull(offset) + patternString.length);
-        return true;
-      }
-      return false;
-    }
-    get utf16CodeUnits() {
-      return this[_string$][$codeUnits][$getRange](this[_start$], this[_end$]);
-    }
-    get runes() {
-      return new core.Runes.new(this.current);
-    }
-    copy() {
-      return new characters_impl.StringCharacterRange.__(this[_string$], this[_start$], this[_end$]);
-    }
-    collapseToEnd() {
-      this[_move](this[_end$], this[_end$]);
-    }
-    collapseToStart() {
-      this[_move](this[_start$], this[_start$]);
-    }
-    dropFirst(count = 1) {
-      if (count == null) dart.nullFailed(I[0], 581, 23, "count");
-      core.RangeError.checkNotNegative(count, "count");
-      if (this[_start$] == this[_end$]) return count === 0;
-      let breaks = new breaks$.Breaks.new(this[_string$], this[_start$], this[_end$], 176);
-      while (dart.notNull(count) > 0) {
-        let nextBreak = breaks.nextBreak();
-        if (dart.notNull(nextBreak) >= 0) {
-          this[_start$] = nextBreak;
-          this[_currentCache] = null;
-          count = dart.notNull(count) - 1;
-        } else {
-          return false;
+        child$35set(new basic.SizedBox.new({width: width, height: height, child: new basic.FittedBox.new({fit: this.widget.fit, alignment: this.widget.alignment, clipBehavior: this.widget.clipBehavior, child: new basic.SizedBox.fromSize({size: viewport.size, child: new render_picture.RawPicture.new(this[_picture], {matchTextDirection: this.widget.matchTextDirection, allowDrawingOutsideViewBox: this.widget.allowDrawingOutsideViewBox, $creationLocationd_0dea112b090073317d4: C[7] || CT.C7}), $creationLocationd_0dea112b090073317d4: C[12] || CT.C12}), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16}), $creationLocationd_0dea112b090073317d4: C[22] || CT.C22}));
+        if (this.widget.pictureProvider.colorFilter == null && this.widget.colorFilter != null) {
+          child$35set(new unbounded_color_filtered.UnboundedColorFiltered.new({colorFilter: this.widget.colorFilter, child: child$35get(), $creationLocationd_0dea112b090073317d4: C[27] || CT.C27}));
         }
-      }
-      return true;
-    }
-    dropTo(target) {
-      if (target == null) dart.nullFailed(I[0], 599, 26, "target");
-      if (this[_start$] == this[_end$]) return target[$isEmpty];
-      let targetString = target.string;
-      let index = characters_impl._indexOf(this[_string$], targetString, this[_start$], this[_end$]);
-      if (dart.notNull(index) >= 0) {
-        this[_move](dart.notNull(index) + targetString.length, this[_end$]);
-        return true;
-      }
-      return false;
-    }
-    dropUntil(target) {
-      if (target == null) dart.nullFailed(I[0], 611, 29, "target");
-      if (this[_start$] == this[_end$]) return target[$isEmpty];
-      let targetString = target.string;
-      let index = characters_impl._indexOf(this[_string$], targetString, this[_start$], this[_end$]);
-      if (dart.notNull(index) >= 0) {
-        this[_move](index, this[_end$]);
-        return true;
-      }
-      this[_move](this[_end$], this[_end$]);
-      return false;
-    }
-    dropWhile(test) {
-      if (test == null) dart.nullFailed(I[0], 624, 40, "test");
-      if (this[_start$] == this[_end$]) return;
-      let breaks = new breaks$.Breaks.new(this[_string$], this[_start$], this[_end$], 176);
-      let cursor = this[_start$];
-      let next = 0;
-      while (dart.notNull(next = breaks.nextBreak()) >= 0) {
-        if (!dart.test(test(this[_string$][$substring](cursor, next)))) {
-          break;
-        }
-        cursor = next;
-      }
-      this[_move](cursor, this[_end$]);
-    }
-    dropLast(count = 1) {
-      if (count == null) dart.nullFailed(I[0], 639, 22, "count");
-      core.RangeError.checkNotNegative(count, "count");
-      let breaks = new breaks$.BackBreaks.new(this[_string$], this[_end$], this[_start$], 176);
-      while (dart.notNull(count) > 0) {
-        let nextBreak = breaks.nextBreak();
-        if (dart.notNull(nextBreak) >= 0) {
-          this[_end$] = nextBreak;
-          this[_currentCache] = null;
-          count = dart.notNull(count) - 1;
-        } else {
-          return false;
-        }
-      }
-      return true;
-    }
-    dropBackTo(target) {
-      if (target == null) dart.nullFailed(I[0], 656, 30, "target");
-      if (this[_start$] == this[_end$]) return target[$isEmpty];
-      let targetString = target.string;
-      let index = characters_impl._lastIndexOf(this[_string$], targetString, this[_start$], this[_end$]);
-      if (dart.notNull(index) >= 0) {
-        this[_move](this[_start$], index);
-        return true;
-      }
-      return false;
-    }
-    dropBackUntil(target) {
-      if (target == null) dart.nullFailed(I[0], 668, 33, "target");
-      if (this[_start$] == this[_end$]) return target[$isEmpty];
-      let targetString = target.string;
-      let index = characters_impl._lastIndexOf(this[_string$], targetString, this[_start$], this[_end$]);
-      if (dart.notNull(index) >= 0) {
-        this[_move](this[_start$], dart.notNull(index) + targetString.length);
-        return true;
-      }
-      this[_move](this[_start$], this[_start$]);
-      return false;
-    }
-    dropBackWhile(test) {
-      if (test == null) dart.nullFailed(I[0], 681, 44, "test");
-      if (this[_start$] == this[_end$]) return;
-      let breaks = new breaks$.BackBreaks.new(this[_string$], this[_end$], this[_start$], 176);
-      let cursor = this[_end$];
-      let next = 0;
-      while (dart.notNull(next = breaks.nextBreak()) >= 0) {
-        if (!dart.test(test(this[_string$][$substring](next, cursor)))) {
-          break;
-        }
-        cursor = next;
-      }
-      this[_move](this[_start$], cursor);
-    }
-    expandNext(count = 1) {
-      if (count == null) dart.nullFailed(I[0], 696, 24, "count");
-      return this[_advanceEnd](count, this[_start$]);
-    }
-    expandTo(target) {
-      if (target == null) dart.nullFailed(I[0], 699, 28, "target");
-      let targetString = target.string;
-      let index = characters_impl._indexOf(this[_string$], targetString, this[_end$], this[_string$].length);
-      if (dart.notNull(index) >= 0) {
-        this[_move](this[_start$], dart.notNull(index) + targetString.length);
-        return true;
-      }
-      return false;
-    }
-    expandWhile(test) {
-      if (test == null) dart.nullFailed(I[0], 710, 52, "test");
-      let breaks = this[_breaksFromEnd]();
-      let cursor = this[_end$];
-      let next = 0;
-      while (dart.notNull(next = breaks.nextBreak()) >= 0) {
-        if (!dart.test(test(this[_string$][$substring](cursor, next)))) {
-          break;
-        }
-        cursor = next;
-      }
-      this[_move](this[_start$], cursor);
-    }
-    expandAll() {
-      this[_move](this[_start$], this[_string$].length);
-    }
-    expandBack(count = 1) {
-      if (count == null) dart.nullFailed(I[0], 729, 24, "count");
-      return this[_retractStart](count, this[_end$]);
-    }
-    expandBackTo(target) {
-      if (target == null) dart.nullFailed(I[0], 732, 32, "target");
-      let targetString = target.string;
-      let index = characters_impl._lastIndexOf(this[_string$], targetString, 0, this[_start$]);
-      if (dart.notNull(index) >= 0) {
-        this[_move](index, this[_end$]);
-        return true;
-      }
-      return false;
-    }
-    expandBackWhile(test) {
-      if (test == null) dart.nullFailed(I[0], 743, 56, "test");
-      let breaks = this[_backBreaksFromStart]();
-      let cursor = this[_start$];
-      let next = 0;
-      while (dart.notNull(next = breaks.nextBreak()) >= 0) {
-        if (!dart.test(test(this[_string$][$substring](next, cursor)))) {
-          this[_move](cursor, this[_end$]);
-          return;
-        }
-        cursor = next;
-      }
-      this[_move](0, this[_end$]);
-    }
-    expandBackUntil(target) {
-      if (target == null) dart.nullFailed(I[0], 758, 35, "target");
-      return this[_retractStartUntil](target.string, this[_end$]);
-    }
-    expandBackAll() {
-      this[_move](0, this[_end$]);
-    }
-    expandUntil(target) {
-      if (target == null) dart.nullFailed(I[0], 768, 31, "target");
-      return this[_advanceEndUntil](target.string, this[_start$]);
-    }
-    get isEmpty() {
-      return this[_start$] == this[_end$];
-    }
-    get isNotEmpty() {
-      return this[_start$] != this[_end$];
-    }
-    moveBackUntil(target) {
-      if (target == null) dart.nullFailed(I[0], 779, 33, "target");
-      let targetString = target.string;
-      return this[_retractStartUntil](targetString, this[_start$]);
-    }
-    [_retractStartUntil](targetString, newEnd) {
-      if (targetString == null) dart.nullFailed(I[0], 784, 34, "targetString");
-      if (newEnd == null) dart.nullFailed(I[0], 784, 52, "newEnd");
-      let index = characters_impl._lastIndexOf(this[_string$], targetString, 0, this[_start$]);
-      if (dart.notNull(index) >= 0) {
-        this[_move](dart.notNull(index) + targetString.length, newEnd);
-        return true;
-      }
-      this[_move](0, newEnd);
-      return false;
-    }
-    collapseToFirst(target) {
-      if (target == null) dart.nullFailed(I[0], 795, 35, "target");
-      return this[_moveNextPattern](target.string, this[_start$], this[_end$]);
-    }
-    collapseToLast(target) {
-      if (target == null) dart.nullFailed(I[0], 800, 34, "target");
-      return this[_movePreviousPattern](target.string, this[_start$], this[_end$]);
-    }
-    moveUntil(target) {
-      if (target == null) dart.nullFailed(I[0], 805, 29, "target");
-      let targetString = target.string;
-      return this[_advanceEndUntil](targetString, this[_end$]);
-    }
-    [_advanceEndUntil](targetString, newStart) {
-      if (targetString == null) dart.nullFailed(I[0], 810, 32, "targetString");
-      if (newStart == null) dart.nullFailed(I[0], 810, 50, "newStart");
-      let index = characters_impl._indexOf(this[_string$], targetString, this[_end$], this[_string$].length);
-      if (dart.notNull(index) >= 0) {
-        this[_move](newStart, index);
-        return true;
-      }
-      this[_move](newStart, this[_string$].length);
-      return false;
-    }
-    replaceFirst(pattern, replacement) {
-      if (pattern == null) dart.nullFailed(I[0], 821, 43, "pattern");
-      if (replacement == null) dart.nullFailed(I[0], 821, 63, "replacement");
-      let patternString = pattern.string;
-      let replacementString = replacement.string;
-      let replaced = null;
-      if (patternString[$isEmpty]) {
-        replaced = this[_string$][$replaceRange](this[_start$], this[_start$], replacementString);
       } else {
-        let index = characters_impl._indexOf(this[_string$], patternString, this[_start$], this[_end$]);
-        if (dart.notNull(index) >= 0) {
-          replaced = this[_string$][$replaceRange](index, dart.notNull(index) + patternString.length, replacementString);
-        } else {
-          return null;
-        }
+        child$35set(this.widget.placeholderBuilder == null ? this[_getDefaultPlaceholder](context, this.widget.width, this.widget.height) : dart.nullCheck(this.widget.placeholderBuilder)(context));
       }
-      let newEnd = replaced.length - this[_string$].length + dart.notNull(this[_end$]);
-      return characters_impl.StringCharacterRange._expandRange(replaced, this[_start$], newEnd);
-    }
-    replaceAll(pattern, replacement) {
-      let t0, t0$;
-      if (pattern == null) dart.nullFailed(I[0], 841, 41, "pattern");
-      if (replacement == null) dart.nullFailed(I[0], 841, 61, "replacement");
-      let patternString = pattern.string;
-      let replacementString = replacement.string;
-      if (patternString[$isEmpty]) {
-        let replaced = characters_impl._explodeReplace(this[_string$], this[_start$], this[_end$], replacementString, replacementString);
-        let newEnd = replaced.length - (this[_string$].length - dart.notNull(this[_end$]));
-        return characters_impl.StringCharacterRange._expandRange(replaced, this[_start$], newEnd);
+      if (!dart.test(this.widget.excludeFromSemantics)) {
+        child$35set(new basic.Semantics.new({container: this.widget.semanticsLabel != null, image: true, label: this.widget.semanticsLabel == null ? "" : this.widget.semanticsLabel, child: child$35get(), $creationLocationd_0dea112b090073317d4: C[31] || CT.C31}));
       }
-      if (this[_start$] == this[_end$]) return null;
-      let start = 0;
-      let cursor = this[_start$];
-      let buffer = null;
-      while (dart.notNull(cursor = characters_impl._indexOf(this[_string$], patternString, cursor, this[_end$])) >= 0) {
-        t0$ = (t0 = buffer, t0 == null ? buffer = new core.StringBuffer.new() : t0);
-        (() => {
-          t0$.write(this[_string$][$substring](start, cursor));
-          t0$.write(replacementString);
-          return t0$;
-        })();
-        cursor = dart.notNull(cursor) + patternString.length;
-        start = cursor;
+      return child$35get();
+    }
+    [_getDefaultPlaceholder](context, width, height) {
+      if (context == null) dart.nullFailed(I[0], 814, 20, "context");
+      if (width != null || height != null) {
+        return new basic.SizedBox.new({width: width, height: height, $creationLocationd_0dea112b090073317d4: C[37] || CT.C37});
       }
-      if (buffer == null) return null;
-      buffer.write(this[_string$][$substring](start));
-      let replaced = dart.toString(buffer);
-      let newEnd = replaced.length - (this[_string$].length - dart.notNull(this[_end$]));
-      return characters_impl.StringCharacterRange._expandRange(replaced, this[_start$], newEnd);
+      return svg.SvgPicture.defaultPlaceholderBuilder(context);
     }
-    replaceRange(replacement) {
-      if (replacement == null) dart.nullFailed(I[0], 869, 42, "replacement");
-      let replacementString = replacement.string;
-      let resultString = this[_string$][$replaceRange](this[_start$], this[_end$], replacementString);
-      return characters_impl.StringCharacterRange._expandRange(resultString, this[_start$], dart.notNull(this[_start$]) + replacementString.length);
-    }
-    static _expandRange(string, start, end) {
-      if (string == null) dart.nullFailed(I[0], 880, 51, "string");
-      if (start == null) dart.nullFailed(I[0], 880, 63, "start");
-      if (end == null) dart.nullFailed(I[0], 880, 74, "end");
-      start = breaks$.previousBreak(string, 0, string.length, start);
-      if (end != start) {
-        end = breaks$.nextBreak(string, 0, string.length, end);
-      }
-      return new characters_impl.StringCharacterRange.__(string, start, end);
-    }
-    get source() {
-      return new characters_impl.StringCharacters.new(this[_string$]);
-    }
-    startsWith(characters) {
-      if (characters == null) dart.nullFailed(I[0], 892, 30, "characters");
-      return this[_startsWith](this[_start$], this[_end$], characters.string);
-    }
-    endsWith(characters) {
-      if (characters == null) dart.nullFailed(I[0], 897, 28, "characters");
-      return this[_endsWith](this[_start$], this[_end$], characters.string);
-    }
-    isFollowedBy(characters) {
-      if (characters == null) dart.nullFailed(I[0], 902, 32, "characters");
-      return this[_startsWith](this[_end$], this[_string$].length, characters.string);
-    }
-    isPrecededBy(characters) {
-      if (characters == null) dart.nullFailed(I[0], 907, 32, "characters");
-      return this[_endsWith](0, this[_start$], characters.string);
-    }
-    [_endsWith](start, end, string) {
-      if (start == null) dart.nullFailed(I[0], 911, 22, "start");
-      if (end == null) dart.nullFailed(I[0], 911, 33, "end");
-      if (string == null) dart.nullFailed(I[0], 911, 45, "string");
-      let length = string.length;
-      let stringStart = dart.notNull(end) - length;
-      return stringStart >= dart.notNull(start) && this[_string$][$startsWith](string, stringStart) && dart.test(breaks$.isGraphemeClusterBoundary(this[_string$], start, end, stringStart));
-    }
-    [_startsWith](start, end, string) {
-      if (start == null) dart.nullFailed(I[0], 919, 24, "start");
-      if (end == null) dart.nullFailed(I[0], 919, 35, "end");
-      if (string == null) dart.nullFailed(I[0], 919, 47, "string");
-      let length = string.length;
-      let stringEnd = dart.notNull(start) + length;
-      return stringEnd <= dart.notNull(end) && this[_string$][$startsWith](string, start) && dart.test(breaks$.isGraphemeClusterBoundary(this[_string$], start, end, stringEnd));
-    }
-    moveBackTo(target) {
-      if (target == null) dart.nullFailed(I[0], 928, 30, "target");
-      let targetString = target.string;
-      let index = characters_impl._lastIndexOf(this[_string$], targetString, 0, this[_start$]);
-      if (dart.notNull(index) >= 0) {
-        this[_move](index, dart.notNull(index) + targetString.length);
-        return true;
-      }
-      return false;
-    }
-    moveTo(target) {
-      if (target == null) dart.nullFailed(I[0], 939, 26, "target");
-      let targetString = target.string;
-      let index = characters_impl._indexOf(this[_string$], targetString, this[_end$], this[_string$].length);
-      if (dart.notNull(index) >= 0) {
-        this[_move](index, dart.notNull(index) + targetString.length);
-        return true;
-      }
-      return false;
-    }
-    get charactersAfter() {
-      return new characters_impl.StringCharacters.new(this[_string$][$substring](this[_end$]));
-    }
-    get charactersBefore() {
-      return new characters_impl.StringCharacters.new(this[_string$][$substring](0, this[_start$]));
-    }
-    get currentCharacters() {
-      return new characters_impl.StringCharacters.new(this.current);
-    }
-    moveBackAll() {
-      this[_move](0, this[_start$]);
-    }
-    moveNextAll() {
-      this[_move](this[_end$], this[_string$].length);
-    }
-    get stringAfter() {
-      return this[_string$][$substring](this[_end$]);
-    }
-    get stringAfterLength() {
-      return this[_string$].length - dart.notNull(this[_end$]);
-    }
-    get stringBefore() {
-      return this[_string$][$substring](0, this[_start$]);
-    }
-    get stringBeforeLength() {
-      return this[_start$];
-    }
-    split(pattern, maxParts = 0) {
-      if (pattern == null) dart.nullFailed(I[0], 982, 45, "pattern");
-      if (maxParts == null) dart.nullFailed(I[0], 982, 59, "maxParts");
-      return new (T.SyncIterableOfCharacterRange()).new(() => (function* split(maxParts) {
-        if (maxParts === 1 || this[_start$] == this[_end$]) {
-          yield this;
-          return;
-        }
-        let patternString = pattern.string;
-        let start = this[_start$];
-        if (patternString[$isNotEmpty]) {
-          do {
-            let match = characters_impl._indexOf(this[_string$], patternString, start, this[_end$]);
-            if (dart.notNull(match) < 0) break;
-            yield new characters_impl.StringCharacterRange.__(this[_string$], start, match);
-            start = dart.notNull(match) + patternString.length;
-            maxParts = dart.notNull(maxParts) - 1;
-          } while (maxParts !== 1);
-          yield new characters_impl.StringCharacterRange.__(this[_string$], start, this[_end$]);
-        } else {
-          let breaks = new breaks$.Breaks.new(this[_string$], this[_start$], this[_end$], 176);
-          do {
-            let match = breaks.nextBreak();
-            if (dart.notNull(match) < 0) return;
-            yield new characters_impl.StringCharacterRange.__(this[_string$], start, match);
-            start = match;
-            maxParts = dart.notNull(maxParts) - 1;
-          } while (maxParts !== 1);
-          if (dart.notNull(start) < dart.notNull(this[_end$])) {
-            yield new characters_impl.StringCharacterRange.__(this[_string$], start, this[_end$]);
-          }
-        }
-      }).bind(this)(maxParts));
+    debugFillProperties(description) {
+      if (description == null) dart.nullFailed(I[0], 823, 56, "description");
+      super.debugFillProperties(description);
+      description.add(new (T.DiagnosticsPropertyOfPictureStream()).new("stream", this[_pictureStream]));
     }
   };
-  (characters_impl.StringCharacterRange.new = function(string) {
-    if (string == null) dart.nullFailed(I[0], 445, 31, "string");
-    characters_impl.StringCharacterRange.__.call(this, string, 0, 0);
-  }).prototype = characters_impl.StringCharacterRange.prototype;
-  (characters_impl.StringCharacterRange.__ = function(_string, _start, _end) {
-    if (_string == null) dart.nullFailed(I[0], 454, 31, "_string");
-    if (_start == null) dart.nullFailed(I[0], 454, 45, "_start");
-    if (_end == null) dart.nullFailed(I[0], 454, 58, "_end");
-    this[_currentCache] = null;
-    this[_string$] = _string;
-    this[_start$] = _start;
-    this[_end$] = _end;
+  (svg._SvgPictureState.new = function() {
+    this[_picture] = null;
+    this[_pictureStream] = null;
+    this[_isListeningToStream] = false;
+    svg._SvgPictureState.__proto__.new.call(this);
     ;
-  }).prototype = characters_impl.StringCharacterRange.prototype;
-  dart.addTypeTests(characters_impl.StringCharacterRange);
-  dart.addTypeCaches(characters_impl.StringCharacterRange);
-  characters_impl.StringCharacterRange[dart.implements] = () => [characters.CharacterRange];
-  dart.setMethodSignature(characters_impl.StringCharacterRange, () => ({
-    __proto__: dart.getMethods(characters_impl.StringCharacterRange.__proto__),
-    [_move]: dart.fnType(dart.void, [core.int, core.int]),
-    [_breaksFromEnd]: dart.fnType(breaks$.Breaks, []),
-    [_backBreaksFromStart]: dart.fnType(breaks$.BackBreaks, []),
-    moveNext: dart.fnType(core.bool, [], [core.int]),
-    [_advanceEnd]: dart.fnType(core.bool, [core.int, core.int]),
-    [_moveNextPattern]: dart.fnType(core.bool, [core.String, core.int, core.int]),
-    moveBack: dart.fnType(core.bool, [], [core.int]),
-    [_retractStart]: dart.fnType(core.bool, [core.int, core.int]),
-    [_movePreviousPattern]: dart.fnType(core.bool, [core.String, core.int, core.int]),
-    copy: dart.fnType(characters.CharacterRange, []),
-    collapseToEnd: dart.fnType(dart.void, []),
-    collapseToStart: dart.fnType(dart.void, []),
-    dropFirst: dart.fnType(core.bool, [], [core.int]),
-    dropTo: dart.fnType(core.bool, [characters.Characters]),
-    dropUntil: dart.fnType(core.bool, [characters.Characters]),
-    dropWhile: dart.fnType(dart.void, [dart.fnType(core.bool, [core.String])]),
-    dropLast: dart.fnType(core.bool, [], [core.int]),
-    dropBackTo: dart.fnType(core.bool, [characters.Characters]),
-    dropBackUntil: dart.fnType(core.bool, [characters.Characters]),
-    dropBackWhile: dart.fnType(dart.void, [dart.fnType(core.bool, [core.String])]),
-    expandNext: dart.fnType(core.bool, [], [core.int]),
-    expandTo: dart.fnType(core.bool, [characters.Characters]),
-    expandWhile: dart.fnType(dart.void, [dart.fnType(core.bool, [core.String])]),
-    expandAll: dart.fnType(dart.void, []),
-    expandBack: dart.fnType(core.bool, [], [core.int]),
-    expandBackTo: dart.fnType(core.bool, [characters.Characters]),
-    expandBackWhile: dart.fnType(dart.void, [dart.fnType(core.bool, [core.String])]),
-    expandBackUntil: dart.fnType(core.bool, [characters.Characters]),
-    expandBackAll: dart.fnType(dart.void, []),
-    expandUntil: dart.fnType(core.bool, [characters.Characters]),
-    moveBackUntil: dart.fnType(core.bool, [characters.Characters]),
-    [_retractStartUntil]: dart.fnType(core.bool, [core.String, core.int]),
-    collapseToFirst: dart.fnType(core.bool, [characters.Characters]),
-    collapseToLast: dart.fnType(core.bool, [characters.Characters]),
-    moveUntil: dart.fnType(core.bool, [characters.Characters]),
-    [_advanceEndUntil]: dart.fnType(core.bool, [core.String, core.int]),
-    replaceFirst: dart.fnType(dart.nullable(characters.CharacterRange), [characters.Characters, characters.Characters]),
-    replaceAll: dart.fnType(dart.nullable(characters.CharacterRange), [characters.Characters, characters.Characters]),
-    replaceRange: dart.fnType(characters.CharacterRange, [characters.Characters]),
-    startsWith: dart.fnType(core.bool, [characters.Characters]),
-    endsWith: dart.fnType(core.bool, [characters.Characters]),
-    isFollowedBy: dart.fnType(core.bool, [characters.Characters]),
-    isPrecededBy: dart.fnType(core.bool, [characters.Characters]),
-    [_endsWith]: dart.fnType(core.bool, [core.int, core.int, core.String]),
-    [_startsWith]: dart.fnType(core.bool, [core.int, core.int, core.String]),
-    moveBackTo: dart.fnType(core.bool, [characters.Characters]),
-    moveTo: dart.fnType(core.bool, [characters.Characters]),
-    moveBackAll: dart.fnType(dart.void, []),
-    moveNextAll: dart.fnType(dart.void, []),
-    split: dart.fnType(core.Iterable$(characters.CharacterRange), [characters.Characters], [core.int])
+  }).prototype = svg._SvgPictureState.prototype;
+  dart.addTypeTests(svg._SvgPictureState);
+  dart.addTypeCaches(svg._SvgPictureState);
+  dart.setMethodSignature(svg._SvgPictureState, () => ({
+    __proto__: dart.getMethods(svg._SvgPictureState.__proto__),
+    [_resolveImage]: dart.fnType(dart.void, []),
+    [_handleImageChanged]: dart.fnType(dart.void, [dart.nullable(picture_stream.PictureInfo), core.bool]),
+    [_updateSourceStream]: dart.fnType(dart.void, [picture_stream.PictureStream]),
+    [_listenToStream]: dart.fnType(dart.void, []),
+    [_stopListeningToStream]: dart.fnType(dart.void, []),
+    build: dart.fnType(framework.Widget, [framework.BuildContext]),
+    [_getDefaultPlaceholder]: dart.fnType(framework.Widget, [framework.BuildContext, dart.nullable(core.double), dart.nullable(core.double)])
   }));
-  dart.setGetterSignature(characters_impl.StringCharacterRange, () => ({
-    __proto__: dart.getGetters(characters_impl.StringCharacterRange.__proto__),
-    current: core.String,
-    utf16CodeUnits: core.Iterable$(core.int),
-    runes: core.Runes,
-    isEmpty: core.bool,
-    isNotEmpty: core.bool,
-    source: characters.Characters,
-    charactersAfter: characters.Characters,
-    charactersBefore: characters.Characters,
-    currentCharacters: characters.Characters,
-    stringAfter: core.String,
-    stringAfterLength: core.int,
-    stringBefore: core.String,
-    stringBeforeLength: core.int
+  dart.setLibraryUri(svg._SvgPictureState, I[1]);
+  dart.setFieldSignature(svg._SvgPictureState, () => ({
+    __proto__: dart.getFields(svg._SvgPictureState.__proto__),
+    [_picture]: dart.fieldType(dart.nullable(picture_stream.PictureInfo)),
+    [_pictureStream]: dart.fieldType(dart.nullable(picture_stream.PictureStream)),
+    [_isListeningToStream]: dart.fieldType(core.bool)
   }));
-  dart.setLibraryUri(characters_impl.StringCharacterRange, I[1]);
-  dart.setFieldSignature(characters_impl.StringCharacterRange, () => ({
-    __proto__: dart.getFields(characters_impl.StringCharacterRange.__proto__),
-    [_string$]: dart.finalFieldType(core.String),
-    [_start$]: dart.fieldType(core.int),
-    [_end$]: dart.fieldType(core.int),
-    [_currentCache]: dart.fieldType(dart.nullable(core.String))
-  }));
-  characters_impl._explodeReplace = function _explodeReplace(string, start, end, internalReplacement, outerReplacement) {
-    let t0, t0$;
-    if (string == null) dart.nullFailed(I[0], 1015, 31, "string");
-    if (start == null) dart.nullFailed(I[0], 1015, 43, "start");
-    if (end == null) dart.nullFailed(I[0], 1015, 54, "end");
-    if (internalReplacement == null) dart.nullFailed(I[0], 1016, 12, "internalReplacement");
-    if (outerReplacement == null) dart.nullFailed(I[0], 1016, 40, "outerReplacement");
-    if (start == end) {
-      return string[$replaceRange](start, start, outerReplacement);
+  svg.precachePicture = function precachePicture(provider, context, opts) {
+    let t5;
+    if (provider == null) dart.nullFailed(I[0], 139, 19, "provider");
+    let viewBox = opts && 'viewBox' in opts ? opts.viewBox : null;
+    let colorFilterOverride = opts && 'colorFilterOverride' in opts ? opts.colorFilterOverride : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let colorBlendMode = opts && 'colorBlendMode' in opts ? opts.colorBlendMode : null;
+    let onError = opts && 'onError' in opts ? opts.onError : null;
+    let config = picture_provider.createLocalPictureConfiguration(context, {viewBox: viewBox, colorFilterOverride: colorFilterOverride, color: color, colorBlendMode: colorBlendMode});
+    let completer = T.CompleterOfvoid().new();
+    let stream = null;
+    function listener(picture, synchronous) {
+      let t5;
+      if (synchronous == null) dart.nullFailed(I[0], 157, 44, "synchronous");
+      completer.complete();
+      t5 = stream;
+      t5 == null ? null : t5.removeListener(listener);
     }
-    let buffer = new core.StringBuffer.new(string[$substring](0, start));
-    let breaks = new breaks$.Breaks.new(string, start, end, 176);
-    let index = 0;
-    let replacement = outerReplacement;
-    while (dart.notNull(index = breaks.nextBreak()) >= 0) {
-      t0 = buffer;
-      (() => {
-        t0.write(replacement);
-        t0.write(string[$substring](start, index));
-        return t0;
-      })();
-      start = index;
-      replacement = internalReplacement;
-    }
-    t0$ = buffer;
-    (() => {
-      t0$.write(outerReplacement);
-      t0$.write(string[$substring](end));
-      return t0$;
-    })();
-    return buffer.toString();
-  };
-  characters_impl._indexOf = function _indexOf(source, pattern, start, end) {
-    if (source == null) dart.nullFailed(I[0], 1037, 21, "source");
-    if (pattern == null) dart.nullFailed(I[0], 1037, 36, "pattern");
-    if (start == null) dart.nullFailed(I[0], 1037, 49, "start");
-    if (end == null) dart.nullFailed(I[0], 1037, 60, "end");
-    let patternLength = pattern.length;
-    if (patternLength === 0) return start;
-    let realEnd = dart.notNull(end) - patternLength;
-    if (realEnd < dart.notNull(start)) return -1;
-    let rest = source.length - realEnd;
-    if (rest <= (realEnd - dart.notNull(start)) * 2) {
-      let index = 0;
-      while (dart.notNull(start) < realEnd && (index = source[$indexOf](pattern, start)) >= 0) {
-        if (index > realEnd) return -1;
-        if (dart.test(breaks$.isGraphemeClusterBoundary(source, start, end, index)) && dart.test(breaks$.isGraphemeClusterBoundary(source, start, end, index + patternLength))) {
-          return index;
-        }
-        start = index + 1;
+    dart.fn(listener, T.PictureInfoNAndboolTovoid());
+    function errorListener(exception, stackTrace) {
+      let t5;
+      if (exception == null) dart.nullFailed(I[0], 162, 29, "exception");
+      if (stackTrace == null) dart.nullFailed(I[0], 162, 51, "stackTrace");
+      if (onError != null) {
+        onError(exception, stackTrace);
+      } else {
+        assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({context: new assertions.ErrorDescription.new("picture failed to precache"), library: "SVG", exception: exception, stack: stackTrace, silent: true}));
       }
-      return -1;
+      completer.complete();
+      t5 = stream;
+      t5 == null ? null : t5.removeListener(listener);
     }
-    return characters_impl._gcIndexOf(source, pattern, start, end);
+    dart.fn(errorListener, T.ObjectAndStackTraceTovoid());
+    stream = (t5 = provider.resolve(config, {onError: errorListener}), (() => {
+      t5.addListener(listener, {onError: errorListener});
+      return t5;
+    })());
+    return completer.future;
   };
-  characters_impl._gcIndexOf = function _gcIndexOf(source, pattern, start, end) {
-    if (source == null) dart.nullFailed(I[0], 1062, 23, "source");
-    if (pattern == null) dart.nullFailed(I[0], 1062, 38, "pattern");
-    if (start == null) dart.nullFailed(I[0], 1062, 51, "start");
-    if (end == null) dart.nullFailed(I[0], 1062, 62, "end");
-    let breaks = new breaks$.Breaks.new(source, start, end, 0);
-    let index = 0;
-    while (dart.notNull(index = breaks.nextBreak()) >= 0) {
-      let endIndex = dart.notNull(index) + pattern.length;
-      if (endIndex > dart.notNull(end)) break;
-      if (source[$startsWith](pattern, index) && dart.test(breaks$.isGraphemeClusterBoundary(source, start, end, endIndex))) {
-        return index;
-      }
+  dart.defineLazy(svg, {
+    /*svg.svg*/get svg() {
+      return new svg.Svg.__();
     }
-    return -1;
-  };
-  characters_impl._lastIndexOf = function _lastIndexOf(source, pattern, start, end) {
-    if (source == null) dart.nullFailed(I[0], 1079, 25, "source");
-    if (pattern == null) dart.nullFailed(I[0], 1079, 40, "pattern");
-    if (start == null) dart.nullFailed(I[0], 1079, 53, "start");
-    if (end == null) dart.nullFailed(I[0], 1079, 64, "end");
-    let patternLength = pattern.length;
-    if (patternLength === 0) return end;
-    let realEnd = dart.notNull(end) - patternLength;
-    if (realEnd < dart.notNull(start)) return -1;
-    if (realEnd * 2 > dart.notNull(start)) {
-      let index = 0;
-      while (realEnd >= dart.notNull(start) && (index = source[$lastIndexOf](pattern, realEnd)) >= 0) {
-        if (index < dart.notNull(start)) return -1;
-        if (dart.test(breaks$.isGraphemeClusterBoundary(source, start, end, index)) && dart.test(breaks$.isGraphemeClusterBoundary(source, start, end, index + patternLength))) {
-          return index;
-        }
-        realEnd = index - 1;
-      }
-      return -1;
-    }
-    return characters_impl._gcLastIndexOf(source, pattern, start, end);
-  };
-  characters_impl._gcLastIndexOf = function _gcLastIndexOf(source, pattern, start, end) {
-    if (source == null) dart.nullFailed(I[0], 1104, 27, "source");
-    if (pattern == null) dart.nullFailed(I[0], 1104, 42, "pattern");
-    if (start == null) dart.nullFailed(I[0], 1104, 55, "start");
-    if (end == null) dart.nullFailed(I[0], 1104, 66, "end");
-    let breaks = new breaks$.BackBreaks.new(source, end, start, 0);
-    let index = 0;
-    while (dart.notNull(index = breaks.nextBreak()) >= 0) {
-      let startIndex = dart.notNull(index) - pattern.length;
-      if (startIndex < dart.notNull(start)) break;
-      if (source[$startsWith](pattern, startIndex) && dart.test(breaks$.isGraphemeClusterBoundary(source, start, end, startIndex))) {
-        return startIndex;
-      }
-    }
-    return -1;
-  };
-  characters.Characters = class Characters extends core.Object {
-    [Symbol.iterator]() {
-      return new dart.JsIterator(this[$iterator]);
-    }
-  };
-  (characters.Characters[dart.mixinNew] = function() {
-  }).prototype = characters.Characters.prototype;
-  characters.Characters.prototype[dart.isIterable] = true;
-  dart.addTypeTests(characters.Characters);
-  dart.addTypeCaches(characters.Characters);
-  characters.Characters[dart.implements] = () => [core.Iterable$(core.String)];
-  dart.setLibraryUri(characters.Characters, I[2]);
-  characters.CharacterRange = class CharacterRange extends core.Object {};
-  (characters.CharacterRange[dart.mixinNew] = function() {
-  }).prototype = characters.CharacterRange.prototype;
-  dart.addTypeTests(characters.CharacterRange);
-  dart.addTypeCaches(characters.CharacterRange);
-  characters.CharacterRange[dart.implements] = () => [core.Iterator$(core.String)];
-  dart.setLibraryUri(characters.CharacterRange, I[2]);
-  dart.trackLibraries("packages/characters/src/characters_impl.dart", {
-    "package:characters/src/characters_impl.dart": characters_impl,
-    "package:characters/src/characters.dart": characters
+  }, false);
+  dart.trackLibraries("packages/flutter_svg/svg.dart", {
+    "package:flutter_svg/svg.dart": svg
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["characters_impl.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/characters/src/characters_impl.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["svg.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAkCQ;;;;;;sBAaM,KACL,8BACQ,aACN;UAHG;UACL;UAEE;AAJ4B;AAMhB,uBAAU,MAAM,kBAAa,GAAG,EAAE,GAAG;AAC1C,kBAAM,AAAQ,OAAD,2BACV,AAA6B,4BAAD,KAAI,OAAO,QAAQ,mBACjD,WAAW;AAE1B,cAAO,8CACI,GAAG,YACF,AAAQ,AAAS,OAAV,6BACX,AAAQ,AAAS,OAAV;MAEjB;;4BAaW,KACF,8BACQ,aACN;UAHA;UACF;UAEE;AAJgC;AAKtB,mBAAM,MAAM,mBAAc,GAAG,EAAE,GAAG;AACrD,cAAO,8CACI,AAAI,GAAD,2BACK,AAA6B,4BAAD,KAAI,OAAO,QAAQ,mBACjD,WAAW,QAClB,AAAI,AAAS,GAAV,+BAED,AAAI,AAAS,GAAV,6BACP,AAAI,AAAS,GAAV;MAEb;;iBAM4C,KAAY;UAAZ;UAAY;AAAvB;AAM/B,cAAO,oBAAc,AAAK,oBAAO,GAAG,GAAG,GAAG;MAM5C;;kBAS0C,QAAe;UAAf;UAAe;AAAvB;AAChB,qBAAS;AACzB,cAAO,OAAM,AAAO,MAAD,OAAO,MAAM,QAAO,GAAG;MAC5C;;;;IArFM;;EANC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA4iBO;;;;;;IAIA;;;;;;IAID;;;;;;IAwBW;;;;;;IAGF;;;;;;IAGD;;;;;;IAGV;;;;;;IAIA;;;;;;IAMG;;;;;;IAMH;;;;;;IAQA;;;;;;IAGQ;;;;;;IAYR;;;;;;2BAzGgC;UAAiB;AACxD,YAAA,AAAM,MAAD,WAAW,OAAmB,wCAAK,KAAK,EAAE,cAAc;IAAC;;AA2G/B;IAAkB;;;QAxc9C;QACA;QACA;QACA;QACA;;QACA;;QACA;;QACA;;QACA;QACA;QACA;;QACA;;QACA;QACA;;;IAbA;IAEA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;AACF,kDAAW,GAAG;;EAAC;mCAgFX;;;QACF;QACA;;QACQ;QACL;QACH;QACA;QACA;;QACA;;QACA;;QACA;QACE;QACG;;QACL;QACA;;QACA;;QACA;;;IAdA;IAGA;IACA;IACA;IACA;IACA;IACA;IAGA;IACA;IACA;IACA;IACe,yBAAE,2CAChB,AAA2B,0BAAD,KAAI,OACxB,gDACA,iCACN,SAAS,WACD,MAAM,WACL,kCACiC,KAA7B,AAAI,kCAAA,aAA4B,gBAAgB,UACvD,+BAAgB,KAAK,EAAE,cAAc,IACrC;IAEI,qBAAE,+BAAgB,KAAK,EAAE,cAAc;AACnD,kDAAW,GAAG;;EAAC;qCAgCZ;;;QACF;QACgB;QAChB;QACA;QACA;;QACA;;QACA;;QACA;;QACA;QACE;QACG;;QACL;QACA;;QACA;;QACA;;;IAZA;IACA;IACA;IACA;IACA;IACA;IACA;IAGA;IACA;IACA;IACA;IACe,yBAAE,wCAChB,AAA2B,0BAAD,KAAI,OACxB,8CACA,+BACN,GAAG,YACM,OAAO,0BAC0B,KAA7B,AAAI,kCAAA,aAA4B,gBAAgB,UACvD,+BAAgB,KAAK,EAAE,cAAc,IACrC;IAEI,qBAAE,+BAAgB,KAAK,EAAE,cAAc;AACnD,kDAAW,GAAG;;EAAC;kCA8Bd;;;QACA;QACA;QACA;QACA;;QACA;;QACA;;QACA;;QACA;QACE;QACG;;QACL;QACA;;QACA;;QACA;;;IAZA;IACA;IACA;IACA;IACA;IACA;IACA;IAGA;IACA;IACA;IACA;IACe,yBAAE,qCAChB,AAA2B,0BAAD,KAAI,OACxB,8CACA,+BACN,IAAI,2BACsC,KAA7B,AAAI,kCAAA,aAA4B,gBAAgB,U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","file":"../../../../../../../../packages/flutter_svg/svg.dart.lib.js"}');
   // Exports:
   return {
-    src__characters_impl: characters_impl,
-    src__characters: characters
+    svg: svg
   };
 }));
 
-//# sourceMappingURL=characters_impl.dart.lib.js.map
+//# sourceMappingURL=svg.dart.lib.js.map

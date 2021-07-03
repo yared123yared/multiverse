@@ -1,504 +1,560 @@
-define(['dart_sdk', 'packages/flutter/src/gestures/constants.dart', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/gestures/arena.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__gestures__tap_dart(dart_sdk, packages__flutter__src__gestures__constants$46dart, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__gestures__arena$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/flutter/src/material/icon_button.dart', 'packages/hexcolor/hexcolor.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/client/widgets/Home/ButtonSocial.dart', 'packages/flutter_bloc/src/bloc_provider.dart', 'packages/client/state/Board/board_cubit.dart', 'packages/font_awesome_flutter/src/fa_icon.dart', 'packages/flutter/src/painting/rounded_rectangle_border.dart'], (function load__packages__client__widgets__Home__Social_dart(dart_sdk, packages__flutter__src__material__icon_button$46dart, packages__hexcolor__hexcolor$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__rendering__flex$46dart, packages__client__widgets__Home__ButtonSocial$46dart, packages__flutter_bloc__src__bloc_provider$46dart, packages__client__state__Board__board_cubit$46dart, packages__font_awesome_flutter__src__fa_icon$46dart, packages__flutter__src__painting__rounded_rectangle_border$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const constants = packages__flutter__src__gestures__constants$46dart.src__gestures__constants;
-  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
-  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
-  const arena = packages__flutter__src__gestures__arena$46dart.src__gestures__arena;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  var tap = Object.create(dart.library);
+  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
+  const hexcolor = packages__hexcolor__hexcolor$46dart.hexcolor;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const ButtonSocial = packages__client__widgets__Home__ButtonSocial$46dart.widgets__Home__ButtonSocial;
+  const bloc_provider = packages__flutter_bloc__src__bloc_provider$46dart.src__bloc_provider;
+  const board_cubit = packages__client__state__Board__board_cubit$46dart.state__Board__board_cubit;
+  const font_awesome_flutter = packages__font_awesome_flutter__src__fa_icon$46dart.font_awesome_flutter;
+  const rounded_rectangle_border = packages__flutter__src__painting__rounded_rectangle_border$46dart.src__painting__rounded_rectangle_border;
+  var Social = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    DiagnosticsPropertyOfOffset: () => (T.DiagnosticsPropertyOfOffset = dart.constFn(diagnostics.DiagnosticsProperty$(ui.Offset)))(),
-    DiagnosticsPropertyOfint: () => (T.DiagnosticsPropertyOfint = dart.constFn(diagnostics.DiagnosticsProperty$(core.int)))(),
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))()
+    BoardCubitL: () => (T.BoardCubitL = dart.constFn(dart.legacy(board_cubit.BoardCubit)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 17,
+        [_Location_line]: 29,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 17,
+        [_Location_line]: 30,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 17,
+        [_Location_line]: 34,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], T._LocationL());
+    },
     get C0() {
       return C[0] = dart.const({
-        __proto__: ui.Offset.prototype,
-        [OffsetBase__dy]: 0,
-        [OffsetBase__dx]: 0
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 28,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 28,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7], T._LocationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 27,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 17,
+        [_Location_line]: 38,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 17,
+        [_Location_line]: 39,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 17,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12], T._LocationL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[9] || CT.C9,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 37,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 37,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.constList([C[15] || CT.C15], T._LocationL());
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[14] || CT.C14,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 36,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 17,
+        [_Location_line]: 46,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 17,
+        [_Location_line]: 47,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 17,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20], T._LocationL());
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[17] || CT.C17,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 45,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 45,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.constList([C[23] || CT.C23], T._LocationL());
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[22] || CT.C22,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 44,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 17,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 17,
+        [_Location_line]: 56,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 17,
+        [_Location_line]: 60,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.constList([C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28], T._LocationL());
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[25] || CT.C25,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 54,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.constList([C[31] || CT.C31], T._LocationL());
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[30] || CT.C30,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 53,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 17,
+        [_Location_line]: 64,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 17,
+        [_Location_line]: 65,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "radius",
+        [_Location_column]: 17,
+        [_Location_line]: 68,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "border",
+        [_Location_column]: 17,
+        [_Location_line]: 71,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 17,
+        [_Location_line]: 75,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.constList([C[34] || CT.C34, C[35] || CT.C35, C[36] || CT.C36, C[37] || CT.C37, C[38] || CT.C38], T._LocationL());
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[33] || CT.C33,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 63,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 63,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.constList([C[41] || CT.C41], T._LocationL());
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[40] || CT.C40,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 62,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 13,
+        [_Location_line]: 25,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 13,
+        [_Location_line]: 26,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.constList([C[44] || CT.C44, C[45] || CT.C45], T._LocationL());
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 24,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 11,
+        [_Location_line]: 17,
+        [_Location_file]: null
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 11,
+        [_Location_line]: 18,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 11,
+        [_Location_line]: 19,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.constList([C[48] || CT.C48, C[49] || CT.C49, C[50] || CT.C50, C[51] || CT.C51], T._LocationL());
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[47] || CT.C47,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 16,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 7,
+        [_Location_line]: 12,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 7,
+        [_Location_line]: 13,
+        [_Location_file]: null
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "borderRadius",
+        [_Location_column]: 7,
+        [_Location_line]: 14,
+        [_Location_file]: null
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 16,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.constList([C[54] || CT.C54, C[55] || CT.C55, C[56] || CT.C56, C[57] || CT.C57], T._LocationL());
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[53] || CT.C53,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 11,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/widgets/Home/Social.dart"
       });
     }
   }, false);
-  var C = [void 0];
-  var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/gestures/tap.dart",
-    "package:flutter/src/gestures/tap.dart"
-  ];
-  var globalPosition$ = dart.privateName(tap, "TapDownDetails.globalPosition");
-  var kind$ = dart.privateName(tap, "TapDownDetails.kind");
-  var localPosition$ = dart.privateName(tap, "TapDownDetails.localPosition");
-  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
-  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
-  tap.TapDownDetails = class TapDownDetails extends core.Object {
-    get globalPosition() {
-      return this[globalPosition$];
-    }
-    set globalPosition(value) {
-      super.globalPosition = value;
-    }
-    get kind() {
-      return this[kind$];
-    }
-    set kind(value) {
-      super.kind = value;
-    }
-    get localPosition() {
-      return this[localPosition$];
-    }
-    set localPosition(value) {
-      super.localPosition = value;
+  var C = Array(58).fill(void 0);
+  var I = ["package:client/widgets/Home/Social.dart"];
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  Social.Social = class Social extends framework.StatelessWidget {
+    build(context) {
+      return new material.Material.new({elevation: 0.75, color: new hexcolor.HexColor.new("#ffffff"), borderRadius: new border_radius.BorderRadius.only({topRight: new ui.Radius.circular(25.0), bottomRight: new ui.Radius.circular(25.0)}), child: new container.Container.new({height: 40.0, width: 400.0, decoration: new box_decoration.BoxDecoration.new({color: colors.Colors.transparent, borderRadius: new border_radius.BorderRadius.only({topRight: new ui.Radius.circular(25.0), bottomRight: new ui.Radius.circular(25.0)})}), child: new basic.Row.new({mainAxisAlignment: flex.MainAxisAlignment.spaceAround, children: T.JSArrayOfWidgetL().of([new basic.Expanded.new({child: new ButtonSocial.ButtonSocial.new({elevation: 0.0, onPressed: dart.fn(() => bloc_provider.BlocProvider.of(T.BoardCubitL(), context).activateFacebook(), T.VoidTovoid()), value: font_awesome_flutter.FontAwesomeIcons.facebook, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}), new basic.Expanded.new({child: new ButtonSocial.ButtonSocial.new({elevation: 0.0, onPressed: dart.fn(() => bloc_provider.BlocProvider.of(T.BoardCubitL(), context).activateTwitter(), T.VoidTovoid()), value: font_awesome_flutter.FontAwesomeIcons.twitter, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), new basic.Expanded.new({child: new ButtonSocial.ButtonSocial.new({elevation: 0.0, onPressed: dart.fn(() => bloc_provider.BlocProvider.of(T.BoardCubitL(), context).activateLinkedin(), T.VoidTovoid()), value: font_awesome_flutter.FontAwesomeIcons.linkedin, $creationLocationd_0dea112b090073317d4: C[16] || CT.C16}), $creationLocationd_0dea112b090073317d4: C[21] || CT.C21}), new basic.Expanded.new({child: new ButtonSocial.ButtonSocial.new({elevation: 0.0, onPressed: dart.fn(() => bloc_provider.BlocProvider.of(T.BoardCubitL(), context).activateInstagram(), T.VoidTovoid()), value: font_awesome_flutter.FontAwesomeIcons.instagram, $creationLocationd_0dea112b090073317d4: C[24] || CT.C24}), $creationLocationd_0dea112b090073317d4: C[29] || CT.C29}), new basic.Expanded.new({child: new ButtonSocial.ButtonSocial.new({elevation: 0.0, onPressed: dart.fn(() => bloc_provider.BlocProvider.of(T.BoardCubitL(), context).activateYoutube(), T.VoidTovoid()), radius: new border_radius.BorderRadius.only({topRight: new ui.Radius.circular(25.0), bottomRight: new ui.Radius.circular(25.0)}), border: new rounded_rectangle_border.RoundedRectangleBorder.new({borderRadius: new border_radius.BorderRadius.only({topRight: new ui.Radius.circular(25.0), bottomRight: new ui.Radius.circular(25.0)})}), value: font_awesome_flutter.FontAwesomeIcons.youtube, $creationLocationd_0dea112b090073317d4: C[32] || CT.C32}), $creationLocationd_0dea112b090073317d4: C[39] || CT.C39})]), $creationLocationd_0dea112b090073317d4: C[42] || CT.C42}), $creationLocationd_0dea112b090073317d4: C[46] || CT.C46}), $creationLocationd_0dea112b090073317d4: C[52] || CT.C52});
     }
   };
-  (tap.TapDownDetails.new = function(opts) {
-    let t0;
-    let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : C[0] || CT.C0;
-    if (globalPosition == null) dart.nullFailed(I[0], 25, 10, "globalPosition");
-    let localPosition = opts && 'localPosition' in opts ? opts.localPosition : null;
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    this[globalPosition$] = globalPosition;
-    this[kind$] = kind;
-    if (!(globalPosition != null)) dart.assertFailed(null, I[0], 28, 15, "globalPosition != null");
-    this[localPosition$] = (t0 = localPosition, t0 == null ? globalPosition : t0);
+  (Social.Social.new = function(opts) {
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    Social.Social.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = tap.TapDownDetails.prototype;
-  dart.addTypeTests(tap.TapDownDetails);
-  dart.addTypeCaches(tap.TapDownDetails);
-  dart.setLibraryUri(tap.TapDownDetails, I[1]);
-  dart.setFieldSignature(tap.TapDownDetails, () => ({
-    __proto__: dart.getFields(tap.TapDownDetails.__proto__),
-    globalPosition: dart.finalFieldType(ui.Offset),
-    kind: dart.finalFieldType(dart.nullable(ui.PointerDeviceKind)),
-    localPosition: dart.finalFieldType(ui.Offset)
+  }).prototype = Social.Social.prototype;
+  dart.addTypeTests(Social.Social);
+  dart.addTypeCaches(Social.Social);
+  dart.setMethodSignature(Social.Social, () => ({
+    __proto__: dart.getMethods(Social.Social.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
   }));
-  var globalPosition$0 = dart.privateName(tap, "TapUpDetails.globalPosition");
-  var localPosition$0 = dart.privateName(tap, "TapUpDetails.localPosition");
-  var kind$0 = dart.privateName(tap, "TapUpDetails.kind");
-  tap.TapUpDetails = class TapUpDetails extends core.Object {
-    get globalPosition() {
-      return this[globalPosition$0];
-    }
-    set globalPosition(value) {
-      super.globalPosition = value;
-    }
-    get localPosition() {
-      return this[localPosition$0];
-    }
-    set localPosition(value) {
-      super.localPosition = value;
-    }
-    get kind() {
-      return this[kind$0];
-    }
-    set kind(value) {
-      super.kind = value;
-    }
-  };
-  (tap.TapUpDetails.new = function(opts) {
-    let t0;
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    if (kind == null) dart.nullFailed(I[0], 62, 19, "kind");
-    let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : C[0] || CT.C0;
-    if (globalPosition == null) dart.nullFailed(I[0], 63, 10, "globalPosition");
-    let localPosition = opts && 'localPosition' in opts ? opts.localPosition : null;
-    this[kind$0] = kind;
-    this[globalPosition$0] = globalPosition;
-    if (!(globalPosition != null)) dart.assertFailed(null, I[0], 65, 15, "globalPosition != null");
-    this[localPosition$0] = (t0 = localPosition, t0 == null ? globalPosition : t0);
-    ;
-  }).prototype = tap.TapUpDetails.prototype;
-  dart.addTypeTests(tap.TapUpDetails);
-  dart.addTypeCaches(tap.TapUpDetails);
-  dart.setLibraryUri(tap.TapUpDetails, I[1]);
-  dart.setFieldSignature(tap.TapUpDetails, () => ({
-    __proto__: dart.getFields(tap.TapUpDetails.__proto__),
-    globalPosition: dart.finalFieldType(ui.Offset),
-    localPosition: dart.finalFieldType(ui.Offset),
-    kind: dart.finalFieldType(ui.PointerDeviceKind)
-  }));
-  var _sentTapDown = dart.privateName(tap, "_sentTapDown");
-  var _wonArenaForPrimaryPointer = dart.privateName(tap, "_wonArenaForPrimaryPointer");
-  var _down = dart.privateName(tap, "_down");
-  var _up = dart.privateName(tap, "_up");
-  var _reset = dart.privateName(tap, "_reset");
-  var _checkUp = dart.privateName(tap, "_checkUp");
-  var _checkCancel = dart.privateName(tap, "_checkCancel");
-  var _checkDown = dart.privateName(tap, "_checkDown");
-  tap.BaseTapGestureRecognizer = class BaseTapGestureRecognizer extends recognizer.PrimaryPointerGestureRecognizer {
-    addAllowedPointer(event) {
-      if (event == null) dart.nullFailed(I[0], 191, 43, "event");
-      if (!(event != null)) dart.assertFailed(null, I[0], 192, 12, "event != null");
-      if (this.state == recognizer.GestureRecognizerState.ready) {
-        if (this[_down] != null && this[_up] != null) {
-          if (!(dart.nullCheck(this[_down]).pointer == dart.nullCheck(this[_up]).pointer)) dart.assertFailed(null, I[0], 197, 16, "_down!.pointer == _up!.pointer");
-          this[_reset]();
-        }
-        if (!(this[_down] == null && this[_up] == null)) dart.assertFailed(null, I[0], 201, 14, "_down == null && _up == null");
-        this[_down] = event;
-      }
-      if (this[_down] != null) {
-        super.addAllowedPointer(event);
-      }
-    }
-    startTrackingPointer(pointer, transform = null) {
-      if (pointer == null) dart.nullFailed(I[0], 219, 33, "pointer");
-      if (!(this[_down] != null)) dart.assertFailed(null, I[0], 222, 12, "_down != null");
-      super.startTrackingPointer(pointer, transform);
-    }
-    handlePrimaryPointer(event) {
-      if (event == null) dart.nullFailed(I[0], 227, 42, "event");
-      if (events.PointerUpEvent.is(event)) {
-        this[_up] = event;
-        this[_checkUp]();
-      } else if (events.PointerCancelEvent.is(event)) {
-        this.resolve(arena.GestureDisposition.rejected);
-        if (dart.test(this[_sentTapDown])) {
-          this[_checkCancel](event, "");
-        }
-        this[_reset]();
-      } else if (event.buttons != dart.nullCheck(this[_down]).buttons) {
-        this.resolve(arena.GestureDisposition.rejected);
-        this.stopTrackingPointer(dart.nullCheck(this.primaryPointer));
-      }
-    }
-    resolve(disposition) {
-      if (disposition == null) dart.nullFailed(I[0], 244, 35, "disposition");
-      if (dart.test(this[_wonArenaForPrimaryPointer]) && disposition == arena.GestureDisposition.rejected) {
-        if (!dart.test(this[_sentTapDown])) dart.assertFailed(null, I[0], 249, 14, "_sentTapDown");
-        this[_checkCancel](null, "spontaneous");
-        this[_reset]();
-      }
-      super.resolve(disposition);
-    }
-    didExceedDeadline() {
-      this[_checkDown]();
-    }
-    acceptGesture(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 262, 26, "pointer");
-      super.acceptGesture(pointer);
-      if (pointer == this.primaryPointer) {
-        this[_checkDown]();
-        this[_wonArenaForPrimaryPointer] = true;
-        this[_checkUp]();
-      }
-    }
-    rejectGesture(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 272, 26, "pointer");
-      super.rejectGesture(pointer);
-      if (pointer == this.primaryPointer) {
-        if (!(this.state != recognizer.GestureRecognizerState.possible)) dart.assertFailed(null, I[0], 276, 14, "state != GestureRecognizerState.possible");
-        if (dart.test(this[_sentTapDown])) this[_checkCancel](null, "forced");
-        this[_reset]();
-      }
-    }
-    [_checkDown]() {
-      if (dart.test(this[_sentTapDown])) {
-        return;
-      }
-      this.handleTapDown({down: dart.nullCheck(this[_down])});
-      this[_sentTapDown] = true;
-    }
-    [_checkUp]() {
-      if (!dart.test(this[_wonArenaForPrimaryPointer]) || this[_up] == null) {
-        return;
-      }
-      if (!(dart.nullCheck(this[_up]).pointer == dart.nullCheck(this[_down]).pointer)) dart.assertFailed(null, I[0], 295, 12, "_up!.pointer == _down!.pointer");
-      this.handleTapUp({down: dart.nullCheck(this[_down]), up: dart.nullCheck(this[_up])});
-      this[_reset]();
-    }
-    [_checkCancel](event, note) {
-      if (note == null) dart.nullFailed(I[0], 300, 55, "note");
-      this.handleTapCancel({down: dart.nullCheck(this[_down]), cancel: event, reason: note});
-    }
-    [_reset]() {
-      this[_sentTapDown] = false;
-      this[_wonArenaForPrimaryPointer] = false;
-      this[_up] = null;
-      this[_down] = null;
-    }
-    get debugDescription() {
-      return "base tap";
-    }
-    debugFillProperties(properties) {
-      let t0, t0$, t0$0, t0$1;
-      if (properties == null) dart.nullFailed(I[0], 315, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.FlagProperty.new("wonArenaForPrimaryPointer", {value: this[_wonArenaForPrimaryPointer], ifTrue: "won arena"}));
-      properties.add(new (T.DiagnosticsPropertyOfOffset()).new("finalPosition", (t0 = this[_up], t0 == null ? null : t0.position), {defaultValue: null}));
-      properties.add(new (T.DiagnosticsPropertyOfOffset()).new("finalLocalPosition", (t0$ = this[_up], t0$ == null ? null : t0$.localPosition), {defaultValue: (t0$0 = this[_up], t0$0 == null ? null : t0$0.position)}));
-      properties.add(new (T.DiagnosticsPropertyOfint()).new("button", (t0$1 = this[_down], t0$1 == null ? null : t0$1.buttons), {defaultValue: null}));
-      properties.add(new diagnostics.FlagProperty.new("sentTapDown", {value: this[_sentTapDown], ifTrue: "sent tap down"}));
-    }
-  };
-  (tap.BaseTapGestureRecognizer.new = function(opts) {
-    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
-    this[_sentTapDown] = false;
-    this[_wonArenaForPrimaryPointer] = false;
-    this[_down] = null;
-    this[_up] = null;
-    tap.BaseTapGestureRecognizer.__proto__.new.call(this, {deadline: constants.kPressTimeout, debugOwner: debugOwner});
-    ;
-  }).prototype = tap.BaseTapGestureRecognizer.prototype;
-  dart.addTypeTests(tap.BaseTapGestureRecognizer);
-  dart.addTypeCaches(tap.BaseTapGestureRecognizer);
-  dart.setMethodSignature(tap.BaseTapGestureRecognizer, () => ({
-    __proto__: dart.getMethods(tap.BaseTapGestureRecognizer.__proto__),
-    handlePrimaryPointer: dart.fnType(dart.void, [events.PointerEvent]),
-    [_checkDown]: dart.fnType(dart.void, []),
-    [_checkUp]: dart.fnType(dart.void, []),
-    [_checkCancel]: dart.fnType(dart.void, [dart.nullable(events.PointerCancelEvent), core.String]),
-    [_reset]: dart.fnType(dart.void, [])
-  }));
-  dart.setGetterSignature(tap.BaseTapGestureRecognizer, () => ({
-    __proto__: dart.getGetters(tap.BaseTapGestureRecognizer.__proto__),
-    debugDescription: core.String
-  }));
-  dart.setLibraryUri(tap.BaseTapGestureRecognizer, I[1]);
-  dart.setFieldSignature(tap.BaseTapGestureRecognizer, () => ({
-    __proto__: dart.getFields(tap.BaseTapGestureRecognizer.__proto__),
-    [_sentTapDown]: dart.fieldType(core.bool),
-    [_wonArenaForPrimaryPointer]: dart.fieldType(core.bool),
-    [_down]: dart.fieldType(dart.nullable(events.PointerDownEvent)),
-    [_up]: dart.fieldType(dart.nullable(events.PointerUpEvent))
-  }));
-  var onTapDown = dart.privateName(tap, "TapGestureRecognizer.onTapDown");
-  var onTapUp = dart.privateName(tap, "TapGestureRecognizer.onTapUp");
-  var onTap = dart.privateName(tap, "TapGestureRecognizer.onTap");
-  var onTapCancel = dart.privateName(tap, "TapGestureRecognizer.onTapCancel");
-  var onSecondaryTap = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTap");
-  var onSecondaryTapDown = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTapDown");
-  var onSecondaryTapUp = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTapUp");
-  var onSecondaryTapCancel = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTapCancel");
-  var onTertiaryTapDown = dart.privateName(tap, "TapGestureRecognizer.onTertiaryTapDown");
-  var onTertiaryTapUp = dart.privateName(tap, "TapGestureRecognizer.onTertiaryTapUp");
-  var onTertiaryTapCancel = dart.privateName(tap, "TapGestureRecognizer.onTertiaryTapCancel");
-  tap.TapGestureRecognizer = class TapGestureRecognizer extends tap.BaseTapGestureRecognizer {
-    get onTapDown() {
-      return this[onTapDown];
-    }
-    set onTapDown(value) {
-      this[onTapDown] = value;
-    }
-    get onTapUp() {
-      return this[onTapUp];
-    }
-    set onTapUp(value) {
-      this[onTapUp] = value;
-    }
-    get onTap() {
-      return this[onTap];
-    }
-    set onTap(value) {
-      this[onTap] = value;
-    }
-    get onTapCancel() {
-      return this[onTapCancel];
-    }
-    set onTapCancel(value) {
-      this[onTapCancel] = value;
-    }
-    get onSecondaryTap() {
-      return this[onSecondaryTap];
-    }
-    set onSecondaryTap(value) {
-      this[onSecondaryTap] = value;
-    }
-    get onSecondaryTapDown() {
-      return this[onSecondaryTapDown];
-    }
-    set onSecondaryTapDown(value) {
-      this[onSecondaryTapDown] = value;
-    }
-    get onSecondaryTapUp() {
-      return this[onSecondaryTapUp];
-    }
-    set onSecondaryTapUp(value) {
-      this[onSecondaryTapUp] = value;
-    }
-    get onSecondaryTapCancel() {
-      return this[onSecondaryTapCancel];
-    }
-    set onSecondaryTapCancel(value) {
-      this[onSecondaryTapCancel] = value;
-    }
-    get onTertiaryTapDown() {
-      return this[onTertiaryTapDown];
-    }
-    set onTertiaryTapDown(value) {
-      this[onTertiaryTapDown] = value;
-    }
-    get onTertiaryTapUp() {
-      return this[onTertiaryTapUp];
-    }
-    set onTertiaryTapUp(value) {
-      this[onTertiaryTapUp] = value;
-    }
-    get onTertiaryTapCancel() {
-      return this[onTertiaryTapCancel];
-    }
-    set onTertiaryTapCancel(value) {
-      this[onTertiaryTapCancel] = value;
-    }
-    isPointerAllowed(event) {
-      if (event == null) dart.nullFailed(I[0], 541, 42, "event");
-      switch (event.buttons) {
-        case 1:
-        {
-          if (this.onTapDown == null && this.onTap == null && this.onTapUp == null && this.onTapCancel == null) return false;
-          break;
-        }
-        case 2:
-        {
-          if (this.onSecondaryTap == null && this.onSecondaryTapDown == null && this.onSecondaryTapUp == null && this.onSecondaryTapCancel == null) return false;
-          break;
-        }
-        case 4:
-        {
-          if (this.onTertiaryTapDown == null && this.onTertiaryTapUp == null && this.onTertiaryTapCancel == null) return false;
-          break;
-        }
-        default:
-        {
-          return false;
-        }
-      }
-      return super.isPointerAllowed(event);
-    }
-    handleTapDown(opts) {
-      let down = opts && 'down' in opts ? opts.down : null;
-      if (down == null) dart.nullFailed(I[0], 571, 49, "down");
-      let details = new tap.TapDownDetails.new({globalPosition: down.position, localPosition: down.localPosition, kind: this.getKindForPointer(down.pointer)});
-      switch (down.buttons) {
-        case 1:
-        {
-          if (this.onTapDown != null) this.invokeCallback(dart.void, "onTapDown", dart.fn(() => dart.nullCheck(this.onTapDown)(details), T.VoidTovoid()));
-          break;
-        }
-        case 2:
-        {
-          if (this.onSecondaryTapDown != null) this.invokeCallback(dart.void, "onSecondaryTapDown", dart.fn(() => dart.nullCheck(this.onSecondaryTapDown)(details), T.VoidTovoid()));
-          break;
-        }
-        case 4:
-        {
-          if (this.onTertiaryTapDown != null) this.invokeCallback(dart.void, "onTertiaryTapDown", dart.fn(() => dart.nullCheck(this.onTertiaryTapDown)(details), T.VoidTovoid()));
-          break;
-        }
-        default:
-      }
-    }
-    handleTapUp(opts) {
-      let down = opts && 'down' in opts ? opts.down : null;
-      if (down == null) dart.nullFailed(I[0], 596, 48, "down");
-      let up = opts && 'up' in opts ? opts.up : null;
-      if (up == null) dart.nullFailed(I[0], 596, 78, "up");
-      let details = new tap.TapUpDetails.new({kind: up.kind, globalPosition: up.position, localPosition: up.localPosition});
-      switch (down.buttons) {
-        case 1:
-        {
-          if (this.onTapUp != null) this.invokeCallback(dart.void, "onTapUp", dart.fn(() => dart.nullCheck(this.onTapUp)(details), T.VoidTovoid()));
-          if (this.onTap != null) this.invokeCallback(dart.void, "onTap", dart.nullCheck(this.onTap));
-          break;
-        }
-        case 2:
-        {
-          if (this.onSecondaryTapUp != null) this.invokeCallback(dart.void, "onSecondaryTapUp", dart.fn(() => dart.nullCheck(this.onSecondaryTapUp)(details), T.VoidTovoid()));
-          if (this.onSecondaryTap != null) this.invokeCallback(dart.void, "onSecondaryTap", dart.fn(() => dart.nullCheck(this.onSecondaryTap)(), T.VoidTovoid()));
-          break;
-        }
-        case 4:
-        {
-          if (this.onTertiaryTapUp != null) this.invokeCallback(dart.void, "onTertiaryTapUp", dart.fn(() => dart.nullCheck(this.onTertiaryTapUp)(details), T.VoidTovoid()));
-          break;
-        }
-        default:
-      }
-    }
-    handleTapCancel(opts) {
-      let down = opts && 'down' in opts ? opts.down : null;
-      if (down == null) dart.nullFailed(I[0], 625, 52, "down");
-      let cancel = opts && 'cancel' in opts ? opts.cancel : null;
-      let reason = opts && 'reason' in opts ? opts.reason : null;
-      if (reason == null) dart.nullFailed(I[0], 625, 102, "reason");
-      let note = reason === "" ? reason : dart.str(reason) + " ";
-      switch (down.buttons) {
-        case 1:
-        {
-          if (this.onTapCancel != null) this.invokeCallback(dart.void, dart.str(note) + "onTapCancel", dart.nullCheck(this.onTapCancel));
-          break;
-        }
-        case 2:
-        {
-          if (this.onSecondaryTapCancel != null) this.invokeCallback(dart.void, dart.str(note) + "onSecondaryTapCancel", dart.nullCheck(this.onSecondaryTapCancel));
-          break;
-        }
-        case 4:
-        {
-          if (this.onTertiaryTapCancel != null) this.invokeCallback(dart.void, dart.str(note) + "onTertiaryTapCancel", dart.nullCheck(this.onTertiaryTapCancel));
-          break;
-        }
-        default:
-      }
-    }
-    get debugDescription() {
-      return "tap";
-    }
-  };
-  (tap.TapGestureRecognizer.new = function(opts) {
-    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
-    this[onTapDown] = null;
-    this[onTapUp] = null;
-    this[onTap] = null;
-    this[onTapCancel] = null;
-    this[onSecondaryTap] = null;
-    this[onSecondaryTapDown] = null;
-    this[onSecondaryTapUp] = null;
-    this[onSecondaryTapCancel] = null;
-    this[onTertiaryTapDown] = null;
-    this[onTertiaryTapUp] = null;
-    this[onTertiaryTapCancel] = null;
-    tap.TapGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner});
-    ;
-  }).prototype = tap.TapGestureRecognizer.prototype;
-  dart.addTypeTests(tap.TapGestureRecognizer);
-  dart.addTypeCaches(tap.TapGestureRecognizer);
-  dart.setMethodSignature(tap.TapGestureRecognizer, () => ({
-    __proto__: dart.getMethods(tap.TapGestureRecognizer.__proto__),
-    handleTapDown: dart.fnType(dart.void, [], {}, {down: events.PointerDownEvent}),
-    handleTapUp: dart.fnType(dart.void, [], {}, {down: events.PointerDownEvent, up: events.PointerUpEvent}),
-    handleTapCancel: dart.fnType(dart.void, [], {cancel: dart.nullable(events.PointerCancelEvent)}, {down: events.PointerDownEvent, reason: core.String})
-  }));
-  dart.setLibraryUri(tap.TapGestureRecognizer, I[1]);
-  dart.setFieldSignature(tap.TapGestureRecognizer, () => ({
-    __proto__: dart.getFields(tap.TapGestureRecognizer.__proto__),
-    onTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapDownDetails]))),
-    onTapUp: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapUpDetails]))),
-    onTap: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
-    onTapCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
-    onSecondaryTap: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
-    onSecondaryTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapDownDetails]))),
-    onSecondaryTapUp: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapUpDetails]))),
-    onSecondaryTapCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
-    onTertiaryTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapDownDetails]))),
-    onTertiaryTapUp: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapUpDetails]))),
-    onTertiaryTapCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, [])))
-  }));
-  dart.trackLibraries("packages/flutter/src/gestures/tap.dart", {
-    "package:flutter/src/gestures/tap.dart": tap
+  dart.setLibraryUri(Social.Social, I[0]);
+  dart.trackLibraries("packages/client/widgets/Home/Social.dart", {
+    "package:client/widgets/Home/Social.dart": Social
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["tap.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/gestures/tap.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["Social.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;UAS4B;AACxB,YAAO,uCACM,aACJ,0BAAS,0BACW,+CACN,uBAAS,oBAAyB,uBAAS,gBACzD,qCACK,aACD,mBACK,6CACM,yCACa,+CACN,uBAAS,oBACN,uBAAS,kBAC9B,sCACgC,8CAC3B,yBACR,+BACW,8CACE,gBACA,cACW,AACf,+CAD8B,OAAO,8CAGpB,kKAE1B,+BACW,8CACE,gBACA,cACW,AAAwB,+CAAT,OAAO,6CAEpB,mKAE1B,+BACW,8CACE,gBACA,cACW,AACf,+CAD8B,OAAO,8CAGpB,sKAE1B,+BACW,8CACE,gBACA,cACW,AACf,+CAD8B,OAAO,+CAGpB,uKAE1B,+BACW,8CACE,gBACA,cACW,AAAwB,+CAAT,OAAO,8CAEvB,+CACA,uBAAS,oBACN,uBAAS,iBACzB,uEACuB,+CACN,uBAAS,oBACN,uBAAS,kBACb;IAKtC;;;;;;EACF","file":"../../../../../../../../../../packages/client/widgets/Home/Social.dart.lib.js"}');
   // Exports:
   return {
-    src__gestures__tap: tap
+    widgets__Home__Social: Social
   };
 }));
 
-//# sourceMappingURL=tap.dart.lib.js.map
+//# sourceMappingURL=Social.dart.lib.js.map

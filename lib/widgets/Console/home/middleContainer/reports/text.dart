@@ -5,7 +5,7 @@ class ReportText extends StatelessWidget {
   ReportText({this.mainContainerHeight});
   @override
   Widget build(BuildContext context) {
-    return Text("Messages",
+    return Text("Reports",
         style: TextStyle(
             fontSize: this.mainContainerHeight * 0.02,
             color: Color(0xff003366),

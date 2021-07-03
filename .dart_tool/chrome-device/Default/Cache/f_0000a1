@@ -1,1778 +1,935 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/widgets/text_selection_toolbar_layout_delegate.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/rendering/shifted_box.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/cupertino/text_selection_toolbar_button.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__cupertino__text_selection_toolbar_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__box_border$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__widgets__text_selection_toolbar_layout_delegate$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__rendering__shifted_box$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__cupertino__text_selection_toolbar_button$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/flutter_svg/src/svg/xml_parsers.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter_svg/src/utilities/xml.dart', 'packages/flutter_svg/src/utilities/numbers.dart', 'packages/xml/src/xml_events/events/text.dart', 'packages/flutter_svg/src/svg/colors.dart', 'packages/flutter_svg/src/utilities/errors.dart', 'packages/path_drawing/src/parse_path.dart'], (function load__packages__flutter_svg__src__svg__parser_state_dart(dart_sdk, packages__flutter_svg__src__svg__xml_parsers$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter_svg__src__utilities__xml$46dart, packages__flutter_svg__src__utilities__numbers$46dart, packages__xml__src__xml_events__events__text$46dart, packages__flutter_svg__src__svg__colors$46dart, packages__flutter_svg__src__utilities__errors$46dart, packages__path_drawing__src__parse_path$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const ui = dart_sdk.ui;
-  const _internal = dart_sdk._internal;
   const _js_helper = dart_sdk._js_helper;
-  const collection = dart_sdk.collection;
   const _interceptors = dart_sdk._interceptors;
+  const _internal = dart_sdk._internal;
+  const async = dart_sdk.async;
+  const collection = dart_sdk.collection;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const debug = packages__flutter__src__widgets__widget_span$46dart.src__widgets__debug;
-  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
-  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
-  const text_selection = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text_selection;
-  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
-  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const text_selection_toolbar_layout_delegate = packages__flutter__src__widgets__text_selection_toolbar_layout_delegate$46dart.src__widgets__text_selection_toolbar_layout_delegate;
-  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
-  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
-  const layer = packages__flutter__src__rendering__layer$46dart.src__rendering__layer;
-  const shifted_box = packages__flutter__src__rendering__shifted_box$46dart.src__rendering__shifted_box;
-  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
-  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
-  const text_selection_toolbar_button = packages__flutter__src__cupertino__text_selection_toolbar_button$46dart.src__cupertino__text_selection_toolbar_button;
+  const vector_drawable = packages__flutter_svg__src__svg__xml_parsers$46dart.src__vector_drawable;
+  const xml_parsers = packages__flutter_svg__src__svg__xml_parsers$46dart.src__svg__xml_parsers;
+  const parsers = packages__flutter_svg__src__svg__xml_parsers$46dart.src__svg__parsers;
+  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
   const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  var text_selection_toolbar = Object.create(dart.library);
-  var $length = dartx.length;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $containsKey = dartx.containsKey;
-  var $values = dartx.values;
-  var $forEach = dartx.forEach;
-  var $containsValue = dartx.containsValue;
-  var $contains = dartx.contains;
-  var $remove = dartx.remove;
-  var $_get = dartx._get;
-  var $_set = dartx._set;
-  var $where = dartx.where;
+  const xml = packages__flutter_svg__src__utilities__xml$46dart.src__utilities__xml;
+  const numbers = packages__flutter_svg__src__utilities__numbers$46dart.src__utilities__numbers;
+  const end_element = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__end_element;
+  const start_element = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__start_element;
+  const cdata = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__cdata;
+  const text = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__text;
+  const event_attribute = packages__xml__src__xml_events__events__text$46dart.src__xml_events__utils__event_attribute;
+  const event = packages__xml__src__xml_events__events__text$46dart.src__xml_events__event;
+  const colors$ = packages__flutter_svg__src__svg__colors$46dart.src__svg__colors;
+  const errors = packages__flutter_svg__src__utilities__errors$46dart.src__utilities__errors;
+  const parse_path = packages__path_drawing__src__parse_path$46dart.src__parse_path;
+  var parser_state = Object.create(dart.library);
+  var $runtimeType = dartx.runtimeType;
   var $add = dartx.add;
+  var $isEmpty = dartx.isEmpty;
+  var $addAll = dartx.addAll;
+  var $_get = dartx._get;
+  var $forEach = dartx.forEach;
+  var $last = dartx.last;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $trim = dartx.trim;
+  var $iterator = dartx.iterator;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    BuildContextAndOffsetAndbool__ToWidget: () => (T.BuildContextAndOffsetAndbool__ToWidget = dart.constFn(dart.fnType(framework.Widget, [framework.BuildContext, ui.Offset, core.bool, framework.Widget])))(),
-    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
-    PaintingContextAndOffsetTovoid: () => (T.PaintingContextAndOffsetTovoid = dart.constFn(dart.fnType(dart.void, [object.PaintingContext, ui.Offset])))(),
-    ColorL: () => (T.ColorL = dart.constFn(dart.legacy(ui.Color)))(),
-    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
-    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    LinkedMapOf_CupertinoTextSelectionToolbarItemsSlot$Element: () => (T.LinkedMapOf_CupertinoTextSelectionToolbarItemsSlot$Element = dart.constFn(_js_helper.LinkedMap$(text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot, framework.Element)))(),
-    _HashSetOfElement: () => (T._HashSetOfElement = dart.constFn(collection._HashSet$(framework.Element)))(),
-    RenderBoxN: () => (T.RenderBoxN = dart.constFn(dart.nullable(box.RenderBox)))(),
-    IndexedSlotOfElement: () => (T.IndexedSlotOfElement = dart.constFn(framework.IndexedSlot$(framework.Element)))(),
-    ListOfElement: () => (T.ListOfElement = dart.constFn(core.List$(framework.Element)))(),
-    ElementN: () => (T.ElementN = dart.constFn(dart.nullable(framework.Element)))(),
-    IndexedSlotOfElementN: () => (T.IndexedSlotOfElementN = dart.constFn(framework.IndexedSlot$(T.ElementN())))(),
-    ElementTobool: () => (T.ElementTobool = dart.constFn(dart.fnType(core.bool, [framework.Element])))(),
-    LinkedMapOf_CupertinoTextSelectionToolbarItemsSlot$RenderBox: () => (T.LinkedMapOf_CupertinoTextSelectionToolbarItemsSlot$RenderBox = dart.constFn(_js_helper.LinkedMap$(text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot, box.RenderBox)))(),
+    DiagnosticsPropertyOfString: () => (T.DiagnosticsPropertyOfString = dart.constFn(diagnostics.DiagnosticsProperty$(core.String)))(),
+    SyncIterableOfDiagnosticsNode: () => (T.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
+    IterableOfDiagnosticsNode: () => (T.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
+    VoidToIterableOfDiagnosticsNode: () => (T.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T.IterableOfDiagnosticsNode(), [])))(),
+    JSArrayOfDrawable: () => (T.JSArrayOfDrawable = dart.constFn(_interceptors.JSArray$(vector_drawable.Drawable)))(),
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))(),
+    JSArrayOfColor: () => (T.JSArrayOfColor = dart.constFn(_interceptors.JSArray$(ui.Color)))(),
     VoidTodouble: () => (T.VoidTodouble = dart.constFn(dart.fnType(core.double, [])))(),
     doubleTodynamic: () => (T.doubleTodynamic = dart.constFn(dart.fnType(dart.dynamic, [core.double])))(),
-    RenderObjectTovoid: () => (T.RenderObjectTovoid = dart.constFn(dart.fnType(dart.void, [object.RenderObject])))(),
-    BoxHitTestResultAndOffsetTobool: () => (T.BoxHitTestResultAndOffsetTobool = dart.constFn(dart.fnType(core.bool, [box.BoxHitTestResult, ui.Offset])))(),
-    JSArrayOfDiagnosticsNode: () => (T.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
-    _CupertinoTextSelectionToolbarItemsSlotL: () => (T._CupertinoTextSelectionToolbarItemsSlotL = dart.constFn(dart.legacy(text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot)))()
+    JSArrayOfPath: () => (T.JSArrayOfPath = dart.constFn(_interceptors.JSArray$(ui.Path)))(),
+    DrawableN: () => (T.DrawableN = dart.constFn(dart.nullable(vector_drawable.Drawable)))(),
+    DrawableNTovoid: () => (T.DrawableNTovoid = dart.constFn(dart.fnType(dart.void, [T.DrawableN()])))(),
+    ListQueueOf_TextInfo: () => (T.ListQueueOf_TextInfo = dart.constFn(collection.ListQueue$(parser_state._TextInfo)))(),
+    StringTovoid: () => (T.StringTovoid = dart.constFn(dart.fnType(dart.void, [core.String])))(),
+    XmlStartElementEventTovoid: () => (T.XmlStartElementEventTovoid = dart.constFn(dart.fnType(dart.void, [start_element.XmlStartElementEvent])))(),
+    ListQueueOf_SvgGroupTuple: () => (T.ListQueueOf_SvgGroupTuple = dart.constFn(collection.ListQueue$(parser_state._SvgGroupTuple)))(),
+    JSArrayOfXmlEventAttribute: () => (T.JSArrayOfXmlEventAttribute = dart.constFn(_interceptors.JSArray$(event_attribute.XmlEventAttribute)))(),
+    SyncIterableOfXmlEvent: () => (T.SyncIterableOfXmlEvent = dart.constFn(_js_helper.SyncIterable$(event.XmlEvent)))(),
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    LinkedHashSetOfString: () => (T.LinkedHashSetOfString = dart.constFn(collection.LinkedHashSet$(core.String)))(),
+    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    FutureNOfvoid: () => (T.FutureNOfvoid = dart.constFn(dart.nullable(T.FutureOfvoid())))(),
+    SvgParserStateAndboolToFutureNOfvoid: () => (T.SvgParserStateAndboolToFutureNOfvoid = dart.constFn(dart.fnType(T.FutureNOfvoid(), [parser_state.SvgParserState, core.bool])))(),
+    SvgParserStateAndboolToFutureOfvoid: () => (T.SvgParserStateAndboolToFutureOfvoid = dart.constFn(dart.fnType(T.FutureOfvoid(), [parser_state.SvgParserState, core.bool])))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    SvgParserStateL: () => (T.SvgParserStateL = dart.constFn(dart.legacy(parser_state.SvgParserState)))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    SvgParserStateLAndboolLToFutureNOfvoid: () => (T.SvgParserStateLAndboolLToFutureNOfvoid = dart.constFn(dart.fnType(T.FutureNOfvoid(), [T.SvgParserStateL(), T.boolL()])))(),
+    SvgParserStateLAndboolLToLFutureNOfvoid: () => (T.SvgParserStateLAndboolLToLFutureNOfvoid = dart.constFn(dart.legacy(T.SvgParserStateLAndboolLToFutureNOfvoid())))(),
+    ListOfXmlEventAttribute: () => (T.ListOfXmlEventAttribute = dart.constFn(core.List$(event_attribute.XmlEventAttribute)))(),
+    ListNOfXmlEventAttribute: () => (T.ListNOfXmlEventAttribute = dart.constFn(dart.nullable(T.ListOfXmlEventAttribute())))(),
+    ListNOfXmlEventAttributeToPath: () => (T.ListNOfXmlEventAttributeToPath = dart.constFn(dart.fnType(ui.Path, [T.ListNOfXmlEventAttribute()])))(),
+    PathN: () => (T.PathN = dart.constFn(dart.nullable(ui.Path)))(),
+    ListNOfXmlEventAttributeToPathN: () => (T.ListNOfXmlEventAttributeToPathN = dart.constFn(dart.fnType(T.PathN(), [T.ListNOfXmlEventAttribute()])))(),
+    XmlEventAttributeL: () => (T.XmlEventAttributeL = dart.constFn(dart.legacy(event_attribute.XmlEventAttribute)))(),
+    ListOfXmlEventAttributeL: () => (T.ListOfXmlEventAttributeL = dart.constFn(core.List$(T.XmlEventAttributeL())))(),
+    ListNOfXmlEventAttributeL: () => (T.ListNOfXmlEventAttributeL = dart.constFn(dart.nullable(T.ListOfXmlEventAttributeL())))(),
+    ListNOfXmlEventAttributeLToPathN: () => (T.ListNOfXmlEventAttributeLToPathN = dart.constFn(dart.fnType(T.PathN(), [T.ListNOfXmlEventAttributeL()])))(),
+    ListNOfXmlEventAttributeLToLPathN: () => (T.ListNOfXmlEventAttributeLToLPathN = dart.constFn(dart.legacy(T.ListNOfXmlEventAttributeLToPathN())))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.fn(text_selection_toolbar.CupertinoTextSelectionToolbar._defaultToolbarBuilder, T.BuildContextAndOffsetAndbool__ToWidget());
+    get C1() {
+      return C[1] = dart.fn(parser_state._Elements.svg, T.SvgParserStateAndboolToFutureNOfvoid());
     },
     get C2() {
-      return C[2] = dart.const({
-        __proto__: box_border.BoxShape.prototype,
-        [_name]: "BoxShape.rectangle",
-        index: 0
-      });
+      return C[2] = dart.fn(parser_state._Elements.g, T.SvgParserStateAndboolToFutureNOfvoid());
     },
     get C3() {
-      return C[3] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4286611584.0
-      });
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: box_decoration.BoxDecoration.prototype,
-        [BoxDecoration_shape]: C[2] || CT.C2,
-        [BoxDecoration_backgroundBlendMode]: null,
-        [BoxDecoration_gradient]: null,
-        [BoxDecoration_boxShadow]: null,
-        [BoxDecoration_borderRadius]: null,
-        [BoxDecoration_border]: null,
-        [BoxDecoration_image]: null,
-        [BoxDecoration_color]: C[3] || CT.C3
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "decoration",
-        [_Location_column]: 9,
-        [_Location_line]: 102,
-        [_Location_file]: null
-      });
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 103,
-        [_Location_file]: null
-      });
-    },
-    get C5() {
-      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
+      return C[3] = dart.fn(parser_state._Elements.use, T.SvgParserStateAndboolToFutureNOfvoid());
     },
     get C4() {
-      return C[4] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[5] || CT.C5,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 101,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart"
-      });
+      return C[4] = dart.fn(parser_state._Elements.symbol, T.SvgParserStateAndboolToFutureNOfvoid());
     },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "anchor",
-        [_Location_column]: 7,
-        [_Location_line]: 99,
-        [_Location_file]: null
-      });
+    get C5() {
+      return C[5] = dart.fn(parser_state._Elements.radialGradient, T.SvgParserStateAndboolToFutureNOfvoid());
     },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "isAbove",
-        [_Location_column]: 7,
-        [_Location_line]: 100,
-        [_Location_file]: null
-      });
+    get C6() {
+      return C[6] = dart.fn(parser_state._Elements.linearGradient, T.SvgParserStateAndboolToFutureNOfvoid());
     },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 101,
-        [_Location_file]: null
-      });
-    },
-    get C9() {
-      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12], T._LocationL());
+    get C7() {
+      return C[7] = dart.fn(parser_state._Elements.clipPath, T.SvgParserStateAndboolToFutureNOfvoid());
     },
     get C8() {
-      return C[8] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[9] || CT.C9,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 98,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart"
-      });
+      return C[8] = dart.fn(parser_state._Elements.image, T.SvgParserStateAndboolToFutureOfvoid());
+    },
+    get C9() {
+      return C[9] = dart.fn(parser_state._Elements.text, T.SvgParserStateAndboolToFutureOfvoid());
+    },
+    get C0() {
+      return C[0] = dart.constMap(T.StringL(), T.SvgParserStateLAndboolLToLFutureNOfvoid(), ["svg", C[1] || CT.C1, "g", C[2] || CT.C2, "a", C[2] || CT.C2, "use", C[3] || CT.C3, "symbol", C[4] || CT.C4, "mask", C[4] || CT.C4, "radialGradient", C[5] || CT.C5, "linearGradient", C[6] || CT.C6, "clipPath", C[7] || CT.C7, "image", C[8] || CT.C8, "text", C[9] || CT.C9]);
+    },
+    get C11() {
+      return C[11] = dart.fn(parser_state._Paths.circle, T.ListNOfXmlEventAttributeToPath());
+    },
+    get C12() {
+      return C[12] = dart.fn(parser_state._Paths.path, T.ListNOfXmlEventAttributeToPath());
     },
     get C13() {
-      return C[13] = dart.const({
-        __proto__: ui.Offset.prototype,
-        [OffsetBase__dy]: 8,
-        [OffsetBase__dx]: 0
-      });
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "anchor",
-        [_Location_column]: 11,
-        [_Location_line]: 135,
-        [_Location_file]: null
-      });
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "isAbove",
-        [_Location_column]: 11,
-        [_Location_line]: 136,
-        [_Location_file]: null
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "toolbarBuilder",
-        [_Location_column]: 11,
-        [_Location_line]: 137,
-        [_Location_file]: null
-      });
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 11,
-        [_Location_line]: 138,
-        [_Location_file]: null
-      });
-    },
-    get C15() {
-      return C[15] = dart.constList([C[16] || CT.C16, C[17] || CT.C17, C[18] || CT.C18, C[19] || CT.C19], T._LocationL());
+      return C[13] = dart.fn(parser_state._Paths.rect, T.ListNOfXmlEventAttributeToPath());
     },
     get C14() {
-      return C[14] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[15] || CT.C15,
-        [_Location_name]: null,
-        [_Location_column]: 16,
-        [_Location_line]: 134,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart"
-      });
+      return C[14] = dart.fn(parser_state._Paths.polygon, T.ListNOfXmlEventAttributeToPathN());
     },
-    get C22() {
-      return C[22] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "delegate",
-        [_Location_column]: 9,
-        [_Location_line]: 130,
-        [_Location_file]: null
-      });
+    get C15() {
+      return C[15] = dart.fn(parser_state._Paths.polyline, T.ListNOfXmlEventAttributeToPathN());
     },
-    get C23() {
-      return C[23] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 134,
-        [_Location_file]: null
-      });
+    get C16() {
+      return C[16] = dart.fn(parser_state._Paths.ellipse, T.ListNOfXmlEventAttributeToPath());
     },
-    get C21() {
-      return C[21] = dart.constList([C[22] || CT.C22, C[23] || CT.C23], T._LocationL());
+    get C17() {
+      return C[17] = dart.fn(parser_state._Paths.line, T.ListNOfXmlEventAttributeToPath());
     },
-    get C20() {
-      return C[20] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[21] || CT.C21,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 129,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart"
-      });
-    },
-    get C26() {
-      return C[26] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "padding",
-        [_Location_column]: 7,
-        [_Location_line]: 123,
-        [_Location_file]: null
-      });
-    },
-    get C27() {
-      return C[27] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 129,
-        [_Location_file]: null
-      });
-    },
-    get C25() {
-      return C[25] = dart.constList([C[26] || CT.C26, C[27] || CT.C27], T._LocationL());
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[25] || CT.C25,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 122,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart"
-      });
-    },
-    get C28() {
-      return C[28] = dart.const({
-        __proto__: ui.Offset.prototype,
-        [OffsetBase__dy]: 10,
-        [OffsetBase__dx]: 10
-      });
-    },
-    get C30() {
-      return C[30] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 0
-      });
-    },
-    get C31() {
-      return C[31] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4294902015.0
-      });
-    },
-    get C29() {
-      return C[29] = dart.constList([C[30] || CT.C30, C[31] || CT.C31, C[31] || CT.C31, C[30] || CT.C30], T.ColorL());
-    },
-    get C32() {
-      return C[32] = dart.constList([0.25, 0.25, 0.75, 0.75], T.doubleL());
-    },
-    get C33() {
-      return C[33] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 150000
-      });
-    },
-    get C36() {
-      return C[36] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onPressed",
-        [_Location_column]: 11,
-        [_Location_line]: 440,
-        [_Location_file]: null
-      });
-    },
-    get C37() {
-      return C[37] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "text",
-        [_Location_column]: 11,
-        [_Location_line]: 441,
-        [_Location_file]: null
-      });
-    },
-    get C35() {
-      return C[35] = dart.constList([C[36] || CT.C36, C[37] || CT.C37], T._LocationL());
-    },
-    get C34() {
-      return C[34] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[35] || CT.C35,
-        [_Location_name]: null,
-        [_Location_column]: 57,
-        [_Location_line]: 439,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart"
-      });
-    },
-    get C40() {
-      return C[40] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onPressed",
-        [_Location_column]: 11,
-        [_Location_line]: 445,
-        [_Location_file]: null
-      });
-    },
-    get C41() {
-      return C[41] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "text",
-        [_Location_column]: 11,
-        [_Location_line]: 446,
-        [_Location_file]: null
-      });
-    },
-    get C39() {
-      return C[39] = dart.constList([C[40] || CT.C40, C[41] || CT.C41], T._LocationL());
-    },
-    get C38() {
-      return C[38] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[39] || CT.C39,
-        [_Location_name]: null,
-        [_Location_column]: 57,
-        [_Location_line]: 444,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart"
-      });
-    },
-    get C44() {
-      return C[44] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "text",
-        [_Location_column]: 11,
-        [_Location_line]: 449,
-        [_Location_file]: null
-      });
-    },
-    get C43() {
-      return C[43] = dart.constList([C[44] || CT.C44], T._LocationL());
-    },
-    get C42() {
-      return C[42] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[43] || CT.C43,
-        [_Location_name]: null,
-        [_Location_column]: 65,
-        [_Location_line]: 448,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart"
-      });
-    },
-    get C47() {
-      return C[47] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "page",
-        [_Location_column]: 9,
-        [_Location_line]: 438,
-        [_Location_file]: null
-      });
-    },
-    get C48() {
-      return C[48] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "backButton",
-        [_Location_column]: 9,
-        [_Location_line]: 439,
-        [_Location_file]: null
-      });
-    },
-    get C49() {
-      return C[49] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "dividerWidth",
-        [_Location_column]: 9,
-        [_Location_line]: 443,
-        [_Location_file]: null
-      });
-    },
-    get C50() {
-      return C[50] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "nextButton",
-        [_Location_column]: 9,
-        [_Location_line]: 444,
-        [_Location_file]: null
-      });
-    },
-    get C51() {
-      return C[51] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "nextButtonDisabled",
-        [_Location_column]: 9,
-        [_Location_line]: 448,
-        [_Location_file]: null
-      });
-    },
-    get C52() {
-      return C[52] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 9,
-        [_Location_line]: 451,
-        [_Location_file]: null
-      });
-    },
-    get C46() {
-      return C[46] = dart.constList([C[47] || CT.C47, C[48] || CT.C48, C[49] || CT.C49, C[50] || CT.C50, C[51] || CT.C51, C[52] || CT.C52], T._LocationL());
-    },
-    get C45() {
-      return C[45] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[46] || CT.C46,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 437,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart"
-      });
-    },
-    get C55() {
-      return C[55] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "opacity",
-        [_Location_column]: 7,
-        [_Location_line]: 436,
-        [_Location_file]: null
-      });
-    },
-    get C56() {
-      return C[56] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 437,
-        [_Location_file]: null
-      });
-    },
-    get C54() {
-      return C[54] = dart.constList([C[55] || CT.C55, C[56] || CT.C56], T._LocationL());
-    },
-    get C53() {
-      return C[53] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[54] || CT.C54,
-        [_Location_name]: null,
-        [_Location_column]: 74,
-        [_Location_line]: 435,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart"
-      });
-    },
-    get C57() {
-      return C[57] = dart.const({
-        __proto__: text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.prototype,
-        [_name$]: "_CupertinoTextSelectionToolbarItemsSlot.backButton",
-        index: 0
-      });
-    },
-    get C58() {
-      return C[58] = dart.const({
-        __proto__: text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.prototype,
-        [_name$]: "_CupertinoTextSelectionToolbarItemsSlot.nextButton",
-        index: 1
-      });
-    },
-    get C59() {
-      return C[59] = dart.const({
-        __proto__: text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.prototype,
-        [_name$]: "_CupertinoTextSelectionToolbarItemsSlot.nextButtonDisabled",
-        index: 2
-      });
-    },
-    get C60() {
-      return C[60] = dart.constList([C[57] || CT.C57, C[58] || CT.C58, C[59] || CT.C59], T._CupertinoTextSelectionToolbarItemsSlotL());
-    },
-    get C62() {
-      return C[62] = dart.constList([], T._LocationL());
-    },
-    get C61() {
-      return C[61] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[62] || CT.C62,
-        [_Location_name]: null,
-        [_Location_column]: 26,
-        [_Location_line]: 1012,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart"
-      });
-    },
-    get C63() {
-      return C[63] = dart.const({
-        __proto__: ui.Size.prototype,
-        [OffsetBase__dy]: 7,
-        [OffsetBase__dx]: 14
-      });
-    },
-    get C64() {
-      return C[64] = dart.const({
-        __proto__: ui.Radius.prototype,
-        [Radius_y]: 8,
-        [Radius_x]: 8
-      });
+    get C10() {
+      return C[10] = dart.constMap(T.StringL(), T.ListNOfXmlEventAttributeLToLPathN(), ["circle", C[11] || CT.C11, "path", C[12] || CT.C12, "rect", C[13] || CT.C13, "polygon", C[14] || CT.C14, "polyline", C[15] || CT.C15, "ellipse", C[16] || CT.C16, "line", C[17] || CT.C17]);
     }
   }, false);
-  var C = Array(65).fill(void 0);
+  var C = Array(18).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar.dart",
-    "package:flutter/src/cupertino/text_selection_toolbar.dart"
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/src/svg/parser_state.dart",
+    "package:flutter_svg/src/svg/parser_state.dart"
   ];
-  var anchorAbove$ = dart.privateName(text_selection_toolbar, "CupertinoTextSelectionToolbar.anchorAbove");
-  var anchorBelow$ = dart.privateName(text_selection_toolbar, "CupertinoTextSelectionToolbar.anchorBelow");
-  var children$ = dart.privateName(text_selection_toolbar, "CupertinoTextSelectionToolbar.children");
-  var toolbarBuilder$ = dart.privateName(text_selection_toolbar, "CupertinoTextSelectionToolbar.toolbarBuilder");
-  var _name = dart.privateName(box_border, "_name");
-  var BoxDecoration_shape = dart.privateName(box_decoration, "BoxDecoration.shape");
-  var BoxDecoration_backgroundBlendMode = dart.privateName(box_decoration, "BoxDecoration.backgroundBlendMode");
-  var BoxDecoration_gradient = dart.privateName(box_decoration, "BoxDecoration.gradient");
-  var BoxDecoration_boxShadow = dart.privateName(box_decoration, "BoxDecoration.boxShadow");
-  var BoxDecoration_borderRadius = dart.privateName(box_decoration, "BoxDecoration.borderRadius");
-  var BoxDecoration_border = dart.privateName(box_decoration, "BoxDecoration.border");
-  var BoxDecoration_image = dart.privateName(box_decoration, "BoxDecoration.image");
-  var Color_value = dart.privateName(ui, "Color.value");
-  var BoxDecoration_color = dart.privateName(box_decoration, "BoxDecoration.color");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
-  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
-  text_selection_toolbar.CupertinoTextSelectionToolbar = class CupertinoTextSelectionToolbar extends framework.StatelessWidget {
-    get anchorAbove() {
-      return this[anchorAbove$];
+  var style$ = dart.privateName(parser_state, "_TextInfo.style");
+  var offset$ = dart.privateName(parser_state, "_TextInfo.offset");
+  var transform$ = dart.privateName(parser_state, "_TextInfo.transform");
+  parser_state._TextInfo = class _TextInfo extends core.Object {
+    get style() {
+      return this[style$];
     }
-    set anchorAbove(value) {
-      super.anchorAbove = value;
+    set style(value) {
+      super.style = value;
     }
-    get anchorBelow() {
-      return this[anchorBelow$];
+    get offset() {
+      return this[offset$];
     }
-    set anchorBelow(value) {
-      super.anchorBelow = value;
+    set offset(value) {
+      super.offset = value;
     }
-    get children() {
-      return this[children$];
+    get transform() {
+      return this[transform$];
     }
-    set children(value) {
-      super.children = value;
+    set transform(value) {
+      super.transform = value;
     }
-    get toolbarBuilder() {
-      return this[toolbarBuilder$];
-    }
-    set toolbarBuilder(value) {
-      super.toolbarBuilder = value;
-    }
-    static _defaultToolbarBuilder(context, anchor, isAbove, child) {
-      if (context == null) dart.nullFailed(I[0], 97, 53, "context");
-      if (anchor == null) dart.nullFailed(I[0], 97, 69, "anchor");
-      if (isAbove == null) dart.nullFailed(I[0], 97, 82, "isAbove");
-      if (child == null) dart.nullFailed(I[0], 97, 98, "child");
-      return new text_selection_toolbar._CupertinoTextSelectionToolbarShape.new({anchor: anchor, isAbove: isAbove, child: new container.DecoratedBox.new({decoration: C[1] || CT.C1, child: child, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), $creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 109, 29, "context");
-      if (!dart.test(debug.debugCheckHasMediaQuery(context))) dart.assertFailed(null, I[0], 110, 12, "debugCheckHasMediaQuery(context)");
-      let mediaQuery = media_query.MediaQuery.of(context);
-      let paddingAbove = dart.notNull(mediaQuery.padding.top) + 8;
-      let toolbarHeightNeeded = paddingAbove + 8 + 43;
-      let fitsAbove = dart.notNull(this.anchorAbove.dy) >= toolbarHeightNeeded;
-      let contentPaddingAdjustment = C[13] || CT.C13;
-      let localAdjustment = new ui.Offset.new(8, paddingAbove);
-      return new basic.Padding.new({padding: new edge_insets.EdgeInsets.fromLTRB(8, paddingAbove, 8, 8), child: new basic.CustomSingleChildLayout.new({delegate: new text_selection_toolbar_layout_delegate.TextSelectionToolbarLayoutDelegate.new({anchorAbove: this.anchorAbove['-'](localAdjustment)['-'](contentPaddingAdjustment), anchorBelow: this.anchorBelow['-'](localAdjustment)['+'](contentPaddingAdjustment)}), child: new text_selection_toolbar._CupertinoTextSelectionToolbarContent.new({anchor: fitsAbove ? this.anchorAbove : this.anchorBelow, isAbove: fitsAbove, toolbarBuilder: this.toolbarBuilder, children: this.children, $creationLocationd_0dea112b090073317d4: C[14] || CT.C14}), $creationLocationd_0dea112b090073317d4: C[20] || CT.C20}), $creationLocationd_0dea112b090073317d4: C[24] || CT.C24});
+    toString() {
+      return dart.str(this[$runtimeType]) + "{" + dart.str(this.offset) + ", " + dart.str(this.style) + ", " + dart.str(this.transform) + "}";
     }
   };
-  (text_selection_toolbar.CupertinoTextSelectionToolbar.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let anchorAbove = opts && 'anchorAbove' in opts ? opts.anchorAbove : null;
-    if (anchorAbove == null) dart.nullFailed(I[0], 69, 19, "anchorAbove");
-    let anchorBelow = opts && 'anchorBelow' in opts ? opts.anchorBelow : null;
-    if (anchorBelow == null) dart.nullFailed(I[0], 70, 19, "anchorBelow");
-    let children = opts && 'children' in opts ? opts.children : null;
-    if (children == null) dart.nullFailed(I[0], 71, 19, "children");
-    let toolbarBuilder = opts && 'toolbarBuilder' in opts ? opts.toolbarBuilder : C[0] || CT.C0;
-    if (toolbarBuilder == null) dart.nullFailed(I[0], 72, 10, "toolbarBuilder");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[anchorAbove$] = anchorAbove;
-    this[anchorBelow$] = anchorBelow;
-    this[children$] = children;
-    this[toolbarBuilder$] = toolbarBuilder;
-    if (!(dart.notNull(children[$length]) > 0)) dart.assertFailed(null, I[0], 73, 15, "children.length > 0");
-    text_selection_toolbar.CupertinoTextSelectionToolbar.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (parser_state._TextInfo.new = function(style, offset, transform) {
+    if (style == null) dart.nullFailed(I[0], 65, 10, "style");
+    if (offset == null) dart.nullFailed(I[0], 66, 10, "offset");
+    this[style$] = style;
+    this[offset$] = offset;
+    this[transform$] = transform;
     ;
-  }).prototype = text_selection_toolbar.CupertinoTextSelectionToolbar.prototype;
-  dart.addTypeTests(text_selection_toolbar.CupertinoTextSelectionToolbar);
-  dart.addTypeCaches(text_selection_toolbar.CupertinoTextSelectionToolbar);
-  dart.setMethodSignature(text_selection_toolbar.CupertinoTextSelectionToolbar, () => ({
-    __proto__: dart.getMethods(text_selection_toolbar.CupertinoTextSelectionToolbar.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }).prototype = parser_state._TextInfo.prototype;
+  dart.addTypeTests(parser_state._TextInfo);
+  dart.addTypeCaches(parser_state._TextInfo);
+  dart.setLibraryUri(parser_state._TextInfo, I[1]);
+  dart.setFieldSignature(parser_state._TextInfo, () => ({
+    __proto__: dart.getFields(parser_state._TextInfo.__proto__),
+    style: dart.finalFieldType(vector_drawable.DrawableStyle),
+    offset: dart.finalFieldType(ui.Offset),
+    transform: dart.finalFieldType(dart.nullable(vector_math_64.Matrix4))
   }));
-  dart.setLibraryUri(text_selection_toolbar.CupertinoTextSelectionToolbar, I[1]);
-  dart.setFieldSignature(text_selection_toolbar.CupertinoTextSelectionToolbar, () => ({
-    __proto__: dart.getFields(text_selection_toolbar.CupertinoTextSelectionToolbar.__proto__),
-    anchorAbove: dart.finalFieldType(ui.Offset),
-    anchorBelow: dart.finalFieldType(ui.Offset),
-    children: dart.finalFieldType(core.List$(framework.Widget)),
-    toolbarBuilder: dart.finalFieldType(dart.fnType(framework.Widget, [framework.BuildContext, ui.Offset, core.bool, framework.Widget]))
-  }));
-  var _anchor = dart.privateName(text_selection_toolbar, "_CupertinoTextSelectionToolbarShape._anchor");
-  var _isAbove = dart.privateName(text_selection_toolbar, "_CupertinoTextSelectionToolbarShape._isAbove");
-  var _anchor$ = dart.privateName(text_selection_toolbar, "_anchor");
-  var _isAbove$ = dart.privateName(text_selection_toolbar, "_isAbove");
-  text_selection_toolbar._CupertinoTextSelectionToolbarShape = class _CupertinoTextSelectionToolbarShape extends framework.SingleChildRenderObjectWidget {
-    get [_anchor$]() {
-      return this[_anchor];
+  dart.defineExtensionMethods(parser_state._TextInfo, ['toString']);
+  var _root = dart.privateName(parser_state, "_root");
+  var _key$ = dart.privateName(parser_state, "_key");
+  var _parentDrawables = dart.privateName(parser_state, "_parentDrawables");
+  var _definitions = dart.privateName(parser_state, "_definitions");
+  var _currentStartElement = dart.privateName(parser_state, "_currentStartElement");
+  var _inDefs = dart.privateName(parser_state, "_inDefs");
+  var _readSubtree = dart.privateName(parser_state, "_readSubtree");
+  parser_state._Elements = class _Elements extends core.Object {
+    static svg(parserState, warningsAsErrors) {
+      if (parserState == null) dart.nullFailed(I[0], 79, 43, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 79, 61, "warningsAsErrors");
+      let viewBox = xml_parsers.parseViewBox(parserState.attributes);
+      let id = parserState.attribute("id", {def: ""});
+      if (parserState[_root] != null) {
+        let errorMessage = "Unsupported nested <svg> element.";
+        if (dart.test(warningsAsErrors)) {
+          dart.throw(new core.UnsupportedError.new(errorMessage));
+        }
+        assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnsupportedError.new(errorMessage), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
+            yield new assertions.ErrorDescription.new("The root <svg> element contained an unsupported nested SVG element.");
+            if (parserState[_key$] != null) {
+              yield new assertions.ErrorDescription.new("");
+              yield new (T.DiagnosticsPropertyOfString()).new("Picture key", parserState[_key$]);
+            }
+          }), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in _Element.svg")}));
+        parserState[_parentDrawables].addLast(new parser_state._SvgGroupTuple.new("svg", new vector_drawable.DrawableGroup.new(id, T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], dart.nullCheck(viewBox).viewBoxRect, null))));
+        return null;
+      }
+      parserState[_root] = new vector_drawable.DrawableRoot.new(id, dart.nullCheck(viewBox), T.JSArrayOfDrawable().of([]), parserState[_definitions], xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], viewBox.viewBoxRect, null));
+      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), parserState[_root]);
+      return null;
     }
-    set [_anchor$](value) {
-      super[_anchor$] = value;
-    }
-    get [_isAbove$]() {
-      return this[_isAbove];
-    }
-    set [_isAbove$](value) {
-      super[_isAbove$] = value;
-    }
-    createRenderObject(context) {
-      if (context == null) dart.nullFailed(I[0], 166, 77, "context");
-      return new text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape.new(this[_anchor$], this[_isAbove$], null);
-    }
-    updateRenderObject(context, renderObject) {
+    static g(parserState, warningsAsErrors) {
       let t0;
-      if (context == null) dart.nullFailed(I[0], 173, 40, "context");
-      text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape.as(renderObject);
-      if (renderObject == null) dart.nullFailed(I[0], 173, 91, "renderObject");
-      t0 = renderObject;
-      (() => {
-        t0.anchor = this[_anchor$];
-        t0.isAbove = this[_isAbove$];
-        return t0;
-      })();
-    }
-  };
-  (text_selection_toolbar._CupertinoTextSelectionToolbarShape.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let anchor = opts && 'anchor' in opts ? opts.anchor : null;
-    if (anchor == null) dart.nullFailed(I[0], 152, 21, "anchor");
-    let isAbove = opts && 'isAbove' in opts ? opts.isAbove : null;
-    if (isAbove == null) dart.nullFailed(I[0], 153, 19, "isAbove");
-    let child = opts && 'child' in opts ? opts.child : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[_anchor] = anchor;
-    this[_isAbove] = isAbove;
-    text_selection_toolbar._CupertinoTextSelectionToolbarShape.__proto__.new.call(this, {key: key, child: child, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = text_selection_toolbar._CupertinoTextSelectionToolbarShape.prototype;
-  dart.addTypeTests(text_selection_toolbar._CupertinoTextSelectionToolbarShape);
-  dart.addTypeCaches(text_selection_toolbar._CupertinoTextSelectionToolbarShape);
-  dart.setMethodSignature(text_selection_toolbar._CupertinoTextSelectionToolbarShape, () => ({
-    __proto__: dart.getMethods(text_selection_toolbar._CupertinoTextSelectionToolbarShape.__proto__),
-    createRenderObject: dart.fnType(text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape, [framework.BuildContext])
-  }));
-  dart.setLibraryUri(text_selection_toolbar._CupertinoTextSelectionToolbarShape, I[1]);
-  dart.setFieldSignature(text_selection_toolbar._CupertinoTextSelectionToolbarShape, () => ({
-    __proto__: dart.getFields(text_selection_toolbar._CupertinoTextSelectionToolbarShape.__proto__),
-    [_anchor$]: dart.finalFieldType(ui.Offset),
-    [_isAbove$]: dart.finalFieldType(core.bool)
-  }));
-  var _heightConstraint = dart.privateName(text_selection_toolbar, "_heightConstraint");
-  var _clipPathLayer = dart.privateName(text_selection_toolbar, "_clipPathLayer");
-  var _debugPaint = dart.privateName(text_selection_toolbar, "_debugPaint");
-  var _clipPath = dart.privateName(text_selection_toolbar, "_clipPath");
-  text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape = class _RenderCupertinoTextSelectionToolbarShape extends shifted_box.RenderShiftedBox {
-    get isRepaintBoundary() {
-      return true;
-    }
-    set anchor(value) {
-      if (value == null) dart.nullFailed(I[0], 200, 21, "value");
-      if (dart.equals(value, this[_anchor$])) {
-        return;
+      if (parserState == null) dart.nullFailed(I[0], 137, 41, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 137, 59, "warningsAsErrors");
+      let parent = dart.nullCheck(parserState.currentGroup);
+      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, parent.style), {transform: (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? null : t0.storage)});
+      if (!dart.test(parserState[_inDefs])) {
+        dart.nullCheck(parent.children)[$add](group);
       }
-      this[_anchor$] = value;
-      this.markNeedsLayout();
+      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), group);
+      return null;
     }
-    set isAbove(value) {
-      if (value == null) dart.nullFailed(I[0], 209, 20, "value");
-      if (this[_isAbove$] == value) {
-        return;
-      }
-      this[_isAbove$] = value;
-      this.markNeedsLayout();
-    }
-    performLayout() {
-      if (this.child == null) {
-        return;
-      }
-      let enforcedConstraint = this.constraints.loosen();
-      dart.nullCheck(this.child).layout(this[_heightConstraint].enforce(enforcedConstraint), {parentUsesSize: true});
-      let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-      childParentData.offset = new ui.Offset.new(0.0, dart.test(this[_isAbove$]) ? -dart.notNull(text_selection_toolbar._kToolbarArrowSize.height) : 0.0);
-      this.size = new ui.Size.new(dart.nullCheck(this.child).size.width, dart.notNull(dart.nullCheck(this.child).size.height) - dart.notNull(text_selection_toolbar._kToolbarArrowSize.height));
-    }
-    [_clipPath]() {
-      let t0, t0$;
-      let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-      let rrect = (t0 = ui.Path.new(), (() => {
-        t0.addRRect(new ui.RRect.fromRectAndRadius(new ui.Offset.new(0.0, text_selection_toolbar._kToolbarArrowSize.height)['&'](new ui.Size.new(dart.nullCheck(this.child).size.width, dart.notNull(dart.nullCheck(this.child).size.height) - dart.notNull(text_selection_toolbar._kToolbarArrowSize.height) * 2)), text_selection_toolbar._kToolbarBorderRadius));
-        return t0;
-      })());
-      let localAnchor = this.globalToLocal(this[_anchor$]);
-      let centerX = dart.notNull(childParentData.offset.dx) + dart.notNull(dart.nullCheck(this.child).size.width) / 2;
-      let arrowXOffsetFromCenter = dart.notNull(localAnchor.dx) - centerX;
-      let arrowTipX = dart.notNull(dart.nullCheck(this.child).size.width) / 2 + arrowXOffsetFromCenter;
-      let arrowBaseY = dart.test(this[_isAbove$]) ? dart.notNull(dart.nullCheck(this.child).size.height) - dart.notNull(text_selection_toolbar._kToolbarArrowSize.height) : text_selection_toolbar._kToolbarArrowSize.height;
-      let arrowTipY = dart.test(this[_isAbove$]) ? dart.nullCheck(this.child).size.height : 0.0;
-      let arrow = (t0$ = ui.Path.new(), (() => {
-        t0$.moveTo(arrowTipX, arrowTipY);
-        t0$.lineTo(arrowTipX - dart.notNull(text_selection_toolbar._kToolbarArrowSize.width) / 2, arrowBaseY);
-        t0$.lineTo(arrowTipX + dart.notNull(text_selection_toolbar._kToolbarArrowSize.width) / 2, arrowBaseY);
-        t0$.close();
-        return t0$;
-      })());
-      return ui.Path.combine(ui.PathOperation.union, rrect, arrow);
-    }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(I[0], 286, 30, "context");
-      if (offset == null) dart.nullFailed(I[0], 286, 46, "offset");
-      if (this.child == null) {
-        return;
-      }
-      let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-      this[_clipPathLayer] = context.pushClipPath(this.needsCompositing, offset['+'](childParentData.offset), ui.Offset.zero['&'](dart.nullCheck(this.child).size), this[_clipPath](), dart.fn((innerContext, innerOffset) => {
-        if (innerContext == null) dart.nullFailed(I[0], 297, 24, "innerContext");
-        if (innerOffset == null) dart.nullFailed(I[0], 297, 45, "innerOffset");
-        return innerContext.paintChild(dart.nullCheck(this.child), innerOffset);
-      }, T.PaintingContextAndOffsetTovoid()), {oldLayer: this[_clipPathLayer]});
-    }
-    debugPaintSize(context, offset) {
-      if (context == null) dart.nullFailed(I[0], 306, 39, "context");
-      if (offset == null) dart.nullFailed(I[0], 306, 55, "offset");
-      if (!dart.test(dart.fn(() => {
-        let t0;
-        if (this.child == null) {
-          return true;
-        }
-        this[_debugPaint] == null ? this[_debugPaint] = (t0 = ui.Paint.new(), (() => {
-          t0.shader = ui.Gradient.linear(ui.Offset.zero, C[28] || CT.C28, C[29] || CT.C29, C[32] || CT.C32, ui.TileMode.repeated);
-          t0.strokeWidth = 2.0;
-          t0.style = ui.PaintingStyle.stroke;
-          return t0;
-        })()) : null;
-        let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-        context.canvas.drawPath(this[_clipPath]().shift(offset['+'](childParentData.offset)), dart.nullCheck(this[_debugPaint]));
-        return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 307, 12, "() {\r\n      if (child == null) {\r\n        return true;\r\n      }\r\n\r\n      _debugPaint ??= Paint()\r\n        ..shader = ui.Gradient.linear(\r\n          Offset.zero,\r\n          const Offset(10.0, 10.0),\r\n          const <Color>[Color(0x00000000), Color(0xFFFF00FF), Color(0xFFFF00FF), Color(0x00000000)],\r\n          const <double>[0.25, 0.25, 0.75, 0.75],\r\n          TileMode.repeated,\r\n        )\r\n        ..strokeWidth = 2.0\r\n        ..style = PaintingStyle.stroke;\r\n\r\n      final BoxParentData childParentData = child!.parentData! as BoxParentData;\r\n      context.canvas.drawPath(_clipPath().shift(offset + childParentData.offset), _debugPaint!);\r\n      return true;\r\n    }()");
-    }
-    hitTestChildren(result, opts) {
-      if (result == null) dart.nullFailed(I[0], 330, 41, "result");
-      let position = opts && 'position' in opts ? opts.position : null;
-      if (position == null) dart.nullFailed(I[0], 330, 67, "position");
-      let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-      let hitBox = new ui.Rect.fromLTWH(childParentData.offset.dx, dart.notNull(childParentData.offset.dy) + dart.notNull(text_selection_toolbar._kToolbarArrowSize.height), dart.nullCheck(this.child).size.width, dart.notNull(dart.nullCheck(this.child).size.height) - dart.notNull(text_selection_toolbar._kToolbarArrowSize.height) * 2);
-      if (!dart.test(hitBox.contains(position))) {
-        return false;
-      }
-      return super.hitTestChildren(result, {position: position});
-    }
-  };
-  (text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape.new = function(_anchor, _isAbove, child) {
-    if (_anchor == null) dart.nullFailed(I[0], 190, 10, "_anchor");
-    if (_isAbove == null) dart.nullFailed(I[0], 191, 10, "_isAbove");
-    this[_heightConstraint] = new box.BoxConstraints.tightFor({height: 43 + dart.notNull(text_selection_toolbar._kToolbarArrowSize.height)});
-    this[_clipPathLayer] = null;
-    this[_debugPaint] = null;
-    this[_anchor$] = _anchor;
-    this[_isAbove$] = _isAbove;
-    text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape.__proto__.new.call(this, child);
-    ;
-  }).prototype = text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape.prototype;
-  dart.addTypeTests(text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape);
-  dart.addTypeCaches(text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape);
-  dart.setMethodSignature(text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape, () => ({
-    __proto__: dart.getMethods(text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape.__proto__),
-    [_clipPath]: dart.fnType(ui.Path, [])
-  }));
-  dart.setSetterSignature(text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape, () => ({
-    __proto__: dart.getSetters(text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape.__proto__),
-    anchor: ui.Offset,
-    isAbove: core.bool
-  }));
-  dart.setLibraryUri(text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape, I[1]);
-  dart.setFieldSignature(text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape, () => ({
-    __proto__: dart.getFields(text_selection_toolbar._RenderCupertinoTextSelectionToolbarShape.__proto__),
-    [_anchor$]: dart.fieldType(ui.Offset),
-    [_isAbove$]: dart.fieldType(core.bool),
-    [_heightConstraint]: dart.finalFieldType(box.BoxConstraints),
-    [_clipPathLayer]: dart.fieldType(dart.nullable(layer.ClipPathLayer)),
-    [_debugPaint]: dart.fieldType(dart.nullable(ui.Paint))
-  }));
-  var anchor$ = dart.privateName(text_selection_toolbar, "_CupertinoTextSelectionToolbarContent.anchor");
-  var children$0 = dart.privateName(text_selection_toolbar, "_CupertinoTextSelectionToolbarContent.children");
-  var isAbove$ = dart.privateName(text_selection_toolbar, "_CupertinoTextSelectionToolbarContent.isAbove");
-  var toolbarBuilder$0 = dart.privateName(text_selection_toolbar, "_CupertinoTextSelectionToolbarContent.toolbarBuilder");
-  text_selection_toolbar._CupertinoTextSelectionToolbarContent = class _CupertinoTextSelectionToolbarContent extends framework.StatefulWidget {
-    get anchor() {
-      return this[anchor$];
-    }
-    set anchor(value) {
-      super.anchor = value;
-    }
-    get children() {
-      return this[children$0];
-    }
-    set children(value) {
-      super.children = value;
-    }
-    get isAbove() {
-      return this[isAbove$];
-    }
-    set isAbove(value) {
-      super.isAbove = value;
-    }
-    get toolbarBuilder() {
-      return this[toolbarBuilder$0];
-    }
-    set toolbarBuilder(value) {
-      super.toolbarBuilder = value;
-    }
-    createState() {
-      return new text_selection_toolbar._CupertinoTextSelectionToolbarContentState.new();
-    }
-  };
-  (text_selection_toolbar._CupertinoTextSelectionToolbarContent.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let anchor = opts && 'anchor' in opts ? opts.anchor : null;
-    if (anchor == null) dart.nullFailed(I[0], 356, 19, "anchor");
-    let isAbove = opts && 'isAbove' in opts ? opts.isAbove : null;
-    if (isAbove == null) dart.nullFailed(I[0], 357, 19, "isAbove");
-    let toolbarBuilder = opts && 'toolbarBuilder' in opts ? opts.toolbarBuilder : null;
-    if (toolbarBuilder == null) dart.nullFailed(I[0], 358, 19, "toolbarBuilder");
-    let children = opts && 'children' in opts ? opts.children : null;
-    if (children == null) dart.nullFailed(I[0], 359, 19, "children");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[anchor$] = anchor;
-    this[isAbove$] = isAbove;
-    this[toolbarBuilder$0] = toolbarBuilder;
-    this[children$0] = children;
-    if (!(children != null)) dart.assertFailed(null, I[0], 360, 15, "children != null");
-    if (!(dart.notNull(children[$length]) > 0)) dart.assertFailed(null, I[0], 361, 15, "children.length > 0");
-    text_selection_toolbar._CupertinoTextSelectionToolbarContent.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = text_selection_toolbar._CupertinoTextSelectionToolbarContent.prototype;
-  dart.addTypeTests(text_selection_toolbar._CupertinoTextSelectionToolbarContent);
-  dart.addTypeCaches(text_selection_toolbar._CupertinoTextSelectionToolbarContent);
-  dart.setMethodSignature(text_selection_toolbar._CupertinoTextSelectionToolbarContent, () => ({
-    __proto__: dart.getMethods(text_selection_toolbar._CupertinoTextSelectionToolbarContent.__proto__),
-    createState: dart.fnType(text_selection_toolbar._CupertinoTextSelectionToolbarContentState, [])
-  }));
-  dart.setLibraryUri(text_selection_toolbar._CupertinoTextSelectionToolbarContent, I[1]);
-  dart.setFieldSignature(text_selection_toolbar._CupertinoTextSelectionToolbarContent, () => ({
-    __proto__: dart.getFields(text_selection_toolbar._CupertinoTextSelectionToolbarContent.__proto__),
-    anchor: dart.finalFieldType(ui.Offset),
-    children: dart.finalFieldType(core.List$(framework.Widget)),
-    isAbove: dart.finalFieldType(core.bool),
-    toolbarBuilder: dart.finalFieldType(dart.fnType(framework.Widget, [framework.BuildContext, ui.Offset, core.bool, framework.Widget]))
-  }));
-  var ___CupertinoTextSelectionToolbarContentState__controller = dart.privateName(text_selection_toolbar, "_#_CupertinoTextSelectionToolbarContentState#_controller");
-  var ___CupertinoTextSelectionToolbarContentState__controller_isSet = dart.privateName(text_selection_toolbar, "_#_CupertinoTextSelectionToolbarContentState#_controller#isSet");
-  var _page = dart.privateName(text_selection_toolbar, "_page");
-  var _nextPage = dart.privateName(text_selection_toolbar, "_nextPage");
-  var _controller = dart.privateName(text_selection_toolbar, "_controller");
-  var _statusListener = dart.privateName(text_selection_toolbar, "_statusListener");
-  var _handleNextPage = dart.privateName(text_selection_toolbar, "_handleNextPage");
-  var _handlePreviousPage = dart.privateName(text_selection_toolbar, "_handlePreviousPage");
-  var Duration__duration = dart.privateName(core, "Duration._duration");
-  const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(text_selection_toolbar._CupertinoTextSelectionToolbarContent) {};
-  (State_TickerProviderStateMixin$36.new = function() {
-    ticker_provider.TickerProviderStateMixin$(text_selection_toolbar._CupertinoTextSelectionToolbarContent)[dart.mixinNew].call(this);
-    State_TickerProviderStateMixin$36.__proto__.new.call(this);
-  }).prototype = State_TickerProviderStateMixin$36.prototype;
-  dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(text_selection_toolbar._CupertinoTextSelectionToolbarContent));
-  text_selection_toolbar._CupertinoTextSelectionToolbarContentState = class _CupertinoTextSelectionToolbarContentState extends State_TickerProviderStateMixin$36 {
-    get [_controller]() {
+    static symbol(parserState, warningsAsErrors) {
       let t0;
-      return dart.test(this[___CupertinoTextSelectionToolbarContentState__controller_isSet]) ? (t0 = this[___CupertinoTextSelectionToolbarContentState__controller], t0) : dart.throw(new _internal.LateError.fieldNI("_controller"));
+      if (parserState == null) dart.nullFailed(I[0], 159, 22, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 159, 40, "warningsAsErrors");
+      let parent = dart.nullCheck(parserState.currentGroup);
+      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], null, parent.style), {transform: (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? null : t0.storage)});
+      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), group);
+      return null;
     }
-    set [_controller](t0) {
-      if (t0 == null) dart.nullFailed(I[0], 375, 28, "null");
-      this[___CupertinoTextSelectionToolbarContentState__controller_isSet] = true;
-      this[___CupertinoTextSelectionToolbarContentState__controller] = t0;
-    }
-    [_handleNextPage]() {
-      this[_controller].reverse();
-      this[_controller].addStatusListener(dart.bind(this, _statusListener));
-      this[_nextPage] = dart.notNull(this[_page]) + 1;
-    }
-    [_handlePreviousPage]() {
-      this[_controller].reverse();
-      this[_controller].addStatusListener(dart.bind(this, _statusListener));
-      this[_nextPage] = dart.notNull(this[_page]) - 1;
-    }
-    [_statusListener](status) {
-      if (status == null) dart.nullFailed(I[0], 391, 40, "status");
-      if (status != animation.AnimationStatus.dismissed) {
-        return;
+    static use(parserState, warningsAsErrors) {
+      let t0;
+      if (parserState == null) dart.nullFailed(I[0], 177, 43, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 177, 61, "warningsAsErrors");
+      let parent = parserState.currentGroup;
+      let xlinkHref = dart.nullCheck(xml.getHrefAttribute(parserState.attributes));
+      if (xlinkHref[$isEmpty]) {
+        return null;
       }
-      this.setState(dart.fn(() => {
-        this[_page] = dart.nullCheck(this[_nextPage]);
-        this[_nextPage] = null;
-      }, T.VoidTovoid()));
-      this[_controller].forward();
-      this[_controller].removeStatusListener(dart.bind(this, _statusListener));
-    }
-    initState() {
-      super.initState();
-      this[_controller] = new animation_controller.AnimationController.new({value: 1.0, vsync: this, duration: C[33] || CT.C33});
-    }
-    didUpdateWidget(oldWidget) {
-      text_selection_toolbar._CupertinoTextSelectionToolbarContent.as(oldWidget);
-      if (oldWidget == null) dart.nullFailed(I[0], 416, 62, "oldWidget");
-      if (!dart.equals(this.widget.children, oldWidget.children)) {
-        this[_page] = 0;
-        this[_nextPage] = null;
-        this[_controller].forward();
-        this[_controller].removeStatusListener(dart.bind(this, _statusListener));
+      let style = xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, dart.nullCheck(parent).style);
+      let transform = (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? vector_math_64.Matrix4.identity() : t0);
+      transform.translate(numbers.parseDouble(parserState.attribute("x", {def: "0"})), dart.nullCheck(numbers.parseDouble(parserState.attribute("y", {def: "0"}))));
+      let ref = dart.nullCheck(parserState[_definitions].getDrawable("url(" + xlinkHref + ")"));
+      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([ref.mergeStyle(style)]), style, {transform: transform.storage});
+      let isIri = parserState.checkForIri(group);
+      if (!dart.test(parserState[_inDefs]) || !dart.test(isIri)) {
+        dart.nullCheck(parent.children)[$add](group);
       }
-      super.didUpdateWidget(oldWidget);
+      return null;
     }
-    dispose() {
-      this[_controller].dispose();
-      super.dispose();
-    }
-    build(context) {
-      let t5, t4, t3, t2, t1;
-      if (context == null) dart.nullFailed(I[0], 434, 29, "context");
-      t1 = this.widget;
-      t2 = context;
-      t3 = this.widget.anchor;
-      t4 = this.widget.isAbove;
-      t5 = new transitions.FadeTransition.new({opacity: this[_controller], child: new text_selection_toolbar._CupertinoTextSelectionToolbarItems.new({page: this[_page], backButton: new text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.text({onPressed: dart.bind(this, _handlePreviousPage), text: "◀", $creationLocationd_0dea112b090073317d4: C[34] || CT.C34}), dividerWidth: 1.0 / dart.notNull(media_query.MediaQuery.of(context).devicePixelRatio), nextButton: new text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.text({onPressed: dart.bind(this, _handleNextPage), text: "▶", $creationLocationd_0dea112b090073317d4: C[38] || CT.C38}), nextButtonDisabled: new text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.text({text: "▶", $creationLocationd_0dea112b090073317d4: C[42] || CT.C42}), children: this.widget.children, $creationLocationd_0dea112b090073317d4: C[45] || CT.C45}), $creationLocationd_0dea112b090073317d4: C[53] || CT.C53});
-      return t1.toolbarBuilder(t2, t3, t4, t5);
-    }
-  };
-  (text_selection_toolbar._CupertinoTextSelectionToolbarContentState.new = function() {
-    this[___CupertinoTextSelectionToolbarContentState__controller] = null;
-    this[___CupertinoTextSelectionToolbarContentState__controller_isSet] = false;
-    this[_page] = 0;
-    this[_nextPage] = null;
-    text_selection_toolbar._CupertinoTextSelectionToolbarContentState.__proto__.new.call(this);
-    ;
-  }).prototype = text_selection_toolbar._CupertinoTextSelectionToolbarContentState.prototype;
-  dart.addTypeTests(text_selection_toolbar._CupertinoTextSelectionToolbarContentState);
-  dart.addTypeCaches(text_selection_toolbar._CupertinoTextSelectionToolbarContentState);
-  dart.setMethodSignature(text_selection_toolbar._CupertinoTextSelectionToolbarContentState, () => ({
-    __proto__: dart.getMethods(text_selection_toolbar._CupertinoTextSelectionToolbarContentState.__proto__),
-    [_handleNextPage]: dart.fnType(dart.void, []),
-    [_handlePreviousPage]: dart.fnType(dart.void, []),
-    [_statusListener]: dart.fnType(dart.void, [animation.AnimationStatus]),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
-  }));
-  dart.setGetterSignature(text_selection_toolbar._CupertinoTextSelectionToolbarContentState, () => ({
-    __proto__: dart.getGetters(text_selection_toolbar._CupertinoTextSelectionToolbarContentState.__proto__),
-    [_controller]: animation_controller.AnimationController
-  }));
-  dart.setSetterSignature(text_selection_toolbar._CupertinoTextSelectionToolbarContentState, () => ({
-    __proto__: dart.getSetters(text_selection_toolbar._CupertinoTextSelectionToolbarContentState.__proto__),
-    [_controller]: animation_controller.AnimationController
-  }));
-  dart.setLibraryUri(text_selection_toolbar._CupertinoTextSelectionToolbarContentState, I[1]);
-  dart.setFieldSignature(text_selection_toolbar._CupertinoTextSelectionToolbarContentState, () => ({
-    __proto__: dart.getFields(text_selection_toolbar._CupertinoTextSelectionToolbarContentState.__proto__),
-    [___CupertinoTextSelectionToolbarContentState__controller]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
-    [___CupertinoTextSelectionToolbarContentState__controller_isSet]: dart.fieldType(core.bool),
-    [_page]: dart.fieldType(core.int),
-    [_nextPage]: dart.fieldType(dart.nullable(core.int))
-  }));
-  text_selection_toolbar._CupertinoTextSelectionToolbarItems = class _CupertinoTextSelectionToolbarItems extends framework.RenderObjectWidget {
-    createRenderObject(context) {
-      if (context == null) dart.nullFailed(I[0], 486, 77, "context");
-      return new text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.new({dividerWidth: this.dividerWidth, page: this.page});
-    }
-    updateRenderObject(context, renderObject) {
-      let t1;
-      if (context == null) dart.nullFailed(I[0], 494, 40, "context");
-      text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.as(renderObject);
-      if (renderObject == null) dart.nullFailed(I[0], 494, 91, "renderObject");
-      t1 = renderObject;
-      (() => {
-        t1.page = this.page;
-        t1.dividerWidth = this.dividerWidth;
-        return t1;
-      })();
-    }
-    createElement() {
-      return new text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement.new(this);
-    }
-  };
-  (text_selection_toolbar._CupertinoTextSelectionToolbarItems.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let page = opts && 'page' in opts ? opts.page : null;
-    if (page == null) dart.nullFailed(I[0], 463, 19, "page");
-    let children = opts && 'children' in opts ? opts.children : null;
-    if (children == null) dart.nullFailed(I[0], 464, 19, "children");
-    let backButton = opts && 'backButton' in opts ? opts.backButton : null;
-    if (backButton == null) dart.nullFailed(I[0], 465, 19, "backButton");
-    let dividerWidth = opts && 'dividerWidth' in opts ? opts.dividerWidth : null;
-    if (dividerWidth == null) dart.nullFailed(I[0], 466, 19, "dividerWidth");
-    let nextButton = opts && 'nextButton' in opts ? opts.nextButton : null;
-    if (nextButton == null) dart.nullFailed(I[0], 467, 19, "nextButton");
-    let nextButtonDisabled = opts && 'nextButtonDisabled' in opts ? opts.nextButtonDisabled : null;
-    if (nextButtonDisabled == null) dart.nullFailed(I[0], 468, 19, "nextButtonDisabled");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this.page = page;
-    this.children = children;
-    this.backButton = backButton;
-    this.dividerWidth = dividerWidth;
-    this.nextButton = nextButton;
-    this.nextButtonDisabled = nextButtonDisabled;
-    if (!(children != null)) dart.assertFailed(null, I[0], 469, 15, "children != null");
-    if (!dart.test(children[$isNotEmpty])) dart.assertFailed(null, I[0], 470, 15, "children.isNotEmpty");
-    if (!(backButton != null)) dart.assertFailed(null, I[0], 471, 15, "backButton != null");
-    if (!(dividerWidth != null)) dart.assertFailed(null, I[0], 472, 15, "dividerWidth != null");
-    if (!(nextButton != null)) dart.assertFailed(null, I[0], 473, 15, "nextButton != null");
-    if (!(nextButtonDisabled != null)) dart.assertFailed(null, I[0], 474, 15, "nextButtonDisabled != null");
-    if (!(page != null)) dart.assertFailed(null, I[0], 475, 15, "page != null");
-    text_selection_toolbar._CupertinoTextSelectionToolbarItems.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = text_selection_toolbar._CupertinoTextSelectionToolbarItems.prototype;
-  dart.addTypeTests(text_selection_toolbar._CupertinoTextSelectionToolbarItems);
-  dart.addTypeCaches(text_selection_toolbar._CupertinoTextSelectionToolbarItems);
-  dart.setMethodSignature(text_selection_toolbar._CupertinoTextSelectionToolbarItems, () => ({
-    __proto__: dart.getMethods(text_selection_toolbar._CupertinoTextSelectionToolbarItems.__proto__),
-    createRenderObject: dart.fnType(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems, [framework.BuildContext]),
-    createElement: dart.fnType(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement, [])
-  }));
-  dart.setLibraryUri(text_selection_toolbar._CupertinoTextSelectionToolbarItems, I[1]);
-  dart.setFieldSignature(text_selection_toolbar._CupertinoTextSelectionToolbarItems, () => ({
-    __proto__: dart.getFields(text_selection_toolbar._CupertinoTextSelectionToolbarItems.__proto__),
-    backButton: dart.finalFieldType(framework.Widget),
-    children: dart.finalFieldType(core.List$(framework.Widget)),
-    dividerWidth: dart.finalFieldType(core.double),
-    nextButton: dart.finalFieldType(framework.Widget),
-    nextButtonDisabled: dart.finalFieldType(framework.Widget),
-    page: dart.finalFieldType(core.int)
-  }));
-  var ___CupertinoTextSelectionToolbarItemsElement__children = dart.privateName(text_selection_toolbar, "_#_CupertinoTextSelectionToolbarItemsElement#_children");
-  var ___CupertinoTextSelectionToolbarItemsElement__children_isSet = dart.privateName(text_selection_toolbar, "_#_CupertinoTextSelectionToolbarItemsElement#_children#isSet");
-  var _forgottenChildren = dart.privateName(text_selection_toolbar, "_forgottenChildren");
-  var _children = dart.privateName(text_selection_toolbar, "_children");
-  var _name$ = dart.privateName(text_selection_toolbar, "_name");
-  var _updateRenderObject = dart.privateName(text_selection_toolbar, "_updateRenderObject");
-  var _mountChild = dart.privateName(text_selection_toolbar, "_mountChild");
-  text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement = class _CupertinoTextSelectionToolbarItemsElement extends framework.RenderObjectElement {
-    get [_children]() {
-      let t1;
-      return dart.test(this[___CupertinoTextSelectionToolbarItemsElement__children_isSet]) ? (t1 = this[___CupertinoTextSelectionToolbarItemsElement__children], t1) : dart.throw(new _internal.LateError.fieldNI("_children"));
-    }
-    set [_children](t1) {
-      if (t1 == null) dart.nullFailed(I[0], 510, 22, "null");
-      this[___CupertinoTextSelectionToolbarItemsElement__children_isSet] = true;
-      this[___CupertinoTextSelectionToolbarItemsElement__children] = t1;
-    }
-    get widget() {
-      return text_selection_toolbar._CupertinoTextSelectionToolbarItems.as(super.widget);
-    }
-    get renderObject() {
-      return text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.as(super.renderObject);
-    }
-    [_updateRenderObject](child, slot) {
-      if (slot == null) dart.nullFailed(I[0], 523, 86, "slot");
-      switch (slot) {
-        case C[57] || CT.C57:
-        {
-          this.renderObject.backButton = child;
-          break;
-        }
-        case C[58] || CT.C58:
-        {
-          this.renderObject.nextButton = child;
-          break;
-        }
-        case C[59] || CT.C59:
-        {
-          this.renderObject.nextButtonDisabled = child;
-          break;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
-    }
-    insertRenderObjectChild(child, slot) {
-      let t2;
-      object.RenderObject.as(child);
-      if (child == null) dart.nullFailed(I[0], 538, 45, "child");
-      if (text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.is(slot)) {
-        if (!box.RenderBox.is(child)) dart.assertFailed(null, I[0], 540, 14, "child is RenderBox");
-        this[_updateRenderObject](box.RenderBox.as(child), slot);
-        if (!dart.test(this.renderObject.slottedChildren[$containsKey](slot))) dart.assertFailed(null, I[0], 542, 14, "renderObject.slottedChildren.containsKey(slot)");
-        return;
-      }
-      if (framework.IndexedSlot.is(slot)) {
-        if (!dart.test(this.renderObject.debugValidateChild(child))) dart.assertFailed(null, I[0], 546, 14, "renderObject.debugValidateChild(child)");
-        this.renderObject.insert(box.RenderBox.as(child), {after: T.RenderBoxN().as((t2 = slot.value, t2 == null ? null : dart.dload(t2, 'renderObject')))});
-        return;
-      }
-      if (!false) dart.assertFailed("slot must be _CupertinoTextSelectionToolbarItemsSlot or IndexedSlot", I[0], 550, 12, "false");
-    }
-    moveRenderObjectChild(child, oldSlot, newSlot) {
-      object.RenderObject.as(child);
-      if (child == null) dart.nullFailed(I[0], 555, 43, "child");
-      T.IndexedSlotOfElement().as(oldSlot);
-      if (oldSlot == null) dart.nullFailed(I[0], 555, 71, "oldSlot");
-      T.IndexedSlotOfElement().as(newSlot);
-      if (newSlot == null) dart.nullFailed(I[0], 555, 101, "newSlot");
-      if (!dart.equals(child.parent, this.renderObject)) dart.assertFailed(null, I[0], 556, 12, "child.parent == renderObject");
-      this.renderObject.move(box.RenderBox.as(child), {after: T.RenderBoxN().as(newSlot.value.renderObject)});
-    }
-    static _shouldPaint(child) {
-      if (child == null) dart.nullFailed(I[0], 560, 36, "child");
-      return text_selection.ToolbarItemsParentData.as(dart.nullCheck(dart.nullCheck(child.renderObject).parentData)).shouldPaint;
-    }
-    removeRenderObjectChild(child, slot) {
-      object.RenderObject.as(child);
-      if (child == null) dart.nullFailed(I[0], 565, 45, "child");
-      if (text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.is(slot)) {
-        if (!box.RenderBox.is(child)) dart.assertFailed(null, I[0], 568, 14, "child is RenderBox");
-        if (!dart.test(this.renderObject.slottedChildren[$containsKey](slot))) dart.assertFailed(null, I[0], 569, 14, "renderObject.slottedChildren.containsKey(slot)");
-        this[_updateRenderObject](null, slot);
-        if (!!dart.test(this.renderObject.slottedChildren[$containsKey](slot))) dart.assertFailed(null, I[0], 571, 14, "!renderObject.slottedChildren.containsKey(slot)");
-        return;
-      }
-      if (!framework.IndexedSlot.is(slot)) dart.assertFailed(null, I[0], 576, 12, "slot is IndexedSlot");
-      if (!dart.equals(child.parent, this.renderObject)) dart.assertFailed(null, I[0], 577, 12, "child.parent == renderObject");
-      this.renderObject.remove(box.RenderBox.as(child));
-    }
-    visitChildren(visitor) {
-      if (visitor == null) dart.nullFailed(I[0], 582, 37, "visitor");
-      this.slotToChild[$values][$forEach](visitor);
-      for (let child of this[_children]) {
-        if (!dart.test(this[_forgottenChildren].contains(child))) visitor(child);
-      }
-    }
-    forgetChild(child) {
-      if (child == null) dart.nullFailed(I[0], 591, 28, "child");
-      if (!(dart.test(this.slotToChild[$containsValue](child)) || dart.test(this[_children][$contains](child)))) dart.assertFailed(null, I[0], 592, 12, "slotToChild.containsValue(child) || _children.contains(child)");
-      if (!!dart.test(this[_forgottenChildren].contains(child))) dart.assertFailed(null, I[0], 593, 12, "!_forgottenChildren.contains(child)");
-      if (dart.test(this.slotToChild[$containsKey](child.slot))) {
-        let slot = text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.as(dart.nullCheck(child.slot));
-        this.slotToChild[$remove](slot);
-      } else {
-        this[_forgottenChildren].add(child);
-      }
-      super.forgetChild(child);
-    }
-    [_mountChild](widget, slot) {
-      if (widget == null) dart.nullFailed(I[0], 605, 27, "widget");
-      if (slot == null) dart.nullFailed(I[0], 605, 75, "slot");
-      let oldChild = this.slotToChild[$_get](slot);
-      let newChild = this.updateChild(oldChild, widget, slot);
-      if (oldChild != null) {
-        this.slotToChild[$remove](slot);
-      }
-      if (newChild != null) {
-        this.slotToChild[$_set](slot, newChild);
-      }
-    }
-    mount(parent, newSlot) {
-      super.mount(parent, newSlot);
-      this[_mountChild](this.widget.backButton, text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.backButton);
-      this[_mountChild](this.widget.nextButton, text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.nextButton);
-      this[_mountChild](this.widget.nextButtonDisabled, text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.nextButtonDisabled);
-      this[_children] = T.ListOfElement().filled(this.widget.children[$length], text_selection_toolbar._NullElement.instance);
-      let previousChild = null;
-      for (let i = 0; i < dart.notNull(this[_children][$length]); i = i + 1) {
-        let newChild = this.inflateWidget(this.widget.children[$_get](i), new (T.IndexedSlotOfElementN()).new(i, previousChild));
-        this[_children][$_set](i, newChild);
-        previousChild = newChild;
-      }
-    }
-    debugVisitOnstageChildren(visitor) {
-      if (visitor == null) dart.nullFailed(I[0], 635, 49, "visitor");
-      for (let child of this.slotToChild[$values]) {
-        if (dart.test(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement._shouldPaint(child)) && !dart.test(this[_forgottenChildren].contains(child))) {
-          visitor(child);
-        }
-      }
-      this[_children][$where](dart.fn(child => {
-        if (child == null) dart.nullFailed(I[0], 644, 25, "child");
-        return !dart.test(this[_forgottenChildren].contains(child)) && dart.test(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement._shouldPaint(child));
-      }, T.ElementTobool()))[$forEach](visitor);
-    }
-    update(newWidget) {
-      text_selection_toolbar._CupertinoTextSelectionToolbarItems.as(newWidget);
-      if (newWidget == null) dart.nullFailed(I[0], 649, 51, "newWidget");
-      super.update(newWidget);
-      if (!dart.equals(this.widget, newWidget)) dart.assertFailed(null, I[0], 651, 12, "widget == newWidget");
-      this[_mountChild](this.widget.backButton, text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.backButton);
-      this[_mountChild](this.widget.nextButton, text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.nextButton);
-      this[_mountChild](this.widget.nextButtonDisabled, text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.nextButtonDisabled);
-      this[_children] = this.updateChildren(this[_children], this.widget.children, {forgottenChildren: this[_forgottenChildren]});
-      this[_forgottenChildren].clear();
-    }
-  };
-  (text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement.new = function(widget) {
-    if (widget == null) dart.nullFailed(I[0], 507, 41, "widget");
-    this[___CupertinoTextSelectionToolbarItemsElement__children] = null;
-    this[___CupertinoTextSelectionToolbarItemsElement__children_isSet] = false;
-    this.slotToChild = new (T.LinkedMapOf_CupertinoTextSelectionToolbarItemsSlot$Element()).new();
-    this[_forgottenChildren] = new (T._HashSetOfElement()).new();
-    text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement.__proto__.new.call(this, widget);
-    ;
-  }).prototype = text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement.prototype;
-  dart.addTypeTests(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement);
-  dart.addTypeCaches(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement);
-  dart.setMethodSignature(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement, () => ({
-    __proto__: dart.getMethods(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement.__proto__),
-    [_updateRenderObject]: dart.fnType(dart.void, [dart.nullable(box.RenderBox), text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot]),
-    [_mountChild]: dart.fnType(dart.void, [framework.Widget, text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot])
-  }));
-  dart.setGetterSignature(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement, () => ({
-    __proto__: dart.getGetters(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement.__proto__),
-    [_children]: core.List$(framework.Element),
-    widget: text_selection_toolbar._CupertinoTextSelectionToolbarItems,
-    renderObject: text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems
-  }));
-  dart.setSetterSignature(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement, () => ({
-    __proto__: dart.getSetters(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement.__proto__),
-    [_children]: core.List$(framework.Element)
-  }));
-  dart.setLibraryUri(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement, I[1]);
-  dart.setFieldSignature(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement, () => ({
-    __proto__: dart.getFields(text_selection_toolbar._CupertinoTextSelectionToolbarItemsElement.__proto__),
-    [___CupertinoTextSelectionToolbarItemsElement__children]: dart.fieldType(dart.nullable(core.List$(framework.Element))),
-    [___CupertinoTextSelectionToolbarItemsElement__children_isSet]: dart.fieldType(core.bool),
-    slotToChild: dart.finalFieldType(core.Map$(text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot, framework.Element)),
-    [_forgottenChildren]: dart.finalFieldType(core.Set$(framework.Element))
-  }));
-  var _backButton = dart.privateName(text_selection_toolbar, "_backButton");
-  var _nextButton = dart.privateName(text_selection_toolbar, "_nextButton");
-  var _nextButtonDisabled = dart.privateName(text_selection_toolbar, "_nextButtonDisabled");
-  var _dividerWidth = dart.privateName(text_selection_toolbar, "_dividerWidth");
-  var _updateChild = dart.privateName(text_selection_toolbar, "_updateChild");
-  var _isSlottedChild = dart.privateName(text_selection_toolbar, "_isSlottedChild");
-  const RenderBox_ContainerRenderObjectMixin$36 = class RenderBox_ContainerRenderObjectMixin extends box.RenderBox {};
-  (RenderBox_ContainerRenderObjectMixin$36.new = function() {
-    object.ContainerRenderObjectMixin$(box.RenderBox, text_selection.ToolbarItemsParentData)[dart.mixinNew].call(this);
-    RenderBox_ContainerRenderObjectMixin$36.__proto__.new.call(this);
-  }).prototype = RenderBox_ContainerRenderObjectMixin$36.prototype;
-  dart.applyMixin(RenderBox_ContainerRenderObjectMixin$36, object.ContainerRenderObjectMixin$(box.RenderBox, text_selection.ToolbarItemsParentData));
-  const RenderBox_RenderBoxContainerDefaultsMixin$36 = class RenderBox_RenderBoxContainerDefaultsMixin extends RenderBox_ContainerRenderObjectMixin$36 {};
-  (RenderBox_RenderBoxContainerDefaultsMixin$36.new = function() {
-    RenderBox_RenderBoxContainerDefaultsMixin$36.__proto__.new.call(this);
-  }).prototype = RenderBox_RenderBoxContainerDefaultsMixin$36.prototype;
-  dart.applyMixin(RenderBox_RenderBoxContainerDefaultsMixin$36, box.RenderBoxContainerDefaultsMixin$(box.RenderBox, text_selection.ToolbarItemsParentData));
-  text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems = class _RenderCupertinoTextSelectionToolbarItems extends RenderBox_RenderBoxContainerDefaultsMixin$36 {
-    [_updateChild](oldChild, newChild, slot) {
-      if (slot == null) dart.nullFailed(I[0], 677, 109, "slot");
-      if (oldChild != null) {
-        this.dropChild(oldChild);
-        this.slottedChildren[$remove](slot);
-      }
-      if (newChild != null) {
-        this.slottedChildren[$_set](slot, newChild);
-        this.adoptChild(newChild);
-      }
-      return newChild;
-    }
-    [_isSlottedChild](child) {
-      if (child == null) dart.nullFailed(I[0], 689, 34, "child");
-      return dart.equals(child, this[_backButton]) || dart.equals(child, this[_nextButton]) || dart.equals(child, this[_nextButtonDisabled]);
-    }
-    get page() {
-      return this[_page];
-    }
-    set page(value) {
-      if (value == null) dart.nullFailed(I[0], 695, 16, "value");
-      if (value == this[_page]) {
-        return;
-      }
-      this[_page] = value;
-      this.markNeedsLayout();
-    }
-    get dividerWidth() {
-      return this[_dividerWidth];
-    }
-    set dividerWidth(value) {
-      if (value == null) dart.nullFailed(I[0], 705, 27, "value");
-      if (value == this[_dividerWidth]) {
-        return;
-      }
-      this[_dividerWidth] = value;
-      this.markNeedsLayout();
-    }
-    get backButton() {
-      return this[_backButton];
-    }
-    set backButton(value) {
-      this[_backButton] = this[_updateChild](this[_backButton], value, text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.backButton);
-    }
-    get nextButton() {
-      return this[_nextButton];
-    }
-    set nextButton(value) {
-      this[_nextButton] = this[_updateChild](this[_nextButton], value, text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.nextButton);
-    }
-    get nextButtonDisabled() {
-      return this[_nextButtonDisabled];
-    }
-    set nextButtonDisabled(value) {
-      this[_nextButtonDisabled] = this[_updateChild](this[_nextButtonDisabled], value, text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.nextButtonDisabled);
-    }
-    performLayout() {
-      if (this.firstChild == null) {
-        this.size = this.constraints.smallest;
-        return;
-      }
-      dart.nullCheck(this[_backButton]).layout(this.constraints.loosen(), {parentUsesSize: true});
-      dart.nullCheck(this[_nextButton]).layout(this.constraints.loosen(), {parentUsesSize: true});
-      dart.nullCheck(this[_nextButtonDisabled]).layout(this.constraints.loosen(), {parentUsesSize: true});
-      let subsequentPageButtonsWidth = dart.notNull(dart.nullCheck(this[_backButton]).size.width) + dart.notNull(dart.nullCheck(this[_nextButton]).size.width);
-      let currentButtonPosition = 0.0;
-      let toolbarWidth = null;
-      let toolbarWidth$35isSet = false;
-      function toolbarWidth$35get() {
-        return toolbarWidth$35isSet ? toolbarWidth : dart.throw(new _internal.LateError.localNI("toolbarWidth"));
-      }
-      dart.fn(toolbarWidth$35get, T.VoidTodouble());
-      function toolbarWidth$35set(t5) {
-        if (t5 == null) dart.nullFailed(I[0], 746, 17, "null");
-        toolbarWidth$35isSet = true;
-        return toolbarWidth = t5;
-      }
-      dart.fn(toolbarWidth$35set, T.doubleTodynamic());
-      let greatestHeight = null;
-      let greatestHeight$35isSet = false;
-      function greatestHeight$35get() {
-        if (!greatestHeight$35isSet) {
-          greatestHeight = 0.0;
-          greatestHeight$35isSet = true;
-        }
-        return greatestHeight;
-      }
-      dart.fn(greatestHeight$35get, T.VoidTodouble());
-      function greatestHeight$35set(t10) {
-        if (t10 == null) dart.nullFailed(I[0], 747, 17, "null");
-        greatestHeight$35isSet = true;
-        return greatestHeight = t10;
-      }
-      dart.fn(greatestHeight$35set, T.doubleTodynamic());
-      let firstPageWidth = null;
-      let firstPageWidth$35isSet = false;
-      function firstPageWidth$35get() {
-        return firstPageWidth$35isSet ? firstPageWidth : dart.throw(new _internal.LateError.localNI("firstPageWidth"));
-      }
-      dart.fn(firstPageWidth$35get, T.VoidTodouble());
-      function firstPageWidth$35set(t15) {
-        if (t15 == null) dart.nullFailed(I[0], 748, 17, "null");
-        firstPageWidth$35isSet = true;
-        return firstPageWidth = t15;
-      }
-      dart.fn(firstPageWidth$35set, T.doubleTodynamic());
-      let currentPage = 0;
-      let i = -1;
-      this.visitChildren(dart.fn(renderObjectChild => {
-        if (renderObjectChild == null) dart.nullFailed(I[0], 751, 33, "renderObjectChild");
-        i = i + 1;
-        let child = box.RenderBox.as(renderObjectChild);
-        let childParentData = text_selection.ToolbarItemsParentData.as(dart.nullCheck(child.parentData));
-        childParentData.shouldPaint = false;
-        if (dart.test(this[_isSlottedChild](child)) || currentPage > dart.notNull(this[_page])) {
-          return;
-        }
-        let paginationButtonsWidth = 0.0;
-        if (currentPage === 0) {
-          paginationButtonsWidth = i === dart.notNull(this.childCount) - 1 ? 0.0 : dart.nullCheck(this[_nextButton]).size.width;
-        } else {
-          paginationButtonsWidth = subsequentPageButtonsWidth;
-        }
-        child.layout(new box.BoxConstraints.loose(new ui.Size.new(dart.notNull(currentPage === 0 ? this.constraints.maxWidth : firstPageWidth$35get()) - dart.notNull(paginationButtonsWidth), this.constraints.maxHeight)), {parentUsesSize: true});
-        greatestHeight$35set(dart.notNull(child.size.height) > dart.notNull(greatestHeight$35get()) ? child.size.height : greatestHeight$35get());
-        let currentWidth = currentButtonPosition + dart.notNull(paginationButtonsWidth) + dart.notNull(child.size.width);
-        if (currentWidth > dart.notNull(this.constraints.maxWidth)) {
-          currentPage = currentPage + 1;
-          currentButtonPosition = dart.notNull(dart.nullCheck(this[_backButton]).size.width) + dart.notNull(this.dividerWidth);
-          paginationButtonsWidth = dart.notNull(dart.nullCheck(this[_backButton]).size.width) + dart.notNull(dart.nullCheck(this[_nextButton]).size.width);
-          child.layout(new box.BoxConstraints.loose(new ui.Size.new(dart.notNull(firstPageWidth$35get()) - dart.notNull(paginationButtonsWidth), this.constraints.maxHeight)), {parentUsesSize: true});
-        }
-        childParentData.offset = new ui.Offset.new(currentButtonPosition, 0.0);
-        currentButtonPosition = currentButtonPosition + (dart.notNull(child.size.width) + dart.notNull(this.dividerWidth));
-        childParentData.shouldPaint = currentPage === this.page;
-        if (currentPage === 0) {
-          firstPageWidth$35set(currentButtonPosition + dart.notNull(dart.nullCheck(this[_nextButton]).size.width));
-        }
-        if (currentPage === this.page) {
-          toolbarWidth$35set(currentButtonPosition);
-        }
-      }, T.RenderObjectTovoid()));
-      if (!(dart.notNull(this.page) <= currentPage)) dart.assertFailed(null, I[0], 814, 12, "page <= currentPage");
-      if (currentPage > 0) {
-        let nextButtonParentData = text_selection.ToolbarItemsParentData.as(dart.nullCheck(dart.nullCheck(this[_nextButton]).parentData));
-        let nextButtonDisabledParentData = text_selection.ToolbarItemsParentData.as(dart.nullCheck(dart.nullCheck(this[_nextButtonDisabled]).parentData));
-        let backButtonParentData = text_selection.ToolbarItemsParentData.as(dart.nullCheck(dart.nullCheck(this[_backButton]).parentData));
-        if (this.page === currentPage) {
-          nextButtonDisabledParentData.offset = new ui.Offset.new(toolbarWidth$35get(), 0.0);
-          nextButtonDisabledParentData.shouldPaint = true;
-          toolbarWidth$35set(dart.notNull(toolbarWidth$35get()) + dart.notNull(dart.nullCheck(this.nextButtonDisabled).size.width));
-        } else {
-          nextButtonParentData.offset = new ui.Offset.new(toolbarWidth$35get(), 0.0);
-          nextButtonParentData.shouldPaint = true;
-          toolbarWidth$35set(dart.notNull(toolbarWidth$35get()) + dart.notNull(dart.nullCheck(this.nextButton).size.width));
-        }
-        if (dart.notNull(this.page) > 0) {
-          backButtonParentData.offset = ui.Offset.zero;
-          backButtonParentData.shouldPaint = true;
-        }
-      } else {
-        toolbarWidth$35set(dart.notNull(toolbarWidth$35get()) - dart.notNull(this.dividerWidth));
-      }
-      this.size = this.constraints.constrain(new ui.Size.new(toolbarWidth$35get(), greatestHeight$35get()));
-    }
-    paint(context, offset) {
-      if (context == null) dart.nullFailed(I[0], 851, 30, "context");
-      if (offset == null) dart.nullFailed(I[0], 851, 46, "offset");
-      this.visitChildren(dart.fn(renderObjectChild => {
-        if (renderObjectChild == null) dart.nullFailed(I[0], 852, 33, "renderObjectChild");
-        let child = box.RenderBox.as(renderObjectChild);
-        let childParentData = text_selection.ToolbarItemsParentData.as(dart.nullCheck(child.parentData));
-        if (dart.test(childParentData.shouldPaint)) {
-          let childOffset = childParentData.offset['+'](offset);
-          context.paintChild(child, childOffset);
-        }
-      }, T.RenderObjectTovoid()));
-    }
-    setupParentData(child) {
-      box.RenderBox.as(child);
-      if (child == null) dart.nullFailed(I[0], 864, 34, "child");
-      if (!text_selection.ToolbarItemsParentData.is(child.parentData)) {
-        child.parentData = new text_selection.ToolbarItemsParentData.new();
-      }
-    }
-    static hitTestChild(child, result, opts) {
-      if (result == null) dart.nullFailed(I[0], 871, 63, "result");
-      let position = opts && 'position' in opts ? opts.position : null;
-      if (position == null) dart.nullFailed(I[0], 871, 89, "position");
-      if (child == null) {
-        return false;
-      }
-      let childParentData = text_selection.ToolbarItemsParentData.as(dart.nullCheck(child.parentData));
-      if (!dart.test(childParentData.shouldPaint)) {
-        return false;
-      }
-      return result.addWithPaintOffset({offset: childParentData.offset, position: position, hitTest: dart.fn((result, transformed) => {
-          if (result == null) dart.nullFailed(I[0], 883, 34, "result");
-          if (transformed == null) dart.nullFailed(I[0], 883, 49, "transformed");
-          if (!dart.equals(transformed, position['-'](childParentData.offset))) dart.assertFailed(null, I[0], 884, 16, "transformed == position - childParentData.offset");
-          return child.hitTest(result, {position: transformed});
-        }, T.BoxHitTestResultAndOffsetTobool())});
-    }
-    hitTestChildren(result, opts) {
-      if (result == null) dart.nullFailed(I[0], 891, 41, "result");
-      let position = opts && 'position' in opts ? opts.position : null;
-      if (position == null) dart.nullFailed(I[0], 891, 67, "position");
-      let child = this.lastChild;
-      while (child != null) {
-        let childParentData = text_selection.ToolbarItemsParentData.as(dart.nullCheck(child.parentData));
-        if (!dart.test(childParentData.shouldPaint)) {
-          child = childParentData.previousSibling;
+    static parseStops(parserState, colors, offsets) {
+      let t0;
+      if (parserState == null) dart.nullFailed(I[0], 217, 20, "parserState");
+      if (colors == null) dart.nullFailed(I[0], 218, 17, "colors");
+      if (offsets == null) dart.nullFailed(I[0], 219, 18, "offsets");
+      for (let event of parserState[_readSubtree]()) {
+        if (end_element.XmlEndElementEvent.is(event)) {
           continue;
         }
-        if (dart.test(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.hitTestChild(child, result, {position: position}))) {
-          return true;
+        if (start_element.XmlStartElementEvent.is(event)) {
+          let rawOpacity = xml.getAttribute(parserState.attributes, "stop-opacity", {def: "1"});
+          let stopColor = (t0 = colors$.parseColor(xml.getAttribute(parserState.attributes, "stop-color")), t0 == null ? colors$.colorBlack : t0);
+          colors[$add](stopColor.withOpacity(dart.nullCheck(numbers.parseDouble(rawOpacity))));
+          let rawOffset = dart.nullCheck(xml.getAttribute(parserState.attributes, "offset", {def: "0%"}));
+          offsets[$add](parsers.parseDecimalOrPercentage(rawOffset));
         }
-        child = childParentData.previousSibling;
       }
-      if (dart.test(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.hitTestChild(this.backButton, result, {position: position}))) {
-        return true;
+      return null;
+    }
+    static radialGradient(parserState, warningsAsErrors) {
+      let t25;
+      if (parserState == null) dart.nullFailed(I[0], 248, 20, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 249, 10, "warningsAsErrors");
+      let gradientUnits = xml.getAttribute(parserState.attributes, "gradientUnits", {def: null});
+      let isObjectBoundingBox = gradientUnits !== "userSpaceOnUse";
+      let rawCx = parserState.attribute("cx", {def: "50%"});
+      let rawCy = parserState.attribute("cy", {def: "50%"});
+      let rawR = parserState.attribute("r", {def: "50%"});
+      let rawFx = parserState.attribute("fx", {def: rawCx});
+      let rawFy = parserState.attribute("fy", {def: rawCy});
+      let spreadMethod = xml_parsers.parseTileMode(parserState.attributes);
+      let id = xml_parsers.buildUrlIri(parserState.attributes);
+      let originalTransform = parsers.parseTransform(parserState.attribute("gradientTransform", {def: null}));
+      let offsets = T.JSArrayOfdouble().of([]);
+      let colors = T.JSArrayOfColor().of([]);
+      if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
+        let href = xml.getHrefAttribute(parserState.attributes);
+        let ref = parserState[_definitions].getGradient(vector_drawable.DrawableGradient, "url(" + dart.str(href) + ")");
+        if (ref == null) {
+          errors.reportMissingDef(parserState[_key$], href, "radialGradient");
+        } else {
+          if (gradientUnits == null) {
+            isObjectBoundingBox = ref.unitMode == vector_drawable.GradientUnitMode.objectBoundingBox;
+          }
+          colors[$addAll](dart.nullCheck(ref.colors));
+          offsets[$addAll](dart.nullCheck(ref.offsets));
+        }
+      } else {
+        parser_state._Elements.parseStops(parserState, colors, offsets);
       }
-      if (dart.test(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.hitTestChild(this.nextButton, result, {position: position}))) {
-        return true;
+      let cx = null;
+      let cx$35isSet = false;
+      function cx$35get() {
+        return cx$35isSet ? cx : dart.throw(new _internal.LateError.localNI("cx"));
       }
-      if (dart.test(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.hitTestChild(this.nextButtonDisabled, result, {position: position}))) {
+      dart.fn(cx$35get, T.VoidTodouble());
+      function cx$35set(t3) {
+        if (t3 == null) dart.nullFailed(I[0], 290, 17, "null");
+        cx$35isSet = true;
+        return cx = t3;
+      }
+      dart.fn(cx$35set, T.doubleTodynamic());
+      let cy = null;
+      let cy$35isSet = false;
+      function cy$35get() {
+        return cy$35isSet ? cy : dart.throw(new _internal.LateError.localNI("cy"));
+      }
+      dart.fn(cy$35get, T.VoidTodouble());
+      function cy$35set(t8) {
+        if (t8 == null) dart.nullFailed(I[0], 290, 21, "null");
+        cy$35isSet = true;
+        return cy = t8;
+      }
+      dart.fn(cy$35set, T.doubleTodynamic());
+      let r = null;
+      let r$35isSet = false;
+      function r$35get() {
+        return r$35isSet ? r : dart.throw(new _internal.LateError.localNI("r"));
+      }
+      dart.fn(r$35get, T.VoidTodouble());
+      function r$35set(t13) {
+        if (t13 == null) dart.nullFailed(I[0], 290, 25, "null");
+        r$35isSet = true;
+        return r = t13;
+      }
+      dart.fn(r$35set, T.doubleTodynamic());
+      let fx = null;
+      let fx$35isSet = false;
+      function fx$35get() {
+        return fx$35isSet ? fx : dart.throw(new _internal.LateError.localNI("fx"));
+      }
+      dart.fn(fx$35get, T.VoidTodouble());
+      function fx$35set(t18) {
+        if (t18 == null) dart.nullFailed(I[0], 290, 28, "null");
+        fx$35isSet = true;
+        return fx = t18;
+      }
+      dart.fn(fx$35set, T.doubleTodynamic());
+      let fy = null;
+      let fy$35isSet = false;
+      function fy$35get() {
+        return fy$35isSet ? fy : dart.throw(new _internal.LateError.localNI("fy"));
+      }
+      dart.fn(fy$35get, T.VoidTodouble());
+      function fy$35set(t23) {
+        if (t23 == null) dart.nullFailed(I[0], 290, 32, "null");
+        fy$35isSet = true;
+        return fy = t23;
+      }
+      dart.fn(fy$35set, T.doubleTodynamic());
+      if (isObjectBoundingBox) {
+        cx$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawCx)));
+        cy$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawCy)));
+        r$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawR)));
+        fx$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawFx)));
+        fy$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawFy)));
+      } else {
+        cx$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawCx))) ? dart.notNull(parsers.parsePercentage(rawCx)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(rawCx)));
+        cy$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawCy))) ? dart.notNull(parsers.parsePercentage(rawCy)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(rawCy)));
+        r$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawR))) ? dart.notNull(parsers.parsePercentage(rawR)) * ((dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.width)) / 2) : dart.nullCheck(numbers.parseDouble(rawR)));
+        fx$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawFx))) ? dart.notNull(parsers.parsePercentage(rawFx)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(rawFx)));
+        fy$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawFy))) ? dart.notNull(parsers.parsePercentage(rawFy)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(rawFy)));
+      }
+      parserState[_definitions].addGradient(id, new vector_drawable.DrawableRadialGradient.new({center: new ui.Offset.new(cx$35get(), cy$35get()), radius: r$35get(), focal: fx$35get() != cx$35get() || fy$35get() != cy$35get() ? new ui.Offset.new(fx$35get(), fy$35get()) : new ui.Offset.new(cx$35get(), cy$35get()), focalRadius: 0.0, colors: colors, offsets: offsets, unitMode: isObjectBoundingBox ? vector_drawable.GradientUnitMode.objectBoundingBox : vector_drawable.GradientUnitMode.userSpaceOnUse, spreadMethod: spreadMethod, transform: (t25 = originalTransform, t25 == null ? null : t25.storage)}));
+      return null;
+    }
+    static linearGradient(parserState, warningsAsErrors) {
+      let t25;
+      if (parserState == null) dart.nullFailed(I[0], 341, 22, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 341, 40, "warningsAsErrors");
+      let gradientUnits = xml.getAttribute(parserState.attributes, "gradientUnits", {def: null});
+      let isObjectBoundingBox = gradientUnits !== "userSpaceOnUse";
+      let x1 = parserState.attribute("x1", {def: "0%"});
+      let x2 = parserState.attribute("x2", {def: "100%"});
+      let y1 = parserState.attribute("y1", {def: "0%"});
+      let y2 = parserState.attribute("y2", {def: "0%"});
+      let id = xml_parsers.buildUrlIri(parserState.attributes);
+      let originalTransform = parsers.parseTransform(parserState.attribute("gradientTransform", {def: null}));
+      let spreadMethod = xml_parsers.parseTileMode(parserState.attributes);
+      let colors = T.JSArrayOfColor().of([]);
+      let offsets = T.JSArrayOfdouble().of([]);
+      if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
+        let href = xml.getHrefAttribute(parserState.attributes);
+        let ref = parserState[_definitions].getGradient(vector_drawable.DrawableGradient, "url(" + dart.str(href) + ")");
+        if (ref == null) {
+          errors.reportMissingDef(parserState[_key$], href, "linearGradient");
+        } else {
+          if (gradientUnits == null) {
+            isObjectBoundingBox = ref.unitMode == vector_drawable.GradientUnitMode.objectBoundingBox;
+          }
+          colors[$addAll](dart.nullCheck(ref.colors));
+          offsets[$addAll](dart.nullCheck(ref.offsets));
+        }
+      } else {
+        parser_state._Elements.parseStops(parserState, colors, offsets);
+      }
+      let fromOffset = null;
+      let toOffset = null;
+      if (isObjectBoundingBox) {
+        fromOffset = new ui.Offset.new(parsers.parseDecimalOrPercentage(dart.nullCheck(x1)), parsers.parseDecimalOrPercentage(dart.nullCheck(y1)));
+        toOffset = new ui.Offset.new(parsers.parseDecimalOrPercentage(dart.nullCheck(x2)), parsers.parseDecimalOrPercentage(dart.nullCheck(y2)));
+      } else {
+        fromOffset = new ui.Offset.new(dart.test(parsers.isPercentage(dart.nullCheck(x1))) ? dart.notNull(parsers.parsePercentage(x1)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(x1)), dart.test(parsers.isPercentage(dart.nullCheck(y1))) ? dart.notNull(parsers.parsePercentage(y1)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(y1)));
+        toOffset = new ui.Offset.new(dart.test(parsers.isPercentage(dart.nullCheck(x2))) ? dart.notNull(parsers.parsePercentage(x2)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(x2)), dart.test(parsers.isPercentage(dart.nullCheck(y2))) ? dart.notNull(parsers.parsePercentage(y2)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(y2)));
+      }
+      parserState[_definitions].addGradient(id, new vector_drawable.DrawableLinearGradient.new({from: fromOffset, to: toOffset, colors: colors, offsets: offsets, spreadMethod: spreadMethod, unitMode: isObjectBoundingBox ? vector_drawable.GradientUnitMode.objectBoundingBox : vector_drawable.GradientUnitMode.userSpaceOnUse, transform: (t25 = originalTransform, t25 == null ? null : t25.storage)}));
+      return null;
+    }
+    static clipPath(parserState, warningsAsErrors) {
+      if (parserState == null) dart.nullFailed(I[0], 432, 22, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 432, 40, "warningsAsErrors");
+      let id = xml_parsers.buildUrlIri(parserState.attributes);
+      let paths = T.JSArrayOfPath().of([]);
+      let currentPath = null;
+      for (let event of parserState[_readSubtree]()) {
+        if (end_element.XmlEndElementEvent.is(event)) {
+          continue;
+        }
+        if (start_element.XmlStartElementEvent.is(event)) {
+          let pathFn = parser_state._svgPathFuncs[$_get](event.name);
+          if (pathFn != null) {
+            let nextPath = dart.nullCheck(xml_parsers.applyTransformIfNeeded(pathFn(parserState.attributes), parserState.attributes));
+            nextPath.fillType = dart.nullCheck(xml_parsers.parseFillRule(parserState.attributes, "clip-rule"));
+            if (currentPath != null && nextPath.fillType != currentPath.fillType) {
+              currentPath = nextPath;
+              paths[$add](currentPath);
+            } else if (currentPath == null) {
+              currentPath = nextPath;
+              paths[$add](currentPath);
+            } else {
+              currentPath.addPath(nextPath, ui.Offset.zero);
+            }
+          } else if (event.name === "use") {
+            let xlinkHref = xml.getHrefAttribute(parserState.attributes);
+            let definitionDrawable = parserState[_definitions].getDrawable("url(" + dart.str(xlinkHref) + ")");
+            function extractPathsFromDrawable(target) {
+              if (vector_drawable.DrawableShape.is(target)) {
+                paths[$add](target.path);
+              } else if (vector_drawable.DrawableGroup.is(target)) {
+                dart.nullCheck(target.children)[$forEach](extractPathsFromDrawable);
+              }
+            }
+            dart.fn(extractPathsFromDrawable, T.DrawableNTovoid());
+            extractPathsFromDrawable(definitionDrawable);
+          } else {
+            let errorMessage = "Unsupported clipPath child " + dart.str(event.name);
+            if (dart.test(warningsAsErrors)) {
+              dart.throw(new core.UnsupportedError.new(errorMessage));
+            }
+            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnsupportedError.new(errorMessage), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
+                yield new assertions.ErrorDescription.new("The <clipPath> element contained an unsupported child " + dart.str(event.name));
+                if (parserState[_key$] != null) {
+                  yield new assertions.ErrorDescription.new("");
+                  yield new (T.DiagnosticsPropertyOfString()).new("Picture key", parserState[_key$]);
+                }
+              }), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in _Element.clipPath")}));
+          }
+        }
+      }
+      parserState[_definitions].addClipPath(id, paths);
+      return null;
+    }
+    static image(parserState, warningsAsErrors) {
+      if (parserState == null) dart.nullFailed(I[0], 503, 22, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 503, 40, "warningsAsErrors");
+      return async.async(dart.void, function* image() {
+        let t25;
+        let href = xml.getHrefAttribute(parserState.attributes);
+        if (href == null) {
+          return;
+        }
+        let offset = new ui.Offset.new(dart.nullCheck(numbers.parseDouble(parserState.attribute("x", {def: "0"}))), dart.nullCheck(numbers.parseDouble(parserState.attribute("y", {def: "0"}))));
+        let size = new ui.Size.new(dart.nullCheck(numbers.parseDouble(parserState.attribute("width", {def: "0"}))), dart.nullCheck(numbers.parseDouble(parserState.attribute("height", {def: "0"}))));
+        let image = (yield parsers.resolveImage(href));
+        let parent = dart.nullCheck(parserState[_parentDrawables][$last].drawable);
+        let parentStyle = parent.style;
+        let drawable = new vector_drawable.DrawableRasterImage.new(parserState.attribute("id", {def: ""}), image, offset, xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, parentStyle), {size: size, transform: (t25 = parsers.parseTransform(parserState.attribute("transform")), t25 == null ? null : t25.storage)});
+        let isIri = parserState.checkForIri(drawable);
+        if (!dart.test(parserState[_inDefs]) || !dart.test(isIri)) {
+          dart.nullCheck(dart.nullCheck(parserState.currentGroup).children)[$add](drawable);
+        }
+      });
+    }
+    static text(parserState, warningsAsErrors) {
+      if (parserState == null) dart.nullFailed(I[0], 540, 22, "parserState");
+      if (warningsAsErrors == null) dart.nullFailed(I[0], 540, 40, "warningsAsErrors");
+      return async.async(dart.void, function* text$() {
+        if (!(parserState != null)) dart.assertFailed(null, I[0], 541, 12, "parserState != null");
+        if (!(parserState.currentGroup != null)) dart.assertFailed(null, I[0], 542, 12, "parserState.currentGroup != null");
+        if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
+          return;
+        }
+        let textInfos = new (T.ListQueueOf_TextInfo()).new();
+        let lastTextWidth = 0.0;
+        function _processText(value) {
+          let t25, t25$;
+          if (value == null) dart.nullFailed(I[0], 554, 30, "value");
+          if (value[$isEmpty]) {
+            return;
+          }
+          if (!dart.test(textInfos[$isNotEmpty])) dart.assertFailed(null, I[0], 558, 14, "textInfos.isNotEmpty");
+          let lastTextInfo = textInfos[$last];
+          let fill = parsers.createParagraph(value, lastTextInfo.style, lastTextInfo.style.fill);
+          let stroke = parsers.createParagraph(value, lastTextInfo.style, dart.test(vector_drawable.DrawablePaint.isEmpty(lastTextInfo.style.stroke)) ? parsers.transparentStroke : lastTextInfo.style.stroke);
+          dart.nullCheck(dart.nullCheck(parserState.currentGroup).children)[$add](new vector_drawable.DrawableText.new(parserState.attribute("id", {def: ""}), fill, stroke, lastTextInfo.offset, (t25 = dart.nullCheck(lastTextInfo.style.textStyle).anchor, t25 == null ? vector_drawable.DrawableTextAnchorPosition.start : t25), {transform: (t25$ = lastTextInfo.transform, t25$ == null ? null : t25$.storage)}));
+          lastTextWidth = fill.maxIntrinsicWidth;
+        }
+        dart.fn(_processText, T.StringTovoid());
+        function _processStartElement(event) {
+          let t25, t25$, t25$0, t25$1;
+          if (event == null) dart.nullFailed(I[0], 586, 52, "event");
+          let lastTextInfo = null;
+          if (dart.test(textInfos[$isNotEmpty])) {
+            lastTextInfo = textInfos[$last];
+          }
+          let currentOffset = parser_state._parseCurrentOffset(parserState, (t25 = lastTextInfo, t25 == null ? null : t25.offset.translate(lastTextWidth, 0.0)));
+          let transform = parsers.parseTransform(parserState.attribute("transform"));
+          if ((t25$ = lastTextInfo, t25$ == null ? null : t25$.transform) != null) {
+            if (transform == null) {
+              transform = dart.nullCheck(lastTextInfo).transform;
+            } else {
+              transform = dart.nullCheck(dart.nullCheck(lastTextInfo).transform).multiplied(transform);
+            }
+          }
+          textInfos.add(new parser_state._TextInfo.new(xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, (t25$1 = (t25$0 = lastTextInfo, t25$0 == null ? null : t25$0.style), t25$1 == null ? dart.nullCheck(parserState.currentGroup).style : t25$1)), currentOffset, transform));
+          if (dart.test(event.isSelfClosing)) {
+            textInfos.removeLast();
+          }
+        }
+        dart.fn(_processStartElement, T.XmlStartElementEventTovoid());
+        _processStartElement(dart.nullCheck(parserState[_currentStartElement]));
+        for (let event of parserState[_readSubtree]()) {
+          if (cdata.XmlCDATAEvent.is(event)) {
+            _processText(event.text[$trim]());
+          } else if (text.XmlTextEvent.is(event)) {
+            _processText(event.text[$trim]());
+          }
+          if (start_element.XmlStartElementEvent.is(event)) {
+            _processStartElement(event);
+          } else if (end_element.XmlEndElementEvent.is(event)) {
+            textInfos.removeLast();
+          }
+        }
+      });
+    }
+  };
+  (parser_state._Elements.new = function() {
+    ;
+  }).prototype = parser_state._Elements.prototype;
+  dart.addTypeTests(parser_state._Elements);
+  dart.addTypeCaches(parser_state._Elements);
+  dart.setLibraryUri(parser_state._Elements, I[1]);
+  parser_state._Paths = class _Paths extends core.Object {
+    static circle(attributes) {
+      let t25;
+      let cx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cx", {def: "0"})));
+      let cy = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cy", {def: "0"})));
+      let r = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "r", {def: "0"})));
+      let oval = new ui.Rect.fromCircle({center: new ui.Offset.new(cx, cy), radius: r});
+      t25 = ui.Path.new();
+      return (() => {
+        t25.addOval(oval);
+        return t25;
+      })();
+    }
+    static path(attributes) {
+      let d = dart.nullCheck(xml.getAttribute(attributes, "d"));
+      return parse_path.parseSvgPathData(d);
+    }
+    static rect(attributes) {
+      let t25, t25$;
+      let x = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x", {def: "0"})));
+      let y = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y", {def: "0"})));
+      let w = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "width", {def: "0"})));
+      let h = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "height", {def: "0"})));
+      let rect = new ui.Rect.fromLTWH(x, y, w, h);
+      let rxRaw = xml.getAttribute(attributes, "rx", {def: null});
+      let ryRaw = xml.getAttribute(attributes, "ry", {def: null});
+      rxRaw == null ? rxRaw = ryRaw : null;
+      ryRaw == null ? ryRaw = rxRaw : null;
+      if (rxRaw != null && rxRaw !== "") {
+        let rx = dart.nullCheck(numbers.parseDouble(rxRaw));
+        let ry = dart.nullCheck(numbers.parseDouble(ryRaw));
+        t25 = ui.Path.new();
+        return (() => {
+          t25.addRRect(new ui.RRect.fromRectXY(rect, rx, ry));
+          return t25;
+        })();
+      }
+      t25$ = ui.Path.new();
+      return (() => {
+        t25$.addRect(rect);
+        return t25$;
+      })();
+    }
+    static polygon(attributes) {
+      return parser_state._Paths.parsePathFromPoints(attributes, true);
+    }
+    static polyline(attributes) {
+      return parser_state._Paths.parsePathFromPoints(attributes, false);
+    }
+    static parsePathFromPoints(attributes, close) {
+      if (close == null) dart.nullFailed(I[0], 681, 49, "close");
+      let points = xml.getAttribute(attributes, "points");
+      if (points === "") {
+        return null;
+      }
+      let path = "M" + dart.str(points) + (dart.test(close) ? "z" : "");
+      return parse_path.parseSvgPathData(path);
+    }
+    static ellipse(attributes) {
+      let t25;
+      let cx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cx", {def: "0"})));
+      let cy = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cy", {def: "0"})));
+      let rx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "rx", {def: "0"})));
+      let ry = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "ry", {def: "0"})));
+      let r = new ui.Rect.fromLTWH(cx - rx, cy - ry, rx * 2, ry * 2);
+      t25 = ui.Path.new();
+      return (() => {
+        t25.addOval(r);
+        return t25;
+      })();
+    }
+    static line(attributes) {
+      let t25;
+      let x1 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x1", {def: "0"})));
+      let x2 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x2", {def: "0"})));
+      let y1 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y1", {def: "0"})));
+      let y2 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y2", {def: "0"})));
+      t25 = ui.Path.new();
+      return (() => {
+        t25.moveTo(x1, y1);
+        t25.lineTo(x2, y2);
+        return t25;
+      })();
+    }
+  };
+  (parser_state._Paths.new = function() {
+    ;
+  }).prototype = parser_state._Paths.prototype;
+  dart.addTypeTests(parser_state._Paths);
+  dart.addTypeCaches(parser_state._Paths);
+  dart.setLibraryUri(parser_state._Paths, I[1]);
+  parser_state._SvgGroupTuple = class _SvgGroupTuple extends core.Object {};
+  (parser_state._SvgGroupTuple.new = function(name, drawable) {
+    if (name == null) dart.nullFailed(I[0], 714, 23, "name");
+    this.name = name;
+    this.drawable = drawable;
+    ;
+  }).prototype = parser_state._SvgGroupTuple.prototype;
+  dart.addTypeTests(parser_state._SvgGroupTuple);
+  dart.addTypeCaches(parser_state._SvgGroupTuple);
+  dart.setLibraryUri(parser_state._SvgGroupTuple, I[1]);
+  dart.setFieldSignature(parser_state._SvgGroupTuple, () => ({
+    __proto__: dart.getFields(parser_state._SvgGroupTuple.__proto__),
+    name: dart.finalFieldType(core.String),
+    drawable: dart.finalFieldType(dart.nullable(vector_drawable.DrawableParent))
+  }));
+  var depth = dart.privateName(parser_state, "SvgParserState.depth");
+  var _currentAttributes = dart.privateName(parser_state, "_currentAttributes");
+  var _warningsAsErrors$ = dart.privateName(parser_state, "_warningsAsErrors");
+  var _eventIterator = dart.privateName(parser_state, "_eventIterator");
+  var _discardSubtree = dart.privateName(parser_state, "_discardSubtree");
+  parser_state.SvgParserState = class SvgParserState extends core.Object {
+    get depth() {
+      return this[depth];
+    }
+    set depth(value) {
+      this[depth] = value;
+    }
+    [_discardSubtree]() {
+      let subtreeStartDepth = this.depth;
+      while (dart.test(this[_eventIterator].moveNext())) {
+        let event = this[_eventIterator].current;
+        if (start_element.XmlStartElementEvent.is(event) && !dart.test(event.isSelfClosing)) {
+          this.depth = dart.notNull(this.depth) + 1;
+        } else if (end_element.XmlEndElementEvent.is(event)) {
+          this.depth = dart.notNull(this.depth) - 1;
+          if (!(dart.notNull(this.depth) >= 0)) dart.assertFailed(null, I[0], 751, 16, "depth >= 0");
+        }
+        this[_currentAttributes] = T.JSArrayOfXmlEventAttribute().of([]);
+        this[_currentStartElement] = null;
+        if (dart.notNull(this.depth) < dart.notNull(subtreeStartDepth)) {
+          return;
+        }
+      }
+    }
+    [_readSubtree]() {
+      return new (T.SyncIterableOfXmlEvent()).new((function* _readSubtree() {
+        let subtreeStartDepth = this.depth;
+        while (dart.test(this[_eventIterator].moveNext())) {
+          let event = this[_eventIterator].current;
+          let isSelfClosing = false;
+          if (start_element.XmlStartElementEvent.is(event)) {
+            if (xml.getAttribute(event.attributes, "display") === "none" || xml.getAttribute(event.attributes, "visibility") === "hidden") {
+              core.print("SVG Warning: Discarding:\n\n  " + dart.str(event) + "\n\n" + "and any children it has since it is not visible.\n" + "If that element is meant to be visible, the `display` or " + "`visibility` attributes should be removed.\n" + "If that element is not meant to be visible, it would be better " + "to remove it from the SVG file.");
+              if (!dart.test(event.isSelfClosing)) {
+                this.depth = dart.notNull(this.depth) + 1;
+                this[_discardSubtree]();
+              }
+              continue;
+            }
+            this[_currentAttributes] = event.attributes;
+            this[_currentStartElement] = event;
+            this.depth = dart.notNull(this.depth) + 1;
+            isSelfClosing = event.isSelfClosing;
+          }
+          yield event;
+          if (dart.test(isSelfClosing) || end_element.XmlEndElementEvent.is(event)) {
+            this.depth = dart.notNull(this.depth) - 1;
+            if (!(dart.notNull(this.depth) >= 0)) dart.assertFailed(null, I[0], 790, 16, "depth >= 0");
+            this[_currentAttributes] = T.JSArrayOfXmlEventAttribute().of([]);
+            this[_currentStartElement] = null;
+          }
+          if (dart.notNull(this.depth) < dart.notNull(subtreeStartDepth)) {
+            return;
+          }
+        }
+      }).bind(this));
+    }
+    parse() {
+      return async.async(vector_drawable.DrawableRoot, (function* parse() {
+        let t25;
+        for (let event of this[_readSubtree]()) {
+          if (start_element.XmlStartElementEvent.is(event)) {
+            if (dart.test(this.startElement(event))) {
+              continue;
+            }
+            let parseFunc = parser_state._svgElementParsers[$_get](event.name);
+            yield (t25 = parseFunc, t25 == null ? null : t25(this, this[_warningsAsErrors$]));
+            if (parseFunc == null) {
+              if (!dart.test(event.isSelfClosing)) {
+                this[_discardSubtree]();
+              }
+              if (!dart.test(dart.fn(() => {
+                this.unhandledElement(event);
+                return true;
+              }, T.VoidTobool())())) dart.assertFailed(null, I[0], 813, 18, "() {\n            unhandledElement(event);\n            return true;\n          }()");
+            }
+          } else if (end_element.XmlEndElementEvent.is(event)) {
+            this.endElement(event);
+          }
+        }
+        if (this[_root] == null) {
+          dart.throw(new core.StateError.new("Invalid SVG data"));
+        }
+        return dart.nullCheck(this[_root]);
+      }).bind(this));
+    }
+    get attributes() {
+      return this[_currentAttributes];
+    }
+    attribute(name, opts) {
+      if (name == null) dart.nullFailed(I[0], 832, 28, "name");
+      let def = opts && 'def' in opts ? opts.def : null;
+      let namespace = opts && 'namespace' in opts ? opts.namespace : null;
+      return xml.getAttribute(this.attributes, name, {def: def, namespace: namespace});
+    }
+    get currentGroup() {
+      if (!(this[_parentDrawables] != null)) dart.assertFailed(null, I[0], 837, 12, "_parentDrawables != null");
+      if (!dart.test(this[_parentDrawables][$isNotEmpty])) dart.assertFailed(null, I[0], 838, 12, "_parentDrawables.isNotEmpty");
+      return this[_parentDrawables][$last].drawable;
+    }
+    get rootBounds() {
+      if (!(this[_root] != null)) dart.assertFailed("Cannot get rootBounds with null root", I[0], 844, 12, "_root != null");
+      if (!(dart.nullCheck(this[_root]).viewport != null)) dart.assertFailed(null, I[0], 845, 12, "_root!.viewport != null");
+      return dart.nullCheck(this[_root]).viewport.viewBoxRect;
+    }
+    checkForIri(drawable) {
+      let iri = xml_parsers.buildUrlIri(this.attributes);
+      if (iri !== "url(#)") {
+        this[_definitions].addDrawable(iri, dart.nullCheck(drawable));
         return true;
       }
       return false;
     }
-    attach(owner) {
-      object.PipelineOwner.as(owner);
-      if (owner == null) dart.nullFailed(I[0], 925, 29, "owner");
-      super.attach(owner);
-      for (let child of this.slottedChildren[$values]) {
-        child.attach(owner);
+    addGroup(event, drawable) {
+      if (event == null) dart.nullFailed(I[0], 860, 38, "event");
+      this[_parentDrawables].addLast(new parser_state._SvgGroupTuple.new(event.name, drawable));
+      this.checkForIri(drawable);
+    }
+    addShape(event) {
+      let t25;
+      if (event == null) dart.nullFailed(I[0], 866, 38, "event");
+      let pathFunc = parser_state._svgPathFuncs[$_get](event.name);
+      if (pathFunc == null) {
+        return false;
+      }
+      let parent = dart.nullCheck(this[_parentDrawables][$last].drawable);
+      let parentStyle = parent.style;
+      let path = dart.nullCheck(pathFunc(this.attributes));
+      let drawable = new vector_drawable.DrawableShape.new(xml.getAttribute(this.attributes, "id", {def: ""}), path, xml_parsers.parseStyle(this[_key$], this.attributes, this[_definitions], path.getBounds(), parentStyle, {defaultFillColor: colors$.colorBlack}), {transform: (t25 = parsers.parseTransform(xml.getAttribute(this.attributes, "transform")), t25 == null ? null : t25.storage)});
+      let isIri = this.checkForIri(drawable);
+      if (!dart.test(this[_inDefs]) || !dart.test(isIri)) {
+        dart.nullCheck(parent.children)[$add](drawable);
+      }
+      return true;
+    }
+    startElement(event) {
+      if (event == null) dart.nullFailed(I[0], 896, 42, "event");
+      if (event.name === "defs") {
+        this[_inDefs] = !dart.test(event.isSelfClosing);
+        return true;
+      }
+      return this.addShape(event);
+    }
+    endElement(event) {
+      if (event == null) dart.nullFailed(I[0], 906, 38, "event");
+      if (event.name == this[_parentDrawables][$last].name) {
+        this[_parentDrawables].removeLast();
+      }
+      if (event.name === "defs") {
+        this[_inDefs] = false;
       }
     }
-    detach() {
-      super.detach();
-      for (let child of this.slottedChildren[$values]) {
-        child.detach();
+    unhandledElement(event) {
+      if (event == null) dart.nullFailed(I[0], 919, 46, "event");
+      let errorMessage = "unhandled element " + dart.str(event.name) + "; Picture key: " + dart.str(this[_key$]);
+      if (dart.test(this[_warningsAsErrors$])) {
+        dart.throw(new core.UnimplementedError.new(errorMessage));
       }
-    }
-    redepthChildren() {
-      this.visitChildren(dart.fn(renderObjectChild => {
-        if (renderObjectChild == null) dart.nullFailed(I[0], 948, 33, "renderObjectChild");
-        let child = box.RenderBox.as(renderObjectChild);
-        this.redepthChild(child);
-      }, T.RenderObjectTovoid()));
-    }
-    visitChildren(visitor) {
-      if (visitor == null) dart.nullFailed(I[0], 955, 42, "visitor");
-      if (this[_backButton] != null) {
-        visitor(dart.nullCheck(this[_backButton]));
+      if (event.name === "style") {
+        assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnimplementedError.new("The <style> element is not implemented in this library."), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new((function*() {
+            yield new assertions.ErrorDescription.new("Style elements are not supported by this library and the requested SVG may not " + "render as intended.");
+            yield new assertions.ErrorHint.new("If possible, ensure the SVG uses inline styles and/or attributes (which are " + "supported), or use a preprocessing utility such as svgcleaner to inline the " + "styles for you.");
+            yield new assertions.ErrorDescription.new("");
+            yield new (T.DiagnosticsPropertyOfString()).new("Picture key", this[_key$]);
+          }).bind(this)), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in parseSvgElement")}));
+      } else if (dart.test(parser_state._unhandledElements.add(event.name))) {
+        core.print(errorMessage);
       }
-      if (this[_nextButton] != null) {
-        visitor(dart.nullCheck(this[_nextButton]));
-      }
-      if (this[_nextButtonDisabled] != null) {
-        visitor(dart.nullCheck(this[_nextButtonDisabled]));
-      }
-      super.visitChildren(visitor);
-    }
-    visitChildrenForSemantics(visitor) {
-      if (visitor == null) dart.nullFailed(I[0], 972, 54, "visitor");
-      this.visitChildren(dart.fn(renderObjectChild => {
-        if (renderObjectChild == null) dart.nullFailed(I[0], 973, 33, "renderObjectChild");
-        let child = box.RenderBox.as(renderObjectChild);
-        let childParentData = text_selection.ToolbarItemsParentData.as(dart.nullCheck(child.parentData));
-        if (dart.test(childParentData.shouldPaint)) {
-          visitor(renderObjectChild);
-        }
-      }, T.RenderObjectTovoid()));
-    }
-    debugDescribeChildren() {
-      let value = T.JSArrayOfDiagnosticsNode().of([]);
-      this.visitChildren(dart.fn(renderObjectChild => {
-        if (renderObjectChild == null) dart.nullFailed(I[0], 985, 33, "renderObjectChild");
-        let child = box.RenderBox.as(renderObjectChild);
-        if (dart.equals(child, this.backButton)) {
-          value[$add](child.toDiagnosticsNode({name: "back button"}));
-        } else if (dart.equals(child, this.nextButton)) {
-          value[$add](child.toDiagnosticsNode({name: "next button"}));
-        } else if (dart.equals(child, this.nextButtonDisabled)) {
-          value[$add](child.toDiagnosticsNode({name: "next button disabled"}));
-        } else {
-          value[$add](child.toDiagnosticsNode({name: "menu item"}));
-        }
-      }, T.RenderObjectTovoid()));
-      return value;
     }
   };
-  (text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.new = function(opts) {
-    let dividerWidth = opts && 'dividerWidth' in opts ? opts.dividerWidth : null;
-    if (dividerWidth == null) dart.nullFailed(I[0], 667, 21, "dividerWidth");
-    let page = opts && 'page' in opts ? opts.page : null;
-    if (page == null) dart.nullFailed(I[0], 668, 18, "page");
-    this.slottedChildren = new (T.LinkedMapOf_CupertinoTextSelectionToolbarItemsSlot$RenderBox()).new();
-    this[_backButton] = null;
-    this[_nextButton] = null;
-    this[_nextButtonDisabled] = null;
-    if (!(dividerWidth != null)) dart.assertFailed(null, I[0], 669, 15, "dividerWidth != null");
-    if (!(page != null)) dart.assertFailed(null, I[0], 670, 15, "page != null");
-    this[_dividerWidth] = dividerWidth;
-    this[_page] = page;
-    text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.__proto__.new.call(this);
+  (parser_state.SvgParserState.new = function(events, _key, _warningsAsErrors) {
+    if (events == null) dart.nullFailed(I[0], 725, 37, "events");
+    if (_warningsAsErrors == null) dart.nullFailed(I[0], 725, 61, "_warningsAsErrors");
+    this[_definitions] = new vector_drawable.DrawableDefinitionServer.new();
+    this[_parentDrawables] = new (T.ListQueueOf_SvgGroupTuple()).new(10);
+    this[_root] = null;
+    this[_inDefs] = false;
+    this[_currentAttributes] = null;
+    this[_currentStartElement] = null;
+    this[depth] = 0;
+    this[_key$] = _key;
+    this[_warningsAsErrors$] = _warningsAsErrors;
+    if (!(events != null)) dart.assertFailed(null, I[0], 727, 16, "events != null");
+    this[_eventIterator] = events[$iterator];
     ;
-  }).prototype = text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.prototype;
-  dart.addTypeTests(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems);
-  dart.addTypeCaches(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems);
-  dart.setMethodSignature(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems, () => ({
-    __proto__: dart.getMethods(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.__proto__),
-    [_updateChild]: dart.fnType(dart.nullable(box.RenderBox), [dart.nullable(box.RenderBox), dart.nullable(box.RenderBox), text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot]),
-    [_isSlottedChild]: dart.fnType(core.bool, [box.RenderBox])
+  }).prototype = parser_state.SvgParserState.prototype;
+  dart.addTypeTests(parser_state.SvgParserState);
+  dart.addTypeCaches(parser_state.SvgParserState);
+  dart.setMethodSignature(parser_state.SvgParserState, () => ({
+    __proto__: dart.getMethods(parser_state.SvgParserState.__proto__),
+    [_discardSubtree]: dart.fnType(dart.void, []),
+    [_readSubtree]: dart.fnType(core.Iterable$(event.XmlEvent), []),
+    parse: dart.fnType(async.Future$(vector_drawable.DrawableRoot), []),
+    attribute: dart.fnType(dart.nullable(core.String), [core.String], {def: dart.nullable(core.String), namespace: dart.nullable(core.String)}, {}),
+    checkForIri: dart.fnType(core.bool, [dart.nullable(vector_drawable.DrawableStyleable)]),
+    addGroup: dart.fnType(dart.void, [start_element.XmlStartElementEvent, dart.nullable(vector_drawable.DrawableParent)]),
+    addShape: dart.fnType(core.bool, [start_element.XmlStartElementEvent]),
+    startElement: dart.fnType(core.bool, [start_element.XmlStartElementEvent]),
+    endElement: dart.fnType(dart.void, [end_element.XmlEndElementEvent]),
+    unhandledElement: dart.fnType(dart.void, [start_element.XmlStartElementEvent])
   }));
-  dart.setGetterSignature(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems, () => ({
-    __proto__: dart.getGetters(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.__proto__),
-    page: core.int,
-    dividerWidth: core.double,
-    backButton: dart.nullable(box.RenderBox),
-    nextButton: dart.nullable(box.RenderBox),
-    nextButtonDisabled: dart.nullable(box.RenderBox)
+  dart.setGetterSignature(parser_state.SvgParserState, () => ({
+    __proto__: dart.getGetters(parser_state.SvgParserState.__proto__),
+    attributes: dart.nullable(core.List$(event_attribute.XmlEventAttribute)),
+    currentGroup: dart.nullable(vector_drawable.DrawableParent),
+    rootBounds: ui.Rect
   }));
-  dart.setSetterSignature(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems, () => ({
-    __proto__: dart.getSetters(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.__proto__),
-    page: core.int,
-    dividerWidth: core.double,
-    backButton: dart.nullable(box.RenderBox),
-    nextButton: dart.nullable(box.RenderBox),
-    nextButtonDisabled: dart.nullable(box.RenderBox)
+  dart.setLibraryUri(parser_state.SvgParserState, I[1]);
+  dart.setFieldSignature(parser_state.SvgParserState, () => ({
+    __proto__: dart.getFields(parser_state.SvgParserState.__proto__),
+    [_eventIterator]: dart.finalFieldType(core.Iterator$(event.XmlEvent)),
+    [_key$]: dart.finalFieldType(dart.nullable(core.String)),
+    [_warningsAsErrors$]: dart.finalFieldType(core.bool),
+    [_definitions]: dart.finalFieldType(vector_drawable.DrawableDefinitionServer),
+    [_parentDrawables]: dart.finalFieldType(collection.Queue$(parser_state._SvgGroupTuple)),
+    [_root]: dart.fieldType(dart.nullable(vector_drawable.DrawableRoot)),
+    [_inDefs]: dart.fieldType(core.bool),
+    [_currentAttributes]: dart.fieldType(dart.nullable(core.List$(event_attribute.XmlEventAttribute))),
+    [_currentStartElement]: dart.fieldType(dart.nullable(start_element.XmlStartElementEvent)),
+    depth: dart.fieldType(core.int)
   }));
-  dart.setLibraryUri(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems, I[1]);
-  dart.setFieldSignature(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems, () => ({
-    __proto__: dart.getFields(text_selection_toolbar._RenderCupertinoTextSelectionToolbarItems.__proto__),
-    slottedChildren: dart.finalFieldType(core.Map$(text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot, box.RenderBox)),
-    [_page]: dart.fieldType(core.int),
-    [_dividerWidth]: dart.fieldType(core.double),
-    [_backButton]: dart.fieldType(dart.nullable(box.RenderBox)),
-    [_nextButton]: dart.fieldType(dart.nullable(box.RenderBox)),
-    [_nextButtonDisabled]: dart.fieldType(dart.nullable(box.RenderBox))
-  }));
-  text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot = class _CupertinoTextSelectionToolbarItemsSlot extends core.Object {
-    toString() {
-      return this[_name$];
-    }
+  parser_state._parseCurrentOffset = function _parseCurrentOffset(parserState, lastOffset) {
+    let t25, t25$, t25$0, t25$1;
+    if (parserState == null) dart.nullFailed(I[0], 47, 43, "parserState");
+    let x = parserState.attribute("x", {def: null});
+    let y = parserState.attribute("y", {def: null});
+    return new ui.Offset.new(x != null ? dart.nullCheck(numbers.parseDouble(x)) : dart.nullCheck(numbers.parseDouble(parserState.attribute("dx", {def: "0"}))) + dart.notNull((t25$ = (t25 = lastOffset, t25 == null ? null : t25.dx), t25$ == null ? 0 : t25$)), y != null ? dart.nullCheck(numbers.parseDouble(y)) : dart.nullCheck(numbers.parseDouble(parserState.attribute("dy", {def: "0"}))) + dart.notNull((t25$1 = (t25$0 = lastOffset, t25$0 == null ? null : t25$0.dy), t25$1 == null ? 0 : t25$1)));
   };
-  (text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.new = function(index, _name) {
-    if (index == null) dart.nullFailed(I[0], 1005, 6, "index");
-    if (_name == null) dart.nullFailed(I[0], 1005, 6, "_name");
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.prototype;
-  dart.addTypeTests(text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot);
-  dart.addTypeCaches(text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot);
-  dart.setLibraryUri(text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot, I[1]);
-  dart.setFieldSignature(text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot, () => ({
-    __proto__: dart.getFields(text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
-  }));
-  dart.defineExtensionMethods(text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot, ['toString']);
-  text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.backButton = C[57] || CT.C57;
-  text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.nextButton = C[58] || CT.C58;
-  text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.nextButtonDisabled = C[59] || CT.C59;
-  text_selection_toolbar._CupertinoTextSelectionToolbarItemsSlot.values = C[60] || CT.C60;
-  text_selection_toolbar._NullElement = class _NullElement extends framework.Element {
-    get debugDoingBuild() {
-      return dart.throw(new core.UnimplementedError.new());
-    }
-    performRebuild() {
-    }
-  };
-  (text_selection_toolbar._NullElement.new = function() {
-    text_selection_toolbar._NullElement.__proto__.new.call(this, new text_selection_toolbar._NullWidget.new({$creationLocationd_0dea112b090073317d4: C[61] || CT.C61}));
-    ;
-  }).prototype = text_selection_toolbar._NullElement.prototype;
-  dart.addTypeTests(text_selection_toolbar._NullElement);
-  dart.addTypeCaches(text_selection_toolbar._NullElement);
-  dart.setMethodSignature(text_selection_toolbar._NullElement, () => ({
-    __proto__: dart.getMethods(text_selection_toolbar._NullElement.__proto__),
-    performRebuild: dart.fnType(dart.void, [])
-  }));
-  dart.setGetterSignature(text_selection_toolbar._NullElement, () => ({
-    __proto__: dart.getGetters(text_selection_toolbar._NullElement.__proto__),
-    debugDoingBuild: core.bool
-  }));
-  dart.setLibraryUri(text_selection_toolbar._NullElement, I[1]);
-  dart.defineLazy(text_selection_toolbar._NullElement, {
-    /*text_selection_toolbar._NullElement.instance*/get instance() {
-      return new text_selection_toolbar._NullElement.new();
+  dart.defineLazy(parser_state, {
+    /*parser_state._unhandledElements*/get _unhandledElements() {
+      return T.LinkedHashSetOfString().from(["title", "desc"]);
     },
-    set instance(_) {}
-  }, false);
-  text_selection_toolbar._NullWidget = class _NullWidget extends framework.Widget {
-    createElement() {
-      return dart.throw(new core.UnimplementedError.new());
-    }
-  };
-  (text_selection_toolbar._NullWidget.new = function(opts) {
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    text_selection_toolbar._NullWidget.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = text_selection_toolbar._NullWidget.prototype;
-  dart.addTypeTests(text_selection_toolbar._NullWidget);
-  dart.addTypeCaches(text_selection_toolbar._NullWidget);
-  dart.setMethodSignature(text_selection_toolbar._NullWidget, () => ({
-    __proto__: dart.getMethods(text_selection_toolbar._NullWidget.__proto__),
-    createElement: dart.fnType(framework.Element, [])
-  }));
-  dart.setLibraryUri(text_selection_toolbar._NullWidget, I[1]);
-  var Radius_y = dart.privateName(ui, "Radius.y");
-  var Radius_x = dart.privateName(ui, "Radius.x");
-  dart.defineLazy(text_selection_toolbar, {
-    /*text_selection_toolbar._kToolbarHeight*/get _kToolbarHeight() {
-      return 43;
+    /*parser_state._svgElementParsers*/get _svgElementParsers() {
+      return C[0] || CT.C0;
     },
-    /*text_selection_toolbar._kToolbarContentDistance*/get _kToolbarContentDistance() {
-      return 8;
-    },
-    /*text_selection_toolbar._kToolbarScreenPadding*/get _kToolbarScreenPadding() {
-      return 8;
-    },
-    /*text_selection_toolbar._kToolbarArrowSize*/get _kToolbarArrowSize() {
-      return C[63] || CT.C63;
-    },
-    /*text_selection_toolbar._kToolbarBorderRadius*/get _kToolbarBorderRadius() {
-      return C[64] || CT.C64;
-    },
-    /*text_selection_toolbar._kToolbarDividerColor*/get _kToolbarDividerColor() {
-      return C[3] || CT.C3;
+    /*parser_state._svgPathFuncs*/get _svgPathFuncs() {
+      return C[10] || CT.C10;
     }
   }, false);
-  dart.trackLibraries("packages/flutter/src/cupertino/text_selection_toolbar.dart", {
-    "package:flutter/src/cupertino/text_selection_toolbar.dart": text_selection_toolbar
+  dart.trackLibraries("packages/flutter_svg/src/svg/parser_state.dart", {
+    "package:flutter_svg/src/svg/parser_state.dart": parser_state
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["text_selection_toolbar.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/cupertino/text_selection_toolbar.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["parser_state.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/flutter_svg/src/svg/parser_state.dart.lib.js"}');
   // Exports:
   return {
-    src__cupertino__text_selection_toolbar: text_selection_toolbar
+    src__svg__parser_state: parser_state
   };
 }));
 
-//# sourceMappingURL=text_selection_toolbar.dart.lib.js.map
+//# sourceMappingURL=parser_state.dart.lib.js.map

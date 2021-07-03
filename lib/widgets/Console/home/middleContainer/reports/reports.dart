@@ -2,7 +2,8 @@ import 'package:client/widgets/Console/home/middleContainer/messages/text.dart';
 import 'package:client/widgets/Console/home/middleContainer/reports/text.dart';
 import 'package:flutter/material.dart';
 
-import 'container.dart';
+import 'button.dart';
+import 'outerContainer.dart';
 import 'iconButton.dart';
 
 class Reports extends StatelessWidget {
@@ -25,7 +26,7 @@ class Reports extends StatelessWidget {
         width: this.mainContainerWidth * 0.3,
         height: this.mainContainerHeight * 0.40,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
                 // crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,6 +37,25 @@ class Reports extends StatelessWidget {
                     mainContainerHeight: this.mainContainerHeight,
                   )
                 ]),
+            ReportContainer(
+              mainContainerHeight: this.mainContainerHeight,
+              mainContainerWidth: this.mainContainerWidth,
+              color: Color(0xffFF6B00),
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              ReportButton(
+                  color: Color(0xffFF6B00),
+                  mainContainerHeight: this.mainContainerHeight,
+                  mainContainerWidth: this.mainContainerWidth),
+              ReportButton(
+                  color: Color(0xff003366),
+                  mainContainerHeight: this.mainContainerHeight,
+                  mainContainerWidth: this.mainContainerWidth),
+              ReportButton(
+                  color: Color(0xff003366),
+                  mainContainerHeight: this.mainContainerHeight,
+                  mainContainerWidth: this.mainContainerWidth),
+            ])
           ],
         ),
       ),
