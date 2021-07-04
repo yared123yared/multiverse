@@ -6,7 +6,8 @@ class DrawerTopButton extends StatelessWidget {
   final String iconUrl;
   final BorderRadius radius;
   final RoundedRectangleBorder border;
-  final double width;
+  // final double width;
+  // final double height;
   final double elevation;
   final Function onPressed;
   final Widget child;
@@ -17,7 +18,8 @@ class DrawerTopButton extends StatelessWidget {
       this.radius,
       this.iconUrl,
       this.border,
-      this.width,
+      // this.width,
+      // this.height,
       this.elevation,
       this.onPressed,
       this.child,

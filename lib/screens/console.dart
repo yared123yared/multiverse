@@ -11,6 +11,9 @@ class ConsoleHomePage extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
+    double dashboardWidth = 0.13 * width;
+    double dashboardHeight = height;
+
     return Container(
         color: Colors.white,
         margin: EdgeInsets.all(16),
@@ -18,8 +21,8 @@ class ConsoleHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DashBoard(
-              height: height,
-              width: width,
+              height: dashboardHeight,
+              width: dashboardWidth,
             ),
             Container(
               // padding: EdgeInsets.all(30),
