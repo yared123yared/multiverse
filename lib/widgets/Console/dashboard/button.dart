@@ -42,7 +42,7 @@ class Button extends StatelessWidget {
           splashColor: Colors.white,
           child: Container(
             color: Colors.transparent,
-            alignment: Alignment.topLeft,
+            alignment: Alignment.center,
             // width: width,
             child: Row(
               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -56,7 +56,7 @@ class Button extends StatelessWidget {
                 Image.asset(
                   imageUrl,
                   height: constants.getDashboardHeight * 0.0297,
-                  width: constants.getDashboardHeight * 0.0287,
+                  width: constants.getDashboardWidth * 0.0977,
                 ),
 
                 SizedBox(width: constants.getDashboardWidth * 0.08),

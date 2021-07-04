@@ -53,7 +53,7 @@ class DashBoard extends StatelessWidget {
                 color: Colors.white.withOpacity(0.5),
               ),
               SizedBox(
-                height: height * 0.015,
+                height: height * 0.01,
               ),
               HomeButton(),
               MyProjectButton(),
@@ -76,7 +76,10 @@ class DashBoard extends StatelessWidget {
               InternetOfThingsButton(),
               CloudComputingButton(),
               WebMobileDesktopButton(),
-              IndestrialDesignButton()
+              IndestrialDesignButton(),
+              SizedBox(
+                height: height * 0.01,
+              ),
             ],
           )),
     );
