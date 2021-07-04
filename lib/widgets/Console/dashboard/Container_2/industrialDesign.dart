@@ -1,4 +1,5 @@
-import 'package:client/Constants/console/dashboard.dart';
+import 'package:client/Constants/console/dashboard/icons.dart';
+import 'package:client/Constants/console/dashboard/titles.dart';
 import 'package:flutter/material.dart';
 
 import '../button.dart';
@@ -6,13 +7,11 @@ import '../button.dart';
 class IndestrialDesignButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    DashboardConstant constants = new DashboardConstant();
-    constants.build(context);
     return Expanded(
         child: Button(
             elevation: 0,
-            imageUrl: constants.getIndustrialDesignIcon,
-            value: 'Indestrial Design',
+            imageUrl: DashBoardIcon.industrialDesignIcon,
+            value: DashBoardTitle.industerialDesignTitle,
             size: 17,
             onPressed: () {}));
   }

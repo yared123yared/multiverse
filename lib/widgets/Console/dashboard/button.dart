@@ -1,4 +1,4 @@
-import 'package:client/Constants/console/dashboard.dart';
+import 'package:client/Constants/console/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -28,8 +28,8 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DashboardConstant constants = new DashboardConstant();
-    constants.build(context);
+    DashBoardSize dashboardSize = new DashBoardSize();
+    dashboardSize.build(context);
     return Material(
         elevation: elevation,
         color: Colors.transparent,
@@ -47,7 +47,7 @@ class Button extends StatelessWidget {
             child: Row(
               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(width: constants.getDashboardWidth * 0.08),
+                SizedBox(width: dashboardSize.getDashboardWidth * 0.08),
                 // FaIcon(
                 // icon,
                 // color: Colors.white.withOpacity(0.5),
@@ -55,15 +55,15 @@ class Button extends StatelessWidget {
                 // ),
                 Image.asset(
                   imageUrl,
-                  height: constants.getDashboardHeight * 0.03,
-                  width: constants.getDashboardWidth * 0.0977,
+                  height: dashboardSize.getDashboardHeight * 0.03,
+                  width: dashboardSize.getDashboardWidth * 0.0977,
                 ),
 
-                SizedBox(width: constants.getDashboardWidth * 0.08),
+                SizedBox(width: dashboardSize.getDashboardWidth * 0.08),
                 Text(
                   value,
                   style: TextStyle(
-                    fontSize: constants.getDashboardHeight * 0.0157,
+                    fontSize: dashboardSize.getDashboardHeight * 0.0157,
                     fontWeight: FontWeight.w300,
                     color: Colors.white.withOpacity(0.7),
                   ),
