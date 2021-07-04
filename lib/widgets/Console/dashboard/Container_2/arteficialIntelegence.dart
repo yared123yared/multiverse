@@ -1,3 +1,4 @@
+import 'package:client/Constants/console/dashboard.dart';
 import 'package:flutter/material.dart';
 
 import '../button.dart';
@@ -5,12 +6,12 @@ import '../button.dart';
 class ArteficialIntelegenceButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    DashboardConstant constants = new DashboardConstant();
+    constants.build(context);
     return Expanded(
         child: Button(
             elevation: 0,
-            imageUrl: 'lib/assets/images/console/arteficialIntelegence.png',
+            imageUrl: constants.getAiIcon,
             value: 'Arteficial Intelegence',
             size: 17,
             onPressed: () {}));

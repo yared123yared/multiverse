@@ -101,6 +101,27 @@ class DashboardConstant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Container 1
+    this.billingIcon = 'lib/assets/images/console/billing.png';
+    this.homeIcon = 'lib/assets/images/console/home.png';
+    this.memberIcon = 'lib/assets/images/console/members.png';
+    this.messageIcon = 'lib/assets/images/console/messages.png';
+    this.projectIcon = 'lib/assets/images/console/project.png';
+    this.reportIcon = 'lib/assets/images/console/reports.png';
+// Container 2
+    this.aiIcon = 'lib/assets/images/console/arteficialIntelegence.png';
+    this.blochChainIcon = 'lib/assets/images/console/blockchain.png';
+    this.cloudIcon = 'lib/assets/images/console/cloud_server_system.png';
+    this.cyberIcon = 'lib/assets/images/console/cyberSecurity.png';
+    this.dataScienceIcon = 'lib/assets/images/console/dataScience.png';
+    this.extendedRealityIcon = 'lib/assets/images/console/extendedReality.png';
+    this.industrialDesignIcon =
+        'lib/assets/images/console/industrialDesign.png';
+    this.internetOfThingsIcon =
+        'lib/assets/images/console/internetOfThings.png';
+    this.roboticsIcon = 'lib/assets/images/console/robotics.png';
+    this.webIcon = 'lib/assets/images/console/web_mobile_desktop.png';
+    // size
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
