@@ -35,12 +35,12 @@ class DashBoard extends StatelessWidget {
               color: Color(0xff003366),
               borderRadius: BorderRadius.circular(10)),
           height: this.height,
-          width: 0.13 * this.width,
+          width: this.width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: EdgeInsets.only(top: 8),
+                padding: EdgeInsets.only(top: this.height * 0.013),
                 decoration: BoxDecoration(
                     // color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),

@@ -1,3 +1,4 @@
+import 'package:client/Constants/console/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -6,7 +7,8 @@ class Button extends StatelessWidget {
   final String imageUrl;
   final BorderRadius radius;
   final RoundedRectangleBorder border;
-  final double width;
+  // final double width;
+  // final double height;
   final double elevation;
   final Function onPressed;
   final Widget child;
@@ -17,7 +19,8 @@ class Button extends StatelessWidget {
       this.radius,
       this.imageUrl,
       this.border,
-      this.width,
+      // this.width,
+      // this.height,
       this.elevation,
       this.onPressed,
       this.child,
@@ -25,6 +28,8 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DashboardConstant constants = new DashboardConstant();
+    constants.build(context);
     return Material(
         elevation: elevation,
         color: Colors.transparent,
@@ -38,23 +43,27 @@ class Button extends StatelessWidget {
           child: Container(
             color: Colors.transparent,
             alignment: Alignment.topLeft,
-            width: width,
+            // width: width,
             child: Row(
               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(width: 15),
+                SizedBox(width: constants.getDashboardWidth * 0.08),
                 // FaIcon(
                 // icon,
                 // color: Colors.white.withOpacity(0.5),
                 // size: size,
                 // ),
-                Image.asset(imageUrl, height: this.size, width: this.size),
+                Image.asset(
+                  imageUrl,
+                  height: constants.getDashboardHeight * 0.0297,
+                  width: constants.getDashboardHeight * 0.0287,
+                ),
 
-                SizedBox(width: 15),
+                SizedBox(width: constants.getDashboardWidth * 0.08),
                 Text(
                   value,
                   style: TextStyle(
-                    fontSize: 11,
+                    fontSize: constants.getDashboardHeight * 0.0157,
                     fontWeight: FontWeight.w300,
                     color: Colors.white.withOpacity(0.7),
                   ),
