@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../button.dart';
+import '../drawerTopButton.dart';
 
 class BillingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Button(
-            elevation: 0,
-            imageUrl: 'lib/assets/images/console/billing.png',
-            value: 'Billing',
-            size: 17,
-            onPressed: () {}));
+    var size = MediaQuery.of(context).size;
+    var height = size.height;
+    return Container(
+      height: height * 0.06,
+      child: DrawerTopButton(
+          elevation: 0,
+          iconUrl: 'lib/assets/icons/console/billing.svg',
+          value: 'Billing',
+          size: 22,
+          onPressed: () {}),
+    );
   }
 }
