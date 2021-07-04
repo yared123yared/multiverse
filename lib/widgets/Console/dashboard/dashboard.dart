@@ -27,7 +27,7 @@ class DashBoard extends StatelessWidget {
               color: Color(0xff003366),
               borderRadius: BorderRadius.circular(15)),
           height: this.height,
-          width: 0.13 * this.width,
+          width: this.width,
           child: Container(
             height: height * 0.3,
             child: Column(
