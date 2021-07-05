@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
+
 
 class DropdownBar extends StatefulWidget {
   @override
@@ -8,6 +10,7 @@ class DropdownBar extends StatefulWidget {
 
 class _DropdownBarState extends State<DropdownBar> {
   String dropdownValue = 'Web, Mobile & Desktop';
+  String icon = 'lib/assets/icons/console/downarrow.svg';
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -35,12 +38,13 @@ class _DropdownBarState extends State<DropdownBar> {
           child: DropdownButton<String>(
             value: dropdownValue,
             isExpanded: true,
-            icon: Icon(
-              Icons.arrow_drop_down_sharp,
-              color: HexColor("#003366"),
+            icon: Padding(
+              padding: EdgeInsets.only(right: 20),
+              child: SvgPicture.asset(icon,
+                  color: HexColor('#003366'), height: 12, width: 12),
             ),
             iconSize: 35,
-            style: TextStyle(color: HexColor("#003366")),
+            style: TextStyle(color: HexColor("#003366"), fontSize: 13, fontWeight: FontWeight.w100),
             underline: Container(
               height: 0,
               color: Colors.transparent,

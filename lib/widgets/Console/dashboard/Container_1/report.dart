@@ -10,6 +10,9 @@ class ReportButton extends StatelessWidget {
     return Container(
       height: height * 0.06,
       child: DrawerTopButton(
+          border: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           elevation: 0,
           iconUrl: 'lib/assets/icons/console/reports.svg',
           value: 'Reports',

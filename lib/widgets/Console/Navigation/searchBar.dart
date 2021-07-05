@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String icon = 'lib/assets/icons/console/search.svg';
     return Expanded(
       flex: 4,
       child: Material(
@@ -30,11 +32,14 @@ class SearchBar extends StatelessWidget {
             cursorWidth: 1,
             decoration: InputDecoration(
               contentPadding: EdgeInsets.only(left: 10, top: 30),
-              prefixIcon: Icon(Icons.search_outlined, color: HexColor("#003366"),),
-              prefixIconConstraints: BoxConstraints(
-                minHeight: 25,
-                minWidth: 50,
+              prefixIcon: SvgPicture.asset(
+                icon,
+                height: 5,
+                width: 5,
+                color: HexColor("#003366"),
               ),
+              prefixIconConstraints:
+                  BoxConstraints(minHeight: 15, minWidth: 50),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(10),
