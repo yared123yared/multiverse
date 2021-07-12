@@ -3,6 +3,8 @@ import 'package:client/widgets/Console/Navigation/leftBar.dart';
 import 'package:client/widgets/Console/Navigation/rightBar.dart';
 import 'package:client/widgets/Console/Navigation/searchBar.dart';
 import 'package:client/widgets/Console/dashboard/dashboard.dart';
+import 'package:client/widgets/Console/home/leftContainer/leftContainer.dart';
+import 'package:client/widgets/Console/home/rightContainer/rightContainer.dart';
 import 'package:flutter/material.dart';
 
 class ConsoleHomePage extends StatelessWidget {
@@ -10,7 +12,8 @@ class ConsoleHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-
+    double mainContainerWidth = width * 0.82;
+    double mainContainerHeight = height * 0.84;
     double dashboardWidth = 0.13 * width;
     double dashboardHeight = height;
 
@@ -48,6 +51,25 @@ class ConsoleHomePage extends StatelessWidget {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: height * 0.03,
+                    ),
+                    Container(
+                      height: mainContainerHeight,
+                      // color: Colors.blueAccent,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          LeftContainer(
+                              mainContainerHeight: mainContainerHeight,
+                              mainContainerWidth: mainContainerWidth),
+                          RightContainer(
+                            mainContainerHeight: mainContainerHeight,
+                            mainContainerWidth: mainContainerWidth,
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),

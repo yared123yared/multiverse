@@ -1,27 +1,23 @@
-define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter_svg__src__picture_stream_dart(dart_sdk, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/flutter/src/services/mouse_cursor.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/widgets/animated_cross_fade.dart'], (function load__packages__hovering__src__hover_cross_fade_dart(dart_sdk, packages__flutter__src__services__mouse_cursor$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__widgets__animated_cross_fade$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  var picture_stream = Object.create(dart.library);
-  var $runtimeType = dartx.runtimeType;
-  var $add = dartx.add;
-  var $removeWhere = dartx.removeWhere;
-  var $length = dartx.length;
-  var $isEmpty = dartx.isEmpty;
+  const mouse_cursor = packages__flutter__src__services__mouse_cursor$46dart.src__services__mouse_cursor;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
+  const animated_cross_fade = packages__flutter__src__widgets__animated_cross_fade$46dart.src__widgets__animated_cross_fade;
+  var hover_cross_fade = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    JSArrayOf_PictureListenerPair: () => (T.JSArrayOf_PictureListenerPair = dart.constFn(_interceptors.JSArray$(picture_stream._PictureListenerPair)))(),
-    _PictureListenerPairTobool: () => (T._PictureListenerPairTobool = dart.constFn(dart.fnType(core.bool, [picture_stream._PictureListenerPair])))(),
-    ObjectFlagPropertyOfPictureStreamCompleter: () => (T.ObjectFlagPropertyOfPictureStreamCompleter = dart.constFn(diagnostics.ObjectFlagProperty$(picture_stream.PictureStreamCompleter)))(),
-    ListOf_PictureListenerPair: () => (T.ListOf_PictureListenerPair = dart.constFn(core.List$(picture_stream._PictureListenerPair)))(),
-    ObjectFlagPropertyOfListOf_PictureListenerPair: () => (T.ObjectFlagPropertyOfListOf_PictureListenerPair = dart.constFn(diagnostics.ObjectFlagProperty$(T.ListOf_PictureListenerPair())))(),
-    DiagnosticsPropertyOfPictureInfo: () => (T.DiagnosticsPropertyOfPictureInfo = dart.constFn(diagnostics.DiagnosticsProperty$(picture_stream.PictureInfo)))(),
-    ObjectAndStackTraceToNull: () => (T.ObjectAndStackTraceToNull = dart.constFn(dart.fnType(core.Null, [core.Object, core.StackTrace])))()
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    PointerEnterEventTovoid: () => (T.PointerEnterEventTovoid = dart.constFn(dart.fnType(dart.void, [events.PointerEnterEvent])))(),
+    PointerExitEventTovoid: () => (T.PointerExitEventTovoid = dart.constFn(dart.fnType(dart.void, [events.PointerExitEvent])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -29,300 +25,352 @@ define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart'], (function loa
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: ui.Size.prototype,
-        [OffsetBase__dy]: 1 / 0,
-        [OffsetBase__dx]: 1 / 0
+        __proto__: mouse_cursor.SystemMouseCursor.prototype,
+        [SystemMouseCursor_kind]: "basic"
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: alignment.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: 0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: curves._Linear.prototype
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "firstChild",
+        [_Location_column]: 11,
+        [_Location_line]: 56,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "secondChild",
+        [_Location_column]: 11,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossFadeState",
+        [_Location_column]: 11,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 11,
+        [_Location_line]: 60,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "reverseDuration",
+        [_Location_column]: 11,
+        [_Location_line]: 61,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "firstCurve",
+        [_Location_column]: 11,
+        [_Location_line]: 62,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "secondCurve",
+        [_Location_column]: 11,
+        [_Location_line]: 63,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "sizeCurve",
+        [_Location_column]: 11,
+        [_Location_line]: 64,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 11,
+        [_Location_line]: 65,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.constList([C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13], T._LocationL());
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[4] || CT.C4,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 55,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/hovering-1.0.4/lib/src/hover_cross_fade.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onEnter",
+        [_Location_column]: 9,
+        [_Location_line]: 44,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "cursor",
+        [_Location_column]: 9,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onExit",
+        [_Location_column]: 9,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.constList([C[16] || CT.C16, C[17] || CT.C17, C[18] || CT.C18, C[19] || CT.C19], T._LocationL());
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[15] || CT.C15,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 43,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/hovering-1.0.4/lib/src/hover_cross_fade.dart"
       });
     }
   }, false);
-  var C = [void 0];
+  var C = Array(20).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/src/picture_stream.dart",
-    "package:flutter_svg/src/picture_stream.dart"
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/hovering-1.0.4/lib/src/hover_cross_fade.dart",
+    "package:hovering/src/hover_cross_fade.dart"
   ];
-  var listener$ = dart.privateName(picture_stream, "_PictureListenerPair.listener");
-  var errorListener$ = dart.privateName(picture_stream, "_PictureListenerPair.errorListener");
-  picture_stream._PictureListenerPair = class _PictureListenerPair extends core.Object {
-    get listener() {
-      return this[listener$];
+  var cursor$ = dart.privateName(hover_cross_fade, "HoverCrossFadeWidget.cursor");
+  var firstChild$ = dart.privateName(hover_cross_fade, "HoverCrossFadeWidget.firstChild");
+  var secondChild$ = dart.privateName(hover_cross_fade, "HoverCrossFadeWidget.secondChild");
+  var duration$ = dart.privateName(hover_cross_fade, "HoverCrossFadeWidget.duration");
+  var firstCurve$ = dart.privateName(hover_cross_fade, "HoverCrossFadeWidget.firstCurve");
+  var secondCurve$ = dart.privateName(hover_cross_fade, "HoverCrossFadeWidget.secondCurve");
+  var sizeCurve$ = dart.privateName(hover_cross_fade, "HoverCrossFadeWidget.sizeCurve");
+  var reverseDuration$ = dart.privateName(hover_cross_fade, "HoverCrossFadeWidget.reverseDuration");
+  var alignmentry$ = dart.privateName(hover_cross_fade, "HoverCrossFadeWidget.alignmentry");
+  var SystemMouseCursor_kind = dart.privateName(mouse_cursor, "SystemMouseCursor.kind");
+  var Alignment_y = dart.privateName(alignment, "Alignment.y");
+  var Alignment_x = dart.privateName(alignment, "Alignment.x");
+  hover_cross_fade.HoverCrossFadeWidget = class HoverCrossFadeWidget extends framework.StatefulWidget {
+    get cursor() {
+      return this[cursor$];
     }
-    set listener(value) {
-      super.listener = value;
+    set cursor(value) {
+      super.cursor = value;
     }
-    get errorListener() {
-      return this[errorListener$];
+    get firstChild() {
+      return this[firstChild$];
     }
-    set errorListener(value) {
-      super.errorListener = value;
+    set firstChild(value) {
+      super.firstChild = value;
     }
-  };
-  (picture_stream._PictureListenerPair.new = function(listener, errorListener) {
-    if (listener == null) dart.nullFailed(I[0], 18, 35, "listener");
-    this[listener$] = listener;
-    this[errorListener$] = errorListener;
-    ;
-  }).prototype = picture_stream._PictureListenerPair.prototype;
-  dart.addTypeTests(picture_stream._PictureListenerPair);
-  dart.addTypeCaches(picture_stream._PictureListenerPair);
-  dart.setLibraryUri(picture_stream._PictureListenerPair, I[1]);
-  dart.setFieldSignature(picture_stream._PictureListenerPair, () => ({
-    __proto__: dart.getFields(picture_stream._PictureListenerPair.__proto__),
-    listener: dart.finalFieldType(dart.fnType(dart.dynamic, [dart.nullable(picture_stream.PictureInfo), core.bool])),
-    errorListener: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.Object, core.StackTrace])))
-  }));
-  var picture$ = dart.privateName(picture_stream, "PictureInfo.picture");
-  var viewport$ = dart.privateName(picture_stream, "PictureInfo.viewport");
-  var size$ = dart.privateName(picture_stream, "PictureInfo.size");
-  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
-  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
-  picture_stream.PictureInfo = class PictureInfo extends core.Object {
-    get picture() {
-      return this[picture$];
+    get secondChild() {
+      return this[secondChild$];
     }
-    set picture(value) {
-      super.picture = value;
+    set secondChild(value) {
+      super.secondChild = value;
     }
-    get viewport() {
-      return this[viewport$];
+    get duration() {
+      return this[duration$];
     }
-    set viewport(value) {
-      super.viewport = value;
+    set duration(value) {
+      super.duration = value;
     }
-    get size() {
-      return this[size$];
+    get firstCurve() {
+      return this[firstCurve$];
     }
-    set size(value) {
-      super.size = value;
+    set firstCurve(value) {
+      super.firstCurve = value;
     }
-    get hashCode() {
-      return ui.hashValues(this.picture, this.viewport, this.size);
+    get secondCurve() {
+      return this[secondCurve$];
     }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) {
-        return false;
-      }
-      return picture_stream.PictureInfo.is(other) && dart.equals(other.picture, this.picture) && dart.equals(other.viewport, this.viewport) && dart.equals(other.size, this.size);
+    set secondCurve(value) {
+      super.secondCurve = value;
     }
-  };
-  (picture_stream.PictureInfo.new = function(opts) {
-    let picture = opts && 'picture' in opts ? opts.picture : null;
-    if (picture == null) dart.nullFailed(I[0], 28, 19, "picture");
-    let viewport = opts && 'viewport' in opts ? opts.viewport : null;
-    if (viewport == null) dart.nullFailed(I[0], 29, 19, "viewport");
-    let size = opts && 'size' in opts ? opts.size : C[0] || CT.C0;
-    if (size == null) dart.nullFailed(I[0], 30, 10, "size");
-    this[picture$] = picture;
-    this[viewport$] = viewport;
-    this[size$] = size;
-    if (!(picture != null)) dart.assertFailed(null, I[0], 31, 16, "picture != null");
-    if (!(viewport != null)) dart.assertFailed(null, I[0], 32, 16, "viewport != null");
-    if (!(size != null)) dart.assertFailed(null, I[0], 33, 16, "size != null");
-    ;
-  }).prototype = picture_stream.PictureInfo.prototype;
-  dart.addTypeTests(picture_stream.PictureInfo);
-  dart.addTypeCaches(picture_stream.PictureInfo);
-  dart.setLibraryUri(picture_stream.PictureInfo, I[1]);
-  dart.setFieldSignature(picture_stream.PictureInfo, () => ({
-    __proto__: dart.getFields(picture_stream.PictureInfo.__proto__),
-    picture: dart.finalFieldType(ui.Picture),
-    viewport: dart.finalFieldType(ui.Rect),
-    size: dart.finalFieldType(ui.Size)
-  }));
-  dart.defineExtensionMethods(picture_stream.PictureInfo, ['_equals']);
-  dart.defineExtensionAccessors(picture_stream.PictureInfo, ['hashCode']);
-  var _completer = dart.privateName(picture_stream, "_completer");
-  var _listeners = dart.privateName(picture_stream, "_listeners");
-  const Object_Diagnosticable$36 = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36.new = function() {
-  }).prototype = Object_Diagnosticable$36.prototype;
-  dart.applyMixin(Object_Diagnosticable$36, diagnostics.Diagnosticable);
-  picture_stream.PictureStream = class PictureStream extends Object_Diagnosticable$36 {
-    get completer() {
-      return this[_completer];
+    get sizeCurve() {
+      return this[sizeCurve$];
     }
-    setCompleter(value) {
-      if (value == null) dart.nullFailed(I[0], 112, 44, "value");
-      if (!(this[_completer] == null)) dart.assertFailed(null, I[0], 113, 12, "_completer == null");
-      this[_completer] = value;
-      if (this[_listeners] != null) {
-        let initialListeners = dart.nullCheck(this[_listeners]);
-        this[_listeners] = null;
-        for (let pair of initialListeners) {
-          dart.nullCheck(this[_completer]).addListener(pair.listener, {onError: pair.errorListener});
-        }
-      }
+    set sizeCurve(value) {
+      super.sizeCurve = value;
     }
-    addListener(listener, opts) {
-      if (listener == null) dart.nullFailed(I[0], 135, 36, "listener");
-      let onError = opts && 'onError' in opts ? opts.onError : null;
-      if (this[_completer] != null) {
-        return dart.nullCheck(this[_completer]).addListener(listener, {onError: onError});
-      }
-      this[_listeners] == null ? this[_listeners] = T.JSArrayOf_PictureListenerPair().of([]) : null;
-      dart.nullCheck(this[_listeners])[$add](new picture_stream._PictureListenerPair.new(listener, onError));
+    get reverseDuration() {
+      return this[reverseDuration$];
     }
-    removeListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 144, 39, "listener");
-      if (this[_completer] != null) {
-        return dart.nullCheck(this[_completer]).removeListener(listener);
-      }
-      if (!(this[_listeners] != null)) dart.assertFailed(null, I[0], 148, 12, "_listeners != null");
-      dart.nullCheck(this[_listeners])[$removeWhere](dart.fn(pair => {
-        if (pair == null) dart.nullFailed(I[0], 150, 29, "pair");
-        return dart.equals(pair.listener, listener);
-      }, T._PictureListenerPairTobool()));
+    set reverseDuration(value) {
+      super.reverseDuration = value;
     }
-    get key() {
-      return this[_completer] != null ? this[_completer] : this;
+    get alignmentry() {
+      return this[alignmentry$];
     }
-    debugFillProperties(properties) {
-      let t0, t0$, t0$0, t0$1;
-      if (properties == null) dart.nullFailed(I[0], 168, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new (T.ObjectFlagPropertyOfPictureStreamCompleter()).new("completer", this[_completer], {ifPresent: (t0 = this[_completer], t0 == null ? null : t0.toStringShort()), ifNull: "unresolved"}));
-      properties.add(new (T.ObjectFlagPropertyOfListOf_PictureListenerPair()).new("listeners", this[_listeners], {ifPresent: dart.str((t0$ = this[_listeners], t0$ == null ? null : t0$[$length])) + " listener" + ((t0$0 = this[_listeners], t0$0 == null ? null : t0$0[$length]) === 1 ? "" : "s"), ifNull: "no listeners", level: this[_completer] != null ? diagnostics.DiagnosticLevel.hidden : diagnostics.DiagnosticLevel.info}));
-      t0$1 = this[_completer];
-      t0$1 == null ? null : t0$1.debugFillProperties(properties);
+    set alignmentry(value) {
+      super.alignmentry = value;
+    }
+    createState() {
+      return new hover_cross_fade._HoverCrossFadeWidgetState.new();
     }
   };
-  (picture_stream.PictureStream.new = function() {
-    this[_completer] = null;
-    this[_listeners] = null;
+  (hover_cross_fade.HoverCrossFadeWidget.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let cursor = opts && 'cursor' in opts ? opts.cursor : C[0] || CT.C0;
+    if (cursor == null) dart.nullFailed(I[0], 24, 10, "cursor");
+    let firstChild = opts && 'firstChild' in opts ? opts.firstChild : null;
+    if (firstChild == null) dart.nullFailed(I[0], 25, 19, "firstChild");
+    let secondChild = opts && 'secondChild' in opts ? opts.secondChild : null;
+    if (secondChild == null) dart.nullFailed(I[0], 26, 19, "secondChild");
+    let duration = opts && 'duration' in opts ? opts.duration : null;
+    if (duration == null) dart.nullFailed(I[0], 27, 19, "duration");
+    let alignmentry = opts && 'alignmentry' in opts ? opts.alignmentry : C[1] || CT.C1;
+    if (alignmentry == null) dart.nullFailed(I[0], 28, 10, "alignmentry");
+    let firstCurve = opts && 'firstCurve' in opts ? opts.firstCurve : C[2] || CT.C2;
+    if (firstCurve == null) dart.nullFailed(I[0], 29, 10, "firstCurve");
+    let reverseDuration = opts && 'reverseDuration' in opts ? opts.reverseDuration : null;
+    let secondCurve = opts && 'secondCurve' in opts ? opts.secondCurve : C[2] || CT.C2;
+    if (secondCurve == null) dart.nullFailed(I[0], 31, 10, "secondCurve");
+    let sizeCurve = opts && 'sizeCurve' in opts ? opts.sizeCurve : C[2] || CT.C2;
+    if (sizeCurve == null) dart.nullFailed(I[0], 32, 10, "sizeCurve");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[cursor$] = cursor;
+    this[firstChild$] = firstChild;
+    this[secondChild$] = secondChild;
+    this[duration$] = duration;
+    this[alignmentry$] = alignmentry;
+    this[firstCurve$] = firstCurve;
+    this[reverseDuration$] = reverseDuration;
+    this[secondCurve$] = secondCurve;
+    this[sizeCurve$] = sizeCurve;
+    hover_cross_fade.HoverCrossFadeWidget.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = picture_stream.PictureStream.prototype;
-  dart.addTypeTests(picture_stream.PictureStream);
-  dart.addTypeCaches(picture_stream.PictureStream);
-  dart.setMethodSignature(picture_stream.PictureStream, () => ({
-    __proto__: dart.getMethods(picture_stream.PictureStream.__proto__),
-    setCompleter: dart.fnType(dart.void, [picture_stream.PictureStreamCompleter]),
-    addListener: dart.fnType(dart.void, [dart.fnType(dart.dynamic, [dart.nullable(picture_stream.PictureInfo), core.bool])], {onError: dart.nullable(dart.fnType(dart.void, [core.Object, core.StackTrace]))}, {}),
-    removeListener: dart.fnType(dart.void, [dart.fnType(dart.dynamic, [dart.nullable(picture_stream.PictureInfo), core.bool])])
+  }).prototype = hover_cross_fade.HoverCrossFadeWidget.prototype;
+  dart.addTypeTests(hover_cross_fade.HoverCrossFadeWidget);
+  dart.addTypeCaches(hover_cross_fade.HoverCrossFadeWidget);
+  dart.setMethodSignature(hover_cross_fade.HoverCrossFadeWidget, () => ({
+    __proto__: dart.getMethods(hover_cross_fade.HoverCrossFadeWidget.__proto__),
+    createState: dart.fnType(hover_cross_fade._HoverCrossFadeWidgetState, [])
   }));
-  dart.setGetterSignature(picture_stream.PictureStream, () => ({
-    __proto__: dart.getGetters(picture_stream.PictureStream.__proto__),
-    completer: dart.nullable(picture_stream.PictureStreamCompleter),
-    key: dart.nullable(core.Object)
+  dart.setLibraryUri(hover_cross_fade.HoverCrossFadeWidget, I[1]);
+  dart.setFieldSignature(hover_cross_fade.HoverCrossFadeWidget, () => ({
+    __proto__: dart.getFields(hover_cross_fade.HoverCrossFadeWidget.__proto__),
+    cursor: dart.finalFieldType(mouse_cursor.MouseCursor),
+    firstChild: dart.finalFieldType(framework.Widget),
+    secondChild: dart.finalFieldType(framework.Widget),
+    duration: dart.finalFieldType(core.Duration),
+    firstCurve: dart.finalFieldType(curves.Curve),
+    secondCurve: dart.finalFieldType(curves.Curve),
+    sizeCurve: dart.finalFieldType(curves.Curve),
+    reverseDuration: dart.finalFieldType(dart.nullable(core.Duration)),
+    alignmentry: dart.finalFieldType(alignment.AlignmentGeometry)
   }));
-  dart.setLibraryUri(picture_stream.PictureStream, I[1]);
-  dart.setFieldSignature(picture_stream.PictureStream, () => ({
-    __proto__: dart.getFields(picture_stream.PictureStream.__proto__),
-    [_completer]: dart.fieldType(dart.nullable(picture_stream.PictureStreamCompleter)),
-    [_listeners]: dart.fieldType(dart.nullable(core.List$(picture_stream._PictureListenerPair)))
-  }));
-  var _current = dart.privateName(picture_stream, "_current");
-  var _handleImageError = dart.privateName(picture_stream, "_handleImageError");
-  const Object_Diagnosticable$36$ = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36$.new = function() {
-  }).prototype = Object_Diagnosticable$36$.prototype;
-  dart.applyMixin(Object_Diagnosticable$36$, diagnostics.Diagnosticable);
-  picture_stream.PictureStreamCompleter = class PictureStreamCompleter extends Object_Diagnosticable$36$ {
-    addListener(listener, opts) {
-      if (listener == null) dart.nullFailed(I[0], 209, 36, "listener");
-      let onError = opts && 'onError' in opts ? opts.onError : null;
-      this[_listeners][$add](new picture_stream._PictureListenerPair.new(listener, onError));
-      if (this[_current] != null) {
-        try {
-          listener(this[_current], true);
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            this[_handleImageError](new assertions.ErrorDescription.new("by a synchronously-called image listener"), exception, stack);
-          } else
-            throw e;
-        }
-      }
-    }
-    removeListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 225, 39, "listener");
-      this[_listeners][$removeWhere](dart.fn(pair => {
-        if (pair == null) dart.nullFailed(I[0], 227, 29, "pair");
-        return dart.equals(pair.listener, listener);
-      }, T._PictureListenerPairTobool()));
-    }
-    setPicture(picture) {
-      let t3, t2, t1;
-      this[_current] = picture;
-      if (dart.test(this[_listeners][$isEmpty])) {
-        return;
-      }
-      let localListeners = T.ListOf_PictureListenerPair().from(this[_listeners]);
-      for (let listenerPair of localListeners) {
-        try {
-          t1 = listenerPair;
-          t2 = picture;
-          t3 = false;
-          t1.listener(t2, t3);
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            if (listenerPair.errorListener != null) {
-              dart.nullCheck(listenerPair.errorListener)(exception, stack);
-            } else {
-              this[_handleImageError](new assertions.ErrorDescription.new("by a picture listener"), exception, stack);
-            }
-          } else
-            throw e;
-        }
-      }
-    }
-    [_handleImageError](context, exception, stack) {
-      if (context == null) dart.nullFailed(I[0], 255, 21, "context");
-      if (exception == null) dart.nullFailed(I[0], 256, 12, "exception");
-      assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: core.StackTrace.as(stack), library: "SVG", context: context}));
-    }
-    debugFillProperties(description) {
-      if (description == null) dart.nullFailed(I[0], 270, 56, "description");
-      super.debugFillProperties(description);
-      description.add(new (T.DiagnosticsPropertyOfPictureInfo()).new("current", this[_current], {ifNull: "unresolved", showName: false}));
-      description.add(new (T.ObjectFlagPropertyOfListOf_PictureListenerPair()).new("listeners", this[_listeners], {ifPresent: dart.str(this[_listeners][$length]) + " listener" + (this[_listeners][$length] === 1 ? "" : "s")}));
+  var _isHover = dart.privateName(hover_cross_fade, "_isHover");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  hover_cross_fade._HoverCrossFadeWidgetState = class _HoverCrossFadeWidgetState extends framework.State$(hover_cross_fade.HoverCrossFadeWidget) {
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 42, 29, "context");
+      return new basic.MouseRegion.new({onEnter: dart.fn(event => {
+          if (event == null) dart.nullFailed(I[0], 44, 19, "event");
+          this.setState(dart.fn(() => {
+            this[_isHover] = true;
+          }, T.VoidTovoid()));
+        }, T.PointerEnterEventTovoid()), cursor: this.widget.cursor, onExit: dart.fn(event => {
+          if (event == null) dart.nullFailed(I[0], 50, 18, "event");
+          this.setState(dart.fn(() => {
+            this[_isHover] = false;
+          }, T.VoidTovoid()));
+        }, T.PointerExitEventTovoid()), child: new animated_cross_fade.AnimatedCrossFade.new({firstChild: this.widget.firstChild, secondChild: this.widget.secondChild, crossFadeState: dart.test(this[_isHover]) ? animated_cross_fade.CrossFadeState.showSecond : animated_cross_fade.CrossFadeState.showFirst, duration: this.widget.duration, reverseDuration: this.widget.reverseDuration, firstCurve: this.widget.firstCurve, secondCurve: this.widget.secondCurve, sizeCurve: this.widget.sizeCurve, alignment: this.widget.alignmentry, $creationLocationd_0dea112b090073317d4: C[3] || CT.C3}), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14});
     }
   };
-  (picture_stream.PictureStreamCompleter.new = function() {
-    this[_listeners] = T.JSArrayOf_PictureListenerPair().of([]);
-    this[_current] = null;
+  (hover_cross_fade._HoverCrossFadeWidgetState.new = function() {
+    this[_isHover] = false;
+    hover_cross_fade._HoverCrossFadeWidgetState.__proto__.new.call(this);
     ;
-  }).prototype = picture_stream.PictureStreamCompleter.prototype;
-  dart.addTypeTests(picture_stream.PictureStreamCompleter);
-  dart.addTypeCaches(picture_stream.PictureStreamCompleter);
-  dart.setMethodSignature(picture_stream.PictureStreamCompleter, () => ({
-    __proto__: dart.getMethods(picture_stream.PictureStreamCompleter.__proto__),
-    addListener: dart.fnType(dart.void, [dart.fnType(dart.dynamic, [dart.nullable(picture_stream.PictureInfo), core.bool])], {onError: dart.nullable(dart.fnType(dart.void, [core.Object, core.StackTrace]))}, {}),
-    removeListener: dart.fnType(dart.void, [dart.fnType(dart.dynamic, [dart.nullable(picture_stream.PictureInfo), core.bool])]),
-    setPicture: dart.fnType(dart.void, [dart.nullable(picture_stream.PictureInfo)]),
-    [_handleImageError]: dart.fnType(dart.void, [diagnostics.DiagnosticsNode, core.Object, dart.dynamic])
+  }).prototype = hover_cross_fade._HoverCrossFadeWidgetState.prototype;
+  dart.addTypeTests(hover_cross_fade._HoverCrossFadeWidgetState);
+  dart.addTypeCaches(hover_cross_fade._HoverCrossFadeWidgetState);
+  dart.setMethodSignature(hover_cross_fade._HoverCrossFadeWidgetState, () => ({
+    __proto__: dart.getMethods(hover_cross_fade._HoverCrossFadeWidgetState.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
   }));
-  dart.setLibraryUri(picture_stream.PictureStreamCompleter, I[1]);
-  dart.setFieldSignature(picture_stream.PictureStreamCompleter, () => ({
-    __proto__: dart.getFields(picture_stream.PictureStreamCompleter.__proto__),
-    [_listeners]: dart.finalFieldType(core.List$(picture_stream._PictureListenerPair)),
-    [_current]: dart.fieldType(dart.nullable(picture_stream.PictureInfo))
+  dart.setLibraryUri(hover_cross_fade._HoverCrossFadeWidgetState, I[1]);
+  dart.setFieldSignature(hover_cross_fade._HoverCrossFadeWidgetState, () => ({
+    __proto__: dart.getFields(hover_cross_fade._HoverCrossFadeWidgetState.__proto__),
+    [_isHover]: dart.fieldType(core.bool)
   }));
-  picture_stream.OneFramePictureStreamCompleter = class OneFramePictureStreamCompleter extends picture_stream.PictureStreamCompleter {};
-  (picture_stream.OneFramePictureStreamCompleter.new = function(picture, opts) {
-    if (picture == null) dart.nullFailed(I[0], 301, 26, "picture");
-    let informationCollector = opts && 'informationCollector' in opts ? opts.informationCollector : null;
-    if (!(picture != null)) dart.assertFailed(null, I[0], 304, 15, "picture != null");
-    picture_stream.OneFramePictureStreamCompleter.__proto__.new.call(this);
-    picture.then(dart.void, dart.bind(this, 'setPicture'), {onError: dart.fn((error, stack) => {
-        if (error == null) dart.nullFailed(I[0], 305, 53, "error");
-        if (stack == null) dart.nullFailed(I[0], 305, 71, "stack");
-        assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: error, stack: stack, library: "SVG", context: new assertions.ErrorDescription.new("resolving a single-frame picture stream"), informationCollector: informationCollector, silent: true}));
-      }, T.ObjectAndStackTraceToNull())});
-  }).prototype = picture_stream.OneFramePictureStreamCompleter.prototype;
-  dart.addTypeTests(picture_stream.OneFramePictureStreamCompleter);
-  dart.addTypeCaches(picture_stream.OneFramePictureStreamCompleter);
-  dart.setLibraryUri(picture_stream.OneFramePictureStreamCompleter, I[1]);
-  dart.trackLibraries("packages/flutter_svg/src/picture_stream.dart", {
-    "package:flutter_svg/src/picture_stream.dart": picture_stream
+  dart.trackLibraries("packages/hovering/src/hover_cross_fade.dart", {
+    "package:hovering/src/hover_cross_fade.dart": hover_cross_fade
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["picture_stream.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/flutter_svg/src/picture_stream.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["hover_cross_fade.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAWoB;;;;;;IACL;;;;;;IACA;;;;;;IACE;;;;;;IACH;;;;;;IACA;;;;;;IACA;;;;;;IACI;;;;;;IACQ;;;;;;;AAgBoB;IAA4B;;;QAbjE;QACA;;QACS;;QACA;;QACA;;QACT;;QACA;;QACA;QACA;;QACA;;;IARA;IACS;IACA;IACA;IACT;IACA;IACA;IACA;IACA;AACF,yEAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;UASM;AACxB,YAAO,qCACM;cAAC;AAGN,UAFF,cAAS;AACQ,YAAf,iBAAW;;iDAGP,AAAO,4BACP;cAAC;AAGL,UAFF,cAAS;AACS,YAAhB,iBAAW;;+CAGR,2DACO,AAAO,qCACN,AAAO,mDAEhB,kBAA0B,gDAA4B,wDAChD,AAAO,uCACA,AAAO,yCACZ,AAAO,qCACN,AAAO,oCACT,AAAO,kCACP,AAAO;IAE1B;;;IA3BK,iBAAW;;;EA4BlB","file":"../../../../../../../../../packages/hovering/src/hover_cross_fade.dart.lib.js"}');
   // Exports:
   return {
-    src__picture_stream: picture_stream
+    src__hover_cross_fade: hover_cross_fade
   };
 }));
 
-//# sourceMappingURL=picture_stream.dart.lib.js.map
+//# sourceMappingURL=hover_cross_fade.dart.lib.js.map

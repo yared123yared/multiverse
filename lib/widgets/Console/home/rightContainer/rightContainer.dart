@@ -11,18 +11,17 @@ class RightContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Members(
-          mainContainerHeight: mainContainerHeight,
-          mainContainerWidth: mainContainerWidth,
-        ),
-        Billing(
-          mainContainerHeight: mainContainerHeight,
-          mainContainerWidth: mainContainerWidth,
-        ),
-      ],
-    );
+    return Material(
+        color: Colors.white,
+        elevation: 1,
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+            padding: EdgeInsets.fromLTRB(13, 0, 13, 13),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+            width: this.mainContainerWidth * 0.62,
+            height: this.mainContainerHeight,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            )));
   }
 }

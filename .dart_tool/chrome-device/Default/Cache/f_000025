@@ -1,75 +1,38 @@
-define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart', 'packages/collection/src/priority_queue.dart', 'packages/flutter/src/foundation/print.dart', 'packages/flutter/src/scheduler/debug.dart', 'packages/flutter/src/foundation/binding.dart', 'packages/flutter/src/scheduler/priority.dart'], (function load__packages__flutter__src__scheduler__binding_dart(dart_sdk, packages__flutter__src__foundation__debug$46dart, packages__collection__src__priority_queue$46dart, packages__flutter__src__foundation__print$46dart, packages__flutter__src__scheduler__debug$46dart, packages__flutter__src__foundation__binding$46dart, packages__flutter__src__scheduler__priority$46dart) {
+define(['dart_sdk', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/semantics/binding.dart', 'packages/flutter/src/scheduler/ticker.dart', 'packages/flutter/src/physics/spring_simulation.dart', 'packages/flutter/src/physics/simulation.dart', 'packages/flutter/src/physics/tolerance.dart'], (function load__packages__flutter__src__animation__animation_controller_dart(dart_sdk, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__semantics__binding$46dart, packages__flutter__src__scheduler__ticker$46dart, packages__flutter__src__physics__spring_simulation$46dart, packages__flutter__src__physics__simulation$46dart, packages__flutter__src__physics__tolerance$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const async = dart_sdk.async;
   const _internal = dart_sdk._internal;
-  const developer = dart_sdk.developer;
   const _interceptors = dart_sdk._interceptors;
   const ui = dart_sdk.ui;
-  const _js_helper = dart_sdk._js_helper;
-  const collection = dart_sdk.collection;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const listener_helpers = packages__flutter__src__animation__listener_helpers$46dart.src__animation__listener_helpers;
   const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
   const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const debug = packages__flutter__src__foundation__debug$46dart.src__foundation__debug;
-  const priority_queue = packages__collection__src__priority_queue$46dart.src__priority_queue;
-  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
-  const debug$ = packages__flutter__src__scheduler__debug$46dart.src__scheduler__debug;
-  const binding = packages__flutter__src__foundation__binding$46dart.src__foundation__binding;
-  const priority$ = packages__flutter__src__scheduler__priority$46dart.src__scheduler__priority;
-  var binding$ = Object.create(dart.library);
-  var $add = dartx.add;
-  var $length = dartx.length;
-  var $contains = dartx.contains;
-  var $remove = dartx.remove;
-  var $isEmpty = dartx.isEmpty;
-  var $compareTo = dartx.compareTo;
-  var $_set = dartx._set;
-  var $keys = dartx.keys;
-  var $_get = dartx._get;
-  var $trimRight = dartx.trimRight;
-  var $split = dartx.split;
-  var $join = dartx.join;
-  var $round = dartx.round;
-  var $toString = dartx.toString;
-  var $padRight = dartx.padRight;
-  var $padLeft = dartx.padLeft;
-  var $forEach = dartx.forEach;
-  var $clear = dartx.clear;
-  var $times = dartx['*'];
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const binding = packages__flutter__src__semantics__binding$46dart.src__semantics__binding;
+  const ticker = packages__flutter__src__scheduler__ticker$46dart.src__scheduler__ticker;
+  const spring_simulation = packages__flutter__src__physics__spring_simulation$46dart.src__physics__spring_simulation;
+  const simulation = packages__flutter__src__physics__simulation$46dart.src__physics__simulation;
+  const tolerance = packages__flutter__src__physics__tolerance$46dart.src__physics__tolerance;
+  var animation_controller = Object.create(dart.library);
+  var $toDouble = dartx.toDouble;
+  var $clamp = dartx.clamp;
+  var $isFinite = dartx.isFinite;
+  var $abs = dartx.abs;
+  var $runtimeType = dartx.runtimeType;
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  var $modulo = dartx['%'];
+  var $isOdd = dartx.isOdd;
+  var $truncate = dartx.truncate;
   dart._checkModuleNullSafetyMode(false);
-  var T$ = {
-    VoidTobool: () => (T$.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    VoidToNull: () => (T$.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
-    JSArrayOfDiagnosticsNode: () => (T$.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
-    SchedulerPhaseL: () => (T$.SchedulerPhaseL = dart.constFn(dart.legacy(binding$.SchedulerPhase)))(),
-    ListOfFrameTiming: () => (T$.ListOfFrameTiming = dart.constFn(core.List$(ui.FrameTiming)))(),
-    ListOfFrameTimingTovoid: () => (T$.ListOfFrameTimingTovoid = dart.constFn(dart.fnType(dart.void, [T$.ListOfFrameTiming()])))(),
-    JSArrayOfListOfFrameTimingTovoid: () => (T$.JSArrayOfListOfFrameTimingTovoid = dart.constFn(_interceptors.JSArray$(T$.ListOfFrameTimingTovoid())))(),
-    __Tobool: () => (T$.__Tobool = dart.constFn(dart.fnType(core.bool, [], {}, {priority: core.int, scheduler: binding$.SchedulerBinding})))(),
-    HeapPriorityQueueOf_TaskEntry: () => (T$.HeapPriorityQueueOf_TaskEntry = dart.constFn(priority_queue.HeapPriorityQueue$(binding$._TaskEntry)))(),
-    _TaskEntryAnd_TaskEntryToint: () => (T$._TaskEntryAnd_TaskEntryToint = dart.constFn(dart.fnType(core.int, [binding$._TaskEntry, binding$._TaskEntry])))(),
-    IdentityMapOfint$_FrameCallbackEntry: () => (T$.IdentityMapOfint$_FrameCallbackEntry = dart.constFn(_js_helper.IdentityMap$(core.int, binding$._FrameCallbackEntry)))(),
-    _IdentityHashSetOfint: () => (T$._IdentityHashSetOfint = dart.constFn(collection._IdentityHashSet$(core.int)))(),
-    DurationTovoid: () => (T$.DurationTovoid = dart.constFn(dart.fnType(dart.void, [core.Duration])))(),
-    JSArrayOfDurationTovoid: () => (T$.JSArrayOfDurationTovoid = dart.constFn(_interceptors.JSArray$(T$.DurationTovoid())))(),
-    ListOfListOfFrameTimingTovoid: () => (T$.ListOfListOfFrameTimingTovoid = dart.constFn(core.List$(T$.ListOfFrameTimingTovoid())))(),
-    DiagnosticsPropertyOfListOfFrameTimingTovoid: () => (T$.DiagnosticsPropertyOfListOfFrameTimingTovoid = dart.constFn(diagnostics.DiagnosticsProperty$(T$.ListOfFrameTimingTovoid())))(),
-    SyncIterableOfDiagnosticsNode: () => (T$.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
-    IterableOfDiagnosticsNode: () => (T$.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
-    VoidToIterableOfDiagnosticsNode: () => (T$.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T$.IterableOfDiagnosticsNode(), [])))(),
-    FutureOfdouble: () => (T$.FutureOfdouble = dart.constFn(async.Future$(core.double)))(),
-    VoidToFutureOfdouble: () => (T$.VoidToFutureOfdouble = dart.constFn(dart.fnType(T$.FutureOfdouble(), [])))(),
-    FutureOfvoid: () => (T$.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
-    doubleToFutureOfvoid: () => (T$.doubleToFutureOfvoid = dart.constFn(dart.fnType(T$.FutureOfvoid(), [core.double])))(),
-    LinkedHashMapOfint$_FrameCallbackEntry: () => (T$.LinkedHashMapOfint$_FrameCallbackEntry = dart.constFn(collection.LinkedHashMap$(core.int, binding$._FrameCallbackEntry)))(),
-    CompleterOfvoid: () => (T$.CompleterOfvoid = dart.constFn(async.Completer$(dart.void)))(),
-    VoidTovoid: () => (T$.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    VoidToFutureOfvoid: () => (T$.VoidToFutureOfvoid = dart.constFn(dart.fnType(T$.FutureOfvoid(), [])))(),
-    intAnd_FrameCallbackEntryTovoid: () => (T$.intAnd_FrameCallbackEntryTovoid = dart.constFn(dart.fnType(dart.void, [core.int, binding$._FrameCallbackEntry])))(),
-    ListOfDurationTovoid: () => (T$.ListOfDurationTovoid = dart.constFn(core.List$(T$.DurationTovoid())))(),
-    IdentityMapOfString$dynamic: () => (T$.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))()
+  var T = {
+    _AnimationDirectionL: () => (T._AnimationDirectionL = dart.constFn(dart.legacy(animation_controller._AnimationDirection)))(),
+    AnimationBehaviorL: () => (T.AnimationBehaviorL = dart.constFn(dart.legacy(animation_controller.AnimationBehavior)))(),
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    DiagnosticsPropertyOfAnimationController: () => (T.DiagnosticsPropertyOfAnimationController = dart.constFn(diagnostics.DiagnosticsProperty$(animation_controller.AnimationController)))(),
+    JSArrayOfDiagnosticsNode: () => (T.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -77,846 +40,746 @@ define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart', 'packages/coll
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: binding$.SchedulerPhase.prototype,
-        [_name$]: "SchedulerPhase.idle",
+        __proto__: animation_controller._AnimationDirection.prototype,
+        [_name$]: "_AnimationDirection.forward",
         index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: binding$.SchedulerPhase.prototype,
-        [_name$]: "SchedulerPhase.transientCallbacks",
+        __proto__: animation_controller._AnimationDirection.prototype,
+        [_name$]: "_AnimationDirection.reverse",
         index: 1
       });
     },
     get C2() {
-      return C[2] = dart.const({
-        __proto__: binding$.SchedulerPhase.prototype,
-        [_name$]: "SchedulerPhase.midFrameMicrotasks",
-        index: 2
-      });
+      return C[2] = dart.constList([C[0] || CT.C0, C[1] || CT.C1], T._AnimationDirectionL());
     },
     get C3() {
       return C[3] = dart.const({
-        __proto__: binding$.SchedulerPhase.prototype,
-        [_name$]: "SchedulerPhase.persistentCallbacks",
-        index: 3
+        __proto__: animation_controller.AnimationBehavior.prototype,
+        [_name$]: "AnimationBehavior.normal",
+        index: 0
       });
     },
     get C4() {
       return C[4] = dart.const({
-        __proto__: binding$.SchedulerPhase.prototype,
-        [_name$]: "SchedulerPhase.postFrameCallbacks",
-        index: 4
-      });
-    },
-    get C5() {
-      return C[5] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], T$.SchedulerPhaseL());
-    },
-    get C6() {
-      return C[6] = dart.fn(binding$.defaultSchedulingStrategy, T$.__Tobool());
-    },
-    get C7() {
-      return C[7] = dart.fn(binding$.SchedulerBinding._taskSorter, T$._TaskEntryAnd_TaskEntryToint());
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: ui.AppLifecycleState.prototype,
-        [_name]: "AppLifecycleState.resumed",
-        index: 0
-      });
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: ui.AppLifecycleState.prototype,
-        [_name]: "AppLifecycleState.inactive",
+        __proto__: animation_controller.AnimationBehavior.prototype,
+        [_name$]: "AnimationBehavior.preserve",
         index: 1
       });
     },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: ui.AppLifecycleState.prototype,
-        [_name]: "AppLifecycleState.paused",
-        index: 2
+    get C5() {
+      return C[5] = dart.constList([C[3] || CT.C3, C[4] || CT.C4], T.AnimationBehaviorL());
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: curves._Linear.prototype
       });
     },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: ui.AppLifecycleState.prototype,
-        [_name]: "AppLifecycleState.detached",
-        index: 3
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: tolerance.Tolerance.prototype,
+        [Tolerance_velocity]: 1 / 0,
+        [Tolerance_time]: 0.001,
+        [Tolerance_distance]: 0.01
       });
     }
   }, false);
-  var C = Array(12).fill(void 0);
+  var C = Array(8).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/scheduler/binding.dart",
-    "package:flutter/src/scheduler/binding.dart"
+    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/animation/animation_controller.dart",
+    "package:flutter/src/animation/animation_controller.dart"
   ];
-  var ___TaskEntry_debugStack = dart.privateName(binding$, "_#_TaskEntry#debugStack");
-  var ___TaskEntry_debugStack_isSet = dart.privateName(binding$, "_#_TaskEntry#debugStack#isSet");
-  const _is__TaskEntry_default = Symbol('_is__TaskEntry_default');
-  binding$._TaskEntry$ = dart.generic(T => {
-    var CompleterOfT = () => (CompleterOfT = dart.constFn(async.Completer$(T)))();
-    class _TaskEntry extends core.Object {
-      get debugStack() {
-        let t0;
-        return dart.test(this[___TaskEntry_debugStack_isSet]) ? (t0 = this[___TaskEntry_debugStack], t0) : dart.throw(new _internal.LateError.fieldNI("debugStack"));
-      }
-      set debugStack(t0) {
-        if (t0 == null) dart.nullFailed(I[0], 72, 19, "null");
-        this[___TaskEntry_debugStack_isSet] = true;
-        this[___TaskEntry_debugStack] = t0;
-      }
-      run() {
-        let t1;
-        if (!false) {
-          developer.Timeline.timeSync(core.Null, (t1 = this.debugLabel, t1 == null ? "Scheduled Task" : t1), dart.fn(() => {
-            this.completer.complete(this.task());
-          }, T$.VoidToNull()), {flow: this.flow != null ? developer.Flow.step(dart.nullCheck(this.flow).id) : null});
-        } else {
-          this.completer.complete(this.task());
-        }
-      }
-    }
-    (_TaskEntry.new = function(task, priority, debugLabel, flow) {
-      if (task == null) dart.nullFailed(I[0], 61, 19, "task");
-      if (priority == null) dart.nullFailed(I[0], 61, 30, "priority");
-      this[___TaskEntry_debugStack] = null;
-      this[___TaskEntry_debugStack_isSet] = false;
-      this.completer = CompleterOfT().new();
-      this.task = task;
-      this.priority = priority;
-      this.debugLabel = debugLabel;
-      this.flow = flow;
-      if (!dart.test(dart.fn(() => {
-        this.debugStack = core.StackTrace.current;
-        return true;
-      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 62, 12, "() {\r\n      debugStack = StackTrace.current;\r\n      return true;\r\n    }()");
-    }).prototype = _TaskEntry.prototype;
-    dart.addTypeTests(_TaskEntry);
-    _TaskEntry.prototype[_is__TaskEntry_default] = true;
-    dart.addTypeCaches(_TaskEntry);
-    dart.setMethodSignature(_TaskEntry, () => ({
-      __proto__: dart.getMethods(_TaskEntry.__proto__),
-      run: dart.fnType(dart.void, [])
-    }));
-    dart.setGetterSignature(_TaskEntry, () => ({
-      __proto__: dart.getGetters(_TaskEntry.__proto__),
-      debugStack: core.StackTrace
-    }));
-    dart.setSetterSignature(_TaskEntry, () => ({
-      __proto__: dart.getSetters(_TaskEntry.__proto__),
-      debugStack: core.StackTrace
-    }));
-    dart.setLibraryUri(_TaskEntry, I[1]);
-    dart.setFieldSignature(_TaskEntry, () => ({
-      __proto__: dart.getFields(_TaskEntry.__proto__),
-      task: dart.finalFieldType(dart.fnType(T, [])),
-      priority: dart.finalFieldType(core.int),
-      debugLabel: dart.finalFieldType(dart.nullable(core.String)),
-      flow: dart.finalFieldType(dart.nullable(developer.Flow)),
-      [___TaskEntry_debugStack]: dart.fieldType(dart.nullable(core.StackTrace)),
-      [___TaskEntry_debugStack_isSet]: dart.fieldType(core.bool),
-      completer: dart.finalFieldType(async.Completer$(T))
-    }));
-    return _TaskEntry;
-  });
-  binding$._TaskEntry = binding$._TaskEntry$();
-  dart.addTypeTests(binding$._TaskEntry, _is__TaskEntry_default);
-  binding$._FrameCallbackEntry = class _FrameCallbackEntry extends core.Object {};
-  (binding$._FrameCallbackEntry.new = function(callback, opts) {
-    if (callback == null) dart.nullFailed(I[0], 91, 28, "callback");
-    let rescheduling = opts && 'rescheduling' in opts ? opts.rescheduling : false;
-    if (rescheduling == null) dart.nullFailed(I[0], 91, 45, "rescheduling");
-    this.debugStack = null;
-    this.callback = callback;
-    if (!dart.test(dart.fn(() => {
-      if (dart.test(rescheduling)) {
-        if (!dart.test(dart.fn(() => {
-          if (binding$._FrameCallbackEntry.debugCurrentCallbackStack == null) {
-            dart.throw(new assertions.FlutterError.fromParts(T$.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("scheduleFrameCallback called with rescheduling true, but no callback is in scope."), new assertions.ErrorDescription.new("The \"rescheduling\" argument should only be set to true if the " + "callback is being reregistered from within the callback itself, " + "and only then if the callback itself is entirely synchronous."), new assertions.ErrorHint.new("If this is the initial registration of the callback, or if the " + "callback is asynchronous, then do not use the \"rescheduling\" " + "argument.")])));
-          }
-          return true;
-        }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 94, 16, "() {\r\n          if (debugCurrentCallbackStack == null) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('scheduleFrameCallback called with rescheduling true, but no callback is in scope.'),\r\n              ErrorDescription(\r\n                'The \"rescheduling\" argument should only be set to true if the '\r\n                'callback is being reregistered from within the callback itself, '\r\n                'and only then if the callback itself is entirely synchronous.',\r\n              ),\r\n              ErrorHint(\r\n                'If this is the initial registration of the callback, or if the '\r\n                'callback is asynchronous, then do not use the \"rescheduling\" '\r\n                'argument.',\r\n              ),\r\n            ]);\r\n          }\r\n          return true;\r\n        }()");
-        this.debugStack = binding$._FrameCallbackEntry.debugCurrentCallbackStack;
-      } else {
-        this.debugStack = core.StackTrace.current;
-      }
-      return true;
-    }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 92, 12, "() {\r\n      if (rescheduling) {\r\n        assert(() {\r\n          if (debugCurrentCallbackStack == null) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('scheduleFrameCallback called with rescheduling true, but no callback is in scope.'),\r\n              ErrorDescription(\r\n                'The \"rescheduling\" argument should only be set to true if the '\r\n                'callback is being reregistered from within the callback itself, '\r\n                'and only then if the callback itself is entirely synchronous.',\r\n              ),\r\n              ErrorHint(\r\n                'If this is the initial registration of the callback, or if the '\r\n                'callback is asynchronous, then do not use the \"rescheduling\" '\r\n                'argument.',\r\n              ),\r\n            ]);\r\n          }\r\n          return true;\r\n        }());\r\n        debugStack = debugCurrentCallbackStack;\r\n      } else {\r\n        // TODO(ianh): trim the frames from this library, so that the call to scheduleFrameCallback is the top one\r\n        debugStack = StackTrace.current;\r\n      }\r\n      return true;\r\n    }()");
-  }).prototype = binding$._FrameCallbackEntry.prototype;
-  dart.addTypeTests(binding$._FrameCallbackEntry);
-  dart.addTypeCaches(binding$._FrameCallbackEntry);
-  dart.setLibraryUri(binding$._FrameCallbackEntry, I[1]);
-  dart.setFieldSignature(binding$._FrameCallbackEntry, () => ({
-    __proto__: dart.getFields(binding$._FrameCallbackEntry.__proto__),
-    callback: dart.finalFieldType(dart.fnType(dart.void, [core.Duration])),
-    debugStack: dart.fieldType(dart.nullable(core.StackTrace))
-  }));
-  dart.defineLazy(binding$._FrameCallbackEntry, {
-    /*binding$._FrameCallbackEntry.debugCurrentCallbackStack*/get debugCurrentCallbackStack() {
-      return null;
-    },
-    set debugCurrentCallbackStack(_) {}
-  }, false);
-  var _name$ = dart.privateName(binding$, "_name");
-  binding$.SchedulerPhase = class SchedulerPhase extends core.Object {
+  var _name$ = dart.privateName(animation_controller, "_name");
+  animation_controller._AnimationDirection = class _AnimationDirection extends core.Object {
     toString() {
       return this[_name$];
     }
   };
-  (binding$.SchedulerPhase.new = function(index, _name) {
-    if (index == null) dart.nullFailed(I[0], 139, 6, "index");
-    if (_name == null) dart.nullFailed(I[0], 139, 6, "_name");
+  (animation_controller._AnimationDirection.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 25, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 25, 6, "_name");
     this.index = index;
     this[_name$] = _name;
     ;
-  }).prototype = binding$.SchedulerPhase.prototype;
-  dart.addTypeTests(binding$.SchedulerPhase);
-  dart.addTypeCaches(binding$.SchedulerPhase);
-  dart.setLibraryUri(binding$.SchedulerPhase, I[1]);
-  dart.setFieldSignature(binding$.SchedulerPhase, () => ({
-    __proto__: dart.getFields(binding$.SchedulerPhase.__proto__),
+  }).prototype = animation_controller._AnimationDirection.prototype;
+  dart.addTypeTests(animation_controller._AnimationDirection);
+  dart.addTypeCaches(animation_controller._AnimationDirection);
+  dart.setLibraryUri(animation_controller._AnimationDirection, I[1]);
+  dart.setFieldSignature(animation_controller._AnimationDirection, () => ({
+    __proto__: dart.getFields(animation_controller._AnimationDirection.__proto__),
     index: dart.finalFieldType(core.int),
     [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.defineExtensionMethods(binding$.SchedulerPhase, ['toString']);
-  binding$.SchedulerPhase.idle = C[0] || CT.C0;
-  binding$.SchedulerPhase.transientCallbacks = C[1] || CT.C1;
-  binding$.SchedulerPhase.midFrameMicrotasks = C[2] || CT.C2;
-  binding$.SchedulerPhase.persistentCallbacks = C[3] || CT.C3;
-  binding$.SchedulerPhase.postFrameCallbacks = C[4] || CT.C4;
-  binding$.SchedulerPhase.values = C[5] || CT.C5;
-  var schedulingStrategy = dart.privateName(binding$, "SchedulerBinding.schedulingStrategy");
-  var _timingsCallbacks = dart.privateName(binding$, "_timingsCallbacks");
-  var _lifecycleState = dart.privateName(binding$, "_lifecycleState");
-  var _taskQueue = dart.privateName(binding$, "_taskQueue");
-  var _hasRequestedAnEventLoopCallback = dart.privateName(binding$, "_hasRequestedAnEventLoopCallback");
-  var _nextFrameCallbackId = dart.privateName(binding$, "_nextFrameCallbackId");
-  var _transientCallbacks = dart.privateName(binding$, "_transientCallbacks");
-  var _removedIds = dart.privateName(binding$, "_removedIds");
-  var _persistentCallbacks = dart.privateName(binding$, "_persistentCallbacks");
-  var _postFrameCallbacks = dart.privateName(binding$, "_postFrameCallbacks");
-  var _nextFrameCompleter = dart.privateName(binding$, "_nextFrameCompleter");
-  var _hasScheduledFrame = dart.privateName(binding$, "_hasScheduledFrame");
-  var _schedulerPhase = dart.privateName(binding$, "_schedulerPhase");
-  var _framesEnabled = dart.privateName(binding$, "_framesEnabled");
-  var _warmUpFrame = dart.privateName(binding$, "_warmUpFrame");
-  var _firstRawTimeStampInEpoch = dart.privateName(binding$, "_firstRawTimeStampInEpoch");
-  var _epochStart = dart.privateName(binding$, "_epochStart");
-  var _lastRawTimeStamp = dart.privateName(binding$, "_lastRawTimeStamp");
-  var _currentFrameTimeStamp = dart.privateName(binding$, "_currentFrameTimeStamp");
-  var _debugFrameNumber = dart.privateName(binding$, "_debugFrameNumber");
-  var _debugBanner = dart.privateName(binding$, "_debugBanner");
-  var _rescheduleAfterWarmUpFrame = dart.privateName(binding$, "_rescheduleAfterWarmUpFrame");
-  var _profileFramePostEvent = dart.privateName(binding$, "_profileFramePostEvent");
-  var _executeTimingsCallbacks = dart.privateName(binding$, "_executeTimingsCallbacks");
-  var _setFramesEnabledState = dart.privateName(binding$, "_setFramesEnabledState");
-  var _name = dart.privateName(ui, "_name");
-  var _ensureEventLoopCallback = dart.privateName(binding$, "_ensureEventLoopCallback");
-  var _runTasks = dart.privateName(binding$, "_runTasks");
-  var _handleBeginFrame = dart.privateName(binding$, "_handleBeginFrame");
-  var _handleDrawFrame = dart.privateName(binding$, "_handleDrawFrame");
-  var _adjustForEpoch = dart.privateName(binding$, "_adjustForEpoch");
-  var _invokeFrameCallback = dart.privateName(binding$, "_invokeFrameCallback");
-  binding$.SchedulerBinding = class SchedulerBinding extends binding.BindingBase {
-    static get instance() {
-      return binding$.SchedulerBinding._instance;
-    }
-    static _taskSorter(e1, e2) {
-      if (e1 == null) dart.nullFailed(I[0], 371, 47, "e1");
-      if (e2 == null) dart.nullFailed(I[0], 371, 71, "e2");
-      return -e1.priority[$compareTo](e2.priority);
-    }
-    static debugPrintTransientCallbackRegistrationStack() {
-      if (!dart.test(dart.fn(() => {
-        if (binding$._FrameCallbackEntry.debugCurrentCallbackStack != null) {
-          print.debugPrint("When the current transient callback was registered, this was the stack:");
-          print.debugPrint(assertions.FlutterError.defaultStackFilter(dart.toString(assertions.FlutterError.demangleStackTrace(dart.nullCheck(binding$._FrameCallbackEntry.debugCurrentCallbackStack)))[$trimRight]()[$split]("\n"))[$join]("\n"));
-        } else {
-          print.debugPrint("No transient callback is currently executing.");
-        }
-        return true;
-      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 616, 12, "() {\r\n      if (_FrameCallbackEntry.debugCurrentCallbackStack != null) {\r\n        debugPrint('When the current transient callback was registered, this was the stack:');\r\n        debugPrint(\r\n          FlutterError.defaultStackFilter(\r\n            FlutterError.demangleStackTrace(\r\n              _FrameCallbackEntry.debugCurrentCallbackStack!,\r\n            ).toString().trimRight().split('\\n'),\r\n          ).join('\\n'),\r\n        );\r\n      } else {\r\n        debugPrint('No transient callback is currently executing.');\r\n      }\r\n      return true;\r\n    }()");
-    }
-    static _debugDescribeTimeStamp(timeStamp, buffer) {
-      if (timeStamp == null) dart.nullFailed(I[0], 1115, 48, "timeStamp");
-      if (buffer == null) dart.nullFailed(I[0], 1115, 72, "buffer");
-      if (dart.notNull(timeStamp.inDays) > 0) buffer.write(dart.str(timeStamp.inDays) + "d ");
-      if (dart.notNull(timeStamp.inHours) > 0) buffer.write(dart.str(dart.notNull(timeStamp.inHours) - dart.notNull(timeStamp.inDays) * 24) + "h ");
-      if (dart.notNull(timeStamp.inMinutes) > 0) buffer.write(dart.str(dart.notNull(timeStamp.inMinutes) - dart.notNull(timeStamp.inHours) * 60) + "m ");
-      if (dart.notNull(timeStamp.inSeconds) > 0) buffer.write(dart.str(dart.notNull(timeStamp.inSeconds) - dart.notNull(timeStamp.inMinutes) * 60) + "s ");
-      buffer.write(dart.str(dart.notNull(timeStamp.inMilliseconds) - dart.notNull(timeStamp.inSeconds) * 1000));
-      let microseconds = dart.notNull(timeStamp.inMicroseconds) - dart.notNull(timeStamp.inMilliseconds) * 1000;
-      if (microseconds > 0) buffer.write("." + microseconds[$toString]()[$padLeft](3, "0"));
-      buffer.write("ms");
+  dart.defineExtensionMethods(animation_controller._AnimationDirection, ['toString']);
+  animation_controller._AnimationDirection.forward = C[0] || CT.C0;
+  animation_controller._AnimationDirection.reverse = C[1] || CT.C1;
+  animation_controller._AnimationDirection.values = C[2] || CT.C2;
+  animation_controller.AnimationBehavior = class AnimationBehavior extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  binding$.SchedulerBinding[dart.mixinOn] = BindingBase => class SchedulerBinding extends BindingBase {
-    get schedulingStrategy() {
-      return this[schedulingStrategy];
+  (animation_controller.AnimationBehavior.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 56, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 56, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = animation_controller.AnimationBehavior.prototype;
+  dart.addTypeTests(animation_controller.AnimationBehavior);
+  dart.addTypeCaches(animation_controller.AnimationBehavior);
+  dart.setLibraryUri(animation_controller.AnimationBehavior, I[1]);
+  dart.setFieldSignature(animation_controller.AnimationBehavior, () => ({
+    __proto__: dart.getFields(animation_controller.AnimationBehavior.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(animation_controller.AnimationBehavior, ['toString']);
+  animation_controller.AnimationBehavior.normal = C[3] || CT.C3;
+  animation_controller.AnimationBehavior.preserve = C[4] || CT.C4;
+  animation_controller.AnimationBehavior.values = C[5] || CT.C5;
+  var lowerBound$ = dart.privateName(animation_controller, "AnimationController.lowerBound");
+  var upperBound$ = dart.privateName(animation_controller, "AnimationController.upperBound");
+  var debugLabel$ = dart.privateName(animation_controller, "AnimationController.debugLabel");
+  var animationBehavior$ = dart.privateName(animation_controller, "AnimationController.animationBehavior");
+  var duration$ = dart.privateName(animation_controller, "AnimationController.duration");
+  var reverseDuration$ = dart.privateName(animation_controller, "AnimationController.reverseDuration");
+  var _ticker = dart.privateName(animation_controller, "_ticker");
+  var _simulation = dart.privateName(animation_controller, "_simulation");
+  var __AnimationController__value = dart.privateName(animation_controller, "_#AnimationController#_value");
+  var __AnimationController__value_isSet = dart.privateName(animation_controller, "_#AnimationController#_value#isSet");
+  var _lastElapsedDuration = dart.privateName(animation_controller, "_lastElapsedDuration");
+  var __AnimationController__status = dart.privateName(animation_controller, "_#AnimationController#_status");
+  var __AnimationController__status_isSet = dart.privateName(animation_controller, "_#AnimationController#_status#isSet");
+  var _lastReportedStatus = dart.privateName(animation_controller, "_lastReportedStatus");
+  var _direction = dart.privateName(animation_controller, "_direction");
+  var _tick = dart.privateName(animation_controller, "_tick");
+  var _internalSetValue = dart.privateName(animation_controller, "_internalSetValue");
+  var _value = dart.privateName(animation_controller, "_value");
+  var _checkStatusChanged = dart.privateName(animation_controller, "_checkStatusChanged");
+  var _status = dart.privateName(animation_controller, "_status");
+  var _animateToInternal = dart.privateName(animation_controller, "_animateToInternal");
+  var _startSimulation = dart.privateName(animation_controller, "_startSimulation");
+  var _directionSetter = dart.privateName(animation_controller, "_directionSetter");
+  const Animation_AnimationEagerListenerMixin$36 = class Animation_AnimationEagerListenerMixin extends animation.Animation$(core.double) {};
+  (Animation_AnimationEagerListenerMixin$36.new = function() {
+    Animation_AnimationEagerListenerMixin$36.__proto__.new.call(this);
+  }).prototype = Animation_AnimationEagerListenerMixin$36.prototype;
+  dart.applyMixin(Animation_AnimationEagerListenerMixin$36, listener_helpers.AnimationEagerListenerMixin);
+  const Animation_AnimationLocalListenersMixin$36 = class Animation_AnimationLocalListenersMixin extends Animation_AnimationEagerListenerMixin$36 {};
+  (Animation_AnimationLocalListenersMixin$36.new = function() {
+    listener_helpers.AnimationLocalListenersMixin[dart.mixinNew].call(this);
+    Animation_AnimationLocalListenersMixin$36.__proto__.new.call(this);
+  }).prototype = Animation_AnimationLocalListenersMixin$36.prototype;
+  dart.applyMixin(Animation_AnimationLocalListenersMixin$36, listener_helpers.AnimationLocalListenersMixin);
+  const Animation_AnimationLocalStatusListenersMixin$36 = class Animation_AnimationLocalStatusListenersMixin extends Animation_AnimationLocalListenersMixin$36 {};
+  (Animation_AnimationLocalStatusListenersMixin$36.new = function() {
+    listener_helpers.AnimationLocalStatusListenersMixin[dart.mixinNew].call(this);
+    Animation_AnimationLocalStatusListenersMixin$36.__proto__.new.call(this);
+  }).prototype = Animation_AnimationLocalStatusListenersMixin$36.prototype;
+  dart.applyMixin(Animation_AnimationLocalStatusListenersMixin$36, listener_helpers.AnimationLocalStatusListenersMixin);
+  animation_controller.AnimationController = class AnimationController extends Animation_AnimationLocalStatusListenersMixin$36 {
+    get lowerBound() {
+      return this[lowerBound$];
     }
-    set schedulingStrategy(value) {
-      this[schedulingStrategy] = value;
+    set lowerBound(value) {
+      super.lowerBound = value;
     }
-    initInstances() {
-      super.initInstances();
-      binding$.SchedulerBinding._instance = this;
-      if (!false) {
-        let frameNumber = 0;
-        this.addTimingsCallback(dart.fn(timings => {
-          if (timings == null) dart.nullFailed(I[0], 206, 45, "timings");
-          for (let frameTiming of timings) {
-            frameNumber = frameNumber + 1;
-            this[_profileFramePostEvent](frameNumber, frameTiming);
+    get upperBound() {
+      return this[upperBound$];
+    }
+    set upperBound(value) {
+      super.upperBound = value;
+    }
+    get debugLabel() {
+      return this[debugLabel$];
+    }
+    set debugLabel(value) {
+      super.debugLabel = value;
+    }
+    get animationBehavior() {
+      return this[animationBehavior$];
+    }
+    set animationBehavior(value) {
+      super.animationBehavior = value;
+    }
+    get duration() {
+      return this[duration$];
+    }
+    set duration(value) {
+      this[duration$] = value;
+    }
+    get reverseDuration() {
+      return this[reverseDuration$];
+    }
+    set reverseDuration(value) {
+      this[reverseDuration$] = value;
+    }
+    get view() {
+      return this;
+    }
+    resync(vsync) {
+      if (vsync == null) dart.nullFailed(I[0], 322, 30, "vsync");
+      let oldTicker = dart.nullCheck(this[_ticker]);
+      this[_ticker] = vsync.createTicker(dart.bind(this, _tick));
+      dart.nullCheck(this[_ticker]).absorbTicker(oldTicker);
+    }
+    get value() {
+      return this[_value];
+    }
+    get [_value]() {
+      let t0;
+      return dart.test(this[__AnimationController__value_isSet]) ? (t0 = this[__AnimationController__value], t0) : dart.throw(new _internal.LateError.fieldNI("_value"));
+    }
+    set [_value](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 340, 15, "null");
+      this[__AnimationController__value_isSet] = true;
+      this[__AnimationController__value] = t0;
+    }
+    set value(newValue) {
+      if (newValue == null) dart.nullFailed(I[0], 362, 20, "newValue");
+      if (!(newValue != null)) dart.assertFailed(null, I[0], 363, 12, "newValue != null");
+      this.stop();
+      this[_internalSetValue](newValue);
+      this.notifyListeners();
+      this[_checkStatusChanged]();
+    }
+    reset() {
+      this.value = this.lowerBound;
+    }
+    get velocity() {
+      if (!dart.test(this.isAnimating)) return 0.0;
+      return dart.nullCheck(this[_simulation]).dx(dart.nullCheck(this.lastElapsedDuration).inMicroseconds[$toDouble]() / 1000000);
+    }
+    [_internalSetValue](newValue) {
+      if (newValue == null) dart.nullFailed(I[0], 398, 33, "newValue");
+      this[_value] = newValue[$clamp](this.lowerBound, this.upperBound);
+      if (this[_value] == this.lowerBound) {
+        this[_status] = animation.AnimationStatus.dismissed;
+      } else if (this[_value] == this.upperBound) {
+        this[_status] = animation.AnimationStatus.completed;
+      } else {
+        this[_status] = this[_direction] == animation_controller._AnimationDirection.forward ? animation.AnimationStatus.forward : animation.AnimationStatus.reverse;
+      }
+    }
+    get lastElapsedDuration() {
+      return this[_lastElapsedDuration];
+    }
+    get isAnimating() {
+      return this[_ticker] != null && dart.test(dart.nullCheck(this[_ticker]).isActive);
+    }
+    get status() {
+      return this[_status];
+    }
+    get [_status]() {
+      let t1;
+      return dart.test(this[__AnimationController__status_isSet]) ? (t1 = this[__AnimationController__status], t1) : dart.throw(new _internal.LateError.fieldNI("_status"));
+    }
+    set [_status](t1) {
+      if (t1 == null) dart.nullFailed(I[0], 430, 24, "null");
+      this[__AnimationController__status_isSet] = true;
+      this[__AnimationController__status] = t1;
+    }
+    forward(opts) {
+      let from = opts && 'from' in opts ? opts.from : null;
+      if (!dart.test(dart.fn(() => {
+        if (this.duration == null) {
+          dart.throw(assertions.FlutterError.new("AnimationController.forward() called with no default duration.\n" + "The \"duration\" property should be set, either in the constructor or later, before " + "calling the forward() function."));
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 444, 12, "() {\r\n      if (duration == null) {\r\n        throw FlutterError(\r\n          'AnimationController.forward() called with no default duration.\\n'\r\n          'The \"duration\" property should be set, either in the constructor or later, before '\r\n          'calling the forward() function.',\r\n        );\r\n      }\r\n      return true;\r\n    }()");
+      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.forward() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", I[0], 455, 7, "_ticker != null");
+      this[_direction] = animation_controller._AnimationDirection.forward;
+      if (from != null) this.value = from;
+      return this[_animateToInternal](this.upperBound);
+    }
+    reverse(opts) {
+      let from = opts && 'from' in opts ? opts.from : null;
+      if (!dart.test(dart.fn(() => {
+        if (this.duration == null && this.reverseDuration == null) {
+          dart.throw(assertions.FlutterError.new("AnimationController.reverse() called with no default duration or reverseDuration.\n" + "The \"duration\" or \"reverseDuration\" property should be set, either in the constructor or later, before " + "calling the reverse() function."));
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 477, 12, "() {\r\n      if (duration == null && reverseDuration == null) {\r\n        throw FlutterError(\r\n          'AnimationController.reverse() called with no default duration or reverseDuration.\\n'\r\n          'The \"duration\" or \"reverseDuration\" property should be set, either in the constructor or later, before '\r\n          'calling the reverse() function.',\r\n        );\r\n      }\r\n      return true;\r\n    }()");
+      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.reverse() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", I[0], 488, 7, "_ticker != null");
+      this[_direction] = animation_controller._AnimationDirection.reverse;
+      if (from != null) this.value = from;
+      return this[_animateToInternal](this.lowerBound);
+    }
+    animateTo(target, opts) {
+      if (target == null) dart.nullFailed(I[0], 514, 33, "target");
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      let curve = opts && 'curve' in opts ? opts.curve : C[6] || CT.C6;
+      if (curve == null) dart.nullFailed(I[0], 514, 69, "curve");
+      if (!dart.test(dart.fn(() => {
+        if (this.duration == null && duration == null) {
+          dart.throw(assertions.FlutterError.new("AnimationController.animateTo() called with no explicit duration and no default duration.\n" + "Either the \"duration\" argument to the animateTo() method should be provided, or the " + "\"duration\" property should be set, either in the constructor or later, before " + "calling the animateTo() function."));
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 515, 12, "() {\r\n      if (this.duration == null && duration == null) {\r\n        throw FlutterError(\r\n          'AnimationController.animateTo() called with no explicit duration and no default duration.\\n'\r\n          'Either the \"duration\" argument to the animateTo() method should be provided, or the '\r\n          '\"duration\" property should be set, either in the constructor or later, before '\r\n          'calling the animateTo() function.',\r\n        );\r\n      }\r\n      return true;\r\n    }()");
+      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.animateTo() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", I[0], 527, 7, "_ticker != null");
+      this[_direction] = animation_controller._AnimationDirection.forward;
+      return this[_animateToInternal](target, {duration: duration, curve: curve});
+    }
+    animateBack(target, opts) {
+      if (target == null) dart.nullFailed(I[0], 547, 35, "target");
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      let curve = opts && 'curve' in opts ? opts.curve : C[6] || CT.C6;
+      if (curve == null) dart.nullFailed(I[0], 547, 71, "curve");
+      if (!dart.test(dart.fn(() => {
+        if (this.duration == null && this.reverseDuration == null && duration == null) {
+          dart.throw(assertions.FlutterError.new("AnimationController.animateBack() called with no explicit duration and no default duration or reverseDuration.\n" + "Either the \"duration\" argument to the animateBack() method should be provided, or the " + "\"duration\" or \"reverseDuration\" property should be set, either in the constructor or later, before " + "calling the animateBack() function."));
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 548, 12, "() {\r\n      if (this.duration == null && reverseDuration == null && duration == null) {\r\n        throw FlutterError(\r\n          'AnimationController.animateBack() called with no explicit duration and no default duration or reverseDuration.\\n'\r\n          'Either the \"duration\" argument to the animateBack() method should be provided, or the '\r\n          '\"duration\" or \"reverseDuration\" property should be set, either in the constructor or later, before '\r\n          'calling the animateBack() function.',\r\n        );\r\n      }\r\n      return true;\r\n    }()");
+      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.animateBack() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", I[0], 560, 7, "_ticker != null");
+      this[_direction] = animation_controller._AnimationDirection.reverse;
+      return this[_animateToInternal](target, {duration: duration, curve: curve});
+    }
+    [_animateToInternal](target, opts) {
+      if (target == null) dart.nullFailed(I[0], 568, 42, "target");
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      let curve = opts && 'curve' in opts ? opts.curve : C[6] || CT.C6;
+      if (curve == null) dart.nullFailed(I[0], 568, 78, "curve");
+      let scale = 1.0;
+      if (dart.test(dart.nullCheck(binding.SemanticsBinding.instance).disableAnimations)) {
+        switch (this.animationBehavior) {
+          case C[3] || CT.C3:
+          {
+            scale = 0.05;
+            break;
           }
-        }, T$.ListOfFrameTimingTovoid()));
-      }
-    }
-    addTimingsCallback(callback) {
-      if (callback == null) dart.nullFailed(I[0], 265, 43, "callback");
-      this[_timingsCallbacks][$add](callback);
-      if (this[_timingsCallbacks][$length] === 1) {
-        if (!(this.window.onReportTimings == null)) dart.assertFailed(null, I[0], 268, 14, "window.onReportTimings == null");
-        this.window.onReportTimings = dart.bind(this, _executeTimingsCallbacks);
-      }
-      if (!dart.equals(this.window.onReportTimings, dart.bind(this, _executeTimingsCallbacks))) dart.assertFailed(null, I[0], 271, 12, "window.onReportTimings == _executeTimingsCallbacks");
-    }
-    removeTimingsCallback(callback) {
-      if (callback == null) dart.nullFailed(I[0], 275, 46, "callback");
-      if (!dart.test(this[_timingsCallbacks][$contains](callback))) dart.assertFailed(null, I[0], 276, 12, "_timingsCallbacks.contains(callback)");
-      this[_timingsCallbacks][$remove](callback);
-      if (dart.test(this[_timingsCallbacks][$isEmpty])) {
-        this.window.onReportTimings = null;
-      }
-    }
-    [_executeTimingsCallbacks](timings) {
-      if (timings == null) dart.nullFailed(I[0], 283, 51, "timings");
-      let clonedCallbacks = T$.ListOfListOfFrameTimingTovoid().from(this[_timingsCallbacks]);
-      for (let callback of clonedCallbacks) {
-        try {
-          if (dart.test(this[_timingsCallbacks][$contains](callback))) {
-            callback(timings);
+          case C[4] || CT.C4:
+          {
+            break;
           }
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            let collector = null;
-            if (!dart.test(dart.fn(() => {
-              collector = dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
-                yield new (T$.DiagnosticsPropertyOfListOfFrameTimingTovoid()).new("The TimingsCallback that gets executed was", callback, {style: diagnostics.DiagnosticsTreeStyle.errorProperty});
-              }), T$.VoidToIterableOfDiagnosticsNode());
-              return true;
-            }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 293, 16, "() {\r\n          collector = () sync* {\r\n            yield DiagnosticsProperty<TimingsCallback>(\r\n              'The TimingsCallback that gets executed was',\r\n              callback,\r\n              style: DiagnosticsTreeStyle.errorProperty,\r\n            );\r\n          };\r\n          return true;\r\n        }()");
-            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: stack, context: new assertions.ErrorDescription.new("while executing callbacks for FrameTiming"), informationCollector: collector}));
-          } else
-            throw e;
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
         }
       }
+      let simulationDuration = duration;
+      if (simulationDuration == null) {
+        if (!!(this.duration == null && this[_direction] == animation_controller._AnimationDirection.forward)) dart.assertFailed(null, I[0], 584, 14, "!(this.duration == null && _direction == _AnimationDirection.forward)");
+        if (!!(this.duration == null && this[_direction] == animation_controller._AnimationDirection.reverse && this.reverseDuration == null)) dart.assertFailed(null, I[0], 585, 14, "!(this.duration == null && _direction == _AnimationDirection.reverse && reverseDuration == null)");
+        let range = dart.notNull(this.upperBound) - dart.notNull(this.lowerBound);
+        let remainingFraction = range[$isFinite] ? (dart.notNull(target) - dart.notNull(this[_value]))[$abs]() / range : 1.0;
+        let directionDuration = this[_direction] == animation_controller._AnimationDirection.reverse && this.reverseDuration != null ? dart.nullCheck(this.reverseDuration) : dart.nullCheck(this.duration);
+        simulationDuration = directionDuration['*'](remainingFraction);
+      } else if (target == this.value) {
+        simulationDuration = core.Duration.zero;
+      }
+      this.stop();
+      if (dart.equals(simulationDuration, core.Duration.zero)) {
+        if (this.value != target) {
+          this[_value] = target[$clamp](this.lowerBound, this.upperBound);
+          this.notifyListeners();
+        }
+        this[_status] = this[_direction] == animation_controller._AnimationDirection.forward ? animation.AnimationStatus.completed : animation.AnimationStatus.dismissed;
+        this[_checkStatusChanged]();
+        return new ticker.TickerFuture.complete();
+      }
+      if (!dart.test(simulationDuration['>'](core.Duration.zero))) dart.assertFailed(null, I[0], 609, 12, "simulationDuration > Duration.zero");
+      if (!!dart.test(this.isAnimating)) dart.assertFailed(null, I[0], 610, 12, "!isAnimating");
+      return this[_startSimulation](new animation_controller._InterpolationSimulation.new(this[_value], target, simulationDuration, curve, scale));
     }
-    initServiceExtensions() {
-      super.initServiceExtensions();
-      if (!false) {
-        this.registerNumericServiceExtension({name: "timeDilation", getter: dart.fn(() => async.async(core.double, function*() {
-            return binding$.timeDilation;
-          }), T$.VoidToFutureOfdouble()), setter: dart.fn(value => {
-            if (value == null) dart.nullFailed(I[0], 325, 25, "value");
-            return async.async(dart.void, function*() {
-              binding$.timeDilation = value;
-            });
-          }, T$.doubleToFutureOfvoid())});
+    repeat(opts) {
+      let min = opts && 'min' in opts ? opts.min : null;
+      let max = opts && 'max' in opts ? opts.max : null;
+      let reverse = opts && 'reverse' in opts ? opts.reverse : false;
+      if (reverse == null) dart.nullFailed(I[0], 635, 56, "reverse");
+      let period = opts && 'period' in opts ? opts.period : null;
+      min == null ? min = this.lowerBound : null;
+      max == null ? max = this.upperBound : null;
+      period == null ? period = this.duration : null;
+      if (!dart.test(dart.fn(() => {
+        if (period == null) {
+          dart.throw(assertions.FlutterError.new("AnimationController.repeat() called without an explicit period and with no default Duration.\n" + "Either the \"period\" argument to the repeat() method should be provided, or the " + "\"duration\" property should be set, either in the constructor or later, before " + "calling the repeat() function."));
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 639, 12, "() {\r\n      if (period == null) {\r\n        throw FlutterError(\r\n          'AnimationController.repeat() called without an explicit period and with no default Duration.\\n'\r\n          'Either the \"period\" argument to the repeat() method should be provided, or the '\r\n          '\"duration\" property should be set, either in the constructor or later, before '\r\n          'calling the repeat() function.',\r\n        );\r\n      }\r\n      return true;\r\n    }()");
+      if (!(dart.notNull(max) >= dart.notNull(min))) dart.assertFailed(null, I[0], 650, 12, "max >= min");
+      if (!(dart.notNull(max) <= dart.notNull(this.upperBound) && dart.notNull(min) >= dart.notNull(this.lowerBound))) dart.assertFailed(null, I[0], 651, 12, "max <= upperBound && min >= lowerBound");
+      if (!(reverse != null)) dart.assertFailed(null, I[0], 652, 12, "reverse != null");
+      this.stop();
+      return this[_startSimulation](new animation_controller._RepeatingSimulation.new(this[_value], min, max, reverse, dart.nullCheck(period), dart.bind(this, _directionSetter)));
+    }
+    [_directionSetter](direction) {
+      if (direction == null) dart.nullFailed(I[0], 657, 45, "direction");
+      this[_direction] = direction;
+      this[_status] = this[_direction] == animation_controller._AnimationDirection.forward ? animation.AnimationStatus.forward : animation.AnimationStatus.reverse;
+      this[_checkStatusChanged]();
+    }
+    fling(opts) {
+      let t2, t2$;
+      let velocity = opts && 'velocity' in opts ? opts.velocity : 1;
+      if (velocity == null) dart.nullFailed(I[0], 684, 31, "velocity");
+      let springDescription = opts && 'springDescription' in opts ? opts.springDescription : null;
+      let animationBehavior = opts && 'animationBehavior' in opts ? opts.animationBehavior : null;
+      springDescription == null ? springDescription = animation_controller._kFlingSpringDescription : null;
+      this[_direction] = dart.notNull(velocity) < 0.0 ? animation_controller._AnimationDirection.reverse : animation_controller._AnimationDirection.forward;
+      let target = dart.notNull(velocity) < 0.0 ? dart.notNull(this.lowerBound) - dart.notNull(animation_controller._kFlingTolerance.distance) : dart.notNull(this.upperBound) + dart.notNull(animation_controller._kFlingTolerance.distance);
+      let scale = 1.0;
+      let behavior = (t2 = animationBehavior, t2 == null ? this.animationBehavior : t2);
+      if (dart.test(dart.nullCheck(binding.SemanticsBinding.instance).disableAnimations)) {
+        switch (behavior) {
+          case C[3] || CT.C3:
+          {
+            scale = 200.0;
+            break;
+          }
+          case C[4] || CT.C4:
+          {
+            break;
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
+        }
+      }
+      let simulation = (t2$ = new spring_simulation.SpringSimulation.new(springDescription, this.value, target, dart.notNull(velocity) * scale), (() => {
+        t2$.tolerance = animation_controller._kFlingTolerance;
+        return t2$;
+      })());
+      if (!(simulation.type != spring_simulation.SpringType.underDamped)) dart.assertFailed("The resulting spring simulation is of type SpringType.underDamped.\n" + "This can lead to unexpected look of the animation, please adjust the springDescription parameter", I[0], 705, 7, "simulation.type != SpringType.underDamped");
+      this.stop();
+      return this[_startSimulation](simulation);
+    }
+    animateWith(simulation) {
+      if (simulation == null) dart.nullFailed(I[0], 727, 39, "simulation");
+      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.animateWith() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", I[0], 729, 7, "_ticker != null");
+      this.stop();
+      this[_direction] = animation_controller._AnimationDirection.forward;
+      return this[_startSimulation](simulation);
+    }
+    [_startSimulation](simulation) {
+      if (simulation == null) dart.nullFailed(I[0], 738, 44, "simulation");
+      if (!(simulation != null)) dart.assertFailed(null, I[0], 739, 12, "simulation != null");
+      if (!!dart.test(this.isAnimating)) dart.assertFailed(null, I[0], 740, 12, "!isAnimating");
+      this[_simulation] = simulation;
+      this[_lastElapsedDuration] = core.Duration.zero;
+      this[_value] = simulation.x(0.0)[$clamp](this.lowerBound, this.upperBound);
+      let result = dart.nullCheck(this[_ticker]).start();
+      this[_status] = this[_direction] == animation_controller._AnimationDirection.forward ? animation.AnimationStatus.forward : animation.AnimationStatus.reverse;
+      this[_checkStatusChanged]();
+      return result;
+    }
+    stop(opts) {
+      let canceled = opts && 'canceled' in opts ? opts.canceled : true;
+      if (canceled == null) dart.nullFailed(I[0], 769, 20, "canceled");
+      if (!(this[_ticker] != null)) dart.assertFailed("AnimationController.stop() called after AnimationController.dispose()\n" + "AnimationController methods should not be used after calling dispose.", I[0], 771, 7, "_ticker != null");
+      this[_simulation] = null;
+      this[_lastElapsedDuration] = null;
+      dart.nullCheck(this[_ticker]).stop({canceled: canceled});
+    }
+    dispose() {
+      if (!dart.test(dart.fn(() => {
+        if (this[_ticker] == null) {
+          dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("AnimationController.dispose() called more than once."), new assertions.ErrorDescription.new("A given " + dart.str(this[$runtimeType]) + " cannot be disposed more than once.\n"), new (T.DiagnosticsPropertyOfAnimationController()).new("The following " + dart.str(this[$runtimeType]) + " object was disposed multiple times", this, {style: diagnostics.DiagnosticsTreeStyle.errorProperty})])));
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 788, 12, "() {\r\n      if (_ticker == null) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('AnimationController.dispose() called more than once.'),\r\n          ErrorDescription('A given $runtimeType cannot be disposed more than once.\\n'),\r\n          DiagnosticsProperty<AnimationController>(\r\n            'The following $runtimeType object was disposed multiple times',\r\n            this,\r\n            style: DiagnosticsTreeStyle.errorProperty,\r\n          ),\r\n        ]);\r\n      }\r\n      return true;\r\n    }()");
+      dart.nullCheck(this[_ticker]).dispose();
+      this[_ticker] = null;
+      super.dispose();
+    }
+    [_checkStatusChanged]() {
+      let newStatus = this.status;
+      if (this[_lastReportedStatus] != newStatus) {
+        this[_lastReportedStatus] = newStatus;
+        this.notifyStatusListeners(newStatus);
       }
     }
-    get lifecycleState() {
-      return this[_lifecycleState];
+    [_tick](elapsed) {
+      if (elapsed == null) dart.nullFailed(I[0], 816, 23, "elapsed");
+      this[_lastElapsedDuration] = elapsed;
+      let elapsedInSeconds = elapsed.inMicroseconds[$toDouble]() / 1000000;
+      if (!(elapsedInSeconds >= 0.0)) dart.assertFailed(null, I[0], 819, 12, "elapsedInSeconds >= 0.0");
+      this[_value] = dart.nullCheck(this[_simulation]).x(elapsedInSeconds)[$clamp](this.lowerBound, this.upperBound);
+      if (dart.test(dart.nullCheck(this[_simulation]).isDone(elapsedInSeconds))) {
+        this[_status] = this[_direction] == animation_controller._AnimationDirection.forward ? animation.AnimationStatus.completed : animation.AnimationStatus.dismissed;
+        this.stop({canceled: false});
+      }
+      this.notifyListeners();
+      this[_checkStatusChanged]();
     }
-    handleAppLifecycleStateChanged(state) {
-      if (state == null) dart.nullFailed(I[0], 351, 57, "state");
-      if (!(state != null)) dart.assertFailed(null, I[0], 352, 12, "state != null");
-      this[_lifecycleState] = state;
-      switch (state) {
-        case C[8] || CT.C8:
-        case C[9] || CT.C9:
-        {
-          this[_setFramesEnabledState](true);
-          break;
-        }
-        case C[10] || CT.C10:
-        case C[11] || CT.C11:
-        {
-          this[_setFramesEnabledState](false);
-          break;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
+    toStringDetails() {
+      let paused = dart.test(this.isAnimating) ? "" : "; paused";
+      let ticker = this[_ticker] == null ? "; DISPOSED" : dart.test(dart.nullCheck(this[_ticker]).muted) ? "; silenced" : "";
+      let label = this.debugLabel == null ? "" : "; for " + dart.str(this.debugLabel);
+      let more = dart.str(super.toStringDetails()) + " " + this.value[$toStringAsFixed](3);
+      return more + paused + ticker + label;
+    }
+  };
+  (animation_controller.AnimationController.new = function(opts) {
+    let t0;
+    let value = opts && 'value' in opts ? opts.value : null;
+    let duration = opts && 'duration' in opts ? opts.duration : null;
+    let reverseDuration = opts && 'reverseDuration' in opts ? opts.reverseDuration : null;
+    let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
+    let lowerBound = opts && 'lowerBound' in opts ? opts.lowerBound : 0;
+    if (lowerBound == null) dart.nullFailed(I[0], 238, 10, "lowerBound");
+    let upperBound = opts && 'upperBound' in opts ? opts.upperBound : 1;
+    if (upperBound == null) dart.nullFailed(I[0], 239, 10, "upperBound");
+    let animationBehavior = opts && 'animationBehavior' in opts ? opts.animationBehavior : C[3] || CT.C3;
+    if (animationBehavior == null) dart.nullFailed(I[0], 240, 10, "animationBehavior");
+    let vsync = opts && 'vsync' in opts ? opts.vsync : null;
+    if (vsync == null) dart.nullFailed(I[0], 241, 29, "vsync");
+    this[_ticker] = null;
+    this[_simulation] = null;
+    this[__AnimationController__value] = null;
+    this[__AnimationController__value_isSet] = false;
+    this[_lastElapsedDuration] = null;
+    this[__AnimationController__status] = null;
+    this[__AnimationController__status_isSet] = false;
+    this[_lastReportedStatus] = animation.AnimationStatus.dismissed;
+    this[duration$] = duration;
+    this[reverseDuration$] = reverseDuration;
+    this[debugLabel$] = debugLabel;
+    this[lowerBound$] = lowerBound;
+    this[upperBound$] = upperBound;
+    this[animationBehavior$] = animationBehavior;
+    if (!(lowerBound != null)) dart.assertFailed(null, I[0], 242, 15, "lowerBound != null");
+    if (!(upperBound != null)) dart.assertFailed(null, I[0], 243, 15, "upperBound != null");
+    if (!(dart.notNull(upperBound) >= dart.notNull(lowerBound))) dart.assertFailed(null, I[0], 244, 15, "upperBound >= lowerBound");
+    if (!(vsync != null)) dart.assertFailed(null, I[0], 245, 15, "vsync != null");
+    this[_direction] = animation_controller._AnimationDirection.forward;
+    animation_controller.AnimationController.__proto__.new.call(this);
+    this[_ticker] = vsync.createTicker(dart.bind(this, _tick));
+    this[_internalSetValue]((t0 = value, t0 == null ? this.lowerBound : t0));
+  }).prototype = animation_controller.AnimationController.prototype;
+  (animation_controller.AnimationController.unbounded = function(opts) {
+    let value = opts && 'value' in opts ? opts.value : 0;
+    if (value == null) dart.nullFailed(I[0], 269, 12, "value");
+    let duration = opts && 'duration' in opts ? opts.duration : null;
+    let reverseDuration = opts && 'reverseDuration' in opts ? opts.reverseDuration : null;
+    let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
+    let vsync = opts && 'vsync' in opts ? opts.vsync : null;
+    if (vsync == null) dart.nullFailed(I[0], 273, 29, "vsync");
+    let animationBehavior = opts && 'animationBehavior' in opts ? opts.animationBehavior : C[4] || CT.C4;
+    if (animationBehavior == null) dart.nullFailed(I[0], 274, 10, "animationBehavior");
+    this[_ticker] = null;
+    this[_simulation] = null;
+    this[__AnimationController__value] = null;
+    this[__AnimationController__value_isSet] = false;
+    this[_lastElapsedDuration] = null;
+    this[__AnimationController__status] = null;
+    this[__AnimationController__status_isSet] = false;
+    this[_lastReportedStatus] = animation.AnimationStatus.dismissed;
+    this[duration$] = duration;
+    this[reverseDuration$] = reverseDuration;
+    this[debugLabel$] = debugLabel;
+    this[animationBehavior$] = animationBehavior;
+    if (!(value != null)) dart.assertFailed(null, I[0], 275, 15, "value != null");
+    if (!(vsync != null)) dart.assertFailed(null, I[0], 276, 15, "vsync != null");
+    this[lowerBound$] = -1 / 0;
+    this[upperBound$] = 1 / 0;
+    this[_direction] = animation_controller._AnimationDirection.forward;
+    animation_controller.AnimationController.__proto__.new.call(this);
+    this[_ticker] = vsync.createTicker(dart.bind(this, _tick));
+    this[_internalSetValue](value);
+  }).prototype = animation_controller.AnimationController.prototype;
+  dart.addTypeTests(animation_controller.AnimationController);
+  dart.addTypeCaches(animation_controller.AnimationController);
+  dart.setMethodSignature(animation_controller.AnimationController, () => ({
+    __proto__: dart.getMethods(animation_controller.AnimationController.__proto__),
+    resync: dart.fnType(dart.void, [ticker.TickerProvider]),
+    reset: dart.fnType(dart.void, []),
+    [_internalSetValue]: dart.fnType(dart.void, [core.double]),
+    forward: dart.fnType(ticker.TickerFuture, [], {from: dart.nullable(core.double)}, {}),
+    reverse: dart.fnType(ticker.TickerFuture, [], {from: dart.nullable(core.double)}, {}),
+    animateTo: dart.fnType(ticker.TickerFuture, [core.double], {curve: curves.Curve, duration: dart.nullable(core.Duration)}, {}),
+    animateBack: dart.fnType(ticker.TickerFuture, [core.double], {curve: curves.Curve, duration: dart.nullable(core.Duration)}, {}),
+    [_animateToInternal]: dart.fnType(ticker.TickerFuture, [core.double], {curve: curves.Curve, duration: dart.nullable(core.Duration)}, {}),
+    repeat: dart.fnType(ticker.TickerFuture, [], {max: dart.nullable(core.double), min: dart.nullable(core.double), period: dart.nullable(core.Duration), reverse: core.bool}, {}),
+    [_directionSetter]: dart.fnType(dart.void, [animation_controller._AnimationDirection]),
+    fling: dart.fnType(ticker.TickerFuture, [], {animationBehavior: dart.nullable(animation_controller.AnimationBehavior), springDescription: dart.nullable(spring_simulation.SpringDescription), velocity: core.double}, {}),
+    animateWith: dart.fnType(ticker.TickerFuture, [simulation.Simulation]),
+    [_startSimulation]: dart.fnType(ticker.TickerFuture, [simulation.Simulation]),
+    stop: dart.fnType(dart.void, [], {canceled: core.bool}, {}),
+    [_checkStatusChanged]: dart.fnType(dart.void, []),
+    [_tick]: dart.fnType(dart.void, [core.Duration])
+  }));
+  dart.setGetterSignature(animation_controller.AnimationController, () => ({
+    __proto__: dart.getGetters(animation_controller.AnimationController.__proto__),
+    view: animation.Animation$(core.double),
+    value: core.double,
+    [_value]: core.double,
+    velocity: core.double,
+    lastElapsedDuration: dart.nullable(core.Duration),
+    isAnimating: core.bool,
+    status: animation.AnimationStatus,
+    [_status]: animation.AnimationStatus
+  }));
+  dart.setSetterSignature(animation_controller.AnimationController, () => ({
+    __proto__: dart.getSetters(animation_controller.AnimationController.__proto__),
+    [_value]: core.double,
+    value: core.double,
+    [_status]: animation.AnimationStatus
+  }));
+  dart.setLibraryUri(animation_controller.AnimationController, I[1]);
+  dart.setFieldSignature(animation_controller.AnimationController, () => ({
+    __proto__: dart.getFields(animation_controller.AnimationController.__proto__),
+    lowerBound: dart.finalFieldType(core.double),
+    upperBound: dart.finalFieldType(core.double),
+    debugLabel: dart.finalFieldType(dart.nullable(core.String)),
+    animationBehavior: dart.finalFieldType(animation_controller.AnimationBehavior),
+    duration: dart.fieldType(dart.nullable(core.Duration)),
+    reverseDuration: dart.fieldType(dart.nullable(core.Duration)),
+    [_ticker]: dart.fieldType(dart.nullable(ticker.Ticker)),
+    [_simulation]: dart.fieldType(dart.nullable(simulation.Simulation)),
+    [__AnimationController__value]: dart.fieldType(dart.nullable(core.double)),
+    [__AnimationController__value_isSet]: dart.fieldType(core.bool),
+    [_lastElapsedDuration]: dart.fieldType(dart.nullable(core.Duration)),
+    [_direction]: dart.fieldType(animation_controller._AnimationDirection),
+    [__AnimationController__status]: dart.fieldType(dart.nullable(animation.AnimationStatus)),
+    [__AnimationController__status_isSet]: dart.fieldType(core.bool),
+    [_lastReportedStatus]: dart.fieldType(animation.AnimationStatus)
+  }));
+  var _begin$ = dart.privateName(animation_controller, "_begin");
+  var _end$ = dart.privateName(animation_controller, "_end");
+  var _curve$ = dart.privateName(animation_controller, "_curve");
+  var _durationInSeconds = dart.privateName(animation_controller, "_durationInSeconds");
+  animation_controller._InterpolationSimulation = class _InterpolationSimulation extends simulation.Simulation {
+    x(timeInSeconds) {
+      if (timeInSeconds == null) dart.nullFailed(I[0], 854, 19, "timeInSeconds");
+      let t = (dart.notNull(timeInSeconds) / dart.notNull(this[_durationInSeconds]))[$clamp](0.0, 1.0);
+      if (t === 0.0)
+        return this[_begin$];
+      else if (t === 1.0)
+        return this[_end$];
+      else
+        return dart.notNull(this[_begin$]) + (dart.notNull(this[_end$]) - dart.notNull(this[_begin$])) * dart.notNull(this[_curve$].transform(t));
+    }
+    dx(timeInSeconds) {
+      if (timeInSeconds == null) dart.nullFailed(I[0], 865, 20, "timeInSeconds");
+      let epsilon = this.tolerance.time;
+      return (dart.notNull(this.x(dart.notNull(timeInSeconds) + dart.notNull(epsilon))) - dart.notNull(this.x(dart.notNull(timeInSeconds) - dart.notNull(epsilon)))) / (2 * dart.notNull(epsilon));
+    }
+    isDone(timeInSeconds) {
+      if (timeInSeconds == null) dart.nullFailed(I[0], 871, 22, "timeInSeconds");
+      return dart.notNull(timeInSeconds) > dart.notNull(this[_durationInSeconds]);
+    }
+  };
+  (animation_controller._InterpolationSimulation.new = function(_begin, _end, duration, _curve, scale) {
+    if (_begin == null) dart.nullFailed(I[0], 842, 33, "_begin");
+    if (_end == null) dart.nullFailed(I[0], 842, 46, "_end");
+    if (duration == null) dart.nullFailed(I[0], 842, 61, "duration");
+    if (_curve == null) dart.nullFailed(I[0], 842, 76, "_curve");
+    if (scale == null) dart.nullFailed(I[0], 842, 91, "scale");
+    this[_begin$] = _begin;
+    this[_end$] = _end;
+    this[_curve$] = _curve;
+    if (!(_begin != null)) dart.assertFailed(null, I[0], 843, 14, "_begin != null");
+    if (!(_end != null)) dart.assertFailed(null, I[0], 844, 14, "_end != null");
+    if (!(duration != null && dart.notNull(duration.inMicroseconds) > 0)) dart.assertFailed(null, I[0], 845, 14, "duration != null && duration.inMicroseconds > 0");
+    this[_durationInSeconds] = dart.notNull(duration.inMicroseconds) * dart.notNull(scale) / 1000000;
+    animation_controller._InterpolationSimulation.__proto__.new.call(this);
+    ;
+  }).prototype = animation_controller._InterpolationSimulation.prototype;
+  dart.addTypeTests(animation_controller._InterpolationSimulation);
+  dart.addTypeCaches(animation_controller._InterpolationSimulation);
+  dart.setMethodSignature(animation_controller._InterpolationSimulation, () => ({
+    __proto__: dart.getMethods(animation_controller._InterpolationSimulation.__proto__),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double]),
+    isDone: dart.fnType(core.bool, [core.double])
+  }));
+  dart.setLibraryUri(animation_controller._InterpolationSimulation, I[1]);
+  dart.setFieldSignature(animation_controller._InterpolationSimulation, () => ({
+    __proto__: dart.getFields(animation_controller._InterpolationSimulation.__proto__),
+    [_durationInSeconds]: dart.finalFieldType(core.double),
+    [_begin$]: dart.finalFieldType(core.double),
+    [_end$]: dart.finalFieldType(core.double),
+    [_curve$]: dart.finalFieldType(curves.Curve)
+  }));
+  var _periodInSeconds = dart.privateName(animation_controller, "_periodInSeconds");
+  var _initialT = dart.privateName(animation_controller, "_initialT");
+  animation_controller._RepeatingSimulation = class _RepeatingSimulation extends simulation.Simulation {
+    x(timeInSeconds) {
+      let t2, t2$;
+      if (timeInSeconds == null) dart.nullFailed(I[0], 893, 19, "timeInSeconds");
+      if (!(dart.notNull(timeInSeconds) >= 0.0)) dart.assertFailed(null, I[0], 894, 12, "timeInSeconds >= 0.0");
+      let totalTimeInSeconds = dart.notNull(timeInSeconds) + dart.notNull(this[_initialT]);
+      let t = (totalTimeInSeconds / dart.notNull(this[_periodInSeconds]))[$modulo](1.0);
+      let _isPlayingReverse = (totalTimeInSeconds / dart.notNull(this[_periodInSeconds]))[$truncate]()[$isOdd];
+      if (dart.test(this.reverse) && _isPlayingReverse) {
+        t2 = animation_controller._AnimationDirection.reverse;
+        this.directionSetter(t2);
+        return dart.nullCheck(ui.lerpDouble(this.max, this.min, t));
+      } else {
+        t2$ = animation_controller._AnimationDirection.forward;
+        this.directionSetter(t2$);
+        return dart.nullCheck(ui.lerpDouble(this.min, this.max, t));
       }
     }
-    scheduleTask(T, task, priority, opts) {
-      if (task == null) dart.nullFailed(I[0], 396, 21, "task");
-      if (priority == null) dart.nullFailed(I[0], 397, 14, "priority");
-      let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
-      let flow = opts && 'flow' in opts ? opts.flow : null;
-      let isFirstTask = this[_taskQueue].isEmpty;
-      let entry = new (binding$._TaskEntry$(T)).new(task, priority.value, debugLabel, flow);
-      this[_taskQueue].add(entry);
-      if (dart.test(isFirstTask) && !dart.test(this.locked)) this[_ensureEventLoopCallback]();
-      return entry.completer.future;
+    dx(timeInSeconds) {
+      if (timeInSeconds == null) dart.nullFailed(I[0], 910, 20, "timeInSeconds");
+      return (dart.notNull(this.max) - dart.notNull(this.min)) / dart.notNull(this[_periodInSeconds]);
     }
-    unlocked() {
-      super.unlocked();
-      if (dart.test(this[_taskQueue].isNotEmpty)) this[_ensureEventLoopCallback]();
-    }
-    [_ensureEventLoopCallback]() {
-      if (!!dart.test(this.locked)) dart.assertFailed(null, I[0], 427, 12, "!locked");
-      if (!dart.test(this[_taskQueue].isNotEmpty)) dart.assertFailed(null, I[0], 428, 12, "_taskQueue.isNotEmpty");
-      if (dart.test(this[_hasRequestedAnEventLoopCallback])) return;
-      this[_hasRequestedAnEventLoopCallback] = true;
-      async.Timer.run(dart.bind(this, _runTasks));
-    }
-    [_runTasks]() {
-      this[_hasRequestedAnEventLoopCallback] = false;
-      if (dart.test(this.handleEventLoopCallback())) this[_ensureEventLoopCallback]();
-    }
-    handleEventLoopCallback() {
-      let t2;
-      if (dart.test(this[_taskQueue].isEmpty) || dart.test(this.locked)) return false;
-      let entry = this[_taskQueue].first;
-      if (dart.test((t2 = entry.priority, this.schedulingStrategy({priority: t2, scheduler: this})))) {
-        try {
-          this[_taskQueue].removeFirst();
-          entry.run();
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let exceptionStack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            let callbackStack = null;
-            if (!dart.test(dart.fn(() => {
-              callbackStack = entry.debugStack;
-              return true;
-            }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 463, 16, "() {\r\n          callbackStack = entry.debugStack;\r\n          return true;\r\n        }()");
-            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: exceptionStack, library: "scheduler library", context: new assertions.ErrorDescription.new("during a task callback"), informationCollector: callbackStack == null ? null : dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
-                yield new assertions.DiagnosticsStackTrace.new("\nThis exception was thrown in the context of a scheduler callback. " + "When the scheduler callback was _registered_ (as opposed to when the " + "exception was thrown), this was the stack", callbackStack);
-              }), T$.VoidToIterableOfDiagnosticsNode())}));
-          } else
-            throw e;
-        }
-        return this[_taskQueue].isNotEmpty;
-      }
+    isDone(timeInSeconds) {
+      if (timeInSeconds == null) dart.nullFailed(I[0], 913, 22, "timeInSeconds");
       return false;
     }
-    get transientCallbackCount() {
-      return this[_transientCallbacks][$length];
-    }
-    scheduleFrameCallback(callback, opts) {
-      if (callback == null) dart.nullFailed(I[0], 520, 43, "callback");
-      let rescheduling = opts && 'rescheduling' in opts ? opts.rescheduling : false;
-      if (rescheduling == null) dart.nullFailed(I[0], 520, 60, "rescheduling");
-      this.scheduleFrame();
-      this[_nextFrameCallbackId] = dart.notNull(this[_nextFrameCallbackId]) + 1;
-      this[_transientCallbacks][$_set](this[_nextFrameCallbackId], new binding$._FrameCallbackEntry.new(callback, {rescheduling: rescheduling}));
-      return this[_nextFrameCallbackId];
-    }
-    cancelFrameCallbackWithId(id) {
-      if (id == null) dart.nullFailed(I[0], 534, 38, "id");
-      if (!(dart.notNull(id) > 0)) dart.assertFailed(null, I[0], 535, 12, "id > 0");
-      this[_transientCallbacks][$remove](id);
-      this[_removedIds].add(id);
-    }
-    debugAssertNoTransientCallbacks(reason) {
-      if (reason == null) dart.nullFailed(I[0], 560, 47, "reason");
-      if (!dart.test(dart.fn(() => {
-        if (dart.notNull(this.transientCallbackCount) > 0) {
-          let count = this.transientCallbackCount;
-          let callbacks = T$.LinkedHashMapOfint$_FrameCallbackEntry().from(this[_transientCallbacks]);
-          assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: reason, library: "scheduler library", informationCollector: dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
-              if (count === 1) {
-                yield new assertions.ErrorDescription.new("There was one transient callback left. " + "The stack trace for when it was registered is as follows:");
-              } else {
-                yield new assertions.ErrorDescription.new("There were " + dart.str(count) + " transient callbacks left. " + "The stack traces for when they were registered are as follows:");
-              }
-              for (let id of callbacks[$keys]) {
-                let entry = dart.nullCheck(callbacks[$_get](id));
-                yield new assertions.DiagnosticsStackTrace.new("── callback " + dart.str(id) + " ──", entry.debugStack, {showSeparator: false});
-              }
-            }), T$.VoidToIterableOfDiagnosticsNode())}));
-        }
-        return true;
-      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 561, 12, "() {\r\n      if (transientCallbackCount > 0) {\r\n        // We cache the values so that we can produce them later\r\n        // even if the information collector is called after\r\n        // the problem has been resolved.\r\n        final int count = transientCallbackCount;\r\n        final Map<int, _FrameCallbackEntry> callbacks = Map<int, _FrameCallbackEntry>.from(_transientCallbacks);\r\n        FlutterError.reportError(FlutterErrorDetails(\r\n          exception: reason,\r\n          library: 'scheduler library',\r\n          informationCollector: () sync* {\r\n            if (count == 1) {\r\n              // TODO(jacobr): I have added an extra line break in this case.\r\n              yield ErrorDescription(\r\n                'There was one transient callback left. '\r\n                'The stack trace for when it was registered is as follows:',\r\n              );\r\n            } else {\r\n              yield ErrorDescription(\r\n                'There were $count transient callbacks left. '\r\n                'The stack traces for when they were registered are as follows:',\r\n              );\r\n            }\r\n            for (final int id in callbacks.keys) {\r\n              final _FrameCallbackEntry entry = callbacks[id]!;\r\n              yield DiagnosticsStackTrace('── callback $id ──', entry.debugStack, showSeparator: false);\r\n            }\r\n          },\r\n        ));\r\n      }\r\n      return true;\r\n    }()");
-      return true;
-    }
-    addPersistentFrameCallback(callback) {
-      if (callback == null) dart.nullFailed(I[0], 647, 49, "callback");
-      this[_persistentCallbacks][$add](callback);
-    }
-    addPostFrameCallback(callback) {
-      if (callback == null) dart.nullFailed(I[0], 673, 43, "callback");
-      this[_postFrameCallbacks][$add](callback);
-    }
-    get endOfFrame() {
-      if (this[_nextFrameCompleter] == null) {
-        if (this.schedulerPhase == binding$.SchedulerPhase.idle) this.scheduleFrame();
-        this[_nextFrameCompleter] = T$.CompleterOfvoid().new();
-        this.addPostFrameCallback(dart.fn(timeStamp => {
-          if (timeStamp == null) dart.nullFailed(I[0], 693, 38, "timeStamp");
-          dart.nullCheck(this[_nextFrameCompleter]).complete();
-          this[_nextFrameCompleter] = null;
-        }, T$.DurationTovoid()));
-      }
-      return dart.nullCheck(this[_nextFrameCompleter]).future;
-    }
-    get hasScheduledFrame() {
-      return this[_hasScheduledFrame];
-    }
-    get schedulerPhase() {
-      return this[_schedulerPhase];
-    }
-    get framesEnabled() {
-      return this[_framesEnabled];
-    }
-    [_setFramesEnabledState](enabled) {
-      if (enabled == null) dart.nullFailed(I[0], 715, 36, "enabled");
-      if (this[_framesEnabled] == enabled) return;
-      this[_framesEnabled] = enabled;
-      if (dart.test(enabled)) this.scheduleFrame();
-    }
-    ensureFrameCallbacksRegistered() {
-      let t3, t3$;
-      t3 = this.window;
-      t3.onBeginFrame == null ? t3.onBeginFrame = dart.bind(this, _handleBeginFrame) : null;
-      t3$ = this.window;
-      t3$.onDrawFrame == null ? t3$.onDrawFrame = dart.bind(this, _handleDrawFrame) : null;
-    }
-    ensureVisualUpdate() {
-      switch (this.schedulerPhase) {
-        case C[0] || CT.C0:
-        case C[4] || CT.C4:
-        {
-          this.scheduleFrame();
-          return;
-        }
-        case C[1] || CT.C1:
-        case C[2] || CT.C2:
-        case C[3] || CT.C3:
-        {
-          return;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
-    }
-    scheduleFrame() {
-      if (dart.test(this[_hasScheduledFrame]) || !dart.test(this.framesEnabled)) return;
-      if (!dart.test(dart.fn(() => {
-        if (dart.test(debug$.debugPrintScheduleFrameStacks)) assertions.debugPrintStack({label: "scheduleFrame() called. Current phase is " + dart.str(this.schedulerPhase) + "."});
-        return true;
-      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 787, 12, "() {\r\n      if (debugPrintScheduleFrameStacks)\r\n        debugPrintStack(label: 'scheduleFrame() called. Current phase is $schedulerPhase.');\r\n      return true;\r\n    }()");
-      this.ensureFrameCallbacksRegistered();
-      this.window.scheduleFrame();
-      this[_hasScheduledFrame] = true;
-    }
-    scheduleForcedFrame() {
-      if (!dart.test(this.framesEnabled)) return;
-      if (dart.test(this[_hasScheduledFrame])) return;
-      if (!dart.test(dart.fn(() => {
-        if (dart.test(debug$.debugPrintScheduleFrameStacks)) assertions.debugPrintStack({label: "scheduleForcedFrame() called. Current phase is " + dart.str(this.schedulerPhase) + "."});
-        return true;
-      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 825, 12, "() {\r\n      if (debugPrintScheduleFrameStacks)\r\n        debugPrintStack(label: 'scheduleForcedFrame() called. Current phase is $schedulerPhase.');\r\n      return true;\r\n    }()");
-      this.window.scheduleFrame();
-      this[_hasScheduledFrame] = true;
-    }
-    scheduleWarmUpFrame() {
-      if (dart.test(this[_warmUpFrame]) || this.schedulerPhase != binding$.SchedulerPhase.idle) return;
-      this[_warmUpFrame] = true;
-      developer.Timeline.startSync("Warm-up frame");
-      let hadScheduledFrame = this[_hasScheduledFrame];
-      async.Timer.run(dart.fn(() => {
-        if (!dart.test(this[_warmUpFrame])) dart.assertFailed(null, I[0], 860, 14, "_warmUpFrame");
-        this.handleBeginFrame(null);
-      }, T$.VoidTovoid()));
-      async.Timer.run(dart.fn(() => {
-        if (!dart.test(this[_warmUpFrame])) dart.assertFailed(null, I[0], 864, 14, "_warmUpFrame");
-        this.handleDrawFrame();
-        this.resetEpoch();
-        this[_warmUpFrame] = false;
-        if (dart.test(hadScheduledFrame)) this.scheduleFrame();
-      }, T$.VoidTovoid()));
-      this.lockEvents(dart.fn(() => async.async(dart.void, (function*() {
-        yield this.endOfFrame;
-        developer.Timeline.finishSync();
-      }).bind(this)), T$.VoidToFutureOfvoid()));
-    }
-    resetEpoch() {
-      this[_epochStart] = this[_adjustForEpoch](this[_lastRawTimeStamp]);
-      this[_firstRawTimeStampInEpoch] = null;
-    }
-    [_adjustForEpoch](rawTimeStamp) {
-      if (rawTimeStamp == null) dart.nullFailed(I[0], 922, 37, "rawTimeStamp");
-      let rawDurationSinceEpoch = this[_firstRawTimeStampInEpoch] == null ? core.Duration.zero : rawTimeStamp['-'](dart.nullCheck(this[_firstRawTimeStampInEpoch]));
-      return new core.Duration.new({microseconds: (dart.notNull(rawDurationSinceEpoch.inMicroseconds) / dart.notNull(binding$.timeDilation))[$round]() + dart.notNull(this[_epochStart].inMicroseconds)});
-    }
-    get currentFrameTimeStamp() {
-      if (!(this[_currentFrameTimeStamp] != null)) dart.assertFailed(null, I[0], 933, 12, "_currentFrameTimeStamp != null");
-      return dart.nullCheck(this[_currentFrameTimeStamp]);
-    }
-    get currentSystemFrameTimeStamp() {
-      if (!(this[_lastRawTimeStamp] != null)) dart.assertFailed(null, I[0], 951, 12, "_lastRawTimeStamp != null");
-      return this[_lastRawTimeStamp];
-    }
-    [_handleBeginFrame](rawTimeStamp) {
-      if (rawTimeStamp == null) dart.nullFailed(I[0], 968, 35, "rawTimeStamp");
-      if (dart.test(this[_warmUpFrame])) {
-        if (!!dart.test(this[_rescheduleAfterWarmUpFrame])) dart.assertFailed(null, I[0], 973, 14, "!_rescheduleAfterWarmUpFrame");
-        this[_rescheduleAfterWarmUpFrame] = true;
-        return;
-      }
-      this.handleBeginFrame(rawTimeStamp);
-    }
-    [_handleDrawFrame]() {
-      if (dart.test(this[_rescheduleAfterWarmUpFrame])) {
-        this[_rescheduleAfterWarmUpFrame] = false;
-        this.addPostFrameCallback(dart.fn(timeStamp => {
-          if (timeStamp == null) dart.nullFailed(I[0], 985, 38, "timeStamp");
-          this[_hasScheduledFrame] = false;
-          this.scheduleFrame();
-        }, T$.DurationTovoid()));
-        return;
-      }
-      this.handleDrawFrame();
-    }
-    handleBeginFrame(rawTimeStamp) {
-      let t3;
-      developer.Timeline.startSync("Frame", {arguments: debug.timelineArgumentsIndicatingLandmarkEvent});
-      this[_firstRawTimeStampInEpoch] == null ? this[_firstRawTimeStampInEpoch] = rawTimeStamp : null;
-      this[_currentFrameTimeStamp] = this[_adjustForEpoch]((t3 = rawTimeStamp, t3 == null ? this[_lastRawTimeStamp] : t3));
-      if (rawTimeStamp != null) this[_lastRawTimeStamp] = rawTimeStamp;
-      if (!dart.test(dart.fn(() => {
-        this[_debugFrameNumber] = dart.notNull(this[_debugFrameNumber]) + 1;
-        if (dart.test(debug$.debugPrintBeginFrameBanner) || dart.test(debug$.debugPrintEndFrameBanner)) {
-          let frameTimeStampDescription = new core.StringBuffer.new();
-          if (rawTimeStamp != null) {
-            binding$.SchedulerBinding._debugDescribeTimeStamp(dart.nullCheck(this[_currentFrameTimeStamp]), frameTimeStampDescription);
-          } else {
-            frameTimeStampDescription.write("(warm-up frame)");
-          }
-          this[_debugBanner] = "▄▄▄▄▄▄▄▄ Frame " + dart.toString(this[_debugFrameNumber])[$padRight](7) + "   " + frameTimeStampDescription.toString()[$padLeft](18) + " ▄▄▄▄▄▄▄▄";
-          if (dart.test(debug$.debugPrintBeginFrameBanner)) print.debugPrint(this[_debugBanner]);
-        }
-        return true;
-      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 1031, 12, "() {\r\n      _debugFrameNumber += 1;\r\n\r\n      if (debugPrintBeginFrameBanner || debugPrintEndFrameBanner) {\r\n        final StringBuffer frameTimeStampDescription = StringBuffer();\r\n        if (rawTimeStamp != null) {\r\n          _debugDescribeTimeStamp(_currentFrameTimeStamp!, frameTimeStampDescription);\r\n        } else {\r\n          frameTimeStampDescription.write('(warm-up frame)');\r\n        }\r\n        _debugBanner = '▄▄▄▄▄▄▄▄ Frame ${_debugFrameNumber.toString().padRight(7)}   ${frameTimeStampDescription.toString().padLeft(18)} ▄▄▄▄▄▄▄▄';\r\n        if (debugPrintBeginFrameBanner)\r\n          debugPrint(_debugBanner);\r\n      }\r\n      return true;\r\n    }()");
-      if (!(this.schedulerPhase == binding$.SchedulerPhase.idle)) dart.assertFailed(null, I[0], 1048, 12, "schedulerPhase == SchedulerPhase.idle");
-      this[_hasScheduledFrame] = false;
-      try {
-        developer.Timeline.startSync("Animate", {arguments: debug.timelineArgumentsIndicatingLandmarkEvent});
-        this[_schedulerPhase] = binding$.SchedulerPhase.transientCallbacks;
-        let callbacks = this[_transientCallbacks];
-        this[_transientCallbacks] = new (T$.IdentityMapOfint$_FrameCallbackEntry()).new();
-        callbacks[$forEach](dart.fn((id, callbackEntry) => {
-          if (id == null) dart.nullFailed(I[0], 1056, 30, "id");
-          if (callbackEntry == null) dart.nullFailed(I[0], 1056, 54, "callbackEntry");
-          if (!dart.test(this[_removedIds].contains(id))) this[_invokeFrameCallback](callbackEntry.callback, dart.nullCheck(this[_currentFrameTimeStamp]), callbackEntry.debugStack);
-        }, T$.intAnd_FrameCallbackEntryTovoid()));
-        this[_removedIds].clear();
-      } finally {
-        this[_schedulerPhase] = binding$.SchedulerPhase.midFrameMicrotasks;
-      }
-    }
-    handleDrawFrame() {
-      if (!(this[_schedulerPhase] == binding$.SchedulerPhase.midFrameMicrotasks)) dart.assertFailed(null, I[0], 1076, 12, "_schedulerPhase == SchedulerPhase.midFrameMicrotasks");
-      developer.Timeline.finishSync();
-      try {
-        this[_schedulerPhase] = binding$.SchedulerPhase.persistentCallbacks;
-        for (let callback of this[_persistentCallbacks])
-          this[_invokeFrameCallback](callback, dart.nullCheck(this[_currentFrameTimeStamp]));
-        this[_schedulerPhase] = binding$.SchedulerPhase.postFrameCallbacks;
-        let localPostFrameCallbacks = T$.ListOfDurationTovoid().from(this[_postFrameCallbacks]);
-        this[_postFrameCallbacks][$clear]();
-        for (let callback of localPostFrameCallbacks)
-          this[_invokeFrameCallback](callback, dart.nullCheck(this[_currentFrameTimeStamp]));
-      } finally {
-        this[_schedulerPhase] = binding$.SchedulerPhase.idle;
-        developer.Timeline.finishSync();
-        if (!dart.test(dart.fn(() => {
-          if (dart.test(debug$.debugPrintEndFrameBanner)) print.debugPrint("▀"[$times](dart.nullCheck(this[_debugBanner]).length));
-          this[_debugBanner] = null;
-          return true;
-        }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 1094, 14, "() {\r\n        if (debugPrintEndFrameBanner)\r\n          debugPrint('▀' * _debugBanner!.length);\r\n        _debugBanner = null;\r\n        return true;\r\n      }()");
-        this[_currentFrameTimeStamp] = null;
-      }
-    }
-    [_profileFramePostEvent](frameNumber, frameTiming) {
-      if (frameNumber == null) dart.nullFailed(I[0], 1104, 35, "frameNumber");
-      if (frameTiming == null) dart.nullFailed(I[0], 1104, 60, "frameTiming");
-      this.postEvent("Flutter.Frame", new (T$.IdentityMapOfString$dynamic()).from(["number", frameNumber, "startTime", frameTiming.timestampInMicroseconds(ui.FramePhase.buildStart), "elapsed", frameTiming.totalSpan.inMicroseconds, "build", frameTiming.buildDuration.inMicroseconds, "raster", frameTiming.rasterDuration.inMicroseconds, "vsyncOverhead", frameTiming.vsyncOverhead.inMicroseconds]));
-    }
-    [_invokeFrameCallback](callback, timeStamp, callbackStack = null) {
-      if (callback == null) dart.nullFailed(I[0], 1136, 43, "callback");
-      if (timeStamp == null) dart.nullFailed(I[0], 1136, 62, "timeStamp");
-      if (!(callback != null)) dart.assertFailed(null, I[0], 1137, 12, "callback != null");
-      if (!(binding$._FrameCallbackEntry.debugCurrentCallbackStack == null)) dart.assertFailed(null, I[0], 1138, 12, "_FrameCallbackEntry.debugCurrentCallbackStack == null");
-      if (!dart.test(dart.fn(() => {
-        binding$._FrameCallbackEntry.debugCurrentCallbackStack = callbackStack;
-        return true;
-      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 1139, 12, "() {\r\n      _FrameCallbackEntry.debugCurrentCallbackStack = callbackStack;\r\n      return true;\r\n    }()");
-      try {
-        callback(timeStamp);
-      } catch (e) {
-        let exception = dart.getThrown(e);
-        let exceptionStack = dart.stackTrace(e);
-        if (core.Object.is(exception)) {
-          assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: exceptionStack, library: "scheduler library", context: new assertions.ErrorDescription.new("during a scheduler callback"), informationCollector: callbackStack == null ? null : dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
-              yield new assertions.DiagnosticsStackTrace.new("\nThis exception was thrown in the context of a scheduler callback. " + "When the scheduler callback was _registered_ (as opposed to when the " + "exception was thrown), this was the stack", callbackStack);
-            }), T$.VoidToIterableOfDiagnosticsNode())}));
-        } else
-          throw e;
-      }
-      if (!dart.test(dart.fn(() => {
-        binding$._FrameCallbackEntry.debugCurrentCallbackStack = null;
-        return true;
-      }, T$.VoidTobool())())) dart.assertFailed(null, I[0], 1161, 12, "() {\r\n      _FrameCallbackEntry.debugCurrentCallbackStack = null;\r\n      return true;\r\n    }()");
-    }
   };
-  (binding$.SchedulerBinding[dart.mixinNew] = function() {
-    this[_timingsCallbacks] = T$.JSArrayOfListOfFrameTimingTovoid().of([]);
-    this[_lifecycleState] = null;
-    this[schedulingStrategy] = C[6] || CT.C6;
-    this[_taskQueue] = new (T$.HeapPriorityQueueOf_TaskEntry()).new(C[7] || CT.C7);
-    this[_hasRequestedAnEventLoopCallback] = false;
-    this[_nextFrameCallbackId] = 0;
-    this[_transientCallbacks] = new (T$.IdentityMapOfint$_FrameCallbackEntry()).new();
-    this[_removedIds] = new (T$._IdentityHashSetOfint()).new();
-    this[_persistentCallbacks] = T$.JSArrayOfDurationTovoid().of([]);
-    this[_postFrameCallbacks] = T$.JSArrayOfDurationTovoid().of([]);
-    this[_nextFrameCompleter] = null;
-    this[_hasScheduledFrame] = false;
-    this[_schedulerPhase] = binding$.SchedulerPhase.idle;
-    this[_framesEnabled] = true;
-    this[_warmUpFrame] = false;
-    this[_firstRawTimeStampInEpoch] = null;
-    this[_epochStart] = core.Duration.zero;
-    this[_lastRawTimeStamp] = core.Duration.zero;
-    this[_currentFrameTimeStamp] = null;
-    this[_debugFrameNumber] = 0;
-    this[_debugBanner] = null;
-    this[_rescheduleAfterWarmUpFrame] = false;
-  }).prototype = binding$.SchedulerBinding.prototype;
-  dart.addTypeTests(binding$.SchedulerBinding);
-  dart.addTypeCaches(binding$.SchedulerBinding);
-  binding$.SchedulerBinding[dart.implements] = () => [binding.BindingBase];
-  dart.setMethodSignature(binding$.SchedulerBinding, () => ({
-    __proto__: dart.getMethods(binding$.SchedulerBinding.__proto__),
-    addTimingsCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.List$(ui.FrameTiming)])]),
-    removeTimingsCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.List$(ui.FrameTiming)])]),
-    [_executeTimingsCallbacks]: dart.fnType(dart.void, [core.List$(ui.FrameTiming)]),
-    handleAppLifecycleStateChanged: dart.fnType(dart.void, [ui.AppLifecycleState]),
-    scheduleTask: dart.gFnType(T => [async.Future$(T), [dart.fnType(T, []), priority$.Priority], {debugLabel: dart.nullable(core.String), flow: dart.nullable(developer.Flow)}, {}], T => [dart.nullable(core.Object)]),
-    [_ensureEventLoopCallback]: dart.fnType(dart.void, []),
-    [_runTasks]: dart.fnType(dart.void, []),
-    handleEventLoopCallback: dart.fnType(core.bool, []),
-    scheduleFrameCallback: dart.fnType(core.int, [dart.fnType(dart.void, [core.Duration])], {rescheduling: core.bool}, {}),
-    cancelFrameCallbackWithId: dart.fnType(dart.void, [core.int]),
-    debugAssertNoTransientCallbacks: dart.fnType(core.bool, [core.String]),
-    addPersistentFrameCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration])]),
-    addPostFrameCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration])]),
-    [_setFramesEnabledState]: dart.fnType(dart.void, [core.bool]),
-    ensureFrameCallbacksRegistered: dart.fnType(dart.void, []),
-    ensureVisualUpdate: dart.fnType(dart.void, []),
-    scheduleFrame: dart.fnType(dart.void, []),
-    scheduleForcedFrame: dart.fnType(dart.void, []),
-    scheduleWarmUpFrame: dart.fnType(dart.void, []),
-    resetEpoch: dart.fnType(dart.void, []),
-    [_adjustForEpoch]: dart.fnType(core.Duration, [core.Duration]),
-    [_handleBeginFrame]: dart.fnType(dart.void, [core.Duration]),
-    [_handleDrawFrame]: dart.fnType(dart.void, []),
-    handleBeginFrame: dart.fnType(dart.void, [dart.nullable(core.Duration)]),
-    handleDrawFrame: dart.fnType(dart.void, []),
-    [_profileFramePostEvent]: dart.fnType(dart.void, [core.int, ui.FrameTiming]),
-    [_invokeFrameCallback]: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration]), core.Duration], [dart.nullable(core.StackTrace)])
+  (animation_controller._RepeatingSimulation.new = function(initialValue, min, max, reverse, period, directionSetter) {
+    if (initialValue == null) dart.nullFailed(I[0], 877, 31, "initialValue");
+    if (min == null) dart.nullFailed(I[0], 877, 50, "min");
+    if (max == null) dart.nullFailed(I[0], 877, 60, "max");
+    if (reverse == null) dart.nullFailed(I[0], 877, 70, "reverse");
+    if (period == null) dart.nullFailed(I[0], 877, 88, "period");
+    if (directionSetter == null) dart.nullFailed(I[0], 877, 101, "directionSetter");
+    this.min = min;
+    this.max = max;
+    this.reverse = reverse;
+    this.directionSetter = directionSetter;
+    this[_periodInSeconds] = dart.notNull(period.inMicroseconds) / 1000000;
+    this[_initialT] = max == min ? 0.0 : dart.notNull(initialValue) / (dart.notNull(max) - dart.notNull(min)) * (dart.notNull(period.inMicroseconds) / 1000000);
+    animation_controller._RepeatingSimulation.__proto__.new.call(this);
+    if (!(dart.notNull(this[_periodInSeconds]) > 0.0)) dart.assertFailed(null, I[0], 880, 12, "_periodInSeconds > 0.0");
+    if (!(dart.notNull(this[_initialT]) >= 0.0)) dart.assertFailed(null, I[0], 881, 12, "_initialT >= 0.0");
+  }).prototype = animation_controller._RepeatingSimulation.prototype;
+  dart.addTypeTests(animation_controller._RepeatingSimulation);
+  dart.addTypeCaches(animation_controller._RepeatingSimulation);
+  dart.setMethodSignature(animation_controller._RepeatingSimulation, () => ({
+    __proto__: dart.getMethods(animation_controller._RepeatingSimulation.__proto__),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double]),
+    isDone: dart.fnType(core.bool, [core.double])
   }));
-  dart.setGetterSignature(binding$.SchedulerBinding, () => ({
-    __proto__: dart.getGetters(binding$.SchedulerBinding.__proto__),
-    lifecycleState: dart.nullable(ui.AppLifecycleState),
-    transientCallbackCount: core.int,
-    endOfFrame: async.Future$(dart.void),
-    hasScheduledFrame: core.bool,
-    schedulerPhase: binding$.SchedulerPhase,
-    framesEnabled: core.bool,
-    currentFrameTimeStamp: core.Duration,
-    currentSystemFrameTimeStamp: core.Duration
+  dart.setLibraryUri(animation_controller._RepeatingSimulation, I[1]);
+  dart.setFieldSignature(animation_controller._RepeatingSimulation, () => ({
+    __proto__: dart.getFields(animation_controller._RepeatingSimulation.__proto__),
+    min: dart.finalFieldType(core.double),
+    max: dart.finalFieldType(core.double),
+    reverse: dart.finalFieldType(core.bool),
+    directionSetter: dart.finalFieldType(dart.fnType(dart.void, [animation_controller._AnimationDirection])),
+    [_periodInSeconds]: dart.finalFieldType(core.double),
+    [_initialT]: dart.finalFieldType(core.double)
   }));
-  dart.setLibraryUri(binding$.SchedulerBinding, I[1]);
-  dart.setFieldSignature(binding$.SchedulerBinding, () => ({
-    __proto__: dart.getFields(binding$.SchedulerBinding.__proto__),
-    [_timingsCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.List$(ui.FrameTiming)]))),
-    [_lifecycleState]: dart.fieldType(dart.nullable(ui.AppLifecycleState)),
-    schedulingStrategy: dart.fieldType(dart.fnType(core.bool, [], {}, {priority: core.int, scheduler: binding$.SchedulerBinding})),
-    [_taskQueue]: dart.finalFieldType(priority_queue.PriorityQueue$(binding$._TaskEntry)),
-    [_hasRequestedAnEventLoopCallback]: dart.fieldType(core.bool),
-    [_nextFrameCallbackId]: dart.fieldType(core.int),
-    [_transientCallbacks]: dart.fieldType(core.Map$(core.int, binding$._FrameCallbackEntry)),
-    [_removedIds]: dart.finalFieldType(core.Set$(core.int)),
-    [_persistentCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.Duration]))),
-    [_postFrameCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.Duration]))),
-    [_nextFrameCompleter]: dart.fieldType(dart.nullable(async.Completer$(dart.void))),
-    [_hasScheduledFrame]: dart.fieldType(core.bool),
-    [_schedulerPhase]: dart.fieldType(binding$.SchedulerPhase),
-    [_framesEnabled]: dart.fieldType(core.bool),
-    [_warmUpFrame]: dart.fieldType(core.bool),
-    [_firstRawTimeStampInEpoch]: dart.fieldType(dart.nullable(core.Duration)),
-    [_epochStart]: dart.fieldType(core.Duration),
-    [_lastRawTimeStamp]: dart.fieldType(core.Duration),
-    [_currentFrameTimeStamp]: dart.fieldType(dart.nullable(core.Duration)),
-    [_debugFrameNumber]: dart.fieldType(core.int),
-    [_debugBanner]: dart.fieldType(dart.nullable(core.String)),
-    [_rescheduleAfterWarmUpFrame]: dart.fieldType(core.bool)
-  }));
-  dart.defineLazy(binding$.SchedulerBinding, {
-    /*binding$.SchedulerBinding._instance*/get _instance() {
-      return null;
+  var Tolerance_velocity = dart.privateName(tolerance, "Tolerance.velocity");
+  var Tolerance_time = dart.privateName(tolerance, "Tolerance.time");
+  var Tolerance_distance = dart.privateName(tolerance, "Tolerance.distance");
+  dart.defineLazy(animation_controller, {
+    /*animation_controller._kFlingSpringDescription*/get _kFlingSpringDescription() {
+      return new spring_simulation.SpringDescription.withDampingRatio({mass: 1.0, stiffness: 500.0, ratio: 1.0});
     },
-    set _instance(_) {}
-  }, false);
-  binding$.defaultSchedulingStrategy = function defaultSchedulingStrategy(opts) {
-    let priority = opts && 'priority' in opts ? opts.priority : null;
-    if (priority == null) dart.nullFailed(I[0], 1173, 47, "priority");
-    let scheduler = opts && 'scheduler' in opts ? opts.scheduler : null;
-    if (scheduler == null) dart.nullFailed(I[0], 1173, 83, "scheduler");
-    if (dart.notNull(scheduler.transientCallbackCount) > 0) return dart.notNull(priority) >= dart.notNull(priority$.Priority.animation.value);
-    return true;
-  };
-  dart.copyProperties(binding$, {
-    get timeDilation() {
-      return binding$._timeDilation;
-    },
-    set timeDilation(value) {
-      let t4;
-      if (value == null) dart.nullFailed(I[0], 24, 25, "value");
-      if (!(dart.notNull(value) > 0.0)) dart.assertFailed(null, I[0], 25, 10, "value > 0.0");
-      if (binding$._timeDilation == value) return;
-      t4 = binding$.SchedulerBinding.instance;
-      t4 == null ? null : t4.resetEpoch();
-      binding$._timeDilation = value;
+    /*animation_controller._kFlingTolerance*/get _kFlingTolerance() {
+      return C[7] || CT.C7;
     }
-  });
-  dart.defineLazy(binding$, {
-    /*binding$._timeDilation*/get _timeDilation() {
-      return 1.0;
-    },
-    set _timeDilation(_) {}
   }, false);
-  dart.trackLibraries("packages/flutter/src/scheduler/binding.dart", {
-    "package:flutter/src/scheduler/binding.dart": binding$
+  dart.trackLibraries("packages/flutter/src/animation/animation_controller.dart", {
+    "package:flutter/src/animation/animation_controller.dart": animation_controller
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["binding.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/scheduler/binding.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["animation_controller.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/animation/animation_controller.dart.lib.js"}');
   // Exports:
   return {
-    src__scheduler__binding: binding$
+    src__animation__animation_controller: animation_controller
   };
 }));
 
-//# sourceMappingURL=binding.dart.lib.js.map
+//# sourceMappingURL=animation_controller.dart.lib.js.map

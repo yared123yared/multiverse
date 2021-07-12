@@ -1,328 +1,400 @@
-define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter_svg__src__picture_stream_dart(dart_sdk, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/characters/src/grapheme_clusters/table.dart'], (function load__packages__characters__src__grapheme_clusters__breaks_dart(dart_sdk, packages__characters__src__grapheme_clusters__table$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  var picture_stream = Object.create(dart.library);
-  var $runtimeType = dartx.runtimeType;
-  var $add = dartx.add;
-  var $removeWhere = dartx.removeWhere;
-  var $length = dartx.length;
-  var $isEmpty = dartx.isEmpty;
+  const table = packages__characters__src__grapheme_clusters__table$46dart.src__grapheme_clusters__table;
+  var breaks = Object.create(dart.library);
+  var $codeUnitAt = dartx.codeUnitAt;
+  var $toRadixString = dartx.toRadixString;
   dart._checkModuleNullSafetyMode(false);
-  var T = {
-    JSArrayOf_PictureListenerPair: () => (T.JSArrayOf_PictureListenerPair = dart.constFn(_interceptors.JSArray$(picture_stream._PictureListenerPair)))(),
-    _PictureListenerPairTobool: () => (T._PictureListenerPairTobool = dart.constFn(dart.fnType(core.bool, [picture_stream._PictureListenerPair])))(),
-    ObjectFlagPropertyOfPictureStreamCompleter: () => (T.ObjectFlagPropertyOfPictureStreamCompleter = dart.constFn(diagnostics.ObjectFlagProperty$(picture_stream.PictureStreamCompleter)))(),
-    ListOf_PictureListenerPair: () => (T.ListOf_PictureListenerPair = dart.constFn(core.List$(picture_stream._PictureListenerPair)))(),
-    ObjectFlagPropertyOfListOf_PictureListenerPair: () => (T.ObjectFlagPropertyOfListOf_PictureListenerPair = dart.constFn(diagnostics.ObjectFlagProperty$(T.ListOf_PictureListenerPair())))(),
-    DiagnosticsPropertyOfPictureInfo: () => (T.DiagnosticsPropertyOfPictureInfo = dart.constFn(diagnostics.DiagnosticsProperty$(picture_stream.PictureInfo)))(),
-    ObjectAndStackTraceToNull: () => (T.ObjectAndStackTraceToNull = dart.constFn(dart.fnType(core.Null, [core.Object, core.StackTrace])))()
-  };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: ui.Size.prototype,
-        [OffsetBase__dy]: 1 / 0,
-        [OffsetBase__dx]: 1 / 0
-      });
-    }
-  }, false);
-  var C = [void 0];
   var I = [
-    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/src/picture_stream.dart",
-    "package:flutter_svg/src/picture_stream.dart"
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.1.0/lib/src/grapheme_clusters/breaks.dart",
+    "package:characters/src/grapheme_clusters/breaks.dart"
   ];
-  var listener$ = dart.privateName(picture_stream, "_PictureListenerPair.listener");
-  var errorListener$ = dart.privateName(picture_stream, "_PictureListenerPair.errorListener");
-  picture_stream._PictureListenerPair = class _PictureListenerPair extends core.Object {
-    get listener() {
-      return this[listener$];
+  var base$ = dart.privateName(breaks, "Breaks.base");
+  var end$ = dart.privateName(breaks, "Breaks.end");
+  var cursor$ = dart.privateName(breaks, "Breaks.cursor");
+  var state$ = dart.privateName(breaks, "Breaks.state");
+  breaks.Breaks = class Breaks extends core.Object {
+    get base() {
+      return this[base$];
     }
-    set listener(value) {
-      super.listener = value;
+    set base(value) {
+      super.base = value;
     }
-    get errorListener() {
-      return this[errorListener$];
+    get end() {
+      return this[end$];
     }
-    set errorListener(value) {
-      super.errorListener = value;
+    set end(value) {
+      super.end = value;
     }
-  };
-  (picture_stream._PictureListenerPair.new = function(listener, errorListener) {
-    if (listener == null) dart.nullFailed(I[0], 18, 35, "listener");
-    this[listener$] = listener;
-    this[errorListener$] = errorListener;
-    ;
-  }).prototype = picture_stream._PictureListenerPair.prototype;
-  dart.addTypeTests(picture_stream._PictureListenerPair);
-  dart.addTypeCaches(picture_stream._PictureListenerPair);
-  dart.setLibraryUri(picture_stream._PictureListenerPair, I[1]);
-  dart.setFieldSignature(picture_stream._PictureListenerPair, () => ({
-    __proto__: dart.getFields(picture_stream._PictureListenerPair.__proto__),
-    listener: dart.finalFieldType(dart.fnType(dart.dynamic, [dart.nullable(picture_stream.PictureInfo), core.bool])),
-    errorListener: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.Object, core.StackTrace])))
-  }));
-  var picture$ = dart.privateName(picture_stream, "PictureInfo.picture");
-  var viewport$ = dart.privateName(picture_stream, "PictureInfo.viewport");
-  var size$ = dart.privateName(picture_stream, "PictureInfo.size");
-  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
-  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
-  picture_stream.PictureInfo = class PictureInfo extends core.Object {
-    get picture() {
-      return this[picture$];
+    get cursor() {
+      return this[cursor$];
     }
-    set picture(value) {
-      super.picture = value;
+    set cursor(value) {
+      this[cursor$] = value;
     }
-    get viewport() {
-      return this[viewport$];
+    get state() {
+      return this[state$];
     }
-    set viewport(value) {
-      super.viewport = value;
+    set state(value) {
+      this[state$] = value;
     }
-    get size() {
-      return this[size$];
+    copy() {
+      return new breaks.Breaks.new(this.base, this.cursor, this.end, this.state);
     }
-    set size(value) {
-      super.size = value;
-    }
-    get hashCode() {
-      return ui.hashValues(this.picture, this.viewport, this.size);
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) {
-        return false;
-      }
-      return picture_stream.PictureInfo.is(other) && dart.equals(other.picture, this.picture) && dart.equals(other.viewport, this.viewport) && dart.equals(other.size, this.size);
-    }
-  };
-  (picture_stream.PictureInfo.new = function(opts) {
-    let picture = opts && 'picture' in opts ? opts.picture : null;
-    if (picture == null) dart.nullFailed(I[0], 28, 19, "picture");
-    let viewport = opts && 'viewport' in opts ? opts.viewport : null;
-    if (viewport == null) dart.nullFailed(I[0], 29, 19, "viewport");
-    let size = opts && 'size' in opts ? opts.size : C[0] || CT.C0;
-    if (size == null) dart.nullFailed(I[0], 30, 10, "size");
-    this[picture$] = picture;
-    this[viewport$] = viewport;
-    this[size$] = size;
-    if (!(picture != null)) dart.assertFailed(null, I[0], 31, 16, "picture != null");
-    if (!(viewport != null)) dart.assertFailed(null, I[0], 32, 16, "viewport != null");
-    if (!(size != null)) dart.assertFailed(null, I[0], 33, 16, "size != null");
-    ;
-  }).prototype = picture_stream.PictureInfo.prototype;
-  dart.addTypeTests(picture_stream.PictureInfo);
-  dart.addTypeCaches(picture_stream.PictureInfo);
-  dart.setLibraryUri(picture_stream.PictureInfo, I[1]);
-  dart.setFieldSignature(picture_stream.PictureInfo, () => ({
-    __proto__: dart.getFields(picture_stream.PictureInfo.__proto__),
-    picture: dart.finalFieldType(ui.Picture),
-    viewport: dart.finalFieldType(ui.Rect),
-    size: dart.finalFieldType(ui.Size)
-  }));
-  dart.defineExtensionMethods(picture_stream.PictureInfo, ['_equals']);
-  dart.defineExtensionAccessors(picture_stream.PictureInfo, ['hashCode']);
-  var _completer = dart.privateName(picture_stream, "_completer");
-  var _listeners = dart.privateName(picture_stream, "_listeners");
-  const Object_Diagnosticable$36 = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36.new = function() {
-  }).prototype = Object_Diagnosticable$36.prototype;
-  dart.applyMixin(Object_Diagnosticable$36, diagnostics.Diagnosticable);
-  picture_stream.PictureStream = class PictureStream extends Object_Diagnosticable$36 {
-    get completer() {
-      return this[_completer];
-    }
-    setCompleter(value) {
-      if (value == null) dart.nullFailed(I[0], 112, 44, "value");
-      if (!(this[_completer] == null)) dart.assertFailed(null, I[0], 113, 12, "_completer == null");
-      this[_completer] = value;
-      if (this[_listeners] != null) {
-        let initialListeners = dart.nullCheck(this[_listeners]);
-        this[_listeners] = null;
-        for (let pair of initialListeners) {
-          dart.nullCheck(this[_completer]).addListener(pair.listener, {onError: pair.errorListener});
+    nextBreak() {
+      let t0;
+      while (dart.notNull(this.cursor) < dart.notNull(this.end)) {
+        let breakAt = this.cursor;
+        let char = this.base[$codeUnitAt]((t0 = this.cursor, this.cursor = dart.notNull(t0) + 1, t0));
+        if ((char & 64512) !== 55296) {
+          this.state = table.move(this.state, table.low(char));
+          if ((dart.notNull(this.state) & 1) === 0) {
+            return breakAt;
+          }
+          continue;
+        }
+        let category = 2;
+        if (dart.notNull(this.cursor) < dart.notNull(this.end)) {
+          let nextChar = this.base[$codeUnitAt](this.cursor);
+          if ((nextChar & 64512) === 56320) {
+            category = table.high(char, nextChar);
+            this.cursor = dart.notNull(this.cursor) + 1;
+          }
+        }
+        this.state = table.move(this.state, category);
+        if ((dart.notNull(this.state) & 1) === 0) {
+          return breakAt;
         }
       }
-    }
-    addListener(listener, opts) {
-      if (listener == null) dart.nullFailed(I[0], 135, 36, "listener");
-      let onError = opts && 'onError' in opts ? opts.onError : null;
-      if (this[_completer] != null) {
-        return dart.nullCheck(this[_completer]).addListener(listener, {onError: onError});
-      }
-      this[_listeners] == null ? this[_listeners] = T.JSArrayOf_PictureListenerPair().of([]) : null;
-      dart.nullCheck(this[_listeners])[$add](new picture_stream._PictureListenerPair.new(listener, onError));
-    }
-    removeListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 144, 39, "listener");
-      if (this[_completer] != null) {
-        return dart.nullCheck(this[_completer]).removeListener(listener);
-      }
-      if (!(this[_listeners] != null)) dart.assertFailed(null, I[0], 148, 12, "_listeners != null");
-      dart.nullCheck(this[_listeners])[$removeWhere](dart.fn(pair => {
-        if (pair == null) dart.nullFailed(I[0], 150, 29, "pair");
-        return dart.equals(pair.listener, listener);
-      }, T._PictureListenerPairTobool()));
-    }
-    get key() {
-      return this[_completer] != null ? this[_completer] : this;
-    }
-    debugFillProperties(properties) {
-      let t0, t0$, t0$0, t0$1;
-      if (properties == null) dart.nullFailed(I[0], 168, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new (T.ObjectFlagPropertyOfPictureStreamCompleter()).new("completer", this[_completer], {ifPresent: (t0 = this[_completer], t0 == null ? null : t0.toStringShort()), ifNull: "unresolved"}));
-      properties.add(new (T.ObjectFlagPropertyOfListOf_PictureListenerPair()).new("listeners", this[_listeners], {ifPresent: dart.str((t0$ = this[_listeners], t0$ == null ? null : t0$[$length])) + " listener" + ((t0$0 = this[_listeners], t0$0 == null ? null : t0$0[$length]) === 1 ? "" : "s"), ifNull: "no listeners", level: this[_completer] != null ? diagnostics.DiagnosticLevel.hidden : diagnostics.DiagnosticLevel.info}));
-      t0$1 = this[_completer];
-      t0$1 == null ? null : t0$1.debugFillProperties(properties);
+      this.state = table.move(this.state, 15);
+      if ((dart.notNull(this.state) & 1) === 0) return this.cursor;
+      return -1;
     }
   };
-  (picture_stream.PictureStream.new = function() {
-    this[_completer] = null;
-    this[_listeners] = null;
+  (breaks.Breaks.new = function(base, cursor, end, state) {
+    if (base == null) dart.nullFailed(I[0], 37, 15, "base");
+    if (cursor == null) dart.nullFailed(I[0], 37, 26, "cursor");
+    if (end == null) dart.nullFailed(I[0], 37, 39, "end");
+    if (state == null) dart.nullFailed(I[0], 37, 49, "state");
+    this[base$] = base;
+    this[cursor$] = cursor;
+    this[end$] = end;
+    this[state$] = state;
     ;
-  }).prototype = picture_stream.PictureStream.prototype;
-  dart.addTypeTests(picture_stream.PictureStream);
-  dart.addTypeCaches(picture_stream.PictureStream);
-  dart.setMethodSignature(picture_stream.PictureStream, () => ({
-    __proto__: dart.getMethods(picture_stream.PictureStream.__proto__),
-    setCompleter: dart.fnType(dart.void, [picture_stream.PictureStreamCompleter]),
-    addListener: dart.fnType(dart.void, [dart.fnType(dart.dynamic, [dart.nullable(picture_stream.PictureInfo), core.bool])], {onError: dart.nullable(dart.fnType(dart.void, [core.Object, core.StackTrace]))}, {}),
-    removeListener: dart.fnType(dart.void, [dart.fnType(dart.dynamic, [dart.nullable(picture_stream.PictureInfo), core.bool])])
+  }).prototype = breaks.Breaks.prototype;
+  dart.addTypeTests(breaks.Breaks);
+  dart.addTypeCaches(breaks.Breaks);
+  dart.setMethodSignature(breaks.Breaks, () => ({
+    __proto__: dart.getMethods(breaks.Breaks.__proto__),
+    copy: dart.fnType(breaks.Breaks, []),
+    nextBreak: dart.fnType(core.int, [])
   }));
-  dart.setGetterSignature(picture_stream.PictureStream, () => ({
-    __proto__: dart.getGetters(picture_stream.PictureStream.__proto__),
-    completer: dart.nullable(picture_stream.PictureStreamCompleter),
-    key: dart.nullable(core.Object)
+  dart.setLibraryUri(breaks.Breaks, I[1]);
+  dart.setFieldSignature(breaks.Breaks, () => ({
+    __proto__: dart.getFields(breaks.Breaks.__proto__),
+    base: dart.finalFieldType(core.String),
+    end: dart.finalFieldType(core.int),
+    cursor: dart.fieldType(core.int),
+    state: dart.fieldType(core.int)
   }));
-  dart.setLibraryUri(picture_stream.PictureStream, I[1]);
-  dart.setFieldSignature(picture_stream.PictureStream, () => ({
-    __proto__: dart.getFields(picture_stream.PictureStream.__proto__),
-    [_completer]: dart.fieldType(dart.nullable(picture_stream.PictureStreamCompleter)),
-    [_listeners]: dart.fieldType(dart.nullable(core.List$(picture_stream._PictureListenerPair)))
-  }));
-  var _current = dart.privateName(picture_stream, "_current");
-  var _handleImageError = dart.privateName(picture_stream, "_handleImageError");
-  const Object_Diagnosticable$36$ = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36$.new = function() {
-  }).prototype = Object_Diagnosticable$36$.prototype;
-  dart.applyMixin(Object_Diagnosticable$36$, diagnostics.Diagnosticable);
-  picture_stream.PictureStreamCompleter = class PictureStreamCompleter extends Object_Diagnosticable$36$ {
-    addListener(listener, opts) {
-      if (listener == null) dart.nullFailed(I[0], 209, 36, "listener");
-      let onError = opts && 'onError' in opts ? opts.onError : null;
-      this[_listeners][$add](new picture_stream._PictureListenerPair.new(listener, onError));
-      if (this[_current] != null) {
-        try {
-          listener(this[_current], true);
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            this[_handleImageError](new assertions.ErrorDescription.new("by a synchronously-called image listener"), exception, stack);
-          } else
-            throw e;
+  var base$0 = dart.privateName(breaks, "BackBreaks.base");
+  var start$ = dart.privateName(breaks, "BackBreaks.start");
+  var cursor$0 = dart.privateName(breaks, "BackBreaks.cursor");
+  var state$0 = dart.privateName(breaks, "BackBreaks.state");
+  var _lookAhead = dart.privateName(breaks, "_lookAhead");
+  breaks.BackBreaks = class BackBreaks extends core.Object {
+    get base() {
+      return this[base$0];
+    }
+    set base(value) {
+      super.base = value;
+    }
+    get start() {
+      return this[start$];
+    }
+    set start(value) {
+      super.start = value;
+    }
+    get cursor() {
+      return this[cursor$0];
+    }
+    set cursor(value) {
+      this[cursor$0] = value;
+    }
+    get state() {
+      return this[state$0];
+    }
+    set state(value) {
+      this[state$0] = value;
+    }
+    copy() {
+      return new breaks.BackBreaks.new(this.base, this.cursor, this.start, this.state);
+    }
+    nextBreak() {
+      while (dart.notNull(this.cursor) > dart.notNull(this.start)) {
+        let breakAt = this.cursor;
+        let char = this.base[$codeUnitAt](this.cursor = dart.notNull(this.cursor) - 1);
+        if ((char & 64512) !== 56320) {
+          this.state = table.moveBack(this.state, table.low(char));
+          if (dart.notNull(this.state) >= 208) this.state = this[_lookAhead](this.state);
+          if ((dart.notNull(this.state) & 1) === 0) {
+            return breakAt;
+          }
+          continue;
+        }
+        let category = 2;
+        if (dart.notNull(this.cursor) >= dart.notNull(this.start)) {
+          let prevChar = this.base[$codeUnitAt](dart.notNull(this.cursor) - 1);
+          if ((prevChar & 64512) === 55296) {
+            category = table.high(prevChar, char);
+            this.cursor = dart.notNull(this.cursor) - 1;
+          }
+        }
+        this.state = table.moveBack(this.state, category);
+        if (dart.notNull(this.state) >= 208) this.state = this[_lookAhead](this.state);
+        if ((dart.notNull(this.state) & 1) === 0) {
+          return breakAt;
         }
       }
+      this.state = table.moveBack(this.state, 15);
+      if (dart.notNull(this.state) >= 208) this.state = this[_lookAhead](this.state);
+      if ((dart.notNull(this.state) & 1) === 0) return this.cursor;
+      return -1;
     }
-    removeListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 225, 39, "listener");
-      this[_listeners][$removeWhere](dart.fn(pair => {
-        if (pair == null) dart.nullFailed(I[0], 227, 29, "pair");
-        return dart.equals(pair.listener, listener);
-      }, T._PictureListenerPairTobool()));
-    }
-    setPicture(picture) {
-      let t3, t2, t1;
-      this[_current] = picture;
-      if (dart.test(this[_listeners][$isEmpty])) {
-        return;
-      }
-      let localListeners = T.ListOf_PictureListenerPair().from(this[_listeners]);
-      for (let listenerPair of localListeners) {
-        try {
-          t1 = listenerPair;
-          t2 = picture;
-          t3 = false;
-          t1.listener(t2, t3);
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            if (listenerPair.errorListener != null) {
-              dart.nullCheck(listenerPair.errorListener)(exception, stack);
-            } else {
-              this[_handleImageError](new assertions.ErrorDescription.new("by a picture listener"), exception, stack);
-            }
-          } else
-            throw e;
-        }
-      }
-    }
-    [_handleImageError](context, exception, stack) {
-      if (context == null) dart.nullFailed(I[0], 255, 21, "context");
-      if (exception == null) dart.nullFailed(I[0], 256, 12, "exception");
-      assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: core.StackTrace.as(stack), library: "SVG", context: context}));
-    }
-    debugFillProperties(description) {
-      if (description == null) dart.nullFailed(I[0], 270, 56, "description");
-      super.debugFillProperties(description);
-      description.add(new (T.DiagnosticsPropertyOfPictureInfo()).new("current", this[_current], {ifNull: "unresolved", showName: false}));
-      description.add(new (T.ObjectFlagPropertyOfListOf_PictureListenerPair()).new("listeners", this[_listeners], {ifPresent: dart.str(this[_listeners][$length]) + " listener" + (this[_listeners][$length] === 1 ? "" : "s")}));
+    [_lookAhead](state) {
+      if (state == null) dart.nullFailed(I[0], 146, 22, "state");
+      return breaks.lookAhead(this.base, this.start, this.cursor, state);
     }
   };
-  (picture_stream.PictureStreamCompleter.new = function() {
-    this[_listeners] = T.JSArrayOf_PictureListenerPair().of([]);
-    this[_current] = null;
+  (breaks.BackBreaks.new = function(base, cursor, start, state) {
+    if (base == null) dart.nullFailed(I[0], 105, 19, "base");
+    if (cursor == null) dart.nullFailed(I[0], 105, 30, "cursor");
+    if (start == null) dart.nullFailed(I[0], 105, 43, "start");
+    if (state == null) dart.nullFailed(I[0], 105, 55, "state");
+    this[base$0] = base;
+    this[cursor$0] = cursor;
+    this[start$] = start;
+    this[state$0] = state;
     ;
-  }).prototype = picture_stream.PictureStreamCompleter.prototype;
-  dart.addTypeTests(picture_stream.PictureStreamCompleter);
-  dart.addTypeCaches(picture_stream.PictureStreamCompleter);
-  dart.setMethodSignature(picture_stream.PictureStreamCompleter, () => ({
-    __proto__: dart.getMethods(picture_stream.PictureStreamCompleter.__proto__),
-    addListener: dart.fnType(dart.void, [dart.fnType(dart.dynamic, [dart.nullable(picture_stream.PictureInfo), core.bool])], {onError: dart.nullable(dart.fnType(dart.void, [core.Object, core.StackTrace]))}, {}),
-    removeListener: dart.fnType(dart.void, [dart.fnType(dart.dynamic, [dart.nullable(picture_stream.PictureInfo), core.bool])]),
-    setPicture: dart.fnType(dart.void, [dart.nullable(picture_stream.PictureInfo)]),
-    [_handleImageError]: dart.fnType(dart.void, [diagnostics.DiagnosticsNode, core.Object, dart.dynamic])
+  }).prototype = breaks.BackBreaks.prototype;
+  dart.addTypeTests(breaks.BackBreaks);
+  dart.addTypeCaches(breaks.BackBreaks);
+  dart.setMethodSignature(breaks.BackBreaks, () => ({
+    __proto__: dart.getMethods(breaks.BackBreaks.__proto__),
+    copy: dart.fnType(breaks.BackBreaks, []),
+    nextBreak: dart.fnType(core.int, []),
+    [_lookAhead]: dart.fnType(core.int, [core.int])
   }));
-  dart.setLibraryUri(picture_stream.PictureStreamCompleter, I[1]);
-  dart.setFieldSignature(picture_stream.PictureStreamCompleter, () => ({
-    __proto__: dart.getFields(picture_stream.PictureStreamCompleter.__proto__),
-    [_listeners]: dart.finalFieldType(core.List$(picture_stream._PictureListenerPair)),
-    [_current]: dart.fieldType(dart.nullable(picture_stream.PictureInfo))
+  dart.setLibraryUri(breaks.BackBreaks, I[1]);
+  dart.setFieldSignature(breaks.BackBreaks, () => ({
+    __proto__: dart.getFields(breaks.BackBreaks.__proto__),
+    base: dart.finalFieldType(core.String),
+    start: dart.finalFieldType(core.int),
+    cursor: dart.fieldType(core.int),
+    state: dart.fieldType(core.int)
   }));
-  picture_stream.OneFramePictureStreamCompleter = class OneFramePictureStreamCompleter extends picture_stream.PictureStreamCompleter {};
-  (picture_stream.OneFramePictureStreamCompleter.new = function(picture, opts) {
-    if (picture == null) dart.nullFailed(I[0], 301, 26, "picture");
-    let informationCollector = opts && 'informationCollector' in opts ? opts.informationCollector : null;
-    if (!(picture != null)) dart.assertFailed(null, I[0], 304, 15, "picture != null");
-    picture_stream.OneFramePictureStreamCompleter.__proto__.new.call(this);
-    picture.then(dart.void, dart.bind(this, 'setPicture'), {onError: dart.fn((error, stack) => {
-        if (error == null) dart.nullFailed(I[0], 305, 53, "error");
-        if (stack == null) dart.nullFailed(I[0], 305, 71, "stack");
-        assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: error, stack: stack, library: "SVG", context: new assertions.ErrorDescription.new("resolving a single-frame picture stream"), informationCollector: informationCollector, silent: true}));
-      }, T.ObjectAndStackTraceToNull())});
-  }).prototype = picture_stream.OneFramePictureStreamCompleter.prototype;
-  dart.addTypeTests(picture_stream.OneFramePictureStreamCompleter);
-  dart.addTypeCaches(picture_stream.OneFramePictureStreamCompleter);
-  dart.setLibraryUri(picture_stream.OneFramePictureStreamCompleter, I[1]);
-  dart.trackLibraries("packages/flutter_svg/src/picture_stream.dart", {
-    "package:flutter_svg/src/picture_stream.dart": picture_stream
+  breaks.lookAhead = function lookAhead(base, start, cursor, state) {
+    if (base == null) dart.nullFailed(I[0], 155, 22, "base");
+    if (start == null) dart.nullFailed(I[0], 155, 32, "start");
+    if (cursor == null) dart.nullFailed(I[0], 155, 43, "cursor");
+    if (state == null) dart.nullFailed(I[0], 155, 55, "state");
+    if (!(dart.notNull(state) >= 208)) dart.assertFailed(null, I[0], 156, 10, "state >= stateLookaheadMin");
+    if (state === 208) {
+      return breaks.lookAheadRegional(base, start, cursor);
+    }
+    if (state === 224) {
+      let prevPic = breaks.lookAheadPictorgraphicExtend(base, start, cursor);
+      if (dart.notNull(prevPic) >= 0) return (144 | 1) >>> 0;
+      return 64;
+    }
+    dart.throw(new core.StateError.new("Unexpected state: " + state[$toRadixString](16)));
+  };
+  breaks.lookAheadRegional = function lookAheadRegional(base, start, cursor) {
+    if (base == null) dart.nullFailed(I[0], 178, 30, "base");
+    if (start == null) dart.nullFailed(I[0], 178, 40, "start");
+    if (cursor == null) dart.nullFailed(I[0], 178, 51, "cursor");
+    let count = 0;
+    let index = cursor;
+    while (dart.notNull(index) - 2 >= dart.notNull(start)) {
+      let tail = base[$codeUnitAt](dart.notNull(index) - 1);
+      if ((tail & 64512) !== 56320) break;
+      let lead = base[$codeUnitAt](dart.notNull(index) - 2);
+      if ((lead & 64512) !== 55296) break;
+      let category = table.high(lead, tail);
+      if (category !== 6) break;
+      index = dart.notNull(index) - 2;
+      count = (count ^ 1) >>> 0;
+    }
+    if (count === 0) {
+      return (192 | 1) >>> 0;
+    } else {
+      return 144;
+    }
+  };
+  breaks.lookAheadPictorgraphicExtend = function lookAheadPictorgraphicExtend(base, start, cursor) {
+    if (base == null) dart.nullFailed(I[0], 208, 41, "base");
+    if (start == null) dart.nullFailed(I[0], 208, 51, "start");
+    if (cursor == null) dart.nullFailed(I[0], 208, 62, "cursor");
+    let index = cursor;
+    while (dart.notNull(index) > dart.notNull(start)) {
+      let char = base[$codeUnitAt](index = dart.notNull(index) - 1);
+      let prevChar = 0;
+      let category = 2;
+      if ((char & 64512) !== 56320) {
+        category = table.low(char);
+      } else if (dart.notNull(index) > dart.notNull(start) && ((prevChar = base[$codeUnitAt](index = dart.notNull(index) - 1)) & 64512) === 55296) {
+        category = table.high(prevChar, char);
+      } else {
+        break;
+      }
+      if (category === 7) {
+        return index;
+      }
+      if (category !== 4) break;
+    }
+    return -1;
+  };
+  breaks.isGraphemeClusterBoundary = function isGraphemeClusterBoundary(text, start, end, index) {
+    if (text == null) dart.nullFailed(I[0], 236, 39, "text");
+    if (start == null) dart.nullFailed(I[0], 236, 49, "start");
+    if (end == null) dart.nullFailed(I[0], 236, 60, "end");
+    if (index == null) dart.nullFailed(I[0], 236, 69, "index");
+    if (!(0 <= dart.notNull(start))) dart.assertFailed(null, I[0], 237, 10, "0 <= start");
+    if (!(dart.notNull(start) <= dart.notNull(index))) dart.assertFailed(null, I[0], 238, 10, "start <= index");
+    if (!(dart.notNull(index) <= dart.notNull(end))) dart.assertFailed(null, I[0], 239, 10, "index <= end");
+    if (!(dart.notNull(end) <= text.length)) dart.assertFailed(null, I[0], 240, 10, "end <= text.length");
+    if (dart.notNull(start) < dart.notNull(index) && dart.notNull(index) < dart.notNull(end)) {
+      let char = text[$codeUnitAt](index);
+      let prevChar = text[$codeUnitAt](dart.notNull(index) - 1);
+      let catAfter = 2;
+      if ((char & 63488) !== 55296) {
+        catAfter = table.low(char);
+      } else if ((char & 64512) === 55296) {
+        if (dart.notNull(index) + 1 >= dart.notNull(end)) return true;
+        let nextChar = text[$codeUnitAt](dart.notNull(index) + 1);
+        if ((nextChar & 64512) !== 56320) return true;
+        catAfter = table.high(char, nextChar);
+      } else {
+        return (prevChar & 64512) !== 55296;
+      }
+      let catBefore = 2;
+      if ((prevChar & 64512) !== 56320) {
+        catBefore = table.low(prevChar);
+        index = dart.notNull(index) - 1;
+      } else {
+        index = dart.notNull(index) - 2;
+        if (dart.notNull(start) <= dart.notNull(index)) {
+          let prevPrevChar = text[$codeUnitAt](index);
+          if ((prevPrevChar & 64512) !== 55296) {
+            return true;
+          }
+          catBefore = table.high(prevPrevChar, prevChar);
+        } else {
+          return true;
+        }
+      }
+      let state = table.moveBack(176, catAfter);
+      if (!(dart.notNull(state) < 208)) dart.assertFailed(null, I[0], 287, 12, "state < stateLookaheadMin");
+      state = table.moveBack(state, catBefore);
+      if (dart.notNull(state) >= 208) {
+        state = breaks.lookAhead(text, start, index, state);
+      }
+      return (dart.notNull(state) & 1) === 0;
+    }
+    return start != end;
+  };
+  breaks.previousBreak = function previousBreak(text, start, end, index) {
+    if (text == null) dart.nullFailed(I[0], 300, 26, "text");
+    if (start == null) dart.nullFailed(I[0], 300, 36, "start");
+    if (end == null) dart.nullFailed(I[0], 300, 47, "end");
+    if (index == null) dart.nullFailed(I[0], 300, 56, "index");
+    if (!(0 <= dart.notNull(start))) dart.assertFailed(null, I[0], 301, 10, "0 <= start");
+    if (!(dart.notNull(start) <= dart.notNull(index))) dart.assertFailed(null, I[0], 302, 10, "start <= index");
+    if (!(dart.notNull(index) <= dart.notNull(end))) dart.assertFailed(null, I[0], 303, 10, "index <= end");
+    if (!(dart.notNull(end) <= text.length)) dart.assertFailed(null, I[0], 304, 10, "end <= text.length");
+    if (index == start || index == end) return index;
+    let indexBefore = index;
+    let nextChar = text[$codeUnitAt](index);
+    let category = 2;
+    if ((nextChar & 63488) !== 55296) {
+      category = table.low(nextChar);
+    } else if ((nextChar & 64512) === 55296) {
+      let indexAfter = dart.notNull(index) + 1;
+      if (indexAfter < dart.notNull(end)) {
+        let secondChar = text[$codeUnitAt](indexAfter);
+        if ((secondChar & 64512) === 56320) {
+          category = table.high(nextChar, secondChar);
+        }
+      }
+    } else {
+      let prevChar = text[$codeUnitAt](dart.notNull(index) - 1);
+      if ((prevChar & 64512) === 55296) {
+        category = table.high(prevChar, nextChar);
+        indexBefore = dart.notNull(indexBefore) - 1;
+      }
+    }
+    return new breaks.BackBreaks.new(text, indexBefore, start, table.moveBack(176, category)).nextBreak();
+  };
+  breaks.nextBreak = function nextBreak(text, start, end, index) {
+    if (text == null) dart.nullFailed(I[0], 334, 22, "text");
+    if (start == null) dart.nullFailed(I[0], 334, 32, "start");
+    if (end == null) dart.nullFailed(I[0], 334, 43, "end");
+    if (index == null) dart.nullFailed(I[0], 334, 52, "index");
+    if (!(0 <= dart.notNull(start))) dart.assertFailed(null, I[0], 335, 10, "0 <= start");
+    if (!(dart.notNull(start) <= dart.notNull(index))) dart.assertFailed(null, I[0], 336, 10, "start <= index");
+    if (!(dart.notNull(index) <= dart.notNull(end))) dart.assertFailed(null, I[0], 337, 10, "index <= end");
+    if (!(dart.notNull(end) <= text.length)) dart.assertFailed(null, I[0], 338, 10, "end <= text.length");
+    if (index == start || index == end) return index;
+    let indexBefore = dart.notNull(index) - 1;
+    let prevChar = text[$codeUnitAt](indexBefore);
+    let prevCategory = 2;
+    if ((prevChar & 63488) !== 55296) {
+      prevCategory = table.low(prevChar);
+    } else if ((prevChar & 64512) === 55296) {
+      let nextChar = text[$codeUnitAt](index);
+      if ((nextChar & 64512) === 56320) {
+        index = dart.notNull(index) + 1;
+        if (index == end) return end;
+        prevCategory = table.high(prevChar, nextChar);
+      }
+    } else if (indexBefore > dart.notNull(start)) {
+      let secondCharIndex = indexBefore - 1;
+      let secondChar = text[$codeUnitAt](secondCharIndex);
+      if ((secondChar & 64512) === 55296) {
+        indexBefore = secondCharIndex;
+        prevCategory = table.high(secondChar, prevChar);
+      }
+    }
+    let state = 48;
+    if (prevCategory === 6) {
+      let prevState = breaks.lookAheadRegional(text, start, indexBefore);
+      if (prevState !== 144) {
+        state = 160;
+      }
+    } else if (prevCategory === 1 || prevCategory === 4) {
+      let prevPic = breaks.lookAheadPictorgraphicExtend(text, start, indexBefore);
+      if (dart.notNull(prevPic) >= 0) {
+        state = prevCategory === 1 ? 144 : 128;
+      }
+    } else {
+      state = table.move(176, prevCategory);
+    }
+    return new breaks.Breaks.new(text, index, text.length, state).nextBreak();
+  };
+  dart.trackLibraries("packages/characters/src/grapheme_clusters/breaks.dart", {
+    "package:characters/src/grapheme_clusters/breaks.dart": breaks
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["picture_stream.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAkBwB;;;;;;IACM;;;;;;;sDAFI,UAAe;QAAf;;IAAe;;EAAc;;;;;;;;;;;;;;;IAoB/C;;;;;;IAGH;;;;;;IAIA;;;;;;;AAGS,2BAAW,cAAS,eAAU;IAAK;;UAG/B;AACtB,uBAAU,iBAAN,KAAK,GAAgB;AACvB,cAAO;;AAET,YAAa,AAEkB,+BAFxB,KAAK,KACM,YAAd,AAAM,KAAD,UAAY,iBACF,YAAf,AAAM,KAAD,WAAa,kBACP,YAAX,AAAM,KAAD,OAAS;IACpB;;;QA/BgB;;QACA;;QACT;;IAFS;IACA;IACT;UACM,AAAQ,OAAD;UACP,AAAS,QAAD;UACR,AAAK,IAAD;;EAAS;;;;;;;;;;;;;;;;;;;;AAkEe;IAAU;;UAaV;AACvC,YAAO,AAAW;AACA,MAAlB,mBAAa,KAAK;AAClB,UAAI;AAC+B,+BAA6B,eAAV;AACnC,QAAjB,mBAAa;AACb,iBAA0B,OAAQ,iBAAgB;AACmB,UAAzD,AAAE,eAAZ,8BAAwB,AAAK,IAAD,qBAAoB,AAAK,IAAD;;;IAG1D;;UAaiC;UAAiC;AAChE,UAAI;AACF,cAAiB,AAAE,gBAAZ,8BAAwB,QAAQ,YAAW,OAAO;;AAEpB,MAA5B,2BAAX,mBAAqC,2CAA1B;AAC6C,MAA9C,AAAE,eAAZ,wBAAgB,4CAAqB,QAAQ,EAAE,OAAO;IACxD;;UAGoC;AAClC,UAAI;AACF,cAAiB,AAAE,gBAAZ,iCAA2B,QAAQ;;AAE5C,YAAO,AAAW;AAGjB,MAFS,AAAE,eAAZ,gCACE;YAAsB;AAAS,cAAc,aAAd,AAAK,IAAD,WAAa,QAAQ;;IAE5D;;AAamB,YAAA,AAAW,4BAAU,mBAAa;IAAI;wBAGJ;;;AACd,MAA/B,0BAAoB,UAAU;AAMlC,MALF,AAAW,UAAD,KAAK,yDACb,aACA,mEACW,OAAY,6BACf;AASR,MAPF,AAAW,UAAD,KAAK,6DACb,aACA,8BAEyE,gDAAlE,OAAY,iBAAO,eAA8B,yCAAnB,OAAY,mBAAU,IAAI,KAAK,cAC5D,uBACD,AAAW,2BAA0B,qCAAyB;AAE5B,aAA3C;4BAAY,yBAAoB,UAAU;IAC5C;;;IArFwB;IAEI;;EARb;;;;;;;;;;;;;;;;;;;;;;;;;;;;UAmHkB;UAAiC;AACT,MAAvD,AAAW,uBAAI,4CAAqB,QAAQ,EAAE,OAAO;AACrD,UAAI;AACF;AAC0B,UAAxB,AAAQ,QAAA,CAAC,gBAAU;;cACZ;cAAW;AAAlB;AAKC,YAJD,wBACE,oCAAiB,6CACjB,SAAS,EACT,KAAK;;;;;IAIb;;UAGoC;AAGjC,MAFD,AAAW,+BACT;YAAsB;AAAS,cAAc,aAAd,AAAK,IAAD,WAAa,QAAQ;;IAE5D;eAI6B;;AACT,MAAlB,iBAAW,OAAO;AAClB,oBAAI,AAAW;AACb;;AAE+B,2BAC7B,oCAAgC;AACpC,eAA0B,eAAgB,eAAc;AACtD;AACuC,eAArC,YAAY;eAAU,OAAO;eAAE;UAAV;;cACd;cAAW;AAAlB;AACA,gBAAI,AAAa,YAAD;AAC+B,cAAnB,AAAC,eAA3B,AAAa,YAAD,gBAAgB,SAAS,EAAE,KAAK;;AAGoB,cADhE,wBACI,oCAAiB,0BAA0B,SAAS,EAAE,KAAK;;;;;;IAIvE;wBAGkB,SACT,WACC;UAFQ;UACT;AAQL,MALW,oCAAY,mDACZ,SAAS,SACP,mBAAN,KAAK,YACH,gBACA,OAAO;IAEpB;;UAKqD;AACb,MAAhC,0BAAoB,WAAW;AAEM,MAD3C,AAAY,WAAD,KAAK,+CAAiC,WAAW,yBAChD,wBAAwB;AAMlC,MALF,AAAY,WAAD,KAAK,6DACd,aACA,8BAEuE,SAAhE,AAAW,6BAAO,eAAW,AAAW,AAAO,8BAAG,IAAI,KAAK;IAEtE;;;IArFiC,mBAAmC;IACvD;;EAqFf;;;;;;;;;;;;;;;;;;QAoByB;QACC;UAEZ,AAAQ,OAAD;AAJnB;AAcI,IATF,AAAQ,OAAD,2BAAY,+BAAqB,SAAQ,OAAkB;YAAlB;YAAkB;AAQ9D,QAPW,oCAAY,mDACZ,KAAK,SACT,KAAK,WACH,gBACA,oCAAiB,kEACJ,oBAAoB,UAClC;;EAGd","file":"../../../../../../../../../packages/flutter_svg/src/picture_stream.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["breaks.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;IAyBe;;;;;;IAGH;;;;;;IAGN;;;;;;IAGA;;;;;;;AAKa,mCAAO,WAAM,aAAQ,UAAK;IAAM;;;AAO/C,aAAc,aAAP,4BAAS;AACV,sBAAU;AACV,mBAAO,AAAK,wBAAiB,kBAAN,iCAAM;AACjC,aAAI,AAAK,IAAD,GAAG,WAAU;AACW,UAA9B,aAAQ,WAAK,YAAO,UAAI,IAAI;AAC5B,cAAyB,CAAf,aAAN,qBAAwB;AAC1B,kBAAO,QAAO;;AAEhB;;AAGE;AACJ,YAAW,aAAP,4BAAS;AACP,yBAAW,AAAK,uBAAW;AAC/B,cAAsB,CAAlB,AAAS,QAAD,GAAG,WAAU;AACQ,YAA/B,WAAW,WAAK,IAAI,EAAE,QAAQ;AACtB,YAAR,cAAM,aAAN,eAAM;;;AAGmB,QAA7B,aAAQ,WAAK,YAAO,QAAQ;AAC5B,YAAyB,CAAf,aAAN,qBAAwB;AAC1B,gBAAO,QAAO;;;AAGc,MAAhC,aAAQ,WAAK;AACb,UAAyB,CAAf,aAAN,qBAAwB,GAAG,MAAO;AACtC,YAAO,EAAC;IACV;;gCArCY,MAAW,QAAa,KAAU;QAAlC;QAAW;QAAa;QAAU;IAAlC;IAAW;IAAa;IAAU;;EAAM;;;;;;;;;;;;;;;;;;;;;;IA0DvC;;;;;;IAGH;;;;;;IAGN;;;;;;IAGA;;;;;;;AAGiB,uCAAW,WAAM,aAAQ,YAAO;IAAM;;AAOzD,aAAc,aAAP,4BAAS;AACV,sBAAU;AACV,mBAAO,AAAK,uBAAa,cAAF,aAAE,eAAF;AAC3B,aAAI,AAAK,IAAD,GAAG,WAAU;AACe,UAAlC,aAAQ,eAAS,YAAO,UAAI,IAAI;AAChC,cAAU,aAAN,oBAA4B,AAAyB,aAAjB,iBAAW;AACnD,cAAyB,CAAf,aAAN,qBAAwB;AAC1B,kBAAO,QAAO;;AAEhB;;AAGE;AACJ,YAAW,aAAP,6BAAU;AACR,yBAAW,AAAK,uBAAkB,aAAP,eAAS;AACxC,cAAsB,CAAlB,AAAS,QAAD,GAAG,WAAU;AACQ,YAA/B,WAAW,WAAK,QAAQ,EAAE,IAAI;AACnB,YAAX,cAAO,aAAP,eAAU;;;AAGmB,QAAjC,aAAQ,eAAS,YAAO,QAAQ;AAChC,YAAU,aAAN,oBAA4B,AAAyB,aAAjB,iBAAW;AACnD,YAAyB,CAAf,aAAN,qBAAwB;AAC1B,gBAAO,QAAO;;;AAGkB,MAApC,aAAQ,eAAS;AACjB,UAAU,aAAN,oBAA4B,AAAyB,aAAjB,iBAAW;AACnD,UAAyB,CAAf,aAAN,qBAAwB,GAAG,MAAO;AACtC,YAAO,EAAC;IACV;;UAEmB;AAAU,8BAAU,WAAM,YAAO,aAAQ,KAAK;IAAC;;oCAzClD,MAAW,QAAa,OAAY;QAApC;QAAW;QAAa;QAAY;IAApC;IAAW;IAAa;IAAY;;EAAM;;;;;;;;;;;;;;;;;wCAkDvC,MAAU,OAAW,QAAY;QAAjC;QAAU;QAAW;QAAY;AACpD,UAAa,aAAN,KAAK;AACZ,QAAI,AAAM,KAAD;AACP,YAAO,0BAAkB,IAAI,EAAE,KAAK,EAAE,MAAM;;AAE9C,QAAI,AAAM,KAAD;AACH,oBAAU,oCAA6B,IAAI,EAAE,KAAK,EAAE,MAAM;AAC9D,UAAY,aAAR,OAAO,KAAI,GAAG,MAA4B;AAC9C;;AAE8D,IAAhE,WAAM,wBAAW,AAA8C,uBAAzB,AAAM,KAAD,iBAAe;EAC5D;wDAY6B,MAAU,OAAW;QAArB;QAAU;QAAW;AAI5C,gBAAQ;AACR,gBAAQ,MAAM;AAClB,WAAa,AAAI,aAAV,KAAK,IAAG,kBAAK,KAAK;AACnB,iBAAO,AAAK,IAAD,cAAkB,aAAN,KAAK,IAAG;AACnC,WAAI,AAAK,IAAD,GAAG,WAAU,OAAQ;AACzB,iBAAO,AAAK,IAAD,cAAkB,aAAN,KAAK,IAAG;AACnC,WAAI,AAAK,IAAD,GAAG,WAAU,OAAQ;AACzB,qBAAW,WAAK,IAAI,EAAE,IAAI;AAC9B,UAAI,QAAQ,QAA+B;AACjC,MAAV,QAAM,aAAN,KAAK,IAAI;AACC,MAAV,QAAM,CAAN,KAAK,GAAI;;AAEX,QAAI,AAAM,KAAD,KAAI;AACX,YAAyB;;AAEzB;;EAEJ;8EASwC,MAAU,OAAW;QAArB;QAAU;QAAW;AAGvD,gBAAQ,MAAM;AAClB,WAAa,aAAN,KAAK,iBAAG,KAAK;AACd,iBAAO,AAAK,IAAD,cAAc,QAAF,aAAE,KAAK,IAAP;AACvB,qBAAW;AACX;AACJ,WAAI,AAAK,IAAD,GAAG,WAAU;AACC,QAApB,WAAW,UAAI,IAAI;YACd,KAAU,aAAN,KAAK,iBAAG,KAAK,KAC2B,CAAT,CAArC,WAAW,AAAK,IAAD,cAAc,QAAF,aAAE,KAAK,IAAP,MAAY,WAAU;AACrB,QAA/B,WAAW,WAAK,QAAQ,EAAE,IAAI;;AAE9B;;AAEF,UAAI,AAAS,QAAD;AACV,cAAO,MAAK;;AAEd,UAAI,QAAQ,QAAoB;;AAElC,UAAO,EAAC;EACV;wEAMsC,MAAU,OAAW,KAAS;QAA9B;QAAU;QAAW;QAAS;AAClE,UAAO,AAAE,kBAAG,KAAK;AACjB,UAAa,aAAN,KAAK,kBAAI,KAAK;AACrB,UAAa,aAAN,KAAK,kBAAI,GAAG;AACnB,UAAW,aAAJ,GAAG,KAAI,AAAK,IAAD;AAQlB,QAAU,aAAN,KAAK,iBAAG,KAAK,KAAU,aAAN,KAAK,iBAAG,GAAG;AAE1B,iBAAO,AAAK,IAAD,cAAY,KAAK;AAC5B,qBAAW,AAAK,IAAD,cAAkB,aAAN,KAAK,IAAG;AACnC;AACJ,WAAI,AAAK,IAAD,GAAG,WAAU;AACC,QAApB,WAAW,UAAI,IAAI;YACd,KAAkB,CAAd,AAAK,IAAD,GAAG,WAAU;AAG1B,YAAU,AAAI,aAAV,KAAK,IAAG,kBAAK,GAAG,GAAE,MAAO;AACzB,uBAAW,AAAK,IAAD,cAAkB,aAAN,KAAK,IAAG;AACvC,aAAI,AAAS,QAAD,GAAG,WAAU,OAAQ,MAAO;AACT,QAA/B,WAAW,WAAK,IAAI,EAAE,QAAQ;;AAI9B,cAAyB,EAAlB,AAAS,QAAD,GAAG,WAAU;;AAE1B;AACJ,WAAI,AAAS,QAAD,GAAG,WAAU;AACE,QAAzB,YAAY,UAAI,QAAQ;AACd,QAAV,QAAM,aAAN,KAAK,IAAI;;AAGC,QAAV,QAAM,aAAN,KAAK,IAAI;AACT,YAAU,aAAN,KAAK,kBAAI,KAAK;AACZ,6BAAe,AAAK,IAAD,cAAY,KAAK;AACxC,eAAI,AAAa,YAAD,GAAG,WAAU;AAC3B,kBAAO;;AAE+B,UAAxC,YAAY,WAAK,YAAY,EAAE,QAAQ;;AAEvC,gBAAO;;;AAGP,kBAAQ,oBAA0B,QAAQ;AAG9C,YAAa,aAAN,KAAK;AACsB,MAAlC,QAAQ,eAAS,KAAK,EAAE,SAAS;AACjC,UAAU,aAAN,KAAK;AACqC,QAA5C,QAAQ,iBAAU,IAAI,EAAE,KAAK,EAAE,KAAK,EAAE,KAAK;;AAE7C,YAA4B,EAAf,aAAN,KAAK,WAAmB;;AAGjC,UAAO,AAAM,MAAD,IAAI,GAAG;EACrB;gDAIyB,MAAU,OAAW,KAAS;QAA9B;QAAU;QAAW;QAAS;AACrD,UAAO,AAAE,kBAAG,KAAK;AACjB,UAAa,aAAN,KAAK,kBAAI,KAAK;AACrB,UAAa,aAAN,KAAK,kBAAI,GAAG;AACnB,UAAW,aAAJ,GAAG,KAAI,AAAK,IAAD;AAClB,QAAI,AAAM,KAAD,IAAI,KAAK,IAAI,AAAM,KAAD,IAAI,GAAG,EAAE,MAAO,MAAK;AAC5C,sBAAc,KAAK;AACnB,mBAAW,AAAK,IAAD,cAAY,KAAK;AAChC;AACJ,SAAI,AAAS,QAAD,GAAG,WAAU;AACC,MAAxB,WAAW,UAAI,QAAQ;UAClB,KAAsB,CAAlB,AAAS,QAAD,GAAG,WAAU;AAC1B,uBAAmB,aAAN,KAAK,IAAG;AACzB,UAAI,AAAW,UAAD,gBAAG,GAAG;AACd,yBAAa,AAAK,IAAD,cAAY,UAAU;AAC3C,YAAwB,CAApB,AAAW,UAAD,GAAG,WAAU;AACY,UAArC,WAAW,WAAK,QAAQ,EAAE,UAAU;;;;AAIpC,qBAAW,AAAK,IAAD,cAAkB,aAAN,KAAK,IAAG;AACvC,UAAsB,CAAlB,AAAS,QAAD,GAAG,WAAU;AACY,QAAnC,WAAW,WAAK,QAAQ,EAAE,QAAQ;AAClB,QAAhB,cAAY,aAAZ,WAAW,IAAI;;;AAGnB,UAAO,AAEF,2BADG,IAAI,EAAE,WAAW,EAAE,KAAK,EAAE,oBAA0B,QAAQ;EAEtE;wCAKqB,MAAU,OAAW,KAAS;QAA9B;QAAU;QAAW;QAAS;AACjD,UAAO,AAAE,kBAAG,KAAK;AACjB,UAAa,aAAN,KAAK,kBAAI,KAAK;AACrB,UAAa,aAAN,KAAK,kBAAI,GAAG;AACnB,UAAW,aAAJ,GAAG,KAAI,AAAK,IAAD;AAClB,QAAI,AAAM,KAAD,IAAI,KAAK,IAAI,AAAM,KAAD,IAAI,GAAG,EAAE,MAAO,MAAK;AAC5C,sBAAoB,aAAN,KAAK,IAAG;AACtB,mBAAW,AAAK,IAAD,cAAY,WAAW;AACtC;AACJ,SAAI,AAAS,QAAD,GAAG,WAAU;AACK,MAA5B,eAAe,UAAI,QAAQ;UACtB,KAAsB,CAAlB,AAAS,QAAD,GAAG,WAAU;AAC1B,qBAAW,AAAK,IAAD,cAAY,KAAK;AACpC,UAAsB,CAAlB,AAAS,QAAD,GAAG,WAAU;AACb,QAAV,QAAM,aAAN,KAAK,IAAI;AACT,YAAI,AAAM,KAAD,IAAI,GAAG,EAAE,MAAO,IAAG;AACW,QAAvC,eAAe,WAAK,QAAQ,EAAE,QAAQ;;UAEnC,KAAI,AAAY,WAAD,gBAAG,KAAK;AACxB,4BAAkB,AAAY,WAAD,GAAG;AAChC,uBAAa,AAAK,IAAD,cAAY,eAAe;AAChD,UAAwB,CAApB,AAAW,UAAD,GAAG,WAAU;AACI,QAA7B,cAAc,eAAe;AACY,QAAzC,eAAe,WAAK,UAAU,EAAE,QAAQ;;;AAOxC;AACJ,QAAI,AAAa,YAAD;AACV,sBAAY,yBAAkB,IAAI,EAAE,KAAK,EAAE,WAAW;AAC1D,UAAI,SAAS;AACgB,QAA3B;;UAEG,KAAI,AAAa,YAAD,UAAmB,AAAa,YAAD;AAChD,oBAAU,oCAA6B,IAAI,EAAE,KAAK,EAAE,WAAW;AACnE,UAAY,aAAR,OAAO,KAAI;AAGU,QAFvB,QAAQ,AAAa,YAAD;;;AAKqB,MAA3C,QAAQ,gBAAsB,YAAY;;AAE5C,UAAO,AAAwC,uBAAjC,IAAI,EAAE,KAAK,EAAE,AAAK,IAAD,SAAS,KAAK;EAC/C","file":"../../../../../../../../../../packages/characters/src/grapheme_clusters/breaks.dart.lib.js"}');
   // Exports:
   return {
-    src__picture_stream: picture_stream
+    src__grapheme_clusters__breaks: breaks
   };
 }));
 
-//# sourceMappingURL=picture_stream.dart.lib.js.map
+//# sourceMappingURL=breaks.dart.lib.js.map
