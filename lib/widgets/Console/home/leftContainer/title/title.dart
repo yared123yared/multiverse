@@ -18,7 +18,7 @@ class CustomeTitle extends StatelessWidget {
         children: [
           Material(
             color: Colors.white,
-            elevation: 1.2,
+            elevation: 1,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10), topRight: Radius.circular(10)),
             child: Padding(

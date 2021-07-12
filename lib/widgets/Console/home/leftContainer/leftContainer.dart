@@ -16,7 +16,7 @@ class LeftContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
         color: Colors.white,
-        elevation: 1,
+        elevation: 1.1,
         borderRadius: BorderRadius.circular(10),
         child: Container(
             // padding: EdgeInsets.fromLTRB(13, 0, 13, 13),
