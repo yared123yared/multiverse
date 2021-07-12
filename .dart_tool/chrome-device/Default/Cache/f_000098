@@ -1,935 +1,1129 @@
-define(['dart_sdk', 'packages/flutter_svg/src/svg/xml_parsers.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter_svg/src/utilities/xml.dart', 'packages/flutter_svg/src/utilities/numbers.dart', 'packages/xml/src/xml_events/events/text.dart', 'packages/flutter_svg/src/svg/colors.dart', 'packages/flutter_svg/src/utilities/errors.dart', 'packages/path_drawing/src/parse_path.dart'], (function load__packages__flutter_svg__src__svg__parser_state_dart(dart_sdk, packages__flutter_svg__src__svg__xml_parsers$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter_svg__src__utilities__xml$46dart, packages__flutter_svg__src__utilities__numbers$46dart, packages__xml__src__xml_events__events__text$46dart, packages__flutter_svg__src__svg__colors$46dart, packages__flutter_svg__src__utilities__errors$46dart, packages__path_drawing__src__parse_path$46dart) {
+define(['dart_sdk', 'packages/carousel_slider/carousel_options.dart', 'packages/flutter/src/animation/curves.dart', 'packages/carousel_slider/utils.dart', 'packages/flutter/src/widgets/page_view.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/gestures/drag_details.dart', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/gestures/monodrag.dart'], (function load__packages__carousel_slider__carousel_controller_dart(dart_sdk, packages__carousel_slider__carousel_options$46dart, packages__flutter__src__animation__curves$46dart, packages__carousel_slider__utils$46dart, packages__flutter__src__widgets__page_view$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__gestures__drag_details$46dart, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__gestures__monodrag$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _js_helper = dart_sdk._js_helper;
-  const _interceptors = dart_sdk._interceptors;
-  const _internal = dart_sdk._internal;
   const async = dart_sdk.async;
-  const collection = dart_sdk.collection;
+  const _js_helper = dart_sdk._js_helper;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const vector_drawable = packages__flutter_svg__src__svg__xml_parsers$46dart.src__vector_drawable;
-  const xml_parsers = packages__flutter_svg__src__svg__xml_parsers$46dart.src__svg__xml_parsers;
-  const parsers = packages__flutter_svg__src__svg__xml_parsers$46dart.src__svg__parsers;
-  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const xml = packages__flutter_svg__src__utilities__xml$46dart.src__utilities__xml;
-  const numbers = packages__flutter_svg__src__utilities__numbers$46dart.src__utilities__numbers;
-  const end_element = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__end_element;
-  const start_element = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__start_element;
-  const cdata = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__cdata;
-  const text = packages__xml__src__xml_events__events__text$46dart.src__xml_events__events__text;
-  const event_attribute = packages__xml__src__xml_events__events__text$46dart.src__xml_events__utils__event_attribute;
-  const event = packages__xml__src__xml_events__events__text$46dart.src__xml_events__event;
-  const colors$ = packages__flutter_svg__src__svg__colors$46dart.src__svg__colors;
-  const errors = packages__flutter_svg__src__utilities__errors$46dart.src__utilities__errors;
-  const parse_path = packages__path_drawing__src__parse_path$46dart.src__parse_path;
-  var parser_state = Object.create(dart.library);
-  var $runtimeType = dartx.runtimeType;
-  var $add = dartx.add;
-  var $isEmpty = dartx.isEmpty;
-  var $addAll = dartx.addAll;
+  const carousel_options = packages__carousel_slider__carousel_options$46dart.carousel_options;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const utils = packages__carousel_slider__utils$46dart.utils;
+  const page_view = packages__flutter__src__widgets__page_view$46dart.src__widgets__page_view;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const routes = packages__flutter__src__widgets__widget_span$46dart.src__widgets__routes;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const notification_listener = packages__flutter__src__widgets__widget_span$46dart.src__widgets__notification_listener;
+  const scroll_notification = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_notification;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const page_storage = packages__flutter__src__widgets__widget_span$46dart.src__widgets__page_storage;
+  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const drag_details = packages__flutter__src__gestures__drag_details$46dart.src__gestures__drag_details;
+  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const monodrag = packages__flutter__src__gestures__monodrag$46dart.src__gestures__monodrag;
+  var carousel_controller = Object.create(dart.library);
+  var carousel_state = Object.create(dart.library);
+  var carousel_slider = Object.create(dart.library);
+  var $toInt = dartx.toInt;
+  var $length = dartx.length;
+  var $round = dartx.round;
   var $_get = dartx._get;
-  var $forEach = dartx.forEach;
-  var $last = dartx.last;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $trim = dartx.trim;
-  var $iterator = dartx.iterator;
+  var $toDouble = dartx.toDouble;
+  var $abs = dartx.abs;
+  var $clamp = dartx.clamp;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    DiagnosticsPropertyOfString: () => (T.DiagnosticsPropertyOfString = dart.constFn(diagnostics.DiagnosticsProperty$(core.String)))(),
-    SyncIterableOfDiagnosticsNode: () => (T.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
-    IterableOfDiagnosticsNode: () => (T.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
-    VoidToIterableOfDiagnosticsNode: () => (T.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T.IterableOfDiagnosticsNode(), [])))(),
-    JSArrayOfDrawable: () => (T.JSArrayOfDrawable = dart.constFn(_interceptors.JSArray$(vector_drawable.Drawable)))(),
-    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))(),
-    JSArrayOfColor: () => (T.JSArrayOfColor = dart.constFn(_interceptors.JSArray$(ui.Color)))(),
-    VoidTodouble: () => (T.VoidTodouble = dart.constFn(dart.fnType(core.double, [])))(),
-    doubleTodynamic: () => (T.doubleTodynamic = dart.constFn(dart.fnType(dart.dynamic, [core.double])))(),
-    JSArrayOfPath: () => (T.JSArrayOfPath = dart.constFn(_interceptors.JSArray$(ui.Path)))(),
-    DrawableN: () => (T.DrawableN = dart.constFn(dart.nullable(vector_drawable.Drawable)))(),
-    DrawableNTovoid: () => (T.DrawableNTovoid = dart.constFn(dart.fnType(dart.void, [T.DrawableN()])))(),
-    ListQueueOf_TextInfo: () => (T.ListQueueOf_TextInfo = dart.constFn(collection.ListQueue$(parser_state._TextInfo)))(),
-    StringTovoid: () => (T.StringTovoid = dart.constFn(dart.fnType(dart.void, [core.String])))(),
-    XmlStartElementEventTovoid: () => (T.XmlStartElementEventTovoid = dart.constFn(dart.fnType(dart.void, [start_element.XmlStartElementEvent])))(),
-    ListQueueOf_SvgGroupTuple: () => (T.ListQueueOf_SvgGroupTuple = dart.constFn(collection.ListQueue$(parser_state._SvgGroupTuple)))(),
-    JSArrayOfXmlEventAttribute: () => (T.JSArrayOfXmlEventAttribute = dart.constFn(_interceptors.JSArray$(event_attribute.XmlEventAttribute)))(),
-    SyncIterableOfXmlEvent: () => (T.SyncIterableOfXmlEvent = dart.constFn(_js_helper.SyncIterable$(event.XmlEvent)))(),
-    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    LinkedHashSetOfString: () => (T.LinkedHashSetOfString = dart.constFn(collection.LinkedHashSet$(core.String)))(),
-    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
-    FutureNOfvoid: () => (T.FutureNOfvoid = dart.constFn(dart.nullable(T.FutureOfvoid())))(),
-    SvgParserStateAndboolToFutureNOfvoid: () => (T.SvgParserStateAndboolToFutureNOfvoid = dart.constFn(dart.fnType(T.FutureNOfvoid(), [parser_state.SvgParserState, core.bool])))(),
-    SvgParserStateAndboolToFutureOfvoid: () => (T.SvgParserStateAndboolToFutureOfvoid = dart.constFn(dart.fnType(T.FutureOfvoid(), [parser_state.SvgParserState, core.bool])))(),
-    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
-    SvgParserStateL: () => (T.SvgParserStateL = dart.constFn(dart.legacy(parser_state.SvgParserState)))(),
+    CompleterOfNull: () => (T.CompleterOfNull = dart.constFn(async.Completer$(core.Null)))(),
+    CarouselControllerImplL: () => (T.CarouselControllerImplL = dart.constFn(dart.legacy(carousel_controller.CarouselControllerImpl)))(),
+    CarouselSliderL: () => (T.CarouselSliderL = dart.constFn(dart.legacy(carousel_slider.CarouselSlider)))(),
+    ObjectL: () => (T.ObjectL = dart.constFn(dart.legacy(core.Object)))(),
+    voidTovoid: () => (T.voidTovoid = dart.constFn(dart.fnType(dart.void, [dart.void])))(),
+    TimerL: () => (T.TimerL = dart.constFn(dart.legacy(async.Timer)))(),
+    TimerLToNull: () => (T.TimerLToNull = dart.constFn(dart.fnType(core.Null, [T.TimerL()])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    _MultipleGestureRecognizerL: () => (T._MultipleGestureRecognizerL = dart.constFn(dart.legacy(carousel_slider._MultipleGestureRecognizer)))(),
+    GestureRecognizerFactoryWithHandlersOf_MultipleGestureRecognizerL: () => (T.GestureRecognizerFactoryWithHandlersOf_MultipleGestureRecognizerL = dart.constFn(gesture_detector.GestureRecognizerFactoryWithHandlers$(T._MultipleGestureRecognizerL())))(),
+    VoidTo_MultipleGestureRecognizerL: () => (T.VoidTo_MultipleGestureRecognizerL = dart.constFn(dart.fnType(T._MultipleGestureRecognizerL(), [])))(),
+    DragStartDetailsL: () => (T.DragStartDetailsL = dart.constFn(dart.legacy(drag_details.DragStartDetails)))(),
+    DragStartDetailsLToNull: () => (T.DragStartDetailsLToNull = dart.constFn(dart.fnType(core.Null, [T.DragStartDetailsL()])))(),
+    DragDownDetailsL: () => (T.DragDownDetailsL = dart.constFn(dart.legacy(drag_details.DragDownDetails)))(),
+    DragDownDetailsLToNull: () => (T.DragDownDetailsLToNull = dart.constFn(dart.fnType(core.Null, [T.DragDownDetailsL()])))(),
+    DragEndDetailsL: () => (T.DragEndDetailsL = dart.constFn(dart.legacy(drag_details.DragEndDetails)))(),
+    DragEndDetailsLToNull: () => (T.DragEndDetailsLToNull = dart.constFn(dart.fnType(core.Null, [T.DragEndDetailsL()])))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    _MultipleGestureRecognizerLToNull: () => (T._MultipleGestureRecognizerLToNull = dart.constFn(dart.fnType(core.Null, [T._MultipleGestureRecognizerL()])))(),
+    TypeL: () => (T.TypeL = dart.constFn(dart.legacy(core.Type)))(),
+    GestureRecognizerL: () => (T.GestureRecognizerL = dart.constFn(dart.legacy(recognizer.GestureRecognizer)))(),
+    GestureRecognizerFactoryOfGestureRecognizerL: () => (T.GestureRecognizerFactoryOfGestureRecognizerL = dart.constFn(gesture_detector.GestureRecognizerFactory$(T.GestureRecognizerL())))(),
+    GestureRecognizerFactoryLOfGestureRecognizerL: () => (T.GestureRecognizerFactoryLOfGestureRecognizerL = dart.constFn(dart.legacy(T.GestureRecognizerFactoryOfGestureRecognizerL())))(),
+    LinkedMapOfTypeL$GestureRecognizerFactoryLOfGestureRecognizerL: () => (T.LinkedMapOfTypeL$GestureRecognizerFactoryLOfGestureRecognizerL = dart.constFn(_js_helper.LinkedMap$(T.TypeL(), T.GestureRecognizerFactoryLOfGestureRecognizerL())))(),
+    NotificationL: () => (T.NotificationL = dart.constFn(dart.legacy(notification_listener.Notification)))(),
+    NotificationListenerOfNotificationL: () => (T.NotificationListenerOfNotificationL = dart.constFn(notification_listener.NotificationListener$(T.NotificationL())))(),
+    ScrollUpdateNotificationL: () => (T.ScrollUpdateNotificationL = dart.constFn(dart.legacy(scroll_notification.ScrollUpdateNotification)))(),
     boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
-    SvgParserStateLAndboolLToFutureNOfvoid: () => (T.SvgParserStateLAndboolLToFutureNOfvoid = dart.constFn(dart.fnType(T.FutureNOfvoid(), [T.SvgParserStateL(), T.boolL()])))(),
-    SvgParserStateLAndboolLToLFutureNOfvoid: () => (T.SvgParserStateLAndboolLToLFutureNOfvoid = dart.constFn(dart.legacy(T.SvgParserStateLAndboolLToFutureNOfvoid())))(),
-    ListOfXmlEventAttribute: () => (T.ListOfXmlEventAttribute = dart.constFn(core.List$(event_attribute.XmlEventAttribute)))(),
-    ListNOfXmlEventAttribute: () => (T.ListNOfXmlEventAttribute = dart.constFn(dart.nullable(T.ListOfXmlEventAttribute())))(),
-    ListNOfXmlEventAttributeToPath: () => (T.ListNOfXmlEventAttributeToPath = dart.constFn(dart.fnType(ui.Path, [T.ListNOfXmlEventAttribute()])))(),
-    PathN: () => (T.PathN = dart.constFn(dart.nullable(ui.Path)))(),
-    ListNOfXmlEventAttributeToPathN: () => (T.ListNOfXmlEventAttributeToPathN = dart.constFn(dart.fnType(T.PathN(), [T.ListNOfXmlEventAttribute()])))(),
-    XmlEventAttributeL: () => (T.XmlEventAttributeL = dart.constFn(dart.legacy(event_attribute.XmlEventAttribute)))(),
-    ListOfXmlEventAttributeL: () => (T.ListOfXmlEventAttributeL = dart.constFn(core.List$(T.XmlEventAttributeL())))(),
-    ListNOfXmlEventAttributeL: () => (T.ListNOfXmlEventAttributeL = dart.constFn(dart.nullable(T.ListOfXmlEventAttributeL())))(),
-    ListNOfXmlEventAttributeLToPathN: () => (T.ListNOfXmlEventAttributeLToPathN = dart.constFn(dart.fnType(T.PathN(), [T.ListNOfXmlEventAttributeL()])))(),
-    ListNOfXmlEventAttributeLToLPathN: () => (T.ListNOfXmlEventAttributeLToLPathN = dart.constFn(dart.legacy(T.ListNOfXmlEventAttributeLToPathN())))()
+    dynamicToboolL: () => (T.dynamicToboolL = dart.constFn(dart.fnType(T.boolL(), [dart.dynamic])))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    intLToNull: () => (T.intLToNull = dart.constFn(dart.fnType(core.Null, [T.intL()])))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    BuildContextLAndWidgetLToWidgetL: () => (T.BuildContextLAndWidgetLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.WidgetL()])))(),
+    AnimatedBuilderL: () => (T.AnimatedBuilderL = dart.constFn(dart.legacy(transitions.AnimatedBuilder)))(),
+    BuildContextLAndintLToAnimatedBuilderL: () => (T.BuildContextLAndintLToAnimatedBuilderL = dart.constFn(dart.fnType(T.AnimatedBuilderL(), [T.BuildContextL(), T.intL()])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 300000
+      });
+    },
     get C1() {
-      return C[1] = dart.fn(parser_state._Elements.svg, T.SvgParserStateAndboolToFutureNOfvoid());
-    },
-    get C2() {
-      return C[2] = dart.fn(parser_state._Elements.g, T.SvgParserStateAndboolToFutureNOfvoid());
-    },
-    get C3() {
-      return C[3] = dart.fn(parser_state._Elements.use, T.SvgParserStateAndboolToFutureNOfvoid());
+      return C[1] = dart.const({
+        __proto__: curves._Linear.prototype
+      });
     },
     get C4() {
-      return C[4] = dart.fn(parser_state._Elements.symbol, T.SvgParserStateAndboolToFutureNOfvoid());
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 27,
+        [_Location_line]: 182,
+        [_Location_file]: null
+      });
     },
     get C5() {
-      return C[5] = dart.fn(parser_state._Elements.radialGradient, T.SvgParserStateAndboolToFutureNOfvoid());
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 58,
+        [_Location_line]: 182,
+        [_Location_file]: null
+      });
     },
-    get C6() {
-      return C[6] = dart.fn(parser_state._Elements.linearGradient, T.SvgParserStateAndboolToFutureNOfvoid());
+    get C3() {
+      return C[3] = dart.constList([C[4] || CT.C4, C[5] || CT.C5], T._LocationL());
     },
-    get C7() {
-      return C[7] = dart.fn(parser_state._Elements.clipPath, T.SvgParserStateAndboolToFutureNOfvoid());
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[3] || CT.C3,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 182,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
     },
     get C8() {
-      return C[8] = dart.fn(parser_state._Elements.image, T.SvgParserStateAndboolToFutureOfvoid());
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "aspectRatio",
+        [_Location_column]: 23,
+        [_Location_line]: 185,
+        [_Location_file]: null
+      });
     },
     get C9() {
-      return C[9] = dart.fn(parser_state._Elements.text, T.SvgParserStateAndboolToFutureOfvoid());
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 64,
+        [_Location_line]: 185,
+        [_Location_file]: null
+      });
     },
-    get C0() {
-      return C[0] = dart.constMap(T.StringL(), T.SvgParserStateLAndboolLToLFutureNOfvoid(), ["svg", C[1] || CT.C1, "g", C[2] || CT.C2, "a", C[2] || CT.C2, "use", C[3] || CT.C3, "symbol", C[4] || CT.C4, "mask", C[4] || CT.C4, "radialGradient", C[5] || CT.C5, "linearGradient", C[6] || CT.C6, "clipPath", C[7] || CT.C7, "image", C[8] || CT.C8, "text", C[9] || CT.C9]);
+    get C7() {
+      return C[7] = dart.constList([C[8] || CT.C8, C[9] || CT.C9], T._LocationL());
     },
-    get C11() {
-      return C[11] = dart.fn(parser_state._Paths.circle, T.ListNOfXmlEventAttributeToPath());
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[7] || CT.C7,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 185,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
     },
     get C12() {
-      return C[12] = dart.fn(parser_state._Paths.path, T.ListNOfXmlEventAttributeToPath());
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onNotification",
+        [_Location_column]: 9,
+        [_Location_line]: 209,
+        [_Location_file]: null
+      });
     },
     get C13() {
-      return C[13] = dart.fn(parser_state._Paths.rect, T.ListNOfXmlEventAttributeToPath());
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 216,
+        [_Location_file]: null
+      });
     },
-    get C14() {
-      return C[14] = dart.fn(parser_state._Paths.polygon, T.ListNOfXmlEventAttributeToPathN());
-    },
-    get C15() {
-      return C[15] = dart.fn(parser_state._Paths.polyline, T.ListNOfXmlEventAttributeToPathN());
-    },
-    get C16() {
-      return C[16] = dart.fn(parser_state._Paths.ellipse, T.ListNOfXmlEventAttributeToPath());
-    },
-    get C17() {
-      return C[17] = dart.fn(parser_state._Paths.line, T.ListNOfXmlEventAttributeToPath());
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13], T._LocationL());
     },
     get C10() {
-      return C[10] = dart.constMap(T.StringL(), T.ListNOfXmlEventAttributeLToLPathN(), ["circle", C[11] || CT.C11, "path", C[12] || CT.C12, "rect", C[13] || CT.C13, "polygon", C[14] || CT.C14, "polyline", C[15] || CT.C15, "ellipse", C[16] || CT.C16, "line", C[17] || CT.C17]);
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 208,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "gestures",
+        [_Location_column]: 7,
+        [_Location_line]: 189,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 208,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.constList([C[16] || CT.C16, C[17] || CT.C17], T._LocationL());
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[15] || CT.C15,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 188,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 224,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([C[20] || CT.C20], T._LocationL());
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 223,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 227,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.constList([C[23] || CT.C23], T._LocationL());
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[22] || CT.C22,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 227,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 23,
+        [_Location_line]: 233,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 37,
+        [_Location_line]: 233,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 51,
+        [_Location_line]: 233,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.constList([C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28], T._LocationL());
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[25] || CT.C25,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 233,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 26,
+        [_Location_line]: 237,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 40,
+        [_Location_line]: 237,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 54,
+        [_Location_line]: 237,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.constList([C[31] || CT.C31, C[32] || CT.C32, C[33] || CT.C33], T._LocationL());
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[30] || CT.C30,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 237,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scale",
+        [_Location_column]: 9,
+        [_Location_line]: 236,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 237,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.constList([C[36] || CT.C36, C[37] || CT.C37], T._LocationL());
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[35] || CT.C35,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 235,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.constList([], T._LocationL());
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[39] || CT.C39,
+        [_Location_name]: null,
+        [_Location_column]: 66,
+        [_Location_line]: 288,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 11,
+        [_Location_line]: 286,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 287,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 11,
+        [_Location_line]: 290,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.constList([C[42] || CT.C42, C[43] || CT.C43, C[44] || CT.C44], T._LocationL());
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[41] || CT.C41,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 285,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "physics",
+        [_Location_column]: 7,
+        [_Location_line]: 267,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 7,
+        [_Location_line]: 268,
+        [_Location_file]: null
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "pageSnapping",
+        [_Location_column]: 7,
+        [_Location_line]: 269,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 7,
+        [_Location_line]: 270,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "reverse",
+        [_Location_column]: 7,
+        [_Location_line]: 271,
+        [_Location_file]: null
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 7,
+        [_Location_line]: 272,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 7,
+        [_Location_line]: 273,
+        [_Location_file]: null
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPageChanged",
+        [_Location_column]: 7,
+        [_Location_line]: 274,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 7,
+        [_Location_line]: 281,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.constList([C[47] || CT.C47, C[48] || CT.C48, C[49] || CT.C49, C[50] || CT.C50, C[51] || CT.C51, C[52] || CT.C52, C[53] || CT.C53, C[54] || CT.C54, C[55] || CT.C55], T._LocationL());
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[46] || CT.C46,
+        [_Location_name]: null,
+        [_Location_column]: 39,
+        [_Location_line]: 266,
+        [_Location_file]: "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-3.0.0/lib/carousel_slider.dart"
+      });
     }
   }, false);
-  var C = Array(18).fill(void 0);
+  var C = Array(56).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/src/svg/parser_state.dart",
-    "package:flutter_svg/src/svg/parser_state.dart"
+    "package:carousel_slider/carousel_controller.dart",
+    "package:carousel_slider/carousel_state.dart",
+    "package:carousel_slider/carousel_slider.dart"
   ];
-  var style$ = dart.privateName(parser_state, "_TextInfo.style");
-  var offset$ = dart.privateName(parser_state, "_TextInfo.offset");
-  var transform$ = dart.privateName(parser_state, "_TextInfo.transform");
-  parser_state._TextInfo = class _TextInfo extends core.Object {
-    get style() {
-      return this[style$];
-    }
-    set style(value) {
-      super.style = value;
-    }
-    get offset() {
-      return this[offset$];
-    }
-    set offset(value) {
-      super.offset = value;
-    }
-    get transform() {
-      return this[transform$];
-    }
-    set transform(value) {
-      super.transform = value;
-    }
-    toString() {
-      return dart.str(this[$runtimeType]) + "{" + dart.str(this.offset) + ", " + dart.str(this.style) + ", " + dart.str(this.transform) + "}";
+  carousel_controller.CarouselController = class CarouselController extends core.Object {
+    static new() {
+      return new carousel_controller.CarouselControllerImpl.new();
     }
   };
-  (parser_state._TextInfo.new = function(style, offset, transform) {
-    if (style == null) dart.nullFailed(I[0], 65, 10, "style");
-    if (offset == null) dart.nullFailed(I[0], 66, 10, "offset");
-    this[style$] = style;
-    this[offset$] = offset;
-    this[transform$] = transform;
+  (carousel_controller.CarouselController[dart.mixinNew] = function() {
+  }).prototype = carousel_controller.CarouselController.prototype;
+  dart.addTypeTests(carousel_controller.CarouselController);
+  dart.addTypeCaches(carousel_controller.CarouselController);
+  dart.setLibraryUri(carousel_controller.CarouselController, I[0]);
+  var _readyCompleter = dart.privateName(carousel_controller, "_readyCompleter");
+  var _state = dart.privateName(carousel_controller, "_state");
+  var _setModeController = dart.privateName(carousel_controller, "_setModeController");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  carousel_controller.CarouselControllerImpl = class CarouselControllerImpl extends core.Object {
+    set state(state) {
+      this[_state] = state;
+      if (!dart.test(this[_readyCompleter].isCompleted)) {
+        this[_readyCompleter].complete();
+      }
+    }
+    [_setModeController]() {
+      let t1, t0;
+      t0 = this[_state];
+      t1 = carousel_options.CarouselPageChangedReason.controller;
+      return t0.changeMode(t1);
+    }
+    get ready() {
+      return this[_state] != null;
+    }
+    get onReady() {
+      return this[_readyCompleter].future;
+    }
+    nextPage(opts) {
+      let duration = opts && 'duration' in opts ? opts.duration : C[0] || CT.C0;
+      let curve = opts && 'curve' in opts ? opts.curve : C[1] || CT.C1;
+      return async.async(dart.void, (function* nextPage() {
+        let isNeedResetTimer = this[_state].options.pauseAutoPlayOnManualNavigate;
+        if (dart.test(isNeedResetTimer)) {
+          dart.dsend(this[_state], 'onResetTimer', []);
+        }
+        this[_setModeController]();
+        yield this[_state].pageController.nextPage({duration: duration, curve: curve});
+        if (dart.test(isNeedResetTimer)) {
+          dart.dsend(this[_state], 'onResumeTimer', []);
+        }
+      }).bind(this));
+    }
+    previousPage(opts) {
+      let duration = opts && 'duration' in opts ? opts.duration : C[0] || CT.C0;
+      let curve = opts && 'curve' in opts ? opts.curve : C[1] || CT.C1;
+      return async.async(dart.void, (function* previousPage() {
+        let isNeedResetTimer = this[_state].options.pauseAutoPlayOnManualNavigate;
+        if (dart.test(isNeedResetTimer)) {
+          dart.dsend(this[_state], 'onResetTimer', []);
+        }
+        this[_setModeController]();
+        yield this[_state].pageController.previousPage({duration: duration, curve: curve});
+        if (dart.test(isNeedResetTimer)) {
+          dart.dsend(this[_state], 'onResumeTimer', []);
+        }
+      }).bind(this));
+    }
+    jumpToPage(page) {
+      let index = utils.getRealIndex(this[_state].pageController.page[$toInt](), dart.notNull(this[_state].realPage) - dart.notNull(this[_state].initialPage), this[_state].itemCount);
+      this[_setModeController]();
+      let pageToJump = this[_state].pageController.page[$toInt]() + dart.notNull(page) - dart.notNull(index);
+      return this[_state].pageController.jumpToPage(pageToJump);
+    }
+    animateToPage(page, opts) {
+      let duration = opts && 'duration' in opts ? opts.duration : C[0] || CT.C0;
+      let curve = opts && 'curve' in opts ? opts.curve : C[1] || CT.C1;
+      return async.async(dart.void, (function* animateToPage() {
+        let isNeedResetTimer = this[_state].options.pauseAutoPlayOnManualNavigate;
+        if (dart.test(isNeedResetTimer)) {
+          dart.dsend(this[_state], 'onResetTimer', []);
+        }
+        let index = utils.getRealIndex(this[_state].pageController.page[$toInt](), dart.notNull(this[_state].realPage) - dart.notNull(this[_state].initialPage), this[_state].itemCount);
+        this[_setModeController]();
+        yield this[_state].pageController.animateToPage(this[_state].pageController.page[$toInt]() + dart.notNull(page) - dart.notNull(index), {duration: duration, curve: curve});
+        if (dart.test(isNeedResetTimer)) {
+          dart.dsend(this[_state], 'onResumeTimer', []);
+        }
+      }).bind(this));
+    }
+    startAutoPlay() {
+      dart.dsend(this[_state], 'onResumeTimer', []);
+    }
+    stopAutoPlay() {
+      dart.dsend(this[_state], 'onResetTimer', []);
+    }
+  };
+  (carousel_controller.CarouselControllerImpl.new = function() {
+    this[_readyCompleter] = T.CompleterOfNull().new();
+    this[_state] = null;
     ;
-  }).prototype = parser_state._TextInfo.prototype;
-  dart.addTypeTests(parser_state._TextInfo);
-  dart.addTypeCaches(parser_state._TextInfo);
-  dart.setLibraryUri(parser_state._TextInfo, I[1]);
-  dart.setFieldSignature(parser_state._TextInfo, () => ({
-    __proto__: dart.getFields(parser_state._TextInfo.__proto__),
-    style: dart.finalFieldType(vector_drawable.DrawableStyle),
-    offset: dart.finalFieldType(ui.Offset),
-    transform: dart.finalFieldType(dart.nullable(vector_math_64.Matrix4))
+  }).prototype = carousel_controller.CarouselControllerImpl.prototype;
+  dart.addTypeTests(carousel_controller.CarouselControllerImpl);
+  dart.addTypeCaches(carousel_controller.CarouselControllerImpl);
+  carousel_controller.CarouselControllerImpl[dart.implements] = () => [carousel_controller.CarouselController];
+  dart.setMethodSignature(carousel_controller.CarouselControllerImpl, () => ({
+    __proto__: dart.getMethods(carousel_controller.CarouselControllerImpl.__proto__),
+    [_setModeController]: dart.fnType(dart.void, []),
+    nextPage: dart.fnType(dart.legacy(async.Future$(dart.void)), [], {curve: dart.legacy(curves.Curve), duration: dart.legacy(core.Duration)}, {}),
+    previousPage: dart.fnType(dart.legacy(async.Future$(dart.void)), [], {curve: dart.legacy(curves.Curve), duration: dart.legacy(core.Duration)}, {}),
+    jumpToPage: dart.fnType(dart.void, [dart.legacy(core.int)]),
+    animateToPage: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.int)], {curve: dart.legacy(curves.Curve), duration: dart.legacy(core.Duration)}, {}),
+    startAutoPlay: dart.fnType(dart.void, []),
+    stopAutoPlay: dart.fnType(dart.void, [])
   }));
-  dart.defineExtensionMethods(parser_state._TextInfo, ['toString']);
-  var _root = dart.privateName(parser_state, "_root");
-  var _key$ = dart.privateName(parser_state, "_key");
-  var _parentDrawables = dart.privateName(parser_state, "_parentDrawables");
-  var _definitions = dart.privateName(parser_state, "_definitions");
-  var _currentStartElement = dart.privateName(parser_state, "_currentStartElement");
-  var _inDefs = dart.privateName(parser_state, "_inDefs");
-  var _readSubtree = dart.privateName(parser_state, "_readSubtree");
-  parser_state._Elements = class _Elements extends core.Object {
-    static svg(parserState, warningsAsErrors) {
-      if (parserState == null) dart.nullFailed(I[0], 79, 43, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 79, 61, "warningsAsErrors");
-      let viewBox = xml_parsers.parseViewBox(parserState.attributes);
-      let id = parserState.attribute("id", {def: ""});
-      if (parserState[_root] != null) {
-        let errorMessage = "Unsupported nested <svg> element.";
-        if (dart.test(warningsAsErrors)) {
-          dart.throw(new core.UnsupportedError.new(errorMessage));
+  dart.setGetterSignature(carousel_controller.CarouselControllerImpl, () => ({
+    __proto__: dart.getGetters(carousel_controller.CarouselControllerImpl.__proto__),
+    ready: dart.legacy(core.bool),
+    onReady: dart.legacy(async.Future$(core.Null))
+  }));
+  dart.setSetterSignature(carousel_controller.CarouselControllerImpl, () => ({
+    __proto__: dart.getSetters(carousel_controller.CarouselControllerImpl.__proto__),
+    state: dart.legacy(carousel_state.CarouselState)
+  }));
+  dart.setLibraryUri(carousel_controller.CarouselControllerImpl, I[0]);
+  dart.setFieldSignature(carousel_controller.CarouselControllerImpl, () => ({
+    __proto__: dart.getFields(carousel_controller.CarouselControllerImpl.__proto__),
+    [_readyCompleter]: dart.finalFieldType(dart.legacy(async.Completer$(core.Null))),
+    [_state]: dart.fieldType(dart.legacy(carousel_state.CarouselState))
+  }));
+  var options$ = dart.privateName(carousel_state, "CarouselState.options");
+  var pageController = dart.privateName(carousel_state, "CarouselState.pageController");
+  var realPage = dart.privateName(carousel_state, "CarouselState.realPage");
+  var initialPage = dart.privateName(carousel_state, "CarouselState.initialPage");
+  var itemCount = dart.privateName(carousel_state, "CarouselState.itemCount");
+  var onResetTimer$ = dart.privateName(carousel_state, "CarouselState.onResetTimer");
+  var onResumeTimer$ = dart.privateName(carousel_state, "CarouselState.onResumeTimer");
+  var changeMode$ = dart.privateName(carousel_state, "CarouselState.changeMode");
+  carousel_state.CarouselState = class CarouselState extends core.Object {
+    get options() {
+      return this[options$];
+    }
+    set options(value) {
+      this[options$] = value;
+    }
+    get pageController() {
+      return this[pageController];
+    }
+    set pageController(value) {
+      this[pageController] = value;
+    }
+    get realPage() {
+      return this[realPage];
+    }
+    set realPage(value) {
+      this[realPage] = value;
+    }
+    get initialPage() {
+      return this[initialPage];
+    }
+    set initialPage(value) {
+      this[initialPage] = value;
+    }
+    get itemCount() {
+      return this[itemCount];
+    }
+    set itemCount(value) {
+      this[itemCount] = value;
+    }
+    get onResetTimer() {
+      return this[onResetTimer$];
+    }
+    set onResetTimer(value) {
+      this[onResetTimer$] = value;
+    }
+    get onResumeTimer() {
+      return this[onResumeTimer$];
+    }
+    set onResumeTimer(value) {
+      this[onResumeTimer$] = value;
+    }
+    get changeMode() {
+      return this[changeMode$];
+    }
+    set changeMode(value) {
+      this[changeMode$] = value;
+    }
+  };
+  (carousel_state.CarouselState.new = function(options, onResetTimer, onResumeTimer, changeMode) {
+    this[pageController] = null;
+    this[realPage] = 10000;
+    this[initialPage] = 0;
+    this[itemCount] = null;
+    this[options$] = options;
+    this[onResetTimer$] = onResetTimer;
+    this[onResumeTimer$] = onResumeTimer;
+    this[changeMode$] = changeMode;
+    ;
+  }).prototype = carousel_state.CarouselState.prototype;
+  dart.addTypeTests(carousel_state.CarouselState);
+  dart.addTypeCaches(carousel_state.CarouselState);
+  dart.setLibraryUri(carousel_state.CarouselState, I[1]);
+  dart.setFieldSignature(carousel_state.CarouselState, () => ({
+    __proto__: dart.getFields(carousel_state.CarouselState.__proto__),
+    options: dart.fieldType(dart.legacy(carousel_options.CarouselOptions)),
+    pageController: dart.fieldType(dart.legacy(page_view.PageController)),
+    realPage: dart.fieldType(dart.legacy(core.int)),
+    initialPage: dart.fieldType(dart.legacy(core.int)),
+    itemCount: dart.fieldType(dart.legacy(core.int)),
+    onResetTimer: dart.fieldType(dart.legacy(core.Function)),
+    onResumeTimer: dart.fieldType(dart.legacy(core.Function)),
+    changeMode: dart.fieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(carousel_options.CarouselPageChangedReason)])))
+  }));
+  var options$0 = dart.privateName(carousel_slider, "CarouselSlider.options");
+  var items$ = dart.privateName(carousel_slider, "CarouselSlider.items");
+  var itemBuilder$ = dart.privateName(carousel_slider, "CarouselSlider.itemBuilder");
+  var itemCount$ = dart.privateName(carousel_slider, "CarouselSlider.itemCount");
+  var _carouselController = dart.privateName(carousel_slider, "_carouselController");
+  carousel_slider.CarouselSlider = class CarouselSlider extends framework.StatefulWidget {
+    get options() {
+      return this[options$0];
+    }
+    set options(value) {
+      super.options = value;
+    }
+    get items() {
+      return this[items$];
+    }
+    set items(value) {
+      super.items = value;
+    }
+    get itemBuilder() {
+      return this[itemBuilder$];
+    }
+    set itemBuilder(value) {
+      super.itemBuilder = value;
+    }
+    get itemCount() {
+      return this[itemCount$];
+    }
+    set itemCount(value) {
+      super.itemCount = value;
+    }
+    createState() {
+      return new carousel_slider.CarouselSliderState.new(this[_carouselController]);
+    }
+  };
+  (carousel_slider.CarouselSlider.new = function(opts) {
+    let t0;
+    let items = opts && 'items' in opts ? opts.items : null;
+    let options = opts && 'options' in opts ? opts.options : null;
+    let carouselController = opts && 'carouselController' in opts ? opts.carouselController : null;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[items$] = items;
+    this[options$0] = options;
+    this[itemBuilder$] = null;
+    this[itemCount$] = items != null ? items[$length] : 0;
+    this[_carouselController] = T.CarouselControllerImplL().as((t0 = carouselController, t0 == null ? carousel_controller.CarouselController.new() : t0));
+    carousel_slider.CarouselSlider.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = carousel_slider.CarouselSlider.prototype;
+  (carousel_slider.CarouselSlider.builder = function(opts) {
+    let t0;
+    let itemCount = opts && 'itemCount' in opts ? opts.itemCount : null;
+    let itemBuilder = opts && 'itemBuilder' in opts ? opts.itemBuilder : null;
+    let options = opts && 'options' in opts ? opts.options : null;
+    let carouselController = opts && 'carouselController' in opts ? opts.carouselController : null;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[itemCount$] = itemCount;
+    this[itemBuilder$] = itemBuilder;
+    this[options$0] = options;
+    this[items$] = null;
+    this[_carouselController] = T.CarouselControllerImplL().as((t0 = carouselController, t0 == null ? carousel_controller.CarouselController.new() : t0));
+    carousel_slider.CarouselSlider.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = carousel_slider.CarouselSlider.prototype;
+  dart.addTypeTests(carousel_slider.CarouselSlider);
+  dart.addTypeCaches(carousel_slider.CarouselSlider);
+  dart.setMethodSignature(carousel_slider.CarouselSlider, () => ({
+    __proto__: dart.getMethods(carousel_slider.CarouselSlider.__proto__),
+    createState: dart.fnType(dart.legacy(carousel_slider.CarouselSliderState), [])
+  }));
+  dart.setLibraryUri(carousel_slider.CarouselSlider, I[2]);
+  dart.setFieldSignature(carousel_slider.CarouselSlider, () => ({
+    __proto__: dart.getFields(carousel_slider.CarouselSlider.__proto__),
+    options: dart.finalFieldType(dart.legacy(carousel_options.CarouselOptions)),
+    items: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(framework.Widget)))),
+    itemBuilder: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(core.int), dart.legacy(core.int)]))),
+    [_carouselController]: dart.finalFieldType(dart.legacy(carousel_controller.CarouselControllerImpl)),
+    itemCount: dart.finalFieldType(dart.legacy(core.int))
+  }));
+  var carouselController$ = dart.privateName(carousel_slider, "CarouselSliderState.carouselController");
+  var timer = dart.privateName(carousel_slider, "CarouselSliderState.timer");
+  var carouselState = dart.privateName(carousel_slider, "CarouselSliderState.carouselState");
+  var pageController$ = dart.privateName(carousel_slider, "CarouselSliderState.pageController");
+  var mode = dart.privateName(carousel_slider, "CarouselSliderState.mode");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(dart.legacy(carousel_slider.CarouselSlider)) {};
+  (State_TickerProviderStateMixin$36.new = function() {
+    ticker_provider.TickerProviderStateMixin$(dart.legacy(carousel_slider.CarouselSlider))[dart.mixinNew].call(this);
+    State_TickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_TickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(dart.legacy(carousel_slider.CarouselSlider)));
+  carousel_slider.CarouselSliderState = class CarouselSliderState extends State_TickerProviderStateMixin$36 {
+    get carouselController() {
+      return this[carouselController$];
+    }
+    set carouselController(value) {
+      super.carouselController = value;
+    }
+    get timer() {
+      return this[timer];
+    }
+    set timer(value) {
+      this[timer] = value;
+    }
+    get carouselState() {
+      return this[carouselState];
+    }
+    set carouselState(value) {
+      this[carouselState] = value;
+    }
+    get pageController() {
+      return this[pageController$];
+    }
+    set pageController(value) {
+      this[pageController$] = value;
+    }
+    get mode() {
+      return this[mode];
+    }
+    set mode(value) {
+      this[mode] = value;
+    }
+    get options() {
+      let t0;
+      t0 = this.widget.options;
+      return t0 == null ? new carousel_options.CarouselOptions.new() : t0;
+    }
+    changeMode(_mode) {
+      this.mode = _mode;
+    }
+    didUpdateWidget(oldWidget) {
+      T.CarouselSliderL().as(oldWidget);
+      this.carouselState.options = this.options;
+      this.carouselState.itemCount = this.widget.itemCount;
+      this.pageController = new page_view.PageController.new({viewportFraction: this.options.viewportFraction, initialPage: this.carouselState.realPage});
+      this.carouselState.pageController = this.pageController;
+      this.handleAutoPlay();
+      super.didUpdateWidget(oldWidget);
+    }
+    initState() {
+      super.initState();
+      this.carouselState = new carousel_state.CarouselState.new(this.options, dart.bind(this, 'clearTimer'), dart.bind(this, 'resumeTimer'), dart.bind(this, 'changeMode'));
+      this.carouselState.itemCount = this.widget.itemCount;
+      this.carouselController.state = this.carouselState;
+      this.carouselState.initialPage = this.widget.options.initialPage;
+      this.carouselState.realPage = dart.test(this.options.enableInfiniteScroll) ? dart.notNull(this.carouselState.realPage) + dart.notNull(this.carouselState.initialPage) : this.carouselState.initialPage;
+      this.handleAutoPlay();
+      this.pageController = new page_view.PageController.new({viewportFraction: this.options.viewportFraction, initialPage: this.carouselState.realPage});
+      this.carouselState.pageController = this.pageController;
+    }
+    getTimer() {
+      return dart.test(this.widget.options.autoPlay) ? async.Timer.periodic(this.widget.options.autoPlayInterval, dart.fn(_ => {
+        let t0, t0$;
+        let route = routes.ModalRoute.of(T.ObjectL(), this.context);
+        if ((t0 = route, t0 == null ? null : t0.isCurrent) === false) {
+          return;
         }
-        assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnsupportedError.new(errorMessage), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
-            yield new assertions.ErrorDescription.new("The root <svg> element contained an unsupported nested SVG element.");
-            if (parserState[_key$] != null) {
-              yield new assertions.ErrorDescription.new("");
-              yield new (T.DiagnosticsPropertyOfString()).new("Picture key", parserState[_key$]);
-            }
-          }), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in _Element.svg")}));
-        parserState[_parentDrawables].addLast(new parser_state._SvgGroupTuple.new("svg", new vector_drawable.DrawableGroup.new(id, T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], dart.nullCheck(viewBox).viewBoxRect, null))));
-        return null;
-      }
-      parserState[_root] = new vector_drawable.DrawableRoot.new(id, dart.nullCheck(viewBox), T.JSArrayOfDrawable().of([]), parserState[_definitions], xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], viewBox.viewBoxRect, null));
-      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), parserState[_root]);
-      return null;
-    }
-    static g(parserState, warningsAsErrors) {
-      let t0;
-      if (parserState == null) dart.nullFailed(I[0], 137, 41, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 137, 59, "warningsAsErrors");
-      let parent = dart.nullCheck(parserState.currentGroup);
-      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, parent.style), {transform: (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? null : t0.storage)});
-      if (!dart.test(parserState[_inDefs])) {
-        dart.nullCheck(parent.children)[$add](group);
-      }
-      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), group);
-      return null;
-    }
-    static symbol(parserState, warningsAsErrors) {
-      let t0;
-      if (parserState == null) dart.nullFailed(I[0], 159, 22, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 159, 40, "warningsAsErrors");
-      let parent = dart.nullCheck(parserState.currentGroup);
-      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([]), xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], null, parent.style), {transform: (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? null : t0.storage)});
-      parserState.addGroup(dart.nullCheck(parserState[_currentStartElement]), group);
-      return null;
-    }
-    static use(parserState, warningsAsErrors) {
-      let t0;
-      if (parserState == null) dart.nullFailed(I[0], 177, 43, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 177, 61, "warningsAsErrors");
-      let parent = parserState.currentGroup;
-      let xlinkHref = dart.nullCheck(xml.getHrefAttribute(parserState.attributes));
-      if (xlinkHref[$isEmpty]) {
-        return null;
-      }
-      let style = xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, dart.nullCheck(parent).style);
-      let transform = (t0 = parsers.parseTransform(parserState.attribute("transform")), t0 == null ? vector_math_64.Matrix4.identity() : t0);
-      transform.translate(numbers.parseDouble(parserState.attribute("x", {def: "0"})), dart.nullCheck(numbers.parseDouble(parserState.attribute("y", {def: "0"}))));
-      let ref = dart.nullCheck(parserState[_definitions].getDrawable("url(" + xlinkHref + ")"));
-      let group = new vector_drawable.DrawableGroup.new(parserState.attribute("id", {def: ""}), T.JSArrayOfDrawable().of([ref.mergeStyle(style)]), style, {transform: transform.storage});
-      let isIri = parserState.checkForIri(group);
-      if (!dart.test(parserState[_inDefs]) || !dart.test(isIri)) {
-        dart.nullCheck(parent.children)[$add](group);
-      }
-      return null;
-    }
-    static parseStops(parserState, colors, offsets) {
-      let t0;
-      if (parserState == null) dart.nullFailed(I[0], 217, 20, "parserState");
-      if (colors == null) dart.nullFailed(I[0], 218, 17, "colors");
-      if (offsets == null) dart.nullFailed(I[0], 219, 18, "offsets");
-      for (let event of parserState[_readSubtree]()) {
-        if (end_element.XmlEndElementEvent.is(event)) {
-          continue;
-        }
-        if (start_element.XmlStartElementEvent.is(event)) {
-          let rawOpacity = xml.getAttribute(parserState.attributes, "stop-opacity", {def: "1"});
-          let stopColor = (t0 = colors$.parseColor(xml.getAttribute(parserState.attributes, "stop-color")), t0 == null ? colors$.colorBlack : t0);
-          colors[$add](stopColor.withOpacity(dart.nullCheck(numbers.parseDouble(rawOpacity))));
-          let rawOffset = dart.nullCheck(xml.getAttribute(parserState.attributes, "offset", {def: "0%"}));
-          offsets[$add](parsers.parseDecimalOrPercentage(rawOffset));
-        }
-      }
-      return null;
-    }
-    static radialGradient(parserState, warningsAsErrors) {
-      let t25;
-      if (parserState == null) dart.nullFailed(I[0], 248, 20, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 249, 10, "warningsAsErrors");
-      let gradientUnits = xml.getAttribute(parserState.attributes, "gradientUnits", {def: null});
-      let isObjectBoundingBox = gradientUnits !== "userSpaceOnUse";
-      let rawCx = parserState.attribute("cx", {def: "50%"});
-      let rawCy = parserState.attribute("cy", {def: "50%"});
-      let rawR = parserState.attribute("r", {def: "50%"});
-      let rawFx = parserState.attribute("fx", {def: rawCx});
-      let rawFy = parserState.attribute("fy", {def: rawCy});
-      let spreadMethod = xml_parsers.parseTileMode(parserState.attributes);
-      let id = xml_parsers.buildUrlIri(parserState.attributes);
-      let originalTransform = parsers.parseTransform(parserState.attribute("gradientTransform", {def: null}));
-      let offsets = T.JSArrayOfdouble().of([]);
-      let colors = T.JSArrayOfColor().of([]);
-      if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
-        let href = xml.getHrefAttribute(parserState.attributes);
-        let ref = parserState[_definitions].getGradient(vector_drawable.DrawableGradient, "url(" + dart.str(href) + ")");
-        if (ref == null) {
-          errors.reportMissingDef(parserState[_key$], href, "radialGradient");
-        } else {
-          if (gradientUnits == null) {
-            isObjectBoundingBox = ref.unitMode == vector_drawable.GradientUnitMode.objectBoundingBox;
+        let previousReason = this.mode;
+        this.changeMode(carousel_options.CarouselPageChangedReason.timed);
+        let nextPage = this.carouselState.pageController.page[$round]() + 1;
+        let itemCount = (t0$ = this.widget.itemCount, t0$ == null ? this.widget.items[$length] : t0$);
+        if (nextPage >= dart.notNull(itemCount) && this.widget.options.enableInfiniteScroll === false) {
+          if (dart.test(this.widget.options.pauseAutoPlayInFiniteScroll)) {
+            this.clearTimer();
+            return;
           }
-          colors[$addAll](dart.nullCheck(ref.colors));
-          offsets[$addAll](dart.nullCheck(ref.offsets));
+          nextPage = 0;
         }
-      } else {
-        parser_state._Elements.parseStops(parserState, colors, offsets);
-      }
-      let cx = null;
-      let cx$35isSet = false;
-      function cx$35get() {
-        return cx$35isSet ? cx : dart.throw(new _internal.LateError.localNI("cx"));
-      }
-      dart.fn(cx$35get, T.VoidTodouble());
-      function cx$35set(t3) {
-        if (t3 == null) dart.nullFailed(I[0], 290, 17, "null");
-        cx$35isSet = true;
-        return cx = t3;
-      }
-      dart.fn(cx$35set, T.doubleTodynamic());
-      let cy = null;
-      let cy$35isSet = false;
-      function cy$35get() {
-        return cy$35isSet ? cy : dart.throw(new _internal.LateError.localNI("cy"));
-      }
-      dart.fn(cy$35get, T.VoidTodouble());
-      function cy$35set(t8) {
-        if (t8 == null) dart.nullFailed(I[0], 290, 21, "null");
-        cy$35isSet = true;
-        return cy = t8;
-      }
-      dart.fn(cy$35set, T.doubleTodynamic());
-      let r = null;
-      let r$35isSet = false;
-      function r$35get() {
-        return r$35isSet ? r : dart.throw(new _internal.LateError.localNI("r"));
-      }
-      dart.fn(r$35get, T.VoidTodouble());
-      function r$35set(t13) {
-        if (t13 == null) dart.nullFailed(I[0], 290, 25, "null");
-        r$35isSet = true;
-        return r = t13;
-      }
-      dart.fn(r$35set, T.doubleTodynamic());
-      let fx = null;
-      let fx$35isSet = false;
-      function fx$35get() {
-        return fx$35isSet ? fx : dart.throw(new _internal.LateError.localNI("fx"));
-      }
-      dart.fn(fx$35get, T.VoidTodouble());
-      function fx$35set(t18) {
-        if (t18 == null) dart.nullFailed(I[0], 290, 28, "null");
-        fx$35isSet = true;
-        return fx = t18;
-      }
-      dart.fn(fx$35set, T.doubleTodynamic());
-      let fy = null;
-      let fy$35isSet = false;
-      function fy$35get() {
-        return fy$35isSet ? fy : dart.throw(new _internal.LateError.localNI("fy"));
-      }
-      dart.fn(fy$35get, T.VoidTodouble());
-      function fy$35set(t23) {
-        if (t23 == null) dart.nullFailed(I[0], 290, 32, "null");
-        fy$35isSet = true;
-        return fy = t23;
-      }
-      dart.fn(fy$35set, T.doubleTodynamic());
-      if (isObjectBoundingBox) {
-        cx$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawCx)));
-        cy$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawCy)));
-        r$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawR)));
-        fx$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawFx)));
-        fy$35set(parsers.parseDecimalOrPercentage(dart.nullCheck(rawFy)));
-      } else {
-        cx$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawCx))) ? dart.notNull(parsers.parsePercentage(rawCx)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(rawCx)));
-        cy$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawCy))) ? dart.notNull(parsers.parsePercentage(rawCy)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(rawCy)));
-        r$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawR))) ? dart.notNull(parsers.parsePercentage(rawR)) * ((dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.width)) / 2) : dart.nullCheck(numbers.parseDouble(rawR)));
-        fx$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawFx))) ? dart.notNull(parsers.parsePercentage(rawFx)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(rawFx)));
-        fy$35set(dart.test(parsers.isPercentage(dart.nullCheck(rawFy))) ? dart.notNull(parsers.parsePercentage(rawFy)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(rawFy)));
-      }
-      parserState[_definitions].addGradient(id, new vector_drawable.DrawableRadialGradient.new({center: new ui.Offset.new(cx$35get(), cy$35get()), radius: r$35get(), focal: fx$35get() != cx$35get() || fy$35get() != cy$35get() ? new ui.Offset.new(fx$35get(), fy$35get()) : new ui.Offset.new(cx$35get(), cy$35get()), focalRadius: 0.0, colors: colors, offsets: offsets, unitMode: isObjectBoundingBox ? vector_drawable.GradientUnitMode.objectBoundingBox : vector_drawable.GradientUnitMode.userSpaceOnUse, spreadMethod: spreadMethod, transform: (t25 = originalTransform, t25 == null ? null : t25.storage)}));
-      return null;
+        this.carouselState.pageController.animateToPage(nextPage, {duration: this.widget.options.autoPlayAnimationDuration, curve: this.widget.options.autoPlayCurve}).then(dart.void, dart.fn(_ => this.changeMode(previousReason), T.voidTovoid()));
+      }, T.TimerLToNull())) : null;
     }
-    static linearGradient(parserState, warningsAsErrors) {
-      let t25;
-      if (parserState == null) dart.nullFailed(I[0], 341, 22, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 341, 40, "warningsAsErrors");
-      let gradientUnits = xml.getAttribute(parserState.attributes, "gradientUnits", {def: null});
-      let isObjectBoundingBox = gradientUnits !== "userSpaceOnUse";
-      let x1 = parserState.attribute("x1", {def: "0%"});
-      let x2 = parserState.attribute("x2", {def: "100%"});
-      let y1 = parserState.attribute("y1", {def: "0%"});
-      let y2 = parserState.attribute("y2", {def: "0%"});
-      let id = xml_parsers.buildUrlIri(parserState.attributes);
-      let originalTransform = parsers.parseTransform(parserState.attribute("gradientTransform", {def: null}));
-      let spreadMethod = xml_parsers.parseTileMode(parserState.attributes);
-      let colors = T.JSArrayOfColor().of([]);
-      let offsets = T.JSArrayOfdouble().of([]);
-      if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
-        let href = xml.getHrefAttribute(parserState.attributes);
-        let ref = parserState[_definitions].getGradient(vector_drawable.DrawableGradient, "url(" + dart.str(href) + ")");
-        if (ref == null) {
-          errors.reportMissingDef(parserState[_key$], href, "linearGradient");
-        } else {
-          if (gradientUnits == null) {
-            isObjectBoundingBox = ref.unitMode == vector_drawable.GradientUnitMode.objectBoundingBox;
+    clearTimer() {
+      let t0;
+      if (this.timer != null) {
+        t0 = this.timer;
+        t0 == null ? null : t0.cancel();
+        this.timer = null;
+      }
+    }
+    resumeTimer() {
+      if (this.timer == null) {
+        this.timer = this.getTimer();
+      }
+    }
+    handleAutoPlay() {
+      let autoPlayEnabled = this.widget.options.autoPlay;
+      if (dart.test(autoPlayEnabled) && this.timer != null) return;
+      this.clearTimer();
+      if (dart.test(autoPlayEnabled)) {
+        this.resumeTimer();
+      }
+    }
+    getGestureWrapper(child) {
+      let wrapper = null;
+      if (this.widget.options.height != null) {
+        wrapper = new container.Container.new({height: this.widget.options.height, child: child, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+      } else {
+        wrapper = new basic.AspectRatio.new({aspectRatio: this.widget.options.aspectRatio, child: child, $creationLocationd_0dea112b090073317d4: C[6] || CT.C6});
+      }
+      return new gesture_detector.RawGestureDetector.new({gestures: new (T.LinkedMapOfTypeL$GestureRecognizerFactoryLOfGestureRecognizerL()).from([dart.wrapType(carousel_slider._MultipleGestureRecognizer), new (T.GestureRecognizerFactoryWithHandlersOf_MultipleGestureRecognizerL()).new(dart.fn(() => new carousel_slider._MultipleGestureRecognizer.new(), T.VoidTo_MultipleGestureRecognizerL()), dart.fn(instance => {
+            instance.onStart = dart.fn(_ => {
+              this.onStart();
+            }, T.DragStartDetailsLToNull());
+            instance.onDown = dart.fn(_ => {
+              this.onPanDown();
+            }, T.DragDownDetailsLToNull());
+            instance.onEnd = dart.fn(_ => {
+              this.onPanUp();
+            }, T.DragEndDetailsLToNull());
+            instance.onCancel = dart.fn(() => {
+              this.onPanUp();
+            }, T.VoidToNull());
+          }, T._MultipleGestureRecognizerLToNull()))]), child: new (T.NotificationListenerOfNotificationL()).new({onNotification: dart.fn(notification => {
+            let t1, t0;
+            if (this.widget.options.onScrolled != null && T.ScrollUpdateNotificationL().is(notification)) {
+              t0 = this.widget.options;
+              t1 = this.carouselState.pageController.page;
+              t0.onScrolled(t1);
+            }
+            return false;
+          }, T.dynamicToboolL()), child: wrapper, $creationLocationd_0dea112b090073317d4: C[10] || CT.C10}), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14});
+    }
+    getCenterWrapper(child) {
+      if (dart.test(this.widget.options.disableCenter)) {
+        return new container.Container.new({child: child, $creationLocationd_0dea112b090073317d4: C[18] || CT.C18});
+      }
+      return new basic.Center.new({child: child, $creationLocationd_0dea112b090073317d4: C[21] || CT.C21});
+    }
+    getEnlargeWrapper(child, opts) {
+      let width = opts && 'width' in opts ? opts.width : null;
+      let height = opts && 'height' in opts ? opts.height : null;
+      let scale = opts && 'scale' in opts ? opts.scale : null;
+      if (this.widget.options.enlargeStrategy == carousel_options.CenterPageEnlargeStrategy.height) {
+        return new basic.SizedBox.new({child: child, width: width, height: height, $creationLocationd_0dea112b090073317d4: C[24] || CT.C24});
+      }
+      return new basic.Transform.scale({scale: scale, child: new container.Container.new({child: child, width: width, height: height, $creationLocationd_0dea112b090073317d4: C[29] || CT.C29}), $creationLocationd_0dea112b090073317d4: C[34] || CT.C34});
+    }
+    onStart() {
+      this.changeMode(carousel_options.CarouselPageChangedReason.manual);
+    }
+    onPanDown() {
+      if (dart.test(this.widget.options.pauseAutoPlayOnTouch)) {
+        this.clearTimer();
+      }
+      this.changeMode(carousel_options.CarouselPageChangedReason.manual);
+    }
+    onPanUp() {
+      if (dart.test(this.widget.options.pauseAutoPlayOnTouch)) {
+        this.resumeTimer();
+      }
+    }
+    dispose() {
+      super.dispose();
+      this.clearTimer();
+    }
+    build(context) {
+      return this.getGestureWrapper(new page_view.PageView.builder({physics: this.widget.options.scrollPhysics, scrollDirection: this.widget.options.scrollDirection, pageSnapping: this.widget.options.pageSnapping, controller: this.carouselState.pageController, reverse: this.widget.options.reverse, itemCount: dart.test(this.widget.options.enableInfiniteScroll) ? null : this.widget.itemCount, key: this.widget.options.pageViewKey, onPageChanged: dart.fn(index => {
+          let t2, t1, t0;
+          let currentPage = utils.getRealIndex(dart.notNull(index) + dart.notNull(this.carouselState.initialPage), this.carouselState.realPage, this.widget.itemCount);
+          if (this.widget.options.onPageChanged != null) {
+            t0 = this.widget.options;
+            t1 = currentPage;
+            t2 = this.mode;
+            t0.onPageChanged(t1, t2);
           }
-          colors[$addAll](dart.nullCheck(ref.colors));
-          offsets[$addAll](dart.nullCheck(ref.offsets));
-        }
-      } else {
-        parser_state._Elements.parseStops(parserState, colors, offsets);
-      }
-      let fromOffset = null;
-      let toOffset = null;
-      if (isObjectBoundingBox) {
-        fromOffset = new ui.Offset.new(parsers.parseDecimalOrPercentage(dart.nullCheck(x1)), parsers.parseDecimalOrPercentage(dart.nullCheck(y1)));
-        toOffset = new ui.Offset.new(parsers.parseDecimalOrPercentage(dart.nullCheck(x2)), parsers.parseDecimalOrPercentage(dart.nullCheck(y2)));
-      } else {
-        fromOffset = new ui.Offset.new(dart.test(parsers.isPercentage(dart.nullCheck(x1))) ? dart.notNull(parsers.parsePercentage(x1)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(x1)), dart.test(parsers.isPercentage(dart.nullCheck(y1))) ? dart.notNull(parsers.parsePercentage(y1)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(y1)));
-        toOffset = new ui.Offset.new(dart.test(parsers.isPercentage(dart.nullCheck(x2))) ? dart.notNull(parsers.parsePercentage(x2)) * dart.notNull(parserState.rootBounds.width) + dart.notNull(parserState.rootBounds.left) : dart.nullCheck(numbers.parseDouble(x2)), dart.test(parsers.isPercentage(dart.nullCheck(y2))) ? dart.notNull(parsers.parsePercentage(y2)) * dart.notNull(parserState.rootBounds.height) + dart.notNull(parserState.rootBounds.top) : dart.nullCheck(numbers.parseDouble(y2)));
-      }
-      parserState[_definitions].addGradient(id, new vector_drawable.DrawableLinearGradient.new({from: fromOffset, to: toOffset, colors: colors, offsets: offsets, spreadMethod: spreadMethod, unitMode: isObjectBoundingBox ? vector_drawable.GradientUnitMode.objectBoundingBox : vector_drawable.GradientUnitMode.userSpaceOnUse, transform: (t25 = originalTransform, t25 == null ? null : t25.storage)}));
-      return null;
-    }
-    static clipPath(parserState, warningsAsErrors) {
-      if (parserState == null) dart.nullFailed(I[0], 432, 22, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 432, 40, "warningsAsErrors");
-      let id = xml_parsers.buildUrlIri(parserState.attributes);
-      let paths = T.JSArrayOfPath().of([]);
-      let currentPath = null;
-      for (let event of parserState[_readSubtree]()) {
-        if (end_element.XmlEndElementEvent.is(event)) {
-          continue;
-        }
-        if (start_element.XmlStartElementEvent.is(event)) {
-          let pathFn = parser_state._svgPathFuncs[$_get](event.name);
-          if (pathFn != null) {
-            let nextPath = dart.nullCheck(xml_parsers.applyTransformIfNeeded(pathFn(parserState.attributes), parserState.attributes));
-            nextPath.fillType = dart.nullCheck(xml_parsers.parseFillRule(parserState.attributes, "clip-rule"));
-            if (currentPath != null && nextPath.fillType != currentPath.fillType) {
-              currentPath = nextPath;
-              paths[$add](currentPath);
-            } else if (currentPath == null) {
-              currentPath = nextPath;
-              paths[$add](currentPath);
-            } else {
-              currentPath.addPath(nextPath, ui.Offset.zero);
-            }
-          } else if (event.name === "use") {
-            let xlinkHref = xml.getHrefAttribute(parserState.attributes);
-            let definitionDrawable = parserState[_definitions].getDrawable("url(" + dart.str(xlinkHref) + ")");
-            function extractPathsFromDrawable(target) {
-              if (vector_drawable.DrawableShape.is(target)) {
-                paths[$add](target.path);
-              } else if (vector_drawable.DrawableGroup.is(target)) {
-                dart.nullCheck(target.children)[$forEach](extractPathsFromDrawable);
-              }
-            }
-            dart.fn(extractPathsFromDrawable, T.DrawableNTovoid());
-            extractPathsFromDrawable(definitionDrawable);
-          } else {
-            let errorMessage = "Unsupported clipPath child " + dart.str(event.name);
-            if (dart.test(warningsAsErrors)) {
-              dart.throw(new core.UnsupportedError.new(errorMessage));
-            }
-            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnsupportedError.new(errorMessage), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
-                yield new assertions.ErrorDescription.new("The <clipPath> element contained an unsupported child " + dart.str(event.name));
-                if (parserState[_key$] != null) {
-                  yield new assertions.ErrorDescription.new("");
-                  yield new (T.DiagnosticsPropertyOfString()).new("Picture key", parserState[_key$]);
+        }, T.intLToNull()), itemBuilder: dart.fn((context, idx) => {
+          let t3, t2, t1, t0;
+          let index = utils.getRealIndex(dart.notNull(idx) + dart.notNull(this.carouselState.initialPage), this.carouselState.realPage, this.widget.itemCount);
+          return new transitions.AnimatedBuilder.new({animation: this.carouselState.pageController, child: this.widget.items != null ? dart.notNull(this.widget.items[$length]) > 0 ? this.widget.items[$_get](index) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[38] || CT.C38}) : (t0 = this.widget, t1 = context, t2 = index, t3 = idx, t0.itemBuilder(t1, t2, t3)), builder: dart.fn((context, child) => {
+              let t1, t1$;
+              let distortionValue = 1.0;
+              if (this.widget.options.enlargeCenterPage != null && this.widget.options.enlargeCenterPage === true) {
+                let itemOffset = null;
+                try {
+                  itemOffset = dart.notNull(this.carouselState.pageController.page) - dart.notNull(idx);
+                } catch (e$) {
+                  let e = dart.getThrown(e$);
+                  let storageContext = this.carouselState.pageController.position.context.storageContext;
+                  let previousSavedPosition = T.doubleL().as((t1 = page_storage.PageStorage.of(storageContext), t1 == null ? null : t1.readState(storageContext)));
+                  if (previousSavedPosition != null) {
+                    itemOffset = dart.notNull(previousSavedPosition) - idx[$toDouble]();
+                  } else {
+                    itemOffset = this.carouselState.realPage[$toDouble]() - idx[$toDouble]();
+                  }
                 }
-              }), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in _Element.clipPath")}));
-          }
-        }
-      }
-      parserState[_definitions].addClipPath(id, paths);
-      return null;
-    }
-    static image(parserState, warningsAsErrors) {
-      if (parserState == null) dart.nullFailed(I[0], 503, 22, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 503, 40, "warningsAsErrors");
-      return async.async(dart.void, function* image() {
-        let t25;
-        let href = xml.getHrefAttribute(parserState.attributes);
-        if (href == null) {
-          return;
-        }
-        let offset = new ui.Offset.new(dart.nullCheck(numbers.parseDouble(parserState.attribute("x", {def: "0"}))), dart.nullCheck(numbers.parseDouble(parserState.attribute("y", {def: "0"}))));
-        let size = new ui.Size.new(dart.nullCheck(numbers.parseDouble(parserState.attribute("width", {def: "0"}))), dart.nullCheck(numbers.parseDouble(parserState.attribute("height", {def: "0"}))));
-        let image = (yield parsers.resolveImage(href));
-        let parent = dart.nullCheck(parserState[_parentDrawables][$last].drawable);
-        let parentStyle = parent.style;
-        let drawable = new vector_drawable.DrawableRasterImage.new(parserState.attribute("id", {def: ""}), image, offset, xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, parentStyle), {size: size, transform: (t25 = parsers.parseTransform(parserState.attribute("transform")), t25 == null ? null : t25.storage)});
-        let isIri = parserState.checkForIri(drawable);
-        if (!dart.test(parserState[_inDefs]) || !dart.test(isIri)) {
-          dart.nullCheck(dart.nullCheck(parserState.currentGroup).children)[$add](drawable);
-        }
-      });
-    }
-    static text(parserState, warningsAsErrors) {
-      if (parserState == null) dart.nullFailed(I[0], 540, 22, "parserState");
-      if (warningsAsErrors == null) dart.nullFailed(I[0], 540, 40, "warningsAsErrors");
-      return async.async(dart.void, function* text$() {
-        if (!(parserState != null)) dart.assertFailed(null, I[0], 541, 12, "parserState != null");
-        if (!(parserState.currentGroup != null)) dart.assertFailed(null, I[0], 542, 12, "parserState.currentGroup != null");
-        if (dart.test(dart.nullCheck(parserState[_currentStartElement]).isSelfClosing)) {
-          return;
-        }
-        let textInfos = new (T.ListQueueOf_TextInfo()).new();
-        let lastTextWidth = 0.0;
-        function _processText(value) {
-          let t25, t25$;
-          if (value == null) dart.nullFailed(I[0], 554, 30, "value");
-          if (value[$isEmpty]) {
-            return;
-          }
-          if (!dart.test(textInfos[$isNotEmpty])) dart.assertFailed(null, I[0], 558, 14, "textInfos.isNotEmpty");
-          let lastTextInfo = textInfos[$last];
-          let fill = parsers.createParagraph(value, lastTextInfo.style, lastTextInfo.style.fill);
-          let stroke = parsers.createParagraph(value, lastTextInfo.style, dart.test(vector_drawable.DrawablePaint.isEmpty(lastTextInfo.style.stroke)) ? parsers.transparentStroke : lastTextInfo.style.stroke);
-          dart.nullCheck(dart.nullCheck(parserState.currentGroup).children)[$add](new vector_drawable.DrawableText.new(parserState.attribute("id", {def: ""}), fill, stroke, lastTextInfo.offset, (t25 = dart.nullCheck(lastTextInfo.style.textStyle).anchor, t25 == null ? vector_drawable.DrawableTextAnchorPosition.start : t25), {transform: (t25$ = lastTextInfo.transform, t25$ == null ? null : t25$.storage)}));
-          lastTextWidth = fill.maxIntrinsicWidth;
-        }
-        dart.fn(_processText, T.StringTovoid());
-        function _processStartElement(event) {
-          let t25, t25$, t25$0, t25$1;
-          if (event == null) dart.nullFailed(I[0], 586, 52, "event");
-          let lastTextInfo = null;
-          if (dart.test(textInfos[$isNotEmpty])) {
-            lastTextInfo = textInfos[$last];
-          }
-          let currentOffset = parser_state._parseCurrentOffset(parserState, (t25 = lastTextInfo, t25 == null ? null : t25.offset.translate(lastTextWidth, 0.0)));
-          let transform = parsers.parseTransform(parserState.attribute("transform"));
-          if ((t25$ = lastTextInfo, t25$ == null ? null : t25$.transform) != null) {
-            if (transform == null) {
-              transform = dart.nullCheck(lastTextInfo).transform;
-            } else {
-              transform = dart.nullCheck(dart.nullCheck(lastTextInfo).transform).multiplied(transform);
-            }
-          }
-          textInfos.add(new parser_state._TextInfo.new(xml_parsers.parseStyle(parserState[_key$], parserState.attributes, parserState[_definitions], parserState.rootBounds, (t25$1 = (t25$0 = lastTextInfo, t25$0 == null ? null : t25$0.style), t25$1 == null ? dart.nullCheck(parserState.currentGroup).style : t25$1)), currentOffset, transform));
-          if (dart.test(event.isSelfClosing)) {
-            textInfos.removeLast();
-          }
-        }
-        dart.fn(_processStartElement, T.XmlStartElementEventTovoid());
-        _processStartElement(dart.nullCheck(parserState[_currentStartElement]));
-        for (let event of parserState[_readSubtree]()) {
-          if (cdata.XmlCDATAEvent.is(event)) {
-            _processText(event.text[$trim]());
-          } else if (text.XmlTextEvent.is(event)) {
-            _processText(event.text[$trim]());
-          }
-          if (start_element.XmlStartElementEvent.is(event)) {
-            _processStartElement(event);
-          } else if (end_element.XmlEndElementEvent.is(event)) {
-            textInfos.removeLast();
-          }
-        }
-      });
-    }
-  };
-  (parser_state._Elements.new = function() {
-    ;
-  }).prototype = parser_state._Elements.prototype;
-  dart.addTypeTests(parser_state._Elements);
-  dart.addTypeCaches(parser_state._Elements);
-  dart.setLibraryUri(parser_state._Elements, I[1]);
-  parser_state._Paths = class _Paths extends core.Object {
-    static circle(attributes) {
-      let t25;
-      let cx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cx", {def: "0"})));
-      let cy = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cy", {def: "0"})));
-      let r = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "r", {def: "0"})));
-      let oval = new ui.Rect.fromCircle({center: new ui.Offset.new(cx, cy), radius: r});
-      t25 = ui.Path.new();
-      return (() => {
-        t25.addOval(oval);
-        return t25;
-      })();
-    }
-    static path(attributes) {
-      let d = dart.nullCheck(xml.getAttribute(attributes, "d"));
-      return parse_path.parseSvgPathData(d);
-    }
-    static rect(attributes) {
-      let t25, t25$;
-      let x = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x", {def: "0"})));
-      let y = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y", {def: "0"})));
-      let w = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "width", {def: "0"})));
-      let h = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "height", {def: "0"})));
-      let rect = new ui.Rect.fromLTWH(x, y, w, h);
-      let rxRaw = xml.getAttribute(attributes, "rx", {def: null});
-      let ryRaw = xml.getAttribute(attributes, "ry", {def: null});
-      rxRaw == null ? rxRaw = ryRaw : null;
-      ryRaw == null ? ryRaw = rxRaw : null;
-      if (rxRaw != null && rxRaw !== "") {
-        let rx = dart.nullCheck(numbers.parseDouble(rxRaw));
-        let ry = dart.nullCheck(numbers.parseDouble(ryRaw));
-        t25 = ui.Path.new();
-        return (() => {
-          t25.addRRect(new ui.RRect.fromRectXY(rect, rx, ry));
-          return t25;
-        })();
-      }
-      t25$ = ui.Path.new();
-      return (() => {
-        t25$.addRect(rect);
-        return t25$;
-      })();
-    }
-    static polygon(attributes) {
-      return parser_state._Paths.parsePathFromPoints(attributes, true);
-    }
-    static polyline(attributes) {
-      return parser_state._Paths.parsePathFromPoints(attributes, false);
-    }
-    static parsePathFromPoints(attributes, close) {
-      if (close == null) dart.nullFailed(I[0], 681, 49, "close");
-      let points = xml.getAttribute(attributes, "points");
-      if (points === "") {
-        return null;
-      }
-      let path = "M" + dart.str(points) + (dart.test(close) ? "z" : "");
-      return parse_path.parseSvgPathData(path);
-    }
-    static ellipse(attributes) {
-      let t25;
-      let cx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cx", {def: "0"})));
-      let cy = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "cy", {def: "0"})));
-      let rx = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "rx", {def: "0"})));
-      let ry = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "ry", {def: "0"})));
-      let r = new ui.Rect.fromLTWH(cx - rx, cy - ry, rx * 2, ry * 2);
-      t25 = ui.Path.new();
-      return (() => {
-        t25.addOval(r);
-        return t25;
-      })();
-    }
-    static line(attributes) {
-      let t25;
-      let x1 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x1", {def: "0"})));
-      let x2 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "x2", {def: "0"})));
-      let y1 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y1", {def: "0"})));
-      let y2 = dart.nullCheck(numbers.parseDouble(xml.getAttribute(attributes, "y2", {def: "0"})));
-      t25 = ui.Path.new();
-      return (() => {
-        t25.moveTo(x1, y1);
-        t25.lineTo(x2, y2);
-        return t25;
-      })();
-    }
-  };
-  (parser_state._Paths.new = function() {
-    ;
-  }).prototype = parser_state._Paths.prototype;
-  dart.addTypeTests(parser_state._Paths);
-  dart.addTypeCaches(parser_state._Paths);
-  dart.setLibraryUri(parser_state._Paths, I[1]);
-  parser_state._SvgGroupTuple = class _SvgGroupTuple extends core.Object {};
-  (parser_state._SvgGroupTuple.new = function(name, drawable) {
-    if (name == null) dart.nullFailed(I[0], 714, 23, "name");
-    this.name = name;
-    this.drawable = drawable;
-    ;
-  }).prototype = parser_state._SvgGroupTuple.prototype;
-  dart.addTypeTests(parser_state._SvgGroupTuple);
-  dart.addTypeCaches(parser_state._SvgGroupTuple);
-  dart.setLibraryUri(parser_state._SvgGroupTuple, I[1]);
-  dart.setFieldSignature(parser_state._SvgGroupTuple, () => ({
-    __proto__: dart.getFields(parser_state._SvgGroupTuple.__proto__),
-    name: dart.finalFieldType(core.String),
-    drawable: dart.finalFieldType(dart.nullable(vector_drawable.DrawableParent))
-  }));
-  var depth = dart.privateName(parser_state, "SvgParserState.depth");
-  var _currentAttributes = dart.privateName(parser_state, "_currentAttributes");
-  var _warningsAsErrors$ = dart.privateName(parser_state, "_warningsAsErrors");
-  var _eventIterator = dart.privateName(parser_state, "_eventIterator");
-  var _discardSubtree = dart.privateName(parser_state, "_discardSubtree");
-  parser_state.SvgParserState = class SvgParserState extends core.Object {
-    get depth() {
-      return this[depth];
-    }
-    set depth(value) {
-      this[depth] = value;
-    }
-    [_discardSubtree]() {
-      let subtreeStartDepth = this.depth;
-      while (dart.test(this[_eventIterator].moveNext())) {
-        let event = this[_eventIterator].current;
-        if (start_element.XmlStartElementEvent.is(event) && !dart.test(event.isSelfClosing)) {
-          this.depth = dart.notNull(this.depth) + 1;
-        } else if (end_element.XmlEndElementEvent.is(event)) {
-          this.depth = dart.notNull(this.depth) - 1;
-          if (!(dart.notNull(this.depth) >= 0)) dart.assertFailed(null, I[0], 751, 16, "depth >= 0");
-        }
-        this[_currentAttributes] = T.JSArrayOfXmlEventAttribute().of([]);
-        this[_currentStartElement] = null;
-        if (dart.notNull(this.depth) < dart.notNull(subtreeStartDepth)) {
-          return;
-        }
-      }
-    }
-    [_readSubtree]() {
-      return new (T.SyncIterableOfXmlEvent()).new((function* _readSubtree() {
-        let subtreeStartDepth = this.depth;
-        while (dart.test(this[_eventIterator].moveNext())) {
-          let event = this[_eventIterator].current;
-          let isSelfClosing = false;
-          if (start_element.XmlStartElementEvent.is(event)) {
-            if (xml.getAttribute(event.attributes, "display") === "none" || xml.getAttribute(event.attributes, "visibility") === "hidden") {
-              core.print("SVG Warning: Discarding:\n\n  " + dart.str(event) + "\n\n" + "and any children it has since it is not visible.\n" + "If that element is meant to be visible, the `display` or " + "`visibility` attributes should be removed.\n" + "If that element is not meant to be visible, it would be better " + "to remove it from the SVG file.");
-              if (!dart.test(event.isSelfClosing)) {
-                this.depth = dart.notNull(this.depth) + 1;
-                this[_discardSubtree]();
+                let distortionRatio = (1 - itemOffset[$abs]() * 0.3)[$clamp](0.0, 1.0);
+                distortionValue = curves.Curves.easeOut.transform(distortionRatio);
               }
-              continue;
-            }
-            this[_currentAttributes] = event.attributes;
-            this[_currentStartElement] = event;
-            this.depth = dart.notNull(this.depth) + 1;
-            isSelfClosing = event.isSelfClosing;
-          }
-          yield event;
-          if (dart.test(isSelfClosing) || end_element.XmlEndElementEvent.is(event)) {
-            this.depth = dart.notNull(this.depth) - 1;
-            if (!(dart.notNull(this.depth) >= 0)) dart.assertFailed(null, I[0], 790, 16, "depth >= 0");
-            this[_currentAttributes] = T.JSArrayOfXmlEventAttribute().of([]);
-            this[_currentStartElement] = null;
-          }
-          if (dart.notNull(this.depth) < dart.notNull(subtreeStartDepth)) {
-            return;
-          }
-        }
-      }).bind(this));
-    }
-    parse() {
-      return async.async(vector_drawable.DrawableRoot, (function* parse() {
-        let t25;
-        for (let event of this[_readSubtree]()) {
-          if (start_element.XmlStartElementEvent.is(event)) {
-            if (dart.test(this.startElement(event))) {
-              continue;
-            }
-            let parseFunc = parser_state._svgElementParsers[$_get](event.name);
-            yield (t25 = parseFunc, t25 == null ? null : t25(this, this[_warningsAsErrors$]));
-            if (parseFunc == null) {
-              if (!dart.test(event.isSelfClosing)) {
-                this[_discardSubtree]();
+              let height = (t1$ = this.widget.options.height, t1$ == null ? dart.notNull(media_query.MediaQuery.of(context).size.width) * (1 / dart.notNull(this.widget.options.aspectRatio)) : t1$);
+              if (this.widget.options.scrollDirection == basic_types.Axis.horizontal) {
+                return this.getCenterWrapper(this.getEnlargeWrapper(child, {height: dart.notNull(distortionValue) * dart.notNull(height), scale: distortionValue}));
+              } else {
+                return this.getCenterWrapper(this.getEnlargeWrapper(child, {width: dart.notNull(distortionValue) * dart.notNull(media_query.MediaQuery.of(context).size.width), scale: distortionValue}));
               }
-              if (!dart.test(dart.fn(() => {
-                this.unhandledElement(event);
-                return true;
-              }, T.VoidTobool())())) dart.assertFailed(null, I[0], 813, 18, "() {\n            unhandledElement(event);\n            return true;\n          }()");
-            }
-          } else if (end_element.XmlEndElementEvent.is(event)) {
-            this.endElement(event);
-          }
-        }
-        if (this[_root] == null) {
-          dart.throw(new core.StateError.new("Invalid SVG data"));
-        }
-        return dart.nullCheck(this[_root]);
-      }).bind(this));
-    }
-    get attributes() {
-      return this[_currentAttributes];
-    }
-    attribute(name, opts) {
-      if (name == null) dart.nullFailed(I[0], 832, 28, "name");
-      let def = opts && 'def' in opts ? opts.def : null;
-      let namespace = opts && 'namespace' in opts ? opts.namespace : null;
-      return xml.getAttribute(this.attributes, name, {def: def, namespace: namespace});
-    }
-    get currentGroup() {
-      if (!(this[_parentDrawables] != null)) dart.assertFailed(null, I[0], 837, 12, "_parentDrawables != null");
-      if (!dart.test(this[_parentDrawables][$isNotEmpty])) dart.assertFailed(null, I[0], 838, 12, "_parentDrawables.isNotEmpty");
-      return this[_parentDrawables][$last].drawable;
-    }
-    get rootBounds() {
-      if (!(this[_root] != null)) dart.assertFailed("Cannot get rootBounds with null root", I[0], 844, 12, "_root != null");
-      if (!(dart.nullCheck(this[_root]).viewport != null)) dart.assertFailed(null, I[0], 845, 12, "_root!.viewport != null");
-      return dart.nullCheck(this[_root]).viewport.viewBoxRect;
-    }
-    checkForIri(drawable) {
-      let iri = xml_parsers.buildUrlIri(this.attributes);
-      if (iri !== "url(#)") {
-        this[_definitions].addDrawable(iri, dart.nullCheck(drawable));
-        return true;
-      }
-      return false;
-    }
-    addGroup(event, drawable) {
-      if (event == null) dart.nullFailed(I[0], 860, 38, "event");
-      this[_parentDrawables].addLast(new parser_state._SvgGroupTuple.new(event.name, drawable));
-      this.checkForIri(drawable);
-    }
-    addShape(event) {
-      let t25;
-      if (event == null) dart.nullFailed(I[0], 866, 38, "event");
-      let pathFunc = parser_state._svgPathFuncs[$_get](event.name);
-      if (pathFunc == null) {
-        return false;
-      }
-      let parent = dart.nullCheck(this[_parentDrawables][$last].drawable);
-      let parentStyle = parent.style;
-      let path = dart.nullCheck(pathFunc(this.attributes));
-      let drawable = new vector_drawable.DrawableShape.new(xml.getAttribute(this.attributes, "id", {def: ""}), path, xml_parsers.parseStyle(this[_key$], this.attributes, this[_definitions], path.getBounds(), parentStyle, {defaultFillColor: colors$.colorBlack}), {transform: (t25 = parsers.parseTransform(xml.getAttribute(this.attributes, "transform")), t25 == null ? null : t25.storage)});
-      let isIri = this.checkForIri(drawable);
-      if (!dart.test(this[_inDefs]) || !dart.test(isIri)) {
-        dart.nullCheck(parent.children)[$add](drawable);
-      }
-      return true;
-    }
-    startElement(event) {
-      if (event == null) dart.nullFailed(I[0], 896, 42, "event");
-      if (event.name === "defs") {
-        this[_inDefs] = !dart.test(event.isSelfClosing);
-        return true;
-      }
-      return this.addShape(event);
-    }
-    endElement(event) {
-      if (event == null) dart.nullFailed(I[0], 906, 38, "event");
-      if (event.name == this[_parentDrawables][$last].name) {
-        this[_parentDrawables].removeLast();
-      }
-      if (event.name === "defs") {
-        this[_inDefs] = false;
-      }
-    }
-    unhandledElement(event) {
-      if (event == null) dart.nullFailed(I[0], 919, 46, "event");
-      let errorMessage = "unhandled element " + dart.str(event.name) + "; Picture key: " + dart.str(this[_key$]);
-      if (dart.test(this[_warningsAsErrors$])) {
-        dart.throw(new core.UnimplementedError.new(errorMessage));
-      }
-      if (event.name === "style") {
-        assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: new core.UnimplementedError.new("The <style> element is not implemented in this library."), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new((function*() {
-            yield new assertions.ErrorDescription.new("Style elements are not supported by this library and the requested SVG may not " + "render as intended.");
-            yield new assertions.ErrorHint.new("If possible, ensure the SVG uses inline styles and/or attributes (which are " + "supported), or use a preprocessing utility such as svgcleaner to inline the " + "styles for you.");
-            yield new assertions.ErrorDescription.new("");
-            yield new (T.DiagnosticsPropertyOfString()).new("Picture key", this[_key$]);
-          }).bind(this)), T.VoidToIterableOfDiagnosticsNode()), library: "SVG", context: new assertions.ErrorDescription.new("in parseSvgElement")}));
-      } else if (dart.test(parser_state._unhandledElements.add(event.name))) {
-        core.print(errorMessage);
-      }
+            }, T.BuildContextLAndWidgetLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[40] || CT.C40});
+        }, T.BuildContextLAndintLToAnimatedBuilderL()), $creationLocationd_0dea112b090073317d4: C[45] || CT.C45}));
     }
   };
-  (parser_state.SvgParserState.new = function(events, _key, _warningsAsErrors) {
-    if (events == null) dart.nullFailed(I[0], 725, 37, "events");
-    if (_warningsAsErrors == null) dart.nullFailed(I[0], 725, 61, "_warningsAsErrors");
-    this[_definitions] = new vector_drawable.DrawableDefinitionServer.new();
-    this[_parentDrawables] = new (T.ListQueueOf_SvgGroupTuple()).new(10);
-    this[_root] = null;
-    this[_inDefs] = false;
-    this[_currentAttributes] = null;
-    this[_currentStartElement] = null;
-    this[depth] = 0;
-    this[_key$] = _key;
-    this[_warningsAsErrors$] = _warningsAsErrors;
-    if (!(events != null)) dart.assertFailed(null, I[0], 727, 16, "events != null");
-    this[_eventIterator] = events[$iterator];
+  (carousel_slider.CarouselSliderState.new = function(carouselController) {
+    this[timer] = null;
+    this[carouselState] = null;
+    this[pageController$] = null;
+    this[mode] = carousel_options.CarouselPageChangedReason.controller;
+    this[carouselController$] = carouselController;
+    carousel_slider.CarouselSliderState.__proto__.new.call(this);
     ;
-  }).prototype = parser_state.SvgParserState.prototype;
-  dart.addTypeTests(parser_state.SvgParserState);
-  dart.addTypeCaches(parser_state.SvgParserState);
-  dart.setMethodSignature(parser_state.SvgParserState, () => ({
-    __proto__: dart.getMethods(parser_state.SvgParserState.__proto__),
-    [_discardSubtree]: dart.fnType(dart.void, []),
-    [_readSubtree]: dart.fnType(core.Iterable$(event.XmlEvent), []),
-    parse: dart.fnType(async.Future$(vector_drawable.DrawableRoot), []),
-    attribute: dart.fnType(dart.nullable(core.String), [core.String], {def: dart.nullable(core.String), namespace: dart.nullable(core.String)}, {}),
-    checkForIri: dart.fnType(core.bool, [dart.nullable(vector_drawable.DrawableStyleable)]),
-    addGroup: dart.fnType(dart.void, [start_element.XmlStartElementEvent, dart.nullable(vector_drawable.DrawableParent)]),
-    addShape: dart.fnType(core.bool, [start_element.XmlStartElementEvent]),
-    startElement: dart.fnType(core.bool, [start_element.XmlStartElementEvent]),
-    endElement: dart.fnType(dart.void, [end_element.XmlEndElementEvent]),
-    unhandledElement: dart.fnType(dart.void, [start_element.XmlStartElementEvent])
+  }).prototype = carousel_slider.CarouselSliderState.prototype;
+  dart.addTypeTests(carousel_slider.CarouselSliderState);
+  dart.addTypeCaches(carousel_slider.CarouselSliderState);
+  dart.setMethodSignature(carousel_slider.CarouselSliderState, () => ({
+    __proto__: dart.getMethods(carousel_slider.CarouselSliderState.__proto__),
+    changeMode: dart.fnType(dart.void, [dart.legacy(carousel_options.CarouselPageChangedReason)]),
+    didUpdateWidget: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+    getTimer: dart.fnType(dart.legacy(async.Timer), []),
+    clearTimer: dart.fnType(dart.void, []),
+    resumeTimer: dart.fnType(dart.void, []),
+    handleAutoPlay: dart.fnType(dart.void, []),
+    getGestureWrapper: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.Widget)]),
+    getCenterWrapper: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.Widget)]),
+    getEnlargeWrapper: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.Widget)], {height: dart.legacy(core.double), scale: dart.legacy(core.double), width: dart.legacy(core.double)}, {}),
+    onStart: dart.fnType(dart.void, []),
+    onPanDown: dart.fnType(dart.void, []),
+    onPanUp: dart.fnType(dart.void, []),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
   }));
-  dart.setGetterSignature(parser_state.SvgParserState, () => ({
-    __proto__: dart.getGetters(parser_state.SvgParserState.__proto__),
-    attributes: dart.nullable(core.List$(event_attribute.XmlEventAttribute)),
-    currentGroup: dart.nullable(vector_drawable.DrawableParent),
-    rootBounds: ui.Rect
+  dart.setGetterSignature(carousel_slider.CarouselSliderState, () => ({
+    __proto__: dart.getGetters(carousel_slider.CarouselSliderState.__proto__),
+    options: dart.legacy(carousel_options.CarouselOptions)
   }));
-  dart.setLibraryUri(parser_state.SvgParserState, I[1]);
-  dart.setFieldSignature(parser_state.SvgParserState, () => ({
-    __proto__: dart.getFields(parser_state.SvgParserState.__proto__),
-    [_eventIterator]: dart.finalFieldType(core.Iterator$(event.XmlEvent)),
-    [_key$]: dart.finalFieldType(dart.nullable(core.String)),
-    [_warningsAsErrors$]: dart.finalFieldType(core.bool),
-    [_definitions]: dart.finalFieldType(vector_drawable.DrawableDefinitionServer),
-    [_parentDrawables]: dart.finalFieldType(collection.Queue$(parser_state._SvgGroupTuple)),
-    [_root]: dart.fieldType(dart.nullable(vector_drawable.DrawableRoot)),
-    [_inDefs]: dart.fieldType(core.bool),
-    [_currentAttributes]: dart.fieldType(dart.nullable(core.List$(event_attribute.XmlEventAttribute))),
-    [_currentStartElement]: dart.fieldType(dart.nullable(start_element.XmlStartElementEvent)),
-    depth: dart.fieldType(core.int)
+  dart.setLibraryUri(carousel_slider.CarouselSliderState, I[2]);
+  dart.setFieldSignature(carousel_slider.CarouselSliderState, () => ({
+    __proto__: dart.getFields(carousel_slider.CarouselSliderState.__proto__),
+    carouselController: dart.finalFieldType(dart.legacy(carousel_controller.CarouselControllerImpl)),
+    timer: dart.fieldType(dart.legacy(async.Timer)),
+    carouselState: dart.fieldType(dart.legacy(carousel_state.CarouselState)),
+    pageController: dart.fieldType(dart.legacy(page_view.PageController)),
+    mode: dart.fieldType(dart.legacy(carousel_options.CarouselPageChangedReason))
   }));
-  parser_state._parseCurrentOffset = function _parseCurrentOffset(parserState, lastOffset) {
-    let t25, t25$, t25$0, t25$1;
-    if (parserState == null) dart.nullFailed(I[0], 47, 43, "parserState");
-    let x = parserState.attribute("x", {def: null});
-    let y = parserState.attribute("y", {def: null});
-    return new ui.Offset.new(x != null ? dart.nullCheck(numbers.parseDouble(x)) : dart.nullCheck(numbers.parseDouble(parserState.attribute("dx", {def: "0"}))) + dart.notNull((t25$ = (t25 = lastOffset, t25 == null ? null : t25.dx), t25$ == null ? 0 : t25$)), y != null ? dart.nullCheck(numbers.parseDouble(y)) : dart.nullCheck(numbers.parseDouble(parserState.attribute("dy", {def: "0"}))) + dart.notNull((t25$1 = (t25$0 = lastOffset, t25$0 == null ? null : t25$0.dy), t25$1 == null ? 0 : t25$1)));
-  };
-  dart.defineLazy(parser_state, {
-    /*parser_state._unhandledElements*/get _unhandledElements() {
-      return T.LinkedHashSetOfString().from(["title", "desc"]);
-    },
-    /*parser_state._svgElementParsers*/get _svgElementParsers() {
-      return C[0] || CT.C0;
-    },
-    /*parser_state._svgPathFuncs*/get _svgPathFuncs() {
-      return C[10] || CT.C10;
-    }
-  }, false);
-  dart.trackLibraries("packages/flutter_svg/src/svg/parser_state.dart", {
-    "package:flutter_svg/src/svg/parser_state.dart": parser_state
+  carousel_slider._MultipleGestureRecognizer = class _MultipleGestureRecognizer extends monodrag.PanGestureRecognizer {};
+  (carousel_slider._MultipleGestureRecognizer.new = function() {
+    carousel_slider._MultipleGestureRecognizer.__proto__.new.call(this);
+    ;
+  }).prototype = carousel_slider._MultipleGestureRecognizer.prototype;
+  dart.addTypeTests(carousel_slider._MultipleGestureRecognizer);
+  dart.addTypeCaches(carousel_slider._MultipleGestureRecognizer);
+  dart.setLibraryUri(carousel_slider._MultipleGestureRecognizer, I[2]);
+  dart.trackLibraries("packages/carousel_slider/carousel_controller.dart", {
+    "package:carousel_slider/carousel_controller.dart": carousel_controller,
+    "package:carousel_slider/carousel_state.dart": carousel_state,
+    "package:carousel_slider/carousel_slider.dart": carousel_slider
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["parser_state.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/flutter_svg/src/svg/parser_state.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["carousel_controller.dart","carousel_state.dart","carousel_slider.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/carousel_slider/carousel_controller.dart.lib.js"}');
   // Exports:
   return {
-    src__svg__parser_state: parser_state
+    carousel_controller: carousel_controller,
+    carousel_state: carousel_state,
+    carousel_slider: carousel_slider
   };
 }));
 
-//# sourceMappingURL=parser_state.dart.lib.js.map
+//# sourceMappingURL=carousel_controller.dart.lib.js.map

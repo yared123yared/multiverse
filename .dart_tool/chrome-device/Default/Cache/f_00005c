@@ -1,60 +1,35 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/widgets/scroll_metrics.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/physics/spring_simulation.dart', 'packages/flutter/src/physics/tolerance.dart', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/rendering/sliver.dart', 'packages/flutter/src/widgets/sliver_fill.dart', 'packages/flutter/src/rendering/viewport_offset.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__widgets__page_view_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__widgets__scroll_metrics$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__physics__spring_simulation$46dart, packages__flutter__src__physics__tolerance$46dart, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__rendering__sliver$46dart, packages__flutter__src__widgets__sliver_fill$46dart, packages__flutter__src__rendering__viewport_offset$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/rendering/stack.dart', 'packages/flutter/src/rendering/debug_overflow_indicator.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/foundation/change_notifier.dart'], (function load__packages__flutter__src__rendering__shifted_box_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__rendering__stack$46dart, packages__flutter__src__rendering__debug_overflow_indicator$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__foundation__change_notifier$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const async = dart_sdk.async;
-  const math = dart_sdk.math;
-  const _js_helper = dart_sdk._js_helper;
   const ui = dart_sdk.ui;
+  const math = dart_sdk.math;
   const _internal = dart_sdk._internal;
-  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const scroll_controller = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_controller;
-  const scroll_position = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_position;
-  const page_storage = packages__flutter__src__widgets__widget_span$46dart.src__widgets__page_storage;
-  const scroll_position_with_single_context = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_position_with_single_context;
-  const scroll_physics = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_physics;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const sliver = packages__flutter__src__widgets__widget_span$46dart.src__widgets__sliver;
-  const scroll_configuration = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_configuration;
-  const debug = packages__flutter__src__widgets__widget_span$46dart.src__widgets__debug;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const notification_listener = packages__flutter__src__widgets__widget_span$46dart.src__widgets__notification_listener;
-  const scroll_notification = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_notification;
-  const scrollable = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scrollable;
-  const viewport = packages__flutter__src__widgets__widget_span$46dart.src__widgets__viewport;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
-  const scroll_metrics = packages__flutter__src__widgets__scroll_metrics$46dart.src__widgets__scroll_metrics;
-  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
-  const spring_simulation = packages__flutter__src__physics__spring_simulation$46dart.src__physics__spring_simulation;
-  const tolerance = packages__flutter__src__physics__tolerance$46dart.src__physics__tolerance;
-  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
-  const viewport$ = packages__flutter__src__rendering__sliver$46dart.src__rendering__viewport;
-  const sliver_fill = packages__flutter__src__widgets__sliver_fill$46dart.src__widgets__sliver_fill;
-  const viewport_offset = packages__flutter__src__rendering__viewport_offset$46dart.src__rendering__viewport_offset;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
+  const debug = packages__flutter__src__rendering__layer$46dart.src__rendering__debug;
+  const layer = packages__flutter__src__rendering__layer$46dart.src__rendering__layer;
   const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  var page_view = Object.create(dart.library);
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $length = dartx.length;
-  var $toDouble = dartx.toDouble;
-  var $round = dartx.round;
-  var $clamp = dartx.clamp;
-  var $roundToDouble = dartx.roundToDouble;
-  var $abs = dartx.abs;
-  var $noSuchMethod = dartx.noSuchMethod;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const stack = packages__flutter__src__rendering__stack$46dart.src__rendering__stack;
+  const debug_overflow_indicator = packages__flutter__src__rendering__debug_overflow_indicator$46dart.src__rendering__debug_overflow_indicator;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  var shifted_box = Object.create(dart.library);
+  var $isFinite = dartx.isFinite;
+  var $runtimeType = dartx.runtimeType;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    doubleN: () => (T.doubleN = dart.constFn(dart.nullable(core.double)))(),
-    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
-    NotificationListenerOfScrollNotification: () => (T.NotificationListenerOfScrollNotification = dart.constFn(notification_listener.NotificationListener$(scroll_notification.ScrollNotification)))(),
-    ScrollNotificationTobool: () => (T.ScrollNotificationTobool = dart.constFn(dart.fnType(core.bool, [scroll_notification.ScrollNotification])))(),
-    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
-    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
-    BuildContextAndViewportOffsetToViewport: () => (T.BuildContextAndViewportOffsetToViewport = dart.constFn(dart.fnType(viewport.Viewport, [framework.BuildContext, viewport_offset.ViewportOffset])))(),
-    EnumPropertyOfAxis: () => (T.EnumPropertyOfAxis = dart.constFn(diagnostics.EnumProperty$(basic_types.Axis)))(),
-    DiagnosticsPropertyOfPageController: () => (T.DiagnosticsPropertyOfPageController = dart.constFn(diagnostics.DiagnosticsProperty$(page_view.PageController)))(),
-    DiagnosticsPropertyOfScrollPhysics: () => (T.DiagnosticsPropertyOfScrollPhysics = dart.constFn(diagnostics.DiagnosticsProperty$(scroll_physics.ScrollPhysics)))()
+    OffsetN: () => (T.OffsetN = dart.constFn(dart.nullable(ui.Offset)))(),
+    BoxHitTestResultAndOffsetNTobool: () => (T.BoxHitTestResultAndOffsetNTobool = dart.constFn(dart.fnType(core.bool, [box.BoxHitTestResult, T.OffsetN()])))(),
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    DiagnosticsPropertyOfEdgeInsetsGeometry: () => (T.DiagnosticsPropertyOfEdgeInsetsGeometry = dart.constFn(diagnostics.DiagnosticsProperty$(edge_insets.EdgeInsetsGeometry)))(),
+    EnumPropertyOfTextDirection: () => (T.EnumPropertyOfTextDirection = dart.constFn(diagnostics.EnumProperty$(ui.TextDirection)))(),
+    DiagnosticsPropertyOfAlignmentGeometry: () => (T.DiagnosticsPropertyOfAlignmentGeometry = dart.constFn(diagnostics.DiagnosticsProperty$(alignment.AlignmentGeometry)))(),
+    BoxConstraintsToBoxConstraints: () => (T.BoxConstraintsToBoxConstraints = dart.constFn(dart.fnType(box.BoxConstraints, [box.BoxConstraints])))(),
+    EnumPropertyOfTextBaseline: () => (T.EnumPropertyOfTextBaseline = dart.constFn(diagnostics.EnumProperty$(ui.TextBaseline)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -62,37 +37,44 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 0
+        __proto__: alignment.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 0.25,
-        [Cubic_b]: 0.1,
-        [Cubic_a]: 0.25
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967040.0
       });
     },
     get C2() {
       return C[2] = dart.const({
-        __proto__: scroll_position.ScrollPositionAlignmentPolicy.prototype,
-        [_name]: "ScrollPositionAlignmentPolicy.explicit",
-        index: 0
+        __proto__: ui.Color.prototype,
+        [Color_value]: 2425393296.0
       });
     },
     get C3() {
-      return C[3] = dart.const(new _js_helper.PrivateSymbol.new('_maxScrollExtent', _maxScrollExtent));
+      return C[3] = dart.const({
+        __proto__: ui.Clip.prototype,
+        [_name]: "Clip.none",
+        index: 0
+      });
     },
     get C4() {
-      return C[4] = dart.const(new _js_helper.PrivateSymbol.new('_minScrollExtent', _minScrollExtent));
+      return C[4] = dart.const({
+        __proto__: box.BoxConstraints.prototype,
+        [BoxConstraints_maxHeight]: 1 / 0,
+        [BoxConstraints_minHeight]: 0,
+        [BoxConstraints_maxWidth]: 1 / 0,
+        [BoxConstraints_minWidth]: 0
+      });
     },
     get C5() {
-      return C[5] = dart.const(new _js_helper.PrivateSymbol.new('_viewportDimension', _viewportDimension));
+      return C[5] = dart.fn(shifted_box.RenderUnconstrainedBox._unconstrained, T.BoxConstraintsToBoxConstraints());
     },
     get C6() {
-      return C[6] = dart.const(new _js_helper.PrivateSymbol.new('_pixels', _pixels));
+      return C[6] = dart.fn(shifted_box.RenderUnconstrainedBox._widthConstrained, T.BoxConstraintsToBoxConstraints());
     },
     get C7() {
       return C[7] = dart.const({
@@ -102,953 +84,791 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
       });
     },
     get C8() {
-      return C[8] = dart.constList([], T.WidgetL());
+      return C[8] = dart.fn(shifted_box.RenderUnconstrainedBox._heightConstrained, T.BoxConstraintsToBoxConstraints());
     },
     get C9() {
       return C[9] = dart.const({
-        __proto__: recognizer.DragStartBehavior.prototype,
-        [_name$0]: "DragStartBehavior.start",
-        index: 1
-      });
-    },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: ui.Clip.prototype,
-        [_name$1]: "Clip.hardEdge",
-        index: 1
-      });
-    },
-    get C11() {
-      return C[11] = dart.const({
         __proto__: basic_types.Axis.prototype,
         [_name$]: "Axis.vertical",
         index: 1
       });
-    },
-    get C14() {
-      return C[14] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "viewportFraction",
-        [_Location_column]: 17,
-        [_Location_line]: 943,
-        [_Location_file]: null
-      });
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "delegate",
-        [_Location_column]: 17,
-        [_Location_line]: 944,
-        [_Location_file]: null
-      });
-    },
-    get C13() {
-      return C[13] = dart.constList([C[14] || CT.C14, C[15] || CT.C15], T._LocationL());
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[13] || CT.C13,
-        [_Location_name]: null,
-        [_Location_column]: 15,
-        [_Location_line]: 942,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/widgets/page_view.dart"
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "cacheExtent",
-        [_Location_column]: 13,
-        [_Location_line]: 936,
-        [_Location_file]: null
-      });
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "cacheExtentStyle",
-        [_Location_column]: 13,
-        [_Location_line]: 937,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C[20] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "axisDirection",
-        [_Location_column]: 13,
-        [_Location_line]: 938,
-        [_Location_file]: null
-      });
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "offset",
-        [_Location_column]: 13,
-        [_Location_line]: 939,
-        [_Location_file]: null
-      });
-    },
-    get C22() {
-      return C[22] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "clipBehavior",
-        [_Location_column]: 13,
-        [_Location_line]: 940,
-        [_Location_file]: null
-      });
-    },
-    get C23() {
-      return C[23] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "slivers",
-        [_Location_column]: 13,
-        [_Location_line]: 941,
-        [_Location_file]: null
-      });
-    },
-    get C17() {
-      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23], T._LocationL());
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[17] || CT.C17,
-        [_Location_name]: null,
-        [_Location_column]: 18,
-        [_Location_line]: 932,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/widgets/page_view.dart"
-      });
-    },
-    get C26() {
-      return C[26] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "dragStartBehavior",
-        [_Location_column]: 9,
-        [_Location_line]: 925,
-        [_Location_file]: null
-      });
-    },
-    get C27() {
-      return C[27] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "axisDirection",
-        [_Location_column]: 9,
-        [_Location_line]: 926,
-        [_Location_file]: null
-      });
-    },
-    get C28() {
-      return C[28] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "controller",
-        [_Location_column]: 9,
-        [_Location_line]: 927,
-        [_Location_file]: null
-      });
-    },
-    get C29() {
-      return C[29] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "physics",
-        [_Location_column]: 9,
-        [_Location_line]: 928,
-        [_Location_file]: null
-      });
-    },
-    get C30() {
-      return C[30] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "restorationId",
-        [_Location_column]: 9,
-        [_Location_line]: 929,
-        [_Location_file]: null
-      });
-    },
-    get C31() {
-      return C[31] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "scrollBehavior",
-        [_Location_column]: 9,
-        [_Location_line]: 930,
-        [_Location_file]: null
-      });
-    },
-    get C32() {
-      return C[32] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "viewportBuilder",
-        [_Location_column]: 9,
-        [_Location_line]: 931,
-        [_Location_file]: null
-      });
-    },
-    get C25() {
-      return C[25] = dart.constList([C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29, C[30] || CT.C30, C[31] || CT.C31, C[32] || CT.C32], T._LocationL());
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[25] || CT.C25,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 924,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/widgets/page_view.dart"
-      });
-    },
-    get C35() {
-      return C[35] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onNotification",
-        [_Location_column]: 7,
-        [_Location_line]: 913,
-        [_Location_file]: null
-      });
-    },
-    get C36() {
-      return C[36] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 924,
-        [_Location_file]: null
-      });
-    },
-    get C34() {
-      return C[34] = dart.constList([C[35] || CT.C35, C[36] || CT.C36], T._LocationL());
-    },
-    get C33() {
-      return C[33] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[34] || CT.C34,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 912,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/widgets/page_view.dart"
-      });
-    },
-    get C37() {
-      return C[37] = dart.const({
-        __proto__: page_view.PageScrollPhysics.prototype,
-        [ScrollPhysics_parent]: null
-      });
     }
   }, false);
-  var C = Array(38).fill(void 0);
+  var C = Array(10).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/widgets/page_view.dart",
-    "package:flutter/src/widgets/page_view.dart"
+    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/rendering/shifted_box.dart",
+    "package:flutter/src/rendering/shifted_box.dart"
   ];
-  var initialPage$ = dart.privateName(page_view, "PageController.initialPage");
-  var keepPage$ = dart.privateName(page_view, "PageController.keepPage");
-  var viewportFraction$ = dart.privateName(page_view, "PageController.viewportFraction");
-  page_view.PageController = class PageController extends scroll_controller.ScrollController {
-    get initialPage() {
-      return this[initialPage$];
+  const RenderBox_RenderObjectWithChildMixin$36 = class RenderBox_RenderObjectWithChildMixin extends box.RenderBox {};
+  (RenderBox_RenderObjectWithChildMixin$36.new = function() {
+    object.RenderObjectWithChildMixin$(box.RenderBox)[dart.mixinNew].call(this);
+    RenderBox_RenderObjectWithChildMixin$36.__proto__.new.call(this);
+  }).prototype = RenderBox_RenderObjectWithChildMixin$36.prototype;
+  dart.applyMixin(RenderBox_RenderObjectWithChildMixin$36, object.RenderObjectWithChildMixin$(box.RenderBox));
+  shifted_box.RenderShiftedBox = class RenderShiftedBox extends RenderBox_RenderObjectWithChildMixin$36 {
+    computeMinIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[0], 33, 42, "height");
+      if (this.child != null) return dart.nullCheck(this.child).getMinIntrinsicWidth(height);
+      return 0.0;
     }
-    set initialPage(value) {
-      super.initialPage = value;
+    computeMaxIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[0], 40, 42, "height");
+      if (this.child != null) return dart.nullCheck(this.child).getMaxIntrinsicWidth(height);
+      return 0.0;
     }
-    get keepPage() {
-      return this[keepPage$];
+    computeMinIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[0], 47, 43, "width");
+      if (this.child != null) return dart.nullCheck(this.child).getMinIntrinsicHeight(width);
+      return 0.0;
     }
-    set keepPage(value) {
-      super.keepPage = value;
+    computeMaxIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[0], 54, 43, "width");
+      if (this.child != null) return dart.nullCheck(this.child).getMaxIntrinsicHeight(width);
+      return 0.0;
     }
-    get viewportFraction() {
-      return this[viewportFraction$];
-    }
-    set viewportFraction(value) {
-      super.viewportFraction = value;
-    }
-    get page() {
-      if (!dart.test(this.positions[$isNotEmpty])) dart.assertFailed("PageController.page cannot be accessed before a PageView is built with it.", I[0], 172, 7, "positions.isNotEmpty");
-      if (!(this.positions[$length] === 1)) dart.assertFailed("The page property cannot be read when multiple PageViews are attached to " + "the same PageController.", I[0], 176, 7, "positions.length == 1");
-      let position = page_view._PagePosition.as(this.position);
-      return position.page;
-    }
-    animateToPage(page, opts) {
-      if (page == null) dart.nullFailed(I[0], 191, 9, "page");
-      let duration = opts && 'duration' in opts ? opts.duration : null;
-      if (duration == null) dart.nullFailed(I[0], 192, 23, "duration");
-      let curve = opts && 'curve' in opts ? opts.curve : null;
-      if (curve == null) dart.nullFailed(I[0], 193, 20, "curve");
-      let position = page_view._PagePosition.as(this.position);
-      return position.animateTo(position.getPixelsFromPage(page[$toDouble]()), {duration: duration, curve: curve});
-    }
-    jumpToPage(page) {
-      if (page == null) dart.nullFailed(I[0], 207, 23, "page");
-      let position = page_view._PagePosition.as(this.position);
-      position.jumpTo(position.getPixelsFromPage(page[$toDouble]()));
-    }
-    nextPage(opts) {
-      let duration = opts && 'duration' in opts ? opts.duration : null;
-      if (duration == null) dart.nullFailed(I[0], 218, 45, "duration");
-      let curve = opts && 'curve' in opts ? opts.curve : null;
-      if (curve == null) dart.nullFailed(I[0], 218, 70, "curve");
-      return this.animateToPage(dart.nullCheck(this.page)[$round]() + 1, {duration: duration, curve: curve});
-    }
-    previousPage(opts) {
-      let duration = opts && 'duration' in opts ? opts.duration : null;
-      if (duration == null) dart.nullFailed(I[0], 228, 49, "duration");
-      let curve = opts && 'curve' in opts ? opts.curve : null;
-      if (curve == null) dart.nullFailed(I[0], 228, 74, "curve");
-      return this.animateToPage(dart.nullCheck(this.page)[$round]() - 1, {duration: duration, curve: curve});
-    }
-    createScrollPosition(physics, context, oldPosition) {
-      if (physics == null) dart.nullFailed(I[0], 233, 53, "physics");
-      if (context == null) dart.nullFailed(I[0], 233, 76, "context");
-      return new page_view._PagePosition.new({physics: physics, context: context, initialPage: this.initialPage, keepPage: this.keepPage, viewportFraction: this.viewportFraction, oldPosition: oldPosition});
-    }
-    attach(position) {
-      if (position == null) dart.nullFailed(I[0], 245, 30, "position");
-      super.attach(position);
-      let pagePosition = page_view._PagePosition.as(position);
-      pagePosition.viewportFraction = this.viewportFraction;
-    }
-  };
-  (page_view.PageController.new = function(opts) {
-    let initialPage = opts && 'initialPage' in opts ? opts.initialPage : 0;
-    if (initialPage == null) dart.nullFailed(I[0], 119, 10, "initialPage");
-    let keepPage = opts && 'keepPage' in opts ? opts.keepPage : true;
-    if (keepPage == null) dart.nullFailed(I[0], 120, 10, "keepPage");
-    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : 1;
-    if (viewportFraction == null) dart.nullFailed(I[0], 121, 10, "viewportFraction");
-    this[initialPage$] = initialPage;
-    this[keepPage$] = keepPage;
-    this[viewportFraction$] = viewportFraction;
-    if (!(initialPage != null)) dart.assertFailed(null, I[0], 122, 15, "initialPage != null");
-    if (!(keepPage != null)) dart.assertFailed(null, I[0], 123, 15, "keepPage != null");
-    if (!(viewportFraction != null)) dart.assertFailed(null, I[0], 124, 15, "viewportFraction != null");
-    if (!(dart.notNull(viewportFraction) > 0.0)) dart.assertFailed(null, I[0], 125, 15, "viewportFraction > 0.0");
-    page_view.PageController.__proto__.new.call(this);
-    ;
-  }).prototype = page_view.PageController.prototype;
-  dart.addTypeTests(page_view.PageController);
-  dart.addTypeCaches(page_view.PageController);
-  dart.setMethodSignature(page_view.PageController, () => ({
-    __proto__: dart.getMethods(page_view.PageController.__proto__),
-    animateToPage: dart.fnType(async.Future$(dart.void), [core.int], {}, {curve: curves.Curve, duration: core.Duration}),
-    jumpToPage: dart.fnType(dart.void, [core.int]),
-    nextPage: dart.fnType(async.Future$(dart.void), [], {}, {curve: curves.Curve, duration: core.Duration}),
-    previousPage: dart.fnType(async.Future$(dart.void), [], {}, {curve: curves.Curve, duration: core.Duration})
-  }));
-  dart.setGetterSignature(page_view.PageController, () => ({
-    __proto__: dart.getGetters(page_view.PageController.__proto__),
-    page: dart.nullable(core.double)
-  }));
-  dart.setLibraryUri(page_view.PageController, I[1]);
-  dart.setFieldSignature(page_view.PageController, () => ({
-    __proto__: dart.getFields(page_view.PageController.__proto__),
-    initialPage: dart.finalFieldType(core.int),
-    keepPage: dart.finalFieldType(core.bool),
-    viewportFraction: dart.finalFieldType(core.double)
-  }));
-  var viewportFraction$0 = dart.privateName(page_view, "PageMetrics.viewportFraction");
-  page_view.PageMetrics = class PageMetrics extends scroll_metrics.FixedScrollMetrics {
-    get viewportFraction() {
-      return this[viewportFraction$0];
-    }
-    set viewportFraction(value) {
-      super.viewportFraction = value;
-    }
-    copyWith(opts) {
-      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
-      let minScrollExtent = opts && 'minScrollExtent' in opts ? opts.minScrollExtent : null;
-      let maxScrollExtent = opts && 'maxScrollExtent' in opts ? opts.maxScrollExtent : null;
-      let pixels = opts && 'pixels' in opts ? opts.pixels : null;
-      let viewportDimension = opts && 'viewportDimension' in opts ? opts.viewportDimension : null;
-      let axisDirection = opts && 'axisDirection' in opts ? opts.axisDirection : null;
-      let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : null;
-      return new page_view.PageMetrics.new({minScrollExtent: (t0 = minScrollExtent, t0 == null ? dart.test(this.hasContentDimensions) ? this.minScrollExtent : null : t0), maxScrollExtent: (t0$ = maxScrollExtent, t0$ == null ? dart.test(this.hasContentDimensions) ? this.maxScrollExtent : null : t0$), pixels: (t0$0 = pixels, t0$0 == null ? dart.test(this.hasPixels) ? this.pixels : null : t0$0), viewportDimension: (t0$1 = viewportDimension, t0$1 == null ? dart.test(this.hasViewportDimension) ? this.viewportDimension : null : t0$1), axisDirection: (t0$2 = axisDirection, t0$2 == null ? this.axisDirection : t0$2), viewportFraction: (t0$3 = viewportFraction, t0$3 == null ? this.viewportFraction : t0$3)});
-    }
-    get page() {
-      return math.max(core.double, 0.0, this.pixels[$clamp](this.minScrollExtent, this.maxScrollExtent)) / math.max(core.num, 1.0, dart.notNull(this.viewportDimension) * dart.notNull(this.viewportFraction));
-    }
-  };
-  (page_view.PageMetrics.new = function(opts) {
-    let minScrollExtent = opts && 'minScrollExtent' in opts ? opts.minScrollExtent : null;
-    let maxScrollExtent = opts && 'maxScrollExtent' in opts ? opts.maxScrollExtent : null;
-    let pixels = opts && 'pixels' in opts ? opts.pixels : null;
-    let viewportDimension = opts && 'viewportDimension' in opts ? opts.viewportDimension : null;
-    let axisDirection = opts && 'axisDirection' in opts ? opts.axisDirection : null;
-    if (axisDirection == null) dart.nullFailed(I[0], 263, 28, "axisDirection");
-    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : null;
-    if (viewportFraction == null) dart.nullFailed(I[0], 264, 19, "viewportFraction");
-    this[viewportFraction$0] = viewportFraction;
-    page_view.PageMetrics.__proto__.new.call(this, {minScrollExtent: minScrollExtent, maxScrollExtent: maxScrollExtent, pixels: pixels, viewportDimension: viewportDimension, axisDirection: axisDirection});
-    ;
-  }).prototype = page_view.PageMetrics.prototype;
-  dart.addTypeTests(page_view.PageMetrics);
-  dart.addTypeCaches(page_view.PageMetrics);
-  dart.setMethodSignature(page_view.PageMetrics, () => ({
-    __proto__: dart.getMethods(page_view.PageMetrics.__proto__),
-    copyWith: dart.fnType(page_view.PageMetrics, [], {axisDirection: dart.nullable(basic_types.AxisDirection), maxScrollExtent: dart.nullable(core.double), minScrollExtent: dart.nullable(core.double), pixels: dart.nullable(core.double), viewportDimension: dart.nullable(core.double), viewportFraction: dart.nullable(core.double)}, {})
-  }));
-  dart.setGetterSignature(page_view.PageMetrics, () => ({
-    __proto__: dart.getGetters(page_view.PageMetrics.__proto__),
-    page: dart.nullable(core.double)
-  }));
-  dart.setLibraryUri(page_view.PageMetrics, I[1]);
-  dart.setFieldSignature(page_view.PageMetrics, () => ({
-    __proto__: dart.getFields(page_view.PageMetrics.__proto__),
-    viewportFraction: dart.finalFieldType(core.double)
-  }));
-  var _viewportFraction = dart.privateName(page_view, "_viewportFraction");
-  var _pageToUseOnStartup = dart.privateName(page_view, "_pageToUseOnStartup");
-  var Duration__duration = dart.privateName(core, "Duration._duration");
-  var Cubic_d = dart.privateName(curves, "Cubic.d");
-  var Cubic_c = dart.privateName(curves, "Cubic.c");
-  var Cubic_b = dart.privateName(curves, "Cubic.b");
-  var Cubic_a = dart.privateName(curves, "Cubic.a");
-  var _name = dart.privateName(scroll_position, "_name");
-  var _initialPageOffset = dart.privateName(page_view, "_initialPageOffset");
-  var _maxScrollExtent = dart.privateName(page_view, "_maxScrollExtent");
-  var _maxScrollExtent$ = dart.privateName(scroll_metrics, "_maxScrollExtent");
-  var _minScrollExtent = dart.privateName(page_view, "_minScrollExtent");
-  var _minScrollExtent$ = dart.privateName(scroll_metrics, "_minScrollExtent");
-  var _viewportDimension = dart.privateName(page_view, "_viewportDimension");
-  var _viewportDimension$ = dart.privateName(scroll_metrics, "_viewportDimension");
-  var _pixels = dart.privateName(page_view, "_pixels");
-  var _pixels$ = dart.privateName(scroll_metrics, "_pixels");
-  page_view._PagePosition = class _PagePosition extends scroll_position_with_single_context.ScrollPositionWithSingleContext {
-    ensureVisible(object, opts) {
-      if (object == null) dart.nullFailed(I[0], 331, 18, "object");
-      let alignment = opts && 'alignment' in opts ? opts.alignment : 0;
-      if (alignment == null) dart.nullFailed(I[0], 332, 12, "alignment");
-      let duration = opts && 'duration' in opts ? opts.duration : C[0] || CT.C0;
-      if (duration == null) dart.nullFailed(I[0], 333, 14, "duration");
-      let curve = opts && 'curve' in opts ? opts.curve : C[1] || CT.C1;
-      if (curve == null) dart.nullFailed(I[0], 334, 11, "curve");
-      let alignmentPolicy = opts && 'alignmentPolicy' in opts ? opts.alignmentPolicy : C[2] || CT.C2;
-      if (alignmentPolicy == null) dart.nullFailed(I[0], 335, 35, "alignmentPolicy");
-      let targetRenderObject = opts && 'targetRenderObject' in opts ? opts.targetRenderObject : null;
-      return super.ensureVisible(object, {alignment: alignment, duration: duration, curve: curve, alignmentPolicy: alignmentPolicy, targetRenderObject: null});
-    }
-    get viewportFraction() {
-      return this[_viewportFraction];
-    }
-    set viewportFraction(value) {
-      if (value == null) dart.nullFailed(I[0], 355, 31, "value");
-      if (this[_viewportFraction] == value) return;
-      let oldPage = this.page;
-      this[_viewportFraction] = value;
-      if (oldPage != null) this.forcePixels(this.getPixelsFromPage(oldPage));
-    }
-    get [_initialPageOffset]() {
-      return math.max(core.double, 0.0, dart.notNull(this.viewportDimension) * (dart.notNull(this.viewportFraction) - 1) / 2);
-    }
-    getPageFromPixels(pixels, viewportDimension) {
-      if (pixels == null) dart.nullFailed(I[0], 372, 35, "pixels");
-      if (viewportDimension == null) dart.nullFailed(I[0], 372, 50, "viewportDimension");
-      let actual = math.max(core.double, 0.0, dart.notNull(pixels) - dart.notNull(this[_initialPageOffset])) / math.max(core.num, 1.0, dart.notNull(viewportDimension) * dart.notNull(this.viewportFraction));
-      let round = actual[$roundToDouble]();
-      if ((actual - round)[$abs]() < 1e-10) {
-        return round;
-      }
-      return actual;
-    }
-    getPixelsFromPage(page) {
-      if (page == null) dart.nullFailed(I[0], 381, 35, "page");
-      return dart.notNull(page) * dart.notNull(this.viewportDimension) * dart.notNull(this.viewportFraction) + dart.notNull(this[_initialPageOffset]);
-    }
-    get page() {
-      if (!(!dart.test(this.hasPixels) || this.minScrollExtent != null && this.maxScrollExtent != null)) dart.assertFailed("Page value is only available after content dimensions are established.", I[0], 388, 7, "!hasPixels || (minScrollExtent != null && maxScrollExtent != null)");
-      return !dart.test(this.hasPixels) ? null : this.getPageFromPixels(this.pixels[$clamp](this.minScrollExtent, this.maxScrollExtent), this.viewportDimension);
-    }
-    saveScrollOffset() {
-      let t0;
-      t0 = page_storage.PageStorage.of(this.context.storageContext);
-      t0 == null ? null : t0.writeState(this.context.storageContext, this.getPageFromPixels(this.pixels, this.viewportDimension));
-    }
-    restoreScrollOffset() {
-      let t0;
-      if (!dart.test(this.hasPixels)) {
-        let value = T.doubleN().as((t0 = page_storage.PageStorage.of(this.context.storageContext), t0 == null ? null : t0.readState(this.context.storageContext)));
-        if (value != null) this[_pageToUseOnStartup] = value;
-      }
-    }
-    saveOffset() {
-      this.context.saveOffset(this.getPageFromPixels(this.pixels, this.viewportDimension));
-    }
-    restoreOffset(offset, opts) {
-      if (offset == null) dart.nullFailed(I[0], 414, 29, "offset");
-      let initialRestore = opts && 'initialRestore' in opts ? opts.initialRestore : false;
-      if (initialRestore == null) dart.nullFailed(I[0], 414, 43, "initialRestore");
-      if (!(initialRestore != null)) dart.assertFailed(null, I[0], 415, 12, "initialRestore != null");
-      if (!(offset != null)) dart.assertFailed(null, I[0], 416, 12, "offset != null");
-      if (dart.test(initialRestore)) {
-        this[_pageToUseOnStartup] = offset;
+    computeDistanceToActualBaseline(baseline) {
+      if (baseline == null) dart.nullFailed(I[0], 61, 56, "baseline");
+      let result = null;
+      if (this.child != null) {
+        if (!!dart.test(this.debugNeedsLayout)) dart.assertFailed(null, I[0], 64, 14, "!debugNeedsLayout");
+        result = dart.nullCheck(this.child).getDistanceToActualBaseline(baseline);
+        let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+        if (result != null) result = dart.notNull(result) + dart.notNull(childParentData.offset.dy);
       } else {
-        this.jumpTo(this.getPixelsFromPage(offset));
-      }
-    }
-    applyViewportDimension(viewportDimension) {
-      if (viewportDimension == null) dart.nullFailed(I[0], 425, 38, "viewportDimension");
-      let oldViewportDimensions = dart.test(this.hasViewportDimension) ? this.viewportDimension : null;
-      if (viewportDimension == oldViewportDimensions) {
-        return true;
-      }
-      let result = super.applyViewportDimension(viewportDimension);
-      let oldPixels = dart.test(this.hasPixels) ? this.pixels : null;
-      let page = oldPixels == null || oldViewportDimensions === 0.0 ? this[_pageToUseOnStartup] : this.getPageFromPixels(oldPixels, dart.nullCheck(oldViewportDimensions));
-      let newPixels = this.getPixelsFromPage(page);
-      if (newPixels != oldPixels) {
-        this.correctPixels(newPixels);
-        return false;
+        result = super.computeDistanceToActualBaseline(baseline);
       }
       return result;
     }
-    applyContentDimensions(minScrollExtent, maxScrollExtent) {
-      if (minScrollExtent == null) dart.nullFailed(I[0], 443, 38, "minScrollExtent");
-      if (maxScrollExtent == null) dart.nullFailed(I[0], 443, 62, "maxScrollExtent");
-      let newMinScrollExtent = dart.notNull(minScrollExtent) + dart.notNull(this[_initialPageOffset]);
-      return super.applyContentDimensions(newMinScrollExtent, math.max(core.double, newMinScrollExtent, dart.notNull(maxScrollExtent) - dart.notNull(this[_initialPageOffset])));
+    paint(context, offset) {
+      if (context == null) dart.nullFailed(I[0], 76, 30, "context");
+      if (offset == null) dart.nullFailed(I[0], 76, 46, "offset");
+      if (this.child != null) {
+        let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+        context.paintChild(dart.nullCheck(this.child), childParentData.offset['+'](offset));
+      }
     }
-    copyWith(opts) {
-      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
-      let minScrollExtent = opts && 'minScrollExtent' in opts ? opts.minScrollExtent : null;
-      let maxScrollExtent = opts && 'maxScrollExtent' in opts ? opts.maxScrollExtent : null;
-      let pixels = opts && 'pixels' in opts ? opts.pixels : null;
-      let viewportDimension = opts && 'viewportDimension' in opts ? opts.viewportDimension : null;
-      let axisDirection = opts && 'axisDirection' in opts ? opts.axisDirection : null;
-      let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : null;
-      return new page_view.PageMetrics.new({minScrollExtent: (t0 = minScrollExtent, t0 == null ? dart.test(this.hasContentDimensions) ? this.minScrollExtent : null : t0), maxScrollExtent: (t0$ = maxScrollExtent, t0$ == null ? dart.test(this.hasContentDimensions) ? this.maxScrollExtent : null : t0$), pixels: (t0$0 = pixels, t0$0 == null ? dart.test(this.hasPixels) ? this.pixels : null : t0$0), viewportDimension: (t0$1 = viewportDimension, t0$1 == null ? dart.test(this.hasViewportDimension) ? this.viewportDimension : null : t0$1), axisDirection: (t0$2 = axisDirection, t0$2 == null ? this.axisDirection : t0$2), viewportFraction: (t0$3 = viewportFraction, t0$3 == null ? this.viewportFraction : t0$3)});
-    }
-    get [_maxScrollExtent$]() {
-      return T.doubleN().as(this[$noSuchMethod](new core._Invocation.getter(C[3] || CT.C3)));
-    }
-    get [_minScrollExtent$]() {
-      return T.doubleN().as(this[$noSuchMethod](new core._Invocation.getter(C[4] || CT.C4)));
-    }
-    get [_viewportDimension$]() {
-      return T.doubleN().as(this[$noSuchMethod](new core._Invocation.getter(C[5] || CT.C5)));
-    }
-    get [_pixels$]() {
-      return T.doubleN().as(this[$noSuchMethod](new core._Invocation.getter(C[6] || CT.C6)));
-    }
-  };
-  (page_view._PagePosition.new = function(opts) {
-    let physics = opts && 'physics' in opts ? opts.physics : null;
-    if (physics == null) dart.nullFailed(I[0], 306, 28, "physics");
-    let context = opts && 'context' in opts ? opts.context : null;
-    if (context == null) dart.nullFailed(I[0], 307, 28, "context");
-    let initialPage = opts && 'initialPage' in opts ? opts.initialPage : 0;
-    if (initialPage == null) dart.nullFailed(I[0], 308, 10, "initialPage");
-    let keepPage = opts && 'keepPage' in opts ? opts.keepPage : true;
-    if (keepPage == null) dart.nullFailed(I[0], 309, 10, "keepPage");
-    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : 1;
-    if (viewportFraction == null) dart.nullFailed(I[0], 310, 12, "viewportFraction");
-    let oldPosition = opts && 'oldPosition' in opts ? opts.oldPosition : null;
-    this.initialPage = initialPage;
-    if (!(initialPage != null)) dart.assertFailed(null, I[0], 312, 15, "initialPage != null");
-    if (!(keepPage != null)) dart.assertFailed(null, I[0], 313, 15, "keepPage != null");
-    if (!(viewportFraction != null)) dart.assertFailed(null, I[0], 314, 15, "viewportFraction != null");
-    if (!(dart.notNull(viewportFraction) > 0.0)) dart.assertFailed(null, I[0], 315, 15, "viewportFraction > 0.0");
-    this[_viewportFraction] = viewportFraction;
-    this[_pageToUseOnStartup] = initialPage[$toDouble]();
-    page_view._PagePosition.__proto__.new.call(this, {physics: physics, context: context, initialPixels: null, keepScrollOffset: keepPage, oldPosition: oldPosition});
-    ;
-  }).prototype = page_view._PagePosition.prototype;
-  dart.addTypeTests(page_view._PagePosition);
-  dart.addTypeCaches(page_view._PagePosition);
-  page_view._PagePosition[dart.implements] = () => [page_view.PageMetrics];
-  dart.setMethodSignature(page_view._PagePosition, () => ({
-    __proto__: dart.getMethods(page_view._PagePosition.__proto__),
-    getPageFromPixels: dart.fnType(core.double, [core.double, core.double]),
-    getPixelsFromPage: dart.fnType(core.double, [core.double]),
-    copyWith: dart.fnType(page_view.PageMetrics, [], {axisDirection: dart.nullable(basic_types.AxisDirection), maxScrollExtent: dart.nullable(core.double), minScrollExtent: dart.nullable(core.double), pixels: dart.nullable(core.double), viewportDimension: dart.nullable(core.double), viewportFraction: dart.nullable(core.double)}, {})
-  }));
-  dart.setGetterSignature(page_view._PagePosition, () => ({
-    __proto__: dart.getGetters(page_view._PagePosition.__proto__),
-    viewportFraction: core.double,
-    [_initialPageOffset]: core.double,
-    page: dart.nullable(core.double),
-    [_maxScrollExtent$]: dart.nullable(core.double),
-    [_minScrollExtent$]: dart.nullable(core.double),
-    [_viewportDimension$]: dart.nullable(core.double),
-    [_pixels$]: dart.nullable(core.double)
-  }));
-  dart.setSetterSignature(page_view._PagePosition, () => ({
-    __proto__: dart.getSetters(page_view._PagePosition.__proto__),
-    viewportFraction: core.double
-  }));
-  dart.setLibraryUri(page_view._PagePosition, I[1]);
-  dart.setFieldSignature(page_view._PagePosition, () => ({
-    __proto__: dart.getFields(page_view._PagePosition.__proto__),
-    initialPage: dart.finalFieldType(core.int),
-    [_pageToUseOnStartup]: dart.fieldType(core.double),
-    [_viewportFraction]: dart.fieldType(core.double)
-  }));
-  var allowImplicitScrolling$ = dart.privateName(page_view, "_ForceImplicitScrollPhysics.allowImplicitScrolling");
-  page_view._ForceImplicitScrollPhysics = class _ForceImplicitScrollPhysics extends scroll_physics.ScrollPhysics {
-    get allowImplicitScrolling() {
-      return this[allowImplicitScrolling$];
-    }
-    set allowImplicitScrolling(value) {
-      super.allowImplicitScrolling = value;
-    }
-    applyTo(ancestor) {
-      return new page_view._ForceImplicitScrollPhysics.new({allowImplicitScrolling: this.allowImplicitScrolling, parent: this.buildParent(ancestor)});
-    }
-  };
-  (page_view._ForceImplicitScrollPhysics.new = function(opts) {
-    let allowImplicitScrolling = opts && 'allowImplicitScrolling' in opts ? opts.allowImplicitScrolling : null;
-    if (allowImplicitScrolling == null) dart.nullFailed(I[0], 473, 19, "allowImplicitScrolling");
-    let parent = opts && 'parent' in opts ? opts.parent : null;
-    this[allowImplicitScrolling$] = allowImplicitScrolling;
-    if (!(allowImplicitScrolling != null)) dart.assertFailed(null, I[0], 475, 15, "allowImplicitScrolling != null");
-    page_view._ForceImplicitScrollPhysics.__proto__.new.call(this, {parent: parent});
-    ;
-  }).prototype = page_view._ForceImplicitScrollPhysics.prototype;
-  dart.addTypeTests(page_view._ForceImplicitScrollPhysics);
-  dart.addTypeCaches(page_view._ForceImplicitScrollPhysics);
-  dart.setMethodSignature(page_view._ForceImplicitScrollPhysics, () => ({
-    __proto__: dart.getMethods(page_view._ForceImplicitScrollPhysics.__proto__),
-    applyTo: dart.fnType(page_view._ForceImplicitScrollPhysics, [dart.nullable(scroll_physics.ScrollPhysics)])
-  }));
-  dart.setLibraryUri(page_view._ForceImplicitScrollPhysics, I[1]);
-  dart.setFieldSignature(page_view._ForceImplicitScrollPhysics, () => ({
-    __proto__: dart.getFields(page_view._ForceImplicitScrollPhysics.__proto__),
-    allowImplicitScrolling: dart.finalFieldType(core.bool)
-  }));
-  var _getPage = dart.privateName(page_view, "_getPage");
-  var _getPixels = dart.privateName(page_view, "_getPixels");
-  var _getTargetPixels = dart.privateName(page_view, "_getTargetPixels");
-  page_view.PageScrollPhysics = class PageScrollPhysics extends scroll_physics.ScrollPhysics {
-    applyTo(ancestor) {
-      return new page_view.PageScrollPhysics.new({parent: this.buildParent(ancestor)});
-    }
-    [_getPage](position) {
-      if (position == null) dart.nullFailed(I[0], 508, 33, "position");
-      if (page_view._PagePosition.is(position)) return dart.nullCheck(position.page);
-      return dart.notNull(position.pixels) / dart.notNull(position.viewportDimension);
-    }
-    [_getPixels](position, page) {
-      if (position == null) dart.nullFailed(I[0], 514, 35, "position");
-      if (page == null) dart.nullFailed(I[0], 514, 52, "page");
-      if (page_view._PagePosition.is(position)) return position.getPixelsFromPage(page);
-      return dart.notNull(page) * dart.notNull(position.viewportDimension);
-    }
-    [_getTargetPixels](position, tolerance, velocity) {
-      if (position == null) dart.nullFailed(I[0], 520, 41, "position");
-      if (tolerance == null) dart.nullFailed(I[0], 520, 61, "tolerance");
-      if (velocity == null) dart.nullFailed(I[0], 520, 79, "velocity");
-      let page = this[_getPage](position);
-      if (dart.notNull(velocity) < -dart.notNull(tolerance.velocity))
-        page = dart.notNull(page) - 0.5;
-      else if (dart.notNull(velocity) > dart.notNull(tolerance.velocity)) page = dart.notNull(page) + 0.5;
-      return this[_getPixels](position, page[$roundToDouble]());
-    }
-    createBallisticSimulation(position, velocity) {
-      if (position == null) dart.nullFailed(I[0], 530, 55, "position");
-      if (velocity == null) dart.nullFailed(I[0], 530, 72, "velocity");
-      if (dart.notNull(velocity) <= 0.0 && dart.notNull(position.pixels) <= dart.notNull(position.minScrollExtent) || dart.notNull(velocity) >= 0.0 && dart.notNull(position.pixels) >= dart.notNull(position.maxScrollExtent)) return super.createBallisticSimulation(position, velocity);
-      let tolerance = this.tolerance;
-      let target = this[_getTargetPixels](position, tolerance, velocity);
-      if (target != position.pixels) return new spring_simulation.ScrollSpringSimulation.new(this.spring, position.pixels, target, velocity, {tolerance: tolerance});
-      return null;
-    }
-    get allowImplicitScrolling() {
+    hitTestChildren(result, opts) {
+      if (result == null) dart.nullFailed(I[0], 84, 41, "result");
+      let position = opts && 'position' in opts ? opts.position : null;
+      if (position == null) dart.nullFailed(I[0], 84, 67, "position");
+      if (this.child != null) {
+        let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+        return result.addWithPaintOffset({offset: childParentData.offset, position: position, hitTest: dart.fn((result, transformed) => {
+            if (result == null) dart.nullFailed(I[0], 90, 36, "result");
+            if (!dart.equals(transformed, position['-'](childParentData.offset))) dart.assertFailed(null, I[0], 91, 18, "transformed == position - childParentData.offset");
+            return dart.nullCheck(this.child).hitTest(result, {position: dart.nullCheck(transformed)});
+          }, T.BoxHitTestResultAndOffsetNTobool())});
+      }
       return false;
     }
   };
-  (page_view.PageScrollPhysics.new = function(opts) {
-    let parent = opts && 'parent' in opts ? opts.parent : null;
-    page_view.PageScrollPhysics.__proto__.new.call(this, {parent: parent});
-    ;
-  }).prototype = page_view.PageScrollPhysics.prototype;
-  dart.addTypeTests(page_view.PageScrollPhysics);
-  dart.addTypeCaches(page_view.PageScrollPhysics);
-  dart.setMethodSignature(page_view.PageScrollPhysics, () => ({
-    __proto__: dart.getMethods(page_view.PageScrollPhysics.__proto__),
-    applyTo: dart.fnType(page_view.PageScrollPhysics, [dart.nullable(scroll_physics.ScrollPhysics)]),
-    [_getPage]: dart.fnType(core.double, [scroll_metrics.ScrollMetrics]),
-    [_getPixels]: dart.fnType(core.double, [scroll_metrics.ScrollMetrics, core.double]),
-    [_getTargetPixels]: dart.fnType(core.double, [scroll_metrics.ScrollMetrics, tolerance.Tolerance, core.double])
-  }));
-  dart.setLibraryUri(page_view.PageScrollPhysics, I[1]);
-  var allowImplicitScrolling$0 = dart.privateName(page_view, "PageView.allowImplicitScrolling");
-  var restorationId$ = dart.privateName(page_view, "PageView.restorationId");
-  var scrollDirection$ = dart.privateName(page_view, "PageView.scrollDirection");
-  var reverse$ = dart.privateName(page_view, "PageView.reverse");
-  var controller$ = dart.privateName(page_view, "PageView.controller");
-  var physics$ = dart.privateName(page_view, "PageView.physics");
-  var pageSnapping$ = dart.privateName(page_view, "PageView.pageSnapping");
-  var onPageChanged$ = dart.privateName(page_view, "PageView.onPageChanged");
-  var childrenDelegate$ = dart.privateName(page_view, "PageView.childrenDelegate");
-  var dragStartBehavior$ = dart.privateName(page_view, "PageView.dragStartBehavior");
-  var clipBehavior$ = dart.privateName(page_view, "PageView.clipBehavior");
-  var scrollBehavior$ = dart.privateName(page_view, "PageView.scrollBehavior");
-  var _name$ = dart.privateName(basic_types, "_name");
-  var _name$0 = dart.privateName(recognizer, "_name");
-  var _name$1 = dart.privateName(ui, "_name");
-  page_view.PageView = class PageView extends framework.StatefulWidget {
-    get allowImplicitScrolling() {
-      return this[allowImplicitScrolling$0];
+  (shifted_box.RenderShiftedBox.new = function(child) {
+    shifted_box.RenderShiftedBox.__proto__.new.call(this);
+    this.child = child;
+  }).prototype = shifted_box.RenderShiftedBox.prototype;
+  dart.addTypeTests(shifted_box.RenderShiftedBox);
+  dart.addTypeCaches(shifted_box.RenderShiftedBox);
+  dart.setLibraryUri(shifted_box.RenderShiftedBox, I[1]);
+  var _resolvedPadding = dart.privateName(shifted_box, "_resolvedPadding");
+  var _textDirection = dart.privateName(shifted_box, "_textDirection");
+  var _padding = dart.privateName(shifted_box, "_padding");
+  var _resolve = dart.privateName(shifted_box, "_resolve");
+  var _markNeedResolution = dart.privateName(shifted_box, "_markNeedResolution");
+  shifted_box.RenderPadding = class RenderPadding extends shifted_box.RenderShiftedBox {
+    [_resolve]() {
+      if (this[_resolvedPadding] != null) return;
+      this[_resolvedPadding] = this.padding.resolve(this.textDirection);
+      if (!dart.test(dart.nullCheck(this[_resolvedPadding]).isNonNegative)) dart.assertFailed(null, I[0], 126, 12, "_resolvedPadding!.isNonNegative");
     }
-    set allowImplicitScrolling(value) {
-      super.allowImplicitScrolling = value;
+    [_markNeedResolution]() {
+      this[_resolvedPadding] = null;
+      this.markNeedsLayout();
     }
-    get restorationId() {
-      return this[restorationId$];
+    get padding() {
+      return this[_padding];
     }
-    set restorationId(value) {
-      super.restorationId = value;
+    set padding(value) {
+      if (value == null) dart.nullFailed(I[0], 140, 34, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 141, 12, "value != null");
+      if (!dart.test(value.isNonNegative)) dart.assertFailed(null, I[0], 142, 12, "value.isNonNegative");
+      if (dart.equals(this[_padding], value)) return;
+      this[_padding] = value;
+      this[_markNeedResolution]();
     }
-    get scrollDirection() {
-      return this[scrollDirection$];
+    get textDirection() {
+      return this[_textDirection];
     }
-    set scrollDirection(value) {
-      super.scrollDirection = value;
+    set textDirection(value) {
+      if (this[_textDirection] == value) return;
+      this[_textDirection] = value;
+      this[_markNeedResolution]();
     }
-    get reverse() {
-      return this[reverse$];
+    computeMinIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[0], 163, 42, "height");
+      this[_resolve]();
+      let totalHorizontalPadding = dart.notNull(dart.nullCheck(this[_resolvedPadding]).left) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).right);
+      let totalVerticalPadding = dart.notNull(dart.nullCheck(this[_resolvedPadding]).top) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).bottom);
+      if (this.child != null) return dart.notNull(dart.nullCheck(this.child).getMinIntrinsicWidth(math.max(core.double, 0.0, dart.notNull(height) - totalVerticalPadding))) + totalHorizontalPadding;
+      return totalHorizontalPadding;
     }
-    set reverse(value) {
-      super.reverse = value;
+    computeMaxIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[0], 173, 42, "height");
+      this[_resolve]();
+      let totalHorizontalPadding = dart.notNull(dart.nullCheck(this[_resolvedPadding]).left) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).right);
+      let totalVerticalPadding = dart.notNull(dart.nullCheck(this[_resolvedPadding]).top) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).bottom);
+      if (this.child != null) return dart.notNull(dart.nullCheck(this.child).getMaxIntrinsicWidth(math.max(core.double, 0.0, dart.notNull(height) - totalVerticalPadding))) + totalHorizontalPadding;
+      return totalHorizontalPadding;
     }
-    get controller() {
-      return this[controller$];
+    computeMinIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[0], 183, 43, "width");
+      this[_resolve]();
+      let totalHorizontalPadding = dart.notNull(dart.nullCheck(this[_resolvedPadding]).left) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).right);
+      let totalVerticalPadding = dart.notNull(dart.nullCheck(this[_resolvedPadding]).top) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).bottom);
+      if (this.child != null) return dart.notNull(dart.nullCheck(this.child).getMinIntrinsicHeight(math.max(core.double, 0.0, dart.notNull(width) - totalHorizontalPadding))) + totalVerticalPadding;
+      return totalVerticalPadding;
     }
-    set controller(value) {
-      super.controller = value;
+    computeMaxIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[0], 193, 43, "width");
+      this[_resolve]();
+      let totalHorizontalPadding = dart.notNull(dart.nullCheck(this[_resolvedPadding]).left) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).right);
+      let totalVerticalPadding = dart.notNull(dart.nullCheck(this[_resolvedPadding]).top) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).bottom);
+      if (this.child != null) return dart.notNull(dart.nullCheck(this.child).getMaxIntrinsicHeight(math.max(core.double, 0.0, dart.notNull(width) - totalHorizontalPadding))) + totalVerticalPadding;
+      return totalVerticalPadding;
     }
-    get physics() {
-      return this[physics$];
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 203, 40, "constraints");
+      this[_resolve]();
+      if (!(this[_resolvedPadding] != null)) dart.assertFailed(null, I[0], 205, 12, "_resolvedPadding != null");
+      if (this.child == null) {
+        return constraints.constrain(new ui.Size.new(dart.notNull(dart.nullCheck(this[_resolvedPadding]).left) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).right), dart.notNull(dart.nullCheck(this[_resolvedPadding]).top) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).bottom)));
+      }
+      let innerConstraints = constraints.deflate(dart.nullCheck(this[_resolvedPadding]));
+      let childSize = dart.nullCheck(this.child).getDryLayout(innerConstraints);
+      return constraints.constrain(new ui.Size.new(dart.notNull(dart.nullCheck(this[_resolvedPadding]).left) + dart.notNull(childSize.width) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).right), dart.notNull(dart.nullCheck(this[_resolvedPadding]).top) + dart.notNull(childSize.height) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).bottom)));
     }
-    set physics(value) {
-      super.physics = value;
+    performLayout() {
+      let constraints = this.constraints;
+      this[_resolve]();
+      if (!(this[_resolvedPadding] != null)) dart.assertFailed(null, I[0], 224, 12, "_resolvedPadding != null");
+      if (this.child == null) {
+        this.size = constraints.constrain(new ui.Size.new(dart.notNull(dart.nullCheck(this[_resolvedPadding]).left) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).right), dart.notNull(dart.nullCheck(this[_resolvedPadding]).top) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).bottom)));
+        return;
+      }
+      let innerConstraints = constraints.deflate(dart.nullCheck(this[_resolvedPadding]));
+      dart.nullCheck(this.child).layout(innerConstraints, {parentUsesSize: true});
+      let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+      childParentData.offset = new ui.Offset.new(dart.nullCheck(this[_resolvedPadding]).left, dart.nullCheck(this[_resolvedPadding]).top);
+      this.size = constraints.constrain(new ui.Size.new(dart.notNull(dart.nullCheck(this[_resolvedPadding]).left) + dart.notNull(dart.nullCheck(this.child).size.width) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).right), dart.notNull(dart.nullCheck(this[_resolvedPadding]).top) + dart.notNull(dart.nullCheck(this.child).size.height) + dart.notNull(dart.nullCheck(this[_resolvedPadding]).bottom)));
     }
-    get pageSnapping() {
-      return this[pageSnapping$];
+    debugPaintSize(context, offset) {
+      if (context == null) dart.nullFailed(I[0], 243, 39, "context");
+      if (offset == null) dart.nullFailed(I[0], 243, 55, "offset");
+      super.debugPaintSize(context, offset);
+      if (!dart.test(dart.fn(() => {
+        let outerRect = offset['&'](this.size);
+        debug.debugPaintPadding(context.canvas, outerRect, this.child != null ? dart.nullCheck(this[_resolvedPadding]).deflateRect(outerRect) : null);
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 245, 12, "() {\r\n      final Rect outerRect = offset & size;\r\n      debugPaintPadding(context.canvas, outerRect, child != null ? _resolvedPadding!.deflateRect(outerRect) : null);\r\n      return true;\r\n    }()");
     }
-    set pageSnapping(value) {
-      super.pageSnapping = value;
-    }
-    get onPageChanged() {
-      return this[onPageChanged$];
-    }
-    set onPageChanged(value) {
-      super.onPageChanged = value;
-    }
-    get childrenDelegate() {
-      return this[childrenDelegate$];
-    }
-    set childrenDelegate(value) {
-      super.childrenDelegate = value;
-    }
-    get dragStartBehavior() {
-      return this[dragStartBehavior$];
-    }
-    set dragStartBehavior(value) {
-      super.dragStartBehavior = value;
-    }
-    get clipBehavior() {
-      return this[clipBehavior$];
-    }
-    set clipBehavior(value) {
-      super.clipBehavior = value;
-    }
-    get scrollBehavior() {
-      return this[scrollBehavior$];
-    }
-    set scrollBehavior(value) {
-      super.scrollBehavior = value;
-    }
-    createState() {
-      return new page_view._PageViewState.new();
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(I[0], 253, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new (T.DiagnosticsPropertyOfEdgeInsetsGeometry()).new("padding", this.padding));
+      properties.add(new (T.EnumPropertyOfTextDirection()).new("textDirection", this.textDirection, {defaultValue: null}));
     }
   };
-  (page_view.PageView.new = function(opts) {
-    let t0;
-    let key = opts && 'key' in opts ? opts.key : null;
-    let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : C[7] || CT.C7;
-    if (scrollDirection == null) dart.nullFailed(I[0], 628, 10, "scrollDirection");
-    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
-    if (reverse == null) dart.nullFailed(I[0], 629, 10, "reverse");
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let physics = opts && 'physics' in opts ? opts.physics : null;
-    let pageSnapping = opts && 'pageSnapping' in opts ? opts.pageSnapping : true;
-    if (pageSnapping == null) dart.nullFailed(I[0], 632, 10, "pageSnapping");
-    let onPageChanged = opts && 'onPageChanged' in opts ? opts.onPageChanged : null;
-    let children = opts && 'children' in opts ? opts.children : C[8] || CT.C8;
-    if (children == null) dart.nullFailed(I[0], 634, 18, "children");
-    let dragStartBehavior = opts && 'dragStartBehavior' in opts ? opts.dragStartBehavior : C[9] || CT.C9;
-    if (dragStartBehavior == null) dart.nullFailed(I[0], 635, 10, "dragStartBehavior");
-    let allowImplicitScrolling = opts && 'allowImplicitScrolling' in opts ? opts.allowImplicitScrolling : false;
-    if (allowImplicitScrolling == null) dart.nullFailed(I[0], 636, 10, "allowImplicitScrolling");
-    let restorationId = opts && 'restorationId' in opts ? opts.restorationId : null;
-    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[10] || CT.C10;
-    if (clipBehavior == null) dart.nullFailed(I[0], 638, 10, "clipBehavior");
-    let scrollBehavior = opts && 'scrollBehavior' in opts ? opts.scrollBehavior : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[scrollDirection$] = scrollDirection;
-    this[reverse$] = reverse;
-    this[physics$] = physics;
-    this[pageSnapping$] = pageSnapping;
-    this[onPageChanged$] = onPageChanged;
-    this[dragStartBehavior$] = dragStartBehavior;
-    this[allowImplicitScrolling$0] = allowImplicitScrolling;
-    this[restorationId$] = restorationId;
-    this[clipBehavior$] = clipBehavior;
-    this[scrollBehavior$] = scrollBehavior;
-    if (!(allowImplicitScrolling != null)) dart.assertFailed(null, I[0], 640, 15, "allowImplicitScrolling != null");
-    if (!(clipBehavior != null)) dart.assertFailed(null, I[0], 641, 15, "clipBehavior != null");
-    this[controller$] = (t0 = controller, t0 == null ? page_view._defaultPageController : t0);
-    this[childrenDelegate$] = new sliver.SliverChildListDelegate.new(children);
-    page_view.PageView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (shifted_box.RenderPadding.new = function(opts) {
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    if (padding == null) dart.nullFailed(I[0], 111, 33, "padding");
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    this[_resolvedPadding] = null;
+    if (!(padding != null)) dart.assertFailed(null, I[0], 114, 15, "padding != null");
+    if (!dart.test(padding.isNonNegative)) dart.assertFailed(null, I[0], 115, 15, "padding.isNonNegative");
+    this[_textDirection] = textDirection;
+    this[_padding] = padding;
+    shifted_box.RenderPadding.__proto__.new.call(this, child);
     ;
-  }).prototype = page_view.PageView.prototype;
-  (page_view.PageView.builder = function(opts) {
-    let t0;
-    let key = opts && 'key' in opts ? opts.key : null;
-    let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : C[7] || CT.C7;
-    if (scrollDirection == null) dart.nullFailed(I[0], 666, 10, "scrollDirection");
-    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
-    if (reverse == null) dart.nullFailed(I[0], 667, 10, "reverse");
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let physics = opts && 'physics' in opts ? opts.physics : null;
-    let pageSnapping = opts && 'pageSnapping' in opts ? opts.pageSnapping : true;
-    if (pageSnapping == null) dart.nullFailed(I[0], 670, 10, "pageSnapping");
-    let onPageChanged = opts && 'onPageChanged' in opts ? opts.onPageChanged : null;
-    let itemBuilder = opts && 'itemBuilder' in opts ? opts.itemBuilder : null;
-    if (itemBuilder == null) dart.nullFailed(I[0], 672, 35, "itemBuilder");
-    let itemCount = opts && 'itemCount' in opts ? opts.itemCount : null;
-    let dragStartBehavior = opts && 'dragStartBehavior' in opts ? opts.dragStartBehavior : C[9] || CT.C9;
-    if (dragStartBehavior == null) dart.nullFailed(I[0], 674, 10, "dragStartBehavior");
-    let allowImplicitScrolling = opts && 'allowImplicitScrolling' in opts ? opts.allowImplicitScrolling : false;
-    if (allowImplicitScrolling == null) dart.nullFailed(I[0], 675, 10, "allowImplicitScrolling");
-    let restorationId = opts && 'restorationId' in opts ? opts.restorationId : null;
-    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[10] || CT.C10;
-    if (clipBehavior == null) dart.nullFailed(I[0], 677, 10, "clipBehavior");
-    let scrollBehavior = opts && 'scrollBehavior' in opts ? opts.scrollBehavior : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[scrollDirection$] = scrollDirection;
-    this[reverse$] = reverse;
-    this[physics$] = physics;
-    this[pageSnapping$] = pageSnapping;
-    this[onPageChanged$] = onPageChanged;
-    this[dragStartBehavior$] = dragStartBehavior;
-    this[allowImplicitScrolling$0] = allowImplicitScrolling;
-    this[restorationId$] = restorationId;
-    this[clipBehavior$] = clipBehavior;
-    this[scrollBehavior$] = scrollBehavior;
-    if (!(allowImplicitScrolling != null)) dart.assertFailed(null, I[0], 679, 15, "allowImplicitScrolling != null");
-    if (!(clipBehavior != null)) dart.assertFailed(null, I[0], 680, 15, "clipBehavior != null");
-    this[controller$] = (t0 = controller, t0 == null ? page_view._defaultPageController : t0);
-    this[childrenDelegate$] = new sliver.SliverChildBuilderDelegate.new(itemBuilder, {childCount: itemCount});
-    page_view.PageView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = page_view.PageView.prototype;
-  (page_view.PageView.custom = function(opts) {
-    let t0;
-    let key = opts && 'key' in opts ? opts.key : null;
-    let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : C[7] || CT.C7;
-    if (scrollDirection == null) dart.nullFailed(I[0], 771, 10, "scrollDirection");
-    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
-    if (reverse == null) dart.nullFailed(I[0], 772, 10, "reverse");
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let physics = opts && 'physics' in opts ? opts.physics : null;
-    let pageSnapping = opts && 'pageSnapping' in opts ? opts.pageSnapping : true;
-    if (pageSnapping == null) dart.nullFailed(I[0], 775, 10, "pageSnapping");
-    let onPageChanged = opts && 'onPageChanged' in opts ? opts.onPageChanged : null;
-    let childrenDelegate = opts && 'childrenDelegate' in opts ? opts.childrenDelegate : null;
-    if (childrenDelegate == null) dart.nullFailed(I[0], 777, 19, "childrenDelegate");
-    let dragStartBehavior = opts && 'dragStartBehavior' in opts ? opts.dragStartBehavior : C[9] || CT.C9;
-    if (dragStartBehavior == null) dart.nullFailed(I[0], 778, 10, "dragStartBehavior");
-    let allowImplicitScrolling = opts && 'allowImplicitScrolling' in opts ? opts.allowImplicitScrolling : false;
-    if (allowImplicitScrolling == null) dart.nullFailed(I[0], 779, 10, "allowImplicitScrolling");
-    let restorationId = opts && 'restorationId' in opts ? opts.restorationId : null;
-    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[10] || CT.C10;
-    if (clipBehavior == null) dart.nullFailed(I[0], 781, 10, "clipBehavior");
-    let scrollBehavior = opts && 'scrollBehavior' in opts ? opts.scrollBehavior : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[scrollDirection$] = scrollDirection;
-    this[reverse$] = reverse;
-    this[physics$] = physics;
-    this[pageSnapping$] = pageSnapping;
-    this[onPageChanged$] = onPageChanged;
-    this[childrenDelegate$] = childrenDelegate;
-    this[dragStartBehavior$] = dragStartBehavior;
-    this[allowImplicitScrolling$0] = allowImplicitScrolling;
-    this[restorationId$] = restorationId;
-    this[clipBehavior$] = clipBehavior;
-    this[scrollBehavior$] = scrollBehavior;
-    if (!(childrenDelegate != null)) dart.assertFailed(null, I[0], 783, 15, "childrenDelegate != null");
-    if (!(allowImplicitScrolling != null)) dart.assertFailed(null, I[0], 784, 15, "allowImplicitScrolling != null");
-    if (!(clipBehavior != null)) dart.assertFailed(null, I[0], 785, 15, "clipBehavior != null");
-    this[controller$] = (t0 = controller, t0 == null ? page_view._defaultPageController : t0);
-    page_view.PageView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = page_view.PageView.prototype;
-  dart.addTypeTests(page_view.PageView);
-  dart.addTypeCaches(page_view.PageView);
-  dart.setMethodSignature(page_view.PageView, () => ({
-    __proto__: dart.getMethods(page_view.PageView.__proto__),
-    createState: dart.fnType(page_view._PageViewState, [])
+  }).prototype = shifted_box.RenderPadding.prototype;
+  dart.addTypeTests(shifted_box.RenderPadding);
+  dart.addTypeCaches(shifted_box.RenderPadding);
+  dart.setMethodSignature(shifted_box.RenderPadding, () => ({
+    __proto__: dart.getMethods(shifted_box.RenderPadding.__proto__),
+    [_resolve]: dart.fnType(dart.void, []),
+    [_markNeedResolution]: dart.fnType(dart.void, [])
   }));
-  dart.setLibraryUri(page_view.PageView, I[1]);
-  dart.setFieldSignature(page_view.PageView, () => ({
-    __proto__: dart.getFields(page_view.PageView.__proto__),
-    allowImplicitScrolling: dart.finalFieldType(core.bool),
-    restorationId: dart.finalFieldType(dart.nullable(core.String)),
-    scrollDirection: dart.finalFieldType(basic_types.Axis),
-    reverse: dart.finalFieldType(core.bool),
-    controller: dart.finalFieldType(page_view.PageController),
-    physics: dart.finalFieldType(dart.nullable(scroll_physics.ScrollPhysics)),
-    pageSnapping: dart.finalFieldType(core.bool),
-    onPageChanged: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.int]))),
-    childrenDelegate: dart.finalFieldType(sliver.SliverChildDelegate),
-    dragStartBehavior: dart.finalFieldType(recognizer.DragStartBehavior),
-    clipBehavior: dart.finalFieldType(ui.Clip),
-    scrollBehavior: dart.finalFieldType(dart.nullable(scroll_configuration.ScrollBehavior))
+  dart.setGetterSignature(shifted_box.RenderPadding, () => ({
+    __proto__: dart.getGetters(shifted_box.RenderPadding.__proto__),
+    padding: edge_insets.EdgeInsetsGeometry,
+    textDirection: dart.nullable(ui.TextDirection)
   }));
-  var _lastReportedPage = dart.privateName(page_view, "_lastReportedPage");
-  var _getDirection = dart.privateName(page_view, "_getDirection");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  page_view._PageViewState = class _PageViewState extends framework.State$(page_view.PageView) {
-    initState() {
-      super.initState();
-      this[_lastReportedPage] = this.widget.controller.initialPage;
+  dart.setSetterSignature(shifted_box.RenderPadding, () => ({
+    __proto__: dart.getSetters(shifted_box.RenderPadding.__proto__),
+    padding: edge_insets.EdgeInsetsGeometry,
+    textDirection: dart.nullable(ui.TextDirection)
+  }));
+  dart.setLibraryUri(shifted_box.RenderPadding, I[1]);
+  dart.setFieldSignature(shifted_box.RenderPadding, () => ({
+    __proto__: dart.getFields(shifted_box.RenderPadding.__proto__),
+    [_resolvedPadding]: dart.fieldType(dart.nullable(edge_insets.EdgeInsets)),
+    [_padding]: dart.fieldType(edge_insets.EdgeInsetsGeometry),
+    [_textDirection]: dart.fieldType(dart.nullable(ui.TextDirection))
+  }));
+  var Alignment_y = dart.privateName(alignment, "Alignment.y");
+  var Alignment_x = dart.privateName(alignment, "Alignment.x");
+  var _resolvedAlignment = dart.privateName(shifted_box, "_resolvedAlignment");
+  var _alignment = dart.privateName(shifted_box, "_alignment");
+  shifted_box.RenderAligningShiftedBox = class RenderAligningShiftedBox extends shifted_box.RenderShiftedBox {
+    [_resolve]() {
+      if (this[_resolvedAlignment] != null) return;
+      this[_resolvedAlignment] = this.alignment.resolve(this.textDirection);
     }
-    [_getDirection](context) {
-      if (context == null) dart.nullFailed(I[0], 889, 44, "context");
-      switch (this.widget.scrollDirection) {
+    [_markNeedResolution]() {
+      this[_resolvedAlignment] = null;
+      this.markNeedsLayout();
+    }
+    get alignment() {
+      return this[_alignment];
+    }
+    set alignment(value) {
+      if (value == null) dart.nullFailed(I[0], 314, 35, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 315, 12, "value != null");
+      if (dart.equals(this[_alignment], value)) return;
+      this[_alignment] = value;
+      this[_markNeedResolution]();
+    }
+    get textDirection() {
+      return this[_textDirection];
+    }
+    set textDirection(value) {
+      if (this[_textDirection] == value) return;
+      this[_textDirection] = value;
+      this[_markNeedResolution]();
+    }
+    alignChild() {
+      this[_resolve]();
+      if (!(this.child != null)) dart.assertFailed(null, I[0], 346, 12, "child != null");
+      if (!!dart.test(dart.nullCheck(this.child).debugNeedsLayout)) dart.assertFailed(null, I[0], 347, 12, "!child!.debugNeedsLayout");
+      if (!dart.test(dart.nullCheck(this.child).hasSize)) dart.assertFailed(null, I[0], 348, 12, "child!.hasSize");
+      if (!dart.test(this.hasSize)) dart.assertFailed(null, I[0], 349, 12, "hasSize");
+      if (!(this[_resolvedAlignment] != null)) dart.assertFailed(null, I[0], 350, 12, "_resolvedAlignment != null");
+      let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+      childParentData.offset = dart.nullCheck(this[_resolvedAlignment]).alongOffset(ui.Offset.as(this.size['-'](dart.nullCheck(this.child).size)));
+    }
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(I[0], 356, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new (T.DiagnosticsPropertyOfAlignmentGeometry()).new("alignment", this.alignment));
+      properties.add(new (T.EnumPropertyOfTextDirection()).new("textDirection", this.textDirection, {defaultValue: null}));
+    }
+  };
+  (shifted_box.RenderAligningShiftedBox.new = function(opts) {
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[0] || CT.C0;
+    if (alignment == null) dart.nullFailed(I[0], 270, 23, "alignment");
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    this[_resolvedAlignment] = null;
+    if (!(alignment != null)) dart.assertFailed(null, I[0], 273, 15, "alignment != null");
+    this[_alignment] = alignment;
+    this[_textDirection] = textDirection;
+    shifted_box.RenderAligningShiftedBox.__proto__.new.call(this, child);
+    ;
+  }).prototype = shifted_box.RenderAligningShiftedBox.prototype;
+  (shifted_box.RenderAligningShiftedBox.mixin = function(alignment, textDirection, child) {
+    if (alignment == null) dart.nullFailed(I[0], 281, 52, "alignment");
+    shifted_box.RenderAligningShiftedBox.new.call(this, {alignment: alignment, textDirection: textDirection, child: child});
+  }).prototype = shifted_box.RenderAligningShiftedBox.prototype;
+  dart.addTypeTests(shifted_box.RenderAligningShiftedBox);
+  dart.addTypeCaches(shifted_box.RenderAligningShiftedBox);
+  dart.setMethodSignature(shifted_box.RenderAligningShiftedBox, () => ({
+    __proto__: dart.getMethods(shifted_box.RenderAligningShiftedBox.__proto__),
+    [_resolve]: dart.fnType(dart.void, []),
+    [_markNeedResolution]: dart.fnType(dart.void, []),
+    alignChild: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(shifted_box.RenderAligningShiftedBox, () => ({
+    __proto__: dart.getGetters(shifted_box.RenderAligningShiftedBox.__proto__),
+    alignment: alignment.AlignmentGeometry,
+    textDirection: dart.nullable(ui.TextDirection)
+  }));
+  dart.setSetterSignature(shifted_box.RenderAligningShiftedBox, () => ({
+    __proto__: dart.getSetters(shifted_box.RenderAligningShiftedBox.__proto__),
+    alignment: alignment.AlignmentGeometry,
+    textDirection: dart.nullable(ui.TextDirection)
+  }));
+  dart.setLibraryUri(shifted_box.RenderAligningShiftedBox, I[1]);
+  dart.setFieldSignature(shifted_box.RenderAligningShiftedBox, () => ({
+    __proto__: dart.getFields(shifted_box.RenderAligningShiftedBox.__proto__),
+    [_resolvedAlignment]: dart.fieldType(dart.nullable(alignment.Alignment)),
+    [_alignment]: dart.fieldType(alignment.AlignmentGeometry),
+    [_textDirection]: dart.fieldType(dart.nullable(ui.TextDirection))
+  }));
+  var _widthFactor = dart.privateName(shifted_box, "_widthFactor");
+  var _heightFactor = dart.privateName(shifted_box, "_heightFactor");
+  var Color_value = dart.privateName(ui, "Color.value");
+  shifted_box.RenderPositionedBox = class RenderPositionedBox extends shifted_box.RenderAligningShiftedBox {
+    get widthFactor() {
+      return this[_widthFactor];
+    }
+    set widthFactor(value) {
+      if (!(value == null || dart.notNull(value) >= 0.0)) dart.assertFailed(null, I[0], 393, 12, "value == null || value >= 0.0");
+      if (this[_widthFactor] == value) return;
+      this[_widthFactor] = value;
+      this.markNeedsLayout();
+    }
+    get heightFactor() {
+      return this[_heightFactor];
+    }
+    set heightFactor(value) {
+      if (!(value == null || dart.notNull(value) >= 0.0)) dart.assertFailed(null, I[0], 406, 12, "value == null || value >= 0.0");
+      if (this[_heightFactor] == value) return;
+      this[_heightFactor] = value;
+      this.markNeedsLayout();
+    }
+    computeDryLayout(constraints) {
+      let t0, t0$;
+      if (constraints == null) dart.nullFailed(I[0], 414, 40, "constraints");
+      let shrinkWrapWidth = this[_widthFactor] != null || constraints.maxWidth === 1 / 0;
+      let shrinkWrapHeight = this[_heightFactor] != null || constraints.maxHeight === 1 / 0;
+      if (this.child != null) {
+        let childSize = dart.nullCheck(this.child).getDryLayout(constraints.loosen());
+        return constraints.constrain(new ui.Size.new(shrinkWrapWidth ? dart.notNull(childSize.width) * dart.notNull((t0 = this[_widthFactor], t0 == null ? 1.0 : t0)) : 1 / 0, shrinkWrapHeight ? dart.notNull(childSize.height) * dart.notNull((t0$ = this[_heightFactor], t0$ == null ? 1.0 : t0$)) : 1 / 0));
+      }
+      return constraints.constrain(new ui.Size.new(shrinkWrapWidth ? 0.0 : 1 / 0, shrinkWrapHeight ? 0.0 : 1 / 0));
+    }
+    performLayout() {
+      let t0, t0$;
+      let constraints = this.constraints;
+      let shrinkWrapWidth = this[_widthFactor] != null || constraints.maxWidth === 1 / 0;
+      let shrinkWrapHeight = this[_heightFactor] != null || constraints.maxHeight === 1 / 0;
+      if (this.child != null) {
+        dart.nullCheck(this.child).layout(constraints.loosen(), {parentUsesSize: true});
+        this.size = constraints.constrain(new ui.Size.new(shrinkWrapWidth ? dart.notNull(dart.nullCheck(this.child).size.width) * dart.notNull((t0 = this[_widthFactor], t0 == null ? 1.0 : t0)) : 1 / 0, shrinkWrapHeight ? dart.notNull(dart.nullCheck(this.child).size.height) * dart.notNull((t0$ = this[_heightFactor], t0$ == null ? 1.0 : t0$)) : 1 / 0));
+        this.alignChild();
+      } else {
+        this.size = constraints.constrain(new ui.Size.new(shrinkWrapWidth ? 0.0 : 1 / 0, shrinkWrapHeight ? 0.0 : 1 / 0));
+      }
+    }
+    debugPaintSize(context, offset) {
+      if (context == null) dart.nullFailed(I[0], 452, 39, "context");
+      if (offset == null) dart.nullFailed(I[0], 452, 55, "offset");
+      super.debugPaintSize(context, offset);
+      if (!dart.test(dart.fn(() => {
+        let t0, t0$, t0$0, t0$1;
+        let paint = null;
+        if (this.child != null && !dart.test(dart.nullCheck(this.child).size.isEmpty)) {
+          let path = null;
+          paint = (t0 = ui.Paint.new(), (() => {
+            t0.style = ui.PaintingStyle.stroke;
+            t0.strokeWidth = 1.0;
+            t0.color = C[1] || CT.C1;
+            return t0;
+          })());
+          path = ui.Path.new();
+          let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+          if (dart.notNull(childParentData.offset.dy) > 0.0) {
+            let headSize = math.min(core.double, dart.notNull(childParentData.offset.dy) * 0.2, 10.0);
+            t0$ = path;
+            (() => {
+              t0$.moveTo(dart.notNull(offset.dx) + dart.notNull(this.size.width) / 2.0, offset.dy);
+              t0$.relativeLineTo(0.0, dart.notNull(childParentData.offset.dy) - headSize);
+              t0$.relativeLineTo(headSize, 0.0);
+              t0$.relativeLineTo(-headSize, headSize);
+              t0$.relativeLineTo(-headSize, -headSize);
+              t0$.relativeLineTo(headSize, 0.0);
+              t0$.moveTo(dart.notNull(offset.dx) + dart.notNull(this.size.width) / 2.0, dart.notNull(offset.dy) + dart.notNull(this.size.height));
+              t0$.relativeLineTo(0.0, -dart.notNull(childParentData.offset.dy) + headSize);
+              t0$.relativeLineTo(headSize, 0.0);
+              t0$.relativeLineTo(-headSize, -headSize);
+              t0$.relativeLineTo(-headSize, headSize);
+              t0$.relativeLineTo(headSize, 0.0);
+              return t0$;
+            })();
+            context.canvas.drawPath(path, paint);
+          }
+          if (dart.notNull(childParentData.offset.dx) > 0.0) {
+            let headSize = math.min(core.double, dart.notNull(childParentData.offset.dx) * 0.2, 10.0);
+            t0$0 = path;
+            (() => {
+              t0$0.moveTo(offset.dx, dart.notNull(offset.dy) + dart.notNull(this.size.height) / 2.0);
+              t0$0.relativeLineTo(dart.notNull(childParentData.offset.dx) - headSize, 0.0);
+              t0$0.relativeLineTo(0.0, headSize);
+              t0$0.relativeLineTo(headSize, -headSize);
+              t0$0.relativeLineTo(-headSize, -headSize);
+              t0$0.relativeLineTo(0.0, headSize);
+              t0$0.moveTo(dart.notNull(offset.dx) + dart.notNull(this.size.width), dart.notNull(offset.dy) + dart.notNull(this.size.height) / 2.0);
+              t0$0.relativeLineTo(-dart.notNull(childParentData.offset.dx) + headSize, 0.0);
+              t0$0.relativeLineTo(0.0, headSize);
+              t0$0.relativeLineTo(-headSize, -headSize);
+              t0$0.relativeLineTo(headSize, -headSize);
+              t0$0.relativeLineTo(0.0, headSize);
+              return t0$0;
+            })();
+            context.canvas.drawPath(path, paint);
+          }
+        } else {
+          paint = (t0$1 = ui.Paint.new(), (() => {
+            t0$1.color = C[2] || CT.C2;
+            return t0$1;
+          })());
+          context.canvas.drawRect(offset['&'](this.size), paint);
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 454, 12, "() {\r\n      final Paint paint;\r\n      if (child != null && !child!.size.isEmpty) {\r\n        final Path path;\r\n        paint = Paint()\r\n          ..style = PaintingStyle.stroke\r\n          ..strokeWidth = 1.0\r\n          ..color = const Color(0xFFFFFF00);\r\n        path = Path();\r\n        final BoxParentData childParentData = child!.parentData! as BoxParentData;\r\n        if (childParentData.offset.dy > 0.0) {\r\n          // vertical alignment arrows\r\n          final double headSize = math.min(childParentData.offset.dy * 0.2, 10.0);\r\n          path\r\n            ..moveTo(offset.dx + size.width / 2.0, offset.dy)\r\n            ..relativeLineTo(0.0, childParentData.offset.dy - headSize)\r\n            ..relativeLineTo(headSize, 0.0)\r\n            ..relativeLineTo(-headSize, headSize)\r\n            ..relativeLineTo(-headSize, -headSize)\r\n            ..relativeLineTo(headSize, 0.0)\r\n            ..moveTo(offset.dx + size.width / 2.0, offset.dy + size.height)\r\n            ..relativeLineTo(0.0, -childParentData.offset.dy + headSize)\r\n            ..relativeLineTo(headSize, 0.0)\r\n            ..relativeLineTo(-headSize, -headSize)\r\n            ..relativeLineTo(-headSize, headSize)\r\n            ..relativeLineTo(headSize, 0.0);\r\n          context.canvas.drawPath(path, paint);\r\n        }\r\n        if (childParentData.offset.dx > 0.0) {\r\n          // horizontal alignment arrows\r\n          final double headSize = math.min(childParentData.offset.dx * 0.2, 10.0);\r\n          path\r\n            ..moveTo(offset.dx, offset.dy + size.height / 2.0)\r\n            ..relativeLineTo(childParentData.offset.dx - headSize, 0.0)\r\n            ..relativeLineTo(0.0, headSize)\r\n            ..relativeLineTo(headSize, -headSize)\r\n            ..relativeLineTo(-headSize, -headSize)\r\n            ..relativeLineTo(0.0, headSize)\r\n            ..moveTo(offset.dx + size.width, offset.dy + size.height / 2.0)\r\n            ..relativeLineTo(-childParentData.offset.dx + headSize, 0.0)\r\n            ..relativeLineTo(0.0, headSize)\r\n            ..relativeLineTo(-headSize, -headSize)\r\n            ..relativeLineTo(headSize, -headSize)\r\n            ..relativeLineTo(0.0, headSize);\r\n          context.canvas.drawPath(path, paint);\r\n        }\r\n      } else {\r\n        paint = Paint()\r\n          ..color = const Color(0x90909090);\r\n        context.canvas.drawRect(offset & size, paint);\r\n      }\r\n      return true;\r\n    }()");
+    }
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(I[0], 510, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new diagnostics.DoubleProperty.new("widthFactor", this[_widthFactor], {ifNull: "expand"}));
+      properties.add(new diagnostics.DoubleProperty.new("heightFactor", this[_heightFactor], {ifNull: "expand"}));
+    }
+  };
+  (shifted_box.RenderPositionedBox.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let widthFactor = opts && 'widthFactor' in opts ? opts.widthFactor : null;
+    let heightFactor = opts && 'heightFactor' in opts ? opts.heightFactor : null;
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[0] || CT.C0;
+    if (alignment == null) dart.nullFailed(I[0], 379, 23, "alignment");
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    if (!(widthFactor == null || dart.notNull(widthFactor) >= 0.0)) dart.assertFailed(null, I[0], 381, 15, "widthFactor == null || widthFactor >= 0.0");
+    if (!(heightFactor == null || dart.notNull(heightFactor) >= 0.0)) dart.assertFailed(null, I[0], 382, 15, "heightFactor == null || heightFactor >= 0.0");
+    this[_widthFactor] = widthFactor;
+    this[_heightFactor] = heightFactor;
+    shifted_box.RenderPositionedBox.__proto__.new.call(this, {child: child, alignment: alignment, textDirection: textDirection});
+    ;
+  }).prototype = shifted_box.RenderPositionedBox.prototype;
+  dart.addTypeTests(shifted_box.RenderPositionedBox);
+  dart.addTypeCaches(shifted_box.RenderPositionedBox);
+  dart.setGetterSignature(shifted_box.RenderPositionedBox, () => ({
+    __proto__: dart.getGetters(shifted_box.RenderPositionedBox.__proto__),
+    widthFactor: dart.nullable(core.double),
+    heightFactor: dart.nullable(core.double)
+  }));
+  dart.setSetterSignature(shifted_box.RenderPositionedBox, () => ({
+    __proto__: dart.getSetters(shifted_box.RenderPositionedBox.__proto__),
+    widthFactor: dart.nullable(core.double),
+    heightFactor: dart.nullable(core.double)
+  }));
+  dart.setLibraryUri(shifted_box.RenderPositionedBox, I[1]);
+  dart.setFieldSignature(shifted_box.RenderPositionedBox, () => ({
+    __proto__: dart.getFields(shifted_box.RenderPositionedBox.__proto__),
+    [_widthFactor]: dart.fieldType(dart.nullable(core.double)),
+    [_heightFactor]: dart.fieldType(dart.nullable(core.double))
+  }));
+  var _minWidth = dart.privateName(shifted_box, "_minWidth");
+  var _maxWidth = dart.privateName(shifted_box, "_maxWidth");
+  var _minHeight = dart.privateName(shifted_box, "_minHeight");
+  var _maxHeight = dart.privateName(shifted_box, "_maxHeight");
+  var _getInnerConstraints = dart.privateName(shifted_box, "_getInnerConstraints");
+  shifted_box.RenderConstrainedOverflowBox = class RenderConstrainedOverflowBox extends shifted_box.RenderAligningShiftedBox {
+    get minWidth() {
+      return this[_minWidth];
+    }
+    set minWidth(value) {
+      if (this[_minWidth] == value) return;
+      this[_minWidth] = value;
+      this.markNeedsLayout();
+    }
+    get maxWidth() {
+      return this[_maxWidth];
+    }
+    set maxWidth(value) {
+      if (this[_maxWidth] == value) return;
+      this[_maxWidth] = value;
+      this.markNeedsLayout();
+    }
+    get minHeight() {
+      return this[_minHeight];
+    }
+    set minHeight(value) {
+      if (this[_minHeight] == value) return;
+      this[_minHeight] = value;
+      this.markNeedsLayout();
+    }
+    get maxHeight() {
+      return this[_maxHeight];
+    }
+    set maxHeight(value) {
+      if (this[_maxHeight] == value) return;
+      this[_maxHeight] = value;
+      this.markNeedsLayout();
+    }
+    [_getInnerConstraints](constraints) {
+      let t0, t0$, t0$0, t0$1;
+      if (constraints == null) dart.nullFailed(I[0], 607, 54, "constraints");
+      return new box.BoxConstraints.new({minWidth: (t0 = this[_minWidth], t0 == null ? constraints.minWidth : t0), maxWidth: (t0$ = this[_maxWidth], t0$ == null ? constraints.maxWidth : t0$), minHeight: (t0$0 = this[_minHeight], t0$0 == null ? constraints.minHeight : t0$0), maxHeight: (t0$1 = this[_maxHeight], t0$1 == null ? constraints.maxHeight : t0$1)});
+    }
+    get sizedByParent() {
+      return true;
+    }
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 620, 40, "constraints");
+      return constraints.biggest;
+    }
+    performLayout() {
+      let t0;
+      if (this.child != null) {
+        t0 = this.child;
+        t0 == null ? null : t0.layout(this[_getInnerConstraints](this.constraints), {parentUsesSize: true});
+        this.alignChild();
+      }
+    }
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(I[0], 633, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new diagnostics.DoubleProperty.new("minWidth", this.minWidth, {ifNull: "use parent minWidth constraint"}));
+      properties.add(new diagnostics.DoubleProperty.new("maxWidth", this.maxWidth, {ifNull: "use parent maxWidth constraint"}));
+      properties.add(new diagnostics.DoubleProperty.new("minHeight", this.minHeight, {ifNull: "use parent minHeight constraint"}));
+      properties.add(new diagnostics.DoubleProperty.new("maxHeight", this.maxHeight, {ifNull: "use parent maxHeight constraint"}));
+    }
+  };
+  (shifted_box.RenderConstrainedOverflowBox.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let minWidth = opts && 'minWidth' in opts ? opts.minWidth : null;
+    let maxWidth = opts && 'maxWidth' in opts ? opts.maxWidth : null;
+    let minHeight = opts && 'minHeight' in opts ? opts.minHeight : null;
+    let maxHeight = opts && 'maxHeight' in opts ? opts.maxHeight : null;
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[0] || CT.C0;
+    if (alignment == null) dart.nullFailed(I[0], 555, 23, "alignment");
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    this[_minWidth] = minWidth;
+    this[_maxWidth] = maxWidth;
+    this[_minHeight] = minHeight;
+    this[_maxHeight] = maxHeight;
+    shifted_box.RenderConstrainedOverflowBox.__proto__.new.call(this, {child: child, alignment: alignment, textDirection: textDirection});
+    ;
+  }).prototype = shifted_box.RenderConstrainedOverflowBox.prototype;
+  dart.addTypeTests(shifted_box.RenderConstrainedOverflowBox);
+  dart.addTypeCaches(shifted_box.RenderConstrainedOverflowBox);
+  dart.setMethodSignature(shifted_box.RenderConstrainedOverflowBox, () => ({
+    __proto__: dart.getMethods(shifted_box.RenderConstrainedOverflowBox.__proto__),
+    [_getInnerConstraints]: dart.fnType(box.BoxConstraints, [box.BoxConstraints])
+  }));
+  dart.setGetterSignature(shifted_box.RenderConstrainedOverflowBox, () => ({
+    __proto__: dart.getGetters(shifted_box.RenderConstrainedOverflowBox.__proto__),
+    minWidth: dart.nullable(core.double),
+    maxWidth: dart.nullable(core.double),
+    minHeight: dart.nullable(core.double),
+    maxHeight: dart.nullable(core.double)
+  }));
+  dart.setSetterSignature(shifted_box.RenderConstrainedOverflowBox, () => ({
+    __proto__: dart.getSetters(shifted_box.RenderConstrainedOverflowBox.__proto__),
+    minWidth: dart.nullable(core.double),
+    maxWidth: dart.nullable(core.double),
+    minHeight: dart.nullable(core.double),
+    maxHeight: dart.nullable(core.double)
+  }));
+  dart.setLibraryUri(shifted_box.RenderConstrainedOverflowBox, I[1]);
+  dart.setFieldSignature(shifted_box.RenderConstrainedOverflowBox, () => ({
+    __proto__: dart.getFields(shifted_box.RenderConstrainedOverflowBox.__proto__),
+    [_minWidth]: dart.fieldType(dart.nullable(core.double)),
+    [_maxWidth]: dart.fieldType(dart.nullable(core.double)),
+    [_minHeight]: dart.fieldType(dart.nullable(core.double)),
+    [_maxHeight]: dart.fieldType(dart.nullable(core.double))
+  }));
+  var _name = dart.privateName(ui, "_name");
+  var _overflowContainerRect = dart.privateName(shifted_box, "_overflowContainerRect");
+  var _overflowChildRect = dart.privateName(shifted_box, "_overflowChildRect");
+  var _isOverflowing = dart.privateName(shifted_box, "_isOverflowing");
+  var _childConstraints = dart.privateName(shifted_box, "_childConstraints");
+  var _clipRectLayer = dart.privateName(shifted_box, "_clipRectLayer");
+  var _constraintsTransform = dart.privateName(shifted_box, "_constraintsTransform");
+  var _clipBehavior = dart.privateName(shifted_box, "_clipBehavior");
+  const RenderAligningShiftedBox_DebugOverflowIndicatorMixin$36 = class RenderAligningShiftedBox_DebugOverflowIndicatorMixin extends shifted_box.RenderAligningShiftedBox {};
+  (RenderAligningShiftedBox_DebugOverflowIndicatorMixin$36.new = function(opts) {
+    debug_overflow_indicator.DebugOverflowIndicatorMixin[dart.mixinNew].call(this);
+    RenderAligningShiftedBox_DebugOverflowIndicatorMixin$36.__proto__.new.call(this, opts);
+  }).prototype = RenderAligningShiftedBox_DebugOverflowIndicatorMixin$36.prototype;
+  (RenderAligningShiftedBox_DebugOverflowIndicatorMixin$36.mixin = function(alignment, textDirection, child) {
+    debug_overflow_indicator.DebugOverflowIndicatorMixin[dart.mixinNew].call(this);
+    RenderAligningShiftedBox_DebugOverflowIndicatorMixin$36.__proto__.mixin.call(this, alignment, textDirection, child);
+  }).prototype = RenderAligningShiftedBox_DebugOverflowIndicatorMixin$36.prototype;
+  dart.applyMixin(RenderAligningShiftedBox_DebugOverflowIndicatorMixin$36, debug_overflow_indicator.DebugOverflowIndicatorMixin);
+  shifted_box.RenderConstraintsTransformBox = class RenderConstraintsTransformBox extends RenderAligningShiftedBox_DebugOverflowIndicatorMixin$36 {
+    get constraintsTransform() {
+      return this[_constraintsTransform];
+    }
+    set constraintsTransform(value) {
+      if (value == null) dart.nullFailed(I[0], 701, 52, "value");
+      if (dart.equals(this[_constraintsTransform], value)) return;
+      this[_constraintsTransform] = value;
+      let needsLayout = this[_childConstraints] == null || !dart.equals(this[_childConstraints], value(this.constraints));
+      if (needsLayout) this.markNeedsLayout();
+    }
+    get clipBehavior() {
+      return this[_clipBehavior];
+    }
+    set clipBehavior(value) {
+      if (value == null) dart.nullFailed(I[0], 719, 25, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 720, 12, "value != null");
+      if (value != this[_clipBehavior]) {
+        this[_clipBehavior] = value;
+        this.markNeedsPaint();
+        this.markNeedsSemanticsUpdate();
+      }
+    }
+    computeMinIntrinsicHeight(width) {
+      let t0;
+      if (width == null) dart.nullFailed(I[0], 729, 43, "width");
+      return super.computeMinIntrinsicHeight((t0 = new box.BoxConstraints.new({maxWidth: width}), this.constraintsTransform(t0)).maxWidth);
+    }
+    computeMaxIntrinsicHeight(width) {
+      let t0;
+      if (width == null) dart.nullFailed(I[0], 736, 43, "width");
+      return super.computeMaxIntrinsicHeight((t0 = new box.BoxConstraints.new({maxWidth: width}), this.constraintsTransform(t0)).maxWidth);
+    }
+    computeMinIntrinsicWidth(height) {
+      let t0;
+      if (height == null) dart.nullFailed(I[0], 743, 42, "height");
+      return super.computeMinIntrinsicWidth((t0 = new box.BoxConstraints.new({maxHeight: height}), this.constraintsTransform(t0)).maxHeight);
+    }
+    computeMaxIntrinsicWidth(height) {
+      let t0;
+      if (height == null) dart.nullFailed(I[0], 750, 42, "height");
+      return super.computeMaxIntrinsicWidth((t0 = new box.BoxConstraints.new({maxHeight: height}), this.constraintsTransform(t0)).maxHeight);
+    }
+    computeDryLayout(constraints) {
+      let t1, t0;
+      if (constraints == null) dart.nullFailed(I[0], 757, 40, "constraints");
+      let childSize = (t0 = this.child, t0 == null ? null : t0.getDryLayout((t1 = constraints, this.constraintsTransform(t1))));
+      return childSize == null ? constraints.smallest : constraints.constrain(childSize);
+    }
+    performLayout() {
+      let t0;
+      let constraints = this.constraints;
+      let child = this.child;
+      if (child != null) {
+        let childConstraints = (t0 = constraints, this.constraintsTransform(t0));
+        if (!(childConstraints != null)) dart.assertFailed(null, I[0], 774, 14, "childConstraints != null");
+        if (!dart.test(childConstraints.isNormalized)) dart.assertFailed(dart.str(childConstraints) + " is not normalized", I[0], 775, 14, "childConstraints.isNormalized");
+        this[_childConstraints] = childConstraints;
+        child.layout(childConstraints, {parentUsesSize: true});
+        this.size = constraints.constrain(child.size);
+        this.alignChild();
+        let childParentData = box.BoxParentData.as(dart.nullCheck(child.parentData));
+        this[_overflowContainerRect] = ui.Offset.zero['&'](this.size);
+        this[_overflowChildRect] = childParentData.offset['&'](child.size);
+      } else {
+        this.size = constraints.smallest;
+        this[_overflowContainerRect] = ui.Rect.zero;
+        this[_overflowChildRect] = ui.Rect.zero;
+      }
+      this[_isOverflowing] = stack.RelativeRect.fromRect(this[_overflowContainerRect], this[_overflowChildRect]).hasInsets;
+    }
+    paint(context, offset) {
+      if (context == null) dart.nullFailed(I[0], 792, 30, "context");
+      if (offset == null) dart.nullFailed(I[0], 792, 46, "offset");
+      if (this.child == null || dart.test(this.size.isEmpty)) return;
+      if (!dart.test(this[_isOverflowing])) {
+        super.paint(context, offset);
+        return;
+      }
+      if (this.clipBehavior == ui.Clip.none) {
+        this[_clipRectLayer] = null;
+        super.paint(context, offset);
+      } else {
+        this[_clipRectLayer] = context.pushClipRect(this.needsCompositing, offset, ui.Offset.zero['&'](this.size), dart.bind(this, 'paint', super.paint), {clipBehavior: this.clipBehavior, oldLayer: this[_clipRectLayer]});
+      }
+      if (!dart.test(dart.fn(() => {
+        this.paintOverflowIndicator(context, offset, this[_overflowContainerRect], this[_overflowChildRect]);
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 819, 12, "() {\r\n      paintOverflowIndicator(context, offset, _overflowContainerRect, _overflowChildRect);\r\n      return true;\r\n    }()");
+    }
+    describeApproximatePaintClip(child) {
+      object.RenderObject.as(child);
+      if (child == null) dart.nullFailed(I[0], 828, 51, "child");
+      return dart.test(this[_isOverflowing]) ? ui.Offset.zero['&'](this.size) : null;
+    }
+    toStringShort() {
+      let header = super.toStringShort();
+      if (dart.test(this[_isOverflowing])) header = dart.notNull(header) + " OVERFLOWING";
+      return header;
+    }
+  };
+  (shifted_box.RenderConstraintsTransformBox.new = function(opts) {
+    let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+    if (alignment == null) dart.nullFailed(I[0], 686, 32, "alignment");
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    let constraintsTransform = opts && 'constraintsTransform' in opts ? opts.constraintsTransform : null;
+    if (constraintsTransform == null) dart.nullFailed(I[0], 688, 38, "constraintsTransform");
+    let child = opts && 'child' in opts ? opts.child : null;
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[3] || CT.C3;
+    if (clipBehavior == null) dart.nullFailed(I[0], 690, 10, "clipBehavior");
+    this[_overflowContainerRect] = ui.Rect.zero;
+    this[_overflowChildRect] = ui.Rect.zero;
+    this[_isOverflowing] = false;
+    this[_childConstraints] = null;
+    this[_clipRectLayer] = null;
+    if (!(alignment != null)) dart.assertFailed(null, I[0], 691, 15, "alignment != null");
+    if (!(clipBehavior != null)) dart.assertFailed(null, I[0], 692, 15, "clipBehavior != null");
+    if (!(constraintsTransform != null)) dart.assertFailed(null, I[0], 693, 15, "constraintsTransform != null");
+    this[_constraintsTransform] = constraintsTransform;
+    this[_clipBehavior] = clipBehavior;
+    shifted_box.RenderConstraintsTransformBox.__proto__.mixin.call(this, alignment, textDirection, child);
+    ;
+  }).prototype = shifted_box.RenderConstraintsTransformBox.prototype;
+  dart.addTypeTests(shifted_box.RenderConstraintsTransformBox);
+  dart.addTypeCaches(shifted_box.RenderConstraintsTransformBox);
+  dart.setGetterSignature(shifted_box.RenderConstraintsTransformBox, () => ({
+    __proto__: dart.getGetters(shifted_box.RenderConstraintsTransformBox.__proto__),
+    constraintsTransform: dart.fnType(box.BoxConstraints, [box.BoxConstraints]),
+    clipBehavior: ui.Clip
+  }));
+  dart.setSetterSignature(shifted_box.RenderConstraintsTransformBox, () => ({
+    __proto__: dart.getSetters(shifted_box.RenderConstraintsTransformBox.__proto__),
+    constraintsTransform: dart.fnType(box.BoxConstraints, [box.BoxConstraints]),
+    clipBehavior: ui.Clip
+  }));
+  dart.setLibraryUri(shifted_box.RenderConstraintsTransformBox, I[1]);
+  dart.setFieldSignature(shifted_box.RenderConstraintsTransformBox, () => ({
+    __proto__: dart.getFields(shifted_box.RenderConstraintsTransformBox.__proto__),
+    [_constraintsTransform]: dart.fieldType(dart.fnType(box.BoxConstraints, [box.BoxConstraints])),
+    [_clipBehavior]: dart.fieldType(ui.Clip),
+    [_overflowContainerRect]: dart.fieldType(ui.Rect),
+    [_overflowChildRect]: dart.fieldType(ui.Rect),
+    [_isOverflowing]: dart.fieldType(core.bool),
+    [_childConstraints]: dart.fieldType(dart.nullable(box.BoxConstraints)),
+    [_clipRectLayer]: dart.fieldType(dart.nullable(layer.ClipRectLayer))
+  }));
+  var _constrainedAxis = dart.privateName(shifted_box, "_constrainedAxis");
+  var BoxConstraints_maxHeight = dart.privateName(box, "BoxConstraints.maxHeight");
+  var BoxConstraints_minHeight = dart.privateName(box, "BoxConstraints.minHeight");
+  var BoxConstraints_maxWidth = dart.privateName(box, "BoxConstraints.maxWidth");
+  var BoxConstraints_minWidth = dart.privateName(box, "BoxConstraints.minWidth");
+  var _name$ = dart.privateName(basic_types, "_name");
+  shifted_box.RenderUnconstrainedBox = class RenderUnconstrainedBox extends shifted_box.RenderConstraintsTransformBox {
+    get constrainedAxis() {
+      return this[_constrainedAxis];
+    }
+    set constrainedAxis(value) {
+      if (this[_constrainedAxis] == value) return;
+      this[_constrainedAxis] = value;
+      this.constraintsTransform = shifted_box.RenderUnconstrainedBox._convertAxis(this.constrainedAxis);
+    }
+    static _unconstrained(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 913, 55, "constraints");
+      return C[4] || CT.C4;
+    }
+    static _widthConstrained(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 914, 58, "constraints");
+      return constraints.widthConstraints();
+    }
+    static _heightConstrained(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 915, 59, "constraints");
+      return constraints.heightConstraints();
+    }
+    static _convertAxis(constrainedAxis) {
+      if (constrainedAxis == null) {
+        return C[5] || CT.C5;
+      }
+      switch (constrainedAxis) {
         case C[7] || CT.C7:
         {
-          if (!dart.test(debug.debugCheckHasDirectionality(context))) dart.assertFailed(null, I[0], 892, 16, "debugCheckHasDirectionality(context)");
-          let textDirection = basic.Directionality.of(context);
-          let axisDirection = basic_types.textDirectionToAxisDirection(textDirection);
-          return dart.test(this.widget.reverse) ? basic_types.flipAxisDirection(axisDirection) : axisDirection;
+          return C[6] || CT.C6;
         }
-        case C[11] || CT.C11:
+        case C[9] || CT.C9:
         {
-          return dart.test(this.widget.reverse) ? basic_types.AxisDirection.up : basic_types.AxisDirection.down;
+          return C[8] || CT.C8;
         }
         default:
         {
@@ -1056,73 +876,491 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         }
       }
     }
-    build(context) {
-      let t1, t0, t1$, t0$, t0$0;
-      if (context == null) dart.nullFailed(I[0], 902, 29, "context");
-      let axisDirection = this[_getDirection](context);
-      let physics = new page_view._ForceImplicitScrollPhysics.new({allowImplicitScrolling: this.widget.allowImplicitScrolling}).applyTo(dart.test(this.widget.pageSnapping) ? page_view._kPagePhysics.applyTo((t0 = this.widget.physics, t0 == null ? (t1 = this.widget.scrollBehavior, t1 == null ? null : t1.getScrollPhysics(context)) : t0)) : (t0$ = this.widget.physics, t0$ == null ? (t1$ = this.widget.scrollBehavior, t1$ == null ? null : t1$.getScrollPhysics(context)) : t0$));
-      return new (T.NotificationListenerOfScrollNotification()).new({onNotification: dart.fn(notification => {
-          if (notification == null) dart.nullFailed(I[0], 913, 43, "notification");
-          if (notification.depth === 0 && this.widget.onPageChanged != null && scroll_notification.ScrollUpdateNotification.is(notification)) {
-            let metrics = page_view.PageMetrics.as(notification.metrics);
-            let currentPage = dart.nullCheck(metrics.page)[$round]();
-            if (currentPage !== this[_lastReportedPage]) {
-              this[_lastReportedPage] = currentPage;
-              dart.nullCheck(this.widget.onPageChanged)(currentPage);
-            }
-          }
-          return false;
-        }, T.ScrollNotificationTobool()), child: new scrollable.Scrollable.new({dragStartBehavior: this.widget.dragStartBehavior, axisDirection: axisDirection, controller: this.widget.controller, physics: physics, restorationId: this.widget.restorationId, scrollBehavior: (t0$0 = this.widget.scrollBehavior, t0$0 == null ? scroll_configuration.ScrollConfiguration.of(context).copyWith({scrollbars: false}) : t0$0), viewportBuilder: dart.fn((context, position) => {
-            if (context == null) dart.nullFailed(I[0], 931, 40, "context");
-            if (position == null) dart.nullFailed(I[0], 931, 64, "position");
-            return new viewport.Viewport.new({cacheExtent: dart.test(this.widget.allowImplicitScrolling) ? 1.0 : 0.0, cacheExtentStyle: viewport$.CacheExtentStyle.viewport, axisDirection: axisDirection, offset: position, clipBehavior: this.widget.clipBehavior, slivers: T.JSArrayOfWidget().of([new sliver_fill.SliverFillViewport.new({viewportFraction: this.widget.controller.viewportFraction, delegate: this.widget.childrenDelegate, $creationLocationd_0dea112b090073317d4: C[12] || CT.C12})]), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
-          }, T.BuildContextAndViewportOffsetToViewport()), $creationLocationd_0dea112b090073317d4: C[24] || CT.C24}), $creationLocationd_0dea112b090073317d4: C[33] || CT.C33});
+  };
+  (shifted_box.RenderUnconstrainedBox.new = function(opts) {
+    let alignment = opts && 'alignment' in opts ? opts.alignment : null;
+    if (alignment == null) dart.nullFailed(I[0], 882, 32, "alignment");
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    let constrainedAxis = opts && 'constrainedAxis' in opts ? opts.constrainedAxis : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[3] || CT.C3;
+    if (clipBehavior == null) dart.nullFailed(I[0], 886, 10, "clipBehavior");
+    if (!(alignment != null)) dart.assertFailed(null, I[0], 887, 15, "alignment != null");
+    if (!(clipBehavior != null)) dart.assertFailed(null, I[0], 888, 15, "clipBehavior != null");
+    this[_constrainedAxis] = constrainedAxis;
+    shifted_box.RenderUnconstrainedBox.__proto__.new.call(this, {alignment: alignment, textDirection: textDirection, child: child, clipBehavior: clipBehavior, constraintsTransform: shifted_box.RenderUnconstrainedBox._convertAxis(constrainedAxis)});
+    ;
+  }).prototype = shifted_box.RenderUnconstrainedBox.prototype;
+  dart.addTypeTests(shifted_box.RenderUnconstrainedBox);
+  dart.addTypeCaches(shifted_box.RenderUnconstrainedBox);
+  dart.setGetterSignature(shifted_box.RenderUnconstrainedBox, () => ({
+    __proto__: dart.getGetters(shifted_box.RenderUnconstrainedBox.__proto__),
+    constrainedAxis: dart.nullable(basic_types.Axis)
+  }));
+  dart.setSetterSignature(shifted_box.RenderUnconstrainedBox, () => ({
+    __proto__: dart.getSetters(shifted_box.RenderUnconstrainedBox.__proto__),
+    constrainedAxis: dart.nullable(basic_types.Axis)
+  }));
+  dart.setLibraryUri(shifted_box.RenderUnconstrainedBox, I[1]);
+  dart.setFieldSignature(shifted_box.RenderUnconstrainedBox, () => ({
+    __proto__: dart.getFields(shifted_box.RenderUnconstrainedBox.__proto__),
+    [_constrainedAxis]: dart.fieldType(dart.nullable(basic_types.Axis))
+  }));
+  var _requestedSize = dart.privateName(shifted_box, "_requestedSize");
+  shifted_box.RenderSizedOverflowBox = class RenderSizedOverflowBox extends shifted_box.RenderAligningShiftedBox {
+    get requestedSize() {
+      return this[_requestedSize];
     }
-    debugFillProperties(description) {
-      if (description == null) dart.nullFailed(I[0], 954, 56, "description");
-      super.debugFillProperties(description);
-      description.add(new (T.EnumPropertyOfAxis()).new("scrollDirection", this.widget.scrollDirection));
-      description.add(new diagnostics.FlagProperty.new("reverse", {value: this.widget.reverse, ifTrue: "reversed"}));
-      description.add(new (T.DiagnosticsPropertyOfPageController()).new("controller", this.widget.controller, {showName: false}));
-      description.add(new (T.DiagnosticsPropertyOfScrollPhysics()).new("physics", this.widget.physics, {showName: false}));
-      description.add(new diagnostics.FlagProperty.new("pageSnapping", {value: this.widget.pageSnapping, ifFalse: "snapping disabled"}));
-      description.add(new diagnostics.FlagProperty.new("allowImplicitScrolling", {value: this.widget.allowImplicitScrolling, ifTrue: "allow implicit scrolling"}));
+    set requestedSize(value) {
+      if (value == null) dart.nullFailed(I[0], 962, 26, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 963, 12, "value != null");
+      if (dart.equals(this[_requestedSize], value)) return;
+      this[_requestedSize] = value;
+      this.markNeedsLayout();
+    }
+    computeMinIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[0], 971, 42, "height");
+      return this[_requestedSize].width;
+    }
+    computeMaxIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[0], 976, 42, "height");
+      return this[_requestedSize].width;
+    }
+    computeMinIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[0], 981, 43, "width");
+      return this[_requestedSize].height;
+    }
+    computeMaxIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[0], 986, 43, "width");
+      return this[_requestedSize].height;
+    }
+    computeDistanceToActualBaseline(baseline) {
+      if (baseline == null) dart.nullFailed(I[0], 991, 56, "baseline");
+      if (this.child != null) return dart.nullCheck(this.child).getDistanceToActualBaseline(baseline);
+      return super.computeDistanceToActualBaseline(baseline);
+    }
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 998, 40, "constraints");
+      return constraints.constrain(this[_requestedSize]);
+    }
+    performLayout() {
+      this.size = this.constraints.constrain(this[_requestedSize]);
+      if (this.child != null) {
+        dart.nullCheck(this.child).layout(this.constraints, {parentUsesSize: true});
+        this.alignChild();
+      }
     }
   };
-  (page_view._PageViewState.new = function() {
-    this[_lastReportedPage] = 0;
-    page_view._PageViewState.__proto__.new.call(this);
+  (shifted_box.RenderSizedOverflowBox.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let requestedSize = opts && 'requestedSize' in opts ? opts.requestedSize : null;
+    if (requestedSize == null) dart.nullFailed(I[0], 952, 19, "requestedSize");
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[0] || CT.C0;
+    if (alignment == null) dart.nullFailed(I[0], 953, 23, "alignment");
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    if (!(requestedSize != null)) dart.assertFailed(null, I[0], 955, 15, "requestedSize != null");
+    this[_requestedSize] = requestedSize;
+    shifted_box.RenderSizedOverflowBox.__proto__.new.call(this, {child: child, alignment: alignment, textDirection: textDirection});
     ;
-  }).prototype = page_view._PageViewState.prototype;
-  dart.addTypeTests(page_view._PageViewState);
-  dart.addTypeCaches(page_view._PageViewState);
-  dart.setMethodSignature(page_view._PageViewState, () => ({
-    __proto__: dart.getMethods(page_view._PageViewState.__proto__),
-    [_getDirection]: dart.fnType(basic_types.AxisDirection, [framework.BuildContext]),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }).prototype = shifted_box.RenderSizedOverflowBox.prototype;
+  dart.addTypeTests(shifted_box.RenderSizedOverflowBox);
+  dart.addTypeCaches(shifted_box.RenderSizedOverflowBox);
+  dart.setGetterSignature(shifted_box.RenderSizedOverflowBox, () => ({
+    __proto__: dart.getGetters(shifted_box.RenderSizedOverflowBox.__proto__),
+    requestedSize: ui.Size
   }));
-  dart.setLibraryUri(page_view._PageViewState, I[1]);
-  dart.setFieldSignature(page_view._PageViewState, () => ({
-    __proto__: dart.getFields(page_view._PageViewState.__proto__),
-    [_lastReportedPage]: dart.fieldType(core.int)
+  dart.setSetterSignature(shifted_box.RenderSizedOverflowBox, () => ({
+    __proto__: dart.getSetters(shifted_box.RenderSizedOverflowBox.__proto__),
+    requestedSize: ui.Size
   }));
-  var ScrollPhysics_parent = dart.privateName(scroll_physics, "ScrollPhysics.parent");
-  dart.defineLazy(page_view, {
-    /*page_view._defaultPageController*/get _defaultPageController() {
-      return new page_view.PageController.new();
-    },
-    /*page_view._kPagePhysics*/get _kPagePhysics() {
-      return C[37] || CT.C37;
+  dart.setLibraryUri(shifted_box.RenderSizedOverflowBox, I[1]);
+  dart.setFieldSignature(shifted_box.RenderSizedOverflowBox, () => ({
+    __proto__: dart.getFields(shifted_box.RenderSizedOverflowBox.__proto__),
+    [_requestedSize]: dart.fieldType(ui.Size)
+  }));
+  shifted_box.RenderFractionallySizedOverflowBox = class RenderFractionallySizedOverflowBox extends shifted_box.RenderAligningShiftedBox {
+    get widthFactor() {
+      return this[_widthFactor];
     }
-  }, false);
-  dart.trackLibraries("packages/flutter/src/widgets/page_view.dart", {
-    "package:flutter/src/widgets/page_view.dart": page_view
+    set widthFactor(value) {
+      if (!(value == null || dart.notNull(value) >= 0.0)) dart.assertFailed(null, I[0], 1054, 12, "value == null || value >= 0.0");
+      if (this[_widthFactor] == value) return;
+      this[_widthFactor] = value;
+      this.markNeedsLayout();
+    }
+    get heightFactor() {
+      return this[_heightFactor];
+    }
+    set heightFactor(value) {
+      if (!(value == null || dart.notNull(value) >= 0.0)) dart.assertFailed(null, I[0], 1069, 12, "value == null || value >= 0.0");
+      if (this[_heightFactor] == value) return;
+      this[_heightFactor] = value;
+      this.markNeedsLayout();
+    }
+    [_getInnerConstraints](constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 1076, 54, "constraints");
+      let minWidth = constraints.minWidth;
+      let maxWidth = constraints.maxWidth;
+      if (this[_widthFactor] != null) {
+        let width = dart.notNull(maxWidth) * dart.nullCheck(this[_widthFactor]);
+        minWidth = width;
+        maxWidth = width;
+      }
+      let minHeight = constraints.minHeight;
+      let maxHeight = constraints.maxHeight;
+      if (this[_heightFactor] != null) {
+        let height = dart.notNull(maxHeight) * dart.nullCheck(this[_heightFactor]);
+        minHeight = height;
+        maxHeight = height;
+      }
+      return new box.BoxConstraints.new({minWidth: minWidth, maxWidth: maxWidth, minHeight: minHeight, maxHeight: maxHeight});
+    }
+    computeMinIntrinsicWidth(height) {
+      let t0, t0$;
+      if (height == null) dart.nullFailed(I[0], 1100, 42, "height");
+      let result = null;
+      if (this.child == null) {
+        result = super.computeMinIntrinsicWidth(height);
+      } else {
+        result = dart.nullCheck(this.child).getMinIntrinsicWidth(dart.notNull(height) * dart.notNull((t0 = this[_heightFactor], t0 == null ? 1.0 : t0)));
+      }
+      if (!result[$isFinite]) dart.assertFailed(null, I[0], 1107, 12, "result.isFinite");
+      return dart.notNull(result) / dart.notNull((t0$ = this[_widthFactor], t0$ == null ? 1.0 : t0$));
+    }
+    computeMaxIntrinsicWidth(height) {
+      let t0, t0$;
+      if (height == null) dart.nullFailed(I[0], 1112, 42, "height");
+      let result = null;
+      if (this.child == null) {
+        result = super.computeMaxIntrinsicWidth(height);
+      } else {
+        result = dart.nullCheck(this.child).getMaxIntrinsicWidth(dart.notNull(height) * dart.notNull((t0 = this[_heightFactor], t0 == null ? 1.0 : t0)));
+      }
+      if (!result[$isFinite]) dart.assertFailed(null, I[0], 1119, 12, "result.isFinite");
+      return dart.notNull(result) / dart.notNull((t0$ = this[_widthFactor], t0$ == null ? 1.0 : t0$));
+    }
+    computeMinIntrinsicHeight(width) {
+      let t0, t0$;
+      if (width == null) dart.nullFailed(I[0], 1124, 43, "width");
+      let result = null;
+      if (this.child == null) {
+        result = super.computeMinIntrinsicHeight(width);
+      } else {
+        result = dart.nullCheck(this.child).getMinIntrinsicHeight(dart.notNull(width) * dart.notNull((t0 = this[_widthFactor], t0 == null ? 1.0 : t0)));
+      }
+      if (!result[$isFinite]) dart.assertFailed(null, I[0], 1131, 12, "result.isFinite");
+      return dart.notNull(result) / dart.notNull((t0$ = this[_heightFactor], t0$ == null ? 1.0 : t0$));
+    }
+    computeMaxIntrinsicHeight(width) {
+      let t0, t0$;
+      if (width == null) dart.nullFailed(I[0], 1136, 43, "width");
+      let result = null;
+      if (this.child == null) {
+        result = super.computeMaxIntrinsicHeight(width);
+      } else {
+        result = dart.nullCheck(this.child).getMaxIntrinsicHeight(dart.notNull(width) * dart.notNull((t0 = this[_widthFactor], t0 == null ? 1.0 : t0)));
+      }
+      if (!result[$isFinite]) dart.assertFailed(null, I[0], 1143, 12, "result.isFinite");
+      return dart.notNull(result) / dart.notNull((t0$ = this[_heightFactor], t0$ == null ? 1.0 : t0$));
+    }
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 1148, 40, "constraints");
+      if (this.child != null) {
+        let childSize = dart.nullCheck(this.child).getDryLayout(this[_getInnerConstraints](constraints));
+        return constraints.constrain(childSize);
+      }
+      return constraints.constrain(this[_getInnerConstraints](constraints).constrain(ui.Size.zero));
+    }
+    performLayout() {
+      if (this.child != null) {
+        dart.nullCheck(this.child).layout(this[_getInnerConstraints](this.constraints), {parentUsesSize: true});
+        this.size = this.constraints.constrain(dart.nullCheck(this.child).size);
+        this.alignChild();
+      } else {
+        this.size = this.constraints.constrain(this[_getInnerConstraints](this.constraints).constrain(ui.Size.zero));
+      }
+    }
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(I[0], 1168, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new diagnostics.DoubleProperty.new("widthFactor", this[_widthFactor], {ifNull: "pass-through"}));
+      properties.add(new diagnostics.DoubleProperty.new("heightFactor", this[_heightFactor], {ifNull: "pass-through"}));
+    }
+  };
+  (shifted_box.RenderFractionallySizedOverflowBox.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let widthFactor = opts && 'widthFactor' in opts ? opts.widthFactor : null;
+    let heightFactor = opts && 'heightFactor' in opts ? opts.heightFactor : null;
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[0] || CT.C0;
+    if (alignment == null) dart.nullFailed(I[0], 1037, 23, "alignment");
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    this[_widthFactor] = widthFactor;
+    this[_heightFactor] = heightFactor;
+    shifted_box.RenderFractionallySizedOverflowBox.__proto__.new.call(this, {child: child, alignment: alignment, textDirection: textDirection});
+    if (!(this[_widthFactor] == null || dart.nullCheck(this[_widthFactor]) >= 0.0)) dart.assertFailed(null, I[0], 1042, 12, "_widthFactor == null || _widthFactor! >= 0.0");
+    if (!(this[_heightFactor] == null || dart.nullCheck(this[_heightFactor]) >= 0.0)) dart.assertFailed(null, I[0], 1043, 12, "_heightFactor == null || _heightFactor! >= 0.0");
+  }).prototype = shifted_box.RenderFractionallySizedOverflowBox.prototype;
+  dart.addTypeTests(shifted_box.RenderFractionallySizedOverflowBox);
+  dart.addTypeCaches(shifted_box.RenderFractionallySizedOverflowBox);
+  dart.setMethodSignature(shifted_box.RenderFractionallySizedOverflowBox, () => ({
+    __proto__: dart.getMethods(shifted_box.RenderFractionallySizedOverflowBox.__proto__),
+    [_getInnerConstraints]: dart.fnType(box.BoxConstraints, [box.BoxConstraints])
+  }));
+  dart.setGetterSignature(shifted_box.RenderFractionallySizedOverflowBox, () => ({
+    __proto__: dart.getGetters(shifted_box.RenderFractionallySizedOverflowBox.__proto__),
+    widthFactor: dart.nullable(core.double),
+    heightFactor: dart.nullable(core.double)
+  }));
+  dart.setSetterSignature(shifted_box.RenderFractionallySizedOverflowBox, () => ({
+    __proto__: dart.getSetters(shifted_box.RenderFractionallySizedOverflowBox.__proto__),
+    widthFactor: dart.nullable(core.double),
+    heightFactor: dart.nullable(core.double)
+  }));
+  dart.setLibraryUri(shifted_box.RenderFractionallySizedOverflowBox, I[1]);
+  dart.setFieldSignature(shifted_box.RenderFractionallySizedOverflowBox, () => ({
+    __proto__: dart.getFields(shifted_box.RenderFractionallySizedOverflowBox.__proto__),
+    [_widthFactor]: dart.fieldType(dart.nullable(core.double)),
+    [_heightFactor]: dart.fieldType(dart.nullable(core.double))
+  }));
+  var _relayout = dart.privateName(shifted_box, "SingleChildLayoutDelegate._relayout");
+  var _relayout$ = dart.privateName(shifted_box, "_relayout");
+  shifted_box.SingleChildLayoutDelegate = class SingleChildLayoutDelegate extends core.Object {
+    get [_relayout$]() {
+      return this[_relayout];
+    }
+    set [_relayout$](value) {
+      super[_relayout$] = value;
+    }
+    getSize(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 1212, 31, "constraints");
+      return constraints.biggest;
+    }
+    getConstraintsForChild(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 1221, 56, "constraints");
+      return constraints;
+    }
+    getPositionForChild(size, childSize) {
+      if (size == null) dart.nullFailed(I[0], 1232, 35, "size");
+      if (childSize == null) dart.nullFailed(I[0], 1232, 46, "childSize");
+      return ui.Offset.zero;
+    }
+  };
+  (shifted_box.SingleChildLayoutDelegate.new = function(opts) {
+    let relayout = opts && 'relayout' in opts ? opts.relayout : null;
+    this[_relayout] = relayout;
+    ;
+  }).prototype = shifted_box.SingleChildLayoutDelegate.prototype;
+  dart.addTypeTests(shifted_box.SingleChildLayoutDelegate);
+  dart.addTypeCaches(shifted_box.SingleChildLayoutDelegate);
+  dart.setMethodSignature(shifted_box.SingleChildLayoutDelegate, () => ({
+    __proto__: dart.getMethods(shifted_box.SingleChildLayoutDelegate.__proto__),
+    getSize: dart.fnType(ui.Size, [box.BoxConstraints]),
+    getConstraintsForChild: dart.fnType(box.BoxConstraints, [box.BoxConstraints]),
+    getPositionForChild: dart.fnType(ui.Offset, [ui.Size, ui.Size])
+  }));
+  dart.setLibraryUri(shifted_box.SingleChildLayoutDelegate, I[1]);
+  dart.setFieldSignature(shifted_box.SingleChildLayoutDelegate, () => ({
+    __proto__: dart.getFields(shifted_box.SingleChildLayoutDelegate.__proto__),
+    [_relayout$]: dart.finalFieldType(dart.nullable(change_notifier.Listenable))
+  }));
+  var _delegate = dart.privateName(shifted_box, "_delegate");
+  var _getSize = dart.privateName(shifted_box, "_getSize");
+  shifted_box.RenderCustomSingleChildLayoutBox = class RenderCustomSingleChildLayoutBox extends shifted_box.RenderShiftedBox {
+    get delegate() {
+      return this[_delegate];
+    }
+    set delegate(newDelegate) {
+      let t0, t0$;
+      if (newDelegate == null) dart.nullFailed(I[0], 1276, 42, "newDelegate");
+      if (!(newDelegate != null)) dart.assertFailed(null, I[0], 1277, 12, "newDelegate != null");
+      if (dart.equals(this[_delegate], newDelegate)) return;
+      let oldDelegate = this[_delegate];
+      if (!dart.equals(dart.runtimeType(newDelegate), dart.runtimeType(oldDelegate)) || dart.test(newDelegate.shouldRelayout(oldDelegate))) this.markNeedsLayout();
+      this[_delegate] = newDelegate;
+      if (dart.test(this.attached)) {
+        t0 = oldDelegate[_relayout$];
+        t0 == null ? null : t0.removeListener(dart.bind(this, 'markNeedsLayout'));
+        t0$ = newDelegate[_relayout$];
+        t0$ == null ? null : t0$.addListener(dart.bind(this, 'markNeedsLayout'));
+      }
+    }
+    attach(owner) {
+      let t0;
+      object.PipelineOwner.as(owner);
+      if (owner == null) dart.nullFailed(I[0], 1291, 29, "owner");
+      super.attach(owner);
+      t0 = this[_delegate][_relayout$];
+      t0 == null ? null : t0.addListener(dart.bind(this, 'markNeedsLayout'));
+    }
+    detach() {
+      let t0;
+      t0 = this[_delegate][_relayout$];
+      t0 == null ? null : t0.removeListener(dart.bind(this, 'markNeedsLayout'));
+      super.detach();
+    }
+    [_getSize](constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 1302, 32, "constraints");
+      return constraints.constrain(this[_delegate].getSize(constraints));
+    }
+    computeMinIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[0], 1311, 42, "height");
+      let width = this[_getSize](new box.BoxConstraints.tightForFinite({height: height})).width;
+      if (width[$isFinite]) return width;
+      return 0.0;
+    }
+    computeMaxIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[0], 1319, 42, "height");
+      let width = this[_getSize](new box.BoxConstraints.tightForFinite({height: height})).width;
+      if (width[$isFinite]) return width;
+      return 0.0;
+    }
+    computeMinIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[0], 1327, 43, "width");
+      let height = this[_getSize](new box.BoxConstraints.tightForFinite({width: width})).height;
+      if (height[$isFinite]) return height;
+      return 0.0;
+    }
+    computeMaxIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[0], 1335, 43, "width");
+      let height = this[_getSize](new box.BoxConstraints.tightForFinite({width: width})).height;
+      if (height[$isFinite]) return height;
+      return 0.0;
+    }
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 1343, 40, "constraints");
+      return this[_getSize](constraints);
+    }
+    performLayout() {
+      this.size = this[_getSize](this.constraints);
+      if (this.child != null) {
+        let childConstraints = this.delegate.getConstraintsForChild(this.constraints);
+        if (!dart.test(childConstraints.debugAssertIsValid({isAppliedConstraint: true}))) dart.assertFailed(null, I[0], 1352, 14, "childConstraints.debugAssertIsValid(isAppliedConstraint: true)");
+        dart.nullCheck(this.child).layout(childConstraints, {parentUsesSize: !dart.test(childConstraints.isTight)});
+        let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+        childParentData.offset = this.delegate.getPositionForChild(this.size, dart.test(childConstraints.isTight) ? childConstraints.smallest : dart.nullCheck(this.child).size);
+      }
+    }
+  };
+  (shifted_box.RenderCustomSingleChildLayoutBox.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let delegate = opts && 'delegate' in opts ? opts.delegate : null;
+    if (delegate == null) dart.nullFailed(I[0], 1268, 40, "delegate");
+    if (!(delegate != null)) dart.assertFailed(null, I[0], 1269, 15, "delegate != null");
+    this[_delegate] = delegate;
+    shifted_box.RenderCustomSingleChildLayoutBox.__proto__.new.call(this, child);
+    ;
+  }).prototype = shifted_box.RenderCustomSingleChildLayoutBox.prototype;
+  dart.addTypeTests(shifted_box.RenderCustomSingleChildLayoutBox);
+  dart.addTypeCaches(shifted_box.RenderCustomSingleChildLayoutBox);
+  dart.setMethodSignature(shifted_box.RenderCustomSingleChildLayoutBox, () => ({
+    __proto__: dart.getMethods(shifted_box.RenderCustomSingleChildLayoutBox.__proto__),
+    [_getSize]: dart.fnType(ui.Size, [box.BoxConstraints])
+  }));
+  dart.setGetterSignature(shifted_box.RenderCustomSingleChildLayoutBox, () => ({
+    __proto__: dart.getGetters(shifted_box.RenderCustomSingleChildLayoutBox.__proto__),
+    delegate: shifted_box.SingleChildLayoutDelegate
+  }));
+  dart.setSetterSignature(shifted_box.RenderCustomSingleChildLayoutBox, () => ({
+    __proto__: dart.getSetters(shifted_box.RenderCustomSingleChildLayoutBox.__proto__),
+    delegate: shifted_box.SingleChildLayoutDelegate
+  }));
+  dart.setLibraryUri(shifted_box.RenderCustomSingleChildLayoutBox, I[1]);
+  dart.setFieldSignature(shifted_box.RenderCustomSingleChildLayoutBox, () => ({
+    __proto__: dart.getFields(shifted_box.RenderCustomSingleChildLayoutBox.__proto__),
+    [_delegate]: dart.fieldType(shifted_box.SingleChildLayoutDelegate)
+  }));
+  var _baseline = dart.privateName(shifted_box, "_baseline");
+  var _baselineType = dart.privateName(shifted_box, "_baselineType");
+  shifted_box.RenderBaseline = class RenderBaseline extends shifted_box.RenderShiftedBox {
+    get baseline() {
+      return this[_baseline];
+    }
+    set baseline(value) {
+      if (value == null) dart.nullFailed(I[0], 1394, 23, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 1395, 12, "value != null");
+      if (this[_baseline] == value) return;
+      this[_baseline] = value;
+      this.markNeedsLayout();
+    }
+    get baselineType() {
+      return this[_baselineType];
+    }
+    set baselineType(value) {
+      if (value == null) dart.nullFailed(I[0], 1405, 33, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 1406, 12, "value != null");
+      if (this[_baselineType] == value) return;
+      this[_baselineType] = value;
+      this.markNeedsLayout();
+    }
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 1414, 40, "constraints");
+      if (this.child != null) {
+        if (!dart.test(this.debugCannotComputeDryLayout({reason: "Baseline metrics are only available after a full layout."}))) dart.assertFailed(null, I[0], 1416, 14, "debugCannotComputeDryLayout(\r\n        reason: 'Baseline metrics are only available after a full layout.',\r\n      )");
+        return ui.Size.zero;
+      }
+      return constraints.smallest;
+    }
+    performLayout() {
+      if (this.child != null) {
+        let constraints = this.constraints;
+        dart.nullCheck(this.child).layout(constraints.loosen(), {parentUsesSize: true});
+        let childBaseline = dart.nullCheck(dart.nullCheck(this.child).getDistanceToBaseline(this.baselineType));
+        let actualBaseline = this.baseline;
+        let top = dart.notNull(actualBaseline) - childBaseline;
+        let childParentData = box.BoxParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
+        childParentData.offset = new ui.Offset.new(0.0, top);
+        let childSize = dart.nullCheck(this.child).size;
+        this.size = constraints.constrain(new ui.Size.new(childSize.width, top + dart.notNull(childSize.height)));
+      } else {
+        this.size = this.constraints.smallest;
+      }
+    }
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(I[0], 1442, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new diagnostics.DoubleProperty.new("baseline", this.baseline));
+      properties.add(new (T.EnumPropertyOfTextBaseline()).new("baselineType", this.baselineType));
+    }
+  };
+  (shifted_box.RenderBaseline.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let baseline = opts && 'baseline' in opts ? opts.baseline : null;
+    if (baseline == null) dart.nullFailed(I[0], 1382, 21, "baseline");
+    let baselineType = opts && 'baselineType' in opts ? opts.baselineType : null;
+    if (baselineType == null) dart.nullFailed(I[0], 1383, 27, "baselineType");
+    if (!(baseline != null)) dart.assertFailed(null, I[0], 1384, 15, "baseline != null");
+    if (!(baselineType != null)) dart.assertFailed(null, I[0], 1385, 15, "baselineType != null");
+    this[_baseline] = baseline;
+    this[_baselineType] = baselineType;
+    shifted_box.RenderBaseline.__proto__.new.call(this, child);
+    ;
+  }).prototype = shifted_box.RenderBaseline.prototype;
+  dart.addTypeTests(shifted_box.RenderBaseline);
+  dart.addTypeCaches(shifted_box.RenderBaseline);
+  dart.setGetterSignature(shifted_box.RenderBaseline, () => ({
+    __proto__: dart.getGetters(shifted_box.RenderBaseline.__proto__),
+    baseline: core.double,
+    baselineType: ui.TextBaseline
+  }));
+  dart.setSetterSignature(shifted_box.RenderBaseline, () => ({
+    __proto__: dart.getSetters(shifted_box.RenderBaseline.__proto__),
+    baseline: core.double,
+    baselineType: ui.TextBaseline
+  }));
+  dart.setLibraryUri(shifted_box.RenderBaseline, I[1]);
+  dart.setFieldSignature(shifted_box.RenderBaseline, () => ({
+    __proto__: dart.getFields(shifted_box.RenderBaseline.__proto__),
+    [_baseline]: dart.fieldType(core.double),
+    [_baselineType]: dart.fieldType(ui.TextBaseline)
+  }));
+  dart.trackLibraries("packages/flutter/src/rendering/shifted_box.dart", {
+    "package:flutter/src/rendering/shifted_box.dart": shifted_box
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["page_view.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA+HY;;;;;;IAiBC;;;;;;IAME;;;;;;;AAoBX,qBACE,AAAU,gDACV;AAEF,YACE,AAAU,AAAO,4BAAG,sBAAC,AACrB,8EACA;AAEkB,qBAAyB,2BAAT;AACpC,YAAO,AAAS,SAAD;IACjB;;UASM;UACc;;UACH;;AAEK,qBAAyB,2BAAT;AACpC,YAAO,AAAS,SAAD,WACb,AAAS,QAAD,mBAAmB,AAAK,IAAD,2BACrB,QAAQ,SACX,KAAK;IAEhB;;UAMoB;AACE,qBAAyB,2BAAT;AACwB,MAA5D,AAAS,QAAD,QAAQ,AAAS,QAAD,mBAAmB,AAAK,IAAD;IACjD;;UAQ0C;;UAAyB;;AACjE,YAAO,oBAAkB,AAAE,AAAQ,eAAd,uBAAgB,cAAa,QAAQ,SAAS,KAAK;IAC1E;;UAQ8C;;UAAyB;;AACrE,YAAO,oBAAkB,AAAE,AAAQ,eAAd,uBAAgB,cAAa,QAAQ,SAAS,KAAK;IAC1E;yBAGkD,SAAuB,SAAyB;UAAhD;UAAuB;AACvE,YAAO,2CACI,OAAO,WACP,OAAO,eACH,4BACH,iCACQ,oCACL,WAAW;IAE5B;;UAG2B;AACH,MAAhB,aAAO,QAAQ;AACD,yBAAwB,2BAAT,QAAQ;AACK,MAAhD,AAAa,YAAD,oBAAoB;IAClC;;;QAlIO;;QACA;;QACA;;IAFA;IACA;IACA;UACK,AAAY,WAAD;UACX,AAAS,QAAD;UACR,AAAiB,gBAAD;UACC,aAAjB,gBAAgB,IAAG;AAP/B;;EAOmC;;;;;;;;;;;;;;;;;;;;;;;IAgLtB;;;;;;;;UA1BH;UACA;UACA;UACA;UACO;UACP;AAER,YAAO,kDAC4B,KAAhB,eAAe,EAAf,uBAAoB,6BAA4B,uBAAkB,8BAClD,MAAhB,eAAe,EAAf,wBAAoB,6BAA4B,uBAAkB,sBACpE,OAAP,MAAM,EAAN,yBAAW,kBAAiB,cAAS,kCACR,OAAlB,iBAAiB,EAAjB,yBAAsB,6BAA4B,yBAAoB,8BAC5D,OAAd,aAAa,EAAb,eAAsB,+CACF,OAAjB,gBAAgB,EAAhB,eAAyB;IAE/C;;AAIE,YAAO,AAA8D,uBAArD,KAAK,AAAO,oBAAM,sBAAiB,yBAC5C,mBAAS,KAAuB,aAAlB,uCAAoB;IAC3C;;;QArCmB;QACA;QACA;QACA;QACM;;QACT;;;AACX,qEACmB,eAAe,mBACf,eAAe,UACxB,MAAM,qBACK,iBAAiB,iBACrB,aAAa;;EAC7B;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;UA4DS;UACN;;UACE;;UACH;;UACwB;;UAChB;AAMd,YAAa,qBACX,MAAM,cACK,SAAS,YACV,QAAQ,SACX,KAAK,mBACK,eAAe,sBACZ;IAExB;;AAG+B;IAAiB;;UAEpB;AAC1B,UAAI,AAAkB,2BAAG,KAAK,EAC5B;AACY,oBAAU;AACC,MAAzB,0BAAoB,KAAK;AACzB,UAAI,OAAO,UACT,AAAuC,iBAA3B,uBAAkB,OAAO;IACzC;;AAQiC,mCAAS,KAAqB,AAAyB,aAA3C,2BAAsC,aAAjB,yBAAmB,KAAK;IAAE;sBAE5D,QAAe;UAAf;UAAe;AAChC,mBAAS,AAA2C,sBAAlC,KAAY,aAAP,MAAM,iBAAG,6BAAsB,mBAAS,KAAuB,aAAlB,iBAAiB,iBAAG;AACxF,kBAAQ,AAAO,MAAD;AAC3B,UAAqB,AAAM,CAAtB,AAAO,MAAD,GAAG,KAAK;AACjB,cAAO,MAAK;;AAEd,YAAO,OAAM;IACf;;UAEgC;AAC9B,YAAY,AAAoB,AAAmB,cAA5C,IAAI,iBAAG,uCAAoB,sCAAmB;IACvD;;AAIE,YACa,WAAV,mBAAc,gCAA2B,iDAC1C;AAEF,YAAO,YAAC,kBAAY,OAAO,uBAAkB,AAAO,oBAAM,sBAAiB,uBAAkB;IAC/F;;;AAI0H,WAA5G,4BAAG,AAAQ;mBAAX,OAA4B,cAAW,AAAQ,6BAAgB,uBAAkB,aAAQ;IACvG;;;AAIE,qBAAK;AACW,oBAAkF,qBAA9D,4BAAG,AAAQ,2CAAX,OAA4B,aAAU,AAAQ;AAChF,YAAI,KAAK,UACP,AAA2B,4BAAL,KAAK;;IAEjC;;AAIkE,MAAhE,AAAQ,wBAAW,uBAAkB,aAAQ;IAC/C;;UAG0B;UAAc;;AACtC,YAAO,AAAe,cAAD;AACrB,YAAO,AAAO,MAAD;AACb,oBAAI,cAAc;AACY,QAA5B,4BAAsB,MAAM;;AAEK,QAAjC,YAAO,uBAAkB,MAAM;;IAEnC;;UAGmC;AACnB,4CAAwB,6BAA4B,yBAAoB;AACtF,UAAI,AAAkB,iBAAD,IAAI,qBAAqB;AAC5C,cAAO;;AAEE,mBAAe,6BAAuB,iBAAiB;AACpD,gCAAY,kBAAY,cAAS;AAClC,iBAAQ,AAAU,AAAQ,SAAT,YAAY,AAAsB,qBAAD,KAAI,MAAO,4BAAsB,uBAAkB,SAAS,EAAuB,eAArB,qBAAqB;AACrI,sBAAY,uBAAkB,IAAI;AAE/C,UAAI,SAAS,IAAI,SAAS;AACA,QAAxB,mBAAc,SAAS;AACvB,cAAO;;AAET,YAAO,OAAM;IACf;2BAGmC,iBAAwB;UAAxB;UAAwB;AAC5C,+BAAqC,aAAhB,eAAe,iBAAG;AACpD,YAAa,8BACX,kBAAkB,EAClB,sBAAS,kBAAkB,EAAkB,aAAhB,eAAe,iBAAG;IAEnD;;;UAIU;UACA;UACA;UACA;UACO;UACP;AAER,YAAO,kDAC4B,KAAhB,eAAe,EAAf,uBAAoB,6BAA4B,uBAAkB,8BAClD,MAAhB,eAAe,EAAf,wBAAoB,6BAA4B,uBAAkB,sBACpE,OAAP,MAAM,EAAN,yBAAW,kBAAiB,cAAS,kCACR,OAAlB,iBAAiB,EAAjB,yBAAsB,6BAA4B,yBAAoB,8BAC5D,OAAd,aAAa,EAAb,eAAsB,+CACF,OAAjB,gBAAgB,EAAhB,eAAyB;IAE/C;;;;;;;;;;;;;;;QAlKyB;;QACA;;QAClB;;QACA;;QACE;;QACS;IAHX;UAIK,AAAY,WAAD;UACX,AAAS,QAAD;UACR,AAAiB,gBAAD;UACC,aAAjB,gBAAgB,IAAG;IACR,0BAAE,gBAAgB;IAChB,4BAAE,AAAY,WAAD;AACjC,+DACW,OAAO,WACP,OAAO,iBACD,wBACG,QAAQ,eACb,WAAW;;EACzB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAmKK;;;;;;YARwC;AACjD,YAAO,wEACmB,qCAChB,iBAAY,QAAQ;IAEhC;;;QAXgB;;QACC;IADD;UAEJ,AAAuB,sBAAD;AAC7B,4EAAc,MAAM;;EAAC;;;;;;;;;;;;;;;;YA4Be;AACvC,YAAO,8CAA0B,iBAAY,QAAQ;IACvD;;UAE8B;AAC5B,UAAa,2BAAT,QAAQ,GACV,MAAoB,gBAAb,AAAS,QAAD;AACjB,YAAuB,cAAhB,AAAS,QAAD,wBAAU,AAAS,QAAD;IACnC;iBAEgC,UAAiB;UAAjB;UAAiB;AAC/C,UAAa,2BAAT,QAAQ,GACV,MAAO,AAAS,SAAD,mBAAmB,IAAI;AACxC,YAAY,cAAL,IAAI,iBAAG,AAAS,QAAD;IACxB;uBAEsC,UAAoB,WAAkB;UAAtC;UAAoB;UAAkB;AACnE,iBAAO,eAAS,QAAQ;AAC/B,UAAa,aAAT,QAAQ,IAAG,cAAC,AAAU,SAAD;AACZ,QAAX,OAAK,aAAL,IAAI,IAAI;UACL,KAAa,aAAT,QAAQ,iBAAG,AAAU,SAAD,YAC3B,AAAW,OAAN,aAAL,IAAI,IAAI;AACV,YAAO,kBAAW,QAAQ,EAAE,AAAK,IAAD;IAClC;8BAGoD,UAAiB;UAAjB;UAAiB;AAGnE,UAAc,aAAT,QAAQ,KAAI,OAAuB,aAAhB,AAAS,QAAD,yBAAW,AAAS,QAAD,qBACrC,aAAT,QAAQ,KAAI,OAAuB,aAAhB,AAAS,QAAD,yBAAW,AAAS,QAAD,mBACjD,MAAa,iCAA0B,QAAQ,EAAE,QAAQ;AAC3C,sBAAiB;AACpB,mBAAS,uBAAiB,QAAQ,EAAE,SAAS,EAAE,QAAQ;AACpE,UAAI,MAAM,IAAI,AAAS,QAAD,SACpB,MAAO,kDAAuB,aAAQ,AAAS,QAAD,SAAS,MAAM,EAAE,QAAQ,cAAa,SAAS;AAC/F,YAAO;IACT;;AAGmC;IAAK;;;QA3CC;AAAY,kEAAc,MAAM;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;IA2S/D;;;;;;IAGG;;;;;;IAKH;;;;;;IAcA;;;;;;IAIU;;;;;;IAeA;;;;;;IAGV;;;;;;IAGc;;;;;;IAQC;;;;;;IAGF;;;;;;IAKb;;;;;;IAWW;;;;;;;AAGU;IAAgB;;;;QA1PzC;QACA;;QACA;;QACW;QACX;QACA;;QACA;QACQ;;QACR;;QACA;;QACA;QACA;;QACA;;IAXA;IACA;IAEA;IACA;IACA;IAEA;IACA;IACA;IACA;IACA;UACK,AAAuB,sBAAD;UACtB,AAAa,YAAD;IACR,qBAAa,KAAX,UAAU,EAAV,aAAc;IACV,0BAAE,uCAAwB,QAAQ;AACnD,sDAAW,GAAG;;EAAC;;;QAqBb;QACA;;QACA;;QACW;QACX;QACA;;QACA;QACyB;;QACzB;QACA;;QACA;;QACA;QACA;;QACA;;IAZA;IACA;IAEA;IACA;IACA;IAGA;IACA;IACA;IACA;IACA;UACK,AAAuB,sBAAD;UACtB,AAAa,YAAD;IACR,qBAAa,KAAX,UAAU,EAAV,aAAc;IACV,0BAAE,0CAA2B,WAAW,eAAc,SAAS;AAChF,sDAAW,GAAG;;EAAC;;;QAuFb;QACA;;QACA;;QACW;QACX;QACA;;QACA;QACS;;QACT;;QACA;;QACA;QACA;;QACA;;IAXA;IACA;IAEA;IACA;IACA;IACS;IACT;IACA;IACA;IACA;IACA;UACK,AAAiB,gBAAD;UAChB,AAAuB,sBAAD;UACtB,AAAa,YAAD;IACR,qBAAa,KAAX,UAAU,EAAV,aAAc;AAC3B,sDAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAkGD,MAAX;AAC2C,MAAjD,0BAAoB,AAAO,AAAW;IACxC;;UAEyC;AACvC,cAAQ,AAAO;;;AAEX,yBAAO,kCAA4B,OAAO;AACtB,8BAA+B,wBAAG,OAAO;AACzC,8BAAgB,yCAA6B,aAAa;AAC9E,2BAAO,AAAO,uBAAU,8BAAkB,aAAa,IAAI,aAAa;;;;AAExE,2BAAO,AAAO,uBAAwB,+BAAmB;;;;AAP7D;;;IASF;UAG0B;;;AACJ,0BAAgB,oBAAc,OAAO;AACrC,oBAAU,AAE5B,uEADwB,AAAO,uDAE/B,AAAO,4BACH,AAAc,iCAAuB,KAAf,AAAO,qBAAA,mBAAW,AAAO,yCAAA,OAAgB,oBAAiB,OAAO,aACxE,MAAf,AAAO,qBAAA,qBAAW,AAAO,0CAAA,OAAgB,qBAAiB,OAAO;AAGvE,YAAO,yEACW;cAAoB;AAClC,cAAI,AAAa,AAAM,YAAP,WAAU,KAAK,AAAO,qCAAsC,gDAAb,YAAY;AACvD,0BAA+B,yBAArB,AAAa,YAAD;AAC9B,8BAA0B,AAAE,eAAd,AAAQ,OAAD;AAC/B,gBAAI,WAAW,KAAI;AACc,cAA/B,0BAAoB,WAAW;AACG,cAAd,AAAC,eAArB,AAAO,2BAAe,WAAW;;;AAGrC,gBAAO;iDAEF,kDACc,AAAO,8CACX,aAAa,cAChB,AAAO,iCACV,OAAO,iBACD,AAAO,4CACgB,OAAtB,AAAO,4BAAA,eAAsC,AAAY,4CAAT,OAAO,wBAAuB,kCAC7E,SAAc,SAAwB;gBAAxB;gBAAwB;AACrD,kBAAO,mDAIQ,AAAO,sCAAyB,MAAM,uBAChB,oDACpB,aAAa,UACpB,QAAQ,gBACF,AAAO,mCACJ,wBACf,0DACoB,AAAO,AAAW,mDAC1B,AAAO;;IAO/B;;UAGqD;AACb,MAAhC,0BAAoB,WAAW;AACyC,MAA9E,AAAY,WAAD,KAAK,iCAAmB,mBAAmB,AAAO;AACsB,MAAnF,AAAY,WAAD,KAAK,iCAAa,mBAAkB,AAAO,6BAAiB;AAC+B,MAAtG,AAAY,WAAD,KAAK,kDAAoC,cAAc,AAAO,mCAAsB;AACA,MAA/F,AAAY,WAAD,KAAK,iDAAmC,WAAW,AAAO,gCAAmB;AACe,MAAvG,AAAY,WAAD,KAAK,iCAAa,wBAAuB,AAAO,mCAAuB;AAC+C,MAAjI,AAAY,WAAD,KAAK,iCAAa,kCAAiC,AAAO,4CAAgC;IACvG;;;IAjFI,0BAAoB;;;EAkF1B;;;;;;;;;;;;;;;MA5ZqB,gCAAsB;YAAG;;MACtB,uBAAa","file":"../../../../../../../../packages/flutter/src/widgets/page_view.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["shifted_box.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/rendering/shifted_box.dart.lib.js"}');
   // Exports:
   return {
-    src__widgets__page_view: page_view
+    src__rendering__shifted_box: shifted_box
   };
 }));
 
-//# sourceMappingURL=page_view.dart.lib.js.map
+//# sourceMappingURL=shifted_box.dart.lib.js.map

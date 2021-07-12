@@ -1,3 +1,7 @@
+import 'package:client/widgets/Console/dashboard/Container_1/calander.dart';
+import 'package:client/widgets/Console/dashboard/Container_1/resources.dart';
+import 'package:client/widgets/Console/dashboard/Container_1/task.dart';
+import 'package:client/widgets/Console/dashboard/Container_1/trash.dart';
 import 'package:client/widgets/Console/dashboard/Container_2/build.dart';
 import 'package:client/widgets/Console/dashboard/Container_2/design.dart';
 import 'package:client/widgets/Console/dashboard/Container_2/maintain.dart';
@@ -52,22 +56,20 @@ class DashBoard extends StatelessWidget {
                 ),
                 HomeButton(),
                 MyProjectButton(),
+                TaskButton(),
                 MessageButton(),
                 MemberButton(),
+                ResourceButton(),
+                CalanderButton(),
                 ReportButton(),
                 BillingButton(),
+                TrashButton(),
                 SizedBox(
-                  height: height * 0.010,
+                  height: height * 0.090,
                 ),
                 Divider(
                   color: Colors.white.withOpacity(0.5),
                 ),
-                SizedBox(
-                  height: height * 0.010,
-                ),
-                DesignButton(),
-                BuildButton(),
-                MaintainButton()
               ],
             ),
           )),
