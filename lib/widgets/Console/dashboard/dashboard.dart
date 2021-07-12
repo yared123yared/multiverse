@@ -5,6 +5,7 @@ import 'package:client/widgets/Console/dashboard/Container_1/trash.dart';
 import 'package:client/widgets/Console/dashboard/Container_2/build.dart';
 import 'package:client/widgets/Console/dashboard/Container_2/design.dart';
 import 'package:client/widgets/Console/dashboard/Container_2/maintain.dart';
+import 'package:client/widgets/Console/dashboard/drawerBottomBtn.dart';
 import 'package:client/widgets/Console/logo/logo.dart';
 import 'package:flutter/material.dart';
 import 'Container_1/billing.dart';
@@ -13,6 +14,7 @@ import 'Container_1/members.dart';
 import 'Container_1/messages.dart';
 import 'Container_1/projects.dart';
 import 'Container_1/report.dart';
+import 'drawerTopButton.dart';
 
 class DashBoard extends StatelessWidget {
   final double height;
@@ -70,6 +72,18 @@ class DashBoard extends StatelessWidget {
                 Divider(
                   color: Colors.white.withOpacity(0.5),
                 ),
+                SizedBox(
+                  height: height * 0.030,
+                ),
+                DrawerTopButton(
+                    border: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    elevation: 0,
+                    iconUrl: 'lib/assets/icons/console/collapse.svg',
+                    value: 'Collapse',
+                    size: 22,
+                    onPressed: () {}),
               ],
             ),
           )),
