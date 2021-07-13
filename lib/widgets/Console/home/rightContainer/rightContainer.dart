@@ -26,15 +26,44 @@ class RightContainer extends StatelessWidget {
                 CustomeTitle(
                   mainContainerHeight: this.mainContainerHeight,
                 ),
-                AIContainer(
-                  mainContainerHeight: this.mainContainerHeight,
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        AIContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                        ),
+                        DataScienceContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                        ),
+                        CyberContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                        ),
+                        CyberContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                        ),
+                        CyberContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                        ),
+                        CyberContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                        ),
+                        CyberContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                        ),
+                        CyberContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                        ),
+                        CyberContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                        ),
+                        CyberContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                DataScienceContainer(
-                  mainContainerHeight: this.mainContainerHeight,
-                ),
-                CyberContainer(
-                  mainContainerHeight: this.mainContainerHeight,
-                )
               ],
             )));
   }
