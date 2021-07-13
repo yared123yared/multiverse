@@ -1,7 +1,6 @@
-import 'package:client/widgets/Console/home/rightContainer/Members/members.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/body.dart';
 import 'package:flutter/material.dart';
 
-import 'Billing/biling.dart';
 import 'title/title.dart';
 
 class RightContainer extends StatelessWidget {
@@ -22,9 +21,18 @@ class RightContainer extends StatelessWidget {
             width: this.mainContainerWidth * 0.62,
             height: this.mainContainerHeight,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomeTitle(
+                  mainContainerHeight: this.mainContainerHeight,
+                ),
+                AIContainer(
+                  mainContainerHeight: this.mainContainerHeight,
+                ),
+                DataScienceContainer(
+                  mainContainerHeight: this.mainContainerHeight,
+                ),
+                CyberContainer(
                   mainContainerHeight: this.mainContainerHeight,
                 )
               ],
