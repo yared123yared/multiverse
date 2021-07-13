@@ -1,4 +1,5 @@
 import 'package:client/widgets/Console/home/leftContainer/Build/build.dart';
+import 'package:client/widgets/Console/home/leftContainer/Design/design.dart';
 import 'package:client/widgets/Console/home/leftContainer/overview/overview.dart';
 import 'package:client/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,9 @@ class LeftContainer extends StatelessWidget {
                   mainContainerHeight: this.mainContainerHeight,
                 ),
                 BuildContainer(
+                  mainContainerHeight: this.mainContainerHeight,
+                ),
+                DesignContainer(
                   mainContainerHeight: this.mainContainerHeight,
                 )
               ],

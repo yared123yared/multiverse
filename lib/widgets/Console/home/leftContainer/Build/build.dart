@@ -10,7 +10,7 @@ class BuildContainer extends StatelessWidget {
     return Card(
       elevation: 1,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(13.0),
       ),
       margin: EdgeInsets.all(this.mainContainerHeight * 0.018),
       child: InkWell(
@@ -22,9 +22,9 @@ class BuildContainer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Color(0xffE3F2FD).withOpacity(0.2),
               border: Border.all(color: Color(0xff003366).withOpacity(0.5)),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(13),
             ),
-            height: this.mainContainerHeight * 0.19,
+            height: this.mainContainerHeight * 0.21,
             width: double.infinity),
       ),
     );
