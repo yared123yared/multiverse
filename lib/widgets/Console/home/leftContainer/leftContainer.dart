@@ -4,6 +4,7 @@ import 'package:client/widgets/Console/home/leftContainer/overview/overview.dart
 import 'package:client/widgets/Console/home/leftContainer/recentActivity/recentActivity.dart';
 import 'package:flutter/material.dart';
 
+import 'Maintain/maintain.dart';
 import 'title/IconButton.dart';
 import 'title/text.dart';
 import 'title/title.dart';
@@ -36,7 +37,10 @@ class LeftContainer extends StatelessWidget {
                 ),
                 DesignContainer(
                   mainContainerHeight: this.mainContainerHeight,
-                )
+                ),
+                MaintainContainer(
+                  mainContainerHeight: this.mainContainerHeight,
+                ),
               ],
             )));
   }
