@@ -38,13 +38,13 @@ class CustomeContainer extends StatelessWidget {
                   this.borderColor != null ? this.borderColor : Colors.white),
           borderRadius: BorderRadius.circular(13),
         ),
-        height: this.mainContainerHeight * 0.19,
+        height: this.mainContainerHeight * 0.24,
         width: double.infinity,
         child: Row(
           children: [
             Container(
               color: Color(0xffE3F2FD).withOpacity(0.2),
-              width: this.mainContiainerWidth * 0.35,
+              width: this.mainContiainerWidth * 0.39,
 
               // child: Image.asset(
               // 'lib/assets/images/console/build.png',
@@ -63,26 +63,28 @@ class CustomeContainer extends StatelessWidget {
                   "Design",
                   style: TextStyle(
                     color: Color(0xff003366),
-                    fontSize: 17,
+                    fontSize: 0.0311 * this.mainContainerHeight,
                     fontWeight: FontWeight.w900,
                   ),
                 ),
                 Text("Design Software Projects",
                     style: TextStyle(
                       color: Color(0xff003366),
-                      fontSize: 10,
+                      fontSize: 0.0197 * this.mainContainerHeight,
                       fontWeight: FontWeight.w300,
                     )),
                 ElevatedButton(
                     onPressed: () {},
                     child: Container(
-                        width: this.mainContiainerWidth * 0.26,
+                        width: this.mainContiainerWidth * 0.28,
+                        height: this.mainContainerHeight * 0.041,
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: Text("Go",
                               style: TextStyle(
-                                  fontSize: 11, color: Color(0xff003366))),
+                                  fontSize: 0.02 * this.mainContainerHeight,
+                                  color: Color(0xff003366))),
                         ))),
                     style: ButtonStyle(
                         // backgroundColor: Colors.white,
