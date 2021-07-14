@@ -61,6 +61,9 @@ flutter:
     - lib/assets/images/start/
     - lib/assets/images/signUp/
     - lib/assets/images/console/
+    - lib/assets/images/console/leftContainer/
+    - lib/assets/images/console/rightContainer/
+    
 
     
 

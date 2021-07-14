@@ -11,7 +11,12 @@ class BuildContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomeContainer(
-        borderColor: Color(0xff003366).withOpacity(0.5),
+        title: "Build",
+        subtitle: "Build Software Tools",
+        image: 'lib/assets/images/console/leftContainer/build.png',
+        ongoBtnPressed: () {
+          print("go to the build");
+        },
         mainContainerHeight: mainContainerHeight,
         mainContiainerWidth: this.mainContainerWidth);
   }

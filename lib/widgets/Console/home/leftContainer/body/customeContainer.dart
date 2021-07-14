@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomeContainer extends StatelessWidget {
   final double mainContainerHeight;
   final double mainContiainerWidth;
-  final Image image;
+  final String image;
   final Function ongoBtnPressed;
   final Color borderColor;
   final String title;
@@ -27,9 +27,9 @@ class CustomeContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(13.0),
       ),
       margin: EdgeInsets.only(
-          left: this.mainContainerHeight * 0.018,
-          right: this.mainContainerHeight * 0.018,
-          top: this.mainContainerHeight * 0.018),
+          left: this.mainContainerHeight * 0.015,
+          right: this.mainContainerHeight * 0.015,
+          top: this.mainContainerHeight * 0.023),
       child: Container(
         decoration: BoxDecoration(
           // color: Color(0xffE3F2FD).withOpacity(0.2),
@@ -38,20 +38,24 @@ class CustomeContainer extends StatelessWidget {
                   this.borderColor != null ? this.borderColor : Colors.white),
           borderRadius: BorderRadius.circular(13),
         ),
-        height: this.mainContainerHeight * 0.24,
+        height: this.mainContainerHeight * 0.215,
         width: double.infinity,
         child: Row(
           children: [
             Container(
-              color: Color(0xffE3F2FD).withOpacity(0.2),
-              width: this.mainContiainerWidth * 0.39,
-
-              // child: Image.asset(
-              // 'lib/assets/images/console/build.png',
-              // fit: BoxFit.cover,
-              // )
-              //
-            ),
+                alignment: Alignment.topLeft,
+                width: this.mainContiainerWidth * 0.36,
+                decoration: BoxDecoration(
+                  color: Color(0xffE3F2FD).withOpacity(0.2),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(13.0),
+                      topLeft: Radius.circular(13.0)),
+                ),
+                child: Image.asset(
+                  this.image,
+                  fit: BoxFit.cover,
+                  // color: Colors.red,
+                )),
             SizedBox(
               width: 0.07 * this.mainContiainerWidth,
             ),
@@ -60,24 +64,24 @@ class CustomeContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Design",
+                  this.title,
                   style: TextStyle(
                     color: Color(0xff003366),
                     fontSize: 0.0311 * this.mainContainerHeight,
                     fontWeight: FontWeight.w900,
                   ),
                 ),
-                Text("Design Software Projects",
+                Text(this.subtitle,
                     style: TextStyle(
                       color: Color(0xff003366),
                       fontSize: 0.0197 * this.mainContainerHeight,
                       fontWeight: FontWeight.w300,
                     )),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: this.ongoBtnPressed,
                     child: Container(
                         width: this.mainContiainerWidth * 0.28,
-                        height: this.mainContainerHeight * 0.041,
+                        height: this.mainContainerHeight * 0.04158,
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.all(6.0),

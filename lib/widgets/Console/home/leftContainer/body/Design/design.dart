@@ -11,7 +11,13 @@ class DesignContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomeContainer(
-        //  borderColor: Color(0xff003366).withOpacity(0.5),
+        title: "Design",
+        image: 'lib/assets/images/console/leftContainer/design.png',
+        subtitle: "Design Software Projects",
+        ongoBtnPressed: () {
+          print("go to the design page");
+        },
+        borderColor: Color(0xff003366).withOpacity(0.5),
         mainContainerHeight: mainContainerHeight,
         mainContiainerWidth: this.mainContainerWidth);
   }

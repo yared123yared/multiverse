@@ -27,11 +27,11 @@ class LeftContainer extends StatelessWidget {
                 CustomeTitle(
                   mainContainerHeight: this.mainContainerHeight,
                 ),
-                BuildContainer(
+                DesignContainer(
                   mainContainerHeight: this.mainContainerHeight,
                   mainContainerWidth: this.mainContainerWidth * 0.355,
                 ),
-                DesignContainer(
+                BuildContainer(
                   mainContainerHeight: this.mainContainerHeight,
                   mainContainerWidth: this.mainContainerWidth * 0.355,
                 ),
