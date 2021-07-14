@@ -102,8 +102,9 @@ class CustomeContainer extends StatelessWidget {
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
-                                    side:
-                                        BorderSide(color: Color(0xff003366))))))
+                                    side: BorderSide(
+                                        color: Color(0xff003366)
+                                            .withOpacity(0.7))))))
               ],
             )
           ],
