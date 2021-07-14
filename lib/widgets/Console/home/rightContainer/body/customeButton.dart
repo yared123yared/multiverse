@@ -4,9 +4,11 @@ class CustomeButton extends StatelessWidget {
   final Function ongoBtnPressed;
   final double mainContainerHeight;
   final double mainContiainerWidth;
+  final String btnName;
 
   CustomeButton(
       {this.ongoBtnPressed,
+      this.btnName,
       this.mainContainerHeight,
       this.mainContiainerWidth});
 
@@ -16,10 +18,10 @@ class CustomeButton extends StatelessWidget {
         onPressed: this.ongoBtnPressed,
         child: Container(
             width: this.mainContiainerWidth * 0.22,
-            height: this.mainContainerHeight * 0.04158,
+            height: this.mainContainerHeight * 0.043,
             child: Padding(
               padding: const EdgeInsets.all(6.0),
-              child: Text("Smart Spaces",
+              child: Text(this.btnName,
                   style: TextStyle(
                       fontSize: 0.02 * this.mainContainerHeight,
                       color: Color(0xff003366))),

@@ -59,7 +59,7 @@ class CustomeContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 0.02 * this.mainContainerHeight),
+                SizedBox(height: 0.024 * this.mainContainerHeight),
                 Text(
                   this.title,
                   style: TextStyle(

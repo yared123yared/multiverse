@@ -13,7 +13,6 @@ class CustomeContainer extends StatelessWidget {
 
   final Color borderColor;
   final String title;
-  final String subtitle;
 
   CustomeContainer({
     this.mainContainerHeight,
@@ -25,7 +24,6 @@ class CustomeContainer extends StatelessWidget {
     this.borderColor,
     this.image,
     this.title,
-    this.subtitle,
   });
 
   @override
@@ -54,7 +52,7 @@ class CustomeContainer extends StatelessWidget {
             Container(
                 alignment: Alignment.topLeft,
                 child: Image.asset(
-                  'lib/assets/images/console/rightContainer/ai.png',
+                  this.image,
                   fit: BoxFit.cover,
                 )),
             SizedBox(
@@ -65,66 +63,57 @@ class CustomeContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // SizedBox(height: 0.01 * this.mainContainerHeight),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      margin:
-                          EdgeInsets.only(top: 0.02 * this.mainContainerHeight),
-                      child: Text(
-                        "Arteficial Intelegence",
-                        style: TextStyle(
-                          color: Color(0xff003366),
-                          fontSize: 0.029 * this.mainContainerHeight,
-                          fontWeight: FontWeight.w900,
+                Container(
+                  width: this.mainContiainerWidth * 0.59,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                            top: 0.02 * this.mainContainerHeight),
+                        child: Text(
+                          this.title,
+                          style: TextStyle(
+                            color: Color(0xff003366),
+                            fontSize: 0.029 * this.mainContainerHeight,
+                            fontWeight: FontWeight.w900,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 0.31 * this.mainContiainerWidth,
-                    ),
-                    IconButton(
-                        alignment: Alignment.topRight,
-                        icon: Icon(
-                          Icons.open_in_new,
-                          color: Color(0xff003366).withOpacity(0.7),
-                          size: this.mainContainerHeight * 0.04,
-                        ),
-                        onPressed: () {}),
-                  ],
+                      // SizedBox(
+                      // width: 0.31 * this.mainContiainerWidth,
+                      // ),
+                      IconButton(
+                          alignment: Alignment.topRight,
+                          icon: Icon(
+                            Icons.open_in_new,
+                            color: Color(0xff003366).withOpacity(0.7),
+                            size: this.mainContainerHeight * 0.04,
+                          ),
+                          onPressed: () {}),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 0.02 * this.mainContainerHeight),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomeButton(
-                      mainContainerHeight: this.mainContainerHeight,
-                      mainContiainerWidth: this.mainContiainerWidth,
-                    ),
+                    this.button1,
                     SizedBox(
                       width: 0.04 * this.mainContiainerWidth,
                     ),
-                    CustomeButton(
-                      mainContainerHeight: this.mainContainerHeight,
-                      mainContiainerWidth: this.mainContiainerWidth,
-                    )
+                    this.button2,
                   ],
                 ),
                 SizedBox(height: 0.026 * this.mainContainerHeight),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomeButton(
-                      mainContainerHeight: this.mainContainerHeight,
-                      mainContiainerWidth: this.mainContiainerWidth,
-                    ),
+                    this.button3,
                     SizedBox(
                       width: 0.04 * this.mainContiainerWidth,
                     ),
-                    CustomeButton(
-                      mainContainerHeight: this.mainContainerHeight,
-                      mainContiainerWidth: this.mainContiainerWidth,
-                    )
+                    this.button4
                   ],
                 ),
               ],

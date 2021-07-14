@@ -1,3 +1,7 @@
+import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/hybridLearning.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/reinforcmentLearning.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/supervisedLearning.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/unsupervisedLearning.dart';
 import 'package:flutter/material.dart';
 
 import '../customeContainer.dart';
@@ -10,30 +14,28 @@ class AIContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Card(
-    // elevation: 1,
-    // shape: RoundedRectangleBorder(
-    // borderRadius: BorderRadius.circular(13.0),
-    // ),
-    // margin: EdgeInsets.all(this.mainContainerHeight * 0.018),
-    // child: InkWell(
-    // splashColor: Colors.blue.withAlpha(30),
-    // onTap: () {
-    // print('Card tapped.');
-    // },
-    // child: Container(
-    // decoration: BoxDecoration(
-    // color: Color(0xffE3F2FD).withOpacity(0.2),
-    // border: Border.all(color: Color(0xff003366).withOpacity(0.5)),
-    // borderRadius: BorderRadius.circular(13),
-    // ),
-    // height: this.mainContainerHeight * 0.24,
-    // width: double.infinity),
-    // ),
-    // );
     return CustomeContainer(
+      mainContainerHeight: this.mainContainerHeight,
+      mainContiainerWidth: this.mainContainerWidth,
+      borderColor: Color(0xff003366).withOpacity(0.5),
+      title: "Arteficial Intelegence",
+      image: 'lib/assets/images/console/rightContainer/ai.png',
+      button1: SupervisedtLearningButton(
         mainContainerHeight: this.mainContainerHeight,
-        mainContiainerWidth: this.mainContainerWidth,
-        borderColor: Color(0xff003366).withOpacity(0.5));
+        mainContainerWidth: this.mainContainerWidth,
+      ),
+      button2: ReinforcementLearningButton(
+        mainContainerHeight: this.mainContainerHeight,
+        mainContainerWidth: this.mainContainerWidth,
+      ),
+      button3: UnSupervisedtLearningButton(
+        mainContainerHeight: this.mainContainerHeight,
+        mainContainerWidth: this.mainContainerWidth,
+      ),
+      button4: HybridLearningButton(
+        mainContainerHeight: this.mainContainerHeight,
+        mainContainerWidth: this.mainContainerWidth,
+      ),
+    );
   }
 }

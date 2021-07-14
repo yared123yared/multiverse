@@ -38,14 +38,15 @@ class RightContainer extends StatelessWidget {
                           mainContainerHeight: this.mainContainerHeight,
                           mainContainerWidth: this.mainContainerWidth * 0.62,
                         ),
-                        CyberContainer(
-                          mainContainerHeight: this.mainContainerHeight,
-                          mainContainerWidth: this.mainContainerWidth * 0.62,
-                        ),
-                        CyberContainer(
-                          mainContainerHeight: this.mainContainerHeight,
-                          mainContainerWidth: this.mainContainerWidth * 0.62,
-                        ),
+
+                        // CyberContainer(
+                        // mainContainerHeight: this.mainContainerHeight,
+                        // mainContainerWidth: this.mainContainerWidth * 0.62,
+                        // ),
+                        // CyberContainer(
+                        // mainContainerHeight: this.mainContainerHeight,
+                        // mainContainerWidth: this.mainContainerWidth * 0.62,
+                        // ),
                         // CyberContainer(
                         // mainContainerHeight: this.mainContainerHeight,
                         // mainContainerWidth:this.mainContainerWidth,

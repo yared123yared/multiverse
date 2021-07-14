@@ -1,6 +1,14 @@
+import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/hybridLearning.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/reinforcmentLearning.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/supervisedLearning.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/unsupervisedLearning.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/DataScience/cleaning-exploration.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/DataScience/deployment-optimization.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/DataScience/modelDecelopment.dart';
 import 'package:flutter/material.dart';
 
 import '../customeContainer.dart';
+import 'visualization-analytics.dart';
 
 class DataScienceContainer extends StatelessWidget {
   final double mainContainerHeight;
@@ -10,33 +18,28 @@ class DataScienceContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Card(
-    // elevation: 1,
-    // shape: RoundedRectangleBorder(
-    // borderRadius: BorderRadius.circular(13.0),
-    // ),
-    // margin: EdgeInsets.only(
-    // left: this.mainContainerHeight * 0.018,
-    // right: this.mainContainerHeight * 0.018,
-    // bottom: this.mainContainerHeight * 0.018),
-    // child: InkWell(
-    // splashColor: Colors.blue.withAlpha(30),
-    // onTap: () {
-    // print('Card tapped.');
-    // },
-    // child: Container(
-    // decoration: BoxDecoration(
-    // color: Color(0xffE3F2FD).withOpacity(0.2),
-    // border: Border.all(color: Color(0xff003366).withOpacity(0.5)),
-    // borderRadius: BorderRadius.circular(13),
-    // ),
-    // height: this.mainContainerHeight * 0.24,
-    // width: double.infinity),
-    // ),
-    // );
-
     return CustomeContainer(
+      mainContainerHeight: this.mainContainerHeight,
+      mainContiainerWidth: this.mainContainerWidth,
+      borderColor: Color(0xff003366).withOpacity(0.5),
+      title: "Data Science",
+      image: 'lib/assets/images/console/rightContainer/data_science.png',
+      button1: CleaningExplorationButton(
         mainContainerHeight: this.mainContainerHeight,
-        mainContiainerWidth: this.mainContainerWidth);
+        mainContainerWidth: this.mainContainerWidth,
+      ),
+      button2: ModelDevelopmentButton(
+        mainContainerHeight: this.mainContainerHeight,
+        mainContainerWidth: this.mainContainerWidth,
+      ),
+      button3: VisualAnalyticsButton(
+        mainContainerHeight: this.mainContainerHeight,
+        mainContainerWidth: this.mainContainerWidth,
+      ),
+      button4: DeploymentOptimizationButton(
+        mainContainerHeight: this.mainContainerHeight,
+        mainContainerWidth: this.mainContainerWidth,
+      ),
+    );
   }
 }
