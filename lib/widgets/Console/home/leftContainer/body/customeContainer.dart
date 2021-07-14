@@ -24,7 +24,7 @@ class CustomeContainer extends StatelessWidget {
     return Card(
       elevation: 1,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(13.0),
+        borderRadius: BorderRadius.circular(15),
       ),
       margin: EdgeInsets.only(
           left: this.mainContainerHeight * 0.015,
@@ -44,17 +44,16 @@ class CustomeContainer extends StatelessWidget {
           children: [
             Container(
                 alignment: Alignment.topLeft,
-                width: this.mainContiainerWidth * 0.36,
+                // width: this.mainContiainerWidth * 0.36,
                 decoration: BoxDecoration(
-                  color: Color(0xffE3F2FD).withOpacity(0.2),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(13.0),
-                      topLeft: Radius.circular(13.0)),
-                ),
+                    // color: Color(0xffE3F2FD).withOpacity(0.2),
+                    // borderRadius: BorderRadius.only(
+                    // bottomLeft: Radius.circular(.0),
+                    // topLeft: Radius.circular(1.0)),
+                    ),
                 child: Image.asset(
                   this.image,
                   fit: BoxFit.cover,
-                  // color: Colors.red,
                 )),
             SizedBox(
               width: 0.07 * this.mainContiainerWidth,
