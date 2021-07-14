@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'customeButton.dart';
+
 class CustomeContainer extends StatelessWidget {
   final double mainContainerHeight;
   final double mainContiainerWidth;
   final String image;
-  final Function ongoBtnPressed;
+  // final Function ongoBtnPressed;
+  final Widget goButton;
   final Color borderColor;
   final String title;
   final String subtitle;
@@ -12,7 +15,8 @@ class CustomeContainer extends StatelessWidget {
   CustomeContainer({
     this.mainContainerHeight,
     this.mainContiainerWidth,
-    this.ongoBtnPressed,
+    // this.ongoBtnPressed,
+    this.goButton,
     this.borderColor,
     this.image,
     this.title,
@@ -44,13 +48,6 @@ class CustomeContainer extends StatelessWidget {
           children: [
             Container(
                 alignment: Alignment.topLeft,
-                // width: this.mainContiainerWidth * 0.36,
-                decoration: BoxDecoration(
-                    // color: Color(0xffE3F2FD).withOpacity(0.2),
-                    // borderRadius: BorderRadius.only(
-                    // bottomLeft: Radius.circular(.0),
-                    // topLeft: Radius.circular(1.0)),
-                    ),
                 child: Image.asset(
                   this.image,
                   fit: BoxFit.cover,
@@ -59,52 +56,27 @@ class CustomeContainer extends StatelessWidget {
               width: 0.07 * this.mainContiainerWidth,
             ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 0.02 * this.mainContainerHeight),
                 Text(
                   this.title,
                   style: TextStyle(
                     color: Color(0xff003366),
-                    fontSize: 0.0311 * this.mainContainerHeight,
+                    fontSize: 0.029 * this.mainContainerHeight,
                     fontWeight: FontWeight.w900,
                   ),
                 ),
+                SizedBox(height: 0.02 * this.mainContainerHeight),
                 Text(this.subtitle,
                     style: TextStyle(
                       color: Color(0xff003366),
                       fontSize: 0.0197 * this.mainContainerHeight,
                       fontWeight: FontWeight.w300,
                     )),
-                ElevatedButton(
-                    onPressed: this.ongoBtnPressed,
-                    child: Container(
-                        width: this.mainContiainerWidth * 0.28,
-                        height: this.mainContainerHeight * 0.04158,
-                        child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: Text("Go",
-                              style: TextStyle(
-                                  fontSize: 0.02 * this.mainContainerHeight,
-                                  color: Color(0xff003366))),
-                        ))),
-                    style: ButtonStyle(
-                        // backgroundColor: Colors.white,
-                        backgroundColor:
-                            MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
-                            return Colors.white;
-                            // Use the component's default.
-                          },
-                        ),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(
-                                        color: Color(0xff003366)
-                                            .withOpacity(0.7))))))
+                SizedBox(height: 0.02 * this.mainContainerHeight),
+                this.goButton
               ],
             )
           ],

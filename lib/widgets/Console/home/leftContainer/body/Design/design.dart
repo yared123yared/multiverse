@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../customeButton.dart';
 import '../customeContainer.dart';
 
 class DesignContainer extends StatelessWidget {
@@ -14,10 +15,14 @@ class DesignContainer extends StatelessWidget {
         title: "Design",
         image: 'lib/assets/images/console/leftContainer/design.png',
         subtitle: "Design Software Projects",
-        ongoBtnPressed: () {
-          print("go to the design page");
-        },
-        // borderColor: Color(0xff003366).withOpacity(0.5),
+        borderColor: Color(0xff003366).withOpacity(0.5),
+        goButton: CustomeButton(
+          mainContainerHeight: this.mainContainerHeight,
+          mainContiainerWidth: this.mainContainerWidth,
+          ongoBtnPressed: () {
+            print("go to the design page");
+          },
+        ),
         mainContainerHeight: mainContainerHeight,
         mainContiainerWidth: this.mainContainerWidth);
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../customeButton.dart';
 import '../customeContainer.dart';
 
 class MaintainContainer extends StatelessWidget {
@@ -14,9 +15,13 @@ class MaintainContainer extends StatelessWidget {
         title: "Maintain",
         subtitle: "Maintain Software Assets",
         image: 'lib/assets/images/console/leftContainer/maintain.png',
-        ongoBtnPressed: () {
-          print("go to the maintain page");
-        },
+        goButton: CustomeButton(
+          mainContainerHeight: this.mainContainerHeight,
+          mainContiainerWidth: this.mainContainerWidth,
+          ongoBtnPressed: () {
+            print("go to the maintain page");
+          },
+        ),
         mainContainerHeight: mainContainerHeight,
         mainContiainerWidth: this.mainContainerWidth);
   }

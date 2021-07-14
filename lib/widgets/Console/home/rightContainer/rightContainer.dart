@@ -32,34 +32,40 @@ class RightContainer extends StatelessWidget {
                       children: [
                         AIContainer(
                           mainContainerHeight: this.mainContainerHeight,
+                          mainContainerWidth: this.mainContainerWidth * 0.62,
                         ),
                         DataScienceContainer(
                           mainContainerHeight: this.mainContainerHeight,
+                          mainContainerWidth: this.mainContainerWidth * 0.62,
                         ),
                         CyberContainer(
                           mainContainerHeight: this.mainContainerHeight,
+                          mainContainerWidth: this.mainContainerWidth * 0.62,
                         ),
                         CyberContainer(
                           mainContainerHeight: this.mainContainerHeight,
+                          mainContainerWidth: this.mainContainerWidth * 0.62,
                         ),
-                        CyberContainer(
-                          mainContainerHeight: this.mainContainerHeight,
-                        ),
-                        CyberContainer(
-                          mainContainerHeight: this.mainContainerHeight,
-                        ),
-                        CyberContainer(
-                          mainContainerHeight: this.mainContainerHeight,
-                        ),
-                        CyberContainer(
-                          mainContainerHeight: this.mainContainerHeight,
-                        ),
-                        CyberContainer(
-                          mainContainerHeight: this.mainContainerHeight,
-                        ),
-                        CyberContainer(
-                          mainContainerHeight: this.mainContainerHeight,
-                        ),
+                        // CyberContainer(
+                        // mainContainerHeight: this.mainContainerHeight,
+                        // mainContainerWidth:this.mainContainerWidth,
+                        // ),
+                        // CyberContainer(
+                        // mainContainerHeight: this.mainContainerHeight,
+                        // mainContainerWidth:this.mainContainerWidth,
+                        // ),
+                        // CyberContainer(
+                        // mainContainerHeight: this.mainContainerHeight,
+                        // ),
+                        // CyberContainer(
+                        // mainContainerHeight: this.mainContainerHeight,
+                        // ),
+                        // CyberContainer(
+                        // mainContainerHeight: this.mainContainerHeight,
+                        // ),
+                        // CyberContainer(
+                        // mainContainerHeight: this.mainContainerHeight,
+                        // ),
                       ],
                     ),
                   ),
