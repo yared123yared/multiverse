@@ -1,5 +1,6 @@
 import 'package:client/widgets/Console/home/rightContainer/body/BlockChain/blockChain.dart';
 import 'package:client/widgets/Console/home/rightContainer/body/CloudComputing/cloudComputing.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/IndestrialDesign/indestrialDesign.dart';
 import 'package:client/widgets/Console/home/rightContainer/body/WebMobilePc/webMobilePc.dart';
 import 'package:client/widgets/Console/home/rightContainer/body/body.dart';
 
@@ -45,7 +46,6 @@ class RightContainer extends StatelessWidget {
                           mainContainerHeight: this.mainContainerHeight,
                           mainContainerWidth: this.mainContainerWidth * 0.62,
                         ),
-
                         CyberSecurityContainer(
                           mainContainerHeight: this.mainContainerHeight,
                           mainContainerWidth: this.mainContainerWidth * 0.62,
@@ -74,19 +74,10 @@ class RightContainer extends StatelessWidget {
                           mainContainerHeight: this.mainContainerHeight,
                           mainContainerWidth: this.mainContainerWidth * 0.62,
                         ),
-
-                        // CyberContainer(
-                        // mainContainerHeight: this.mainContainerHeight,
-                        // ),
-                        // CyberContainer(
-                        // mainContainerHeight: this.mainContainerHeight,
-                        // ),
-                        // CyberContainer(
-                        // mainContainerHeight: this.mainContainerHeight,
-                        // ),
-                        // CyberContainer(
-                        // mainContainerHeight: this.mainContainerHeight,
-                        // ),
+                        IndestrialDesignContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                          mainContainerWidth: this.mainContainerWidth * 0.62,
+                        ),
                       ],
                     ),
                   ),
