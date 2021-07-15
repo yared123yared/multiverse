@@ -75,7 +75,7 @@ class CustomeContainer extends StatelessWidget {
                           this.title,
                           style: TextStyle(
                             color: Color(0xff003366),
-                            fontSize: 0.029 * this.mainContainerHeight,
+                            fontSize: 0.024 * this.mainContiainerWidth,
                             fontWeight: FontWeight.w900,
                           ),
                         ),
@@ -84,11 +84,11 @@ class CustomeContainer extends StatelessWidget {
                       // width: 0.31 * this.mainContiainerWidth,
                       // ),
                       IconButton(
-                          alignment: Alignment.topRight,
+                          // alignment: Alignment.topRight,
                           icon: Icon(
                             Icons.open_in_new,
                             color: Color(0xff003366).withOpacity(0.7),
-                            size: this.mainContainerHeight * 0.04,
+                            size: this.mainContiainerWidth * 0.02,
                           ),
                           onPressed: () {}),
                     ],

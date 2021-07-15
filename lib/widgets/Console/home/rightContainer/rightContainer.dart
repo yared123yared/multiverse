@@ -1,6 +1,7 @@
 import 'package:client/widgets/Console/home/rightContainer/body/body.dart';
 import 'package:flutter/material.dart';
 
+import 'body/Robotics/robotics.dart';
 import 'title/title.dart';
 
 class RightContainer extends StatelessWidget {
@@ -39,14 +40,14 @@ class RightContainer extends StatelessWidget {
                           mainContainerWidth: this.mainContainerWidth * 0.62,
                         ),
 
-                        // CyberContainer(
-                        // mainContainerHeight: this.mainContainerHeight,
-                        // mainContainerWidth: this.mainContainerWidth * 0.62,
-                        // ),
-                        // CyberContainer(
-                        // mainContainerHeight: this.mainContainerHeight,
-                        // mainContainerWidth: this.mainContainerWidth * 0.62,
-                        // ),
+                        CyberSecurityContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                          mainContainerWidth: this.mainContainerWidth * 0.62,
+                        ),
+                        RoboticsContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                          mainContainerWidth: this.mainContainerWidth * 0.62,
+                        ),
                         // CyberContainer(
                         // mainContainerHeight: this.mainContainerHeight,
                         // mainContainerWidth:this.mainContainerWidth,

@@ -21,7 +21,7 @@ class DataScienceContainer extends StatelessWidget {
     return CustomeContainer(
       mainContainerHeight: this.mainContainerHeight,
       mainContiainerWidth: this.mainContainerWidth,
-      borderColor: Color(0xff003366).withOpacity(0.5),
+      // borderColor: Color(0xff003366).withOpacity(0.5),
       title: "Data Science",
       image: 'lib/assets/images/console/rightContainer/data_science.png',
       button1: CleaningExplorationButton(
