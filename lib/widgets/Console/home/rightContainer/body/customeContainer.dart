@@ -89,7 +89,6 @@ class CustomeContainer extends StatelessWidget {
                             Icons.open_in_new,
                             color: Color(0xff003366).withOpacity(0.6),
                             size: this.mainContiainerWidth * 0.03,
-
                           ),
                           onPressed: () {}),
                     ],

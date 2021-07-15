@@ -1,5 +1,6 @@
 import 'package:client/widgets/Console/home/rightContainer/body/BlockChain/blockChain.dart';
 import 'package:client/widgets/Console/home/rightContainer/body/CloudComputing/cloudComputing.dart';
+import 'package:client/widgets/Console/home/rightContainer/body/WebMobilePc/webMobilePc.dart';
 import 'package:client/widgets/Console/home/rightContainer/body/body.dart';
 
 import 'package:flutter/material.dart';
@@ -66,6 +67,10 @@ class RightContainer extends StatelessWidget {
                           mainContainerWidth: this.mainContainerWidth * 0.62,
                         ),
                         CloudComputingContainer(
+                          mainContainerHeight: this.mainContainerHeight,
+                          mainContainerWidth: this.mainContainerWidth * 0.62,
+                        ),
+                        WebMobilePcContainer(
                           mainContainerHeight: this.mainContainerHeight,
                           mainContainerWidth: this.mainContainerWidth * 0.62,
                         ),
