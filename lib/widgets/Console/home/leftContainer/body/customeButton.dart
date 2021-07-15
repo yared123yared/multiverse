@@ -26,17 +26,22 @@ class CustomeButton extends StatelessWidget {
                       color: Color(0xff003366))),
             ))),
         style: ButtonStyle(
-            // backgroundColor: Colors.white,
-            backgroundColor: MaterialStateProperty.resolveWith<Color>(
-              (Set<MaterialState> states) {
-                return Colors.white;
-                // Use the component's default.
-              },
-            ),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(
-                        color: Color(0xff003366).withOpacity(0.7))))));
+          // backgroundColor: Colors.white,
+          backgroundColor: MaterialStateProperty.resolveWith<Color>(
+            (Set<MaterialState> states) {
+              return Colors.white;
+              // Use the component's default.
+            },
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.0),
+                  side: BorderSide(color: Color(0xff003366).withOpacity(0.7)))),
+          elevation: MaterialStateProperty.resolveWith<double>(
+            (Set<MaterialState> states) {
+              return 0; // Defer to the widget's default.
+            },
+          ),
+        ));
   }
 }

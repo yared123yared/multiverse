@@ -87,8 +87,9 @@ class CustomeContainer extends StatelessWidget {
                           // alignment: Alignment.topRight,
                           icon: Icon(
                             Icons.open_in_new,
-                            color: Color(0xff003366).withOpacity(0.7),
-                            size: this.mainContiainerWidth * 0.02,
+                            color: Color(0xff003366).withOpacity(0.6),
+                            size: this.mainContiainerWidth * 0.03,
+
                           ),
                           onPressed: () {}),
                     ],
@@ -105,7 +106,7 @@ class CustomeContainer extends StatelessWidget {
                     this.button2,
                   ],
                 ),
-                SizedBox(height: 0.026 * this.mainContainerHeight),
+                SizedBox(height: 0.028 * this.mainContainerHeight),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
