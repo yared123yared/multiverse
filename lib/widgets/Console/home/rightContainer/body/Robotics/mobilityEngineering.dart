@@ -14,7 +14,7 @@ class MobilityEngineeringButton extends StatelessWidget {
     return CustomeButton(
       mainContainerHeight: this.mainContainerHeight,
       mainContiainerWidth: this.mainContainerWidth,
-      btnName: "Mobility System Engineering",
+      btnName: "Mobility Engineering",
       ongoBtnPressed: () {
         print("MobilityEngineering Clicked");
       },

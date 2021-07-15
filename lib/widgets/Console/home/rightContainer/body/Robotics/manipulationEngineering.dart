@@ -14,7 +14,7 @@ class ManipulationEngineeringButton extends StatelessWidget {
     return CustomeButton(
       mainContainerHeight: this.mainContainerHeight,
       mainContiainerWidth: this.mainContainerWidth,
-      btnName: "Manipulation System Engineering",
+      btnName: "Manipulation Engineering",
       ongoBtnPressed: () {
         print("ManipulationEngineering clicked");
       },

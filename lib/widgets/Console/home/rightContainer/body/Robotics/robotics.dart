@@ -21,7 +21,7 @@ class RoboticsContainer extends StatelessWidget {
     return CustomeContainer(
       mainContainerHeight: this.mainContainerHeight,
       mainContiainerWidth: this.mainContainerWidth,
-      borderColor: Color(0xff003366).withOpacity(0.5),
+      // borderColor: Color(0xff003366).withOpacity(0.5),
       title: "Robotics",
       image: 'lib/assets/images/console/rightContainer/robotics.png',
       button1: ControlSystemEngineeringButton(

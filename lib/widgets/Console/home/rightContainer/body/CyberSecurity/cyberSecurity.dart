@@ -17,7 +17,7 @@ class CyberSecurityContainer extends StatelessWidget {
     return CustomeContainer(
       mainContainerHeight: this.mainContainerHeight,
       mainContiainerWidth: this.mainContainerWidth,
-      borderColor: Color(0xff003366).withOpacity(0.5),
+      // borderColor: Color(0xff003366).withOpacity(0.5),
       title: "Cyber Security",
       image: 'lib/assets/images/console/rightContainer/cyber.png',
       button1: InfrastructureSecurityButton(

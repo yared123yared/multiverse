@@ -21,9 +21,9 @@ class ExtendedRealityContainer extends StatelessWidget {
     return CustomeContainer(
       mainContainerHeight: this.mainContainerHeight,
       mainContiainerWidth: this.mainContainerWidth,
-      borderColor: Color(0xff003366).withOpacity(0.5),
+      // borderColor: Color(0xff003366).withOpacity(0.5),
       title: "Extended Reality",
-      image: 'lib/assets/images/console/rightContainer/extendedReality.png',
+      image: 'lib/assets/images/console/rightContainer/extended_reality.png',
       button1: VirtualRealityButton(
         mainContainerHeight: this.mainContainerHeight,
         mainContainerWidth: this.mainContainerWidth,
