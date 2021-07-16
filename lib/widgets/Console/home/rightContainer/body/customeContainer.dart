@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'customeButton.dart';
 
@@ -64,7 +65,7 @@ class CustomeContainer extends StatelessWidget {
               children: [
                 // SizedBox(height: 0.01 * this.mainContainerHeight),
                 Container(
-                  width: this.mainContiainerWidth * 0.59,
+                  width: this.mainContiainerWidth * 0.595,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -84,13 +85,20 @@ class CustomeContainer extends StatelessWidget {
                       // width: 0.31 * this.mainContiainerWidth,
                       // ),
                       IconButton(
-                          // alignment: Alignment.topRight,
-                          icon: Icon(
-                            Icons.open_in_new,
-                            color: Color(0xff003366).withOpacity(0.6),
-                            size: this.mainContiainerWidth * 0.03,
-                          ),
-                          onPressed: () {}),
+                        // alignment: Alignment.topRight,
+                        icon: SvgPicture.asset(
+                          'lib/assets/icons/console/openInNewIcon.svg',
+                          height: 15,
+                          width: 15,
+                          // color: Colors.white,
+                        ),
+                      )
+                      // icon: Icon(
+                      // Icons.open_in_new,
+                      // color: Color(0xff003366).withOpacity(0.6),
+                      // size: this.mainContiainerWidth * 0.03,
+                      // ),
+                      // onPressed: () {}),
                     ],
                   ),
                 ),

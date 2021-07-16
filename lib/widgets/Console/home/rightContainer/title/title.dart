@@ -20,7 +20,7 @@ class CustomeTitle extends StatelessWidget {
       borderRadius: BorderRadius.only(
           topLeft: Radius.circular(10), topRight: Radius.circular(10)),
       child: Padding(
-        padding: const EdgeInsets.only(left: 27, top: 10, right: 13, bottom: 7),
+        padding: const EdgeInsets.only(left: 20, top: 10, right: 13, bottom: 7),
         child: Row(
             // crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

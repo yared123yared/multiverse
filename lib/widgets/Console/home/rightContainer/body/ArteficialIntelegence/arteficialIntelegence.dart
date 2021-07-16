@@ -18,7 +18,7 @@ class AIContainer extends StatelessWidget {
       mainContainerHeight: this.mainContainerHeight,
       mainContiainerWidth: this.mainContainerWidth,
       borderColor: Color(0xff003366).withOpacity(0.5),
-      title: "Arteficial Intelegence",
+      title: "Artificial Intelegence",
       image: 'lib/assets/images/console/rightContainer/ai.png',
       button1: SupervisedtLearningButton(
         mainContainerHeight: this.mainContainerHeight,

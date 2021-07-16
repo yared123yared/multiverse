@@ -35,7 +35,7 @@ class DrawerTopButton extends StatelessWidget {
         color: Colors.transparent,
         borderRadius: radius,
         child: Padding(
-          padding: EdgeInsets.only(left: 8, right: 8),
+          padding: EdgeInsets.only(left: 6, right: 8),
           child: InkWell(
             customBorder: border,
             onTap: onPressed,
