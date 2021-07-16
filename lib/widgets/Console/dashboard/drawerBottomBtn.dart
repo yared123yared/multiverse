@@ -55,7 +55,7 @@ class DrawerBottomBtn extends StatelessWidget {
                     iconUrl,
                     height: this.size,
                     width: this.size,
-                    color: Colors.white,
+                    // color: Colors.white,
                   ),
                   SizedBox(width: 15),
                   Text(

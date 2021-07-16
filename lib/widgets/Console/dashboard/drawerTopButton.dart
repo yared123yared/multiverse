@@ -53,17 +53,17 @@ class DrawerTopButton extends StatelessWidget {
                   SizedBox(width: 15),
                   SvgPicture.asset(
                     iconUrl,
-                    height: 17,
-                    width: 17,
+                    height: this.size,
+                    width: this.size,
                     color: Colors.white,
                   ),
                   SizedBox(width: 15),
                   Text(
                     value,
                     style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white.withOpacity(0.8)),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.white),
                   ),
                 ],
               ),

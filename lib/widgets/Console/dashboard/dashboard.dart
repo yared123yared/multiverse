@@ -75,12 +75,12 @@ class DashBoard extends StatelessWidget {
                 SizedBox(
                   height: height * 0.030,
                 ),
-                DrawerTopButton(
+                DrawerBottomBtn(
                     border: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
                     elevation: 0,
-                    iconUrl: 'lib/assets/icons/console/collapse.svg',
+                    iconUrl: 'lib/assets/icons/console/collapse2.svg',
                     value: 'Collapse',
                     size: 22,
                     onPressed: () {}),
