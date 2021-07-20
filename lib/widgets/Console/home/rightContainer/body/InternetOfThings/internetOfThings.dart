@@ -1,10 +1,7 @@
-import 'package:client/widgets/Console/home/rightContainer/body/BlockChain/smartContracts.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/InternetOfThings/fleetManagment.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/InternetOfThings/smartSpaces.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/InternetOfThings/wearables.dart';
+import './exports.dart';
+
 import 'package:flutter/material.dart';
 import '../customeContainer.dart';
-
 
 class InternetOfThingsContainer extends StatelessWidget {
   final double mainContainerHeight;

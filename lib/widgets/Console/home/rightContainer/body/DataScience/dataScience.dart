@@ -1,14 +1,8 @@
-import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/hybridLearning.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/reinforcmentLearning.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/supervisedLearning.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/unsupervisedLearning.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/DataScience/cleaning-exploration.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/DataScience/deployment-optimization.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/DataScience/modelDecelopment.dart';
+import './exports.dart';
+
 import 'package:flutter/material.dart';
 
 import '../customeContainer.dart';
-import 'visualization-analytics.dart';
 
 class DataScienceContainer extends StatelessWidget {
   final double mainContainerHeight;

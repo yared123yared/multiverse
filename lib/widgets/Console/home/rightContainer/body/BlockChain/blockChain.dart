@@ -1,7 +1,4 @@
-import 'package:client/widgets/Console/home/rightContainer/body/BlockChain/cryptoCurrencyExchange.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/BlockChain/decentralizedApps.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/BlockChain/nftMarketPlace.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/BlockChain/smartContracts.dart';
+import './exports.dart';
 
 import 'package:flutter/material.dart';
 

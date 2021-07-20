@@ -41,9 +41,10 @@ class CustomeContainer extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           // color: Color(0xffE3F2FD).withOpacity(0.2),
-          border: Border.all(
-              color:
-                  this.borderColor != null ? this.borderColor : Colors.white),
+          // border: Border.all(
+          // color:
+          // this.borderColor != null ? this.borderColor : Colors.white),
+
           borderRadius: BorderRadius.circular(13),
         ),
         height: this.mainContainerHeight * 0.26,
@@ -102,6 +103,7 @@ class CustomeContainer extends StatelessWidget {
                     ],
                   ),
                 ),
+
                 SizedBox(height: 0.02 * this.mainContainerHeight),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,6 +115,7 @@ class CustomeContainer extends StatelessWidget {
                     this.button2,
                   ],
                 ),
+
                 SizedBox(height: 0.028 * this.mainContainerHeight),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

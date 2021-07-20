@@ -1,9 +1,6 @@
-import 'package:client/widgets/Console/home/rightContainer/body/IndestrialDesign/3DCadModels.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/IndestrialDesign/conceptDesign.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/IndestrialDesign/renderingSimulation.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/IndestrialDesign/technicalAnalysis.dart';
-import 'package:flutter/material.dart';
+import './exports.dart';
 
+import 'package:flutter/material.dart';
 import '../customeContainer.dart';
 
 class IndestrialDesignContainer extends StatelessWidget {

@@ -1,7 +1,5 @@
-import 'package:client/widgets/Console/home/rightContainer/body/WebMobilePc/crossPlatformApplication.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/WebMobilePc/mobileApplication.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/WebMobilePc/pcApplication.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/WebMobilePc/webApplication.dart';
+import './exports.dart';
+
 import 'package:flutter/material.dart';
 
 import '../customeContainer.dart';

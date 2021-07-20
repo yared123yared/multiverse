@@ -1,7 +1,5 @@
-import 'package:client/widgets/Console/home/rightContainer/body/CloudComputing/cloudStorage.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/CloudComputing/kubernitiesEngine.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/CloudComputing/non_relationalDatabase.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/CloudComputing/virtualMachines.dart';
+import './exports.dart';
+
 import 'package:flutter/material.dart';
 
 import '../customeContainer.dart';

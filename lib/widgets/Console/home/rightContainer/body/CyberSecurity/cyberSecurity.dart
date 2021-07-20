@@ -1,7 +1,5 @@
-import 'package:client/widgets/Console/home/rightContainer/body/CyberSecurity/applicationSecurity.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/CyberSecurity/cloudSecurity.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/CyberSecurity/infrastructureSecurity.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/CyberSecurity/networkSecurity.dart';
+import './exports.dart';
+
 import 'package:flutter/material.dart';
 
 import '../customeContainer.dart';

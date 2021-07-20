@@ -1,14 +1,7 @@
-import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/hybridLearning.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/reinforcmentLearning.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/supervisedLearning.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/unsupervisedLearning.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/DataScience/deployment-optimization.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/ExtendedReality/augmentedReality.dart';
-import 'package:client/widgets/Console/home/rightContainer/body/ExtendedReality/virtualReality.dart';
-import 'package:flutter/material.dart';
+import './exports.dart';
 
+import 'package:flutter/material.dart';
 import '../customeContainer.dart';
-import 'mixedReality.dart';
 
 class ExtendedRealityContainer extends StatelessWidget {
   final double mainContainerHeight;
