@@ -1,3 +1,2 @@
-2021/07/15-11:18:04.625 f64 Reusing MANIFEST C:\Users\yared\AppData\Local\Temp\flutter_tools.c517dfa4\flutter_tools_chrome_device.f6c2903c\Default\Site Characteristics Database/MANIFEST-000001
-2021/07/15-11:18:04.689 f64 Recovering log #3
-2021/07/15-11:18:04.691 f64 Reusing old log C:\Users\yared\AppData\Local\Temp\flutter_tools.c517dfa4\flutter_tools_chrome_device.f6c2903c\Default\Site Characteristics Database/000003.log 
+2021/07/22-10:11:03.216 1988 Archiving C:\Users\yared\AppData\Local\Temp\flutter_tools.7593c0b9\flutter_tools_chrome_device.2c522417\Default\Site Characteristics Database/MANIFEST-000001: OK
+2021/07/22-10:11:04.675 1988 **** Repaired leveldb C:\Users\yared\AppData\Local\Temp\flutter_tools.7593c0b9\flutter_tools_chrome_device.2c522417\Default\Site Characteristics Database; recovered 0 files; 0 bytes. Some data may have been lost. ****

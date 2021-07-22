@@ -19,7 +19,7 @@ class ConsoleHomePage extends StatelessWidget {
 
     return Container(
         color: Colors.white,
-        margin: EdgeInsets.all(16),
+        margin: EdgeInsets.all(mainContainerWidth * 0.015),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

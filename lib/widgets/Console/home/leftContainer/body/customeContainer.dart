@@ -31,8 +31,8 @@ class CustomeContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       margin: EdgeInsets.only(
-          left: this.mainContainerHeight * 0.015,
-          right: this.mainContainerHeight * 0.015,
+          left: this.mainContiainerWidth * 0.015,
+          right: this.mainContiainerWidth * 0.015,
           top: this.mainContainerHeight * 0.023),
       child: Container(
         decoration: BoxDecoration(
@@ -43,7 +43,7 @@ class CustomeContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(13),
         ),
         height: this.mainContainerHeight * 0.215,
-        width: double.infinity,
+        // width: double.infinity,
         child: Row(
           children: [
             Container(
