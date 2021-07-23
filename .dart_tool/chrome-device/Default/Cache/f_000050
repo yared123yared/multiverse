@@ -1,53 +1,26 @@
-define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/flutter/src/scheduler/binding.dart', 'packages/flutter/src/gestures/debug.dart', 'packages/flutter/src/foundation/print.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/gestures/pointer_router.dart', 'packages/flutter/src/gestures/arena.dart', 'packages/flutter/src/gestures/pointer_signal_resolver.dart', 'packages/flutter/src/gestures/hit_test.dart', 'packages/flutter/src/gestures/converter.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/foundation/binding.dart'], (function load__packages__flutter__src__gestures__binding_dart(dart_sdk, packages__flutter__src__gestures__resampler$46dart, packages__flutter__src__scheduler__binding$46dart, packages__flutter__src__gestures__debug$46dart, packages__flutter__src__foundation__print$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__gestures__pointer_router$46dart, packages__flutter__src__gestures__arena$46dart, packages__flutter__src__gestures__pointer_signal_resolver$46dart, packages__flutter__src__gestures__hit_test$46dart, packages__flutter__src__gestures__converter$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__foundation__binding$46dart) {
+define(['dart_sdk', 'packages/flutter/src/physics/tolerance.dart', 'packages/flutter/src/physics/friction_simulation.dart', 'packages/flutter/src/physics/spring_simulation.dart', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/physics/simulation.dart'], (function load__packages__flutter__src__widgets__scroll_simulation_dart(dart_sdk, packages__flutter__src__physics__tolerance$46dart, packages__flutter__src__physics__friction_simulation$46dart, packages__flutter__src__physics__spring_simulation$46dart, packages__flutter__src__foundation__object$46dart, packages__flutter__src__physics__simulation$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _js_helper = dart_sdk._js_helper;
-  const ui = dart_sdk.ui;
-  const async = dart_sdk.async;
-  const collection = dart_sdk.collection;
+  const math = dart_sdk.math;
   const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const resampler$ = packages__flutter__src__gestures__resampler$46dart.src__gestures__resampler;
-  const binding = packages__flutter__src__scheduler__binding$46dart.src__scheduler__binding;
-  const debug = packages__flutter__src__gestures__debug$46dart.src__gestures__debug;
-  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
-  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
-  const pointer_router = packages__flutter__src__gestures__pointer_router$46dart.src__gestures__pointer_router;
-  const arena = packages__flutter__src__gestures__arena$46dart.src__gestures__arena;
-  const pointer_signal_resolver = packages__flutter__src__gestures__pointer_signal_resolver$46dart.src__gestures__pointer_signal_resolver;
-  const hit_test = packages__flutter__src__gestures__hit_test$46dart.src__gestures__hit_test;
-  const converter = packages__flutter__src__gestures__converter$46dart.src__gestures__converter;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const binding$ = packages__flutter__src__foundation__binding$46dart.src__foundation__binding;
-  var binding$0 = Object.create(dart.library);
-  var $putIfAbsent = dartx.putIfAbsent;
-  var $truncate = dartx.truncate;
-  var $values = dartx.values;
-  var $removeWhere = dartx.removeWhere;
-  var $isEmpty = dartx.isEmpty;
-  var $clear = dartx.clear;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $containsKey = dartx.containsKey;
-  var $_set = dartx._set;
-  var $remove = dartx.remove;
+  const tolerance = packages__flutter__src__physics__tolerance$46dart.src__physics__tolerance;
+  const friction_simulation = packages__flutter__src__physics__friction_simulation$46dart.src__physics__friction_simulation;
+  const spring_simulation = packages__flutter__src__physics__spring_simulation$46dart.src__physics__spring_simulation;
+  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
+  const simulation = packages__flutter__src__physics__simulation$46dart.src__physics__simulation;
+  var scroll_simulation = Object.create(dart.library);
+  var $isFinite = dartx.isFinite;
+  var $abs = dartx.abs;
+  var $round = dartx.round;
+  var $sign = dartx.sign;
+  var $clamp = dartx.clamp;
   var $_get = dartx._get;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    IdentityMapOfint$PointerEventResampler: () => (T.IdentityMapOfint$PointerEventResampler = dart.constFn(_js_helper.IdentityMap$(core.int, resampler$.PointerEventResampler)))(),
-    VoidToPointerEventResampler: () => (T.VoidToPointerEventResampler = dart.constFn(dart.fnType(resampler$.PointerEventResampler, [])))(),
-    TimerTovoid: () => (T.TimerTovoid = dart.constFn(dart.fnType(dart.void, [async.Timer])))(),
-    intAndPointerEventResamplerTobool: () => (T.intAndPointerEventResamplerTobool = dart.constFn(dart.fnType(core.bool, [core.int, resampler$.PointerEventResampler])))(),
-    DurationTovoid: () => (T.DurationTovoid = dart.constFn(dart.fnType(dart.void, [core.Duration])))(),
-    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    ListQueueOfPointerEvent: () => (T.ListQueueOfPointerEvent = dart.constFn(collection.ListQueue$(events.PointerEvent)))(),
-    IdentityMapOfint$HitTestResult: () => (T.IdentityMapOfint$HitTestResult = dart.constFn(_js_helper.IdentityMap$(core.int, hit_test.HitTestResult)))(),
-    DiagnosticsPropertyOfPointerEvent: () => (T.DiagnosticsPropertyOfPointerEvent = dart.constFn(diagnostics.DiagnosticsProperty$(events.PointerEvent)))(),
-    SyncIterableOfDiagnosticsNode: () => (T.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
-    IterableOfDiagnosticsNode: () => (T.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
-    VoidToIterableOfDiagnosticsNode: () => (T.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T.IterableOfDiagnosticsNode(), [])))(),
-    DiagnosticsPropertyOfHitTestTarget: () => (T.DiagnosticsPropertyOfHitTestTarget = dart.constFn(diagnostics.DiagnosticsProperty$(hit_test.HitTestTarget)))()
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -55,491 +28,463 @@ define(['dart_sdk', 'packages/flutter/src/gestures/resampler.dart', 'packages/fl
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: -38000
-      });
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 16667
+        __proto__: tolerance.Tolerance.prototype,
+        [Tolerance_velocity]: 0.001,
+        [Tolerance_time]: 0.001,
+        [Tolerance_distance]: 0.001
       });
     }
   }, false);
-  var C = Array(2).fill(void 0);
+  var C = [void 0];
   var I = [
-    "package:flutter/src/gestures/binding.dart",
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/gestures/binding.dart"
+    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/widgets/scroll_simulation.dart",
+    "package:flutter/src/widgets/scroll_simulation.dart"
   ];
-  binding$0.SamplingClock = class SamplingClock extends core.Object {
-    now() {
-      return new core.DateTime.now();
+  var leadingExtent$ = dart.privateName(scroll_simulation, "BouncingScrollSimulation.leadingExtent");
+  var trailingExtent$ = dart.privateName(scroll_simulation, "BouncingScrollSimulation.trailingExtent");
+  var spring$ = dart.privateName(scroll_simulation, "BouncingScrollSimulation.spring");
+  var Tolerance_velocity = dart.privateName(tolerance, "Tolerance.velocity");
+  var Tolerance_time = dart.privateName(tolerance, "Tolerance.time");
+  var Tolerance_distance = dart.privateName(tolerance, "Tolerance.distance");
+  var __BouncingScrollSimulation__frictionSimulation = dart.privateName(scroll_simulation, "_#BouncingScrollSimulation#_frictionSimulation");
+  var __BouncingScrollSimulation__frictionSimulation_isSet = dart.privateName(scroll_simulation, "_#BouncingScrollSimulation#_frictionSimulation#isSet");
+  var __BouncingScrollSimulation__springSimulation = dart.privateName(scroll_simulation, "_#BouncingScrollSimulation#_springSimulation");
+  var __BouncingScrollSimulation__springSimulation_isSet = dart.privateName(scroll_simulation, "_#BouncingScrollSimulation#_springSimulation#isSet");
+  var __BouncingScrollSimulation__springTime = dart.privateName(scroll_simulation, "_#BouncingScrollSimulation#_springTime");
+  var __BouncingScrollSimulation__springTime_isSet = dart.privateName(scroll_simulation, "_#BouncingScrollSimulation#_springTime#isSet");
+  var _timeOffset = dart.privateName(scroll_simulation, "_timeOffset");
+  var _springSimulation = dart.privateName(scroll_simulation, "_springSimulation");
+  var _underscrollSimulation = dart.privateName(scroll_simulation, "_underscrollSimulation");
+  var _springTime = dart.privateName(scroll_simulation, "_springTime");
+  var _overscrollSimulation = dart.privateName(scroll_simulation, "_overscrollSimulation");
+  var _frictionSimulation = dart.privateName(scroll_simulation, "_frictionSimulation");
+  var _simulation = dart.privateName(scroll_simulation, "_simulation");
+  scroll_simulation.BouncingScrollSimulation = class BouncingScrollSimulation extends simulation.Simulation {
+    get leadingExtent() {
+      return this[leadingExtent$];
     }
-    stopwatch() {
-      return new core.Stopwatch.new();
+    set leadingExtent(value) {
+      super.leadingExtent = value;
     }
-  };
-  (binding$0.SamplingClock.new = function() {
-    ;
-  }).prototype = binding$0.SamplingClock.prototype;
-  dart.addTypeTests(binding$0.SamplingClock);
-  dart.addTypeCaches(binding$0.SamplingClock);
-  dart.setMethodSignature(binding$0.SamplingClock, () => ({
-    __proto__: dart.getMethods(binding$0.SamplingClock.__proto__),
-    now: dart.fnType(core.DateTime, []),
-    stopwatch: dart.fnType(core.Stopwatch, [])
-  }));
-  dart.setLibraryUri(binding$0.SamplingClock, I[0]);
-  var _resamplers = dart.privateName(binding$0, "_resamplers");
-  var _frameCallbackScheduled = dart.privateName(binding$0, "_frameCallbackScheduled");
-  var _frameTime = dart.privateName(binding$0, "_frameTime");
-  var _frameTimeAge = dart.privateName(binding$0, "_frameTimeAge");
-  var _lastSampleTime = dart.privateName(binding$0, "_lastSampleTime");
-  var _lastEventTime = dart.privateName(binding$0, "_lastEventTime");
-  var _timer = dart.privateName(binding$0, "_timer");
-  var _handlePointerEvent$ = dart.privateName(binding$0, "_handlePointerEvent");
-  var _handleSampleTimeChanged$ = dart.privateName(binding$0, "_handleSampleTimeChanged");
-  var _samplingInterval$ = dart.privateName(binding$0, "_samplingInterval");
-  var _onSampleTimeChanged = dart.privateName(binding$0, "_onSampleTimeChanged");
-  binding$0._Resampler = class _Resampler extends core.Object {
-    addOrDispatch(event) {
+    get trailingExtent() {
+      return this[trailingExtent$];
+    }
+    set trailingExtent(value) {
+      super.trailingExtent = value;
+    }
+    get spring() {
+      return this[spring$];
+    }
+    set spring(value) {
+      super.spring = value;
+    }
+    get [_frictionSimulation]() {
       let t0;
-      if (event == null) dart.nullFailed(I[1], 75, 35, "event");
-      let scheduler = binding.SchedulerBinding.instance;
-      if (!(scheduler != null)) dart.assertFailed(null, I[1], 77, 12, "scheduler != null");
-      if (event.kind == ui.PointerDeviceKind.touch) {
-        this[_lastEventTime] = event.timeStamp;
-        let resampler = this[_resamplers][$putIfAbsent](event.device, dart.fn(() => new resampler$.PointerEventResampler.new(), T.VoidToPointerEventResampler()));
-        resampler.addEvent(event);
-      } else {
-        t0 = event;
-        this[_handlePointerEvent$](t0);
-      }
+      return dart.test(this[__BouncingScrollSimulation__frictionSimulation_isSet]) ? (t0 = this[__BouncingScrollSimulation__frictionSimulation], t0) : dart.throw(new _internal.LateError.fieldNI("_frictionSimulation"));
     }
-    sample(samplingOffset, clock) {
-      let t0, t0$, t0$0;
-      if (samplingOffset == null) dart.nullFailed(I[1], 98, 24, "samplingOffset");
-      if (clock == null) dart.nullFailed(I[1], 98, 54, "clock");
-      let scheduler = binding.SchedulerBinding.instance;
-      if (!(scheduler != null)) dart.assertFailed(null, I[1], 100, 12, "scheduler != null");
-      if (dart.equals(this[_frameTime], core.Duration.zero)) {
-        this[_frameTime] = new core.Duration.new({milliseconds: clock.now().millisecondsSinceEpoch});
-        this[_frameTimeAge] = (t0 = clock.stopwatch(), (() => {
-          t0.start();
-          return t0;
-        })());
-      }
-      if ((t0$ = this[_timer], t0$ == null ? null : t0$.isActive) !== true) {
-        this[_timer] = async.Timer.periodic(this[_samplingInterval$], dart.fn(_ => {
-          if (_ == null) dart.nullFailed(I[1], 111, 52, "_");
-          return this[_onSampleTimeChanged]();
-        }, T.TimerTovoid()));
-      }
-      let samplingIntervalUs = this[_samplingInterval$].inMicroseconds;
-      let elapsedIntervals = (dart.notNull(this[_frameTimeAge].elapsedMicroseconds) / dart.notNull(samplingIntervalUs))[$truncate]();
-      let elapsedUs = elapsedIntervals * dart.notNull(samplingIntervalUs);
-      let frameTime = this[_frameTime]['+'](new core.Duration.new({microseconds: elapsedUs}));
-      let sampleTime = frameTime['+'](samplingOffset);
-      let nextSampleTime = sampleTime['+'](this[_samplingInterval$]);
-      for (let resampler of this[_resamplers][$values]) {
-        resampler.sample(sampleTime, nextSampleTime, this[_handlePointerEvent$]);
-      }
-      this[_resamplers][$removeWhere](dart.fn((key, resampler) => {
-        if (key == null) dart.nullFailed(I[1], 140, 34, "key");
-        if (resampler == null) dart.nullFailed(I[1], 140, 61, "resampler");
-        return !dart.test(resampler.hasPendingEvents) && !dart.test(resampler.isDown);
-      }, T.intAndPointerEventResamplerTobool()));
-      this[_lastSampleTime] = sampleTime;
-      if (dart.test(this[_resamplers][$isEmpty])) {
-        dart.nullCheck(this[_timer]).cancel();
-        return;
-      }
-      if (!dart.test(this[_frameCallbackScheduled])) {
-        this[_frameCallbackScheduled] = true;
-        t0$0 = scheduler;
-        t0$0 == null ? null : t0$0.addPostFrameCallback(dart.fn(_ => {
-          let t1;
-          if (_ == null) dart.nullFailed(I[1], 159, 40, "_");
-          this[_frameCallbackScheduled] = false;
-          this[_frameTime] = scheduler.currentSystemFrameTimeStamp;
-          this[_frameTimeAge].reset();
-          t1 = this[_timer];
-          t1 == null ? null : t1.cancel();
-          this[_timer] = async.Timer.periodic(this[_samplingInterval$], dart.fn(_ => {
-            if (_ == null) dart.nullFailed(I[1], 168, 53, "_");
-            return this[_onSampleTimeChanged]();
-          }, T.TimerTovoid()));
-          this[_onSampleTimeChanged]();
-        }, T.DurationTovoid()));
-      }
+    set [_frictionSimulation](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 92, 27, "null");
+      this[__BouncingScrollSimulation__frictionSimulation_isSet] = true;
+      this[__BouncingScrollSimulation__frictionSimulation] = t0;
     }
-    stop() {
-      for (let resampler of this[_resamplers][$values]) {
-        resampler.stop(this[_handlePointerEvent$]);
-      }
-      this[_resamplers][$clear]();
-      this[_frameTime] = core.Duration.zero;
+    get [_springSimulation]() {
+      let t1;
+      return dart.test(this[__BouncingScrollSimulation__springSimulation_isSet]) ? (t1 = this[__BouncingScrollSimulation__springSimulation], t1) : dart.throw(new _internal.LateError.fieldNI("_springSimulation"));
     }
-    [_onSampleTimeChanged]() {
-      if (!dart.test(dart.fn(() => {
-        if (dart.test(debug.debugPrintResamplingMargin)) {
-          let resamplingMargin = this[_lastEventTime]['-'](this[_lastSampleTime]);
-          print.debugPrint(dart.str(resamplingMargin));
-        }
-        return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 185, 12, "() {\r\n      if (debugPrintResamplingMargin) {\r\n        final Duration resamplingMargin = _lastEventTime - _lastSampleTime;\r\n          debugPrint('$resamplingMargin');\r\n      }\r\n      return true;\r\n    }()");
-      this[_handleSampleTimeChanged$]();
+    set [_springSimulation](t1) {
+      if (t1 == null) dart.nullFailed(I[0], 93, 19, "null");
+      this[__BouncingScrollSimulation__springSimulation_isSet] = true;
+      this[__BouncingScrollSimulation__springSimulation] = t1;
     }
-  };
-  (binding$0._Resampler.new = function(_handlePointerEvent, _handleSampleTimeChanged, _samplingInterval) {
-    if (_handlePointerEvent == null) dart.nullFailed(I[1], 41, 19, "_handlePointerEvent");
-    if (_handleSampleTimeChanged == null) dart.nullFailed(I[1], 41, 45, "_handleSampleTimeChanged");
-    if (_samplingInterval == null) dart.nullFailed(I[1], 41, 76, "_samplingInterval");
-    this[_resamplers] = new (T.IdentityMapOfint$PointerEventResampler()).new();
-    this[_frameCallbackScheduled] = false;
-    this[_frameTime] = core.Duration.zero;
-    this[_frameTimeAge] = new core.Stopwatch.new();
-    this[_lastSampleTime] = core.Duration.zero;
-    this[_lastEventTime] = core.Duration.zero;
-    this[_timer] = null;
-    this[_handlePointerEvent$] = _handlePointerEvent;
-    this[_handleSampleTimeChanged$] = _handleSampleTimeChanged;
-    this[_samplingInterval$] = _samplingInterval;
-    ;
-  }).prototype = binding$0._Resampler.prototype;
-  dart.addTypeTests(binding$0._Resampler);
-  dart.addTypeCaches(binding$0._Resampler);
-  dart.setMethodSignature(binding$0._Resampler, () => ({
-    __proto__: dart.getMethods(binding$0._Resampler.__proto__),
-    addOrDispatch: dart.fnType(dart.void, [events.PointerEvent]),
-    sample: dart.fnType(dart.void, [core.Duration, binding$0.SamplingClock]),
-    stop: dart.fnType(dart.void, []),
-    [_onSampleTimeChanged]: dart.fnType(dart.void, [])
-  }));
-  dart.setLibraryUri(binding$0._Resampler, I[0]);
-  dart.setFieldSignature(binding$0._Resampler, () => ({
-    __proto__: dart.getFields(binding$0._Resampler.__proto__),
-    [_resamplers]: dart.finalFieldType(core.Map$(core.int, resampler$.PointerEventResampler)),
-    [_frameCallbackScheduled]: dart.fieldType(core.bool),
-    [_frameTime]: dart.fieldType(core.Duration),
-    [_frameTimeAge]: dart.fieldType(core.Stopwatch),
-    [_lastSampleTime]: dart.fieldType(core.Duration),
-    [_lastEventTime]: dart.fieldType(core.Duration),
-    [_handlePointerEvent$]: dart.finalFieldType(dart.fnType(dart.void, [events.PointerEvent])),
-    [_handleSampleTimeChanged$]: dart.finalFieldType(dart.fnType(dart.void, [])),
-    [_samplingInterval$]: dart.finalFieldType(core.Duration),
-    [_timer]: dart.fieldType(dart.nullable(async.Timer))
-  }));
-  var pointerRouter = dart.privateName(binding$0, "GestureBinding.pointerRouter");
-  var gestureArena = dart.privateName(binding$0, "GestureBinding.gestureArena");
-  var pointerSignalResolver = dart.privateName(binding$0, "GestureBinding.pointerSignalResolver");
-  var resamplingEnabled = dart.privateName(binding$0, "GestureBinding.resamplingEnabled");
-  var samplingOffset = dart.privateName(binding$0, "GestureBinding.samplingOffset");
-  var _pendingPointerEvents = dart.privateName(binding$0, "_pendingPointerEvents");
-  var _hitTests = dart.privateName(binding$0, "_hitTests");
-  var __GestureBinding__resampler = dart.privateName(binding$0, "_#GestureBinding#_resampler");
-  var __GestureBinding__resampler_isSet = dart.privateName(binding$0, "_#GestureBinding#_resampler#isSet");
-  var _handlePointerDataPacket = dart.privateName(binding$0, "_handlePointerDataPacket");
-  var _flushPointerEventQueue = dart.privateName(binding$0, "_flushPointerEventQueue");
-  var _resampler = dart.privateName(binding$0, "_resampler");
-  var _samplingClock = dart.privateName(binding$0, "_samplingClock");
-  var _handlePointerEventImmediately = dart.privateName(binding$0, "_handlePointerEventImmediately");
-  binding$0.GestureBinding = class GestureBinding extends binding$.BindingBase {
-    static get instance() {
-      return binding$0.GestureBinding._instance;
+    get [_springTime]() {
+      let t2;
+      return dart.test(this[__BouncingScrollSimulation__springTime_isSet]) ? (t2 = this[__BouncingScrollSimulation__springTime], t2) : dart.throw(new _internal.LateError.fieldNI("_springTime"));
     }
-  };
-  binding$0.GestureBinding[dart.mixinOn] = BindingBase => class GestureBinding extends BindingBase {
-    get pointerRouter() {
-      return this[pointerRouter];
+    set [_springTime](t2) {
+      if (t2 == null) dart.nullFailed(I[0], 94, 15, "null");
+      this[__BouncingScrollSimulation__springTime_isSet] = true;
+      this[__BouncingScrollSimulation__springTime] = t2;
     }
-    set pointerRouter(value) {
-      super.pointerRouter = value;
+    [_underscrollSimulation](x, dx) {
+      if (x == null) dart.nullFailed(I[0], 97, 44, "x");
+      if (dx == null) dart.nullFailed(I[0], 97, 54, "dx");
+      return new spring_simulation.ScrollSpringSimulation.new(this.spring, x, this.leadingExtent, dx);
     }
-    get gestureArena() {
-      return this[gestureArena];
+    [_overscrollSimulation](x, dx) {
+      if (x == null) dart.nullFailed(I[0], 101, 43, "x");
+      if (dx == null) dart.nullFailed(I[0], 101, 53, "dx");
+      return new spring_simulation.ScrollSpringSimulation.new(this.spring, x, this.trailingExtent, dx);
     }
-    set gestureArena(value) {
-      super.gestureArena = value;
-    }
-    get pointerSignalResolver() {
-      return this[pointerSignalResolver];
-    }
-    set pointerSignalResolver(value) {
-      super.pointerSignalResolver = value;
-    }
-    get resamplingEnabled() {
-      return this[resamplingEnabled];
-    }
-    set resamplingEnabled(value) {
-      this[resamplingEnabled] = value;
-    }
-    get samplingOffset() {
-      return this[samplingOffset];
-    }
-    set samplingOffset(value) {
-      this[samplingOffset] = value;
-    }
-    initInstances() {
-      super.initInstances();
-      binding$0.GestureBinding._instance = this;
-      this.window.onPointerDataPacket = dart.bind(this, _handlePointerDataPacket);
-    }
-    unlocked() {
-      super.unlocked();
-      this[_flushPointerEventQueue]();
-    }
-    [_handlePointerDataPacket](packet) {
-      if (packet == null) dart.nullFailed(I[1], 274, 54, "packet");
-      this[_pendingPointerEvents].addAll(converter.PointerEventConverter.expand(packet.data, this.window.devicePixelRatio));
-      if (!dart.test(this.locked)) this[_flushPointerEventQueue]();
-    }
-    cancelPointer(pointer) {
-      if (pointer == null) dart.nullFailed(I[1], 286, 26, "pointer");
-      if (dart.test(this[_pendingPointerEvents][$isEmpty]) && !dart.test(this.locked)) async.scheduleMicrotask(dart.bind(this, _flushPointerEventQueue));
-      this[_pendingPointerEvents].addFirst(new events.PointerCancelEvent.new({pointer: pointer}));
-    }
-    [_flushPointerEventQueue]() {
-      if (!!dart.test(this.locked)) dart.assertFailed(null, I[1], 293, 12, "!locked");
-      while (dart.test(this[_pendingPointerEvents][$isNotEmpty]))
-        this.handlePointerEvent(this[_pendingPointerEvents].removeFirst());
-    }
-    handlePointerEvent(event) {
-      if (event == null) dart.nullFailed(I[1], 326, 40, "event");
-      if (!!dart.test(this.locked)) dart.assertFailed(null, I[1], 327, 12, "!locked");
-      if (dart.test(this.resamplingEnabled)) {
-        this[_resampler].addOrDispatch(event);
-        this[_resampler].sample(this.samplingOffset, this[_samplingClock]);
-        return;
-      }
-      this[_resampler].stop();
-      this[_handlePointerEventImmediately](event);
-    }
-    [_handlePointerEventImmediately](event) {
-      if (event == null) dart.nullFailed(I[1], 341, 52, "event");
-      let hitTestResult = null;
-      if (events.PointerDownEvent.is(event) || events.PointerSignalEvent.is(event) || events.PointerHoverEvent.is(event)) {
-        if (!!dart.test(this[_hitTests][$containsKey](event.pointer))) dart.assertFailed(null, I[1], 344, 14, "!_hitTests.containsKey(event.pointer)");
-        hitTestResult = new hit_test.HitTestResult.new();
-        this.hitTest(hitTestResult, event.position);
-        if (events.PointerDownEvent.is(event)) {
-          this[_hitTests][$_set](event.pointer, hitTestResult);
-        }
-        if (!dart.test(dart.fn(() => {
-          if (dart.test(debug.debugPrintHitTestResults)) print.debugPrint(dart.str(event) + ": " + dart.str(hitTestResult));
-          return true;
-        }, T.VoidTobool())())) dart.assertFailed(null, I[1], 350, 14, "() {\r\n        if (debugPrintHitTestResults)\r\n          debugPrint('$event: $hitTestResult');\r\n        return true;\r\n      }()");
-      } else if (events.PointerUpEvent.is(event) || events.PointerCancelEvent.is(event)) {
-        hitTestResult = this[_hitTests][$remove](event.pointer);
-      } else if (dart.test(event.down)) {
-        hitTestResult = this[_hitTests][$_get](event.pointer);
-      }
-      if (!dart.test(dart.fn(() => {
-        if (dart.test(debug.debugPrintMouseHoverEvents) && events.PointerHoverEvent.is(event)) print.debugPrint(dart.str(event));
-        return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 365, 12, "() {\r\n      if (debugPrintMouseHoverEvents && event is PointerHoverEvent)\r\n        debugPrint('$event');\r\n      return true;\r\n    }()");
-      if (hitTestResult != null || events.PointerAddedEvent.is(event) || events.PointerRemovedEvent.is(event)) {
-        if (!(event.position != null)) dart.assertFailed(null, I[1], 373, 14, "event.position != null");
-        this.dispatchEvent(event, hitTestResult);
-      }
-    }
-    hitTest(result, position) {
-      if (result == null) dart.nullFailed(I[1], 380, 30, "result");
-      if (position == null) dart.nullFailed(I[1], 380, 45, "position");
-      result.add(new hit_test.HitTestEntry.new(this));
-    }
-    dispatchEvent(event, hitTestResult) {
-      if (event == null) dart.nullFailed(I[1], 393, 35, "event");
-      if (!!dart.test(this.locked)) dart.assertFailed(null, I[1], 394, 12, "!locked");
-      if (hitTestResult == null) {
-        if (!(events.PointerAddedEvent.is(event) || events.PointerRemovedEvent.is(event))) dart.assertFailed(null, I[1], 399, 14, "event is PointerAddedEvent || event is PointerRemovedEvent");
-        try {
-          this.pointerRouter.route(event);
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            assertions.FlutterError.reportError(new binding$0.FlutterErrorDetailsForPointerEventDispatcher.new({exception: exception, stack: stack, library: "gesture library", context: new assertions.ErrorDescription.new("while dispatching a non-hit-tested pointer event"), event: event, hitTestEntry: null, informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
-                yield new (T.DiagnosticsPropertyOfPointerEvent()).new("Event", event, {style: diagnostics.DiagnosticsTreeStyle.errorProperty});
-              }), T.VoidToIterableOfDiagnosticsNode())}));
-          } else
-            throw e;
-        }
-        return;
-      }
-      for (let entry of hitTestResult.path) {
-        try {
-          entry.target.handleEvent(event.transformed(entry.transform), entry);
-        } catch (e$) {
-          let exception = dart.getThrown(e$);
-          let stack = dart.stackTrace(e$);
-          if (core.Object.is(exception)) {
-            assertions.FlutterError.reportError(new binding$0.FlutterErrorDetailsForPointerEventDispatcher.new({exception: exception, stack: stack, library: "gesture library", context: new assertions.ErrorDescription.new("while dispatching a pointer event"), event: event, hitTestEntry: entry, informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new(function*() {
-                yield new (T.DiagnosticsPropertyOfPointerEvent()).new("Event", event, {style: diagnostics.DiagnosticsTreeStyle.errorProperty});
-                yield new (T.DiagnosticsPropertyOfHitTestTarget()).new("Target", entry.target, {style: diagnostics.DiagnosticsTreeStyle.errorProperty});
-              }), T.VoidToIterableOfDiagnosticsNode())}));
-          } else
-            throw e$;
-        }
-      }
-    }
-    handleEvent(event, entry) {
-      if (event == null) dart.nullFailed(I[1], 438, 33, "event");
-      if (entry == null) dart.nullFailed(I[1], 438, 53, "entry");
-      this.pointerRouter.route(event);
-      if (events.PointerDownEvent.is(event)) {
-        this.gestureArena.close(event.pointer);
-      } else if (events.PointerUpEvent.is(event)) {
-        this.gestureArena.sweep(event.pointer);
-      } else if (events.PointerSignalEvent.is(event)) {
-        this.pointerSignalResolver.resolve(event);
-      }
-    }
-    resetGestureBinding() {
-      this[_hitTests][$clear]();
-    }
-    get debugSamplingClock() {
-      return null;
-    }
-    [_handleSampleTimeChanged$]() {
-      if (!dart.test(this.locked)) {
-        if (dart.test(this.resamplingEnabled)) {
-          this[_resampler].sample(this.samplingOffset, this[_samplingClock]);
-        } else {
-          this[_resampler].stop();
-        }
-      }
-    }
-    get [_samplingClock]() {
-      let value = new binding$0.SamplingClock.new();
-      if (!dart.test(dart.fn(() => {
-        let debugValue = this.debugSamplingClock;
-        if (debugValue != null) value = debugValue;
-        return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 478, 12, "() {\r\n      final SamplingClock? debugValue = debugSamplingClock;\r\n      if (debugValue != null)\r\n        value = debugValue;\r\n      return true;\r\n    }()");
-      return value;
-    }
-    get [_resampler]() {
+    [_simulation](time) {
       let t3;
-      if (!dart.test(this[__GestureBinding__resampler_isSet])) {
-        let t2 = new binding$0._Resampler.new(dart.bind(this, _handlePointerEventImmediately), dart.bind(this, _handleSampleTimeChanged$), binding$0._samplingInterval);
-        if (dart.test(this[__GestureBinding__resampler_isSet])) dart.throw(new _internal.LateError.fieldADI("_resampler"));
-        this[__GestureBinding__resampler] = t2;
-        this[__GestureBinding__resampler_isSet] = true;
+      if (time == null) dart.nullFailed(I[0], 105, 33, "time");
+      let simulation = null;
+      if (dart.notNull(time) > dart.notNull(this[_springTime])) {
+        this[_timeOffset] = this[_springTime][$isFinite] ? this[_springTime] : 0.0;
+        simulation = this[_springSimulation];
+      } else {
+        this[_timeOffset] = 0.0;
+        simulation = this[_frictionSimulation];
       }
-      t3 = this[__GestureBinding__resampler];
-      return t3;
+      t3 = simulation;
+      return (() => {
+        t3.tolerance = this.tolerance;
+        return t3;
+      })();
+    }
+    x(time) {
+      if (time == null) dart.nullFailed(I[0], 118, 19, "time");
+      return this[_simulation](time).x(dart.notNull(time) - dart.notNull(this[_timeOffset]));
+    }
+    dx(time) {
+      if (time == null) dart.nullFailed(I[0], 121, 20, "time");
+      return this[_simulation](time).dx(dart.notNull(time) - dart.notNull(this[_timeOffset]));
+    }
+    isDone(time) {
+      if (time == null) dart.nullFailed(I[0], 124, 22, "time");
+      return this[_simulation](time).isDone(dart.notNull(time) - dart.notNull(this[_timeOffset]));
+    }
+    toString() {
+      return dart.str(object.objectRuntimeType(this, "BouncingScrollSimulation")) + "(leadingExtent: " + dart.str(this.leadingExtent) + ", trailingExtent: " + dart.str(this.trailingExtent) + ")";
     }
   };
-  (binding$0.GestureBinding[dart.mixinNew] = function() {
-    this[_pendingPointerEvents] = new (T.ListQueueOfPointerEvent()).new();
-    this[pointerRouter] = new pointer_router.PointerRouter.new();
-    this[gestureArena] = new arena.GestureArenaManager.new();
-    this[pointerSignalResolver] = new pointer_signal_resolver.PointerSignalResolver.new();
-    this[_hitTests] = new (T.IdentityMapOfint$HitTestResult()).new();
-    this[__GestureBinding__resampler] = null;
-    this[__GestureBinding__resampler_isSet] = false;
-    this[resamplingEnabled] = false;
-    this[samplingOffset] = binding$0._defaultSamplingOffset;
-  }).prototype = binding$0.GestureBinding.prototype;
-  dart.addTypeTests(binding$0.GestureBinding);
-  dart.addTypeCaches(binding$0.GestureBinding);
-  binding$0.GestureBinding[dart.implements] = () => [hit_test.HitTestable, hit_test.HitTestDispatcher, hit_test.HitTestTarget, binding$.BindingBase];
-  dart.setMethodSignature(binding$0.GestureBinding, () => ({
-    __proto__: dart.getMethods(binding$0.GestureBinding.__proto__),
-    [_handlePointerDataPacket]: dart.fnType(dart.void, [ui.PointerDataPacket]),
-    cancelPointer: dart.fnType(dart.void, [core.int]),
-    [_flushPointerEventQueue]: dart.fnType(dart.void, []),
-    handlePointerEvent: dart.fnType(dart.void, [events.PointerEvent]),
-    [_handlePointerEventImmediately]: dart.fnType(dart.void, [events.PointerEvent]),
-    hitTest: dart.fnType(dart.void, [hit_test.HitTestResult, ui.Offset]),
-    dispatchEvent: dart.fnType(dart.void, [events.PointerEvent, dart.nullable(hit_test.HitTestResult)]),
-    handleEvent: dart.fnType(dart.void, [events.PointerEvent, hit_test.HitTestEntry]),
-    resetGestureBinding: dart.fnType(dart.void, []),
-    [_handleSampleTimeChanged$]: dart.fnType(dart.void, [])
+  (scroll_simulation.BouncingScrollSimulation.new = function(opts) {
+    let position = opts && 'position' in opts ? opts.position : null;
+    if (position == null) dart.nullFailed(I[0], 32, 21, "position");
+    let velocity = opts && 'velocity' in opts ? opts.velocity : null;
+    if (velocity == null) dart.nullFailed(I[0], 33, 21, "velocity");
+    let leadingExtent = opts && 'leadingExtent' in opts ? opts.leadingExtent : null;
+    if (leadingExtent == null) dart.nullFailed(I[0], 34, 19, "leadingExtent");
+    let trailingExtent = opts && 'trailingExtent' in opts ? opts.trailingExtent : null;
+    if (trailingExtent == null) dart.nullFailed(I[0], 35, 19, "trailingExtent");
+    let spring = opts && 'spring' in opts ? opts.spring : null;
+    if (spring == null) dart.nullFailed(I[0], 36, 19, "spring");
+    let tolerance = opts && 'tolerance' in opts ? opts.tolerance : C[0] || CT.C0;
+    if (tolerance == null) dart.nullFailed(I[0], 37, 15, "tolerance");
+    this[__BouncingScrollSimulation__frictionSimulation] = null;
+    this[__BouncingScrollSimulation__frictionSimulation_isSet] = false;
+    this[__BouncingScrollSimulation__springSimulation] = null;
+    this[__BouncingScrollSimulation__springSimulation_isSet] = false;
+    this[__BouncingScrollSimulation__springTime] = null;
+    this[__BouncingScrollSimulation__springTime_isSet] = false;
+    this[_timeOffset] = 0.0;
+    this[leadingExtent$] = leadingExtent;
+    this[trailingExtent$] = trailingExtent;
+    this[spring$] = spring;
+    if (!(position != null)) dart.assertFailed(null, I[0], 38, 15, "position != null");
+    if (!(velocity != null)) dart.assertFailed(null, I[0], 39, 15, "velocity != null");
+    if (!(leadingExtent != null)) dart.assertFailed(null, I[0], 40, 15, "leadingExtent != null");
+    if (!(trailingExtent != null)) dart.assertFailed(null, I[0], 41, 15, "trailingExtent != null");
+    if (!(dart.notNull(leadingExtent) <= dart.notNull(trailingExtent))) dart.assertFailed(null, I[0], 42, 15, "leadingExtent <= trailingExtent");
+    if (!(spring != null)) dart.assertFailed(null, I[0], 43, 15, "spring != null");
+    scroll_simulation.BouncingScrollSimulation.__proto__.new.call(this, {tolerance: tolerance});
+    if (dart.notNull(position) < dart.notNull(this.leadingExtent)) {
+      this[_springSimulation] = this[_underscrollSimulation](position, velocity);
+      this[_springTime] = -1 / 0;
+    } else if (dart.notNull(position) > dart.notNull(this.trailingExtent)) {
+      this[_springSimulation] = this[_overscrollSimulation](position, velocity);
+      this[_springTime] = -1 / 0;
+    } else {
+      this[_frictionSimulation] = new friction_simulation.FrictionSimulation.new(0.135, position, velocity);
+      let finalX = this[_frictionSimulation].finalX;
+      if (dart.notNull(velocity) > 0.0 && dart.notNull(finalX) > dart.notNull(this.trailingExtent)) {
+        this[_springTime] = this[_frictionSimulation].timeAtX(this.trailingExtent);
+        this[_springSimulation] = this[_overscrollSimulation](this.trailingExtent, math.min(core.double, this[_frictionSimulation].dx(this[_springTime]), 5000));
+        if (!this[_springTime][$isFinite]) dart.assertFailed(null, I[0], 62, 16, "_springTime.isFinite");
+      } else if (dart.notNull(velocity) < 0.0 && dart.notNull(finalX) < dart.notNull(this.leadingExtent)) {
+        this[_springTime] = this[_frictionSimulation].timeAtX(this.leadingExtent);
+        this[_springSimulation] = this[_underscrollSimulation](this.leadingExtent, math.min(core.double, this[_frictionSimulation].dx(this[_springTime]), 5000));
+        if (!this[_springTime][$isFinite]) dart.assertFailed(null, I[0], 69, 16, "_springTime.isFinite");
+      } else {
+        this[_springTime] = 1 / 0;
+      }
+    }
+    if (!(this[_springTime] != null)) dart.assertFailed(null, I[0], 74, 12, "_springTime != null");
+  }).prototype = scroll_simulation.BouncingScrollSimulation.prototype;
+  dart.addTypeTests(scroll_simulation.BouncingScrollSimulation);
+  dart.addTypeCaches(scroll_simulation.BouncingScrollSimulation);
+  dart.setMethodSignature(scroll_simulation.BouncingScrollSimulation, () => ({
+    __proto__: dart.getMethods(scroll_simulation.BouncingScrollSimulation.__proto__),
+    [_underscrollSimulation]: dart.fnType(simulation.Simulation, [core.double, core.double]),
+    [_overscrollSimulation]: dart.fnType(simulation.Simulation, [core.double, core.double]),
+    [_simulation]: dart.fnType(simulation.Simulation, [core.double]),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double]),
+    isDone: dart.fnType(core.bool, [core.double])
   }));
-  dart.setGetterSignature(binding$0.GestureBinding, () => ({
-    __proto__: dart.getGetters(binding$0.GestureBinding.__proto__),
-    debugSamplingClock: dart.nullable(binding$0.SamplingClock),
-    [_samplingClock]: binding$0.SamplingClock,
-    [_resampler]: binding$0._Resampler
+  dart.setGetterSignature(scroll_simulation.BouncingScrollSimulation, () => ({
+    __proto__: dart.getGetters(scroll_simulation.BouncingScrollSimulation.__proto__),
+    [_frictionSimulation]: friction_simulation.FrictionSimulation,
+    [_springSimulation]: simulation.Simulation,
+    [_springTime]: core.double
   }));
-  dart.setLibraryUri(binding$0.GestureBinding, I[0]);
-  dart.setFieldSignature(binding$0.GestureBinding, () => ({
-    __proto__: dart.getFields(binding$0.GestureBinding.__proto__),
-    [_pendingPointerEvents]: dart.finalFieldType(collection.Queue$(events.PointerEvent)),
-    pointerRouter: dart.finalFieldType(pointer_router.PointerRouter),
-    gestureArena: dart.finalFieldType(arena.GestureArenaManager),
-    pointerSignalResolver: dart.finalFieldType(pointer_signal_resolver.PointerSignalResolver),
-    [_hitTests]: dart.finalFieldType(core.Map$(core.int, hit_test.HitTestResult)),
-    [__GestureBinding__resampler]: dart.fieldType(dart.nullable(binding$0._Resampler)),
-    [__GestureBinding__resampler_isSet]: dart.fieldType(core.bool),
-    resamplingEnabled: dart.fieldType(core.bool),
-    samplingOffset: dart.fieldType(core.Duration)
+  dart.setSetterSignature(scroll_simulation.BouncingScrollSimulation, () => ({
+    __proto__: dart.getSetters(scroll_simulation.BouncingScrollSimulation.__proto__),
+    [_frictionSimulation]: friction_simulation.FrictionSimulation,
+    [_springSimulation]: simulation.Simulation,
+    [_springTime]: core.double
   }));
-  dart.defineLazy(binding$0.GestureBinding, {
-    /*binding$0.GestureBinding._instance*/get _instance() {
-      return null;
-    },
-    set _instance(_) {}
+  dart.setLibraryUri(scroll_simulation.BouncingScrollSimulation, I[1]);
+  dart.setFieldSignature(scroll_simulation.BouncingScrollSimulation, () => ({
+    __proto__: dart.getFields(scroll_simulation.BouncingScrollSimulation.__proto__),
+    leadingExtent: dart.finalFieldType(core.double),
+    trailingExtent: dart.finalFieldType(core.double),
+    spring: dart.finalFieldType(spring_simulation.SpringDescription),
+    [__BouncingScrollSimulation__frictionSimulation]: dart.fieldType(dart.nullable(friction_simulation.FrictionSimulation)),
+    [__BouncingScrollSimulation__frictionSimulation_isSet]: dart.fieldType(core.bool),
+    [__BouncingScrollSimulation__springSimulation]: dart.fieldType(dart.nullable(simulation.Simulation)),
+    [__BouncingScrollSimulation__springSimulation_isSet]: dart.fieldType(core.bool),
+    [__BouncingScrollSimulation__springTime]: dart.fieldType(dart.nullable(core.double)),
+    [__BouncingScrollSimulation__springTime_isSet]: dart.fieldType(core.bool),
+    [_timeOffset]: dart.fieldType(core.double)
+  }));
+  dart.defineExtensionMethods(scroll_simulation.BouncingScrollSimulation, ['toString']);
+  dart.defineLazy(scroll_simulation.BouncingScrollSimulation, {
+    /*scroll_simulation.BouncingScrollSimulation.maxSpringTransferVelocity*/get maxSpringTransferVelocity() {
+      return 5000;
+    }
   }, false);
-  var event$ = dart.privateName(binding$0, "FlutterErrorDetailsForPointerEventDispatcher.event");
-  var hitTestEntry$ = dart.privateName(binding$0, "FlutterErrorDetailsForPointerEventDispatcher.hitTestEntry");
-  binding$0.FlutterErrorDetailsForPointerEventDispatcher = class FlutterErrorDetailsForPointerEventDispatcher extends assertions.FlutterErrorDetails {
-    get event() {
-      return this[event$];
+  var position$ = dart.privateName(scroll_simulation, "ClampingScrollSimulation.position");
+  var velocity$ = dart.privateName(scroll_simulation, "ClampingScrollSimulation.velocity");
+  var friction$ = dart.privateName(scroll_simulation, "ClampingScrollSimulation.friction");
+  var __ClampingScrollSimulation__duration = dart.privateName(scroll_simulation, "_#ClampingScrollSimulation#_duration");
+  var __ClampingScrollSimulation__duration_isSet = dart.privateName(scroll_simulation, "_#ClampingScrollSimulation#_duration#isSet");
+  var __ClampingScrollSimulation__distance = dart.privateName(scroll_simulation, "_#ClampingScrollSimulation#_distance");
+  var __ClampingScrollSimulation__distance_isSet = dart.privateName(scroll_simulation, "_#ClampingScrollSimulation#_distance#isSet");
+  var _duration = dart.privateName(scroll_simulation, "_duration");
+  var _splineFlingDuration = dart.privateName(scroll_simulation, "_splineFlingDuration");
+  var _distance = dart.privateName(scroll_simulation, "_distance");
+  var _splineFlingDistance = dart.privateName(scroll_simulation, "_splineFlingDistance");
+  var _splineDeceleration = dart.privateName(scroll_simulation, "_splineDeceleration");
+  scroll_simulation.ClampingScrollSimulation = class ClampingScrollSimulation extends simulation.Simulation {
+    get position() {
+      return this[position$];
     }
-    set event(value) {
-      super.event = value;
+    set position(value) {
+      super.position = value;
     }
-    get hitTestEntry() {
-      return this[hitTestEntry$];
+    get velocity() {
+      return this[velocity$];
     }
-    set hitTestEntry(value) {
-      super.hitTestEntry = value;
+    set velocity(value) {
+      super.velocity = value;
+    }
+    get friction() {
+      return this[friction$];
+    }
+    set friction(value) {
+      super.friction = value;
+    }
+    get [_duration]() {
+      let t3;
+      return dart.test(this[__ClampingScrollSimulation__duration_isSet]) ? (t3 = this[__ClampingScrollSimulation__duration], t3) : dart.throw(new _internal.LateError.fieldNI("_duration"));
+    }
+    set [_duration](t3) {
+      if (t3 == null) dart.nullFailed(I[0], 169, 12, "null");
+      this[__ClampingScrollSimulation__duration_isSet] = true;
+      this[__ClampingScrollSimulation__duration] = t3;
+    }
+    get [_distance]() {
+      let t4;
+      return dart.test(this[__ClampingScrollSimulation__distance_isSet]) ? (t4 = this[__ClampingScrollSimulation__distance], t4) : dart.throw(new _internal.LateError.fieldNI("_distance"));
+    }
+    set [_distance](t4) {
+      if (t4 == null) dart.nullFailed(I[0], 170, 15, "null");
+      this[__ClampingScrollSimulation__distance_isSet] = true;
+      this[__ClampingScrollSimulation__distance] = t4;
+    }
+    static _decelerationForFriction(friction) {
+      if (friction == null) dart.nullFailed(I[0], 176, 49, "friction");
+      return 9.80665 * 39.37 * dart.notNull(friction) * 1.0 * 160.0;
+    }
+    [_splineDeceleration](velocity) {
+      if (velocity == null) dart.nullFailed(I[0], 185, 37, "velocity");
+      return math.log(0.35 * velocity[$abs]() / (dart.notNull(this.friction) * dart.notNull(scroll_simulation.ClampingScrollSimulation._decelerationForFriction(0.84))));
+    }
+    [_splineFlingDuration](velocity) {
+      if (velocity == null) dart.nullFailed(I[0], 190, 35, "velocity");
+      let deceleration = this[_splineDeceleration](velocity);
+      return (1000 * math.exp(dart.notNull(deceleration) / (dart.notNull(scroll_simulation.ClampingScrollSimulation._kDecelerationRate) - 1.0)))[$round]();
+    }
+    [_splineFlingDistance](velocity) {
+      if (velocity == null) dart.nullFailed(I[0], 196, 38, "velocity");
+      let l = this[_splineDeceleration](velocity);
+      let decelMinusOne = dart.notNull(scroll_simulation.ClampingScrollSimulation._kDecelerationRate) - 1.0;
+      return dart.notNull(this.friction) * dart.notNull(scroll_simulation.ClampingScrollSimulation._decelerationForFriction(0.84)) * math.exp(dart.notNull(scroll_simulation.ClampingScrollSimulation._kDecelerationRate) / decelMinusOne * dart.notNull(l));
+    }
+    x(time) {
+      if (time == null) dart.nullFailed(I[0], 205, 19, "time");
+      if (time === 0) {
+        return this.position;
+      }
+      let sample = new scroll_simulation._NBSample.new(time, this[_duration]);
+      return dart.notNull(this.position) + dart.notNull(sample.distanceCoef) * dart.notNull(this[_distance]) * this.velocity[$sign];
+    }
+    dx(time) {
+      if (time == null) dart.nullFailed(I[0], 214, 20, "time");
+      if (time === 0) {
+        return this.velocity;
+      }
+      let sample = new scroll_simulation._NBSample.new(time, this[_duration]);
+      return dart.notNull(sample.velocityCoef) * dart.notNull(this[_distance]) / dart.notNull(this[_duration]) * this.velocity[$sign] * 1000.0;
+    }
+    isDone(time) {
+      if (time == null) dart.nullFailed(I[0], 223, 22, "time");
+      return dart.notNull(time) * 1000.0 >= dart.notNull(this[_duration]);
     }
   };
-  (binding$0.FlutterErrorDetailsForPointerEventDispatcher.new = function(opts) {
-    let exception = opts && 'exception' in opts ? opts.exception : null;
-    if (exception == null) dart.nullFailed(I[1], 524, 21, "exception");
-    let stack = opts && 'stack' in opts ? opts.stack : null;
-    let library = opts && 'library' in opts ? opts.library : null;
-    let context = opts && 'context' in opts ? opts.context : null;
-    let event = opts && 'event' in opts ? opts.event : null;
-    let hitTestEntry = opts && 'hitTestEntry' in opts ? opts.hitTestEntry : null;
-    let informationCollector = opts && 'informationCollector' in opts ? opts.informationCollector : null;
-    let silent = opts && 'silent' in opts ? opts.silent : false;
-    if (silent == null) dart.nullFailed(I[1], 531, 10, "silent");
-    this[event$] = event;
-    this[hitTestEntry$] = hitTestEntry;
-    binding$0.FlutterErrorDetailsForPointerEventDispatcher.__proto__.new.call(this, {exception: exception, stack: stack, library: library, context: context, informationCollector: informationCollector, silent: silent});
-    ;
-  }).prototype = binding$0.FlutterErrorDetailsForPointerEventDispatcher.prototype;
-  dart.addTypeTests(binding$0.FlutterErrorDetailsForPointerEventDispatcher);
-  dart.addTypeCaches(binding$0.FlutterErrorDetailsForPointerEventDispatcher);
-  dart.setLibraryUri(binding$0.FlutterErrorDetailsForPointerEventDispatcher, I[0]);
-  dart.setFieldSignature(binding$0.FlutterErrorDetailsForPointerEventDispatcher, () => ({
-    __proto__: dart.getFields(binding$0.FlutterErrorDetailsForPointerEventDispatcher.__proto__),
-    event: dart.finalFieldType(dart.nullable(events.PointerEvent)),
-    hitTestEntry: dart.finalFieldType(dart.nullable(hit_test.HitTestEntry))
+  (scroll_simulation.ClampingScrollSimulation.new = function(opts) {
+    let position = opts && 'position' in opts ? opts.position : null;
+    if (position == null) dart.nullFailed(I[0], 148, 19, "position");
+    let velocity = opts && 'velocity' in opts ? opts.velocity : null;
+    if (velocity == null) dart.nullFailed(I[0], 149, 19, "velocity");
+    let friction = opts && 'friction' in opts ? opts.friction : 0.015;
+    if (friction == null) dart.nullFailed(I[0], 150, 10, "friction");
+    let tolerance = opts && 'tolerance' in opts ? opts.tolerance : C[0] || CT.C0;
+    if (tolerance == null) dart.nullFailed(I[0], 151, 15, "tolerance");
+    this[__ClampingScrollSimulation__duration] = null;
+    this[__ClampingScrollSimulation__duration_isSet] = false;
+    this[__ClampingScrollSimulation__distance] = null;
+    this[__ClampingScrollSimulation__distance_isSet] = false;
+    this[position$] = position;
+    this[velocity$] = velocity;
+    this[friction$] = friction;
+    scroll_simulation.ClampingScrollSimulation.__proto__.new.call(this, {tolerance: tolerance});
+    this[_duration] = this[_splineFlingDuration](this.velocity);
+    this[_distance] = this[_splineFlingDistance](this.velocity);
+  }).prototype = scroll_simulation.ClampingScrollSimulation.prototype;
+  dart.addTypeTests(scroll_simulation.ClampingScrollSimulation);
+  dart.addTypeCaches(scroll_simulation.ClampingScrollSimulation);
+  dart.setMethodSignature(scroll_simulation.ClampingScrollSimulation, () => ({
+    __proto__: dart.getMethods(scroll_simulation.ClampingScrollSimulation.__proto__),
+    [_splineDeceleration]: dart.fnType(core.double, [core.double]),
+    [_splineFlingDuration]: dart.fnType(core.int, [core.double]),
+    [_splineFlingDistance]: dart.fnType(core.double, [core.double]),
+    x: dart.fnType(core.double, [core.double]),
+    dx: dart.fnType(core.double, [core.double]),
+    isDone: dart.fnType(core.bool, [core.double])
   }));
-  var Duration__duration = dart.privateName(core, "Duration._duration");
-  dart.defineLazy(binding$0, {
-    /*binding$0._defaultSamplingOffset*/get _defaultSamplingOffset() {
-      return C[0] || CT.C0;
-    },
-    /*binding$0._samplingInterval*/get _samplingInterval() {
-      return C[1] || CT.C1;
+  dart.setGetterSignature(scroll_simulation.ClampingScrollSimulation, () => ({
+    __proto__: dart.getGetters(scroll_simulation.ClampingScrollSimulation.__proto__),
+    [_duration]: core.int,
+    [_distance]: core.double
+  }));
+  dart.setSetterSignature(scroll_simulation.ClampingScrollSimulation, () => ({
+    __proto__: dart.getSetters(scroll_simulation.ClampingScrollSimulation.__proto__),
+    [_duration]: core.int,
+    [_distance]: core.double
+  }));
+  dart.setLibraryUri(scroll_simulation.ClampingScrollSimulation, I[1]);
+  dart.setFieldSignature(scroll_simulation.ClampingScrollSimulation, () => ({
+    __proto__: dart.getFields(scroll_simulation.ClampingScrollSimulation.__proto__),
+    position: dart.finalFieldType(core.double),
+    velocity: dart.finalFieldType(core.double),
+    friction: dart.finalFieldType(core.double),
+    [__ClampingScrollSimulation__duration]: dart.fieldType(dart.nullable(core.int)),
+    [__ClampingScrollSimulation__duration_isSet]: dart.fieldType(core.bool),
+    [__ClampingScrollSimulation__distance]: dart.fieldType(dart.nullable(core.double)),
+    [__ClampingScrollSimulation__distance_isSet]: dart.fieldType(core.bool)
+  }));
+  dart.defineLazy(scroll_simulation.ClampingScrollSimulation, {
+    /*scroll_simulation.ClampingScrollSimulation._kDecelerationRate*/get _kDecelerationRate() {
+      return math.log(0.78) / math.log(0.9);
     }
   }, false);
-  dart.trackLibraries("packages/flutter/src/gestures/binding.dart", {
-    "package:flutter/src/gestures/binding.dart": binding$0
+  var ___NBSample__velocityCoef = dart.privateName(scroll_simulation, "_#_NBSample#_velocityCoef");
+  var ___NBSample__velocityCoef_isSet = dart.privateName(scroll_simulation, "_#_NBSample#_velocityCoef#isSet");
+  var ___NBSample__distanceCoef = dart.privateName(scroll_simulation, "_#_NBSample#_distanceCoef");
+  var ___NBSample__distanceCoef_isSet = dart.privateName(scroll_simulation, "_#_NBSample#_distanceCoef#isSet");
+  var _distanceCoef = dart.privateName(scroll_simulation, "_distanceCoef");
+  var _velocityCoef = dart.privateName(scroll_simulation, "_velocityCoef");
+  scroll_simulation._NBSample = class _NBSample extends core.Object {
+    get [_velocityCoef]() {
+      let t5;
+      return dart.test(this[___NBSample__velocityCoef_isSet]) ? (t5 = this[___NBSample__velocityCoef], t5) : dart.throw(new _internal.LateError.fieldNI("_velocityCoef"));
+    }
+    set [_velocityCoef](t5) {
+      if (t5 == null) dart.nullFailed(I[0], 245, 15, "null");
+      this[___NBSample__velocityCoef_isSet] = true;
+      this[___NBSample__velocityCoef] = t5;
+    }
+    get velocityCoef() {
+      return this[_velocityCoef];
+    }
+    get [_distanceCoef]() {
+      let t6;
+      return dart.test(this[___NBSample__distanceCoef_isSet]) ? (t6 = this[___NBSample__distanceCoef], t6) : dart.throw(new _internal.LateError.fieldNI("_distanceCoef"));
+    }
+    set [_distanceCoef](t6) {
+      if (t6 == null) dart.nullFailed(I[0], 248, 15, "null");
+      this[___NBSample__distanceCoef_isSet] = true;
+      this[___NBSample__distanceCoef] = t6;
+    }
+    get distanceCoef() {
+      return this[_distanceCoef];
+    }
+  };
+  (scroll_simulation._NBSample.new = function(time, duration) {
+    if (time == null) dart.nullFailed(I[0], 229, 20, "time");
+    if (duration == null) dart.nullFailed(I[0], 229, 30, "duration");
+    this[___NBSample__velocityCoef] = null;
+    this[___NBSample__velocityCoef_isSet] = false;
+    this[___NBSample__distanceCoef] = null;
+    this[___NBSample__distanceCoef_isSet] = false;
+    let t = dart.notNull(time) * 1000.0 / dart.notNull(duration);
+    let index = (100 * t)[$clamp](0, 100)[$round]();
+    this[_distanceCoef] = 1.0;
+    this[_velocityCoef] = 0.0;
+    if (index < 100) {
+      let tInf = index / 100;
+      let tSup = (index + 1) / 100;
+      let dInf = scroll_simulation._NBSample._splinePosition[$_get](index);
+      let dSup = scroll_simulation._NBSample._splinePosition[$_get](index + 1);
+      this[_velocityCoef] = (dart.notNull(dSup) - dart.notNull(dInf)) / (tSup - tInf);
+      this[_distanceCoef] = dart.notNull(dInf) + (t - tInf) * dart.notNull(this[_velocityCoef]);
+    }
+  }).prototype = scroll_simulation._NBSample.prototype;
+  dart.addTypeTests(scroll_simulation._NBSample);
+  dart.addTypeCaches(scroll_simulation._NBSample);
+  dart.setGetterSignature(scroll_simulation._NBSample, () => ({
+    __proto__: dart.getGetters(scroll_simulation._NBSample.__proto__),
+    [_velocityCoef]: core.double,
+    velocityCoef: core.double,
+    [_distanceCoef]: core.double,
+    distanceCoef: core.double
+  }));
+  dart.setSetterSignature(scroll_simulation._NBSample, () => ({
+    __proto__: dart.getSetters(scroll_simulation._NBSample.__proto__),
+    [_velocityCoef]: core.double,
+    [_distanceCoef]: core.double
+  }));
+  dart.setLibraryUri(scroll_simulation._NBSample, I[1]);
+  dart.setFieldSignature(scroll_simulation._NBSample, () => ({
+    __proto__: dart.getFields(scroll_simulation._NBSample.__proto__),
+    [___NBSample__velocityCoef]: dart.fieldType(dart.nullable(core.double)),
+    [___NBSample__velocityCoef_isSet]: dart.fieldType(core.bool),
+    [___NBSample__distanceCoef]: dart.fieldType(dart.nullable(core.double)),
+    [___NBSample__distanceCoef_isSet]: dart.fieldType(core.bool)
+  }));
+  dart.defineLazy(scroll_simulation._NBSample, {
+    /*scroll_simulation._NBSample._nbSamples*/get _nbSamples() {
+      return 100;
+    },
+    /*scroll_simulation._NBSample._splinePosition*/get _splinePosition() {
+      return T.JSArrayOfdouble().of([0.000022888183591973643, 0.028561000304762274, 0.05705195792956655, 0.08538917797618413, 0.11349556286812107, 0.14129881694635613, 0.16877157254923383, 0.19581093511175632, 0.22239649722992452, 0.24843841866631658, 0.2740024733220569, 0.298967680744136, 0.32333234658228116, 0.34709556909569184, 0.3702249257894571, 0.39272483400399893, 0.41456988647721615, 0.43582889025419114, 0.4564192786416, 0.476410299013587, 0.4957560715637827, 0.5145493169954743, 0.5327205670880077, 0.5502846891191615, 0.5673274324802855, 0.583810881323224, 0.5997478744397482, 0.615194045299478, 0.6301165005270208, 0.6445484042257972, 0.6585198219185201, 0.6720397744233084, 0.6850997688076114, 0.6977281404741683, 0.7099506591298411, 0.7217749311525871, 0.7331784038850426, 0.7442308394229518, 0.7549087205105974, 0.7652471277371271, 0.7752251637549381, 0.7848768260203478, 0.7942056937103814, 0.8032299679689082, 0.8119428702388629, 0.8203713516576219, 0.8285187880808974, 0.8363794492831295, 0.8439768562813565, 0.851322799855549, 0.8584111051351724, 0.8652534074722162, 0.8718525580962131, 0.8782333271742155, 0.8843892099362031, 0.8903155590440985, 0.8960465359221951, 0.9015574505919048, 0.9068736766459904, 0.9119951682409297, 0.9169321898723632, 0.9216747065581234, 0.9262420604674766, 0.9306331858366086, 0.9348476990715433, 0.9389007110754832, 0.9427903495057521, 0.9465220679845756, 0.9500943036519721, 0.9535176728088761, 0.9567898524767604, 0.959924306623116, 0.9629127700159108, 0.9657622101750765, 0.9684818726275105, 0.9710676079044347, 0.9735231939498, 0.9758514437576309, 0.9780599066560445, 0.9801485715370128, 0.9821149805689633, 0.9839677526782791, 0.9857085499421516, 0.9873347811966005, 0.9888547171706613, 0.9902689443512227, 0.9915771042095881, 0.9927840651641069, 0.9938913963715834, 0.9948987305580712, 0.9958114963810524, 0.9966274782266875, 0.997352148697352, 0.9979848677523623, 0.9985285021374979, 0.9989844084453229, 0.9993537595844986, 0.999638729860106, 0.9998403888004533, 0.9999602810470701, 1.0]);
+    }
+  }, false);
+  dart.defineLazy(scroll_simulation, {
+    /*scroll_simulation._inflexion*/get _inflexion() {
+      return 0.35;
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter/src/widgets/scroll_simulation.dart", {
+    "package:flutter/src/widgets/scroll_simulation.dart": scroll_simulation
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["binding.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/gestures/binding.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["scroll_simulation.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/widgets/scroll_simulation.dart.lib.js"}');
   // Exports:
   return {
-    src__gestures__binding: binding$0
+    src__widgets__scroll_simulation: scroll_simulation
   };
 }));
 
-//# sourceMappingURL=binding.dart.lib.js.map
+//# sourceMappingURL=scroll_simulation.dart.lib.js.map

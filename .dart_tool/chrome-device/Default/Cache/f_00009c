@@ -1,865 +1,1009 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/rendering/editable.dart', 'packages/flutter/src/cupertino/debug.dart', 'packages/flutter/src/cupertino/text_selection_toolbar_button.dart', 'packages/flutter/src/cupertino/text_selection_toolbar.dart', 'packages/flutter/src/rendering/custom_paint.dart', 'packages/flutter/src/cupertino/text_theme.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/services/text_input.dart'], (function load__packages__flutter__src__cupertino__text_selection_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__rendering__editable$46dart, packages__flutter__src__cupertino__debug$46dart, packages__flutter__src__cupertino__text_selection_toolbar_button$46dart, packages__flutter__src__cupertino__text_selection_toolbar$46dart, packages__flutter__src__rendering__custom_paint$46dart, packages__flutter__src__cupertino__text_theme$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__services__text_input$46dart) {
+define(['dart_sdk', 'packages/flutter_svg/src/utilities/numbers.dart'], (function load__packages__flutter_svg__src__svg__colors_dart(dart_sdk, packages__flutter_svg__src__utilities__numbers$46dart) {
   'use strict';
   const core = dart_sdk.core;
   const ui = dart_sdk.ui;
   const _interceptors = dart_sdk._interceptors;
-  const _internal = dart_sdk._internal;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const text_selection = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text_selection;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const debug = packages__flutter__src__widgets__widget_span$46dart.src__widgets__debug;
-  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
-  const editable = packages__flutter__src__rendering__editable$46dart.src__rendering__editable;
-  const localizations$ = packages__flutter__src__cupertino__debug$46dart.src__cupertino__localizations;
-  const text_selection_toolbar_button = packages__flutter__src__cupertino__text_selection_toolbar_button$46dart.src__cupertino__text_selection_toolbar_button;
-  const text_selection_toolbar = packages__flutter__src__cupertino__text_selection_toolbar$46dart.src__cupertino__text_selection_toolbar;
-  const custom_paint = packages__flutter__src__rendering__custom_paint$46dart.src__rendering__custom_paint;
-  const theme = packages__flutter__src__cupertino__text_theme$46dart.src__cupertino__theme;
-  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
-  const text_input = packages__flutter__src__services__text_input$46dart.src__services__text_input;
-  var text_selection$ = Object.create(dart.library);
-  var $clamp = dartx.clamp;
-  var $first = dartx.first;
-  var $last = dartx.last;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $add = dartx.add;
+  const numbers = packages__flutter_svg__src__utilities__numbers$46dart.src__utilities__numbers;
+  var colors = Object.create(dart.library);
   var $isEmpty = dartx.isEmpty;
+  var $_get = dartx._get;
+  var $substring = dartx.substring;
+  var $toLowerCase = dartx.toLowerCase;
+  var $startsWith = dartx.startsWith;
+  var $indexOf = dartx.indexOf;
+  var $split = dartx.split;
+  var $trim = dartx.trim;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $removeLast = dartx.removeLast;
+  var $endsWith = dartx.endsWith;
+  var $contains = dartx.contains;
+  var $round = dartx.round;
+  var $modulo = dartx['%'];
+  var $length = dartx.length;
+  var $_set = dartx._set;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
-    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
-    StringAndFnTovoid: () => (T.StringAndFnTovoid = dart.constFn(dart.fnType(dart.void, [core.String, T.VoidTovoid()])))()
+    StringToString: () => (T.StringToString = dart.constFn(dart.fnType(core.String, [core.String])))(),
+    StringToint: () => (T.StringToint = dart.constFn(dart.fnType(core.int, [core.String])))(),
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))(),
+    doubleTodouble: () => (T.doubleTodouble = dart.constFn(dart.fnType(core.double, [core.double])))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    ColorL: () => (T.ColorL = dart.constFn(dart.legacy(ui.Color)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293982463.0
+      });
+    },
     get C3() {
       return C[3] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "width",
-        [_Location_column]: 29,
-        [_Location_line]: 107,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294634455.0
       });
     },
     get C4() {
       return C[4] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "height",
-        [_Location_column]: 41,
-        [_Location_line]: 107,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278255615.0
       });
     },
-    get C2() {
-      return C[2] = dart.constList([C[3] || CT.C3, C[4] || CT.C4], T._LocationL());
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[2] || CT.C2,
-        [_Location_name]: null,
-        [_Location_column]: 20,
-        [_Location_line]: 107,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection.dart"
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286578644.0
       });
     },
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: basic.SizedBox.prototype,
-        [Widget__location]: C[1] || CT.C1,
-        [Widget_key]: null,
-        [SingleChildRenderObjectWidget_child]: null,
-        [SizedBox_height]: 0,
-        [SizedBox_width]: 0
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293984255.0
       });
     },
     get C7() {
       return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "width",
-        [_Location_column]: 18,
-        [_Location_line]: 137,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294309340.0
       });
     },
-    get C6() {
-      return C[6] = dart.constList([C[7] || CT.C7], T._LocationL());
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294960324.0
+      });
     },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[6] || CT.C6,
-        [_Location_name]: null,
-        [_Location_column]: 9,
-        [_Location_line]: 137,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection.dart"
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294962125.0
       });
     },
     get C10() {
       return C[10] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onPressed",
-        [_Location_column]: 9,
-        [_Location_line]: 148,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190335.0
       });
     },
     get C11() {
       return C[11] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "text",
-        [_Location_column]: 9,
-        [_Location_line]: 149,
-        [_Location_file]: null
-      });
-    },
-    get C9() {
-      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11], T._LocationL());
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[9] || CT.C9,
-        [_Location_name]: null,
-        [_Location_column]: 53,
-        [_Location_line]: 147,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection.dart"
-      });
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "width",
-        [_Location_column]: 29,
-        [_Location_line]: 169,
-        [_Location_file]: null
-      });
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "height",
-        [_Location_column]: 41,
-        [_Location_line]: 169,
-        [_Location_file]: null
-      });
-    },
-    get C14() {
-      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16], T._LocationL());
-    },
-    get C13() {
-      return C[13] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[14] || CT.C14,
-        [_Location_name]: null,
-        [_Location_column]: 20,
-        [_Location_line]: 169,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection.dart"
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287245282.0
       });
     },
     get C12() {
       return C[12] = dart.const({
-        __proto__: basic.SizedBox.prototype,
-        [Widget__location]: C[13] || CT.C13,
-        [Widget_key]: null,
-        [SingleChildRenderObjectWidget_child]: null,
-        [SizedBox_height]: 0,
-        [SizedBox_width]: 0
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289014314.0
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292786311.0
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284456608.0
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286578432.0
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291979550.0
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294934352.0
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284782061.0
       });
     },
     get C19() {
       return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "anchorAbove",
-        [_Location_column]: 7,
-        [_Location_line]: 173,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294965468.0
       });
     },
     get C20() {
       return C[20] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "anchorBelow",
-        [_Location_column]: 7,
-        [_Location_line]: 174,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292613180.0
       });
     },
     get C21() {
       return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 7,
-        [_Location_line]: 175,
-        [_Location_file]: null
-      });
-    },
-    get C18() {
-      return C[18] = dart.constList([C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21], T._LocationL());
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[18] || CT.C18,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 172,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection.dart"
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190219.0
       });
     },
     get C22() {
       return C[22] = dart.const({
-        __proto__: ui.Offset.prototype,
-        [OffsetBase__dy]: 6,
-        [OffsetBase__dx]: 6
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278225803.0
       });
     },
     get C23() {
       return C[23] = dart.const({
-        __proto__: ui.Offset.prototype,
-        [OffsetBase__dy]: 10.5,
-        [OffsetBase__dx]: 5
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290283019.0
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289309097.0
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278215680.0
       });
     },
     get C26() {
       return C[26] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "clipboardStatus",
-        [_Location_column]: 7,
-        [_Location_line]: 236,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290623339.0
       });
     },
     get C27() {
       return C[27] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "endpoints",
-        [_Location_column]: 7,
-        [_Location_line]: 237,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287299723.0
       });
     },
     get C28() {
       return C[28] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "globalEditableRegion",
-        [_Location_column]: 7,
-        [_Location_line]: 238,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283788079.0
       });
     },
     get C29() {
       return C[29] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "handleCut",
-        [_Location_column]: 7,
-        [_Location_line]: 239,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294937600.0
       });
     },
     get C30() {
       return C[30] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "handleCopy",
-        [_Location_column]: 7,
-        [_Location_line]: 240,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288230092.0
       });
     },
     get C31() {
       return C[31] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "handlePaste",
-        [_Location_column]: 7,
-        [_Location_line]: 241,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287299584.0
       });
     },
     get C32() {
       return C[32] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "handleSelectAll",
-        [_Location_column]: 7,
-        [_Location_line]: 242,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293498490.0
       });
     },
     get C33() {
       return C[33] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "selectionMidpoint",
-        [_Location_column]: 7,
-        [_Location_line]: 243,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287609999.0
       });
     },
     get C34() {
       return C[34] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "textLineHeight",
-        [_Location_column]: 7,
-        [_Location_line]: 244,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282924427.0
       });
     },
-    get C25() {
-      return C[25] = dart.constList([C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29, C[30] || CT.C30, C[31] || CT.C31, C[32] || CT.C32, C[33] || CT.C33, C[34] || CT.C34], T._LocationL());
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281290575.0
+      });
     },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[25] || CT.C25,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 235,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection.dart"
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278243025.0
       });
     },
     get C37() {
       return C[37] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "painter",
-        [_Location_column]: 9,
-        [_Location_line]: 258,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287889619.0
       });
     },
-    get C36() {
-      return C[36] = dart.constList([C[37] || CT.C37], T._LocationL());
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294907027.0
+      });
     },
-    get C35() {
-      return C[35] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[36] || CT.C36,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 257,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection.dart"
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278239231.0
       });
     },
     get C40() {
       return C[40] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "size",
-        [_Location_column]: 7,
-        [_Location_line]: 256,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285098345.0
       });
     },
     get C41() {
       return C[41] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 257,
-        [_Location_file]: null
-      });
-    },
-    get C39() {
-      return C[39] = dart.constList([C[40] || CT.C40, C[41] || CT.C41], T._LocationL());
-    },
-    get C38() {
-      return C[38] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[39] || CT.C39,
-        [_Location_name]: null,
-        [_Location_column]: 36,
-        [_Location_line]: 255,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection.dart"
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280193279.0
       });
     },
     get C42() {
       return C[42] = dart.const({
-        __proto__: text_selection.TextSelectionHandleType.prototype,
-        [_name]: "TextSelectionHandleType.left",
-        index: 0
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289864226.0
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294966000.0
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280453922.0
       });
     },
     get C45() {
       return C[45] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "transform",
-        [_Location_column]: 11,
-        [_Location_line]: 271,
-        [_Location_file]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294902015.0
       });
     },
     get C46() {
       return C[46] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 11,
-        [_Location_line]: 275,
-        [_Location_file]: null
-      });
-    },
-    get C44() {
-      return C[44] = dart.constList([C[45] || CT.C45, C[46] || CT.C46], T._LocationL());
-    },
-    get C43() {
-      return C[43] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[44] || CT.C44,
-        [_Location_name]: null,
-        [_Location_column]: 16,
-        [_Location_line]: 270,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection.dart"
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292664540.0
       });
     },
     get C47() {
       return C[47] = dart.const({
-        __proto__: text_selection.TextSelectionHandleType.prototype,
-        [_name]: "TextSelectionHandleType.right",
-        index: 1
-      });
-    },
-    get C50() {
-      return C[50] = dart.constList([], T._LocationL());
-    },
-    get C49() {
-      return C[49] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[50] || CT.C50,
-        [_Location_name]: null,
-        [_Location_column]: 22,
-        [_Location_line]: 279,
-        [_Location_file]: "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection.dart"
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294506751.0
       });
     },
     get C48() {
       return C[48] = dart.const({
-        __proto__: basic.SizedBox.prototype,
-        [Widget__location]: C[49] || CT.C49,
-        [Widget_key]: null,
-        [SingleChildRenderObjectWidget_child]: null,
-        [SizedBox_height]: null,
-        [SizedBox_width]: null
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294956800.0
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292519200.0
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286611584.0
       });
     },
     get C51() {
       return C[51] = dart.const({
-        __proto__: text_selection.TextSelectionHandleType.prototype,
-        [_name]: "TextSelectionHandleType.collapsed",
-        index: 2
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278222848.0
       });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289593135.0
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293984240.0
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294928820.0
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291648604.0
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283105410.0
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967280.0
+      });
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293977740.0
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293322490.0
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294963445.0
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286381056.0
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294965965.0
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289583334.0
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293951616.0
+      });
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292935679.0
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294638290.0
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292072403.0
+      });
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287688336.0
+      });
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294948545.0
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294942842.0
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280332970.0
+      });
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287090426.0
+      });
+    },
+    get C73() {
+      return C[73] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286023833.0
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289774814.0
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967264.0
+      });
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278255360.0
+      });
+    },
+    get C77() {
+      return C[77] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281519410.0
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294635750.0
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286578688.0
+      });
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4284927402.0
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190285.0
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290401747.0
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287852763.0
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282168177.0
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286277870.0
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278254234.0
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282962380.0
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291237253.0
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279834992.0
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294311930.0
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294960353.0
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294960309.0
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294958765.0
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190208.0
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294833638.0
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286611456.0
+      });
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285238819.0
+      });
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294944000.0
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294919424.0
+      });
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292505814.0
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293847210.0
+      });
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288215960.0
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289720046.0
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292571283.0
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294963157.0
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294957753.0
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291659071.0
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294951115.0
+      });
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292714717.0
+      });
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4289781990.0
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286578816.0
+      });
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294901760.0
+      });
+    },
+    get C113() {
+      return C[113] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290547599.0
+      });
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282477025.0
+      });
+    },
+    get C115() {
+      return C[115] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287317267.0
+      });
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294606962.0
+      });
+    },
+    get C117() {
+      return C[117] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294222944.0
+      });
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281240407.0
+      });
+    },
+    get C119() {
+      return C[119] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294964718.0
+      });
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288696877.0
+      });
+    },
+    get C121() {
+      return C[121] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290822336.0
+      });
+    },
+    get C122() {
+      return C[122] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287090411.0
+      });
+    },
+    get C123() {
+      return C[123] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285160141.0
+      });
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4285563024.0
+      });
+    },
+    get C125() {
+      return C[125] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294966010.0
+      });
+    },
+    get C126() {
+      return C[126] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278255487.0
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282811060.0
+      });
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4291998860.0
+      });
+    },
+    get C129() {
+      return C[129] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278222976.0
+      });
+    },
+    get C130() {
+      return C[130] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292394968.0
+      });
+    },
+    get C131() {
+      return C[131] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294927175.0
+      });
+    },
+    get C132() {
+      return C[132] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 16777215
+      });
+    },
+    get C133() {
+      return C[133] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282441936.0
+      });
+    },
+    get C134() {
+      return C[134] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293821166.0
+      });
+    },
+    get C135() {
+      return C[135] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294303411.0
+      });
+    },
+    get C136() {
+      return C[136] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967295.0
+      });
+    },
+    get C137() {
+      return C[137] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294309365.0
+      });
+    },
+    get C138() {
+      return C[138] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967040.0
+      });
+    },
+    get C139() {
+      return C[139] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4288335154.0
+      });
+    },
+    get C1() {
+      return C[1] = dart.constMap(T.StringL(), T.ColorL(), ["aliceblue", C[2] || CT.C2, "antiquewhite", C[3] || CT.C3, "aqua", C[4] || CT.C4, "aquamarine", C[5] || CT.C5, "azure", C[6] || CT.C6, "beige", C[7] || CT.C7, "bisque", C[8] || CT.C8, "black", C[0] || CT.C0, "blanchedalmond", C[9] || CT.C9, "blue", C[10] || CT.C10, "blueviolet", C[11] || CT.C11, "brown", C[12] || CT.C12, "burlywood", C[13] || CT.C13, "cadetblue", C[14] || CT.C14, "chartreuse", C[15] || CT.C15, "chocolate", C[16] || CT.C16, "coral", C[17] || CT.C17, "cornflowerblue", C[18] || CT.C18, "cornsilk", C[19] || CT.C19, "crimson", C[20] || CT.C20, "cyan", C[4] || CT.C4, "darkblue", C[21] || CT.C21, "darkcyan", C[22] || CT.C22, "darkgoldenrod", C[23] || CT.C23, "darkgray", C[24] || CT.C24, "darkgreen", C[25] || CT.C25, "darkgrey", C[24] || CT.C24, "darkkhaki", C[26] || CT.C26, "darkmagenta", C[27] || CT.C27, "darkolivegreen", C[28] || CT.C28, "darkorange", C[29] || CT.C29, "darkorchid", C[30] || CT.C30, "darkred", C[31] || CT.C31, "darksalmon", C[32] || CT.C32, "darkseagreen", C[33] || CT.C33, "darkslateblue", C[34] || CT.C34, "darkslategray", C[35] || CT.C35, "darkslategrey", C[35] || CT.C35, "darkturquoise", C[36] || CT.C36, "darkviolet", C[37] || CT.C37, "deeppink", C[38] || CT.C38, "deepskyblue", C[39] || CT.C39, "dimgray", C[40] || CT.C40, "dimgrey", C[40] || CT.C40, "dodgerblue", C[41] || CT.C41, "firebrick", C[42] || CT.C42, "floralwhite", C[43] || CT.C43, "forestgreen", C[44] || CT.C44, "fuchsia", C[45] || CT.C45, "gainsboro", C[46] || CT.C46, "ghostwhite", C[47] || CT.C47, "gold", C[48] || CT.C48, "goldenrod", C[49] || CT.C49, "gray", C[50] || CT.C50, "grey", C[50] || CT.C50, "green", C[51] || CT.C51, "greenyellow", C[52] || CT.C52, "honeydew", C[53] || CT.C53, "hotpink", C[54] || CT.C54, "indianred", C[55] || CT.C55, "indigo", C[56] || CT.C56, "ivory", C[57] || CT.C57, "khaki", C[58] || CT.C58, "lavender", C[59] || CT.C59, "lavenderblush", C[60] || CT.C60, "lawngreen", C[61] || CT.C61, "lemonchiffon", C[62] || CT.C62, "lightblue", C[63] || CT.C63, "lightcoral", C[64] || CT.C64, "lightcyan", C[65] || CT.C65, "lightgoldenrodyellow", C[66] || CT.C66, "lightgray", C[67] || CT.C67, "lightgreen", C[68] || CT.C68, "lightgrey", C[67] || CT.C67, "lightpink", C[69] || CT.C69, "lightsalmon", C[70] || CT.C70, "lightseagreen", C[71] || CT.C71, "lightskyblue", C[72] || CT.C72, "lightslategray", C[73] || CT.C73, "lightslategrey", C[73] || CT.C73, "lightsteelblue", C[74] || CT.C74, "lightyellow", C[75] || CT.C75, "lime", C[76] || CT.C76, "limegreen", C[77] || CT.C77, "linen", C[78] || CT.C78, "magenta", C[45] || CT.C45, "maroon", C[79] || CT.C79, "mediumaquamarine", C[80] || CT.C80, "mediumblue", C[81] || CT.C81, "mediumorchid", C[82] || CT.C82, "mediumpurple", C[83] || CT.C83, "mediumseagreen", C[84] || CT.C84, "mediumslateblue", C[85] || CT.C85, "mediumspringgreen", C[86] || CT.C86, "mediumturquoise", C[87] || CT.C87, "mediumvioletred", C[88] || CT.C88, "midnightblue", C[89] || CT.C89, "mintcream", C[90] || CT.C90, "mistyrose", C[91] || CT.C91, "moccasin", C[92] || CT.C92, "navajowhite", C[93] || CT.C93, "navy", C[94] || CT.C94, "oldlace", C[95] || CT.C95, "olive", C[96] || CT.C96, "olivedrab", C[97] || CT.C97, "orange", C[98] || CT.C98, "orangered", C[99] || CT.C99, "orchid", C[100] || CT.C100, "palegoldenrod", C[101] || CT.C101, "palegreen", C[102] || CT.C102, "paleturquoise", C[103] || CT.C103, "palevioletred", C[104] || CT.C104, "papayawhip", C[105] || CT.C105, "peachpuff", C[106] || CT.C106, "peru", C[107] || CT.C107, "pink", C[108] || CT.C108, "plum", C[109] || CT.C109, "powderblue", C[110] || CT.C110, "purple", C[111] || CT.C111, "red", C[112] || CT.C112, "rosybrown", C[113] || CT.C113, "royalblue", C[114] || CT.C114, "saddlebrown", C[115] || CT.C115, "salmon", C[116] || CT.C116, "sandybrown", C[117] || CT.C117, "seagreen", C[118] || CT.C118, "seashell", C[119] || CT.C119, "sienna", C[120] || CT.C120, "silver", C[121] || CT.C121, "skyblue", C[122] || CT.C122, "slateblue", C[123] || CT.C123, "slategray", C[124] || CT.C124, "slategrey", C[124] || CT.C124, "snow", C[125] || CT.C125, "springgreen", C[126] || CT.C126, "steelblue", C[127] || CT.C127, "tan", C[128] || CT.C128, "teal", C[129] || CT.C129, "thistle", C[130] || CT.C130, "tomato", C[131] || CT.C131, "transparent", C[132] || CT.C132, "turquoise", C[133] || CT.C133, "violet", C[134] || CT.C134, "wheat", C[135] || CT.C135, "white", C[136] || CT.C136, "whitesmoke", C[137] || CT.C137, "yellow", C[138] || CT.C138, "yellowgreen", C[139] || CT.C139]);
     }
   }, false);
-  var C = Array(52).fill(void 0);
-  var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/cupertino/text_selection.dart",
-    "package:flutter/src/cupertino/text_selection.dart"
-  ];
-  var clipboardStatus$ = dart.privateName(text_selection$, "_CupertinoTextSelectionControlsToolbar.clipboardStatus");
-  var endpoints$ = dart.privateName(text_selection$, "_CupertinoTextSelectionControlsToolbar.endpoints");
-  var globalEditableRegion$ = dart.privateName(text_selection$, "_CupertinoTextSelectionControlsToolbar.globalEditableRegion");
-  var handleCopy$ = dart.privateName(text_selection$, "_CupertinoTextSelectionControlsToolbar.handleCopy");
-  var handleCut$ = dart.privateName(text_selection$, "_CupertinoTextSelectionControlsToolbar.handleCut");
-  var handlePaste$ = dart.privateName(text_selection$, "_CupertinoTextSelectionControlsToolbar.handlePaste");
-  var handleSelectAll$ = dart.privateName(text_selection$, "_CupertinoTextSelectionControlsToolbar.handleSelectAll");
-  var selectionMidpoint$ = dart.privateName(text_selection$, "_CupertinoTextSelectionControlsToolbar.selectionMidpoint");
-  var textLineHeight$ = dart.privateName(text_selection$, "_CupertinoTextSelectionControlsToolbar.textLineHeight");
-  text_selection$._CupertinoTextSelectionControlsToolbar = class _CupertinoTextSelectionControlsToolbar extends framework.StatefulWidget {
-    get clipboardStatus() {
-      return this[clipboardStatus$];
+  var C = Array(140).fill(void 0);
+  var I = ["file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib/src/svg/colors.dart"];
+  colors.parseColor = function parseColor(colorString) {
+    if (colorString == null || colorString[$isEmpty]) {
+      return null;
     }
-    set clipboardStatus(value) {
-      super.clipboardStatus = value;
+    if (colorString === "none") {
+      return null;
     }
-    get endpoints() {
-      return this[endpoints$];
+    if (colorString[$_get](0) === "#") {
+      if (colorString.length === 4) {
+        let r = colorString[$_get](1);
+        let g = colorString[$_get](2);
+        let b = colorString[$_get](3);
+        colorString = "#" + r + r + g + g + b + b;
+      }
+      let color = core.int.parse(colorString[$substring](1), {radix: 16});
+      if (colorString.length === 7) {
+        return new ui.Color.new(color = (dart.notNull(color) | 4278190080) >>> 0);
+      }
+      if (colorString.length === 9) {
+        return new ui.Color.new(color);
+      }
     }
-    set endpoints(value) {
-      super.endpoints = value;
+    if (colorString[$toLowerCase]()[$startsWith]("rgba")) {
+      let rawColorElements = colorString[$substring](colorString[$indexOf]("(") + 1, colorString[$indexOf](")"))[$split](",")[$map](core.String, dart.fn(rawColor => {
+        if (rawColor == null) dart.nullFailed(I[0], 42, 22, "rawColor");
+        return rawColor[$trim]();
+      }, T.StringToString()))[$toList]();
+      let opacity = dart.nullCheck(numbers.parseDouble(rawColorElements[$removeLast]()));
+      let rgb = rawColorElements[$map](core.int, dart.fn(rawColor => {
+        if (rawColor == null) dart.nullFailed(I[0], 48, 38, "rawColor");
+        return core.int.parse(rawColor);
+      }, T.StringToint()))[$toList]();
+      return new ui.Color.fromRGBO(rgb[$_get](0), rgb[$_get](1), rgb[$_get](2), opacity);
     }
-    get globalEditableRegion() {
-      return this[globalEditableRegion$];
+    if (colorString[$toLowerCase]()[$startsWith]("hsl")) {
+      let values = colorString[$substring](colorString[$indexOf]("(") + 1, colorString[$indexOf](")"))[$split](",")[$map](core.int, dart.fn(rawColor => {
+        if (rawColor == null) dart.nullFailed(I[0], 58, 22, "rawColor");
+        rawColor = rawColor[$trim]();
+        if (rawColor[$endsWith]("%")) {
+          rawColor = rawColor[$substring](0, rawColor.length - 1);
+        }
+        if (rawColor[$contains](".")) {
+          return (dart.nullCheck(numbers.parseDouble(rawColor)) * 2.55)[$round]();
+        }
+        return core.int.parse(rawColor);
+      }, T.StringToint()))[$toList]();
+      let hue = (dart.notNull(values[$_get](0)) / 360)[$modulo](1);
+      let saturation = dart.notNull(values[$_get](1)) / 100;
+      let luminance = dart.notNull(values[$_get](2)) / 100;
+      let alpha = dart.notNull(values[$length]) > 3 ? values[$_get](3) : 255;
+      let rgb = T.JSArrayOfdouble().of([0.0, 0.0, 0.0]);
+      if (hue < 1 / 6) {
+        rgb[$_set](0, 1.0);
+        rgb[$_set](1, hue * 6);
+      } else if (hue < 2 / 6) {
+        rgb[$_set](0, 2 - hue * 6);
+        rgb[$_set](1, 1.0);
+      } else if (hue < 3 / 6) {
+        rgb[$_set](1, 1.0);
+        rgb[$_set](2, hue * 6 - 2);
+      } else if (hue < 4 / 6) {
+        rgb[$_set](1, 4 - hue * 6);
+        rgb[$_set](2, 1.0);
+      } else if (hue < 5 / 6) {
+        rgb[$_set](0, hue * 6 - 4);
+        rgb[$_set](2, 1.0);
+      } else {
+        rgb[$_set](0, 1.0);
+        rgb[$_set](2, 6 - hue * 6);
+      }
+      rgb = rgb[$map](core.double, dart.fn(val => {
+        if (val == null) dart.nullFailed(I[0], 98, 25, "val");
+        return dart.notNull(val) + (1 - saturation) * (0.5 - dart.notNull(val));
+      }, T.doubleTodouble()))[$toList]();
+      if (luminance < 0.5) {
+        rgb = rgb[$map](core.double, dart.fn(val => {
+          if (val == null) dart.nullFailed(I[0], 101, 29, "val");
+          return luminance * 2 * dart.notNull(val);
+        }, T.doubleTodouble()))[$toList]();
+      } else {
+        rgb = rgb[$map](core.double, dart.fn(val => {
+          if (val == null) dart.nullFailed(I[0], 104, 24, "val");
+          return luminance * 2 * (1 - dart.notNull(val)) + 2 * dart.notNull(val) - 1;
+        }, T.doubleTodouble()))[$toList]();
+      }
+      rgb = rgb[$map](core.double, dart.fn(val => {
+        if (val == null) dart.nullFailed(I[0], 108, 27, "val");
+        return dart.notNull(val) * 255;
+      }, T.doubleTodouble()))[$toList]();
+      return new ui.Color.fromARGB(alpha, rgb[$_get](0)[$round](), rgb[$_get](1)[$round](), rgb[$_get](2)[$round]());
     }
-    set globalEditableRegion(value) {
-      super.globalEditableRegion = value;
+    if (colorString[$toLowerCase]()[$startsWith]("rgb")) {
+      let rgb = colorString[$substring](colorString[$indexOf]("(") + 1, colorString[$indexOf](")"))[$split](",")[$map](core.int, dart.fn(rawColor => {
+        if (rawColor == null) dart.nullFailed(I[0], 119, 22, "rawColor");
+        rawColor = rawColor[$trim]();
+        if (rawColor[$endsWith]("%")) {
+          rawColor = rawColor[$substring](0, rawColor.length - 1);
+          return (dart.nullCheck(numbers.parseDouble(rawColor)) * 2.55)[$round]();
+        }
+        return core.int.parse(rawColor);
+      }, T.StringToint()))[$toList]();
+      let a = dart.notNull(rgb[$length]) > 3 ? rgb[$_get](3) : 255;
+      return new ui.Color.fromARGB(a, rgb[$_get](0), rgb[$_get](1), rgb[$_get](2));
     }
-    get handleCopy() {
-      return this[handleCopy$];
+    let namedColor = colors._namedColors[$_get](colorString);
+    if (namedColor != null) {
+      return namedColor;
     }
-    set handleCopy(value) {
-      super.handleCopy = value;
-    }
-    get handleCut() {
-      return this[handleCut$];
-    }
-    set handleCut(value) {
-      super.handleCut = value;
-    }
-    get handlePaste() {
-      return this[handlePaste$];
-    }
-    set handlePaste(value) {
-      super.handlePaste = value;
-    }
-    get handleSelectAll() {
-      return this[handleSelectAll$];
-    }
-    set handleSelectAll(value) {
-      super.handleSelectAll = value;
-    }
-    get selectionMidpoint() {
-      return this[selectionMidpoint$];
-    }
-    set selectionMidpoint(value) {
-      super.selectionMidpoint = value;
-    }
-    get textLineHeight() {
-      return this[textLineHeight$];
-    }
-    set textLineHeight(value) {
-      super.textLineHeight = value;
-    }
-    createState() {
-      return new text_selection$._CupertinoTextSelectionControlsToolbarState.new();
-    }
+    dart.throw(new core.StateError.new("Could not parse \"" + dart.str(colorString) + "\" as a color."));
   };
-  (text_selection$._CupertinoTextSelectionControlsToolbar.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let clipboardStatus = opts && 'clipboardStatus' in opts ? opts.clipboardStatus : null;
-    let endpoints = opts && 'endpoints' in opts ? opts.endpoints : null;
-    if (endpoints == null) dart.nullFailed(I[0], 30, 19, "endpoints");
-    let globalEditableRegion = opts && 'globalEditableRegion' in opts ? opts.globalEditableRegion : null;
-    if (globalEditableRegion == null) dart.nullFailed(I[0], 31, 19, "globalEditableRegion");
-    let handleCopy = opts && 'handleCopy' in opts ? opts.handleCopy : null;
-    let handleCut = opts && 'handleCut' in opts ? opts.handleCut : null;
-    let handlePaste = opts && 'handlePaste' in opts ? opts.handlePaste : null;
-    let handleSelectAll = opts && 'handleSelectAll' in opts ? opts.handleSelectAll : null;
-    let selectionMidpoint = opts && 'selectionMidpoint' in opts ? opts.selectionMidpoint : null;
-    if (selectionMidpoint == null) dart.nullFailed(I[0], 36, 19, "selectionMidpoint");
-    let textLineHeight = opts && 'textLineHeight' in opts ? opts.textLineHeight : null;
-    if (textLineHeight == null) dart.nullFailed(I[0], 37, 19, "textLineHeight");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[clipboardStatus$] = clipboardStatus;
-    this[endpoints$] = endpoints;
-    this[globalEditableRegion$] = globalEditableRegion;
-    this[handleCopy$] = handleCopy;
-    this[handleCut$] = handleCut;
-    this[handlePaste$] = handlePaste;
-    this[handleSelectAll$] = handleSelectAll;
-    this[selectionMidpoint$] = selectionMidpoint;
-    this[textLineHeight$] = textLineHeight;
-    text_selection$._CupertinoTextSelectionControlsToolbar.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = text_selection$._CupertinoTextSelectionControlsToolbar.prototype;
-  dart.addTypeTests(text_selection$._CupertinoTextSelectionControlsToolbar);
-  dart.addTypeCaches(text_selection$._CupertinoTextSelectionControlsToolbar);
-  dart.setMethodSignature(text_selection$._CupertinoTextSelectionControlsToolbar, () => ({
-    __proto__: dart.getMethods(text_selection$._CupertinoTextSelectionControlsToolbar.__proto__),
-    createState: dart.fnType(text_selection$._CupertinoTextSelectionControlsToolbarState, [])
-  }));
-  dart.setLibraryUri(text_selection$._CupertinoTextSelectionControlsToolbar, I[1]);
-  dart.setFieldSignature(text_selection$._CupertinoTextSelectionControlsToolbar, () => ({
-    __proto__: dart.getFields(text_selection$._CupertinoTextSelectionControlsToolbar.__proto__),
-    clipboardStatus: dart.finalFieldType(dart.nullable(text_selection.ClipboardStatusNotifier)),
-    endpoints: dart.finalFieldType(core.List$(editable.TextSelectionPoint)),
-    globalEditableRegion: dart.finalFieldType(ui.Rect),
-    handleCopy: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
-    handleCut: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
-    handlePaste: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
-    handleSelectAll: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
-    selectionMidpoint: dart.finalFieldType(ui.Offset),
-    textLineHeight: dart.finalFieldType(core.double)
-  }));
-  var _clipboardStatus = dart.privateName(text_selection$, "_clipboardStatus");
-  var _onChangedClipboardStatus = dart.privateName(text_selection$, "_onChangedClipboardStatus");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  var Widget__location = dart.privateName(framework, "Widget._location");
-  var Widget_key = dart.privateName(framework, "Widget.key");
-  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
-  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
-  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
-  text_selection$._CupertinoTextSelectionControlsToolbarState = class _CupertinoTextSelectionControlsToolbarState extends framework.State$(text_selection$._CupertinoTextSelectionControlsToolbar) {
-    [_onChangedClipboardStatus]() {
-      this.setState(dart.fn(() => {
-      }, T.VoidTovoid()));
-    }
-    initState() {
-      let t0;
-      super.initState();
-      if (this.widget.handlePaste != null) {
-        this[_clipboardStatus] = (t0 = this.widget.clipboardStatus, t0 == null ? new text_selection.ClipboardStatusNotifier.new() : t0);
-        dart.nullCheck(this[_clipboardStatus]).addListener(dart.bind(this, _onChangedClipboardStatus));
-        dart.nullCheck(this[_clipboardStatus]).update();
-      }
-    }
-    didUpdateWidget(oldWidget) {
-      let t0;
-      text_selection$._CupertinoTextSelectionControlsToolbar.as(oldWidget);
-      if (oldWidget == null) dart.nullFailed(I[0], 74, 63, "oldWidget");
-      super.didUpdateWidget(oldWidget);
-      if (!dart.equals(oldWidget.clipboardStatus, this.widget.clipboardStatus)) {
-        if (this[_clipboardStatus] != null) {
-          dart.nullCheck(this[_clipboardStatus]).removeListener(dart.bind(this, _onChangedClipboardStatus));
-          dart.nullCheck(this[_clipboardStatus]).dispose();
-        }
-        this[_clipboardStatus] = (t0 = this.widget.clipboardStatus, t0 == null ? new text_selection.ClipboardStatusNotifier.new() : t0);
-        dart.nullCheck(this[_clipboardStatus]).addListener(dart.bind(this, _onChangedClipboardStatus));
-        if (this.widget.handlePaste != null) {
-          dart.nullCheck(this[_clipboardStatus]).update();
-        }
-      }
-    }
-    dispose() {
-      super.dispose();
-      if (this[_clipboardStatus] != null && !dart.test(dart.nullCheck(this[_clipboardStatus]).disposed)) {
-        dart.nullCheck(this[_clipboardStatus]).removeListener(dart.bind(this, _onChangedClipboardStatus));
-        if (this.widget.clipboardStatus == null) {
-          dart.nullCheck(this[_clipboardStatus]).dispose();
-        }
-      }
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 103, 29, "context");
-      if (this.widget.handlePaste != null && dart.nullCheck(this[_clipboardStatus]).value == text_selection.ClipboardStatus.unknown) {
-        return C[0] || CT.C0;
-      }
-      if (!dart.test(debug.debugCheckHasMediaQuery(context))) dart.assertFailed(null, I[0], 110, 12, "debugCheckHasMediaQuery(context)");
-      let mediaQuery = media_query.MediaQuery.of(context);
-      let anchorX = (dart.notNull(this.widget.selectionMidpoint.dx) + dart.notNull(this.widget.globalEditableRegion.left))[$clamp](26 + dart.notNull(mediaQuery.padding.left), dart.notNull(mediaQuery.size.width) - dart.notNull(mediaQuery.padding.right) - 26);
-      let anchorAbove = new ui.Offset.new(anchorX, dart.notNull(this.widget.endpoints[$first].point.dy) - dart.notNull(this.widget.textLineHeight) + dart.notNull(this.widget.globalEditableRegion.top));
-      let anchorBelow = new ui.Offset.new(anchorX, dart.notNull(this.widget.endpoints[$last].point.dy) + dart.notNull(this.widget.globalEditableRegion.top));
-      let items = T.JSArrayOfWidget().of([]);
-      let localizations = localizations$.CupertinoLocalizations.of(context);
-      let onePhysicalPixelVerticalDivider = new basic.SizedBox.new({width: 1.0 / dart.notNull(media_query.MediaQuery.of(context).devicePixelRatio), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
-      function addToolbarButton(text, onPressed) {
-        if (text == null) dart.nullFailed(I[0], 140, 14, "text");
-        if (onPressed == null) dart.nullFailed(I[0], 141, 20, "onPressed");
-        if (dart.test(items[$isNotEmpty])) {
-          items[$add](onePhysicalPixelVerticalDivider);
-        }
-        items[$add](new text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.text({onPressed: onPressed, text: text, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}));
-      }
-      dart.fn(addToolbarButton, T.StringAndFnTovoid());
-      if (this.widget.handleCut != null) {
-        addToolbarButton(localizations.cutButtonLabel, dart.nullCheck(this.widget.handleCut));
-      }
-      if (this.widget.handleCopy != null) {
-        addToolbarButton(localizations.copyButtonLabel, dart.nullCheck(this.widget.handleCopy));
-      }
-      if (this.widget.handlePaste != null && dart.nullCheck(this[_clipboardStatus]).value == text_selection.ClipboardStatus.pasteable) {
-        addToolbarButton(localizations.pasteButtonLabel, dart.nullCheck(this.widget.handlePaste));
-      }
-      if (this.widget.handleSelectAll != null) {
-        addToolbarButton(localizations.selectAllButtonLabel, dart.nullCheck(this.widget.handleSelectAll));
-      }
-      if (dart.test(items[$isEmpty])) {
-        return C[12] || CT.C12;
-      }
-      return new text_selection_toolbar.CupertinoTextSelectionToolbar.new({anchorAbove: anchorAbove, anchorBelow: anchorBelow, children: items, $creationLocationd_0dea112b090073317d4: C[17] || CT.C17});
-    }
-  };
-  (text_selection$._CupertinoTextSelectionControlsToolbarState.new = function() {
-    this[_clipboardStatus] = null;
-    text_selection$._CupertinoTextSelectionControlsToolbarState.__proto__.new.call(this);
-    ;
-  }).prototype = text_selection$._CupertinoTextSelectionControlsToolbarState.prototype;
-  dart.addTypeTests(text_selection$._CupertinoTextSelectionControlsToolbarState);
-  dart.addTypeCaches(text_selection$._CupertinoTextSelectionControlsToolbarState);
-  dart.setMethodSignature(text_selection$._CupertinoTextSelectionControlsToolbarState, () => ({
-    __proto__: dart.getMethods(text_selection$._CupertinoTextSelectionControlsToolbarState.__proto__),
-    [_onChangedClipboardStatus]: dart.fnType(dart.void, []),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
-  }));
-  dart.setLibraryUri(text_selection$._CupertinoTextSelectionControlsToolbarState, I[1]);
-  dart.setFieldSignature(text_selection$._CupertinoTextSelectionControlsToolbarState, () => ({
-    __proto__: dart.getFields(text_selection$._CupertinoTextSelectionControlsToolbarState.__proto__),
-    [_clipboardStatus]: dart.fieldType(dart.nullable(text_selection.ClipboardStatusNotifier))
-  }));
-  var color$ = dart.privateName(text_selection$, "_TextSelectionHandlePainter.color");
-  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
-  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
-  text_selection$._TextSelectionHandlePainter = class _TextSelectionHandlePainter extends custom_paint.CustomPainter {
-    get color() {
-      return this[color$];
-    }
-    set color(value) {
-      super.color = value;
-    }
-    paint(canvas, size) {
-      let t0, t0$;
-      if (canvas == null) dart.nullFailed(I[0], 187, 21, "canvas");
-      if (size == null) dart.nullFailed(I[0], 187, 34, "size");
-      let paint = (t0 = ui.Paint.new(), (() => {
-        t0.color = this.color;
-        return t0;
-      })());
-      let circle = new ui.Rect.fromCircle({center: C[22] || CT.C22, radius: 6});
-      let line = new ui.Rect.fromPoints(C[23] || CT.C23, new ui.Offset.new(6 + 1, size.height));
-      let path = (t0$ = ui.Path.new(), (() => {
-        t0$.addOval(circle);
-        t0$.addRect(line);
-        return t0$;
-      })());
-      canvas.drawPath(path, paint);
-    }
-    shouldRepaint(oldPainter) {
-      text_selection$._TextSelectionHandlePainter.as(oldPainter);
-      if (oldPainter == null) dart.nullFailed(I[0], 209, 50, "oldPainter");
-      return !dart.equals(this.color, oldPainter.color);
-    }
-  };
-  (text_selection$._TextSelectionHandlePainter.new = function(color) {
-    if (color == null) dart.nullFailed(I[0], 182, 42, "color");
-    this[color$] = color;
-    text_selection$._TextSelectionHandlePainter.__proto__.new.call(this);
-    ;
-  }).prototype = text_selection$._TextSelectionHandlePainter.prototype;
-  dart.addTypeTests(text_selection$._TextSelectionHandlePainter);
-  dart.addTypeCaches(text_selection$._TextSelectionHandlePainter);
-  dart.setMethodSignature(text_selection$._TextSelectionHandlePainter, () => ({
-    __proto__: dart.getMethods(text_selection$._TextSelectionHandlePainter.__proto__),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Size]),
-    shouldRepaint: dart.fnType(core.bool, [dart.nullable(core.Object)])
-  }));
-  dart.setLibraryUri(text_selection$._TextSelectionHandlePainter, I[1]);
-  dart.setFieldSignature(text_selection$._TextSelectionHandlePainter, () => ({
-    __proto__: dart.getFields(text_selection$._TextSelectionHandlePainter.__proto__),
-    color: dart.finalFieldType(ui.Color)
-  }));
-  var _name = dart.privateName(text_selection, "_name");
-  text_selection$.CupertinoTextSelectionControls = class CupertinoTextSelectionControls extends text_selection.TextSelectionControls {
-    getHandleSize(textLineHeight) {
-      if (textLineHeight == null) dart.nullFailed(I[0], 216, 29, "textLineHeight");
-      return new ui.Size.new(6 * 2, dart.notNull(textLineHeight) + 6 * 2 - 1.5);
-    }
-    buildToolbar(context, globalEditableRegion, textLineHeight, selectionMidpoint, endpoints, delegate, clipboardStatus, lastSecondaryTapDownPosition) {
-      if (context == null) dart.nullFailed(I[0], 226, 18, "context");
-      if (globalEditableRegion == null) dart.nullFailed(I[0], 227, 10, "globalEditableRegion");
-      if (textLineHeight == null) dart.nullFailed(I[0], 228, 12, "textLineHeight");
-      if (selectionMidpoint == null) dart.nullFailed(I[0], 229, 12, "selectionMidpoint");
-      if (endpoints == null) dart.nullFailed(I[0], 230, 30, "endpoints");
-      if (delegate == null) dart.nullFailed(I[0], 231, 27, "delegate");
-      if (clipboardStatus == null) dart.nullFailed(I[0], 232, 29, "clipboardStatus");
-      return new text_selection$._CupertinoTextSelectionControlsToolbar.new({clipboardStatus: clipboardStatus, endpoints: endpoints, globalEditableRegion: globalEditableRegion, handleCut: dart.test(this.canCut(delegate)) ? dart.fn(() => this.handleCut(delegate), T.VoidTovoid()) : null, handleCopy: dart.test(this.canCopy(delegate)) ? dart.fn(() => this.handleCopy(delegate, clipboardStatus), T.VoidTovoid()) : null, handlePaste: dart.test(this.canPaste(delegate)) ? dart.fn(() => this.handlePaste(delegate), T.VoidTovoid()) : null, handleSelectAll: dart.test(this.canSelectAll(delegate)) ? dart.fn(() => this.handleSelectAll(delegate), T.VoidTovoid()) : null, selectionMidpoint: selectionMidpoint, textLineHeight: textLineHeight, $creationLocationd_0dea112b090073317d4: C[24] || CT.C24});
-    }
-    buildHandle(context, type, textLineHeight) {
-      let t0;
-      if (context == null) dart.nullFailed(I[0], 250, 35, "context");
-      if (type == null) dart.nullFailed(I[0], 250, 68, "type");
-      if (textLineHeight == null) dart.nullFailed(I[0], 250, 81, "textLineHeight");
-      let desiredSize = this.getHandleSize(textLineHeight);
-      let handle = new basic.SizedBox.fromSize({size: desiredSize, child: new basic.CustomPaint.new({painter: new text_selection$._TextSelectionHandlePainter.new(theme.CupertinoTheme.of(context).primaryColor), $creationLocationd_0dea112b090073317d4: C[35] || CT.C35}), $creationLocationd_0dea112b090073317d4: C[38] || CT.C38});
-      switch (type) {
-        case C[42] || CT.C42:
-        {
-          return handle;
-        }
-        case C[47] || CT.C47:
-        {
-          return new basic.Transform.new({transform: (t0 = vector_math_64.Matrix4.identity(), (() => {
-              t0.translate(dart.notNull(desiredSize.width) / 2, dart.notNull(desiredSize.height) / 2);
-              t0.rotateZ(3.141592653589793);
-              t0.translate(-dart.notNull(desiredSize.width) / 2, -dart.notNull(desiredSize.height) / 2);
-              return t0;
-            })()), child: handle, $creationLocationd_0dea112b090073317d4: C[43] || CT.C43});
-        }
-        case C[51] || CT.C51:
-        {
-          return C[48] || CT.C48;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
-    }
-    getHandleAnchor(type, textLineHeight) {
-      if (type == null) dart.nullFailed(I[0], 287, 50, "type");
-      if (textLineHeight == null) dart.nullFailed(I[0], 287, 63, "textLineHeight");
-      let handleSize = this.getHandleSize(textLineHeight);
-      switch (type) {
-        case C[42] || CT.C42:
-        {
-          return new ui.Offset.new(dart.notNull(handleSize.width) / 2, handleSize.height);
-        }
-        case C[47] || CT.C47:
-        {
-          return new ui.Offset.new(dart.notNull(handleSize.width) / 2, dart.notNull(handleSize.height) - 2 * 6 + 1.5);
-        }
-        case C[51] || CT.C51:
-        {
-          return new ui.Offset.new(dart.notNull(handleSize.width) / 2, dart.notNull(textLineHeight) + (dart.notNull(handleSize.height) - dart.notNull(textLineHeight)) / 2);
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
-    }
-  };
-  (text_selection$.CupertinoTextSelectionControls.new = function() {
-    ;
-  }).prototype = text_selection$.CupertinoTextSelectionControls.prototype;
-  dart.addTypeTests(text_selection$.CupertinoTextSelectionControls);
-  dart.addTypeCaches(text_selection$.CupertinoTextSelectionControls);
-  dart.setMethodSignature(text_selection$.CupertinoTextSelectionControls, () => ({
-    __proto__: dart.getMethods(text_selection$.CupertinoTextSelectionControls.__proto__),
-    getHandleSize: dart.fnType(ui.Size, [core.double]),
-    buildToolbar: dart.fnType(framework.Widget, [framework.BuildContext, ui.Rect, core.double, ui.Offset, core.List$(editable.TextSelectionPoint), text_input.TextSelectionDelegate, text_selection.ClipboardStatusNotifier, dart.nullable(ui.Offset)]),
-    buildHandle: dart.fnType(framework.Widget, [framework.BuildContext, text_selection.TextSelectionHandleType, core.double]),
-    getHandleAnchor: dart.fnType(ui.Offset, [text_selection.TextSelectionHandleType, core.double])
-  }));
-  dart.setLibraryUri(text_selection$.CupertinoTextSelectionControls, I[1]);
-  dart.defineLazy(text_selection$, {
-    /*text_selection$._kSelectionHandleOverlap*/get _kSelectionHandleOverlap() {
-      return 1.5;
+  var Color_value = dart.privateName(ui, "Color.value");
+  dart.defineLazy(colors, {
+    /*colors.colorBlack*/get colorBlack() {
+      return C[0] || CT.C0;
     },
-    /*text_selection$._kSelectionHandleRadius*/get _kSelectionHandleRadius() {
-      return 6;
-    },
-    /*text_selection$._kArrowScreenPadding*/get _kArrowScreenPadding() {
-      return 26;
-    },
-    /*text_selection$.cupertinoTextSelectionControls*/get cupertinoTextSelectionControls() {
-      return new text_selection$.CupertinoTextSelectionControls.new();
+    /*colors._namedColors*/get _namedColors() {
+      return C[1] || CT.C1;
     }
   }, false);
-  dart.trackLibraries("packages/flutter/src/cupertino/text_selection.dart", {
-    "package:flutter/src/cupertino/text_selection.dart": text_selection$
+  dart.trackLibraries("packages/flutter_svg/src/svg/colors.dart", {
+    "package:flutter_svg/src/svg/colors.dart": colors
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["text_selection.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/cupertino/text_selection.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["colors.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/flutter_svg/src/svg/colors.dart.lib.js"}');
   // Exports:
   return {
-    src__cupertino__text_selection: text_selection$
+    src__svg__colors: colors
   };
 }));
 
-//# sourceMappingURL=text_selection.dart.lib.js.map
+//# sourceMappingURL=colors.dart.lib.js.map

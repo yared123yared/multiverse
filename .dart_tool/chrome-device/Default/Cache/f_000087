@@ -1,246 +1,297 @@
-define(['dart_sdk', 'packages/flutter/src/gestures/events.dart'], (function load__packages__flutter__src__gestures__resampler_dart(dart_sdk, packages__flutter__src__gestures__events$46dart) {
+define(['dart_sdk', 'packages/typed_data/src/typed_buffer.dart'], (function load__packages__flutter__src__foundation__serialization_dart(dart_sdk, packages__typed_data__src__typed_buffer$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const collection = dart_sdk.collection;
-  const ui = dart_sdk.ui;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _internal = dart_sdk._internal;
+  const typed_data = dart_sdk.typed_data;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
-  var resampler = Object.create(dart.library);
-  var $toDouble = dartx.toDouble;
-  var $iterator = dartx.iterator;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $first = dartx.first;
+  const typed_buffer = packages__typed_data__src__typed_buffer$46dart.src__typed_buffer;
+  var serialization = Object.create(dart.library);
+  var $buffer = dartx.buffer;
+  var $asUint8List = dartx.asUint8List;
+  var $setUint16 = dartx.setUint16;
+  var $setUint32 = dartx.setUint32;
+  var $setInt32 = dartx.setInt32;
+  var $setInt64 = dartx.setInt64;
+  var $setFloat64 = dartx.setFloat64;
+  var $offsetInBytes = dartx.offsetInBytes;
+  var $length = dartx.length;
+  var $modulo = dartx['%'];
+  var $asByteData = dartx.asByteData;
+  var $lengthInBytes = dartx.lengthInBytes;
+  var $getUint8 = dartx.getUint8;
+  var $getUint16 = dartx.getUint16;
+  var $getUint32 = dartx.getUint32;
+  var $getInt32 = dartx.getInt32;
+  var $getInt64 = dartx.getInt64;
+  var $getFloat64 = dartx.getFloat64;
+  var $asInt32List = dartx.asInt32List;
+  var $asInt64List = dartx.asInt64List;
+  var $asFloat64List = dartx.asFloat64List;
   dart._checkModuleNullSafetyMode(false);
-  var T = {
-    ListQueueOfPointerEvent: () => (T.ListQueueOfPointerEvent = dart.constFn(collection.ListQueue$(events.PointerEvent)))()
-  };
   const CT = Object.create({
     _: () => (C, CT)
   });
   var I = [
-    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/gestures/resampler.dart",
-    "package:flutter/src/gestures/resampler.dart"
+    "file:///C:/src/flutter/flutter/packages/flutter/lib/src/foundation/serialization.dart",
+    "package:flutter/src/foundation/serialization.dart"
   ];
-  var _queuedEvents = dart.privateName(resampler, "_queuedEvents");
-  var _last = dart.privateName(resampler, "_last");
-  var _next = dart.privateName(resampler, "_next");
-  var _position = dart.privateName(resampler, "_position");
-  var _isTracked = dart.privateName(resampler, "_isTracked");
-  var _isDown = dart.privateName(resampler, "_isDown");
-  var _pointerIdentifier = dart.privateName(resampler, "_pointerIdentifier");
-  var _toHoverEvent = dart.privateName(resampler, "_toHoverEvent");
-  var _toMoveEvent = dart.privateName(resampler, "_toMoveEvent");
-  var _toMoveOrHoverEvent = dart.privateName(resampler, "_toMoveOrHoverEvent");
-  var _positionAt = dart.privateName(resampler, "_positionAt");
-  var _processPointerEvents = dart.privateName(resampler, "_processPointerEvents");
-  var _dequeueAndSampleNonHoverOrMovePointerEventsUntil = dart.privateName(resampler, "_dequeueAndSampleNonHoverOrMovePointerEventsUntil");
-  var _samplePointerPosition = dart.privateName(resampler, "_samplePointerPosition");
-  resampler.PointerEventResampler = class PointerEventResampler extends core.Object {
-    [_toHoverEvent](event, position, delta, timeStamp) {
-      if (event == null) dart.nullFailed(I[0], 47, 18, "event");
-      if (position == null) dart.nullFailed(I[0], 48, 12, "position");
-      if (delta == null) dart.nullFailed(I[0], 49, 12, "delta");
-      if (timeStamp == null) dart.nullFailed(I[0], 50, 14, "timeStamp");
-      return new events.PointerHoverEvent.new({timeStamp: timeStamp, kind: event.kind, device: event.device, position: position, delta: delta, buttons: event.buttons, obscured: event.obscured, pressureMin: event.pressureMin, pressureMax: event.pressureMax, distance: event.distance, distanceMax: event.distanceMax, size: event.size, radiusMajor: event.radiusMajor, radiusMinor: event.radiusMinor, radiusMin: event.radiusMin, radiusMax: event.radiusMax, orientation: event.orientation, tilt: event.tilt, synthesized: event.synthesized, embedderId: event.embedderId});
+  var __WriteBuffer__eightBytesAsList = dart.privateName(serialization, "_#WriteBuffer#_eightBytesAsList");
+  var __WriteBuffer__eightBytesAsList_isSet = dart.privateName(serialization, "_#WriteBuffer#_eightBytesAsList#isSet");
+  var _buffer = dart.privateName(serialization, "_buffer");
+  var _eightBytes = dart.privateName(serialization, "_eightBytes");
+  var _eightBytesAsList = dart.privateName(serialization, "_eightBytesAsList");
+  var _alignTo = dart.privateName(serialization, "_alignTo");
+  serialization.WriteBuffer = class WriteBuffer extends core.Object {
+    get [_eightBytesAsList]() {
+      let t0;
+      return dart.test(this[__WriteBuffer__eightBytesAsList_isSet]) ? (t0 = this[__WriteBuffer__eightBytesAsList], t0) : dart.throw(new _internal.LateError.fieldNI("_eightBytesAsList"));
     }
-    [_toMoveEvent](event, position, delta, pointerIdentifier, timeStamp) {
-      if (event == null) dart.nullFailed(I[0], 77, 18, "event");
-      if (position == null) dart.nullFailed(I[0], 78, 12, "position");
-      if (delta == null) dart.nullFailed(I[0], 79, 12, "delta");
-      if (pointerIdentifier == null) dart.nullFailed(I[0], 80, 9, "pointerIdentifier");
-      if (timeStamp == null) dart.nullFailed(I[0], 81, 14, "timeStamp");
-      return new events.PointerMoveEvent.new({timeStamp: timeStamp, pointer: pointerIdentifier, kind: event.kind, device: event.device, position: position, delta: delta, buttons: event.buttons, obscured: event.obscured, pressure: event.pressure, pressureMin: event.pressureMin, pressureMax: event.pressureMax, distanceMax: event.distanceMax, size: event.size, radiusMajor: event.radiusMajor, radiusMinor: event.radiusMinor, radiusMin: event.radiusMin, radiusMax: event.radiusMax, orientation: event.orientation, tilt: event.tilt, platformData: event.platformData, synthesized: event.synthesized, embedderId: event.embedderId});
+    set [_eightBytesAsList](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 25, 18, "null");
+      this[__WriteBuffer__eightBytesAsList_isSet] = true;
+      this[__WriteBuffer__eightBytesAsList] = t0;
     }
-    [_toMoveOrHoverEvent](event, position, delta, pointerIdentifier, timeStamp, isDown) {
-      if (event == null) dart.nullFailed(I[0], 110, 18, "event");
-      if (position == null) dart.nullFailed(I[0], 111, 12, "position");
-      if (delta == null) dart.nullFailed(I[0], 112, 12, "delta");
-      if (pointerIdentifier == null) dart.nullFailed(I[0], 113, 9, "pointerIdentifier");
-      if (timeStamp == null) dart.nullFailed(I[0], 114, 14, "timeStamp");
-      if (isDown == null) dart.nullFailed(I[0], 115, 10, "isDown");
-      return dart.test(isDown) ? this[_toMoveEvent](event, position, delta, pointerIdentifier, timeStamp) : this[_toHoverEvent](event, position, delta, timeStamp);
+    putUint8(byte) {
+      if (byte == null) dart.nullFailed(I[0], 28, 21, "byte");
+      dart.nullCheck(this[_buffer]).add(byte);
     }
-    [_positionAt](sampleTime) {
-      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5, t0$6, t0$7, t0$8, t0$9;
-      if (sampleTime == null) dart.nullFailed(I[0], 121, 31, "sampleTime");
-      let x = (t0$ = (t0 = this[_next], t0 == null ? null : t0.position.dx), t0$ == null ? 0.0 : t0$);
-      let y = (t0$1 = (t0$0 = this[_next], t0$0 == null ? null : t0$0.position.dy), t0$1 == null ? 0.0 : t0$1);
-      let nextTimeStamp = (t0$3 = (t0$2 = this[_next], t0$2 == null ? null : t0$2.timeStamp), t0$3 == null ? core.Duration.zero : t0$3);
-      let lastTimeStamp = (t0$5 = (t0$4 = this[_last], t0$4 == null ? null : t0$4.timeStamp), t0$5 == null ? core.Duration.zero : t0$5);
-      if (dart.test(nextTimeStamp['>'](sampleTime)) && dart.test(nextTimeStamp['>'](lastTimeStamp))) {
-        let interval = nextTimeStamp['-'](lastTimeStamp).inMicroseconds[$toDouble]();
-        let scalar = sampleTime['-'](lastTimeStamp).inMicroseconds[$toDouble]() / interval;
-        let lastX = (t0$7 = (t0$6 = this[_last], t0$6 == null ? null : t0$6.position.dx), t0$7 == null ? 0.0 : t0$7);
-        let lastY = (t0$9 = (t0$8 = this[_last], t0$8 == null ? null : t0$8.position.dy), t0$9 == null ? 0.0 : t0$9);
-        x = dart.notNull(lastX) + (dart.notNull(x) - dart.notNull(lastX)) * scalar;
-        y = dart.notNull(lastY) + (dart.notNull(y) - dart.notNull(lastY)) * scalar;
-      }
-      return new ui.Offset.new(x, y);
+    putUint16(value, opts) {
+      let t1;
+      if (value == null) dart.nullFailed(I[0], 33, 22, "value");
+      let endian = opts && 'endian' in opts ? opts.endian : null;
+      this[_eightBytes][$setUint16](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
+      dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 2);
     }
-    [_processPointerEvents](sampleTime) {
-      let t0, t0$;
-      if (sampleTime == null) dart.nullFailed(I[0], 142, 39, "sampleTime");
-      let it = this[_queuedEvents][$iterator];
-      while (dart.test(it.moveNext())) {
-        let event = it.current;
-        if (dart.test(event.timeStamp['<='](sampleTime)) || this[_last] == null) {
-          this[_last] = event;
-          this[_next] = event;
-          continue;
-        }
-        let nextTimeStamp = (t0$ = (t0 = this[_next], t0 == null ? null : t0.timeStamp), t0$ == null ? core.Duration.zero : t0$);
-        if (dart.test(nextTimeStamp['<'](sampleTime))) {
-          this[_next] = event;
-          break;
-        }
-      }
+    putUint32(value, opts) {
+      let t1;
+      if (value == null) dart.nullFailed(I[0], 39, 22, "value");
+      let endian = opts && 'endian' in opts ? opts.endian : null;
+      this[_eightBytes][$setUint32](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
+      dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 4);
     }
-    [_dequeueAndSampleNonHoverOrMovePointerEventsUntil](sampleTime, nextSampleTime, callback) {
-      if (sampleTime == null) dart.nullFailed(I[0], 166, 16, "sampleTime");
-      if (nextSampleTime == null) dart.nullFailed(I[0], 167, 16, "nextSampleTime");
-      if (callback == null) dart.nullFailed(I[0], 168, 27, "callback");
-      let endTime = sampleTime;
-      let it = this[_queuedEvents][$iterator];
-      while (dart.test(it.moveNext())) {
-        let event = it.current;
-        if (dart.test(event.timeStamp['>'](sampleTime))) {
-          if (dart.test(event.timeStamp['>='](nextSampleTime))) {
-            break;
-          }
-          if (events.PointerUpEvent.is(event) || events.PointerRemovedEvent.is(event)) {
-            endTime = event.timeStamp;
-            continue;
-          }
-          if (!events.PointerMoveEvent.is(event) && !events.PointerHoverEvent.is(event)) {
-            break;
-          }
-        }
-      }
-      while (dart.test(this[_queuedEvents][$isNotEmpty])) {
-        let event = this[_queuedEvents][$first];
-        if (dart.test(event.timeStamp['>'](endTime))) {
-          break;
-        }
-        let wasTracked = this[_isTracked];
-        let wasDown = this[_isDown];
-        this[_isTracked] = !events.PointerRemovedEvent.is(event);
-        this[_isDown] = event.down;
-        let position = this[_positionAt](sampleTime);
-        if (dart.test(this[_isTracked]) && !dart.test(wasTracked)) {
-          this[_position] = position;
-        }
-        let pointerIdentifier = event.pointer;
-        if (!(!dart.test(wasDown) || this[_pointerIdentifier] == pointerIdentifier)) dart.assertFailed(null, I[0], 226, 14, "!wasDown || _pointerIdentifier == pointerIdentifier");
-        this[_pointerIdentifier] = pointerIdentifier;
-        if (!events.PointerMoveEvent.is(event) && !events.PointerHoverEvent.is(event)) {
-          if (!dart.equals(position, this[_position])) {
-            let delta = position['-'](this[_position]);
-            callback(this[_toMoveOrHoverEvent](event, position, delta, this[_pointerIdentifier], sampleTime, wasDown));
-            this[_position] = position;
-          }
-          callback(event.copyWith({position: position, delta: ui.Offset.zero, pointer: pointerIdentifier, timeStamp: sampleTime}));
-        }
-        this[_queuedEvents].removeFirst();
+    putInt32(value, opts) {
+      let t1;
+      if (value == null) dart.nullFailed(I[0], 45, 21, "value");
+      let endian = opts && 'endian' in opts ? opts.endian : null;
+      this[_eightBytes][$setInt32](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
+      dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 4);
+    }
+    putInt64(value, opts) {
+      let t1;
+      if (value == null) dart.nullFailed(I[0], 51, 21, "value");
+      let endian = opts && 'endian' in opts ? opts.endian : null;
+      this[_eightBytes][$setInt64](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
+      dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList], 0, 8);
+    }
+    putFloat64(value, opts) {
+      let t1;
+      if (value == null) dart.nullFailed(I[0], 57, 26, "value");
+      let endian = opts && 'endian' in opts ? opts.endian : null;
+      this[_alignTo](8);
+      this[_eightBytes][$setFloat64](0, value, (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
+      dart.nullCheck(this[_buffer]).addAll(this[_eightBytesAsList]);
+    }
+    putUint8List(list) {
+      if (list == null) dart.nullFailed(I[0], 64, 31, "list");
+      dart.nullCheck(this[_buffer]).addAll(list);
+    }
+    putInt32List(list) {
+      if (list == null) dart.nullFailed(I[0], 69, 31, "list");
+      this[_alignTo](4);
+      dart.nullCheck(this[_buffer]).addAll(list[$buffer][$asUint8List](list[$offsetInBytes], 4 * dart.notNull(list[$length])));
+    }
+    putInt64List(list) {
+      if (list == null) dart.nullFailed(I[0], 75, 31, "list");
+      this[_alignTo](8);
+      dart.nullCheck(this[_buffer]).addAll(list[$buffer][$asUint8List](list[$offsetInBytes], 8 * dart.notNull(list[$length])));
+    }
+    putFloat64List(list) {
+      if (list == null) dart.nullFailed(I[0], 81, 35, "list");
+      this[_alignTo](8);
+      dart.nullCheck(this[_buffer]).addAll(list[$buffer][$asUint8List](list[$offsetInBytes], 8 * dart.notNull(list[$length])));
+    }
+    [_alignTo](alignment) {
+      if (alignment == null) dart.nullFailed(I[0], 86, 21, "alignment");
+      let mod = dart.nullCheck(this[_buffer]).length[$modulo](alignment);
+      if (mod !== 0) {
+        for (let i = 0; i < dart.notNull(alignment) - mod; i = i + 1)
+          dart.nullCheck(this[_buffer]).add(0);
       }
     }
-    [_samplePointerPosition](sampleTime, callback) {
-      if (sampleTime == null) dart.nullFailed(I[0], 254, 16, "sampleTime");
-      if (callback == null) dart.nullFailed(I[0], 255, 27, "callback");
-      let position = this[_positionAt](sampleTime);
-      let next = this[_next];
-      if (!dart.equals(position, this[_position]) && next != null) {
-        let delta = position['-'](this[_position]);
-        callback(this[_toMoveOrHoverEvent](next, position, delta, this[_pointerIdentifier], sampleTime, this[_isDown]));
-        this[_position] = position;
-      }
-    }
-    addEvent(event) {
-      if (event == null) dart.nullFailed(I[0], 270, 30, "event");
-      this[_queuedEvents].add(event);
-    }
-    sample(sampleTime, nextSampleTime, callback) {
-      if (sampleTime == null) dart.nullFailed(I[0], 286, 14, "sampleTime");
-      if (nextSampleTime == null) dart.nullFailed(I[0], 287, 14, "nextSampleTime");
-      if (callback == null) dart.nullFailed(I[0], 288, 25, "callback");
-      this[_processPointerEvents](sampleTime);
-      this[_dequeueAndSampleNonHoverOrMovePointerEventsUntil](sampleTime, nextSampleTime, callback);
-      if (dart.test(this[_isTracked])) {
-        this[_samplePointerPosition](sampleTime, callback);
-      }
-    }
-    stop(callback) {
-      if (callback == null) dart.nullFailed(I[0], 305, 33, "callback");
-      while (dart.test(this[_queuedEvents][$isNotEmpty])) {
-        callback(this[_queuedEvents].removeFirst());
-      }
-      this[_pointerIdentifier] = 0;
-      this[_isDown] = false;
-      this[_isTracked] = false;
-      this[_position] = ui.Offset.zero;
-      this[_next] = null;
-      this[_last] = null;
-    }
-    get hasPendingEvents() {
-      return this[_queuedEvents][$isNotEmpty];
-    }
-    get isTracked() {
-      return this[_isTracked];
-    }
-    get isDown() {
-      return this[_isDown];
+    done() {
+      let result = dart.nullCheck(this[_buffer]).buffer[$asByteData](0, dart.nullCheck(this[_buffer]).lengthInBytes);
+      this[_buffer] = null;
+      return result;
     }
   };
-  (resampler.PointerEventResampler.new = function() {
-    this[_queuedEvents] = new (T.ListQueueOfPointerEvent()).new();
-    this[_last] = null;
-    this[_next] = null;
-    this[_position] = ui.Offset.zero;
-    this[_isTracked] = false;
-    this[_isDown] = false;
-    this[_pointerIdentifier] = 0;
+  (serialization.WriteBuffer.new = function() {
+    this[__WriteBuffer__eightBytesAsList] = null;
+    this[__WriteBuffer__eightBytesAsList_isSet] = false;
+    this[_buffer] = new typed_buffer.Uint8Buffer.new();
+    this[_eightBytes] = _native_typed_data.NativeByteData.new(8);
+    this[_eightBytesAsList] = this[_eightBytes][$buffer][$asUint8List]();
+  }).prototype = serialization.WriteBuffer.prototype;
+  dart.addTypeTests(serialization.WriteBuffer);
+  dart.addTypeCaches(serialization.WriteBuffer);
+  dart.setMethodSignature(serialization.WriteBuffer, () => ({
+    __proto__: dart.getMethods(serialization.WriteBuffer.__proto__),
+    putUint8: dart.fnType(dart.void, [core.int]),
+    putUint16: dart.fnType(dart.void, [core.int], {endian: dart.nullable(typed_data.Endian)}, {}),
+    putUint32: dart.fnType(dart.void, [core.int], {endian: dart.nullable(typed_data.Endian)}, {}),
+    putInt32: dart.fnType(dart.void, [core.int], {endian: dart.nullable(typed_data.Endian)}, {}),
+    putInt64: dart.fnType(dart.void, [core.int], {endian: dart.nullable(typed_data.Endian)}, {}),
+    putFloat64: dart.fnType(dart.void, [core.double], {endian: dart.nullable(typed_data.Endian)}, {}),
+    putUint8List: dart.fnType(dart.void, [typed_data.Uint8List]),
+    putInt32List: dart.fnType(dart.void, [typed_data.Int32List]),
+    putInt64List: dart.fnType(dart.void, [typed_data.Int64List]),
+    putFloat64List: dart.fnType(dart.void, [typed_data.Float64List]),
+    [_alignTo]: dart.fnType(dart.void, [core.int]),
+    done: dart.fnType(typed_data.ByteData, [])
+  }));
+  dart.setGetterSignature(serialization.WriteBuffer, () => ({
+    __proto__: dart.getGetters(serialization.WriteBuffer.__proto__),
+    [_eightBytesAsList]: typed_data.Uint8List
+  }));
+  dart.setSetterSignature(serialization.WriteBuffer, () => ({
+    __proto__: dart.getSetters(serialization.WriteBuffer.__proto__),
+    [_eightBytesAsList]: typed_data.Uint8List
+  }));
+  dart.setLibraryUri(serialization.WriteBuffer, I[1]);
+  dart.setFieldSignature(serialization.WriteBuffer, () => ({
+    __proto__: dart.getFields(serialization.WriteBuffer.__proto__),
+    [_buffer]: dart.fieldType(dart.nullable(typed_buffer.Uint8Buffer)),
+    [_eightBytes]: dart.finalFieldType(typed_data.ByteData),
+    [__WriteBuffer__eightBytesAsList]: dart.fieldType(dart.nullable(typed_data.Uint8List)),
+    [__WriteBuffer__eightBytesAsList_isSet]: dart.fieldType(core.bool)
+  }));
+  var data$ = dart.privateName(serialization, "ReadBuffer.data");
+  var _position = dart.privateName(serialization, "_position");
+  serialization.ReadBuffer = class ReadBuffer extends core.Object {
+    get data() {
+      return this[data$];
+    }
+    set data(value) {
+      super.data = value;
+    }
+    get hasRemaining() {
+      return dart.notNull(this[_position]) < dart.notNull(this.data[$lengthInBytes]);
+    }
+    getUint8() {
+      let t1;
+      return this.data[$getUint8]((t1 = this[_position], this[_position] = dart.notNull(t1) + 1, t1));
+    }
+    getUint16(opts) {
+      let t1;
+      let endian = opts && 'endian' in opts ? opts.endian : null;
+      let value = this.data[$getUint16](this[_position], (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
+      this[_position] = dart.notNull(this[_position]) + 2;
+      return value;
+    }
+    getUint32(opts) {
+      let t1;
+      let endian = opts && 'endian' in opts ? opts.endian : null;
+      let value = this.data[$getUint32](this[_position], (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
+      this[_position] = dart.notNull(this[_position]) + 4;
+      return value;
+    }
+    getInt32(opts) {
+      let t1;
+      let endian = opts && 'endian' in opts ? opts.endian : null;
+      let value = this.data[$getInt32](this[_position], (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
+      this[_position] = dart.notNull(this[_position]) + 4;
+      return value;
+    }
+    getInt64(opts) {
+      let t1;
+      let endian = opts && 'endian' in opts ? opts.endian : null;
+      let value = this.data[$getInt64](this[_position], (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
+      this[_position] = dart.notNull(this[_position]) + 8;
+      return value;
+    }
+    getFloat64(opts) {
+      let t1;
+      let endian = opts && 'endian' in opts ? opts.endian : null;
+      this[_alignTo](8);
+      let value = this.data[$getFloat64](this[_position], (t1 = endian, t1 == null ? typed_data.Endian.host : t1));
+      this[_position] = dart.notNull(this[_position]) + 8;
+      return value;
+    }
+    getUint8List(length) {
+      if (length == null) dart.nullFailed(I[0], 161, 30, "length");
+      let list = this.data[$buffer][$asUint8List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
+      this[_position] = dart.notNull(this[_position]) + dart.notNull(length);
+      return list;
+    }
+    getInt32List(length) {
+      if (length == null) dart.nullFailed(I[0], 168, 30, "length");
+      this[_alignTo](4);
+      let list = this.data[$buffer][$asInt32List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
+      this[_position] = dart.notNull(this[_position]) + 4 * dart.notNull(length);
+      return list;
+    }
+    getInt64List(length) {
+      if (length == null) dart.nullFailed(I[0], 176, 30, "length");
+      this[_alignTo](8);
+      let list = this.data[$buffer][$asInt64List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
+      this[_position] = dart.notNull(this[_position]) + 8 * dart.notNull(length);
+      return list;
+    }
+    getFloat64List(length) {
+      if (length == null) dart.nullFailed(I[0], 184, 34, "length");
+      this[_alignTo](8);
+      let list = this.data[$buffer][$asFloat64List](dart.notNull(this.data[$offsetInBytes]) + dart.notNull(this[_position]), length);
+      this[_position] = dart.notNull(this[_position]) + 8 * dart.notNull(length);
+      return list;
+    }
+    [_alignTo](alignment) {
+      if (alignment == null) dart.nullFailed(I[0], 191, 21, "alignment");
+      let mod = this[_position][$modulo](alignment);
+      if (mod !== 0) this[_position] = dart.notNull(this[_position]) + (dart.notNull(alignment) - mod);
+    }
+  };
+  (serialization.ReadBuffer.new = function(data) {
+    if (data == null) dart.nullFailed(I[0], 107, 19, "data");
+    this[_position] = 0;
+    this[data$] = data;
+    if (!(data != null)) dart.assertFailed(null, I[0], 108, 14, "data != null");
     ;
-  }).prototype = resampler.PointerEventResampler.prototype;
-  dart.addTypeTests(resampler.PointerEventResampler);
-  dart.addTypeCaches(resampler.PointerEventResampler);
-  dart.setMethodSignature(resampler.PointerEventResampler, () => ({
-    __proto__: dart.getMethods(resampler.PointerEventResampler.__proto__),
-    [_toHoverEvent]: dart.fnType(events.PointerEvent, [events.PointerEvent, ui.Offset, ui.Offset, core.Duration]),
-    [_toMoveEvent]: dart.fnType(events.PointerEvent, [events.PointerEvent, ui.Offset, ui.Offset, core.int, core.Duration]),
-    [_toMoveOrHoverEvent]: dart.fnType(events.PointerEvent, [events.PointerEvent, ui.Offset, ui.Offset, core.int, core.Duration, core.bool]),
-    [_positionAt]: dart.fnType(ui.Offset, [core.Duration]),
-    [_processPointerEvents]: dart.fnType(dart.void, [core.Duration]),
-    [_dequeueAndSampleNonHoverOrMovePointerEventsUntil]: dart.fnType(dart.void, [core.Duration, core.Duration, dart.fnType(dart.void, [events.PointerEvent])]),
-    [_samplePointerPosition]: dart.fnType(dart.void, [core.Duration, dart.fnType(dart.void, [events.PointerEvent])]),
-    addEvent: dart.fnType(dart.void, [events.PointerEvent]),
-    sample: dart.fnType(dart.void, [core.Duration, core.Duration, dart.fnType(dart.void, [events.PointerEvent])]),
-    stop: dart.fnType(dart.void, [dart.fnType(dart.void, [events.PointerEvent])])
+  }).prototype = serialization.ReadBuffer.prototype;
+  dart.addTypeTests(serialization.ReadBuffer);
+  dart.addTypeCaches(serialization.ReadBuffer);
+  dart.setMethodSignature(serialization.ReadBuffer, () => ({
+    __proto__: dart.getMethods(serialization.ReadBuffer.__proto__),
+    getUint8: dart.fnType(core.int, []),
+    getUint16: dart.fnType(core.int, [], {endian: dart.nullable(typed_data.Endian)}, {}),
+    getUint32: dart.fnType(core.int, [], {endian: dart.nullable(typed_data.Endian)}, {}),
+    getInt32: dart.fnType(core.int, [], {endian: dart.nullable(typed_data.Endian)}, {}),
+    getInt64: dart.fnType(core.int, [], {endian: dart.nullable(typed_data.Endian)}, {}),
+    getFloat64: dart.fnType(core.double, [], {endian: dart.nullable(typed_data.Endian)}, {}),
+    getUint8List: dart.fnType(typed_data.Uint8List, [core.int]),
+    getInt32List: dart.fnType(typed_data.Int32List, [core.int]),
+    getInt64List: dart.fnType(typed_data.Int64List, [core.int]),
+    getFloat64List: dart.fnType(typed_data.Float64List, [core.int]),
+    [_alignTo]: dart.fnType(dart.void, [core.int])
   }));
-  dart.setGetterSignature(resampler.PointerEventResampler, () => ({
-    __proto__: dart.getGetters(resampler.PointerEventResampler.__proto__),
-    hasPendingEvents: core.bool,
-    isTracked: core.bool,
-    isDown: core.bool
+  dart.setGetterSignature(serialization.ReadBuffer, () => ({
+    __proto__: dart.getGetters(serialization.ReadBuffer.__proto__),
+    hasRemaining: core.bool
   }));
-  dart.setLibraryUri(resampler.PointerEventResampler, I[1]);
-  dart.setFieldSignature(resampler.PointerEventResampler, () => ({
-    __proto__: dart.getFields(resampler.PointerEventResampler.__proto__),
-    [_queuedEvents]: dart.finalFieldType(collection.Queue$(events.PointerEvent)),
-    [_last]: dart.fieldType(dart.nullable(events.PointerEvent)),
-    [_next]: dart.fieldType(dart.nullable(events.PointerEvent)),
-    [_position]: dart.fieldType(ui.Offset),
-    [_isTracked]: dart.fieldType(core.bool),
-    [_isDown]: dart.fieldType(core.bool),
-    [_pointerIdentifier]: dart.fieldType(core.int)
+  dart.setLibraryUri(serialization.ReadBuffer, I[1]);
+  dart.setFieldSignature(serialization.ReadBuffer, () => ({
+    __proto__: dart.getFields(serialization.ReadBuffer.__proto__),
+    data: dart.finalFieldType(typed_data.ByteData),
+    [_position]: dart.fieldType(core.int)
   }));
-  dart.trackLibraries("packages/flutter/src/gestures/resampler.dart", {
-    "package:flutter/src/gestures/resampler.dart": resampler
+  dart.trackLibraries("packages/flutter/src/foundation/serialization.dart", {
+    "package:flutter/src/foundation/serialization.dart": serialization
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["resampler.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/gestures/resampler.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["serialization.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAwBiB;IAAiB;;;AAAjB;;IAAiB;;UAGd;AACE,MAAX,AAAE,eAAT,mBAAa,IAAI;IACnB;cAGmB;;;UAAgB;AACqB,MAAtD,AAAY,8BAAU,GAAG,KAAK,GAAS,KAAP,MAAM,EAAN,aAAiB;AACT,MAAjC,AAAE,eAAT,sBAAgB,yBAAmB,GAAG;IACxC;cAGmB;;;UAAgB;AACqB,MAAtD,AAAY,8BAAU,GAAG,KAAK,GAAS,KAAP,MAAM,EAAN,aAAiB;AACT,MAAjC,AAAE,eAAT,sBAAgB,yBAAmB,GAAG;IACxC;aAGkB;;;UAAgB;AACqB,MAArD,AAAY,6BAAS,GAAG,KAAK,GAAS,KAAP,MAAM,EAAN,aAAiB;AACR,MAAjC,AAAE,eAAT,sBAAgB,yBAAmB,GAAG;IACxC;aAGkB;;;UAAgB;AACqB,MAArD,AAAY,6BAAS,GAAG,KAAK,GAAS,KAAP,MAAM,EAAN,aAAiB;AACR,MAAjC,AAAE,eAAT,sBAAgB,yBAAmB,GAAG;IACxC;eAGuB;;;UAAgB;AAC1B,MAAX,eAAS;AAC8C,MAAvD,AAAY,+BAAW,GAAG,KAAK,GAAS,KAAP,MAAM,EAAN,aAAiB;AAChB,MAA3B,AAAE,eAAT,sBAAgB;IAClB;;UAG4B;AACL,MAAd,AAAE,eAAT,sBAAgB,IAAI;IACtB;;UAG4B;AACf,MAAX,eAAS;AACoE,MAAtE,AAAE,eAAT,sBAAgB,AAAK,AAAO,IAAR,wBAAoB,AAAK,IAAD,kBAAgB,AAAE,iBAAE,AAAK,IAAD;IACtE;;UAG4B;AACf,MAAX,eAAS;AACoE,MAAtE,AAAE,eAAT,sBAAgB,AAAK,AAAO,IAAR,wBAAoB,AAAK,IAAD,kBAAgB,AAAE,iBAAE,AAAK,IAAD;IACtE;;UAGgC;AACnB,MAAX,eAAS;AACoE,MAAtE,AAAE,eAAT,sBAAgB,AAAK,AAAO,IAAR,wBAAoB,AAAK,IAAD,kBAAgB,AAAE,iBAAE,AAAK,IAAD;IACtE;;UAEkB;AACN,gBAAa,AAAE,AAAO,eAAhB,+BAAkB,SAAS;AAC3C,UAAI,GAAG,KAAI;AACT,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAa,aAAV,SAAS,IAAG,GAAG,EAAE,IAAA,AAAC,CAAA;AACrB,UAAR,AAAE,eAAT,mBAAa;;IAEnB;;AAIiB,mBAAgB,AAAE,AAAO,eAAhB,mCAA2B,GAAU,AAAE,eAAT;AACxC,MAAd,gBAAU;AACV,YAAO,OAAM;IACf;;;4CA1Ee;;IAPH,gBAAE;IACE,oBAAE,sCAAS;AAC2B,IAApD,0BAAoB,AAAY,AAAO;EACzC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA0Fe;;;;;;;AAMU,YAAU,cAAV,gCAAY,AAAK;IAAa;;;AAIrD,YAAO,AAAK,uBAAkB,sBAAT,qCAAS;IAChC;;;UAGuB;AACX,kBAAQ,AAAK,sBAAU,kBAAkB,KAAP,MAAM,EAAN,aAAiB;AAC/C,MAAd,kBAAU,aAAV,mBAAa;AACb,YAAO,MAAK;IACd;;;UAGuB;AACX,kBAAQ,AAAK,sBAAU,kBAAkB,KAAP,MAAM,EAAN,aAAiB;AAC/C,MAAd,kBAAU,aAAV,mBAAa;AACb,YAAO,MAAK;IACd;;;UAGsB;AACV,kBAAQ,AAAK,qBAAS,kBAAkB,KAAP,MAAM,EAAN,aAAiB;AAC9C,MAAd,kBAAU,aAAV,mBAAa;AACb,YAAO,MAAK;IACd;;;UAGsB;AACV,kBAAQ,AAAK,qBAAS,kBAAkB,KAAP,MAAM,EAAN,aAAiB;AAC9C,MAAd,kBAAU,aAAV,mBAAa;AACb,YAAO,MAAK;IACd;;;UAG2B;AACd,MAAX,eAAS;AACI,kBAAQ,AAAK,uBAAW,kBAAkB,KAAP,MAAM,EAAN,aAAiB;AACnD,MAAd,kBAAU,aAAV,mBAAa;AACb,YAAO,MAAK;IACd;;UAG2B;AACT,iBAAO,AAAK,AAAO,iCAA+B,aAAnB,AAAK,0CAAgB,kBAAW,MAAM;AAClE,MAAnB,kBAAU,aAAV,gCAAa,MAAM;AACnB,YAAO,KAAI;IACb;;UAG2B;AACd,MAAX,eAAS;AACO,iBAAO,AAAK,AAAO,iCAA+B,aAAnB,AAAK,0CAAgB,kBAAW,MAAM;AAC9D,MAAvB,kBAAU,aAAV,mBAAa,AAAE,iBAAE,MAAM;AACvB,YAAO,KAAI;IACb;;UAG2B;AACd,MAAX,eAAS;AACO,iBAAO,AAAK,AAAO,iCAA+B,aAAnB,AAAK,0CAAgB,kBAAW,MAAM;AAC9D,MAAvB,kBAAU,aAAV,mBAAa,AAAE,iBAAE,MAAM;AACvB,YAAO,KAAI;IACb;;UAG+B;AAClB,MAAX,eAAS;AACS,iBAAO,AAAK,AAAO,mCAAiC,aAAnB,AAAK,0CAAgB,kBAAW,MAAM;AAClE,MAAvB,kBAAU,aAAV,mBAAa,AAAE,iBAAE,MAAM;AACvB,YAAO,KAAI;IACb;;UAEkB;AACN,gBAAM,AAAU,yBAAE,SAAS;AACrC,UAAI,GAAG,KAAI,GACT,AAA4B,kBAAlB,aAAV,oBAAuB,aAAV,SAAS,IAAG,GAAG;IAChC;;;QAxFgB;IAOZ,kBAAY;IAPA;UACL,AAAK,IAAD;;EAAS","file":"../../../../../../../../packages/flutter/src/foundation/serialization.dart.lib.js"}');
   // Exports:
   return {
-    src__gestures__resampler: resampler
+    src__foundation__serialization: serialization
   };
 }));
 
-//# sourceMappingURL=resampler.dart.lib.js.map
+//# sourceMappingURL=serialization.dart.lib.js.map

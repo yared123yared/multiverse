@@ -1,47 +1,1003 @@
-define(['dart_sdk'], (function load__packages__xml__src__xml__entities__named_entities_dart(dart_sdk) {
+define(['dart_sdk', 'packages/xml/src/xml/utils/node_type.dart', 'packages/xml/src/xml_events/utils/list_converter.dart', 'packages/xml/src/xml/utils/simple_name.dart', 'packages/collection/src/equality.dart', 'packages/xml/src/xml/utils/attribute_type.dart', 'packages/xml/src/xml/entities/default_mapping.dart', 'packages/xml/src/xml_events/utils/conversion_sink.dart', 'packages/xml/src/xml/entities/entity_mapping.dart'], (function load__packages__xml__src__xml_events__events__text_dart(dart_sdk, packages__xml__src__xml__utils__node_type$46dart, packages__xml__src__xml_events__utils__list_converter$46dart, packages__xml__src__xml__utils__simple_name$46dart, packages__collection__src__equality$46dart, packages__xml__src__xml__utils__attribute_type$46dart, packages__xml__src__xml__entities__default_mapping$46dart, packages__xml__src__xml_events__utils__conversion_sink$46dart, packages__xml__src__xml__entities__entity_mapping$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const convert = dart_sdk.convert;
+  const async = dart_sdk.async;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  var named_entities = Object.create(dart.library);
+  const node_type = packages__xml__src__xml__utils__node_type$46dart.src__xml__utils__node_type;
+  const list_converter = packages__xml__src__xml_events__utils__list_converter$46dart.src__xml_events__utils__list_converter;
+  const exceptions = packages__xml__src__xml__utils__simple_name$46dart.src__xml__utils__exceptions;
+  const equality = packages__collection__src__equality$46dart.src__equality;
+  const attribute_type = packages__xml__src__xml__utils__attribute_type$46dart.src__xml__utils__attribute_type;
+  const default_mapping = packages__xml__src__xml__entities__default_mapping$46dart.src__xml__entities__default_mapping;
+  const conversion_sink = packages__xml__src__xml_events__utils__conversion_sink$46dart.src__xml_events__utils__conversion_sink;
+  const entity_mapping = packages__xml__src__xml__entities__entity_mapping$46dart.src__xml__entities__entity_mapping;
+  var text$ = Object.create(dart.library);
+  var processing = Object.create(dart.library);
+  var end_element = Object.create(dart.library);
+  var doctype = Object.create(dart.library);
+  var with_parent = Object.create(dart.library);
+  var parented = Object.create(dart.library);
+  var start_element = Object.create(dart.library);
+  var named = Object.create(dart.library);
+  var event_attribute = Object.create(dart.library);
+  var declaration = Object.create(dart.library);
+  var comment = Object.create(dart.library);
+  var visitor = Object.create(dart.library);
+  var cdata = Object.create(dart.library);
+  var event_encoder = Object.create(dart.library);
+  var event = Object.create(dart.library);
+  var $hashCode = dartx.hashCode;
+  var $indexOf = dartx.indexOf;
+  var $substring = dartx.substring;
+  var $forEach = dartx.forEach;
+  var $isNotEmpty = dartx.isNotEmpty;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))()
+    JSArrayOfXmlEvent: () => (T.JSArrayOfXmlEvent = dart.constFn(_interceptors.JSArray$(event.XmlEvent)))(),
+    ListOfXmlEvent: () => (T.ListOfXmlEvent = dart.constFn(core.List$(event.XmlEvent)))(),
+    SinkOfListOfXmlEvent: () => (T.SinkOfListOfXmlEvent = dart.constFn(core.Sink$(T.ListOfXmlEvent())))(),
+    StreamOfListOfXmlEvent: () => (T.StreamOfListOfXmlEvent = dart.constFn(async.Stream$(T.ListOfXmlEvent())))(),
+    VoidToStreamOfListOfXmlEvent: () => (T.VoidToStreamOfListOfXmlEvent = dart.constFn(dart.fnType(T.StreamOfListOfXmlEvent(), [])))(),
+    DefaultEqualityOfNeverL: () => (T.DefaultEqualityOfNeverL = dart.constFn(equality.DefaultEquality$(dart.legacy(dart.Never))))(),
+    ConversionSinkOfString: () => (T.ConversionSinkOfString = dart.constFn(conversion_sink.ConversionSink$(core.String)))(),
+    SinkOfString: () => (T.SinkOfString = dart.constFn(core.Sink$(core.String)))(),
+    StreamOfString: () => (T.StreamOfString = dart.constFn(async.Stream$(core.String)))(),
+    XmlEntityMappingN: () => (T.XmlEntityMappingN = dart.constFn(dart.nullable(entity_mapping.XmlEntityMapping)))(),
+    __ToStreamOfString: () => (T.__ToStreamOfString = dart.constFn(dart.fnType(T.StreamOfString(), [], {entityMapping: T.XmlEntityMappingN()}, {})))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
     get C0() {
-      return C[0] = dart.constMap(T.StringL(), T.StringL(), ["amp", "&", "apos", "'", "gt", ">", "lt", "<", "quot", "\""]);
-    },
-    get C1() {
-      return C[1] = dart.constMap(T.StringL(), T.StringL(), ["Aacute", "Á", "aacute", "á", "Acirc", "Â", "acirc", "â", "acute", "´", "AElig", "Æ", "aelig", "æ", "Agrave", "À", "agrave", "à", "alefsym", "ℵ", "Alpha", "Α", "alpha", "α", "amp", "&", "and", "∧", "ang", "∠", "apos", "'", "Aring", "Å", "aring", "å", "asymp", "≈", "Atilde", "Ã", "atilde", "ã", "Auml", "Ä", "auml", "ä", "bdquo", "„", "Beta", "Β", "beta", "β", "brvbar", "¦", "bull", "•", "cap", "∩", "Ccedil", "Ç", "ccedil", "ç", "cedil", "¸", "cent", "¢", "Chi", "Χ", "chi", "χ", "circ", "ˆ", "clubs", "♣", "cong", "≅", "copy", "©", "crarr", "↵", "cup", "∪", "curren", "¤", "dagger", "†", "Dagger", "‡", "darr", "↓", "dArr", "⇓", "deg", "°", "Delta", "Δ", "delta", "δ", "diams", "♦", "divide", "÷", "Eacute", "É", "eacute", "é", "Ecirc", "Ê", "ecirc", "ê", "Egrave", "È", "egrave", "è", "empty", "∅", "emsp", " ", "ensp", " ", "Epsilon", "Ε", "epsilon", "ε", "equiv", "≡", "Eta", "Η", "eta", "η", "ETH", "Ð", "eth", "ð", "Euml", "Ë", "euml", "ë", "euro", "€", "exist", "∃", "fnof", "ƒ", "forall", "∀", "frac12", "½", "frac14", "¼", "frac34", "¾", "frasl", "⁄", "Gamma", "Γ", "gamma", "γ", "ge", "≥", "gt", ">", "harr", "↔", "hArr", "⇔", "hearts", "♥", "hellip", "…", "Iacute", "Í", "iacute", "í", "Icirc", "Î", "icirc", "î", "iexcl", "¡", "Igrave", "Ì", "igrave", "ì", "image", "ℑ", "infin", "∞", "int", "∫", "Iota", "Ι", "iota", "ι", "iquest", "¿", "isin", "∈", "Iuml", "Ï", "iuml", "ï", "Kappa", "Κ", "kappa", "κ", "Lambda", "Λ", "lambda", "λ", "lang", "〈", "laquo", "«", "larr", "←", "lArr", "⇐", "lceil", "⌈", "ldquo", "“", "le", "≤", "lfloor", "⌊", "lowast", "∗", "loz", "◊", "lrm", "‎", "lsaquo", "‹", "lsquo", "‘", "lt", "<", "macr", "¯", "mdash", "—", "micro", "µ", "middot", "·", "minus", "−", "Mu", "Μ", "mu", "μ", "nabla", "∇", "nbsp", " ", "ndash", "–", "ne", "≠", "ni", "∋", "not", "¬", "notin", "∉", "nsub", "⊄", "Ntilde", "Ñ", "ntilde", "ñ", "Nu", "Ν", "nu", "ν", "Oacute", "Ó", "oacute", "ó", "Ocirc", "Ô", "ocirc", "ô", "OElig", "Œ", "oelig", "œ", "Ograve", "Ò", "ograve", "ò", "oline", "‾", "Omega", "Ω", "omega", "ω", "Omicron", "Ο", "omicron", "ο", "oplus", "⊕", "or", "∨", "ordf", "ª", "ordm", "º", "Oslash", "Ø", "oslash", "ø", "Otilde", "Õ", "otilde", "õ", "otimes", "⊗", "Ouml", "Ö", "ouml", "ö", "para", "¶", "part", "∂", "permil", "‰", "perp", "⊥", "Phi", "Φ", "phi", "φ", "Pi", "Π", "pi", "π", "piv", "ϖ", "plusmn", "±", "pound", "£", "prime", "′", "Prime", "″", "prod", "∏", "prop", "∝", "Psi", "Ψ", "psi", "ψ", "quot", "\"", "radic", "√", "rang", "〉", "raquo", "»", "rarr", "→", "rArr", "⇒", "rceil", "⌉", "rdquo", "”", "real", "ℜ", "reg", "®", "rfloor", "⌋", "Rho", "Ρ", "rho", "ρ", "rlm", "‏", "rsaquo", "›", "rsquo", "’", "sbquo", "‚", "Scaron", "Š", "scaron", "š", "sdot", "⋅", "sect", "§", "shy", "­", "Sigma", "Σ", "sigma", "σ", "sigmaf", "ς", "sim", "∼", "spades", "♠", "sub", "⊂", "sube", "⊆", "sum", "∑", "sup", "⊃", "sup1", "¹", "sup2", "²", "sup3", "³", "supe", "⊇", "szlig", "ß", "Tau", "Τ", "tau", "τ", "there4", "∴", "Theta", "Θ", "theta", "θ", "thetasym", "ϑ", "thinsp", " ", "THORN", "Þ", "thorn", "þ", "tilde", "˜", "times", "×", "trade", "™", "Uacute", "Ú", "uacute", "ú", "uarr", "↑", "uArr", "⇑", "Ucirc", "Û", "ucirc", "û", "Ugrave", "Ù", "ugrave", "ù", "uml", "¨", "upsih", "ϒ", "Upsilon", "Υ", "upsilon", "υ", "Uuml", "Ü", "uuml", "ü", "weierp", "℘", "Xi", "Ξ", "xi", "ξ", "Yacute", "Ý", "yacute", "ý", "yen", "¥", "yuml", "ÿ", "Yuml", "Ÿ", "Zeta", "Ζ", "zeta", "ζ", "zwj", "‍", "zwnj", "‌"]);
+      return C[0] = dart.const({
+        __proto__: with_parent.XmlWithParentEvents.prototype
+      });
     },
     get C2() {
-      return C[2] = dart.constMap(T.StringL(), T.StringL(), ["Aacute", "Á", "aacute", "á", "Abreve", "Ă", "abreve", "ă", "ac", "∾", "acd", "∿", "acE", "∾̳", "Acirc", "Â", "acirc", "â", "acute", "´", "Acy", "А", "acy", "а", "AElig", "Æ", "aelig", "æ", "af", "⁡", "Afr", "𝔄", "afr", "𝔞", "Agrave", "À", "agrave", "à", "alefsym", "ℵ", "aleph", "ℵ", "Alpha", "Α", "alpha", "α", "Amacr", "Ā", "amacr", "ā", "amalg", "⨿", "AMP", "&", "amp", "&", "and", "∧", "And", "⩓", "andand", "⩕", "andd", "⩜", "andslope", "⩘", "andv", "⩚", "ang", "∠", "ange", "⦤", "angle", "∠", "angmsd", "∡", "angmsdaa", "⦨", "angmsdab", "⦩", "angmsdac", "⦪", "angmsdad", "⦫", "angmsdae", "⦬", "angmsdaf", "⦭", "angmsdag", "⦮", "angmsdah", "⦯", "angrt", "∟", "angrtvb", "⊾", "angrtvbd", "⦝", "angsph", "∢", "angst", "Å", "angzarr", "⍼", "Aogon", "Ą", "aogon", "ą", "Aopf", "𝔸", "aopf", "𝕒", "ap", "≈", "apacir", "⩯", "ape", "≊", "apE", "⩰", "apid", "≋", "apos", "'", "ApplyFunction", "⁡", "approx", "≈", "approxeq", "≊", "Aring", "Å", "aring", "å", "Ascr", "𝒜", "ascr", "𝒶", "Assign", "≔", "ast", "*", "asymp", "≈", "asympeq", "≍", "Atilde", "Ã", "atilde", "ã", "Auml", "Ä", "auml", "ä", "awconint", "∳", "awint", "⨑", "backcong", "≌", "backepsilon", "϶", "backprime", "‵", "backsim", "∽", "backsimeq", "⋍", "Backslash", "∖", "Barv", "⫧", "barvee", "⊽", "barwed", "⌅", "Barwed", "⌆", "barwedge", "⌅", "bbrk", "⎵", "bbrktbrk", "⎶", "bcong", "≌", "Bcy", "Б", "bcy", "б", "bdquo", "„", "becaus", "∵", "Because", "∵", "because", "∵", "bemptyv", "⦰", "bepsi", "϶", "bernou", "ℬ", "Bernoullis", "ℬ", "Beta", "Β", "beta", "β", "beth", "ℶ", "between", "≬", "Bfr", "𝔅", "bfr", "𝔟", "bigcap", "⋂", "bigcirc", "◯", "bigcup", "⋃", "bigodot", "⨀", "bigoplus", "⨁", "bigotimes", "⨂", "bigsqcup", "⨆", "bigstar", "★", "bigtriangledown", "▽", "bigtriangleup", "△", "biguplus", "⨄", "bigvee", "⋁", "bigwedge", "⋀", "bkarow", "⤍", "blacklozenge", "⧫", "blacksquare", "▪", "blacktriangle", "▴", "blacktriangledown", "▾", "blacktriangleleft", "◂", "blacktriangleright", "▸", "blank", "␣", "blk12", "▒", "blk14", "░", "blk34", "▓", "block", "█", "bne", "=⃥", "bnequiv", "≡⃥", "bnot", "⌐", "bNot", "⫭", "Bopf", "𝔹", "bopf", "𝕓", "bot", "⊥", "bottom", "⊥", "bowtie", "⋈", "boxbox", "⧉", "boxdl", "┐", "boxdL", "╕", "boxDl", "╖", "boxDL", "╗", "boxdr", "┌", "boxdR", "╒", "boxDr", "╓", "boxDR", "╔", "boxh", "─", "boxH", "═", "boxhd", "┬", "boxHd", "╤", "boxhD", "╥", "boxHD", "╦", "boxhu", "┴", "boxHu", "╧", "boxhU", "╨", "boxHU", "╩", "boxminus", "⊟", "boxplus", "⊞", "boxtimes", "⊠", "boxul", "┘", "boxuL", "╛", "boxUl", "╜", "boxUL", "╝", "boxur", "└", "boxuR", "╘", "boxUr", "╙", "boxUR", "╚", "boxv", "│", "boxV", "║", "boxvh", "┼", "boxvH", "╪", "boxVh", "╫", "boxVH", "╬", "boxvl", "┤", "boxvL", "╡", "boxVl", "╢", "boxVL", "╣", "boxvr", "├", "boxvR", "╞", "boxVr", "╟", "boxVR", "╠", "bprime", "‵", "Breve", "˘", "breve", "˘", "brvbar", "¦", "Bscr", "ℬ", "bscr", "𝒷", "bsemi", "⁏", "bsim", "∽", "bsime", "⋍", "bsol", "\\", "bsolb", "⧅", "bsolhsub", "⟈", "bull", "•", "bullet", "•", "bump", "≎", "bumpe", "≏", "bumpE", "⪮", "Bumpeq", "≎", "bumpeq", "≏", "Cacute", "Ć", "cacute", "ć", "cap", "∩", "Cap", "⋒", "capand", "⩄", "capbrcup", "⩉", "capcap", "⩋", "capcup", "⩇", "capdot", "⩀", "CapitalDifferentialD", "ⅅ", "caps", "∩︀", "caret", "⁁", "caron", "ˇ", "Cayleys", "ℭ", "ccaps", "⩍", "Ccaron", "Č", "ccaron", "č", "Ccedil", "Ç", "ccedil", "ç", "Ccirc", "Ĉ", "ccirc", "ĉ", "Cconint", "∰", "ccups", "⩌", "ccupssm", "⩐", "Cdot", "Ċ", "cdot", "ċ", "cedil", "¸", "Cedilla", "¸", "cemptyv", "⦲", "cent", "¢", "CenterDot", "·", "centerdot", "·", "Cfr", "ℭ", "cfr", "𝔠", "CHcy", "Ч", "chcy", "ч", "check", "✓", "checkmark", "✓", "Chi", "Χ", "chi", "χ", "cir", "○", "circ", "ˆ", "circeq", "≗", "circlearrowleft", "↺", "circlearrowright", "↻", "circledast", "⊛", "circledcirc", "⊚", "circleddash", "⊝", "CircleDot", "⊙", "circledR", "®", "circledS", "Ⓢ", "CircleMinus", "⊖", "CirclePlus", "⊕", "CircleTimes", "⊗", "cire", "≗", "cirE", "⧃", "cirfnint", "⨐", "cirmid", "⫯", "cirscir", "⧂", "ClockwiseContourIntegral", "∲", "CloseCurlyDoubleQuote", "”", "CloseCurlyQuote", "’", "clubs", "♣", "clubsuit", "♣", "colon", ":", "Colon", "∷", "colone", "≔", "Colone", "⩴", "coloneq", "≔", "comma", ",", "commat", "@", "comp", "∁", "compfn", "∘", "complement", "∁", "complexes", "ℂ", "cong", "≅", "congdot", "⩭", "Congruent", "≡", "conint", "∮", "Conint", "∯", "ContourIntegral", "∮", "Copf", "ℂ", "copf", "𝕔", "coprod", "∐", "Coproduct", "∐", "COPY", "©", "copy", "©", "copysr", "℗", "CounterClockwiseContourIntegral", "∳", "crarr", "↵", "cross", "✗", "Cross", "⨯", "Cscr", "𝒞", "cscr", "𝒸", "csub", "⫏", "csube", "⫑", "csup", "⫐", "csupe", "⫒", "ctdot", "⋯", "cudarrl", "⤸", "cudarrr", "⤵", "cuepr", "⋞", "cuesc", "⋟", "cularr", "↶", "cularrp", "⤽", "cup", "∪", "Cup", "⋓", "cupbrcap", "⩈", "CupCap", "≍", "cupcap", "⩆", "cupcup", "⩊", "cupdot", "⊍", "cupor", "⩅", "cups", "∪︀", "curarr", "↷", "curarrm", "⤼", "curlyeqprec", "⋞", "curlyeqsucc", "⋟", "curlyvee", "⋎", "curlywedge", "⋏", "curren", "¤", "curvearrowleft", "↶", "curvearrowright", "↷", "cuvee", "⋎", "cuwed", "⋏", "cwconint", "∲", "cwint", "∱", "cylcty", "⌭", "dagger", "†", "Dagger", "‡", "daleth", "ℸ", "darr", "↓", "Darr", "↡", "dArr", "⇓", "dash", "‐", "dashv", "⊣", "Dashv", "⫤", "dbkarow", "⤏", "dblac", "˝", "Dcaron", "Ď", "dcaron", "ď", "Dcy", "Д", "dcy", "д", "DD", "ⅅ", "dd", "ⅆ", "ddagger", "‡", "ddarr", "⇊", "DDotrahd", "⤑", "ddotseq", "⩷", "deg", "°", "Del", "∇", "Delta", "Δ", "delta", "δ", "demptyv", "⦱", "dfisht", "⥿", "Dfr", "𝔇", "dfr", "𝔡", "dHar", "⥥", "dharl", "⇃", "dharr", "⇂", "DiacriticalAcute", "´", "DiacriticalDot", "˙", "DiacriticalDoubleAcute", "˝", "DiacriticalGrave", "`", "DiacriticalTilde", "˜", "diam", "⋄", "Diamond", "⋄", "diamond", "⋄", "diamondsuit", "♦", "diams", "♦", "die", "¨", "DifferentialD", "ⅆ", "digamma", "ϝ", "disin", "⋲", "div", "÷", "divide", "÷", "divideontimes", "⋇", "divonx", "⋇", "DJcy", "Ђ", "djcy", "ђ", "dlcorn", "⌞", "dlcrop", "⌍", "dollar", "$", "Dopf", "𝔻", "dopf", "𝕕", "Dot", "¨", "dot", "˙", "DotDot", "⃜", "doteq", "≐", "doteqdot", "≑", "DotEqual", "≐", "dotminus", "∸", "dotplus", "∔", "dotsquare", "⊡", "doublebarwedge", "⌆", "DoubleContourIntegral", "∯", "DoubleDot", "¨", "DoubleDownArrow", "⇓", "DoubleLeftArrow", "⇐", "DoubleLeftRightArrow", "⇔", "DoubleLeftTee", "⫤", "DoubleLongLeftArrow", "⟸", "DoubleLongLeftRightArrow", "⟺", "DoubleLongRightArrow", "⟹", "DoubleRightArrow", "⇒", "DoubleRightTee", "⊨", "DoubleUpArrow", "⇑", "DoubleUpDownArrow", "⇕", "DoubleVerticalBar", "∥", "DownArrow", "↓", "downarrow", "↓", "Downarrow", "⇓", "DownArrowBar", "⤓", "DownArrowUpArrow", "⇵", "DownBreve", "̑", "downdownarrows", "⇊", "downharpoonleft", "⇃", "downharpoonright", "⇂", "DownLeftRightVector", "⥐", "DownLeftTeeVector", "⥞", "DownLeftVector", "↽", "DownLeftVectorBar", "⥖", "DownRightTeeVector", "⥟", "DownRightVector", "⇁", "DownRightVectorBar", "⥗", "DownTee", "⊤", "DownTeeArrow", "↧", "drbkarow", "⤐", "drcorn", "⌟", "drcrop", "⌌", "Dscr", "𝒟", "dscr", "𝒹", "DScy", "Ѕ", "dscy", "ѕ", "dsol", "⧶", "Dstrok", "Đ", "dstrok", "đ", "dtdot", "⋱", "dtri", "▿", "dtrif", "▾", "duarr", "⇵", "duhar", "⥯", "dwangle", "⦦", "DZcy", "Џ", "dzcy", "џ", "dzigrarr", "⟿", "Eacute", "É", "eacute", "é", "easter", "⩮", "Ecaron", "Ě", "ecaron", "ě", "ecir", "≖", "Ecirc", "Ê", "ecirc", "ê", "ecolon", "≕", "Ecy", "Э", "ecy", "э", "eDDot", "⩷", "Edot", "Ė", "edot", "ė", "eDot", "≑", "ee", "ⅇ", "efDot", "≒", "Efr", "𝔈", "efr", "𝔢", "eg", "⪚", "Egrave", "È", "egrave", "è", "egs", "⪖", "egsdot", "⪘", "el", "⪙", "Element", "∈", "elinters", "⏧", "ell", "ℓ", "els", "⪕", "elsdot", "⪗", "Emacr", "Ē", "emacr", "ē", "empty", "∅", "emptyset", "∅", "EmptySmallSquare", "◻", "emptyv", "∅", "EmptyVerySmallSquare", "▫", "emsp", " ", "emsp13", " ", "emsp14", " ", "ENG", "Ŋ", "eng", "ŋ", "ensp", " ", "Eogon", "Ę", "eogon", "ę", "Eopf", "𝔼", "eopf", "𝕖", "epar", "⋕", "eparsl", "⧣", "eplus", "⩱", "epsi", "ε", "Epsilon", "Ε", "epsilon", "ε", "epsiv", "ϵ", "eqcirc", "≖", "eqcolon", "≕", "eqsim", "≂", "eqslantgtr", "⪖", "eqslantless", "⪕", "Equal", "⩵", "equals", "=", "EqualTilde", "≂", "equest", "≟", "Equilibrium", "⇌", "equiv", "≡", "equivDD", "⩸", "eqvparsl", "⧥", "erarr", "⥱", "erDot", "≓", "escr", "ℯ", "Escr", "ℰ", "esdot", "≐", "esim", "≂", "Esim", "⩳", "Eta", "Η", "eta", "η", "ETH", "Ð", "eth", "ð", "Euml", "Ë", "euml", "ë", "euro", "€", "excl", "!", "exist", "∃", "Exists", "∃", "expectation", "ℰ", "ExponentialE", "ⅇ", "exponentiale", "ⅇ", "fallingdotseq", "≒", "Fcy", "Ф", "fcy", "ф", "female", "♀", "ffilig", "ﬃ", "fflig", "ﬀ", "ffllig", "ﬄ", "Ffr", "𝔉", "ffr", "𝔣", "filig", "ﬁ", "FilledSmallSquare", "◼", "FilledVerySmallSquare", "▪", "fjlig", "fj", "flat", "♭", "fllig", "ﬂ", "fltns", "▱", "fnof", "ƒ", "Fopf", "𝔽", "fopf", "𝕗", "ForAll", "∀", "forall", "∀", "fork", "⋔", "forkv", "⫙", "Fouriertrf", "ℱ", "fpartint", "⨍", "frac12", "½", "frac13", "⅓", "frac14", "¼", "frac15", "⅕", "frac16", "⅙", "frac18", "⅛", "frac23", "⅔", "frac25", "⅖", "frac34", "¾", "frac35", "⅗", "frac38", "⅜", "frac45", "⅘", "frac56", "⅚", "frac58", "⅝", "frac78", "⅞", "frasl", "⁄", "frown", "⌢", "Fscr", "ℱ", "fscr", "𝒻", "gacute", "ǵ", "Gamma", "Γ", "gamma", "γ", "Gammad", "Ϝ", "gammad", "ϝ", "gap", "⪆", "Gbreve", "Ğ", "gbreve", "ğ", "Gcedil", "Ģ", "Gcirc", "Ĝ", "gcirc", "ĝ", "Gcy", "Г", "gcy", "г", "Gdot", "Ġ", "gdot", "ġ", "ge", "≥", "gE", "≧", "gel", "⋛", "gEl", "⪌", "geq", "≥", "geqq", "≧", "geqslant", "⩾", "ges", "⩾", "gescc", "⪩", "gesdot", "⪀", "gesdoto", "⪂", "gesdotol", "⪄", "gesl", "⋛︀", "gesles", "⪔", "Gfr", "𝔊", "gfr", "𝔤", "gg", "≫", "Gg", "⋙", "ggg", "⋙", "gimel", "ℷ", "GJcy", "Ѓ", "gjcy", "ѓ", "gl", "≷", "gla", "⪥", "glE", "⪒", "glj", "⪤", "gnap", "⪊", "gnapprox", "⪊", "gnE", "≩", "gne", "⪈", "gneq", "⪈", "gneqq", "≩", "gnsim", "⋧", "Gopf", "𝔾", "gopf", "𝕘", "grave", "`", "GreaterEqual", "≥", "GreaterEqualLess", "⋛", "GreaterFullEqual", "≧", "GreaterGreater", "⪢", "GreaterLess", "≷", "GreaterSlantEqual", "⩾", "GreaterTilde", "≳", "gscr", "ℊ", "Gscr", "𝒢", "gsim", "≳", "gsime", "⪎", "gsiml", "⪐", "GT", ">", "gt", ">", "Gt", "≫", "gtcc", "⪧", "gtcir", "⩺", "gtdot", "⋗", "gtlPar", "⦕", "gtquest", "⩼", "gtrapprox", "⪆", "gtrarr", "⥸", "gtrdot", "⋗", "gtreqless", "⋛", "gtreqqless", "⪌", "gtrless", "≷", "gtrsim", "≳", "gvertneqq", "≩︀", "gvnE", "≩︀", "Hacek", "ˇ", "hairsp", " ", "half", "½", "hamilt", "ℋ", "HARDcy", "Ъ", "hardcy", "ъ", "harr", "↔", "hArr", "⇔", "harrcir", "⥈", "harrw", "↭", "Hat", "^", "hbar", "ℏ", "Hcirc", "Ĥ", "hcirc", "ĥ", "hearts", "♥", "heartsuit", "♥", "hellip", "…", "hercon", "⊹", "Hfr", "ℌ", "hfr", "𝔥", "HilbertSpace", "ℋ", "hksearow", "⤥", "hkswarow", "⤦", "hoarr", "⇿", "homtht", "∻", "hookleftarrow", "↩", "hookrightarrow", "↪", "Hopf", "ℍ", "hopf", "𝕙", "horbar", "―", "HorizontalLine", "─", "Hscr", "ℋ", "hscr", "𝒽", "hslash", "ℏ", "Hstrok", "Ħ", "hstrok", "ħ", "HumpDownHump", "≎", "HumpEqual", "≏", "hybull", "⁃", "hyphen", "‐", "Iacute", "Í", "iacute", "í", "ic", "⁣", "Icirc", "Î", "icirc", "î", "Icy", "И", "icy", "и", "Idot", "İ", "IEcy", "Е", "iecy", "е", "iexcl", "¡", "iff", "⇔", "Ifr", "ℑ", "ifr", "𝔦", "Igrave", "Ì", "igrave", "ì", "ii", "ⅈ", "iiiint", "⨌", "iiint", "∭", "iinfin", "⧜", "iiota", "℩", "IJlig", "Ĳ", "ijlig", "ĳ", "Im", "ℑ", "Imacr", "Ī", "imacr", "ī", "image", "ℑ", "ImaginaryI", "ⅈ", "imagline", "ℐ", "imagpart", "ℑ", "imath", "ı", "imof", "⊷", "imped", "Ƶ", "Implies", "⇒", "in", "∈", "incare", "℅", "infin", "∞", "infintie", "⧝", "inodot", "ı", "int", "∫", "Int", "∬", "intcal", "⊺", "integers", "ℤ", "Integral", "∫", "intercal", "⊺", "Intersection", "⋂", "intlarhk", "⨗", "intprod", "⨼", "InvisibleComma", "⁣", "InvisibleTimes", "⁢", "IOcy", "Ё", "iocy", "ё", "Iogon", "Į", "iogon", "į", "Iopf", "𝕀", "iopf", "𝕚", "Iota", "Ι", "iota", "ι", "iprod", "⨼", "iquest", "¿", "Iscr", "ℐ", "iscr", "𝒾", "isin", "∈", "isindot", "⋵", "isinE", "⋹", "isins", "⋴", "isinsv", "⋳", "isinv", "∈", "it", "⁢", "Itilde", "Ĩ", "itilde", "ĩ", "Iukcy", "І", "iukcy", "і", "Iuml", "Ï", "iuml", "ï", "Jcirc", "Ĵ", "jcirc", "ĵ", "Jcy", "Й", "jcy", "й", "Jfr", "𝔍", "jfr", "𝔧", "jmath", "ȷ", "Jopf", "𝕁", "jopf", "𝕛", "Jscr", "𝒥", "jscr", "𝒿", "Jsercy", "Ј", "jsercy", "ј", "Jukcy", "Є", "jukcy", "є", "Kappa", "Κ", "kappa", "κ", "kappav", "ϰ", "Kcedil", "Ķ", "kcedil", "ķ", "Kcy", "К", "kcy", "к", "Kfr", "𝔎", "kfr", "𝔨", "kgreen", "ĸ", "KHcy", "Х", "khcy", "х", "KJcy", "Ќ", "kjcy", "ќ", "Kopf", "𝕂", "kopf", "𝕜", "Kscr", "𝒦", "kscr", "𝓀", "lAarr", "⇚", "Lacute", "Ĺ", "lacute", "ĺ", "laemptyv", "⦴", "lagran", "ℒ", "Lambda", "Λ", "lambda", "λ", "lang", "⟨", "Lang", "⟪", "langd", "⦑", "langle", "⟨", "lap", "⪅", "Laplacetrf", "ℒ", "laquo", "«", "larr", "←", "Larr", "↞", "lArr", "⇐", "larrb", "⇤", "larrbfs", "⤟", "larrfs", "⤝", "larrhk", "↩", "larrlp", "↫", "larrpl", "⤹", "larrsim", "⥳", "larrtl", "↢", "lat", "⪫", "latail", "⤙", "lAtail", "⤛", "late", "⪭", "lates", "⪭︀", "lbarr", "⤌", "lBarr", "⤎", "lbbrk", "❲", "lbrace", "{", "lbrack", "[", "lbrke", "⦋", "lbrksld", "⦏", "lbrkslu", "⦍", "Lcaron", "Ľ", "lcaron", "ľ", "Lcedil", "Ļ", "lcedil", "ļ", "lceil", "⌈", "lcub", "{", "Lcy", "Л", "lcy", "л", "ldca", "⤶", "ldquo", "“", "ldquor", "„", "ldrdhar", "⥧", "ldrushar", "⥋", "ldsh", "↲", "le", "≤", "lE", "≦", "LeftAngleBracket", "⟨", "LeftArrow", "←", "leftarrow", "←", "Leftarrow", "⇐", "LeftArrowBar", "⇤", "LeftArrowRightArrow", "⇆", "leftarrowtail", "↢", "LeftCeiling", "⌈", "LeftDoubleBracket", "⟦", "LeftDownTeeVector", "⥡", "LeftDownVector", "⇃", "LeftDownVectorBar", "⥙", "LeftFloor", "⌊", "leftharpoondown", "↽", "leftharpoonup", "↼", "leftleftarrows", "⇇", "LeftRightArrow", "↔", "leftrightarrow", "↔", "Leftrightarrow", "⇔", "leftrightarrows", "⇆", "leftrightharpoons", "⇋", "leftrightsquigarrow", "↭", "LeftRightVector", "⥎", "LeftTee", "⊣", "LeftTeeArrow", "↤", "LeftTeeVector", "⥚", "leftthreetimes", "⋋", "LeftTriangle", "⊲", "LeftTriangleBar", "⧏", "LeftTriangleEqual", "⊴", "LeftUpDownVector", "⥑", "LeftUpTeeVector", "⥠", "LeftUpVector", "↿", "LeftUpVectorBar", "⥘", "LeftVector", "↼", "LeftVectorBar", "⥒", "leg", "⋚", "lEg", "⪋", "leq", "≤", "leqq", "≦", "leqslant", "⩽", "les", "⩽", "lescc", "⪨", "lesdot", "⩿", "lesdoto", "⪁", "lesdotor", "⪃", "lesg", "⋚︀", "lesges", "⪓", "lessapprox", "⪅", "lessdot", "⋖", "lesseqgtr", "⋚", "lesseqqgtr", "⪋", "LessEqualGreater", "⋚", "LessFullEqual", "≦", "LessGreater", "≶", "lessgtr", "≶", "LessLess", "⪡", "lesssim", "≲", "LessSlantEqual", "⩽", "LessTilde", "≲", "lfisht", "⥼", "lfloor", "⌊", "Lfr", "𝔏", "lfr", "𝔩", "lg", "≶", "lgE", "⪑", "lHar", "⥢", "lhard", "↽", "lharu", "↼", "lharul", "⥪", "lhblk", "▄", "LJcy", "Љ", "ljcy", "љ", "ll", "≪", "Ll", "⋘", "llarr", "⇇", "llcorner", "⌞", "Lleftarrow", "⇚", "llhard", "⥫", "lltri", "◺", "Lmidot", "Ŀ", "lmidot", "ŀ", "lmoust", "⎰", "lmoustache", "⎰", "lnap", "⪉", "lnapprox", "⪉", "lnE", "≨", "lne", "⪇", "lneq", "⪇", "lneqq", "≨", "lnsim", "⋦", "loang", "⟬", "loarr", "⇽", "lobrk", "⟦", "LongLeftArrow", "⟵", "longleftarrow", "⟵", "Longleftarrow", "⟸", "LongLeftRightArrow", "⟷", "longleftrightarrow", "⟷", "Longleftrightarrow", "⟺", "longmapsto", "⟼", "LongRightArrow", "⟶", "longrightarrow", "⟶", "Longrightarrow", "⟹", "looparrowleft", "↫", "looparrowright", "↬", "lopar", "⦅", "Lopf", "𝕃", "lopf", "𝕝", "loplus", "⨭", "lotimes", "⨴", "lowast", "∗", "lowbar", "_", "LowerLeftArrow", "↙", "LowerRightArrow", "↘", "loz", "◊", "lozenge", "◊", "lozf", "⧫", "lpar", "(", "lparlt", "⦓", "lrarr", "⇆", "lrcorner", "⌟", "lrhar", "⇋", "lrhard", "⥭", "lrm", "‎", "lrtri", "⊿", "lsaquo", "‹", "Lscr", "ℒ", "lscr", "𝓁", "Lsh", "↰", "lsh", "↰", "lsim", "≲", "lsime", "⪍", "lsimg", "⪏", "lsqb", "[", "lsquo", "‘", "lsquor", "‚", "Lstrok", "Ł", "lstrok", "ł", "LT", "<", "lt", "<", "Lt", "≪", "ltcc", "⪦", "ltcir", "⩹", "ltdot", "⋖", "lthree", "⋋", "ltimes", "⋉", "ltlarr", "⥶", "ltquest", "⩻", "ltri", "◃", "ltrie", "⊴", "ltrif", "◂", "ltrPar", "⦖", "lurdshar", "⥊", "luruhar", "⥦", "lvertneqq", "≨︀", "lvnE", "≨︀", "macr", "¯", "male", "♂", "malt", "✠", "maltese", "✠", "map", "↦", "Map", "⤅", "mapsto", "↦", "mapstodown", "↧", "mapstoleft", "↤", "mapstoup", "↥", "marker", "▮", "mcomma", "⨩", "Mcy", "М", "mcy", "м", "mdash", "—", "mDDot", "∺", "measuredangle", "∡", "MediumSpace", " ", "Mellintrf", "ℳ", "Mfr", "𝔐", "mfr", "𝔪", "mho", "℧", "micro", "µ", "mid", "∣", "midast", "*", "midcir", "⫰", "middot", "·", "minus", "−", "minusb", "⊟", "minusd", "∸", "minusdu", "⨪", "MinusPlus", "∓", "mlcp", "⫛", "mldr", "…", "mnplus", "∓", "models", "⊧", "Mopf", "𝕄", "mopf", "𝕞", "mp", "∓", "Mscr", "ℳ", "mscr", "𝓂", "mstpos", "∾", "Mu", "Μ", "mu", "μ", "multimap", "⊸", "mumap", "⊸", "nabla", "∇", "Nacute", "Ń", "nacute", "ń", "nang", "∠⃒", "nap", "≉", "napE", "⩰̸", "napid", "≋̸", "napos", "ŉ", "napprox", "≉", "natur", "♮", "natural", "♮", "naturals", "ℕ", "nbsp", " ", "nbump", "≎̸", "nbumpe", "≏̸", "ncap", "⩃", "Ncaron", "Ň", "ncaron", "ň", "Ncedil", "Ņ", "ncedil", "ņ", "ncong", "≇", "ncongdot", "⩭̸", "ncup", "⩂", "Ncy", "Н", "ncy", "н", "ndash", "–", "ne", "≠", "nearhk", "⤤", "nearr", "↗", "neArr", "⇗", "nearrow", "↗", "nedot", "≐̸", "NegativeMediumSpace", "​", "NegativeThickSpace", "​", "NegativeThinSpace", "​", "NegativeVeryThinSpace", "​", "nequiv", "≢", "nesear", "⤨", "nesim", "≂̸", "NestedGreaterGreater", "≫", "NestedLessLess", "≪", "NewLine", "\n", "nexist", "∄", "nexists", "∄", "Nfr", "𝔑", "nfr", "𝔫", "ngE", "≧̸", "nge", "≱", "ngeq", "≱", "ngeqq", "≧̸", "ngeqslant", "⩾̸", "nges", "⩾̸", "nGg", "⋙̸", "ngsim", "≵", "nGt", "≫⃒", "ngt", "≯", "ngtr", "≯", "nGtv", "≫̸", "nharr", "↮", "nhArr", "⇎", "nhpar", "⫲", "ni", "∋", "nis", "⋼", "nisd", "⋺", "niv", "∋", "NJcy", "Њ", "njcy", "њ", "nlarr", "↚", "nlArr", "⇍", "nldr", "‥", "nlE", "≦̸", "nle", "≰", "nleftarrow", "↚", "nLeftarrow", "⇍", "nleftrightarrow", "↮", "nLeftrightarrow", "⇎", "nleq", "≰", "nleqq", "≦̸", "nleqslant", "⩽̸", "nles", "⩽̸", "nless", "≮", "nLl", "⋘̸", "nlsim", "≴", "nLt", "≪⃒", "nlt", "≮", "nltri", "⋪", "nltrie", "⋬", "nLtv", "≪̸", "nmid", "∤", "NoBreak", "⁠", "NonBreakingSpace", " ", "Nopf", "ℕ", "nopf", "𝕟", "not", "¬", "Not", "⫬", "NotCongruent", "≢", "NotCupCap", "≭", "NotDoubleVerticalBar", "∦", "NotElement", "∉", "NotEqual", "≠", "NotEqualTilde", "≂̸", "NotExists", "∄", "NotGreater", "≯", "NotGreaterEqual", "≱", "NotGreaterFullEqual", "≧̸", "NotGreaterGreater", "≫̸", "NotGreaterLess", "≹", "NotGreaterSlantEqual", "⩾̸", "NotGreaterTilde", "≵", "NotHumpDownHump", "≎̸", "NotHumpEqual", "≏̸", "notin", "∉", "notindot", "⋵̸", "notinE", "⋹̸", "notinva", "∉", "notinvb", "⋷", "notinvc", "⋶", "NotLeftTriangle", "⋪", "NotLeftTriangleBar", "⧏̸", "NotLeftTriangleEqual", "⋬", "NotLess", "≮", "NotLessEqual", "≰", "NotLessGreater", "≸", "NotLessLess", "≪̸", "NotLessSlantEqual", "⩽̸", "NotLessTilde", "≴", "NotNestedGreaterGreater", "⪢̸", "NotNestedLessLess", "⪡̸", "notni", "∌", "notniva", "∌", "notnivb", "⋾", "notnivc", "⋽", "NotPrecedes", "⊀", "NotPrecedesEqual", "⪯̸", "NotPrecedesSlantEqual", "⋠", "NotReverseElement", "∌", "NotRightTriangle", "⋫", "NotRightTriangleBar", "⧐̸", "NotRightTriangleEqual", "⋭", "NotSquareSubset", "⊏̸", "NotSquareSubsetEqual", "⋢", "NotSquareSuperset", "⊐̸", "NotSquareSupersetEqual", "⋣", "NotSubset", "⊂⃒", "NotSubsetEqual", "⊈", "NotSucceeds", "⊁", "NotSucceedsEqual", "⪰̸", "NotSucceedsSlantEqual", "⋡", "NotSucceedsTilde", "≿̸", "NotSuperset", "⊃⃒", "NotSupersetEqual", "⊉", "NotTilde", "≁", "NotTildeEqual", "≄", "NotTildeFullEqual", "≇", "NotTildeTilde", "≉", "NotVerticalBar", "∤", "npar", "∦", "nparallel", "∦", "nparsl", "⫽⃥", "npart", "∂̸", "npolint", "⨔", "npr", "⊀", "nprcue", "⋠", "npre", "⪯̸", "nprec", "⊀", "npreceq", "⪯̸", "nrarr", "↛", "nrArr", "⇏", "nrarrc", "⤳̸", "nrarrw", "↝̸", "nrightarrow", "↛", "nRightarrow", "⇏", "nrtri", "⋫", "nrtrie", "⋭", "nsc", "⊁", "nsccue", "⋡", "nsce", "⪰̸", "Nscr", "𝒩", "nscr", "𝓃", "nshortmid", "∤", "nshortparallel", "∦", "nsim", "≁", "nsime", "≄", "nsimeq", "≄", "nsmid", "∤", "nspar", "∦", "nsqsube", "⋢", "nsqsupe", "⋣", "nsub", "⊄", "nsube", "⊈", "nsubE", "⫅̸", "nsubset", "⊂⃒", "nsubseteq", "⊈", "nsubseteqq", "⫅̸", "nsucc", "⊁", "nsucceq", "⪰̸", "nsup", "⊅", "nsupe", "⊉", "nsupE", "⫆̸", "nsupset", "⊃⃒", "nsupseteq", "⊉", "nsupseteqq", "⫆̸", "ntgl", "≹", "Ntilde", "Ñ", "ntilde", "ñ", "ntlg", "≸", "ntriangleleft", "⋪", "ntrianglelefteq", "⋬", "ntriangleright", "⋫", "ntrianglerighteq", "⋭", "Nu", "Ν", "nu", "ν", "num", "#", "numero", "№", "numsp", " ", "nvap", "≍⃒", "nvdash", "⊬", "nvDash", "⊭", "nVdash", "⊮", "nVDash", "⊯", "nvge", "≥⃒", "nvgt", ">⃒", "nvHarr", "⤄", "nvinfin", "⧞", "nvlArr", "⤂", "nvle", "≤⃒", "nvlt", "<⃒", "nvltrie", "⊴⃒", "nvrArr", "⤃", "nvrtrie", "⊵⃒", "nvsim", "∼⃒", "nwarhk", "⤣", "nwarr", "↖", "nwArr", "⇖", "nwarrow", "↖", "nwnear", "⤧", "Oacute", "Ó", "oacute", "ó", "oast", "⊛", "ocir", "⊚", "Ocirc", "Ô", "ocirc", "ô", "Ocy", "О", "ocy", "о", "odash", "⊝", "Odblac", "Ő", "odblac", "ő", "odiv", "⨸", "odot", "⊙", "odsold", "⦼", "OElig", "Œ", "oelig", "œ", "ofcir", "⦿", "Ofr", "𝔒", "ofr", "𝔬", "ogon", "˛", "Ograve", "Ò", "ograve", "ò", "ogt", "⧁", "ohbar", "⦵", "ohm", "Ω", "oint", "∮", "olarr", "↺", "olcir", "⦾", "olcross", "⦻", "oline", "‾", "olt", "⧀", "Omacr", "Ō", "omacr", "ō", "Omega", "Ω", "omega", "ω", "Omicron", "Ο", "omicron", "ο", "omid", "⦶", "ominus", "⊖", "Oopf", "𝕆", "oopf", "𝕠", "opar", "⦷", "OpenCurlyDoubleQuote", "“", "OpenCurlyQuote", "‘", "operp", "⦹", "oplus", "⊕", "or", "∨", "Or", "⩔", "orarr", "↻", "ord", "⩝", "order", "ℴ", "orderof", "ℴ", "ordf", "ª", "ordm", "º", "origof", "⊶", "oror", "⩖", "orslope", "⩗", "orv", "⩛", "oS", "Ⓢ", "oscr", "ℴ", "Oscr", "𝒪", "Oslash", "Ø", "oslash", "ø", "osol", "⊘", "Otilde", "Õ", "otilde", "õ", "otimes", "⊗", "Otimes", "⨷", "otimesas", "⨶", "Ouml", "Ö", "ouml", "ö", "ovbar", "⌽", "OverBar", "‾", "OverBrace", "⏞", "OverBracket", "⎴", "OverParenthesis", "⏜", "par", "∥", "para", "¶", "parallel", "∥", "parsim", "⫳", "parsl", "⫽", "part", "∂", "PartialD", "∂", "Pcy", "П", "pcy", "п", "percnt", "%", "period", ".", "permil", "‰", "perp", "⊥", "pertenk", "‱", "Pfr", "𝔓", "pfr", "𝔭", "Phi", "Φ", "phi", "φ", "phiv", "ϕ", "phmmat", "ℳ", "phone", "☎", "Pi", "Π", "pi", "π", "pitchfork", "⋔", "piv", "ϖ", "planck", "ℏ", "planckh", "ℎ", "plankv", "ℏ", "plus", "+", "plusacir", "⨣", "plusb", "⊞", "pluscir", "⨢", "plusdo", "∔", "plusdu", "⨥", "pluse", "⩲", "PlusMinus", "±", "plusmn", "±", "plussim", "⨦", "plustwo", "⨧", "pm", "±", "Poincareplane", "ℌ", "pointint", "⨕", "Popf", "ℙ", "popf", "𝕡", "pound", "£", "pr", "≺", "Pr", "⪻", "prap", "⪷", "prcue", "≼", "pre", "⪯", "prE", "⪳", "prec", "≺", "precapprox", "⪷", "preccurlyeq", "≼", "Precedes", "≺", "PrecedesEqual", "⪯", "PrecedesSlantEqual", "≼", "PrecedesTilde", "≾", "preceq", "⪯", "precnapprox", "⪹", "precneqq", "⪵", "precnsim", "⋨", "precsim", "≾", "prime", "′", "Prime", "″", "primes", "ℙ", "prnap", "⪹", "prnE", "⪵", "prnsim", "⋨", "prod", "∏", "Product", "∏", "profalar", "⌮", "profline", "⌒", "profsurf", "⌓", "prop", "∝", "Proportion", "∷", "Proportional", "∝", "propto", "∝", "prsim", "≾", "prurel", "⊰", "Pscr", "𝒫", "pscr", "𝓅", "Psi", "Ψ", "psi", "ψ", "puncsp", " ", "Qfr", "𝔔", "qfr", "𝔮", "qint", "⨌", "Qopf", "ℚ", "qopf", "𝕢", "qprime", "⁗", "Qscr", "𝒬", "qscr", "𝓆", "quaternions", "ℍ", "quatint", "⨖", "quest", "?", "questeq", "≟", "QUOT", "\"", "quot", "\"", "rAarr", "⇛", "race", "∽̱", "Racute", "Ŕ", "racute", "ŕ", "radic", "√", "raemptyv", "⦳", "rang", "⟩", "Rang", "⟫", "rangd", "⦒", "range", "⦥", "rangle", "⟩", "raquo", "»", "rarr", "→", "Rarr", "↠", "rArr", "⇒", "rarrap", "⥵", "rarrb", "⇥", "rarrbfs", "⤠", "rarrc", "⤳", "rarrfs", "⤞", "rarrhk", "↪", "rarrlp", "↬", "rarrpl", "⥅", "rarrsim", "⥴", "rarrtl", "↣", "Rarrtl", "⤖", "rarrw", "↝", "ratail", "⤚", "rAtail", "⤜", "ratio", "∶", "rationals", "ℚ", "rbarr", "⤍", "rBarr", "⤏", "RBarr", "⤐", "rbbrk", "❳", "rbrace", "}", "rbrack", "]", "rbrke", "⦌", "rbrksld", "⦎", "rbrkslu", "⦐", "Rcaron", "Ř", "rcaron", "ř", "Rcedil", "Ŗ", "rcedil", "ŗ", "rceil", "⌉", "rcub", "}", "Rcy", "Р", "rcy", "р", "rdca", "⤷", "rdldhar", "⥩", "rdquo", "”", "rdquor", "”", "rdsh", "↳", "Re", "ℜ", "real", "ℜ", "realine", "ℛ", "realpart", "ℜ", "reals", "ℝ", "rect", "▭", "REG", "®", "reg", "®", "ReverseElement", "∋", "ReverseEquilibrium", "⇋", "ReverseUpEquilibrium", "⥯", "rfisht", "⥽", "rfloor", "⌋", "Rfr", "ℜ", "rfr", "𝔯", "rHar", "⥤", "rhard", "⇁", "rharu", "⇀", "rharul", "⥬", "Rho", "Ρ", "rho", "ρ", "rhov", "ϱ", "RightAngleBracket", "⟩", "RightArrow", "→", "rightarrow", "→", "Rightarrow", "⇒", "RightArrowBar", "⇥", "RightArrowLeftArrow", "⇄", "rightarrowtail", "↣", "RightCeiling", "⌉", "RightDoubleBracket", "⟧", "RightDownTeeVector", "⥝", "RightDownVector", "⇂", "RightDownVectorBar", "⥕", "RightFloor", "⌋", "rightharpoondown", "⇁", "rightharpoonup", "⇀", "rightleftarrows", "⇄", "rightleftharpoons", "⇌", "rightrightarrows", "⇉", "rightsquigarrow", "↝", "RightTee", "⊢", "RightTeeArrow", "↦", "RightTeeVector", "⥛", "rightthreetimes", "⋌", "RightTriangle", "⊳", "RightTriangleBar", "⧐", "RightTriangleEqual", "⊵", "RightUpDownVector", "⥏", "RightUpTeeVector", "⥜", "RightUpVector", "↾", "RightUpVectorBar", "⥔", "RightVector", "⇀", "RightVectorBar", "⥓", "ring", "˚", "risingdotseq", "≓", "rlarr", "⇄", "rlhar", "⇌", "rlm", "‏", "rmoust", "⎱", "rmoustache", "⎱", "rnmid", "⫮", "roang", "⟭", "roarr", "⇾", "robrk", "⟧", "ropar", "⦆", "Ropf", "ℝ", "ropf", "𝕣", "roplus", "⨮", "rotimes", "⨵", "RoundImplies", "⥰", "rpar", ")", "rpargt", "⦔", "rppolint", "⨒", "rrarr", "⇉", "Rrightarrow", "⇛", "rsaquo", "›", "Rscr", "ℛ", "rscr", "𝓇", "Rsh", "↱", "rsh", "↱", "rsqb", "]", "rsquo", "’", "rsquor", "’", "rthree", "⋌", "rtimes", "⋊", "rtri", "▹", "rtrie", "⊵", "rtrif", "▸", "rtriltri", "⧎", "RuleDelayed", "⧴", "ruluhar", "⥨", "rx", "℞", "Sacute", "Ś", "sacute", "ś", "sbquo", "‚", "sc", "≻", "Sc", "⪼", "scap", "⪸", "Scaron", "Š", "scaron", "š", "sccue", "≽", "sce", "⪰", "scE", "⪴", "Scedil", "Ş", "scedil", "ş", "Scirc", "Ŝ", "scirc", "ŝ", "scnap", "⪺", "scnE", "⪶", "scnsim", "⋩", "scpolint", "⨓", "scsim", "≿", "Scy", "С", "scy", "с", "sdot", "⋅", "sdotb", "⊡", "sdote", "⩦", "searhk", "⤥", "searr", "↘", "seArr", "⇘", "searrow", "↘", "sect", "§", "semi", ";", "seswar", "⤩", "setminus", "∖", "setmn", "∖", "sext", "✶", "Sfr", "𝔖", "sfr", "𝔰", "sfrown", "⌢", "sharp", "♯", "SHCHcy", "Щ", "shchcy", "щ", "SHcy", "Ш", "shcy", "ш", "ShortDownArrow", "↓", "ShortLeftArrow", "←", "shortmid", "∣", "shortparallel", "∥", "ShortRightArrow", "→", "ShortUpArrow", "↑", "shy", "­", "Sigma", "Σ", "sigma", "σ", "sigmaf", "ς", "sigmav", "ς", "sim", "∼", "simdot", "⩪", "sime", "≃", "simeq", "≃", "simg", "⪞", "simgE", "⪠", "siml", "⪝", "simlE", "⪟", "simne", "≆", "simplus", "⨤", "simrarr", "⥲", "slarr", "←", "SmallCircle", "∘", "smallsetminus", "∖", "smashp", "⨳", "smeparsl", "⧤", "smid", "∣", "smile", "⌣", "smt", "⪪", "smte", "⪬", "smtes", "⪬︀", "SOFTcy", "Ь", "softcy", "ь", "sol", "/", "solb", "⧄", "solbar", "⌿", "Sopf", "𝕊", "sopf", "𝕤", "spades", "♠", "spadesuit", "♠", "spar", "∥", "sqcap", "⊓", "sqcaps", "⊓︀", "sqcup", "⊔", "sqcups", "⊔︀", "Sqrt", "√", "sqsub", "⊏", "sqsube", "⊑", "sqsubset", "⊏", "sqsubseteq", "⊑", "sqsup", "⊐", "sqsupe", "⊒", "sqsupset", "⊐", "sqsupseteq", "⊒", "squ", "□", "Square", "□", "square", "□", "SquareIntersection", "⊓", "SquareSubset", "⊏", "SquareSubsetEqual", "⊑", "SquareSuperset", "⊐", "SquareSupersetEqual", "⊒", "SquareUnion", "⊔", "squarf", "▪", "squf", "▪", "srarr", "→", "Sscr", "𝒮", "sscr", "𝓈", "ssetmn", "∖", "ssmile", "⌣", "sstarf", "⋆", "Star", "⋆", "star", "☆", "starf", "★", "straightepsilon", "ϵ", "straightphi", "ϕ", "strns", "¯", "sub", "⊂", "Sub", "⋐", "subdot", "⪽", "sube", "⊆", "subE", "⫅", "subedot", "⫃", "submult", "⫁", "subne", "⊊", "subnE", "⫋", "subplus", "⪿", "subrarr", "⥹", "subset", "⊂", "Subset", "⋐", "subseteq", "⊆", "subseteqq", "⫅", "SubsetEqual", "⊆", "subsetneq", "⊊", "subsetneqq", "⫋", "subsim", "⫇", "subsub", "⫕", "subsup", "⫓", "succ", "≻", "succapprox", "⪸", "succcurlyeq", "≽", "Succeeds", "≻", "SucceedsEqual", "⪰", "SucceedsSlantEqual", "≽", "SucceedsTilde", "≿", "succeq", "⪰", "succnapprox", "⪺", "succneqq", "⪶", "succnsim", "⋩", "succsim", "≿", "SuchThat", "∋", "Sum", "∑", "sum", "∑", "sung", "♪", "sup", "⊃", "Sup", "⋑", "sup1", "¹", "sup2", "²", "sup3", "³", "supdot", "⪾", "supdsub", "⫘", "supe", "⊇", "supE", "⫆", "supedot", "⫄", "Superset", "⊃", "SupersetEqual", "⊇", "suphsol", "⟉", "suphsub", "⫗", "suplarr", "⥻", "supmult", "⫂", "supne", "⊋", "supnE", "⫌", "supplus", "⫀", "supset", "⊃", "Supset", "⋑", "supseteq", "⊇", "supseteqq", "⫆", "supsetneq", "⊋", "supsetneqq", "⫌", "supsim", "⫈", "supsub", "⫔", "supsup", "⫖", "swarhk", "⤦", "swarr", "↙", "swArr", "⇙", "swarrow", "↙", "swnwar", "⤪", "szlig", "ß", "Tab", "\t", "target", "⌖", "Tau", "Τ", "tau", "τ", "tbrk", "⎴", "Tcaron", "Ť", "tcaron", "ť", "Tcedil", "Ţ", "tcedil", "ţ", "Tcy", "Т", "tcy", "т", "tdot", "⃛", "telrec", "⌕", "Tfr", "𝔗", "tfr", "𝔱", "there4", "∴", "Therefore", "∴", "therefore", "∴", "Theta", "Θ", "theta", "θ", "thetasym", "ϑ", "thetav", "ϑ", "thickapprox", "≈", "thicksim", "∼", "ThickSpace", "  ", "thinsp", " ", "ThinSpace", " ", "thkap", "≈", "thksim", "∼", "THORN", "Þ", "thorn", "þ", "tilde", "˜", "Tilde", "∼", "TildeEqual", "≃", "TildeFullEqual", "≅", "TildeTilde", "≈", "times", "×", "timesb", "⊠", "timesbar", "⨱", "timesd", "⨰", "tint", "∭", "toea", "⤨", "top", "⊤", "topbot", "⌶", "topcir", "⫱", "Topf", "𝕋", "topf", "𝕥", "topfork", "⫚", "tosa", "⤩", "tprime", "‴", "TRADE", "™", "trade", "™", "triangle", "▵", "triangledown", "▿", "triangleleft", "◃", "trianglelefteq", "⊴", "triangleq", "≜", "triangleright", "▹", "trianglerighteq", "⊵", "tridot", "◬", "trie", "≜", "triminus", "⨺", "TripleDot", "⃛", "triplus", "⨹", "trisb", "⧍", "tritime", "⨻", "trpezium", "⏢", "Tscr", "𝒯", "tscr", "𝓉", "TScy", "Ц", "tscy", "ц", "TSHcy", "Ћ", "tshcy", "ћ", "Tstrok", "Ŧ", "tstrok", "ŧ", "twixt", "≬", "twoheadleftarrow", "↞", "twoheadrightarrow", "↠", "Uacute", "Ú", "uacute", "ú", "uarr", "↑", "Uarr", "↟", "uArr", "⇑", "Uarrocir", "⥉", "Ubrcy", "Ў", "ubrcy", "ў", "Ubreve", "Ŭ", "ubreve", "ŭ", "Ucirc", "Û", "ucirc", "û", "Ucy", "У", "ucy", "у", "udarr", "⇅", "Udblac", "Ű", "udblac", "ű", "udhar", "⥮", "ufisht", "⥾", "Ufr", "𝔘", "ufr", "𝔲", "Ugrave", "Ù", "ugrave", "ù", "uHar", "⥣", "uharl", "↿", "uharr", "↾", "uhblk", "▀", "ulcorn", "⌜", "ulcorner", "⌜", "ulcrop", "⌏", "ultri", "◸", "Umacr", "Ū", "umacr", "ū", "uml", "¨", "UnderBar", "_", "UnderBrace", "⏟", "UnderBracket", "⎵", "UnderParenthesis", "⏝", "Union", "⋃", "UnionPlus", "⊎", "Uogon", "Ų", "uogon", "ų", "Uopf", "𝕌", "uopf", "𝕦", "UpArrow", "↑", "uparrow", "↑", "Uparrow", "⇑", "UpArrowBar", "⤒", "UpArrowDownArrow", "⇅", "UpDownArrow", "↕", "updownarrow", "↕", "Updownarrow", "⇕", "UpEquilibrium", "⥮", "upharpoonleft", "↿", "upharpoonright", "↾", "uplus", "⊎", "UpperLeftArrow", "↖", "UpperRightArrow", "↗", "upsi", "υ", "Upsi", "ϒ", "upsih", "ϒ", "Upsilon", "Υ", "upsilon", "υ", "UpTee", "⊥", "UpTeeArrow", "↥", "upuparrows", "⇈", "urcorn", "⌝", "urcorner", "⌝", "urcrop", "⌎", "Uring", "Ů", "uring", "ů", "urtri", "◹", "Uscr", "𝒰", "uscr", "𝓊", "utdot", "⋰", "Utilde", "Ũ", "utilde", "ũ", "utri", "▵", "utrif", "▴", "uuarr", "⇈", "Uuml", "Ü", "uuml", "ü", "uwangle", "⦧", "vangrt", "⦜", "varepsilon", "ϵ", "varkappa", "ϰ", "varnothing", "∅", "varphi", "ϕ", "varpi", "ϖ", "varpropto", "∝", "varr", "↕", "vArr", "⇕", "varrho", "ϱ", "varsigma", "ς", "varsubsetneq", "⊊︀", "varsubsetneqq", "⫋︀", "varsupsetneq", "⊋︀", "varsupsetneqq", "⫌︀", "vartheta", "ϑ", "vartriangleleft", "⊲", "vartriangleright", "⊳", "vBar", "⫨", "Vbar", "⫫", "vBarv", "⫩", "Vcy", "В", "vcy", "в", "vdash", "⊢", "vDash", "⊨", "Vdash", "⊩", "VDash", "⊫", "Vdashl", "⫦", "vee", "∨", "Vee", "⋁", "veebar", "⊻", "veeeq", "≚", "vellip", "⋮", "verbar", "|", "Verbar", "‖", "vert", "|", "Vert", "‖", "VerticalBar", "∣", "VerticalLine", "|", "VerticalSeparator", "❘", "VerticalTilde", "≀", "VeryThinSpace", " ", "Vfr", "𝔙", "vfr", "𝔳", "vltri", "⊲", "vnsub", "⊂⃒", "vnsup", "⊃⃒", "Vopf", "𝕍", "vopf", "𝕧", "vprop", "∝", "vrtri", "⊳", "Vscr", "𝒱", "vscr", "𝓋", "vsubne", "⊊︀", "vsubnE", "⫋︀", "vsupne", "⊋︀", "vsupnE", "⫌︀", "Vvdash", "⊪", "vzigzag", "⦚", "Wcirc", "Ŵ", "wcirc", "ŵ", "wedbar", "⩟", "wedge", "∧", "Wedge", "⋀", "wedgeq", "≙", "weierp", "℘", "Wfr", "𝔚", "wfr", "𝔴", "Wopf", "𝕎", "wopf", "𝕨", "wp", "℘", "wr", "≀", "wreath", "≀", "Wscr", "𝒲", "wscr", "𝓌", "xcap", "⋂", "xcirc", "◯", "xcup", "⋃", "xdtri", "▽", "Xfr", "𝔛", "xfr", "𝔵", "xharr", "⟷", "xhArr", "⟺", "Xi", "Ξ", "xi", "ξ", "xlarr", "⟵", "xlArr", "⟸", "xmap", "⟼", "xnis", "⋻", "xodot", "⨀", "Xopf", "𝕏", "xopf", "𝕩", "xoplus", "⨁", "xotime", "⨂", "xrarr", "⟶", "xrArr", "⟹", "Xscr", "𝒳", "xscr", "𝓍", "xsqcup", "⨆", "xuplus", "⨄", "xutri", "△", "xvee", "⋁", "xwedge", "⋀", "Yacute", "Ý", "yacute", "ý", "YAcy", "Я", "yacy", "я", "Ycirc", "Ŷ", "ycirc", "ŷ", "Ycy", "Ы", "ycy", "ы", "yen", "¥", "Yfr", "𝔜", "yfr", "𝔶", "YIcy", "Ї", "yicy", "ї", "Yopf", "𝕐", "yopf", "𝕪", "Yscr", "𝒴", "yscr", "𝓎", "YUcy", "Ю", "yucy", "ю", "yuml", "ÿ", "Yuml", "Ÿ", "Zacute", "Ź", "zacute", "ź", "Zcaron", "Ž", "zcaron", "ž", "Zcy", "З", "zcy", "з", "Zdot", "Ż", "zdot", "ż", "zeetrf", "ℨ", "ZeroWidthSpace", "​", "Zeta", "Ζ", "zeta", "ζ", "Zfr", "ℨ", "zfr", "𝔷", "ZHcy", "Ж", "zhcy", "ж", "zigrarr", "⇝", "Zopf", "ℤ", "zopf", "𝕫", "Zscr", "𝒵", "zscr", "𝓏", "zwj", "‍", "zwnj", "‌"]);
+      return C[2] = dart.const({
+        __proto__: T.DefaultEqualityOfNeverL().prototype
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: equality.ListEquality.prototype,
+        [ListEquality__elementEquality]: C[2] || CT.C2
+      });
     }
   }, false);
   var C = Array(3).fill(void 0);
-  dart.defineLazy(named_entities, {
-    /*named_entities.xmlEntities*/get xmlEntities() {
-      return C[0] || CT.C0;
-    },
-    /*named_entities.htmlEntities*/get htmlEntities() {
-      return C[1] || CT.C1;
-    },
-    /*named_entities.html5Entities*/get html5Entities() {
-      return C[2] || CT.C2;
+  var I = [
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/events/text.dart",
+    "package:xml/src/xml_events/utils/parented.dart",
+    "package:xml/src/xml_events/event.dart",
+    "package:xml/src/xml_events/events/text.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/events/processing.dart",
+    "package:xml/src/xml_events/events/processing.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/events/end_element.dart",
+    "package:xml/src/xml_events/utils/named.dart",
+    "package:xml/src/xml_events/events/end_element.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/events/doctype.dart",
+    "package:xml/src/xml_events/events/doctype.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/streams/with_parent.dart",
+    "package:xml/src/xml_events/streams/with_parent.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/visitor.dart",
+    "package:xml/src/xml_events/visitor.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/events/start_element.dart",
+    "package:xml/src/xml_events/events/start_element.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/utils/event_attribute.dart",
+    "package:xml/src/xml_events/utils/event_attribute.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/events/declaration.dart",
+    "package:xml/src/xml_events/events/declaration.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/events/comment.dart",
+    "package:xml/src/xml_events/events/comment.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/events/cdata.dart",
+    "package:xml/src/xml_events/events/cdata.dart",
+    "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.1.2/lib/src/xml_events/converters/event_encoder.dart",
+    "package:xml/src/xml_events/converters/event_encoder.dart"
+  ];
+  var text$0 = dart.privateName(text$, "XmlTextEvent.text");
+  var _parentEvent = dart.privateName(parented, "_parentEvent");
+  parented.XmlParented = class XmlParented extends core.Object {};
+  parented.XmlParented[dart.mixinOn] = Object => class XmlParented extends Object {
+    get parentEvent() {
+      return this[_parentEvent];
     }
-  }, false);
-  dart.trackLibraries("packages/xml/src/xml/entities/named_entities.dart", {
-    "package:xml/src/xml/entities/named_entities.dart": named_entities
+    attachParentEvent(parentEvent) {
+      if (this[_parentEvent] != null) {
+        dart.throw(new core.StateError.new("Parent event already resolved."));
+      }
+      this[_parentEvent] = parentEvent;
+    }
+  };
+  (parented.XmlParented[dart.mixinNew] = function() {
+    this[_parentEvent] = null;
+  }).prototype = parented.XmlParented.prototype;
+  dart.addTypeTests(parented.XmlParented);
+  dart.addTypeCaches(parented.XmlParented);
+  parented.XmlParented[dart.implements] = () => [core.Object];
+  dart.setMethodSignature(parented.XmlParented, () => ({
+    __proto__: dart.getMethods(parented.XmlParented.__proto__),
+    attachParentEvent: dart.fnType(dart.void, [dart.nullable(start_element.XmlStartElementEvent)])
+  }));
+  dart.setGetterSignature(parented.XmlParented, () => ({
+    __proto__: dart.getGetters(parented.XmlParented.__proto__),
+    parentEvent: dart.nullable(start_element.XmlStartElementEvent)
+  }));
+  dart.setLibraryUri(parented.XmlParented, I[1]);
+  dart.setFieldSignature(parented.XmlParented, () => ({
+    __proto__: dart.getFields(parented.XmlParented.__proto__),
+    [_parentEvent]: dart.fieldType(dart.nullable(start_element.XmlStartElementEvent))
+  }));
+  const Object_XmlParented$36 = class Object_XmlParented extends core.Object {};
+  (Object_XmlParented$36.new = function() {
+    parented.XmlParented[dart.mixinNew].call(this);
+  }).prototype = Object_XmlParented$36.prototype;
+  dart.applyMixin(Object_XmlParented$36, parented.XmlParented);
+  event.XmlEvent = class XmlEvent extends Object_XmlParented$36 {
+    toString() {
+      return new event_encoder.XmlEventEncoder.new().convert(T.JSArrayOfXmlEvent().of([this]));
+    }
+  };
+  (event.XmlEvent.new = function() {
+    event.XmlEvent.__proto__.new.call(this);
+    ;
+  }).prototype = event.XmlEvent.prototype;
+  dart.addTypeTests(event.XmlEvent);
+  dart.addTypeCaches(event.XmlEvent);
+  dart.setLibraryUri(event.XmlEvent, I[2]);
+  dart.defineExtensionMethods(event.XmlEvent, ['toString']);
+  text$.XmlTextEvent = class XmlTextEvent extends event.XmlEvent {
+    get text() {
+      return this[text$0];
+    }
+    set text(value) {
+      super.text = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.TEXT;
+    }
+    accept(visitor) {
+      if (visitor == null) dart.nullFailed(I[0], 15, 31, "visitor");
+      return visitor.visitTextEvent(this);
+    }
+    get hashCode() {
+      return (dart.notNull(dart.hashCode(this.nodeType)) ^ dart.hashCode(this.text)) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return text$.XmlTextEvent.is(other) && other.text == this.text;
+    }
+  };
+  (text$.XmlTextEvent.new = function(text) {
+    if (text == null) dart.nullFailed(I[0], 7, 21, "text");
+    this[text$0] = text;
+    text$.XmlTextEvent.__proto__.new.call(this);
+    ;
+  }).prototype = text$.XmlTextEvent.prototype;
+  dart.addTypeTests(text$.XmlTextEvent);
+  dart.addTypeCaches(text$.XmlTextEvent);
+  dart.setMethodSignature(text$.XmlTextEvent, () => ({
+    __proto__: dart.getMethods(text$.XmlTextEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(text$.XmlTextEvent, () => ({
+    __proto__: dart.getGetters(text$.XmlTextEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(text$.XmlTextEvent, I[3]);
+  dart.setFieldSignature(text$.XmlTextEvent, () => ({
+    __proto__: dart.getFields(text$.XmlTextEvent.__proto__),
+    text: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(text$.XmlTextEvent, ['_equals']);
+  dart.defineExtensionAccessors(text$.XmlTextEvent, ['hashCode']);
+  var target$ = dart.privateName(processing, "XmlProcessingEvent.target");
+  var text$1 = dart.privateName(processing, "XmlProcessingEvent.text");
+  processing.XmlProcessingEvent = class XmlProcessingEvent extends event.XmlEvent {
+    get target() {
+      return this[target$];
+    }
+    set target(value) {
+      super.target = value;
+    }
+    get text() {
+      return this[text$1];
+    }
+    set text(value) {
+      super.text = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.PROCESSING;
+    }
+    accept(visitor) {
+      if (visitor == null) dart.nullFailed(I[4], 17, 31, "visitor");
+      return visitor.visitProcessingEvent(this);
+    }
+    get hashCode() {
+      return (dart.notNull(dart.hashCode(this.nodeType)) ^ dart.hashCode(this.text) ^ dart.hashCode(this.target)) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return processing.XmlProcessingEvent.is(other) && other.target == this.target && other.text == this.text;
+    }
+  };
+  (processing.XmlProcessingEvent.new = function(target, text) {
+    if (target == null) dart.nullFailed(I[4], 7, 27, "target");
+    if (text == null) dart.nullFailed(I[4], 7, 40, "text");
+    this[target$] = target;
+    this[text$1] = text;
+    processing.XmlProcessingEvent.__proto__.new.call(this);
+    ;
+  }).prototype = processing.XmlProcessingEvent.prototype;
+  dart.addTypeTests(processing.XmlProcessingEvent);
+  dart.addTypeCaches(processing.XmlProcessingEvent);
+  dart.setMethodSignature(processing.XmlProcessingEvent, () => ({
+    __proto__: dart.getMethods(processing.XmlProcessingEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(processing.XmlProcessingEvent, () => ({
+    __proto__: dart.getGetters(processing.XmlProcessingEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(processing.XmlProcessingEvent, I[5]);
+  dart.setFieldSignature(processing.XmlProcessingEvent, () => ({
+    __proto__: dart.getFields(processing.XmlProcessingEvent.__proto__),
+    target: dart.finalFieldType(core.String),
+    text: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(processing.XmlProcessingEvent, ['_equals']);
+  dart.defineExtensionAccessors(processing.XmlProcessingEvent, ['hashCode']);
+  var name$ = dart.privateName(end_element, "XmlEndElementEvent.name");
+  named.XmlNamed = class XmlNamed extends core.Object {};
+  named.XmlNamed[dart.mixinOn] = Object => class XmlNamed extends Object {
+    get qualifiedName() {
+      return this.name;
+    }
+    get namespacePrefix() {
+      let index = this.name[$indexOf](":");
+      return index > 0 ? this.name[$substring](0, index) : null;
+    }
+    get namespaceUri() {
+      let index = this.name[$indexOf](":");
+      let prefix = index < 0 ? null : "xmlns";
+      let local = index < 0 ? "xmlns" : this.name[$substring](0, index);
+      let start = start_element.XmlStartElementEvent.is(this) ? start_element.XmlStartElementEvent.as(this) : this.parentEvent;
+      for (let event = start; event != null; event = event.parentEvent) {
+        for (let attribute of event.attributes) {
+          if (attribute.namespacePrefix == prefix && attribute.localName === local) {
+            return attribute.value;
+          }
+        }
+      }
+      return null;
+    }
+    get localName() {
+      let index = this.name[$indexOf](":");
+      return index > 0 ? this.name[$substring](index + 1) : this.name;
+    }
+  };
+  (named.XmlNamed[dart.mixinNew] = function() {
+  }).prototype = named.XmlNamed.prototype;
+  dart.addTypeTests(named.XmlNamed);
+  dart.addTypeCaches(named.XmlNamed);
+  named.XmlNamed[dart.implements] = () => [parented.XmlParented, core.Object];
+  dart.setGetterSignature(named.XmlNamed, () => ({
+    __proto__: dart.getGetters(named.XmlNamed.__proto__),
+    qualifiedName: core.String,
+    namespacePrefix: dart.nullable(core.String),
+    namespaceUri: dart.nullable(core.String),
+    localName: core.String
+  }));
+  dart.setLibraryUri(named.XmlNamed, I[7]);
+  const XmlEvent_XmlNamed$36 = class XmlEvent_XmlNamed extends event.XmlEvent {};
+  (XmlEvent_XmlNamed$36.new = function() {
+    XmlEvent_XmlNamed$36.__proto__.new.call(this);
+  }).prototype = XmlEvent_XmlNamed$36.prototype;
+  dart.applyMixin(XmlEvent_XmlNamed$36, named.XmlNamed);
+  end_element.XmlEndElementEvent = class XmlEndElementEvent extends XmlEvent_XmlNamed$36 {
+    get name() {
+      return this[name$];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.ELEMENT;
+    }
+    accept(visitor) {
+      if (visitor == null) dart.nullFailed(I[6], 17, 31, "visitor");
+      return visitor.visitEndElementEvent(this);
+    }
+    get hashCode() {
+      return (dart.notNull(dart.hashCode(this.nodeType)) ^ dart.hashCode(this.name)) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return end_element.XmlEndElementEvent.is(other) && other.name == this.name;
+    }
+  };
+  (end_element.XmlEndElementEvent.new = function(name) {
+    if (name == null) dart.nullFailed(I[6], 8, 27, "name");
+    this[name$] = name;
+    end_element.XmlEndElementEvent.__proto__.new.call(this);
+    ;
+  }).prototype = end_element.XmlEndElementEvent.prototype;
+  dart.addTypeTests(end_element.XmlEndElementEvent);
+  dart.addTypeCaches(end_element.XmlEndElementEvent);
+  dart.setMethodSignature(end_element.XmlEndElementEvent, () => ({
+    __proto__: dart.getMethods(end_element.XmlEndElementEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(end_element.XmlEndElementEvent, () => ({
+    __proto__: dart.getGetters(end_element.XmlEndElementEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(end_element.XmlEndElementEvent, I[8]);
+  dart.setFieldSignature(end_element.XmlEndElementEvent, () => ({
+    __proto__: dart.getFields(end_element.XmlEndElementEvent.__proto__),
+    name: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(end_element.XmlEndElementEvent, ['_equals']);
+  dart.defineExtensionAccessors(end_element.XmlEndElementEvent, ['hashCode']);
+  var text$2 = dart.privateName(doctype, "XmlDoctypeEvent.text");
+  doctype.XmlDoctypeEvent = class XmlDoctypeEvent extends event.XmlEvent {
+    get text() {
+      return this[text$2];
+    }
+    set text(value) {
+      super.text = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.DOCUMENT_TYPE;
+    }
+    accept(visitor) {
+      if (visitor == null) dart.nullFailed(I[9], 15, 31, "visitor");
+      return visitor.visitDoctypeEvent(this);
+    }
+    get hashCode() {
+      return (dart.notNull(dart.hashCode(this.nodeType)) ^ dart.hashCode(this.text)) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return doctype.XmlDoctypeEvent.is(other) && other.text == this.text;
+    }
+  };
+  (doctype.XmlDoctypeEvent.new = function(text) {
+    if (text == null) dart.nullFailed(I[9], 7, 24, "text");
+    this[text$2] = text;
+    doctype.XmlDoctypeEvent.__proto__.new.call(this);
+    ;
+  }).prototype = doctype.XmlDoctypeEvent.prototype;
+  dart.addTypeTests(doctype.XmlDoctypeEvent);
+  dart.addTypeCaches(doctype.XmlDoctypeEvent);
+  dart.setMethodSignature(doctype.XmlDoctypeEvent, () => ({
+    __proto__: dart.getMethods(doctype.XmlDoctypeEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(doctype.XmlDoctypeEvent, () => ({
+    __proto__: dart.getGetters(doctype.XmlDoctypeEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(doctype.XmlDoctypeEvent, I[10]);
+  dart.setFieldSignature(doctype.XmlDoctypeEvent, () => ({
+    __proto__: dart.getFields(doctype.XmlDoctypeEvent.__proto__),
+    text: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(doctype.XmlDoctypeEvent, ['_equals']);
+  dart.defineExtensionAccessors(doctype.XmlDoctypeEvent, ['hashCode']);
+  with_parent.XmlWithParentEvents = class XmlWithParentEvents extends list_converter.XmlListConverter$(event.XmlEvent, event.XmlEvent) {
+    startChunkedConversion(sink) {
+      T.SinkOfListOfXmlEvent().as(sink);
+      if (sink == null) dart.nullFailed(I[11], 34, 32, "sink");
+      return new with_parent._XmlWithParentEventsSink.new(sink);
+    }
+  };
+  (with_parent.XmlWithParentEvents.new = function() {
+    with_parent.XmlWithParentEvents.__proto__.new.call(this);
+    ;
+  }).prototype = with_parent.XmlWithParentEvents.prototype;
+  dart.addTypeTests(with_parent.XmlWithParentEvents);
+  dart.addTypeCaches(with_parent.XmlWithParentEvents);
+  dart.setMethodSignature(with_parent.XmlWithParentEvents, () => ({
+    __proto__: dart.getMethods(with_parent.XmlWithParentEvents.__proto__),
+    startChunkedConversion: dart.fnType(convert.ChunkedConversionSink$(core.List$(event.XmlEvent)), [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(with_parent.XmlWithParentEvents, I[12]);
+  visitor.XmlEventVisitor = class XmlEventVisitor extends core.Object {};
+  visitor.XmlEventVisitor[dart.mixinOn] = Object => class XmlEventVisitor extends Object {
+    visit(event) {
+      if (event == null) dart.nullFailed(I[13], 15, 23, "event");
+      return event.accept(this);
+    }
+  };
+  (visitor.XmlEventVisitor[dart.mixinNew] = function() {
+  }).prototype = visitor.XmlEventVisitor.prototype;
+  dart.addTypeTests(visitor.XmlEventVisitor);
+  dart.addTypeCaches(visitor.XmlEventVisitor);
+  visitor.XmlEventVisitor[dart.implements] = () => [core.Object];
+  dart.setMethodSignature(visitor.XmlEventVisitor, () => ({
+    __proto__: dart.getMethods(visitor.XmlEventVisitor.__proto__),
+    visit: dart.fnType(dart.void, [event.XmlEvent])
+  }));
+  dart.setLibraryUri(visitor.XmlEventVisitor, I[14]);
+  const ChunkedConversionSink_XmlEventVisitor$36 = class ChunkedConversionSink_XmlEventVisitor extends convert.ChunkedConversionSink$(core.List$(event.XmlEvent)) {};
+  (ChunkedConversionSink_XmlEventVisitor$36.new = function() {
+    ChunkedConversionSink_XmlEventVisitor$36.__proto__.new.call(this);
+  }).prototype = ChunkedConversionSink_XmlEventVisitor$36.prototype;
+  dart.applyMixin(ChunkedConversionSink_XmlEventVisitor$36, visitor.XmlEventVisitor);
+  with_parent._XmlWithParentEventsSink = class _XmlWithParentEventsSink extends ChunkedConversionSink_XmlEventVisitor$36 {
+    add(events) {
+      T.ListOfXmlEvent().as(events);
+      if (events == null) dart.nullFailed(I[11], 47, 27, "events");
+      events[$forEach](dart.bind(this, 'visit'));
+      this.sink.add(events);
+    }
+    close() {
+      if (this.currentParent != null) {
+        dart.throw(exceptions.XmlTagException.missingClosingTag(dart.nullCheck(this.currentParent).name));
+      }
+      this.sink.close();
+    }
+    visitCDATAEvent(event) {
+      if (event == null) dart.nullFailed(I[11], 61, 38, "event");
+      return event.attachParentEvent(this.currentParent);
+    }
+    visitCommentEvent(event) {
+      if (event == null) dart.nullFailed(I[11], 65, 42, "event");
+      return event.attachParentEvent(this.currentParent);
+    }
+    visitDeclarationEvent(event) {
+      if (event == null) dart.nullFailed(I[11], 69, 50, "event");
+      return event.attachParentEvent(this.currentParent);
+    }
+    visitDoctypeEvent(event) {
+      if (event == null) dart.nullFailed(I[11], 73, 42, "event");
+      return event.attachParentEvent(this.currentParent);
+    }
+    visitEndElementEvent(event) {
+      if (event == null) dart.nullFailed(I[11], 77, 48, "event");
+      if (this.currentParent == null) {
+        dart.throw(exceptions.XmlTagException.unexpectedClosingTag(event.name));
+      } else if (dart.nullCheck(this.currentParent).name != event.name) {
+        dart.throw(exceptions.XmlTagException.mismatchClosingTag(dart.nullCheck(this.currentParent).name, event.name));
+      }
+      event.attachParentEvent(this.currentParent);
+      this.currentParent = dart.nullCheck(this.currentParent).parentEvent;
+    }
+    visitProcessingEvent(event) {
+      if (event == null) dart.nullFailed(I[11], 88, 48, "event");
+      return event.attachParentEvent(this.currentParent);
+    }
+    visitStartElementEvent(event) {
+      if (event == null) dart.nullFailed(I[11], 92, 52, "event");
+      event.attachParentEvent(this.currentParent);
+      for (let attribute of event.attributes) {
+        attribute.attachParentEvent(event);
+      }
+      if (!dart.test(event.isSelfClosing)) {
+        this.currentParent = event;
+      }
+    }
+    visitTextEvent(event) {
+      if (event == null) dart.nullFailed(I[11], 103, 36, "event");
+      return event.attachParentEvent(this.currentParent);
+    }
+  };
+  (with_parent._XmlWithParentEventsSink.new = function(sink) {
+    if (sink == null) dart.nullFailed(I[11], 44, 33, "sink");
+    this.currentParent = null;
+    this.sink = sink;
+    with_parent._XmlWithParentEventsSink.__proto__.new.call(this);
+    ;
+  }).prototype = with_parent._XmlWithParentEventsSink.prototype;
+  dart.addTypeTests(with_parent._XmlWithParentEventsSink);
+  dart.addTypeCaches(with_parent._XmlWithParentEventsSink);
+  dart.setMethodSignature(with_parent._XmlWithParentEventsSink, () => ({
+    __proto__: dart.getMethods(with_parent._XmlWithParentEventsSink.__proto__),
+    add: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+    close: dart.fnType(dart.void, []),
+    visitCDATAEvent: dart.fnType(dart.void, [cdata.XmlCDATAEvent]),
+    visitCommentEvent: dart.fnType(dart.void, [comment.XmlCommentEvent]),
+    visitDeclarationEvent: dart.fnType(dart.void, [declaration.XmlDeclarationEvent]),
+    visitDoctypeEvent: dart.fnType(dart.void, [doctype.XmlDoctypeEvent]),
+    visitEndElementEvent: dart.fnType(dart.void, [end_element.XmlEndElementEvent]),
+    visitProcessingEvent: dart.fnType(dart.void, [processing.XmlProcessingEvent]),
+    visitStartElementEvent: dart.fnType(dart.void, [start_element.XmlStartElementEvent]),
+    visitTextEvent: dart.fnType(dart.void, [text$.XmlTextEvent])
+  }));
+  dart.setLibraryUri(with_parent._XmlWithParentEventsSink, I[12]);
+  dart.setFieldSignature(with_parent._XmlWithParentEventsSink, () => ({
+    __proto__: dart.getFields(with_parent._XmlWithParentEventsSink.__proto__),
+    sink: dart.finalFieldType(core.Sink$(core.List$(event.XmlEvent))),
+    currentParent: dart.fieldType(dart.nullable(start_element.XmlStartElementEvent))
+  }));
+  with_parent['XmlWithParentEventsExtension|withParentEvents'] = function XmlWithParentEventsExtension$124withParentEvents($this) {
+    if ($this == null) dart.nullFailed(I[11], 24, 26, "#this");
+    return $this.transform(T.ListOfXmlEvent(), C[0] || CT.C0);
+  };
+  with_parent['XmlWithParentEventsExtension|get#withParentEvents'] = function XmlWithParentEventsExtension$124get$35withParentEvents($this) {
+    if ($this == null) dart.nullFailed(I[11], 24, 26, "#this");
+    return dart.fn(() => with_parent['XmlWithParentEventsExtension|withParentEvents']($this), T.VoidToStreamOfListOfXmlEvent());
+  };
+  var name$0 = dart.privateName(start_element, "XmlStartElementEvent.name");
+  var attributes$ = dart.privateName(start_element, "XmlStartElementEvent.attributes");
+  var isSelfClosing$ = dart.privateName(start_element, "XmlStartElementEvent.isSelfClosing");
+  var ListEquality__elementEquality = dart.privateName(equality, "ListEquality._elementEquality");
+  const XmlEvent_XmlNamed$36$ = class XmlEvent_XmlNamed extends event.XmlEvent {};
+  (XmlEvent_XmlNamed$36$.new = function() {
+    XmlEvent_XmlNamed$36$.__proto__.new.call(this);
+  }).prototype = XmlEvent_XmlNamed$36$.prototype;
+  dart.applyMixin(XmlEvent_XmlNamed$36$, named.XmlNamed);
+  start_element.XmlStartElementEvent = class XmlStartElementEvent extends XmlEvent_XmlNamed$36$ {
+    get name() {
+      return this[name$0];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get attributes() {
+      return this[attributes$];
+    }
+    set attributes(value) {
+      super.attributes = value;
+    }
+    get isSelfClosing() {
+      return this[isSelfClosing$];
+    }
+    set isSelfClosing(value) {
+      super.isSelfClosing = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.ELEMENT;
+    }
+    accept(visitor) {
+      if (visitor == null) dart.nullFailed(I[15], 24, 31, "visitor");
+      return visitor.visitStartElementEvent(this);
+    }
+    get hashCode() {
+      return (dart.notNull(dart.hashCode(this.nodeType)) ^ dart.hashCode(this.name) ^ dart.hashCode(this.isSelfClosing) ^ dart.notNull((C[1] || CT.C1).hash(this.attributes))) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return start_element.XmlStartElementEvent.is(other) && other.name == this.name && other.isSelfClosing == this.isSelfClosing && dart.test((C[1] || CT.C1).equals(other.attributes, this.attributes));
+    }
+  };
+  (start_element.XmlStartElementEvent.new = function(name, attributes, isSelfClosing) {
+    if (name == null) dart.nullFailed(I[15], 11, 29, "name");
+    if (attributes == null) dart.nullFailed(I[15], 11, 40, "attributes");
+    if (isSelfClosing == null) dart.nullFailed(I[15], 11, 57, "isSelfClosing");
+    this[name$0] = name;
+    this[attributes$] = attributes;
+    this[isSelfClosing$] = isSelfClosing;
+    start_element.XmlStartElementEvent.__proto__.new.call(this);
+    ;
+  }).prototype = start_element.XmlStartElementEvent.prototype;
+  dart.addTypeTests(start_element.XmlStartElementEvent);
+  dart.addTypeCaches(start_element.XmlStartElementEvent);
+  dart.setMethodSignature(start_element.XmlStartElementEvent, () => ({
+    __proto__: dart.getMethods(start_element.XmlStartElementEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(start_element.XmlStartElementEvent, () => ({
+    __proto__: dart.getGetters(start_element.XmlStartElementEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(start_element.XmlStartElementEvent, I[16]);
+  dart.setFieldSignature(start_element.XmlStartElementEvent, () => ({
+    __proto__: dart.getFields(start_element.XmlStartElementEvent.__proto__),
+    name: dart.finalFieldType(core.String),
+    attributes: dart.finalFieldType(core.List$(event_attribute.XmlEventAttribute)),
+    isSelfClosing: dart.finalFieldType(core.bool)
+  }));
+  dart.defineExtensionMethods(start_element.XmlStartElementEvent, ['_equals']);
+  dart.defineExtensionAccessors(start_element.XmlStartElementEvent, ['hashCode']);
+  var name$1 = dart.privateName(event_attribute, "XmlEventAttribute.name");
+  var value$ = dart.privateName(event_attribute, "XmlEventAttribute.value");
+  var attributeType$ = dart.privateName(event_attribute, "XmlEventAttribute.attributeType");
+  const Object_XmlNamed$36 = class Object_XmlNamed extends core.Object {};
+  (Object_XmlNamed$36.new = function() {
+  }).prototype = Object_XmlNamed$36.prototype;
+  dart.applyMixin(Object_XmlNamed$36, named.XmlNamed);
+  const Object_XmlParented$36$ = class Object_XmlParented extends Object_XmlNamed$36 {};
+  (Object_XmlParented$36$.new = function() {
+    parented.XmlParented[dart.mixinNew].call(this);
+  }).prototype = Object_XmlParented$36$.prototype;
+  dart.applyMixin(Object_XmlParented$36$, parented.XmlParented);
+  event_attribute.XmlEventAttribute = class XmlEventAttribute extends Object_XmlParented$36$ {
+    get name() {
+      return this[name$1];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get value() {
+      return this[value$];
+    }
+    set value(value) {
+      super.value = value;
+    }
+    get attributeType() {
+      return this[attributeType$];
+    }
+    set attributeType(value) {
+      super.attributeType = value;
+    }
+    get hashCode() {
+      return (dart.hashCode(this.name) ^ dart.hashCode(this.value)) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return event_attribute.XmlEventAttribute.is(other) && other.name == this.name && other.value == this.value && other.attributeType == this.attributeType;
+    }
+  };
+  (event_attribute.XmlEventAttribute.new = function(name, value, attributeType) {
+    if (name == null) dart.nullFailed(I[17], 7, 26, "name");
+    if (value == null) dart.nullFailed(I[17], 7, 37, "value");
+    if (attributeType == null) dart.nullFailed(I[17], 7, 49, "attributeType");
+    this[name$1] = name;
+    this[value$] = value;
+    this[attributeType$] = attributeType;
+    event_attribute.XmlEventAttribute.__proto__.new.call(this);
+    ;
+  }).prototype = event_attribute.XmlEventAttribute.prototype;
+  dart.addTypeTests(event_attribute.XmlEventAttribute);
+  dart.addTypeCaches(event_attribute.XmlEventAttribute);
+  dart.setLibraryUri(event_attribute.XmlEventAttribute, I[18]);
+  dart.setFieldSignature(event_attribute.XmlEventAttribute, () => ({
+    __proto__: dart.getFields(event_attribute.XmlEventAttribute.__proto__),
+    name: dart.finalFieldType(core.String),
+    value: dart.finalFieldType(core.String),
+    attributeType: dart.finalFieldType(attribute_type.XmlAttributeType)
+  }));
+  dart.defineExtensionMethods(event_attribute.XmlEventAttribute, ['_equals']);
+  dart.defineExtensionAccessors(event_attribute.XmlEventAttribute, ['hashCode']);
+  var attributes$0 = dart.privateName(declaration, "XmlDeclarationEvent.attributes");
+  declaration.XmlDeclarationEvent = class XmlDeclarationEvent extends event.XmlEvent {
+    get attributes() {
+      return this[attributes$0];
+    }
+    set attributes(value) {
+      super.attributes = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.DECLARATION;
+    }
+    accept(visitor) {
+      if (visitor == null) dart.nullFailed(I[19], 18, 31, "visitor");
+      return visitor.visitDeclarationEvent(this);
+    }
+    get hashCode() {
+      return (dart.notNull(dart.hashCode(this.nodeType)) ^ dart.notNull((C[1] || CT.C1).hash(this.attributes))) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return declaration.XmlDeclarationEvent.is(other) && dart.test((C[1] || CT.C1).equals(other.attributes, this.attributes));
+    }
+  };
+  (declaration.XmlDeclarationEvent.new = function(attributes) {
+    if (attributes == null) dart.nullFailed(I[19], 10, 28, "attributes");
+    this[attributes$0] = attributes;
+    declaration.XmlDeclarationEvent.__proto__.new.call(this);
+    ;
+  }).prototype = declaration.XmlDeclarationEvent.prototype;
+  dart.addTypeTests(declaration.XmlDeclarationEvent);
+  dart.addTypeCaches(declaration.XmlDeclarationEvent);
+  dart.setMethodSignature(declaration.XmlDeclarationEvent, () => ({
+    __proto__: dart.getMethods(declaration.XmlDeclarationEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(declaration.XmlDeclarationEvent, () => ({
+    __proto__: dart.getGetters(declaration.XmlDeclarationEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(declaration.XmlDeclarationEvent, I[20]);
+  dart.setFieldSignature(declaration.XmlDeclarationEvent, () => ({
+    __proto__: dart.getFields(declaration.XmlDeclarationEvent.__proto__),
+    attributes: dart.finalFieldType(core.List$(event_attribute.XmlEventAttribute))
+  }));
+  dart.defineExtensionMethods(declaration.XmlDeclarationEvent, ['_equals']);
+  dart.defineExtensionAccessors(declaration.XmlDeclarationEvent, ['hashCode']);
+  var text$3 = dart.privateName(comment, "XmlCommentEvent.text");
+  comment.XmlCommentEvent = class XmlCommentEvent extends event.XmlEvent {
+    get text() {
+      return this[text$3];
+    }
+    set text(value) {
+      super.text = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.COMMENT;
+    }
+    accept(visitor) {
+      if (visitor == null) dart.nullFailed(I[21], 15, 31, "visitor");
+      return visitor.visitCommentEvent(this);
+    }
+    get hashCode() {
+      return (dart.notNull(dart.hashCode(this.nodeType)) ^ dart.hashCode(this.text)) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return comment.XmlCommentEvent.is(other) && other.text == this.text;
+    }
+  };
+  (comment.XmlCommentEvent.new = function(text) {
+    if (text == null) dart.nullFailed(I[21], 7, 24, "text");
+    this[text$3] = text;
+    comment.XmlCommentEvent.__proto__.new.call(this);
+    ;
+  }).prototype = comment.XmlCommentEvent.prototype;
+  dart.addTypeTests(comment.XmlCommentEvent);
+  dart.addTypeCaches(comment.XmlCommentEvent);
+  dart.setMethodSignature(comment.XmlCommentEvent, () => ({
+    __proto__: dart.getMethods(comment.XmlCommentEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(comment.XmlCommentEvent, () => ({
+    __proto__: dart.getGetters(comment.XmlCommentEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(comment.XmlCommentEvent, I[22]);
+  dart.setFieldSignature(comment.XmlCommentEvent, () => ({
+    __proto__: dart.getFields(comment.XmlCommentEvent.__proto__),
+    text: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(comment.XmlCommentEvent, ['_equals']);
+  dart.defineExtensionAccessors(comment.XmlCommentEvent, ['hashCode']);
+  var text$4 = dart.privateName(cdata, "XmlCDATAEvent.text");
+  cdata.XmlCDATAEvent = class XmlCDATAEvent extends event.XmlEvent {
+    get text() {
+      return this[text$4];
+    }
+    set text(value) {
+      super.text = value;
+    }
+    get nodeType() {
+      return node_type.XmlNodeType.CDATA;
+    }
+    accept(visitor) {
+      if (visitor == null) dart.nullFailed(I[23], 15, 31, "visitor");
+      return visitor.visitCDATAEvent(this);
+    }
+    get hashCode() {
+      return (dart.notNull(dart.hashCode(this.nodeType)) ^ dart.hashCode(this.text)) >>> 0;
+    }
+    _equals(other) {
+      if (other == null) return false;
+      return cdata.XmlCDATAEvent.is(other) && other.text == this.text;
+    }
+  };
+  (cdata.XmlCDATAEvent.new = function(text) {
+    if (text == null) dart.nullFailed(I[23], 7, 22, "text");
+    this[text$4] = text;
+    cdata.XmlCDATAEvent.__proto__.new.call(this);
+    ;
+  }).prototype = cdata.XmlCDATAEvent.prototype;
+  dart.addTypeTests(cdata.XmlCDATAEvent);
+  dart.addTypeCaches(cdata.XmlCDATAEvent);
+  dart.setMethodSignature(cdata.XmlCDATAEvent, () => ({
+    __proto__: dart.getMethods(cdata.XmlCDATAEvent.__proto__),
+    accept: dart.fnType(dart.void, [visitor.XmlEventVisitor])
+  }));
+  dart.setGetterSignature(cdata.XmlCDATAEvent, () => ({
+    __proto__: dart.getGetters(cdata.XmlCDATAEvent.__proto__),
+    nodeType: node_type.XmlNodeType
+  }));
+  dart.setLibraryUri(cdata.XmlCDATAEvent, I[24]);
+  dart.setFieldSignature(cdata.XmlCDATAEvent, () => ({
+    __proto__: dart.getFields(cdata.XmlCDATAEvent.__proto__),
+    text: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(cdata.XmlCDATAEvent, ['_equals']);
+  dart.defineExtensionAccessors(cdata.XmlCDATAEvent, ['hashCode']);
+  var entityMapping$ = dart.privateName(event_encoder, "XmlEventEncoder.entityMapping");
+  event_encoder.XmlEventEncoder = class XmlEventEncoder extends convert.Converter$(core.List$(event.XmlEvent), core.String) {
+    get entityMapping() {
+      return this[entityMapping$];
+    }
+    set entityMapping(value) {
+      super.entityMapping = value;
+    }
+    convert(input) {
+      let t2;
+      T.ListOfXmlEvent().as(input);
+      if (input == null) dart.nullFailed(I[25], 33, 33, "input");
+      let buffer = new core.StringBuffer.new();
+      let sink = new (T.ConversionSinkOfString()).new(dart.bind(buffer, 'write'));
+      t2 = this.startChunkedConversion(sink);
+      (() => {
+        t2.add(input);
+        t2.close();
+        return t2;
+      })();
+      return buffer.toString();
+    }
+    startChunkedConversion(sink) {
+      T.SinkOfString().as(sink);
+      if (sink == null) dart.nullFailed(I[25], 44, 24, "sink");
+      return new event_encoder._XmlEventEncoderSink.new(sink, this.entityMapping);
+    }
+  };
+  (event_encoder.XmlEventEncoder.new = function(opts) {
+    let t2;
+    let entityMapping = opts && 'entityMapping' in opts ? opts.entityMapping : null;
+    this[entityMapping$] = (t2 = entityMapping, t2 == null ? default_mapping.defaultEntityMapping : t2);
+    event_encoder.XmlEventEncoder.__proto__.new.call(this);
+    ;
+  }).prototype = event_encoder.XmlEventEncoder.prototype;
+  dart.addTypeTests(event_encoder.XmlEventEncoder);
+  dart.addTypeCaches(event_encoder.XmlEventEncoder);
+  dart.setMethodSignature(event_encoder.XmlEventEncoder, () => ({
+    __proto__: dart.getMethods(event_encoder.XmlEventEncoder.__proto__),
+    convert: dart.fnType(core.String, [dart.nullable(core.Object)]),
+    startChunkedConversion: dart.fnType(convert.ChunkedConversionSink$(core.List$(event.XmlEvent)), [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(event_encoder.XmlEventEncoder, I[26]);
+  dart.setFieldSignature(event_encoder.XmlEventEncoder, () => ({
+    __proto__: dart.getFields(event_encoder.XmlEventEncoder.__proto__),
+    entityMapping: dart.finalFieldType(entity_mapping.XmlEntityMapping)
+  }));
+  const ChunkedConversionSink_XmlEventVisitor$36$ = class ChunkedConversionSink_XmlEventVisitor extends convert.ChunkedConversionSink$(core.List$(event.XmlEvent)) {};
+  (ChunkedConversionSink_XmlEventVisitor$36$.new = function() {
+    ChunkedConversionSink_XmlEventVisitor$36$.__proto__.new.call(this);
+  }).prototype = ChunkedConversionSink_XmlEventVisitor$36$.prototype;
+  dart.applyMixin(ChunkedConversionSink_XmlEventVisitor$36$, visitor.XmlEventVisitor);
+  event_encoder._XmlEventEncoderSink = class _XmlEventEncoderSink extends ChunkedConversionSink_XmlEventVisitor$36$ {
+    add(chunk) {
+      T.ListOfXmlEvent().as(chunk);
+      if (chunk == null) dart.nullFailed(I[25], 56, 27, "chunk");
+      return chunk[$forEach](dart.bind(this, 'visit'));
+    }
+    close() {
+      return this.sink.close();
+    }
+    visitCDATAEvent(event) {
+      if (event == null) dart.nullFailed(I[25], 62, 38, "event");
+      this.sink.add("<![CDATA[");
+      this.sink.add(event.text);
+      this.sink.add("]]>");
+    }
+    visitCommentEvent(event) {
+      if (event == null) dart.nullFailed(I[25], 69, 42, "event");
+      this.sink.add("<!--");
+      this.sink.add(event.text);
+      this.sink.add("-->");
+    }
+    visitDeclarationEvent(event) {
+      if (event == null) dart.nullFailed(I[25], 76, 50, "event");
+      this.sink.add("<?xml");
+      this.addAttributes(event.attributes);
+      this.sink.add("?>");
+    }
+    visitDoctypeEvent(event) {
+      if (event == null) dart.nullFailed(I[25], 83, 42, "event");
+      this.sink.add("<!DOCTYPE");
+      this.sink.add(" ");
+      this.sink.add(event.text);
+      this.sink.add(">");
+    }
+    visitEndElementEvent(event) {
+      if (event == null) dart.nullFailed(I[25], 91, 48, "event");
+      this.sink.add("</");
+      this.sink.add(event.name);
+      this.sink.add(">");
+    }
+    visitProcessingEvent(event) {
+      if (event == null) dart.nullFailed(I[25], 98, 48, "event");
+      this.sink.add("<?");
+      this.sink.add(event.target);
+      if (event.text[$isNotEmpty]) {
+        this.sink.add(" ");
+        this.sink.add(event.text);
+      }
+      this.sink.add("?>");
+    }
+    visitStartElementEvent(event) {
+      if (event == null) dart.nullFailed(I[25], 109, 52, "event");
+      this.sink.add("<");
+      this.sink.add(event.name);
+      this.addAttributes(event.attributes);
+      if (dart.test(event.isSelfClosing)) {
+        this.sink.add("/>");
+      } else {
+        this.sink.add(">");
+      }
+    }
+    visitTextEvent(event) {
+      if (event == null) dart.nullFailed(I[25], 121, 36, "event");
+      this.sink.add(this.entityMapping.encodeText(event.text));
+    }
+    addAttributes(attributes) {
+      if (attributes == null) dart.nullFailed(I[25], 125, 46, "attributes");
+      for (let attribute of attributes) {
+        this.sink.add(" ");
+        this.sink.add(attribute.name);
+        this.sink.add("=");
+        this.sink.add(this.entityMapping.encodeAttributeValueWithQuotes(attribute.value, attribute.attributeType));
+      }
+    }
+  };
+  (event_encoder._XmlEventEncoderSink.new = function(sink, entityMapping) {
+    if (sink == null) dart.nullFailed(I[25], 50, 29, "sink");
+    if (entityMapping == null) dart.nullFailed(I[25], 50, 40, "entityMapping");
+    this.sink = sink;
+    this.entityMapping = entityMapping;
+    event_encoder._XmlEventEncoderSink.__proto__.new.call(this);
+    ;
+  }).prototype = event_encoder._XmlEventEncoderSink.prototype;
+  dart.addTypeTests(event_encoder._XmlEventEncoderSink);
+  dart.addTypeCaches(event_encoder._XmlEventEncoderSink);
+  dart.setMethodSignature(event_encoder._XmlEventEncoderSink, () => ({
+    __proto__: dart.getMethods(event_encoder._XmlEventEncoderSink.__proto__),
+    add: dart.fnType(dart.void, [dart.nullable(core.Object)]),
+    close: dart.fnType(dart.void, []),
+    visitCDATAEvent: dart.fnType(dart.void, [cdata.XmlCDATAEvent]),
+    visitCommentEvent: dart.fnType(dart.void, [comment.XmlCommentEvent]),
+    visitDeclarationEvent: dart.fnType(dart.void, [declaration.XmlDeclarationEvent]),
+    visitDoctypeEvent: dart.fnType(dart.void, [doctype.XmlDoctypeEvent]),
+    visitEndElementEvent: dart.fnType(dart.void, [end_element.XmlEndElementEvent]),
+    visitProcessingEvent: dart.fnType(dart.void, [processing.XmlProcessingEvent]),
+    visitStartElementEvent: dart.fnType(dart.void, [start_element.XmlStartElementEvent]),
+    visitTextEvent: dart.fnType(dart.void, [text$.XmlTextEvent]),
+    addAttributes: dart.fnType(dart.void, [core.List$(event_attribute.XmlEventAttribute)])
+  }));
+  dart.setLibraryUri(event_encoder._XmlEventEncoderSink, I[26]);
+  dart.setFieldSignature(event_encoder._XmlEventEncoderSink, () => ({
+    __proto__: dart.getFields(event_encoder._XmlEventEncoderSink.__proto__),
+    sink: dart.finalFieldType(core.Sink$(core.String)),
+    entityMapping: dart.finalFieldType(entity_mapping.XmlEntityMapping)
+  }));
+  event_encoder['XmlEventEncoderExtension|toXmlString'] = function XmlEventEncoderExtension$124toXmlString($this, opts) {
+    if ($this == null) dart.nullFailed(I[25], 21, 18, "#this");
+    let entityMapping = opts && 'entityMapping' in opts ? opts.entityMapping : null;
+    return $this.transform(core.String, new event_encoder.XmlEventEncoder.new({entityMapping: entityMapping}));
+  };
+  event_encoder['XmlEventEncoderExtension|get#toXmlString'] = function XmlEventEncoderExtension$124get$35toXmlString($this) {
+    if ($this == null) dart.nullFailed(I[25], 21, 18, "#this");
+    return dart.fn(opts => {
+      let entityMapping = opts && 'entityMapping' in opts ? opts.entityMapping : null;
+      return event_encoder['XmlEventEncoderExtension|toXmlString']($this, {entityMapping: entityMapping});
+    }, T.__ToStreamOfString());
+  };
+  dart.trackLibraries("packages/xml/src/xml_events/events/text.dart", {
+    "package:xml/src/xml_events/events/text.dart": text$,
+    "package:xml/src/xml_events/events/processing.dart": processing,
+    "package:xml/src/xml_events/events/end_element.dart": end_element,
+    "package:xml/src/xml_events/events/doctype.dart": doctype,
+    "package:xml/src/xml_events/streams/with_parent.dart": with_parent,
+    "package:xml/src/xml_events/utils/parented.dart": parented,
+    "package:xml/src/xml_events/events/start_element.dart": start_element,
+    "package:xml/src/xml_events/utils/named.dart": named,
+    "package:xml/src/xml_events/utils/event_attribute.dart": event_attribute,
+    "package:xml/src/xml_events/events/declaration.dart": declaration,
+    "package:xml/src/xml_events/events/comment.dart": comment,
+    "package:xml/src/xml_events/visitor.dart": visitor,
+    "package:xml/src/xml_events/events/cdata.dart": cdata,
+    "package:xml/src/xml_events/converters/event_encoder.dart": event_encoder,
+    "package:xml/src/xml_events/event.dart": event
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["named_entities.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;MAC0B,0BAAW;;;MASX,2BAAY;;;MAkQZ,4BAAa","file":"../../../../../../../../../../../packages/xml/src/xml/entities/named_entities.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["../utils/parented.dart","../event.dart","text.dart","processing.dart","../utils/named.dart","end_element.dart","doctype.dart","../streams/with_parent.dart","../visitor.dart","start_element.dart","../utils/event_attribute.dart","declaration.dart","comment.dart","cdata.dart","../converters/event_encoder.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../packages/xml/src/xml_events/events/text.dart.lib.js"}');
   // Exports:
   return {
-    src__xml__entities__named_entities: named_entities
+    src__xml_events__events__text: text$,
+    src__xml_events__events__processing: processing,
+    src__xml_events__events__end_element: end_element,
+    src__xml_events__events__doctype: doctype,
+    src__xml_events__streams__with_parent: with_parent,
+    src__xml_events__utils__parented: parented,
+    src__xml_events__events__start_element: start_element,
+    src__xml_events__utils__named: named,
+    src__xml_events__utils__event_attribute: event_attribute,
+    src__xml_events__events__declaration: declaration,
+    src__xml_events__events__comment: comment,
+    src__xml_events__visitor: visitor,
+    src__xml_events__events__cdata: cdata,
+    src__xml_events__converters__event_encoder: event_encoder,
+    src__xml_events__event: event
   };
 }));
 
-//# sourceMappingURL=named_entities.dart.lib.js.map
+//# sourceMappingURL=text.dart.lib.js.map

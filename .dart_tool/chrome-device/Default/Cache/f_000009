@@ -50,7 +50,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 30,
         [_Location_line]: 45,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C2() {
@@ -60,7 +60,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 41,
         [_Location_line]: 45,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C3() {
@@ -70,7 +70,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 51,
         [_Location_line]: 45,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C6() {
@@ -103,7 +103,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 24,
         [_Location_line]: 43,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C10() {
@@ -136,7 +136,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 22,
         [_Location_line]: 41,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C14() {
@@ -159,7 +159,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 28,
         [_Location_line]: 40,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C17() {
@@ -212,7 +212,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 19,
         [_Location_line]: 36,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C21() {
@@ -222,7 +222,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 21,
         [_Location_line]: 57,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C24() {
@@ -245,7 +245,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 21,
         [_Location_line]: 58,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C25() {
@@ -255,7 +255,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 25,
         [_Location_line]: 61,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C28() {
@@ -278,7 +278,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 25,
         [_Location_line]: 62,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C29() {
@@ -288,7 +288,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 25,
         [_Location_line]: 63,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C32() {
@@ -311,7 +311,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 21,
         [_Location_line]: 59,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C35() {
@@ -334,7 +334,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 21,
         [_Location_line]: 66,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C38() {
@@ -367,7 +367,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 24,
         [_Location_line]: 54,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C42() {
@@ -390,7 +390,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 15,
         [_Location_line]: 53,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C45() {
@@ -423,7 +423,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 17,
         [_Location_line]: 50,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C47() {
@@ -433,7 +433,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 17,
         [_Location_line]: 77,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C48() {
@@ -443,7 +443,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 17,
         [_Location_line]: 78,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C49() {
@@ -453,7 +453,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 17,
         [_Location_line]: 79,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C52() {
@@ -496,7 +496,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 20,
         [_Location_line]: 73,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C57() {
@@ -519,7 +519,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 32,
         [_Location_line]: 72,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C60() {
@@ -572,7 +572,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 14,
         [_Location_line]: 34,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     },
     get C66() {
@@ -605,7 +605,7 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         [_Location_name]: null,
         [_Location_column]: 12,
         [_Location_line]: 28,
-        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/new/Multivurse-Client/lib/screens/home.dart"
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/screens/home.dart"
       });
     }
   }, false);

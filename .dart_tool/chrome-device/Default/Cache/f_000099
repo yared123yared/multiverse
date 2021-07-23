@@ -1,396 +1,65 @@
-define(['dart_sdk', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/widgets/widget_span.dart'], (function load__packages__carousel_slider__carousel_options_dart(dart_sdk, packages__flutter__src__animation__curves$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__widgets__widget_span$46dart) {
+define(['dart_sdk'], (function load__packages__characters__src__grapheme_clusters__table_dart(dart_sdk) {
   'use strict';
   const core = dart_sdk.core;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
-  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
-  const scroll_physics = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_physics;
-  const page_storage = packages__flutter__src__widgets__widget_span$46dart.src__widgets__page_storage;
-  var carousel_options = Object.create(dart.library);
-  var $toString = dartx.toString;
+  var table = Object.create(dart.library);
+  var $rightShift = dartx['>>'];
+  var $codeUnitAt = dartx.codeUnitAt;
   dart._checkModuleNullSafetyMode(false);
-  var T = {
-    CarouselPageChangedReasonL: () => (T.CarouselPageChangedReasonL = dart.constFn(dart.legacy(carousel_options.CarouselPageChangedReason)))(),
-    CenterPageEnlargeStrategyL: () => (T.CenterPageEnlargeStrategyL = dart.constFn(dart.legacy(carousel_options.CenterPageEnlargeStrategy)))()
-  };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: carousel_options.CarouselPageChangedReason.prototype,
-        [_name$]: "CarouselPageChangedReason.timed",
-        index: 0
-      });
+  var I = ["file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.1.0/lib/src/grapheme_clusters/table.dart"];
+  table.low = function low(codeUnit) {
+    if (codeUnit == null) dart.nullFailed(I[0], 319, 13, "codeUnit");
+    let chunkStart = table._start[$codeUnitAt](codeUnit[$rightShift](6));
+    let index = chunkStart + (dart.notNull(codeUnit) & 63);
+    let bit = index & 1;
+    let pair = table._data[$codeUnitAt](index[$rightShift](1));
+    return (pair[$rightShift](4) & -bit | pair & 15 & bit - 1) >>> 0;
+  };
+  table.high = function high(lead, tail) {
+    if (lead == null) dart.nullFailed(I[0], 327, 14, "lead");
+    if (tail == null) dart.nullFailed(I[0], 327, 24, "tail");
+    let chunkStart = table._start[$codeUnitAt](1024 + (1023 & dart.notNull(lead)));
+    let index = chunkStart + (1023 & dart.notNull(tail));
+    let bit = index & 1;
+    let pair = table._data[$codeUnitAt](index[$rightShift](1));
+    return (pair[$rightShift](4) & -bit | pair & 15 & bit - 1) >>> 0;
+  };
+  table.move = function move(state, inputCategory) {
+    if (state == null) dart.nullFailed(I[0], 340, 14, "state");
+    if (inputCategory == null) dart.nullFailed(I[0], 340, 25, "inputCategory");
+    return table._stateMachine[$codeUnitAt]((dart.notNull(state) & 240 | dart.notNull(inputCategory)) >>> 0);
+  };
+  table.moveBack = function moveBack(state, inputCategory) {
+    if (state == null) dart.nullFailed(I[0], 349, 18, "state");
+    if (inputCategory == null) dart.nullFailed(I[0], 349, 29, "inputCategory");
+    return table._backStateMachine[$codeUnitAt]((dart.notNull(state) & 240 | dart.notNull(inputCategory)) >>> 0);
+  };
+  dart.defineLazy(table, {
+    /*table._data*/get _data() {
+      return "\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"3333s3#7333333339433333333333333CDDDDDDDDDDDDDDDDDDDDDDC433DDDDD4DDDDDDDDDDDDDDDDDD3CU33333333333333333333333333334T5333333333333333333333333333CCD3D33CD533333333333333333333333TEDTET53U5UE3333C33333333333333333333333333333CETUTDT5333333333333333333333333SUUUUUEUDDDDD43333433333333333333333333ET533E3333SDD3U3U4333343333C4333333333333CSD33343333333433333333333333333SUUUEDDDTE4333SDDSUSU333343333C43333333333333333s333333333337333333333333wwwww73sw33sww7swwwwwss33373733s33333w33333£ªªªªªªªªªªªªªªªªªªªªªªªªªªªªªªªº»»»»»»»»»»»»»»»»»»»ËÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌìîÞîîîîîîîîîîîîîÞîîîîîîîîîîîîîÞîîîîîîîîîîîîî>33333³»»»»»»»;3ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ334343C33333333333SET333333333333333EDTETD433333333CD33333333333333CD33333CDD4333333333333333333333333CDTDDDCTE43C4CD3C333333333333333D3C3333333333DDDDD42333333333333333333CDDD4333333333333333333333333DDDD433334333C53333333333333333333333C33TEDCSUUU433333333S533333333333333333333333333333CD4DDDDD3D5333333333333333333333333333CSEUCUSE4333D33333C43333333333333CDDD9DDD3DCD433333333CDCDDDDDDEDDD33433C3E433#\"\"\"\"\" \"\"\"\"\"\"\"\"2333333333333333CDUUDU53SEUUUD43SDD3U3U4333C43333C43333333333333SE43CD33333333DD33333CDDDDDDDDDD3333333343333333B!233333333333#\"\"\"333333s3CD533333333333333333333333333CESEU3333333333333333333DDDD433333CD2333333333333333333333333\"\"\"\"23333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDD33333333333333333333333333333CDDD3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333SUDDDDUDT43333333333343333333333333333333333333333333333333333TEDDTTEETD333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CUDD3UUDE43333333333333D33333333333333333333333333333333333333333UEDDDTEE43333333333333333333333333333333333333333333333333333CEUDDDE33333333333333333333333333333333333333333333333333CDUDDEDD3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333D#\"2333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CSUUUUUUUUUUUUUUUUUUUUUUUUUUU333CD4333333333333333333333333333333333333333333333333333333\"\"\"\"\"\"33EDDCTSE3333333333D33333333333DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDCDDDDDDDD3DDD4DCDD3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDDD33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CD4333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDDDDD333333333333333333333333333333333333333333333333333333333333333333333333333333333333333s73333s33333333333\"\"\"\"\"\"\"\"3333333373s333333333333333333333333333333CTDDDTU5D4DD333C433333D33333333333333DU433333333333333333333DDDUDUD3333S3333333333333333334333333333333s733333s33333333333CD4DDDD4D4DD4333333333sww73333333w3333333333sw3333s33333337333333sw333333333s733333333333333333UTEUS433333333C433333333333333C433333333333334443SUE4333333333333CDDDDDDDD4333333DDDDDT533333£ªªªªªªªªªªªªªª3SDDDDUUT5DDD43333C43333333333333333C33333333333EEDDDCC3DDDDUUUDDDDD3T5333333333333333333333333333CSDDD433E533333333333333333333333333DDDDDDD4333333333333333333333333333CD53333333333333333333333UEDTE433333333333333333333333333333333D433333333333333333CDDEDDD43333333S5333333333333333333333C333333D533333333333333333333333SUDDDDT533CD433333333333333333333333333333333333333333333333UEDUTD33343333333333333333333333333333333333333333333333333333333333333333333333333333333CUEDDD43333333333DU333333333333333333333333333C4TTU5S5SU3333C33333U3DDD43DD4333333333333333333333333333333333333333333333333333333333333333333333DDDDDDD533333333333333333333333DDDTTU43333333333333333333333333333DDD733333s373ss33w7733333ww733333333333ss33333333333333333333333333333ww3333333333333333333333333333wwww33333www33333333333333333333wwww333333333333333wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww333333wwwwwwwwwwwwwwwwwwwwwww7wwwwwswwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww7333swwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww733333333333333333333333swwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww7333333333333333333333333333333333333333333333333333333333swwwww7333333333333333333333333333333333333333333wwwwwwwwwwwwwwwwwwwww7wwwwwwswwwwwwwwwwwwwwwwwwwww73333swwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww7333333w7333333333333333733333333333333333333333333333sww733333s7333333s3wwwww333333333wwwwwwwwwwwwwwwwwwwwwwwwwwwwgffffffffffff6wwwwwww73333s33333333337swwwwsw73333wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwDDDDDDDDDDDDDDDDDDDDDDDD33333333DDDDDDDD33333333DDDDDDDDDDDDDDDD43333333DC44333333333333333333333333333SUDDDDTD33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333UED4CTUE3S33333333333333DDDDD33333333333333333333DDDDD333343333DDDUD43333333333333333333IDDDDDDE4333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDDDDDDDDDDDDDDDDDDDDDDDDDDD33DDDDDDDDDDDDDDDDDDDDDDDDD33334333333C33333333333DD4DDDDDDD43333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333TD43EDD\"\"\"\"DDDD3DDD433333333333333CD43333333333333333333333333333333333333333333333333333333333333333333333333CD33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333C33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333433333333333333333333333333333333333333333333333333333333333333333333333333DD4333333333333333333333333333333333333333333333333333333333333333333EDDDCDDT43333333333333333333333333333333333333333CDDDDDDDDDD4EDDDETD3333333333333333333333333333333333333333333333333333333333333DDD3CC4DDD433333333333333333333333333333333SUUC4UT433333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333DU333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDDD333333333333333333333333333333333333333333333333333333CDDD3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333CDC433DD33333333333333333333D43C3333333333333333333333333333333333333333333333333333333333333333333333333333333333C4333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333334EDDDD3";
     },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: carousel_options.CarouselPageChangedReason.prototype,
-        [_name$]: "CarouselPageChangedReason.manual",
-        index: 1
-      });
+    /*table._start*/get _start() {
+      return "฻᳛אါါါါါါါါါ 㢜ါါါါ䢜ါါါؠ㤫ద໺ါ෋؁㹾⊏౷ⓓ䂲ါᵑ཯⚁ژࡑൣ௦ൣᴪەປݱݜ⮘⏾✇ඡ⩒࣫ഓೣ✒ౢ䶝஗○⬡ٙ䋅ப໅ࢍါহ৙৹ਡါါါါါ䂮ါါါါါါါါါါါါါါୟ▱⏁ߵ࿢ါ⚞ါ๛ါါါ␧⛉❚ါ⭜ྭ଱މࢫါါ෻ါါါᵴါါါါါါါါ༯⍲ါ㣬एါ━ါါါါါ⒩ါ㗈हါါါ⎵ါါ⍅Ⱗ㑗⶝㒑⶝ॹ⯥┬ါါါါါ⌻ါါါါါါါ╦⎢ါါါါါ䂜ါ䊌ါ㶹ါါါါါါါါ⮬ါᛉါါါါါါါⰎါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါത䲕䲃ါါါါଌါ޻☉ృ♁ܟ⒃⑃ಱۡࠑါါါ▃੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱ੹੥੭ੵ੡੩ੱક૎ǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰǰါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါ䊭ါါါါါါါါါါါ㢼ါါ᳛ါါ䲕ᳪ䃎ါ䧎Ὧ❒ᔆ㤿䒟ါါါါါ࿲ါါါါါါါါါါါါᄻᤚါါါါါါါါါါါါါါါါါါါᡩါါါါ㺉ါ㯙ါᶧါ䟏ါ㒡そⱖ⶝ါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါ ǰǰǰါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါါ";
     },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: carousel_options.CarouselPageChangedReason.prototype,
-        [_name$]: "CarouselPageChangedReason.controller",
-        index: 2
-      });
+    /*table._stateMachine*/get _stateMachine() {
+      return " 0000 @P`p`p± 0000 @P`p`p° 0000 @P`p`p° 1011 @P`p`p° 1111¡AQaqaq° 1011 @Qapaq° 1011 @Paq`p° 1011 @P`q`p° 01 @P`p`p° 1011 @P`p`p° 10111@P`p`p°!1111¡AQaqaq±";
     },
-    get C3() {
-      return C[3] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2], T.CarouselPageChangedReasonL());
-    },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: carousel_options.CenterPageEnlargeStrategy.prototype,
-        [_name$]: "CenterPageEnlargeStrategy.scale",
-        index: 0
-      });
-    },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: carousel_options.CenterPageEnlargeStrategy.prototype,
-        [_name$]: "CenterPageEnlargeStrategy.height",
-        index: 1
-      });
-    },
-    get C6() {
-      return C[6] = dart.constList([C[4] || CT.C4, C[5] || CT.C5], T.CenterPageEnlargeStrategyL());
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 4000000
-      });
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 800000
-      });
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 0.2,
-        [Cubic_b]: 0,
-        [Cubic_a]: 0.4
-      });
-    },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: basic_types.Axis.prototype,
-        [_name]: "Axis.horizontal",
-        index: 0
-      });
+    /*table._backStateMachine*/get _backStateMachine() {
+      return "@0@@  0P`pPP±@0@@  0P`pPP°@0@@  0P`pPP°@0@@  1P`pPP°A1AA¡ 1QaqQQ°@0@@  1Q`pPP°@0@@  1QapQP°@0@@  1PaqQQ°à0@@  1P`pPP°±±±±±Á±±±±±±±±@0@@Ð 1P`pPP°A1AA¡!1QaqQQ±@0@@ 1P`pPP°";
     }
   }, false);
-  var C = Array(11).fill(void 0);
-  var I = ["package:carousel_slider/carousel_options.dart"];
-  var _name$ = dart.privateName(carousel_options, "_name");
-  carousel_options.CarouselPageChangedReason = class CarouselPageChangedReason extends core.Object {
-    toString() {
-      return this[_name$];
-    }
-  };
-  (carousel_options.CarouselPageChangedReason.new = function(index, _name) {
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = carousel_options.CarouselPageChangedReason.prototype;
-  dart.addTypeTests(carousel_options.CarouselPageChangedReason);
-  dart.addTypeCaches(carousel_options.CarouselPageChangedReason);
-  dart.setMethodSignature(carousel_options.CarouselPageChangedReason, () => ({
-    __proto__: dart.getMethods(carousel_options.CarouselPageChangedReason.__proto__),
-    toString: dart.fnType(dart.legacy(core.String), []),
-    [$toString]: dart.fnType(dart.legacy(core.String), [])
-  }));
-  dart.setLibraryUri(carousel_options.CarouselPageChangedReason, I[0]);
-  dart.setFieldSignature(carousel_options.CarouselPageChangedReason, () => ({
-    __proto__: dart.getFields(carousel_options.CarouselPageChangedReason.__proto__),
-    index: dart.finalFieldType(dart.legacy(core.int)),
-    [_name$]: dart.finalFieldType(dart.legacy(core.String))
-  }));
-  dart.defineExtensionMethods(carousel_options.CarouselPageChangedReason, ['toString']);
-  carousel_options.CarouselPageChangedReason.timed = C[0] || CT.C0;
-  carousel_options.CarouselPageChangedReason.manual = C[1] || CT.C1;
-  carousel_options.CarouselPageChangedReason.controller = C[2] || CT.C2;
-  carousel_options.CarouselPageChangedReason.values = C[3] || CT.C3;
-  carousel_options.CenterPageEnlargeStrategy = class CenterPageEnlargeStrategy extends core.Object {
-    toString() {
-      return this[_name$];
-    }
-  };
-  (carousel_options.CenterPageEnlargeStrategy.new = function(index, _name) {
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = carousel_options.CenterPageEnlargeStrategy.prototype;
-  dart.addTypeTests(carousel_options.CenterPageEnlargeStrategy);
-  dart.addTypeCaches(carousel_options.CenterPageEnlargeStrategy);
-  dart.setMethodSignature(carousel_options.CenterPageEnlargeStrategy, () => ({
-    __proto__: dart.getMethods(carousel_options.CenterPageEnlargeStrategy.__proto__),
-    toString: dart.fnType(dart.legacy(core.String), []),
-    [$toString]: dart.fnType(dart.legacy(core.String), [])
-  }));
-  dart.setLibraryUri(carousel_options.CenterPageEnlargeStrategy, I[0]);
-  dart.setFieldSignature(carousel_options.CenterPageEnlargeStrategy, () => ({
-    __proto__: dart.getFields(carousel_options.CenterPageEnlargeStrategy.__proto__),
-    index: dart.finalFieldType(dart.legacy(core.int)),
-    [_name$]: dart.finalFieldType(dart.legacy(core.String))
-  }));
-  dart.defineExtensionMethods(carousel_options.CenterPageEnlargeStrategy, ['toString']);
-  carousel_options.CenterPageEnlargeStrategy.scale = C[4] || CT.C4;
-  carousel_options.CenterPageEnlargeStrategy.height = C[5] || CT.C5;
-  carousel_options.CenterPageEnlargeStrategy.values = C[6] || CT.C6;
-  var height$ = dart.privateName(carousel_options, "CarouselOptions.height");
-  var aspectRatio$ = dart.privateName(carousel_options, "CarouselOptions.aspectRatio");
-  var viewportFraction$ = dart.privateName(carousel_options, "CarouselOptions.viewportFraction");
-  var initialPage$ = dart.privateName(carousel_options, "CarouselOptions.initialPage");
-  var enableInfiniteScroll$ = dart.privateName(carousel_options, "CarouselOptions.enableInfiniteScroll");
-  var reverse$ = dart.privateName(carousel_options, "CarouselOptions.reverse");
-  var autoPlay$ = dart.privateName(carousel_options, "CarouselOptions.autoPlay");
-  var autoPlayInterval$ = dart.privateName(carousel_options, "CarouselOptions.autoPlayInterval");
-  var autoPlayAnimationDuration$ = dart.privateName(carousel_options, "CarouselOptions.autoPlayAnimationDuration");
-  var autoPlayCurve$ = dart.privateName(carousel_options, "CarouselOptions.autoPlayCurve");
-  var enlargeCenterPage$ = dart.privateName(carousel_options, "CarouselOptions.enlargeCenterPage");
-  var scrollDirection$ = dart.privateName(carousel_options, "CarouselOptions.scrollDirection");
-  var onPageChanged$ = dart.privateName(carousel_options, "CarouselOptions.onPageChanged");
-  var onScrolled$ = dart.privateName(carousel_options, "CarouselOptions.onScrolled");
-  var scrollPhysics$ = dart.privateName(carousel_options, "CarouselOptions.scrollPhysics");
-  var pageSnapping$ = dart.privateName(carousel_options, "CarouselOptions.pageSnapping");
-  var pauseAutoPlayOnTouch$ = dart.privateName(carousel_options, "CarouselOptions.pauseAutoPlayOnTouch");
-  var pauseAutoPlayOnManualNavigate$ = dart.privateName(carousel_options, "CarouselOptions.pauseAutoPlayOnManualNavigate");
-  var pauseAutoPlayInFiniteScroll$ = dart.privateName(carousel_options, "CarouselOptions.pauseAutoPlayInFiniteScroll");
-  var pageViewKey$ = dart.privateName(carousel_options, "CarouselOptions.pageViewKey");
-  var enlargeStrategy$ = dart.privateName(carousel_options, "CarouselOptions.enlargeStrategy");
-  var disableCenter$ = dart.privateName(carousel_options, "CarouselOptions.disableCenter");
-  var Duration__duration = dart.privateName(core, "Duration._duration");
-  var Cubic_d = dart.privateName(curves, "Cubic.d");
-  var Cubic_c = dart.privateName(curves, "Cubic.c");
-  var Cubic_b = dart.privateName(curves, "Cubic.b");
-  var Cubic_a = dart.privateName(curves, "Cubic.a");
-  var _name = dart.privateName(basic_types, "_name");
-  carousel_options.CarouselOptions = class CarouselOptions extends core.Object {
-    get height() {
-      return this[height$];
-    }
-    set height(value) {
-      super.height = value;
-    }
-    get aspectRatio() {
-      return this[aspectRatio$];
-    }
-    set aspectRatio(value) {
-      super.aspectRatio = value;
-    }
-    get viewportFraction() {
-      return this[viewportFraction$];
-    }
-    set viewportFraction(value) {
-      super.viewportFraction = value;
-    }
-    get initialPage() {
-      return this[initialPage$];
-    }
-    set initialPage(value) {
-      super.initialPage = value;
-    }
-    get enableInfiniteScroll() {
-      return this[enableInfiniteScroll$];
-    }
-    set enableInfiniteScroll(value) {
-      super.enableInfiniteScroll = value;
-    }
-    get reverse() {
-      return this[reverse$];
-    }
-    set reverse(value) {
-      super.reverse = value;
-    }
-    get autoPlay() {
-      return this[autoPlay$];
-    }
-    set autoPlay(value) {
-      super.autoPlay = value;
-    }
-    get autoPlayInterval() {
-      return this[autoPlayInterval$];
-    }
-    set autoPlayInterval(value) {
-      super.autoPlayInterval = value;
-    }
-    get autoPlayAnimationDuration() {
-      return this[autoPlayAnimationDuration$];
-    }
-    set autoPlayAnimationDuration(value) {
-      super.autoPlayAnimationDuration = value;
-    }
-    get autoPlayCurve() {
-      return this[autoPlayCurve$];
-    }
-    set autoPlayCurve(value) {
-      super.autoPlayCurve = value;
-    }
-    get enlargeCenterPage() {
-      return this[enlargeCenterPage$];
-    }
-    set enlargeCenterPage(value) {
-      super.enlargeCenterPage = value;
-    }
-    get scrollDirection() {
-      return this[scrollDirection$];
-    }
-    set scrollDirection(value) {
-      super.scrollDirection = value;
-    }
-    get onPageChanged() {
-      return this[onPageChanged$];
-    }
-    set onPageChanged(value) {
-      super.onPageChanged = value;
-    }
-    get onScrolled() {
-      return this[onScrolled$];
-    }
-    set onScrolled(value) {
-      super.onScrolled = value;
-    }
-    get scrollPhysics() {
-      return this[scrollPhysics$];
-    }
-    set scrollPhysics(value) {
-      super.scrollPhysics = value;
-    }
-    get pageSnapping() {
-      return this[pageSnapping$];
-    }
-    set pageSnapping(value) {
-      super.pageSnapping = value;
-    }
-    get pauseAutoPlayOnTouch() {
-      return this[pauseAutoPlayOnTouch$];
-    }
-    set pauseAutoPlayOnTouch(value) {
-      super.pauseAutoPlayOnTouch = value;
-    }
-    get pauseAutoPlayOnManualNavigate() {
-      return this[pauseAutoPlayOnManualNavigate$];
-    }
-    set pauseAutoPlayOnManualNavigate(value) {
-      super.pauseAutoPlayOnManualNavigate = value;
-    }
-    get pauseAutoPlayInFiniteScroll() {
-      return this[pauseAutoPlayInFiniteScroll$];
-    }
-    set pauseAutoPlayInFiniteScroll(value) {
-      super.pauseAutoPlayInFiniteScroll = value;
-    }
-    get pageViewKey() {
-      return this[pageViewKey$];
-    }
-    set pageViewKey(value) {
-      super.pageViewKey = value;
-    }
-    get enlargeStrategy() {
-      return this[enlargeStrategy$];
-    }
-    set enlargeStrategy(value) {
-      super.enlargeStrategy = value;
-    }
-    get disableCenter() {
-      return this[disableCenter$];
-    }
-    set disableCenter(value) {
-      super.disableCenter = value;
-    }
-  };
-  (carousel_options.CarouselOptions.new = function(opts) {
-    let height = opts && 'height' in opts ? opts.height : null;
-    let aspectRatio = opts && 'aspectRatio' in opts ? opts.aspectRatio : 1.7777777777777777;
-    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : 0.8;
-    let initialPage = opts && 'initialPage' in opts ? opts.initialPage : 0;
-    let enableInfiniteScroll = opts && 'enableInfiniteScroll' in opts ? opts.enableInfiniteScroll : true;
-    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
-    let autoPlay = opts && 'autoPlay' in opts ? opts.autoPlay : false;
-    let autoPlayInterval = opts && 'autoPlayInterval' in opts ? opts.autoPlayInterval : C[7] || CT.C7;
-    let autoPlayAnimationDuration = opts && 'autoPlayAnimationDuration' in opts ? opts.autoPlayAnimationDuration : C[8] || CT.C8;
-    let autoPlayCurve = opts && 'autoPlayCurve' in opts ? opts.autoPlayCurve : C[9] || CT.C9;
-    let enlargeCenterPage = opts && 'enlargeCenterPage' in opts ? opts.enlargeCenterPage : false;
-    let onPageChanged = opts && 'onPageChanged' in opts ? opts.onPageChanged : null;
-    let onScrolled = opts && 'onScrolled' in opts ? opts.onScrolled : null;
-    let scrollPhysics = opts && 'scrollPhysics' in opts ? opts.scrollPhysics : null;
-    let pageSnapping = opts && 'pageSnapping' in opts ? opts.pageSnapping : true;
-    let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : C[10] || CT.C10;
-    let pauseAutoPlayOnTouch = opts && 'pauseAutoPlayOnTouch' in opts ? opts.pauseAutoPlayOnTouch : true;
-    let pauseAutoPlayOnManualNavigate = opts && 'pauseAutoPlayOnManualNavigate' in opts ? opts.pauseAutoPlayOnManualNavigate : true;
-    let pauseAutoPlayInFiniteScroll = opts && 'pauseAutoPlayInFiniteScroll' in opts ? opts.pauseAutoPlayInFiniteScroll : false;
-    let pageViewKey = opts && 'pageViewKey' in opts ? opts.pageViewKey : null;
-    let enlargeStrategy = opts && 'enlargeStrategy' in opts ? opts.enlargeStrategy : C[4] || CT.C4;
-    let disableCenter = opts && 'disableCenter' in opts ? opts.disableCenter : false;
-    this[height$] = height;
-    this[aspectRatio$] = aspectRatio;
-    this[viewportFraction$] = viewportFraction;
-    this[initialPage$] = initialPage;
-    this[enableInfiniteScroll$] = enableInfiniteScroll;
-    this[reverse$] = reverse;
-    this[autoPlay$] = autoPlay;
-    this[autoPlayInterval$] = autoPlayInterval;
-    this[autoPlayAnimationDuration$] = autoPlayAnimationDuration;
-    this[autoPlayCurve$] = autoPlayCurve;
-    this[enlargeCenterPage$] = enlargeCenterPage;
-    this[onPageChanged$] = onPageChanged;
-    this[onScrolled$] = onScrolled;
-    this[scrollPhysics$] = scrollPhysics;
-    this[pageSnapping$] = pageSnapping;
-    this[scrollDirection$] = scrollDirection;
-    this[pauseAutoPlayOnTouch$] = pauseAutoPlayOnTouch;
-    this[pauseAutoPlayOnManualNavigate$] = pauseAutoPlayOnManualNavigate;
-    this[pauseAutoPlayInFiniteScroll$] = pauseAutoPlayInFiniteScroll;
-    this[pageViewKey$] = pageViewKey;
-    this[enlargeStrategy$] = enlargeStrategy;
-    this[disableCenter$] = disableCenter;
-    ;
-  }).prototype = carousel_options.CarouselOptions.prototype;
-  dart.addTypeTests(carousel_options.CarouselOptions);
-  dart.addTypeCaches(carousel_options.CarouselOptions);
-  dart.setLibraryUri(carousel_options.CarouselOptions, I[0]);
-  dart.setFieldSignature(carousel_options.CarouselOptions, () => ({
-    __proto__: dart.getFields(carousel_options.CarouselOptions.__proto__),
-    height: dart.finalFieldType(dart.legacy(core.double)),
-    aspectRatio: dart.finalFieldType(dart.legacy(core.double)),
-    viewportFraction: dart.finalFieldType(dart.legacy(core.double)),
-    initialPage: dart.finalFieldType(dart.legacy(core.int)),
-    enableInfiniteScroll: dart.finalFieldType(dart.legacy(core.bool)),
-    reverse: dart.finalFieldType(dart.legacy(core.bool)),
-    autoPlay: dart.finalFieldType(dart.legacy(core.bool)),
-    autoPlayInterval: dart.finalFieldType(dart.legacy(core.Duration)),
-    autoPlayAnimationDuration: dart.finalFieldType(dart.legacy(core.Duration)),
-    autoPlayCurve: dart.finalFieldType(dart.legacy(curves.Curve)),
-    enlargeCenterPage: dart.finalFieldType(dart.legacy(core.bool)),
-    scrollDirection: dart.finalFieldType(dart.legacy(basic_types.Axis)),
-    onPageChanged: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(core.int), dart.legacy(carousel_options.CarouselPageChangedReason)]))),
-    onScrolled: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.double)]))),
-    scrollPhysics: dart.finalFieldType(dart.legacy(scroll_physics.ScrollPhysics)),
-    pageSnapping: dart.finalFieldType(dart.legacy(core.bool)),
-    pauseAutoPlayOnTouch: dart.finalFieldType(dart.legacy(core.bool)),
-    pauseAutoPlayOnManualNavigate: dart.finalFieldType(dart.legacy(core.bool)),
-    pauseAutoPlayInFiniteScroll: dart.finalFieldType(dart.legacy(core.bool)),
-    pageViewKey: dart.finalFieldType(dart.legacy(page_storage.PageStorageKey)),
-    enlargeStrategy: dart.finalFieldType(dart.legacy(carousel_options.CenterPageEnlargeStrategy)),
-    disableCenter: dart.finalFieldType(dart.legacy(core.bool))
-  }));
-  dart.trackLibraries("packages/carousel_slider/carousel_options.dart", {
-    "package:carousel_slider/carousel_options.dart": carousel_options
+  dart.trackLibraries("packages/characters/src/grapheme_clusters/table.dart", {
+    "package:characters/src/grapheme_clusters/table.dart": table
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["carousel_options.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAE2D;;oEAAtD;;;;EAAsD;;;;;;;;;;;;;;;;;;;;;;IAEZ;;oEAA1C;;;;EAA0C;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAIhC;;;;;;IAKA;;;;;;IAKA;;;;;;IAKH;;;;;;IAKC;;;;;;IAKA;;;;;;IAMA;;;;;;IAMI;;;;;;IAKA;;;;;;IAKH;;;;;;IAMD;;;;;;IAKA;;;;;;IAGiD;;;;;;IAGjC;;;;;;IAWP;;;;;;IAKT;;;;;;IAKA;;;;;;IAMA;;;;;;IAOA;;;;;;IAGU;;;;;;IAGW;;;;;;IAGrB;;;;;;;;QAGJ;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;IArBA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;EACL","file":"../../../../../../../../packages/carousel_slider/carousel_options.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["table.dart"],"names":[],"mappings":";;;;;;;;;;;;;;QA8TY;AACN,qBAAa,AAAO,0BAAW,AAAS,QAAD,cAAI;AAC3C,gBAAQ,AAAW,UAAD,IAAa,aAAT,QAAQ,IAAG;AACjC,cAAM,AAAM,KAAD,GAAG;AACd,eAAO,AAAM,yBAAW,AAAM,KAAD,cAAI;AACrC,UAA0B,EAAlB,AAAK,AAAM,IAAP,cAAI,KAAK,CAAC,GAAG,GAAI,AAAK,AAAO,IAAR,GAAG,KAAQ,AAAI,GAAD,GAAG;EACpD;6BAEa,MAAU;QAAV;QAAU;AACjB,qBAAa,AAAO,0BAAW,AAAK,QAAG,AAAM,oBAAE,IAAI;AACnD,gBAAQ,AAAW,UAAD,IAAI,AAAM,oBAAE,IAAI;AAClC,cAAM,AAAM,KAAD,GAAG;AACd,eAAO,AAAM,yBAAW,AAAM,KAAD,cAAI;AACrC,UAA0B,EAAlB,AAAK,AAAM,IAAP,cAAI,KAAK,CAAC,GAAG,GAAI,AAAK,AAAO,IAAR,GAAG,KAAQ,AAAI,GAAD,GAAG;EACpD;6BAOa,OAAW;QAAX;QAAW;AACpB,UAAA,AAAc,kCAA0B,CAAR,aAAN,KAAK,IAAG,mBAAQ,aAAa;EAAC;qCAQ3C,OAAW;QAAX;QAAW;AACxB,UAAA,AAAkB,sCAA0B,CAAR,aAAN,KAAK,IAAG,mBAAQ,aAAa;EAAC;;MAlVnD,WAAK;;;MAwIL,YAAM;;;MA2Lb,mBAAa;;;MAQb,uBAAiB","file":"../../../../../../../../../../packages/characters/src/grapheme_clusters/table.dart.lib.js"}');
   // Exports:
   return {
-    carousel_options: carousel_options
+    src__grapheme_clusters__table: table
   };
 }));
 
-//# sourceMappingURL=carousel_options.dart.lib.js.map
+//# sourceMappingURL=table.dart.lib.js.map
