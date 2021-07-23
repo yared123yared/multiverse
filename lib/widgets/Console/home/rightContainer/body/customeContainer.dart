@@ -29,26 +29,28 @@ class CustomeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double customeContainerHeight = this.mainContainerHeight * 0.26;
+    double customeContainerWidth = this.mainContiainerWidth * 0.98;
     return Card(
       elevation: 1,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
       margin: EdgeInsets.only(
-          left: this.mainContainerHeight * 0.015,
-          right: this.mainContainerHeight * 0.015,
+          left: this.mainContiainerWidth * 0.015,
+          right: this.mainContiainerWidth * 0.015,
           top: this.mainContainerHeight * 0.023),
       child: Container(
         decoration: BoxDecoration(
           // color: Color(0xffE3F2FD).withOpacity(0.2),
-          // border: Border.all(
-          // color:
-          // this.borderColor != null ? this.borderColor : Colors.white),
+          border: Border.all(
+          color:
+          this.borderColor != null ? this.borderColor : Colors.white),
 
           borderRadius: BorderRadius.circular(13),
         ),
-        height: this.mainContainerHeight * 0.26,
-        width: double.infinity,
+        height: customeContainerHeight,
+        width: customeContainerWidth,
         child: Row(
           children: [
             Container(
@@ -56,6 +58,8 @@ class CustomeContainer extends StatelessWidget {
                 child: Image.asset(
                   this.image,
                   fit: BoxFit.cover,
+                  height:customeContainerHeight,
+                  width: this.mainContiainerWidth * 0.3,
                 )),
             SizedBox(
               width: 0.04 * this.mainContiainerWidth,
@@ -89,8 +93,8 @@ class CustomeContainer extends StatelessWidget {
                         // alignment: Alignment.topRight,
                         icon: SvgPicture.asset(
                           'lib/assets/icons/console/openInNewIcon.svg',
-                          height: 15,
-                          width: 15,
+                          height: 10,
+                          width: 10,
                           // color: Colors.white,
                         ),
                       )
