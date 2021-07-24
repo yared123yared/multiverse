@@ -50,7 +50,7 @@ class DrawerTopButton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(width: width * 0.005),
+                  SizedBox(width: width * 0.01),
                   SvgPicture.asset(
                     iconUrl,
                     height: this.size,
