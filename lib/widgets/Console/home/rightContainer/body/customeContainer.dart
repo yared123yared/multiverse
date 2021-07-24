@@ -62,7 +62,7 @@ class CustomeContainer extends StatelessWidget {
                   fit: BoxFit.fill,
                 )),
             SizedBox(
-              width: 0.04 * this.mainContiainerWidth,
+              width: 0.03 * this.mainContiainerWidth,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -90,11 +90,11 @@ class CustomeContainer extends StatelessWidget {
                       // width: 0.31 * this.mainContiainerWidth,
                       // ),
                       IconButton(
-                        // alignment: Alignment.topRight,
+                        alignment: Alignment.topRight,
                         icon: SvgPicture.asset(
                           'lib/assets/icons/console/openInNewIcon.svg',
-                          height: 12,
-                          width: 12,
+                          height: 0.03 * this.mainContainerHeight,
+                          width: this.mainContiainerWidth * 0.04,
                           // color: Colors.white,
                         ),
                       )
@@ -114,7 +114,7 @@ class CustomeContainer extends StatelessWidget {
                   children: [
                     this.button1,
                     SizedBox(
-                      width: 0.04 * this.mainContiainerWidth,
+                      width: 0.03 * this.mainContiainerWidth,
                     ),
                     this.button2,
                   ],
@@ -126,7 +126,7 @@ class CustomeContainer extends StatelessWidget {
                   children: [
                     this.button3,
                     SizedBox(
-                      width: 0.04 * this.mainContiainerWidth,
+                      width: 0.03 * this.mainContiainerWidth,
                     ),
                     this.button4
                   ],
