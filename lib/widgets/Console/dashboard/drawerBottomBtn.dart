@@ -43,14 +43,14 @@ class DrawerBottomBtn extends StatelessWidget {
             highlightColor: Colors.black87.withOpacity(0.1),
             splashColor: Colors.transparent,
             child: Container(
-              padding: EdgeInsets.only(left: width * 0.015),
+              padding: EdgeInsets.only(left: width * 0.01),
               color: Colors.transparent,
               alignment: Alignment.center,
               width: width * 0.15,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(width: 15),
+                  SizedBox(width: width * 0.005),
                   SvgPicture.asset(
                     iconUrl,
                     height: this.size,
@@ -61,7 +61,7 @@ class DrawerBottomBtn extends StatelessWidget {
                   Text(
                     value,
                     style: TextStyle(
-                        fontSize: 12,
+                        fontSize: width * 0.01,
                         fontWeight: FontWeight.w300,
                         color: Colors.white),
                   ),

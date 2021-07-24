@@ -55,7 +55,7 @@ class CustomeContainer extends StatelessWidget {
           children: [
             Container(
                 height: customeContainerHeight,
-                width: this.mainContiainerWidth * 0.3,
+                width: this.mainContiainerWidth * 0.346,
                 // alignment: Alignment.topLeft,
                 child: Image.asset(
                   this.image,
@@ -70,7 +70,7 @@ class CustomeContainer extends StatelessWidget {
               children: [
                 // SizedBox(height: 0.01 * this.mainContainerHeight),
                 Container(
-                  width: this.mainContiainerWidth * 0.595,
+                  width: this.mainContiainerWidth * 0.58,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -93,8 +93,8 @@ class CustomeContainer extends StatelessWidget {
                         // alignment: Alignment.topRight,
                         icon: SvgPicture.asset(
                           'lib/assets/icons/console/openInNewIcon.svg',
-                          height: 10,
-                          width: 10,
+                          height: 12,
+                          width: 12,
                           // color: Colors.white,
                         ),
                       )
