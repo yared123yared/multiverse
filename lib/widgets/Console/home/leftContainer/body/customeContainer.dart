@@ -47,10 +47,12 @@ class CustomeContainer extends StatelessWidget {
         child: Row(
           children: [
             Container(
+                // height: this.mainContainerHeight * 0.215,
+                width: this.mainContiainerWidth * 0.5,
                 alignment: Alignment.topLeft,
                 child: Image.asset(
                   this.image,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 )),
             SizedBox(
               width: 0.07 * this.mainContiainerWidth,
@@ -64,15 +66,15 @@ class CustomeContainer extends StatelessWidget {
                   this.title,
                   style: TextStyle(
                     color: Color(0xff003366),
-                    fontSize: 0.029 * this.mainContainerHeight,
+                    fontSize: 0.04 * this.mainContiainerWidth,
                     fontWeight: FontWeight.w900,
                   ),
                 ),
-                SizedBox(height: 0.02 * this.mainContainerHeight),
+                SizedBox(height: 0.035 * this.mainContainerHeight),
                 Text(this.subtitle,
                     style: TextStyle(
                       color: Color(0xff003366),
-                      fontSize: 0.0197 * this.mainContainerHeight,
+                      fontSize: 0.02 * this.mainContiainerWidth,
                       fontWeight: FontWeight.w300,
                     )),
                 SizedBox(height: 0.02 * this.mainContainerHeight),
