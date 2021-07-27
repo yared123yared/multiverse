@@ -47,9 +47,9 @@ class CustomeContainer extends StatelessWidget {
         child: Row(
           children: [
             Container(
-                // height: this.mainContainerHeight * 0.215,
+                height: this.mainContainerHeight * 0.215,
                 width: this.mainContiainerWidth * 0.5,
-                alignment: Alignment.topLeft,
+                // alignment: Alignment.topLeft,
                 child: Image.asset(
                   this.image,
                   fit: BoxFit.fill,
@@ -74,7 +74,7 @@ class CustomeContainer extends StatelessWidget {
                 Text(this.subtitle,
                     style: TextStyle(
                       color: Color(0xff003366),
-                      fontSize: 0.02 * this.mainContiainerWidth,
+                      fontSize: 0.03 * this.mainContiainerWidth,
                       fontWeight: FontWeight.w300,
                     )),
                 SizedBox(height: 0.02 * this.mainContainerHeight),

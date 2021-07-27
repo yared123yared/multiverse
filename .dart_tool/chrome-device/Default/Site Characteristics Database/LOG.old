@@ -1,2 +1,7 @@
-2021/07/22-10:11:03.216 1988 Archiving C:\Users\yared\AppData\Local\Temp\flutter_tools.7593c0b9\flutter_tools_chrome_device.2c522417\Default\Site Characteristics Database/MANIFEST-000001: OK
-2021/07/22-10:11:04.675 1988 **** Repaired leveldb C:\Users\yared\AppData\Local\Temp\flutter_tools.7593c0b9\flutter_tools_chrome_device.2c522417\Default\Site Characteristics Database; recovered 0 files; 0 bytes. Some data may have been lost. ****
+2021/07/26-10:03:32.369 1f48 Reusing MANIFEST C:\Users\yared\AppData\Local\Temp\flutter_tools.63580788\flutter_tools_chrome_device.bf3e6e22\Default\Site Characteristics Database/MANIFEST-000001
+2021/07/26-10:03:32.370 1f48 Recovering log #2
+2021/07/26-10:03:32.371 1f48 Level-0 table #3: started
+2021/07/26-10:03:32.940 1f48 Level-0 table #3: 130 bytes OK
+2021/07/26-10:03:32.940 1f48 Recovering log #3
+2021/07/26-10:03:32.941 1f48 Reusing old log C:\Users\yared\AppData\Local\Temp\flutter_tools.63580788\flutter_tools_chrome_device.bf3e6e22\Default\Site Characteristics Database/000003.log 
+2021/07/26-10:03:33.610 1f48 Delete type=0 #2

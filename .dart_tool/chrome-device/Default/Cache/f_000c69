@@ -1,0 +1,316 @@
+define(['dart_sdk', 'packages/client/widgets/Console/home/rightContainer/body/customeContainer.dart', 'packages/client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/supervisedLearning.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/reinforcmentLearning.dart', 'packages/client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/unsupervisedLearning.dart', 'packages/client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/hybridLearning.dart'], (function load__packages__client__widgets__Console__home__rightContainer__body__ArteficialIntelegence__arteficialIntelegence_dart(dart_sdk, packages__client__widgets__Console__home__rightContainer__body__customeContainer$46dart, packages__client__widgets__Console__home__rightContainer__body__ArteficialIntelegence__supervisedLearning$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__client__widgets__Console__home__rightContainer__body__ArteficialIntelegence__reinforcmentLearning$46dart, packages__client__widgets__Console__home__rightContainer__body__ArteficialIntelegence__unsupervisedLearning$46dart, packages__client__widgets__Console__home__rightContainer__body__ArteficialIntelegence__hybridLearning$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const customeContainer = packages__client__widgets__Console__home__rightContainer__body__customeContainer$46dart.widgets__Console__home__rightContainer__body__customeContainer;
+  const supervisedLearning = packages__client__widgets__Console__home__rightContainer__body__ArteficialIntelegence__supervisedLearning$46dart.widgets__Console__home__rightContainer__body__ArteficialIntelegence__supervisedLearning;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const reinforcmentLearning = packages__client__widgets__Console__home__rightContainer__body__ArteficialIntelegence__reinforcmentLearning$46dart.widgets__Console__home__rightContainer__body__ArteficialIntelegence__reinforcmentLearning;
+  const unsupervisedLearning = packages__client__widgets__Console__home__rightContainer__body__ArteficialIntelegence__unsupervisedLearning$46dart.widgets__Console__home__rightContainer__body__ArteficialIntelegence__unsupervisedLearning;
+  const hybridLearning = packages__client__widgets__Console__home__rightContainer__body__ArteficialIntelegence__hybridLearning$46dart.widgets__Console__home__rightContainer__body__ArteficialIntelegence__hybridLearning;
+  var arteficialIntelegence = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerHeight",
+        [_Location_column]: 9,
+        [_Location_line]: 21,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerWidth",
+        [_Location_column]: 9,
+        [_Location_line]: 22,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 20,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/widgets/Console/home/rightContainer/body/ArteficialIntelegence/arteficialIntelegence.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerHeight",
+        [_Location_column]: 9,
+        [_Location_line]: 25,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerWidth",
+        [_Location_column]: 9,
+        [_Location_line]: 26,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 24,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/widgets/Console/home/rightContainer/body/ArteficialIntelegence/arteficialIntelegence.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerHeight",
+        [_Location_column]: 9,
+        [_Location_line]: 29,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerWidth",
+        [_Location_column]: 9,
+        [_Location_line]: 30,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11], T._LocationL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[9] || CT.C9,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 28,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/widgets/Console/home/rightContainer/body/ArteficialIntelegence/arteficialIntelegence.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerHeight",
+        [_Location_column]: 9,
+        [_Location_line]: 33,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerWidth",
+        [_Location_column]: 9,
+        [_Location_line]: 34,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.constList([C[14] || CT.C14, C[15] || CT.C15], T._LocationL());
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[13] || CT.C13,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 32,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/widgets/Console/home/rightContainer/body/ArteficialIntelegence/arteficialIntelegence.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContainerHeight",
+        [_Location_column]: 7,
+        [_Location_line]: 15,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainContiainerWidth",
+        [_Location_column]: 7,
+        [_Location_line]: 16,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "borderColor",
+        [_Location_column]: 7,
+        [_Location_line]: 17,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 7,
+        [_Location_line]: 18,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "image",
+        [_Location_column]: 7,
+        [_Location_line]: 19,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "button1",
+        [_Location_column]: 7,
+        [_Location_line]: 20,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "button2",
+        [_Location_column]: 7,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "button3",
+        [_Location_column]: 7,
+        [_Location_line]: 28,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "button4",
+        [_Location_column]: 7,
+        [_Location_line]: 32,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23, C[24] || CT.C24, C[25] || CT.C25, C[26] || CT.C26], T._LocationL());
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[17] || CT.C17,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 14,
+        [_Location_file]: "file:///C:/Users/yared/Documents/education/multiverse/client/Multivurse-Client/lib/widgets/Console/home/rightContainer/body/ArteficialIntelegence/arteficialIntelegence.dart"
+      });
+    }
+  }, false);
+  var C = Array(27).fill(void 0);
+  var I = ["package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/arteficialIntelegence.dart"];
+  var mainContainerHeight$ = dart.privateName(arteficialIntelegence, "AIContainer.mainContainerHeight");
+  var mainContainerWidth$ = dart.privateName(arteficialIntelegence, "AIContainer.mainContainerWidth");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  arteficialIntelegence.AIContainer = class AIContainer extends framework.StatelessWidget {
+    get mainContainerHeight() {
+      return this[mainContainerHeight$];
+    }
+    set mainContainerHeight(value) {
+      super.mainContainerHeight = value;
+    }
+    get mainContainerWidth() {
+      return this[mainContainerWidth$];
+    }
+    set mainContainerWidth(value) {
+      super.mainContainerWidth = value;
+    }
+    build(context) {
+      return new customeContainer.CustomeContainer.new({mainContainerHeight: this.mainContainerHeight, mainContiainerWidth: this.mainContainerWidth, borderColor: new ui.Color.new(4278203238).withOpacity(0.5), title: "Artificial Intelegence", image: "lib/assets/images/console/rightContainer/ai.png", button1: new supervisedLearning.SupervisedtLearningButton.new({mainContainerHeight: this.mainContainerHeight, mainContainerWidth: this.mainContainerWidth, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), button2: new reinforcmentLearning.ReinforcementLearningButton.new({mainContainerHeight: this.mainContainerHeight, mainContainerWidth: this.mainContainerWidth, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), button3: new unsupervisedLearning.UnSupervisedtLearningButton.new({mainContainerHeight: this.mainContainerHeight, mainContainerWidth: this.mainContainerWidth, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8}), button4: new hybridLearning.HybridLearningButton.new({mainContainerHeight: this.mainContainerHeight, mainContainerWidth: this.mainContainerWidth, $creationLocationd_0dea112b090073317d4: C[12] || CT.C12}), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
+    }
+  };
+  (arteficialIntelegence.AIContainer.new = function(opts) {
+    let mainContainerHeight = opts && 'mainContainerHeight' in opts ? opts.mainContainerHeight : null;
+    let mainContainerWidth = opts && 'mainContainerWidth' in opts ? opts.mainContainerWidth : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[mainContainerHeight$] = mainContainerHeight;
+    this[mainContainerWidth$] = mainContainerWidth;
+    arteficialIntelegence.AIContainer.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = arteficialIntelegence.AIContainer.prototype;
+  dart.addTypeTests(arteficialIntelegence.AIContainer);
+  dart.addTypeCaches(arteficialIntelegence.AIContainer);
+  dart.setMethodSignature(arteficialIntelegence.AIContainer, () => ({
+    __proto__: dart.getMethods(arteficialIntelegence.AIContainer.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(arteficialIntelegence.AIContainer, I[0]);
+  dart.setFieldSignature(arteficialIntelegence.AIContainer, () => ({
+    __proto__: dart.getFields(arteficialIntelegence.AIContainer.__proto__),
+    mainContainerHeight: dart.finalFieldType(dart.legacy(core.double)),
+    mainContainerWidth: dart.finalFieldType(dart.legacy(core.double))
+  }));
+  dart.trackLibraries("packages/client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/arteficialIntelegence.dart", {
+    "package:client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/arteficialIntelegence.dart": arteficialIntelegence
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["arteficialIntelegence.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAMe;;;;;;IACA;;;;;;UAKa;AACxB,YAAO,iEACqB,+CACA,sCACb,AAAkB,iBAAZ,wBAAwB,aACpC,iCACA,4DACE,2EACmB,8CACD,2FAElB,+EACmB,8CACD,2FAElB,+EACmB,8CACD,2FAElB,kEACmB,8CACD;IAG/B;;;QA3BkB;QAA0B;;IAA1B;IAA0B;AAA5C;;EAAgE","file":"../../../../../../../../../../../../../../packages/client/widgets/Console/home/rightContainer/body/ArteficialIntelegence/arteficialIntelegence.dart.lib.js"}');
+  // Exports:
+  return {
+    widgets__Console__home__rightContainer__body__ArteficialIntelegence__arteficialIntelegence: arteficialIntelegence
+  };
+}));
+
+//# sourceMappingURL=arteficialIntelegence.dart.lib.js.map
